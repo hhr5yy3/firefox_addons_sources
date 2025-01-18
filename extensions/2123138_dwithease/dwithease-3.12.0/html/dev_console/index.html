@@ -1,0 +1,117 @@
+<div class="dev-console__wrapper editor-vertical developer-console" id="dwe-developer-console">
+
+    <div class="container-fluid p-0">
+        {{ #topBarContent }}
+            {{{ topBarContent }}}
+        {{ /topBarContent }}
+
+        <div class="dev-console__main dwe-row no-gutters">
+            <div class="dev-console__sidebar__icons dev-console__sidebar__icons__top col-1">
+                <div class="dwe-row no-gutters">
+                    {{ #contextComponents }}
+                        <div class="dev-console__sidebar__icons__icon dev-console__sidebar__icons__icon--top col-12" data-content-container-class="{{containerClass}}" data-tippy-content="{{title}}">
+                            <span class="icon-code-icons-light icon-{{{icon}}}"></span>
+                        </div>
+                    {{ /contextComponents }}
+                </div>
+
+                <div class="dev-console__sidebar__icons dev-console__sidebar__icons__bottom dwe-row no-gutters">
+                    <div class="dev-console__sidebar__icons--theme">
+                        <div class="dev-console__sidebar__icons__icon dev-console__sidebar__icons__icon-theme-switcher col-12" data-tippy-content="Theme">
+                            <svg width="24" height="24" viewBox="0 0 16 16" fill="none" class="vscode-icon" style="height: 22px; margin-bottom: 5px;"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 13V2a6 6 0 110 12z" fill="#C5C5C5"></path></svg>
+                        </div>
+                    </div>
+
+                    <div class="dev-console__sidebar__icons--layout snippets-template">
+                        <div class="dev-console__sidebar__icons__icon dev-console__sidebar__icons__icon-layout col-12 mb-0" data-tippy-content="Preview area">
+                            <svg width="24" height="24" viewBox="0 0 16 16" fill="none" class="vscode-icon" style="width: 20px;"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 1h13l.5.5v12l-.5.5h-13l-.5-.5v-12l.5-.5zM2 5v8h12V5H2zm0-1h12V2H2v2z" fill="#C5C5C5"></path></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dev-console__sidebar__content col-3">
+                <div class="dwe-row no-gutters">
+                    <div class="col-12 w-100">
+                        <div class="dwe-row no-gutters">
+                            {{ #contextComponents }}
+                                {{{html}}}
+                            {{ /contextComponents }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="snippets-menu">
+                <div class="toolbar-btn snippets-menu-btn" data-tippy-content="Expand Menu"></div>
+            </div>
+
+            <div class="dev-console__main {{ ^devConsole }}right{{ /devConsole }} col w-100">
+                {{ #includeEditors }}
+                    <div class="dev-console__main__editors dwe-row no-gutters flex-direction-column">
+                        <div class="dev-console__main__editors--left col h-100">
+                            <nav class="navbar navbar-default editor-toolbar">
+                                <div class="navbar-header">
+                                    <div class="editor-tab btn-group">
+                                        <span class="editor-tab-icon">
+                                            <svg viewBox="-40 -40 586 586" width="1em" height="1em" fill="#E79627" class="FileName-module__Icon___W2Mhu">
+                                                <path d="M412.226 385.563c28.065 37.511-46.893 64.77-77.11
+                                                    10.559l-41.05 23.822 2.516 4.167c15.464 26.04 39.62 41.294 72.27 45.673 71.481 8.55 118.148-37.034 92.817-101.767C443.667 331 396.5 324 369
+                                                    305.75c-16.172-9.422-12.806-29.364.183-37.365 10.102-6.222 33.317-7.01 45.274 17.786l39.28-25.317C422.75 205 349.5 216.25 327.544 241.627 297.688 276.702
+                                                    306.228 315.85 332.5 341c20.434 19.561 52.501 26.202 79.726 44.563zm-185.588 79.069c22.63-9.153 35.904-28.074
+                                                    39.416-56.202.305-2.848.508-184.599.508-184.599h-49.788l-.36 179.779c-1.164 11.64-8.122 19.983-18.289 21.619-17.347
+                                                    2.791-28.911-2.26-40.963-24.826l-40.535 24.508c17.373 40.839 69.745 55.838 110.011 39.72zM44.873 0h422.254C491.987 0 512 20.013 512 44.873v422.254c0
+                                                    24.86-20.013 44.873-44.873 44.873H44.873C20.013 512 0 491.987 0 467.127V44.873C0 20.013 20.013 0 44.873 0z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                        <span class="editor-tab-label">Untitled</span>
+                                        <span class="editor-tab-save-status icon-code-icons-light icon-circle-filled"></span>
+                                    </div>
+                                </div>
+                            </nav>
+                            <div id="developer-console-editor"></div>
+                        </div>
+
+                        <div class="dev-console__main__editors--right col d-none">
+                            <nav class="navbar navbar-default editor-toolbar">
+                                <div class="navbar-header">
+                                    <div class="editor-tab btn-group">
+                                        <span class="editor-tab-icon">
+                                            <svg width="1em" height="1em" viewBox="0 -1 16 16" class="FileName-module__Icon___W2Mhu">
+                                                <path class="text_svg__i-color" fill="#E79627" d="M8 4H4V3h4v1zM4 7h7V6H4v1zm0 2h7V8H4v1zm0 2h7v-1H4v1zm10-7.5V13a1 1 0 01-1 1H3a1 1 0 01-1-1V1a1 1 0 011-1h7.5zM13 4l-3-3H3v12h10V4z"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="editor-tab-label">Template.isml</span>
+                                    </div>
+                                </div>
+                            </nav>
+                            <div class="developer-console-template-editor"></div>
+                        </div>
+                    </div>
+                {{ /includeEditors }}
+
+                {{ #includeListing }}
+                    <div class="listing-placeholder">
+                    </div>
+                    
+                    <div class="dev-console__fileUploader">
+                        <div class="dev-console__fileUploader-wrapper"></div>
+                        <div class="dev-console__fileUploader-container">
+                            <h1>Drop your files here to upload</h1>
+                            <input type="file" id="fileUpload" multiple />
+                        </div>
+                    </div>
+                {{ /includeListing }}
+
+                <div class="dev-console__main__result dwe-row no-gutters">
+                    {{{ responseContainerContent }}}
+                </div>
+            </div>
+        </div>
+
+        <div class="dev-console__bottom-bar developer-console-bottom-bar dwe-row no-gutters">
+            {{{ bottomBarContent }}}
+        </div>
+    </div>
+</div>

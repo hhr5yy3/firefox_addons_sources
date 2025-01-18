@@ -1,0 +1,243 @@
+/*! https://npm.im/webext-base-css */
+
+/* Firefox only: @-moz-document */
+
+/* Firefox only: var(--in-content-*) */
+
+/* Safari only: _::-webkit-full-page-media */
+
+@import 'chrome://global/skin/in-content/common.css';
+
+/* Firefox-only */
+
+:root {
+	--body-margin-h: 8px;
+	max-width: 700px;
+	margin: auto;
+}
+
+body {
+	margin-left: var(--body-margin-h);
+	margin-right: var(--body-margin-h);
+}
+
+/* Selector matches Firefox’ */
+
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='text'],
+input[type='url'],
+input:not([type]),
+textarea {
+	display: block;
+	box-sizing: border-box;
+	margin-left: 0;
+	width: 100%;
+	resize: vertical;
+	-moz-tab-size: 4 !important;
+	tab-size: 4 !important;
+}
+
+input[type='checkbox'] {
+	vertical-align: -0.15em;
+}
+
+textarea:focus {
+	/* Inexplicably missing from Chrome’s input style https://github.com/chromium/chromium/blob/6bea0557fe/extensions/renderer/resources/extension.css#L287 */
+	border-color: #4d90fe;
+	transition: border-color 200ms;
+}
+
+hr {
+	margin-right: calc(-1 * var(--body-margin-h));
+	margin-left: calc(-1 * var(--body-margin-h));
+	border: none;
+	border-bottom: 1px solid #aaa4;
+}
+
+img {
+	vertical-align: middle;
+}
+
+_::-webkit-full-page-media,
+_:future,
+:root {
+	font-family: -apple-system, BlinkMacSystemFont, sans-serif, 'Apple Color Emoji';
+}
+
+_::-webkit-full-page-media,
+_:future,
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='text'],
+input[type='url'],
+input:not([type]),
+textarea {
+	border: solid 1px #888;
+	padding: 0.4em;
+	font: inherit;
+	-webkit-appearance: none;
+}
+
+@-moz-document url-prefix('') {
+	:root {
+		--body-margin-h: 6px; /* Must be a variable so <hr>’s margin is changed too */
+		background-color: #fff;
+	}
+
+	body {
+		min-height: 250px; /* Without this there’s a white space at the bottom in dark mode */
+	}
+
+	body > * {
+		margin-left: var(--body-margin-h);
+		margin-right: var(--body-margin-h);
+	}
+
+	input[type='checkbox'] {
+		vertical-align: -0.4em;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		background-color: var(--in-content-box-background, #292a2d);
+	}
+
+	body,
+	h3 { /* Chrome #3 */
+		color: var(--in-content-page-color, #e8eaed);
+	}
+
+	a {
+		color: var(--in-content-link-color, #8ab4f8);
+	}
+
+	input[type='number'],
+	input[type='password'],
+	input[type='search'],
+	input[type='text'],
+	input[type='url'],
+	input:not([type]),
+	textarea {
+		color: inherit;
+		background-color: transparent;
+	}
+}
+
+:root {
+	--github-green: #28a745;
+	--github-red: #cb2431;
+}
+
+html:not(.is-edgium) {
+	min-width: 550px;
+	overflow-x: hidden;
+}
+
+h2,
+h3,
+h4 {
+	width: 100%;
+	margin-top: 0;
+	margin-bottom: 0.25rem;
+}
+
+hr {
+	margin: 1rem 0;
+}
+
+.small {
+	font-size: 0.875em;
+}
+
+label {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 100%;
+	margin: 0.5em 0;
+}
+
+label input[type='checkbox'] {
+	margin-right: 0.5em;
+}
+
+input:not([type='checkbox']) {
+	font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	font-size: 11px;
+}
+
+input:not([type='checkbox']):invalid {
+	color: var(--github-red);
+	border: 1px solid !important;
+}
+
+/*
+Show only a part of the token
+https://github.com/sindresorhus/refined-github/issues/1374#issuecomment-397906701
+*/
+
+input[type='text'][name='token'] {
+	width: 35ch !important;
+}
+
+.hidden {
+	display: none;
+}
+
+#error-message {
+	color: var(--github-red);
+}
+
+#repositories-form {
+	margin: 0.5em 0 0 1.75em;
+}
+
+.repo-wrapper,
+.repo-wrapper ul {
+	margin: 0.25em 0 0.5em;
+}
+
+.repo-wrapper ul,
+.repo-wrapper ul > li {
+	list-style-type: none;
+}
+
+.repo-wrapper label {
+	display: inline-block;
+	width: auto;
+	margin: 0;
+	margin-bottom: 0.25rem;
+}
+
+#reload-repositories .loader {
+	display: none;
+	width: 0.8em;
+	height: 0.8em;
+}
+
+#reload-repositories .loader::after {
+	content: ' ';
+	display: block;
+	width: 0.7em;
+	height: 0.7em;
+	margin: 0 0.1em;
+	border-radius: 50%;
+	border: 2px solid var(--github-red);
+	border-color: var(--github-red) transparent;
+	animation: spin 1.2s linear infinite;
+}
+
+#reload-repositories.loading > .loader {
+	display: inline-block;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+

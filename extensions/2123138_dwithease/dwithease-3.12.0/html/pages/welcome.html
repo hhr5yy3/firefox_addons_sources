@@ -1,0 +1,39 @@
+<div id="welcome">
+    <div class="content">
+        <div class="top-part">
+            <div class="loco-wrapper" layout="row" layout-align="center center" layout-margin>
+                <a href="https://forkpoint.com" target="_blank">
+                    <img class="header-logo" src="../../images/logo/forkpoint-logo-positive.png">
+                </a>
+            </div>
+            <div class="thanks-header" i18n-content="welcome_page_header"></div>
+            <div class="main-message" i18n-content="welcome_page_paragraph"></div>
+        </div>
+
+        <div class="suggestions">
+            <div class="suggestions_title" i18n-content="welcome_page_suggest"></div>
+            <a class="features-button md-button md-raised md-primary" i18n-content="welcome_page_features_button" href="https://dwithease.com/docs/" target="_blank"></a>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/dwithease/" target="_blank"><img src="../../images/icons/social/icon-facebook.png" class="icon icon-fb"></a>
+            <a href="https://github.com/ForkPoint/dwithease" target="_blank"><img src="../../images/icons/social/icon-github.png" class="icon icon-git"></a>
+            <a href="https://chrome.google.com/webstore/detail/demandware-with-ease/ffhabonelknmejmdnekedmijlhebpcio" target="_blank"><img src="../../images/icons/social/icon-google.png" class="icon icon-google"></a>
+        </div>
+    </div>
+
+    <div ng-if="isFirefox && privacyConsent.showPrivacyConsent" class="confirmationPrivacyModal customModal lowerZIndex" ng-class="theme == 'darkmode' ? 'md-darkmode-theme' : ''" class="secured-text">
+        <div class="form-group">
+            <p class="mat-h1 title"></p>
+            <div class="body">
+                <ng-include src="'components/privacy-card.html'"></ng-include>
+            </div>
+            <md-button class="md-button md-primary md-raised actionButton" ng-click="closePrivacyModal()" aria-label="OK">
+                Continue
+            </md-button>
+            <md-button class="md-icon-button action-btn close closeButton" ng-click="closePrivacyModal()" aria-label="Close">
+                <md-icon md-font-set="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </div>
+</div>

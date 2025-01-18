@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="robots" content="index. follow">
+	    <meta name="author" content="Sean O'Sullivan">
+		
+	    <link rel="stylesheet" href="assets/css/core.css" media="all">
+	    <link rel="stylesheet" href="assets/css/darkmode.css" media="all">
+		<link rel="stylesheet" href="assets/packages/officeui-fabric-core/fabric.min.css" media="all">
+		<link rel="stylesheet" href="assets/packages/fluentui-system-icons/FluentSystemIcons-Regular.css" media="all">
+		
+		<title>Centro 365</title>
+		
+  </head>
+  
+  <body class="ms-Fabric ms-fontWeight-regular">
+	  
+	<!-- HEADER BAR -->
+	
+	<div id="container_flex_header" class="ms-depth-4">
+		
+		<div id="container_flex_header_left">
+			  <a href="https://seanosullivan.co.uk/projects/centro365/" target="_blank" rel="noopener noreferrer"><img id="header_left_appicon" src="assets/appicons/512.png" alt="Centro 365 App Icon" width="36" class="header_left_appicon"></a>
+		  </div>
+		
+		<div id="container_flex_header_middle">
+			<i class="fluentui_system_icons icon-ic_fluent_search_32_regular icon_search"></i>
+			<div class="container_flex_header_middle_search">
+				   <input id="input_search" autocapitalize="off" autocomplete="off" placeholder="Search Centro 365..." spellcheck="false" class="search" type="search" value="">
+			</div>
+		</div>
+		
+		<div id="container_flex_header_right">
+			<div id="container_flex_header_right_settings" style="float: left">
+				<div>
+					<a href="settings.html"><i class="fluentui_system_icons icon-ic_fluent_settings_32_regular m365admin" style="margin-right: 15px; margin-top: 4px; font-size: 20px"></i></a>
+				</div>
+			</div>
+			
+			<div id="container_flex_header_right_about" style="float: right">
+				<div>
+					<a href="about.html"><i class="fluentui_system_icons icon-ic_fluent_info_32_regular m365admin" style="margin-right: 15px; margin-top: 4px; font-size: 20px"></i></a>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div id="container_flex_notificationbanner" style="display: none">
+		
+		<div id="container_flex_notificationbanner_left">
+			<i class="fluentui_system_icons icon-ic_fluent_gift_open_24_regular iconsize m365admin" style="margin-top: 14px; margin-left: 16px;"></i>
+		</div>
+		
+		<div id="container_flex_notificationbanner_middle">
+			<a href="https://seanosullivan.co.uk/projects/centro365/updated" target="_blank" rel="noopener noreferrer"><p><strong>Updated</strong>&nbsp;&nbsp;Tap to see what's new</p></a>
+		</div>
+		
+		<div id="container_flex_notificationbanner_right">
+			<div>
+				<a href="#"><i class="fluentui_system_icons icon-ic_fluent_dismiss_24_regular m365admin" style="margin-top: 4px; margin-right: 16px;"></i></a>
+			</div>
+		</div>
+		
+	</div>
+		
+	<!-- LEFT SIDEBAR -->
+	  
+	<div id="container_frame_left" class="ms-depth-4">
+		
+		<div id="container_frame_left_searchcontrols" style="display: none;" data-tooltip="End Search">
+			<div>
+				<a href="#"><i class="fluentui_system_icons icon-ic_fluent_dismiss_square_24_regular fluentui_system_icons_iconsize stream"></i></a>
+			</div>
+		</div>
+		
+		<div id="container_frame_left_menu">
+			
+			<div id="menu_section_favourites" style="display: none;" data-tooltip="Favourites">
+				<div>
+					<a href="#"><i class="fluentui_system_icons icon-ic_fluent_star_line_horizontal_3_24_regular fluentui_system_icons_iconsize favourites"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_m365admin" style="display: none;" data-tooltip="365 Admin">
+				<div>
+					<a href="#"><i class="ms-Icon ms-Icon--AdminALogo32 iconsize m365admin"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_m365apps" style="display: none;" data-tooltip="365 Apps">
+				<div>
+					<a href="#"><i class="ms-Icon ms-Icon--OfficeLogo iconsize m365apps"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_lighthouse" style="display: none;" data-tooltip="365 Lighthouse">
+				<div>
+					<a href="#"><i class="fluentui_system_icons icon-ic_fluent_building_lighthouse_24_regular fluentui_system_icons_iconsize lighthouse"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_azurePortal" style="display: none;" data-tooltip="Azure Portal">
+				<div>
+					<a href="#"><i class="ms-Icon ms-Icon--AzureLogo iconsize azurePortal"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_seccomp" style="display: none;" data-tooltip="Defender XDR">
+				<div>
+					<a href="#"><i class="fluentui_system_icons icon-ic_fluent_globe_shield_24_regular fluentui_system_icons_iconsize security"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_cloudappsecurity" style="display: none;" data-tooltip="Defender for Cloud Apps">
+				<div>
+					<a href="#"><i class="fluentui_system_icons icon-ic_fluent_shield_badge_24_regular fluentui_system_icons_iconsize cloudappsecurity"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_azureAD" style="display: none;" data-tooltip="Entra ID">
+				<div>
+					<a href="#"><i class="ms-Icon ms-Icon--AADLogo iconsize azureAD"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_entragsa" style="display: none;" data-tooltip="Entra Global Secure Access">
+				<div>
+					<a href="#"><i class="fluentui_system_icons icon-ic_fluent_connected_20_regular fluentui_system_icons_iconsize entragsa"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_exchange" style="display: none;" data-tooltip="Exchange">
+				<div>
+					<a href="#"><i class="ms-Icon ms-Icon--ExchangeLogo iconsize exchange"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_endpointmgr" style="display: none;" data-tooltip="InTune">
+				<div>
+					<a href="#"><i class="fluentui_system_icons icon-ic_fluent_tablet_laptop_24_regular fluentui_system_icons_iconsize endpointmgr"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_onedrive" style="display: none;" data-tooltip="OneDrive">
+				<div>
+					<a href="#"><i class="ms-Icon ms-Icon--OneDriveLogo iconsize onedrive"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_powerplatform" style="display: none;" data-tooltip="Power Platform">
+				<div>
+					<a href="#"><i class="ms-Icon ms-Icon--PowerApps iconsize powerplatform"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_comply" style="display: none;" data-tooltip="Purview">
+				<div>
+					<a href="#"><i class="fluentui_system_icons icon-ic_fluent_notebook_eye_20_regular fluentui_system_icons_iconsize compliance"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_sharepoint" style="display: none;" data-tooltip="SharePoint">
+				<div>
+					<a href="#"><i class="ms-Icon ms-Icon--SharepointLogo iconsize sharepoint"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_stream" style="display: none;" data-tooltip="Stream">
+				<div>
+					<a href="#"><i class="ms-Icon ms-Icon--StreamLogo iconsize stream"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_teams" style="display: none;" data-tooltip="Teams">
+				<div>
+					<a href="#"><i class="ms-Icon ms-Icon--TeamsLogo iconsize teams"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_yammer" style="display: none;" data-tooltip="Viva">
+				<div>
+					<a href="#"><i class="fluentui_system_icons icon-ic_fluent_people_community_24_regular fluentui_system_icons_iconsize yammer"></i></a>
+				</div>
+			</div>
+			
+			<div id="menu_section_troubleshooting" style="display: none;" data-tooltip="Support and Licensing">
+				<div>
+					<a href="#"><i class="fluentui_system_icons icon-ic_fluent_desktop_pulse_24_regular fluentui_system_icons_iconsize troubleshooting"></i></a>
+				</div>
+			</div>
+		
+		</div>
+		
+		<div id="container_frame_left_supportmeicon" data-tooltip="Support Centro 365">
+			<div>
+				<a href="https://seanosullivan.co.uk/about/supportmywork" target="_blank" rel="noopener noreferrer"><i class="ms-Icon ms-Icon--CoffeeScript iconsize about"></i></a>
+			</div>
+		</div>
+				
+	</div>
+	
+	<!-- RIGHT SIDEBAR -->
+	
+	<div id="container_frame_right" class="fade container_frame_right_two_column">
+		
+		<!-- NOTIFICATION BANNER - SEARCHING - [Start] -->
+		<div id="container_flex_notificationbanner_searching" style="display: none">
+			
+			<div id="container_flex_notificationbanner_searching_left">
+				<p><strong>&#9432;&nbsp;&nbsp;Focused search mode</strong></p>
+			</div>
+			
+			<div id="container_flex_notificationbanner_searching_right">
+				<div>
+					<a href="#"><i class="fluentui_system_icons icon-ic_fluent_dismiss_24_regular m365admin" style="margin-top: 4px; margin-right: 16px; font-size: 16px;"></i></a>
+				</div>
+			</div>
+			
+		</div>
+		<!-- NOTIFICATION BANNER - SEARCHING - [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - 365 Admin - [Start] -->
+		<div id="admincentre_section_m365admin" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(24 24 54) 0%, rgb(0, 0, 0) 74%);">
+			
+				<i class="ms-Icon ms-Icon--AdminALogo32 container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://admin.microsoft.com/AdminPortal/Home#/homepage" target="_blank" rel="noopener noreferrer">365 Admin</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_people_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Users</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/users" target="_blank" rel="noopener noreferrer">Active users</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/contact" target="_blank" rel="noopener noreferrer">Contacts</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/GuestUsers" target="_blank" rel="noopener noreferrer">Guest Users</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/deletedusers" target="_blank" rel="noopener noreferrer">Deleted Users</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_tablet_laptop_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Devices</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/IntuneDevices" target="_blank" rel="noopener noreferrer">Active devices</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/PrepareWindows" target="_blank" rel="noopener noreferrer">Autopilot</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_people_team_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Teams &amp; groups</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/groups" target="_blank" rel="noopener noreferrer">Active teams &amp; groups</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/deletedgroups" target="_blank" rel="noopener noreferrer">Deleted groups</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/SharedMailbox" target="_blank" rel="noopener noreferrer">Shared mailboxes</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_document_one_page_sparkle_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Roles</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/rbac/directory" target="_blank" rel="noopener noreferrer">Role assignments</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/adminunits" target="_blank" rel="noopener noreferrer">Administrative units</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_calendar_pattern_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Resources</span>
+
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/ResourceMailbox" target="_blank" rel="noopener noreferrer">Rooms &amp; Equipment</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/SitesList" target="_blank" rel="noopener noreferrer">Sites</a></li>
+				</ul>
+			
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_window_text_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Microsoft Edge</span>
+
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/Adminportal/Home?#/Edge" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://admin.microsoft.com/Adminportal/Home?#/Edge/PolicyConfiguration" target="_blank" rel="noopener noreferrer">Edge Configuration Profiles</a></li>
+					<li><a href="https://admin.microsoft.com/Adminportal/Home?#/Edge/IEModeManagement/SiteList" target="_blank" rel="noopener noreferrer">Edge Site lists</a></li>
+					<li><a href="https://admin.microsoft.com/Adminportal/Home?#/Edge/IEModeManagement/SiteFeedback" target="_blank" rel="noopener noreferrer">Edge Site feedback</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_bot_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Copilot</span>
+			
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/copilot" target="_blank" rel="noopener noreferrer">Copilot Settings</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/copilot/:/CopilotSettings/BingChat" target="_blank" rel="noopener noreferrer">Copilot in Bing, Edge &amp; Windows</a></li>
+					<li><a href="https://admin.microsoft.com/#/Settings/IntegratedApps/:/defaultSettings" target="_blank" rel="noopener noreferrer">Copilot Plugins</a></li>
+					<li><a href="https://securitycopilot.microsoft.com/" target="_blank" rel="noopener noreferrer">Security Copilot</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_wallet_credit_card_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Billing</span>
+
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/catalog" target="_blank" rel="noopener noreferrer">Purchase services</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/subscriptions" target="_blank" rel="noopener noreferrer">Your products</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/licenses" target="_blank" rel="noopener noreferrer">Licenses</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/billoverview/invoice-list" target="_blank" rel="noopener noreferrer">Bills and payments</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/BillingAccounts/billing-accounts" target="_blank" rel="noopener noreferrer">Billing accounts</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/PaymentMethods" target="_blank" rel="noopener noreferrer">Payment methods</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/BillingNotifications" target="_blank" rel="noopener noreferrer">Billing notifications</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_settings_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Settings</span>
+
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/Domains" target="_blank" rel="noopener noreferrer">Domains</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/MicrosoftSearch" target="_blank" rel="noopener noreferrer">Search and intelligence</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/Settings/Services" target="_blank" rel="noopener noreferrer">Org settings</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/enhancedRestore" target="_blank" rel="noopener noreferrer">Microsoft 365 Backup</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/Settings/IntegratedApps" target="_blank" rel="noopener noreferrer">Integrated apps</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/dirsyncobjecterrors" target="_blank" rel="noopener noreferrer">Directory sync errors</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/viva" target="_blank" rel="noopener noreferrer">Viva</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/partners" target="_blank" rel="noopener noreferrer">Partner relationships</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/featureexplorer" target="_blank" rel="noopener noreferrer">Setup</a></li>
+					
+				</ul>
+			
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_window_apps_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Service Settings</span>
+
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/Services/:/Settings/L1/BriefingEmail" target="_blank" rel="noopener noreferrer">Briefing email from Viva</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/OrganizationProfile/:/Settings/L1/CustomTiles" target="_blank" rel="noopener noreferrer">Custom app launcher tiles</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/Services/:/Settings/L1/DCA" target="_blank" rel="noopener noreferrer">Dynamics 365 Applications</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/EdgeEnterpriseSiteList" target="_blank" rel="noopener noreferrer">Microsoft Edge site lists</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/Services/:/Settings/L1/OfficeForms" target="_blank" rel="noopener noreferrer">Microsoft Forms</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/Services/:/Settings/L1/BingHomePage" target="_blank" rel="noopener noreferrer">Microsoft Search in Bing homepage</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/Services/:/Settings/L1/VivaInsights" target="_blank" rel="noopener noreferrer">Microsoft Viva Insights</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/Services/:/Settings/L1/SoftwareDownload" target="_blank" rel="noopener noreferrer">Office installation options</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/OrganizationProfile/:/Settings/L1/OrganizationInformation" target="_blank" rel="noopener noreferrer">Organisation information</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/SecurityPrivacy/:/Settings/L1/PasswordPolicy" target="_blank" rel="noopener noreferrer">Password expiration policy</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/OrganizationProfile/:/Settings/L1/ReleasePreferences" target="_blank" rel="noopener noreferrer">Release preferences</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/Services/:/Settings/L1/Learning" target="_blank" rel="noopener noreferrer">Viva Learning</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/Settings/Services/:/Settings/L1/Whiteboard" target="_blank" rel="noopener noreferrer">Whiteboard</a></li>
+				</ul>
+
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_radar_rectangle_multiple_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Reports</span>
+
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/adoptionscore" target="_blank" rel="noopener noreferrer">Adoption Score</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/productivityscore" target="_blank" rel="noopener noreferrer">Productivity Score</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/reportsUsage" target="_blank" rel="noopener noreferrer">Usage</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_heart_pulse_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Health &amp; Support</span>
+
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/Adminportal/Home#/healthoverview" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/support/CustomerDataAccessRequests" target="_blank" rel="noopener noreferrer">Customer Lockbox Requests</a></li>
+					<li><a href="https://admin.microsoft.com/Adminportal/Home?#/dirsyncmanagement" target="_blank" rel="noopener noreferrer">Directory sync status</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/MessageCenter" target="_blank" rel="noopener noreferrer">Message Centre</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/support/microsofthardwaresupport" target="_blank" rel="noopener noreferrer">Microsoft Hardware Support</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/networkperformance" target="_blank" rel="noopener noreferrer">Network Connectivity</a></li>
+					<li><a href="https://admin.microsoft.com/Adminportal/Home#/tenantfeedback" target="_blank" rel="noopener noreferrer">Product Feedback</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/servicehealth" target="_blank" rel="noopener noreferrer">Service Health</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/support/requests" target="_blank" rel="noopener noreferrer">Service Requests</a></li>
+					<li><a href="https://admin.microsoft.com/Adminportal/Home#/softwareupdates" target="_blank" rel="noopener noreferrer">Software updates</a></li>
+					<li><a href="https://admin.microsoft.com/Adminportal/Home?#/windowsreleasehealth" target="_blank" rel="noopener noreferrer">Windows release health</a></li>
+				</ul>
+			
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - 365 Apps - [Start] -->
+		<div id="admincentre_section_m365apps" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(214, 60, 24) 0%, rgb(181, 49, 19) 74%);">
+			
+				<i class="ms-Icon ms-Icon--OfficeLogo container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://config.office.com/officeSettings/" target="_blank" rel="noopener noreferrer">365 Apps</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_cloud_arrow_down_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Cloud Update</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://config.office.com/officeSettings/MPOverview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://config.office.com/officeSettings/inventory" target="_blank" rel="noopener noreferrer">Inventory</a></li>
+					<li><a href="https://config.office.com/officeSettings/MPOverview" target="_blank" rel="noopener noreferrer">Tenant Settings</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_window_wrench_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Customisation</span>
+		
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://config.office.com/officeSettings/configurations" target="_blank" rel="noopener noreferrer">Device Configuration</a></li>
+					<li><a href="https://config.office.com/officeSettings/officePolicies" target="_blank" rel="noopener noreferrer">Policy Management</a></li>
+					<li><a href="https://admin.microsoft.com/Adminportal/Home#/whatsnew" target="_blank" rel="noopener noreferrer">Whats New Management</a></li>
+					<li><a href="https://config.office.com/officeSettings/settings" target="_blank" rel="noopener noreferrer">Setup</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_heart_pulse_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Health</span>
+		
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://config.office.com/officeSettings/officeapphealth/overview" target="_blank" rel="noopener noreferrer">Apps Health</a></li>
+					<li><a href="https://config.office.com/officeSettings/currency" target="_blank" rel="noopener noreferrer">Security Update Status</a></li>
+					<li><a href="https://config.office.com/officeSettings/onedrive" target="_blank" rel="noopener noreferrer">OneDrive Sync</a></li>
+					<li><a href="https://config.office.com/officeSettings/servicehealthdashboard" target="_blank" rel="noopener noreferrer">Service Health</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_book_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Learn More</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://go.microsoft.com/fwlink/?linkid=2093289" target="_blank" rel="noopener noreferrer">Documentation</a></li>
+					<li><a href="https://go.microsoft.com/fwlink/?linkid=2093503" target="_blank" rel="noopener noreferrer">Videos</a></li>
+					<li><a href="https://go.microsoft.com/fwlink/?linkid=2093374" target="_blank" rel="noopener noreferrer">Microsoft Tech Community</a></li>
+					<li><a href="https://go.microsoft.com/fwlink/?linkid=2113600&clcid=0x409" target="_blank" rel="noopener noreferrer">App Release Notes</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+
+		<!-- ADMIN CENTRE SECTION - 365 Lighthouse - [Start] -->
+		<div id="admincentre_section_lighthouse" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(210 36 96) 0%, rgb(148 39 77) 74%);">
+			
+				<i class="fluentui_system_icons icon-ic_fluent_building_lighthouse_24_regular fluentui_system_icons_container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://lighthouse.microsoft.com/#home" target="_blank" rel="noopener noreferrer">365 Lighthouse</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_person_note_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Management</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://lighthouse.microsoft.com/#home" target="_blank" rel="noopener noreferrer">Home</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/ManagedTenantAlerts.ReactView" target="_blank" rel="noopener noreferrer">Alerts</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/Tenants.ReactView" target="_blank" rel="noopener noreferrer">Tenants</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/DataProtection.ReactView" target="_blank" rel="noopener noreferrer">Data protection</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/Apps.ReactView" target="_blank" rel="noopener noreferrer">App performance</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/ServiceHealth.ReactView" target="_blank" rel="noopener noreferrer">Service health</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/Audit.ReactView" target="_blank" rel="noopener noreferrer">Audit logs</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/RBAC.ReactView" target="_blank" rel="noopener noreferrer">Permissions</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_briefcase_person_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Users</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/Users.ReactView" target="_blank" rel="noopener noreferrer">Account management</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/RiskyUsers.ReactView" target="_blank" rel="noopener noreferrer">Risky users</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/MultiFactorAuthentication.ReactView" target="_blank" rel="noopener noreferrer">Multifactor authentication</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/PasswordReset.ReactView" target="_blank" rel="noopener noreferrer">Self-service password reset</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_view_desktop_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Devices</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/MDE.ReactView" target="_blank" rel="noopener noreferrer">Device security</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/VulnerabilityManagement.ReactView" target="_blank" rel="noopener noreferrer">Vulnerability management</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/DeviceCompliance.ReactView" target="_blank" rel="noopener noreferrer">Device compliance</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/Antivirus.ReactView" target="_blank" rel="noopener noreferrer">Threat management</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/DeviceHealth.ReactView" target="_blank" rel="noopener noreferrer">Device health</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/CloudPC.ReactView" target="_blank" rel="noopener noreferrer">Windows 365</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/WindowsEventLogs.ReactView" target="_blank" rel="noopener noreferrer">Windows event logs</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_map_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Deployment</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/MultiTenantDeploymentReport.ReactView" target="_blank" rel="noopener noreferrer">Deployment insights</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/Blueprints.ReactView" target="_blank" rel="noopener noreferrer">Baselines</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_chart_multiple_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Sales Advisor (Orland)</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/OrlandInsights.ReactView" target="_blank" rel="noopener noreferrer">Opportunities</a></li>
+					<li><a href="https://lighthouse.microsoft.com/#view/Microsoft_Intune_MTM/UpcomingRenewals.ReactView" target="_blank" rel="noopener noreferrer">Upcoming renewals</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Azure Portal [Start] -->
+		<div id="admincentre_section_azurePortal" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(22, 136, 242) 0%, rgb(20, 121, 215) 74%);">
+			
+				<i class="ms-Icon ms-Icon--AzureLogo container_body_admincentresectiontitle_icon titleiconcolor" style=""></i>
+				
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://portal.azure.com/#home" target="_blank" rel="noopener noreferrer">Azure Portal</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_slide_layout_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Dashboard</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://portal.azure.com/#allservices" target="_blank" rel="noopener noreferrer">All Services</a></li>
+					<li><a href="https://portal.azure.com/#cloudshell" target="_blank" rel="noopener noreferrer">Cloud Shell</a></li>
+					<li><a href="https://portal.azure.com/#dashboard" target="_blank" rel="noopener noreferrer">My Dashboard</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_grid_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Components</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://portal.azure.com/#blade/Microsoft_Azure_Expert/AdvisorMenuBlade" target="_blank" rel="noopener noreferrer">Advisor</a></li>
+					<li><a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2Fsites" target="_blank" rel="noopener noreferrer">App Services</a></li>
+					<li><a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.DocumentDb%2FdatabaseAccounts" target="_blank" rel="noopener noreferrer">Azure Cosmos DB</a></li>
+					<li><a href="https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/overview" target="_blank" rel="noopener noreferrer">Azure Virtual Desktop</a></li>
+					<li><a href="https://portal.azure.com/#view/Microsoft_Azure_DataProtection/BackupCenterMenuBlade/~/overview" target="_blank" rel="noopener noreferrer">Backup centre</a></li>
+					<li><a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerService%2FmanagedClusters" target="_blank" rel="noopener noreferrer">Kubernetes services</a></li>
+					<li><a href="https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/overview" target="_blank" rel="noopener noreferrer">Monitoring &amp; Insights</a></li>
+					<li><a href="https://resources.azure.com/" target="_blank" rel="noopener noreferrer">Resource Explorer<span class="ms-fontSize-10 tag-preview">Preview</span></a></li>
+					<li><a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceGroupBlade/resourceType/Microsoft.Resources%2Fsubscriptions%2FresourceGroups" target="_blank" rel="noopener noreferrer">Resource Groups</a></li>
+					<li><a href="https://portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade" target="_blank" rel="noopener noreferrer">Security Centre</a></li>
+					<li><a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Sql%2Fservers%2Fdatabases" target="_blank" rel="noopener noreferrer">SQL Databases</a></li>
+					<li><a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FStaticSites" target="_blank" rel="noopener noreferrer">Static Web Apps</a></li>
+					<li><a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2FStorageAccounts" target="_blank" rel="noopener noreferrer">Storage Accounts</a></li>
+					<li><a href="https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade" target="_blank" rel="noopener noreferrer">Subscriptions</a></li>
+					<li><a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Compute%2FVirtualMachines" target="_blank" rel="noopener noreferrer">Virtual Machines</a></li>
+					<li><a href="https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Network%2FvirtualNetworks" target="_blank" rel="noopener noreferrer">Virtual Networks</a></li>
+				</ul>
+				
+			</div>
+		
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="ms-Icon ms-Icon--VSTSLogo icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Azure DevOps</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://dev.azure.com" target="_blank" rel="noopener noreferrer">Projects</a></li>
+					<li><a href="https://marketplace.visualstudio.com/azuredevops" target="_blank" rel="noopener noreferrer">Marketplace</a></li>
+				</ul>
+				
+			</div>
+		
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_data_scatter_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Data Explorer</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://dataexplorer.azure.com/home" target="_blank" rel="noopener noreferrer">Home</a></li>
+					<li><a href="https://dataexplorer.azure.com/oneclick" target="_blank" rel="noopener noreferrer">Data</a></li>
+					<li><a href="https://dataexplorer.azure.com/clusters/help/databases/Samples" target="_blank" rel="noopener noreferrer">Query</a></li>
+					<li><a href="https://dataexplorer.azure.com/dashboards" target="_blank" rel="noopener noreferrer">Dashboards<span class="ms-fontSize-10 tag-preview">Preview</span></a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_print_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Universal Print</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://portal.azure.com/#view/Universal_Print/MainMenuBlade/~/Overview" target="_blank" rel="noopener noreferrer">Universal Print Overview</a></li>
+					<li><a href="https://portal.azure.com/#blade/Universal_Print/MainMenuBlade/Printers" target="_blank" rel="noopener noreferrer">Manage Printers</a></li>
+					<li><a href="https://portal.azure.com/#view/Universal_Print/MainMenuBlade/~/PrinterShares" target="_blank" rel="noopener noreferrer">Manage Printer shares</a></li>
+					<li><a href="https://portal.azure.com/#blade/Universal_Print/MainMenuBlade/Connectors" target="_blank" rel="noopener noreferrer">Connectors</a></li>
+					<li><a href="https://portal.azure.com/#blade/Universal_Print/MainMenuBlade/DocumentConversion" target="_blank" rel="noopener noreferrer">Document conversion</a></li>
+					<li><a href="https://portal.azure.com/#blade/Universal_Print/MainMenuBlade/Reports" target="_blank" rel="noopener noreferrer">Usage and Reports</a></li>
+					<li><a href="https://portal.azure.com/#view/Universal_Print/MainMenuBlade/~/DiagnoseAndSolveProblems" target="_blank" rel="noopener noreferrer">Diagnose problems</a></li>
+					<li><a href="https://portal.azure.com/#blade/Universal_Print/MainMenuBlade/Support" target="_blank" rel="noopener noreferrer">Support</a></li>
+				</ul>
+				
+			</div>
+		
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_building_lighthouse_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Azure Lighthouse</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://portal.azure.com/#view/Microsoft_Azure_CustomerHub/MyCustomersBladeV2/~/overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://portal.azure.com/#view/Microsoft_Azure_CustomerHub/MyCustomersBladeV2/~/activityLog" target="_blank" rel="noopener noreferrer">Activity log</a></li>
+					<li><a href="https://portal.azure.com/#view/Microsoft_Azure_CustomerHub/MyCustomersBladeV2/~/customers" target="_blank" rel="noopener noreferrer">Customers</a></li>
+					<li><a href="https://portal.azure.com/#view/Microsoft_Azure_CustomerHub/MyCustomersBladeV2/~/cspCustomers" target="_blank" rel="noopener noreferrer">Customers (CSP)</a></li>
+					<li><a href="https://portal.azure.com/#view/Microsoft_Azure_CustomerHub/MyCustomersBladeV2/~/scopeManagement" target="_blank" rel="noopener noreferrer">Delegations</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Defender [Start] -->
+		<div id="admincentre_section_seccomp" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(42 72 165) 0%, rgb(17 44 125) 74%);">
+			
+				<i class="fluentui_system_icons icon-ic_fluent_globe_shield_24_regular fluentui_system_icons_container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://security.microsoft.com/homepage" target="_blank" rel="noopener noreferrer">Defender XDR</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_shield_error_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Incidents &amp; alerts</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/incidents" target="_blank" rel="noopener noreferrer">Incidents</a></li>
+					<li><a href="https://security.microsoft.com/alerts" target="_blank" rel="noopener noreferrer">Alerts</a></li>
+				</ul>
+				
+			</div>
+		
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_database_search_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Hunting</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/v2/advanced-hunting" target="_blank" rel="noopener noreferrer">Advanced hunting</a></li>
+					<li><a href="https://security.microsoft.com/custom_detection" target="_blank" rel="noopener noreferrer">Custom detection rules</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_navigation_play_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Action Centre</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/action-center/pending" target="_blank" rel="noopener noreferrer">Pending</a></li>
+					<li><a href="https://security.microsoft.com/action-center/history" target="_blank" rel="noopener noreferrer">History</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_radar_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Threat intelligence</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/threatanalytics3" target="_blank" rel="noopener noreferrer">Threat analytics</a></li>
+					<li><a href="https://security.microsoft.com/intel-profiles" target="_blank" rel="noopener noreferrer">Intel profiles</a></li>
+					<li><a href="https://security.microsoft.com/intel-explorer" target="_blank" rel="noopener noreferrer">Intel explorer</a></li>
+					<li><a href="https://security.microsoft.com/intel-projects" target="_blank" rel="noopener noreferrer">Intel projects</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_trophy_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Secure Score</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/securescore?viewid=overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://security.microsoft.com/securescore?viewid=actions" target="_blank" rel="noopener noreferrer">Recommended actions</a></li>
+					<li><a href="https://security.microsoft.com/securescore?viewid=history" target="_blank" rel="noopener noreferrer">History</a></li>
+					<li><a href="https://security.microsoft.com/securescore?viewid=metrics" target="_blank" rel="noopener noreferrer">Metrics &amp; trends</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_shapes_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Assets</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/cloudapps/users-and-accounts" target="_blank" rel="noopener noreferrer">Identities</a></li>
+					<li><a href="https://security.microsoft.com/machines?category=endpoints" target="_blank" rel="noopener noreferrer">Computers and Mobile devices</a></li>
+					<li><a href="https://security.microsoft.com/machines?category=network-devices" target="_blank" rel="noopener noreferrer">Network devices</a></li>
+					<li><a href="https://security.microsoft.com/machines?category=iot-devices" target="_blank" rel="noopener noreferrer">IoT devices</a></li>
+					<li><a href="https://security.microsoft.com/machines?category=uncategorized-devices" target="_blank" rel="noopener noreferrer">Uncategorised devices</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_location_arrow_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Submissions</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/action-center/pending" target="_blank" rel="noopener noreferrer">Action centre</a></li>
+					<li><a href="https://security.microsoft.com/reportsubmission?viewid=email" target="_blank" rel="noopener noreferrer">Emails</a></li>
+					<li><a href="https://security.microsoft.com/reportsubmission?viewid=teams" target="_blank" rel="noopener noreferrer">Teams messages</a></li>
+					<li><a href="https://security.microsoft.com/reportsubmission?viewid=emailAttachment" target="_blank" rel="noopener noreferrer">Email attachments</a></li>
+					<li><a href="https://security.microsoft.com/reportsubmission?viewid=url" target="_blank" rel="noopener noreferrer">URLs</a></li>
+					<li><a href="https://security.microsoft.com/reportsubmission?viewid=fileSubmissions" target="_blank" rel="noopener noreferrer">Files</a></li>
+					<li><a href="https://security.microsoft.com/reportsubmission?viewid=user" target="_blank" rel="noopener noreferrer">User reported</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_shield_person_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Defender for Identity</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/settings/identities" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+					<li><a href="https://security.microsoft.com/settings/identities?tabid=sensor" target="_blank" rel="noopener noreferrer">Sensors</a></li>
+					<li><a href="https://security.microsoft.com/settings/identities?tabid=directory" target="_blank" rel="noopener noreferrer">Directory services accounts</a></li>
+					<li><a href="https://security.microsoft.com/settings/identities?tabid=radius" target="_blank" rel="noopener noreferrer">VPN (RADIUS accounting)</a></li>
+					<li><a href="https://security.microsoft.com/settings/identities?tabid=alertThreshold" target="_blank" rel="noopener noreferrer">Alert thresholds</a></li>
+					<li><a href="https://security.microsoft.com/settings/identities?tabid=entityTagsHoneytoken" target="_blank" rel="noopener noreferrer">Tag Honeytoken users</a></li>
+					<li><a href="https://security.microsoft.com/settings/identities?tabid=entityTagsExchangeServer" target="_blank" rel="noopener noreferrer">Tag Exchange servers</a></li>
+					<li><a href="https://security.microsoft.com/settings/identities?tabid=globalExclude" target="_blank" rel="noopener noreferrer">Global excluded entities</a></li>
+					<li><a href="https://security.microsoft.com/settings/identities?tabid=exclusionsByDetection" target="_blank" rel="noopener noreferrer">Exclusions by detection rule</a></li>
+					<li><a href="https://security.microsoft.com/settings/identities?tabid=securityAlertsNotifications" target="_blank" rel="noopener noreferrer">Alert notifications</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_text_bullet_list_square_warning_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Vulnerabilities</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/tvm_dashboard" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+					<li><a href="https://security.microsoft.com/security-recommendations" target="_blank" rel="noopener noreferrer">Security recommendations</a></li>
+					<li><a href="https://security.microsoft.com/remediation/remediation-activities" target="_blank" rel="noopener noreferrer">Remediation</a></li>
+					<li><a href="https://security.microsoft.com/vulnerability-management-inventories/applications" target="_blank" rel="noopener noreferrer">Inventories</a></li>
+					<li><a href="https://security.microsoft.com/vulnerabilities" target="_blank" rel="noopener noreferrer">Weaknesses</a></li>
+					<li><a href="https://security.microsoft.com/tvm-event-insights" target="_blank" rel="noopener noreferrer">Event timeline</a></li>
+					<li><a href="https://security.microsoft.com/baseline-compliance" target="_blank" rel="noopener noreferrer">Baselines assessment</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_people_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Identities</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/identities/dashboard" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+					<li><a href="https://security.microsoft.com/identities/health-issues" target="_blank" rel="noopener noreferrer">Health issues</a></li>
+					<li><a href="https://security.microsoft.com/identities/tools" target="_blank" rel="noopener noreferrer">Tools</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_mail_copy_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Email &amp; collaboration</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/airinvestigation" target="_blank" rel="noopener noreferrer">Investigations</a></li>
+					<li><a href="https://security.microsoft.com/threatexplorerv3" target="_blank" rel="noopener noreferrer">Threat explorer</a></li>
+					<li><a href="https://security.microsoft.com/threatreview" target="_blank" rel="noopener noreferrer">Threat review</a></li>
+					<li><a href="https://security.microsoft.com/threattrackerv2" target="_blank" rel="noopener noreferrer">Threat tracker</a></li>
+					<li><a href="https://security.microsoft.com/campaignsv3" target="_blank" rel="noopener noreferrer">Campaigns</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/?landingpage=messagetrace&form=scc#/" target="_blank" rel="noopener noreferrer">Exchange message trace</a></li>
+					<li><a href="https://security.microsoft.com/attacksimulator" target="_blank" rel="noopener noreferrer">Attack simulation training</a></li>
+					<li><a href="https://security.microsoft.com/quarantine" target="_blank" rel="noopener noreferrer">Quarantine</a></li>
+					<li><a href="https://security.microsoft.com/restrictedentities" target="_blank" rel="noopener noreferrer">Restricted entities</a></li>
+					<li><a href="https://security.microsoft.com/realtimereports" target="_blank" rel="noopener noreferrer">Real-time detections</a></li>
+				</ul>
+				
+			</div>
+		
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_mail_template_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Email policies &amp; rules</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/threatpolicy" target="_blank" rel="noopener noreferrer">Theat policies</a></li>
+					<li><a href="https://security.microsoft.com/alertpolicies" target="_blank" rel="noopener noreferrer">Alert policy</a></li>
+					<li><a href="https://security.microsoft.com/advancedsecuritymanagement" target="_blank" rel="noopener noreferrer">Advanced alerts</a></li>
+					<li><a href="https://security.microsoft.com/managealerts" target="_blank" rel="noopener noreferrer">Activity alerts</a></li>					
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_beaker_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Evaluation &amp; tutorials</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/evaluation" target="_blank" rel="noopener noreferrer">Evaluation lab</a></li>
+					<li><a href="https://security.microsoft.com/tutorials/simulations" target="_blank" rel="noopener noreferrer">Tutorials &amp; simulations</a></li>
+				</ul>
+				
+			</div>
+		
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_cloud_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Cloud apps</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/cloudapps/discovery" target="_blank" rel="noopener noreferrer">Cloud discovery</a></li>
+					<li><a href="https://security.microsoft.com/cloudapps/app-catalog" target="_blank" rel="noopener noreferrer">Cloud app catalog</a></li>
+					<li><a href="https://security.microsoft.com/cloudapps/app-governance" target="_blank" rel="noopener noreferrer">App governance</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_more_horizontal_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Other</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://security.microsoft.com/configuration_management" target="_blank" rel="noopener noreferrer">Configuration management</a></li>
+					<li><a href="https://security.microsoft.com/securityreports" target="_blank" rel="noopener noreferrer">Reports</a></li>
+					<li><a href="https://security.microsoft.com/auditlogsearch" target="_blank" rel="noopener noreferrer">Audit</a></li>
+					<li><a href="https://security.microsoft.com/securityhealth" target="_blank" rel="noopener noreferrer">Health</a></li>
+					<li><a href="https://security.microsoft.com/securitypermissions" target="_blank" rel="noopener noreferrer">Permissions</a></li>
+					<li><a href="https://security.microsoft.com/securitysettings" target="_blank" rel="noopener noreferrer">Settings</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Defender for Cloud Apps [Start] -->
+		<div id="admincentre_section_cloudappsecurity" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(72, 70, 68) 0%, rgb(56, 55, 53) 74%);">
+			
+				<i class="fluentui_system_icons icon-ic_fluent_shield_badge_24_regular fluentui_system_icons_container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://portal.cloudappsecurity.com/#/discovery?tab=dashboard" target="_blank" rel="noopener noreferrer">Defender Cloud Apps</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_box_search_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Discover</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://portal.cloudappsecurity.com/#/alerts?alertOpen=eq(b:true,)" target="_blank" rel="noopener noreferrer">Alerts</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/catalog" target="_blank" rel="noopener noreferrer">Cloud App Catalog</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/discovery?tab=dashboard" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/discovery?tab=services" target="_blank" rel="noopener noreferrer">Discovered Apps</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/discovery?tab=discovered-resources" target="_blank" rel="noopener noreferrer">Discovered Resources</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/discovery?tab=ips" target="_blank" rel="noopener noreferrer">IP Addresses</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/discovery?tab=users" target="_blank" rel="noopener noreferrer">Users</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/usergroups" target="_blank" rel="noopener noreferrer">User Groups</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_document_ribbon_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Control</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://portal.cloudappsecurity.com/#/policy" target="_blank" rel="noopener noreferrer">All Policies</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/policy?tab=shadowITPolicies" target="_blank" rel="noopener noreferrer">Shadow IT Policies</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/policy/templates" target="_blank" rel="noopener noreferrer">Templates</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_screen_search_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;System</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://portal.cloudappsecurity.com/#/exported-reports" target="_blank" rel="noopener noreferrer">Exported Reports</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/tasks" target="_blank" rel="noopener noreferrer">Governance log</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/connectors" target="_blank" rel="noopener noreferrer">Security Extensions</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_window_apps_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Settings</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=discovery-tags" target="_blank" rel="noopener noreferrer">App tags</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=discovery-anonymization" target="_blank" rel="noopener noreferrer">Anonymisation</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=discovery-autoUpload&tab=dataSources" target="_blank" rel="noopener noreferrer">Automatic log upload</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=proxyHardening" target="_blank" rel="noopener noreferrer">Conditional Access Default Behaviour</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=deviceIdentification" target="_blank" rel="noopener noreferrer">Conditional Access Device identification</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=proxyAdminView" target="_blank" rel="noopener noreferrer">Conditional Access App onboarding</a></li>					
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=discovery-views" target="_blank" rel="noopener noreferrer">Continuous Reports</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=discovery-exclusion" target="_blank" rel="noopener noreferrer">Exclude Entities</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=app-control" target="_blank" rel="noopener noreferrer">Microsoft Defender for Endpoint</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=discovery-score" target="_blank" rel="noopener noreferrer">Score Metrics</a></li>
+					<li><a href="https://portal.cloudappsecurity.com/#/settings?section=discovery-snapshot" target="_blank" rel="noopener noreferrer">Snapshot Reports</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Entra Global Secure Access [Start] -->
+		<div id="admincentre_section_entragsa" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(72, 70, 68) 0%, rgb(56, 55, 53) 74%);">
+			
+				<i class="fluentui_system_icons icon-ic_fluent_connected_20_regular fluentui_system_icons_container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/AdminDashboard.ReactView" target="_blank" rel="noopener noreferrer">Entra GSA</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_slide_layout_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Get started</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/GetStarted.ReactView" target="_blank" rel="noopener noreferrer">Get started</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/AdminDashboard.ReactView" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+				</ul>
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_apps_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Applications</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/QuickAccess.ReactView" target="_blank" rel="noopener noreferrer">Quick Access</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_Azure_Network_Access/AppDiscovery.ReactView" target="_blank" rel="noopener noreferrer">Application discovery</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/EnterpriseApplications.ReactView" target="_blank" rel="noopener noreferrer">Enterprise applications</a></li>
+				</ul>
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_plug_connected_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Connect</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/ForwardingProfile.ReactView" target="_blank" rel="noopener noreferrer">Traffic forwarding</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/Clients.ReactView" target="_blank" rel="noopener noreferrer">Client download</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/BranchConnectivity.ReactView" target="_blank" rel="noopener noreferrer">Remote networks</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/Connectors.ReactView" target="_blank" rel="noopener noreferrer">Connectors</a></li>
+				</ul>
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_lock_closed_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Secure</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/FilteringPolicyProfiles.ReactView" target="_blank" rel="noopener noreferrer">Security profiles</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/WebFilteringPolicy.ReactView" target="_blank" rel="noopener noreferrer">Web content filtering policy</a></li>
+				</ul>
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_glasses_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Monitor</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/AdminAuditLogs.ReactView" target="_blank" rel="noopener noreferrer">Audit logs</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/TrafficLogs.ReactView" target="_blank" rel="noopener noreferrer">Traffic logs</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/RemoteNetworkLogs.ReactView" target="_blank" rel="noopener noreferrer">Remote network traffic logs</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/EnrichedLogs.ReactView" target="_blank" rel="noopener noreferrer">Enriched M365 logs</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/Workbooks.ReactView" target="_blank" rel="noopener noreferrer">Workbooks</a></li>
+				</ul>
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_settings_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Global settings</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/Security.ReactView" target="_blank" rel="noopener noreferrer">Session management</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/Logging.ReactView" target="_blank" rel="noopener noreferrer">Logging</a></li>
+				</ul>
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Entra ID [Start] -->
+		<div id="admincentre_section_azureAD" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(127, 80, 149) 0%, rgb(101, 64, 118) 74%);">
+			
+				<i class="ms-Icon ms-Icon--AADLogo container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://entra.microsoft.com/#home" target="_blank" rel="noopener noreferrer">Entra ID</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_slide_layout_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Dashboards</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/TenantOverview.ReactView" target="_blank" rel="noopener noreferrer">Identity Overview</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/IdentityProtectionMenuBlade/~/OverviewNew/fromNav/" target="_blank" rel="noopener noreferrer">Identity Protection</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_Azure_IdentityGovernance/Dashboard.ReactView" target="_blank" rel="noopener noreferrer">Identity Governance</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Network_Access/AdminDashboard.ReactView" target="_blank" rel="noopener noreferrer">Global Secure Access</a></li>
+				</ul>
+				
+			</div>
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_people_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Users</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/AllUsers" target="_blank" rel="noopener noreferrer">All Users</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/DeletedUsers/menuId/DeletedUsers" target="_blank" rel="noopener noreferrer">Deleted Users</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/UserSettings/menuId/UserSettings" target="_blank" rel="noopener noreferrer">User Settings</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_people_team_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Groups</span>
+		
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/GroupsManagementMenuBlade/~/AllGroups/menuId/AllGroups" target="_blank" rel="noopener noreferrer">All Groups</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/GroupsManagementMenuBlade/~/DeletedGroups/menuId/DeletedGroups" target="_blank" rel="noopener noreferrer">Deleted Groups</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/GroupsManagementMenuBlade/~/General/menuId/General" target="_blank" rel="noopener noreferrer">Group Settings</a></li>
+				</ul>
+			
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_tablet_laptop_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Devices</span>
+		
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_Devices/DevicesMenuBlade/~/Overview/menuId/Overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_Devices/DevicesMenuBlade/~/Devices/menuId/Devices" target="_blank" rel="noopener noreferrer">All Devices</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_Devices/DevicesMenuBlade/~/recoveryKeys/menuId/recoveryKeys" target="_blank" rel="noopener noreferrer">BitLocker keys</a></li>
+				</ul>
+			
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_apps_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Applications</span>
+		
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AppAppsPreview" target="_blank" rel="noopener noreferrer">Enterprise Applications</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType~/null/sourceType/Microsoft_AAD_IAM" target="_blank" rel="noopener noreferrer">App Registrations</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_document_one_page_sparkle_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Roles &amp; admins</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/RolesManagementMenuBlade/~/AllRoles" target="_blank" rel="noopener noreferrer">Roles &amp; admins</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/AdminUnitManagementBlade" target="_blank" rel="noopener noreferrer">Admin units</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/PartnerRelationships.ReactView" target="_blank" rel="noopener noreferrer">Delegated admin partners</a></li>
+				</ul>
+			
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_wallet_credit_card_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Billing</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/LicensesMenuBlade/~/Overview" target="_blank" rel="noopener noreferrer">Licenses</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/CompanyRelationshipsMenuBlade/~/B2BLinkedSubscriptions/menuId/B2BLinkedSubscriptions" target="_blank" rel="noopener noreferrer">Linked subscriptions</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_window_apps_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Settings</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/FeaturePreviewsListBlade" target="_blank" rel="noopener noreferrer">Preview hub</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/DomainsListBlade" target="_blank" rel="noopener noreferrer">Domain names</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/MdmAppsListBlade" target="_blank" rel="noopener noreferrer">Mobility</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_window_shield_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Protection</span>
+				
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/IdentityProtectionMenuBlade" target="_blank" rel="noopener noreferrer">Identity Protection</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_ConditionalAccess/ConditionalAccessBlade/~/Policies" target="_blank" rel="noopener noreferrer">Conditional Access</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/SecurityMenuBlade/~/SecurityCenter/menuId/SecurityCenter" target="_blank" rel="noopener noreferrer">Security Centre</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/SecurityMenuBlade/~/IdentitySecureScore/menuId/IdentitySecureScore" target="_blank" rel="noopener noreferrer">Identity Secure Score</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/MultifactorAuthenticationMenuBlade/~/Overview/fromProviders~/false" target="_blank" rel="noopener noreferrer">Multifactor Authentication</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/AuthenticationMethodsMenuBlade/~/AdminAuthMethods" target="_blank" rel="noopener noreferrer">Authentication Methods</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_AAD_IAM/PasswordResetMenuBlade" target="_blank" rel="noopener noreferrer">Password Reset</a></li>					
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/CustomAttributesCatalogAttributeSetsBlade" target="_blank" rel="noopener noreferrer">Custom security attributes</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_AAD_IAM/SecurityMenuBlade/menuId/RiskyUsers" target="_blank" rel="noopener noreferrer">Risky activities</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_folder_people_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Identity Governance</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_AAD_ERM/DashboardBlade" target="_blank" rel="noopener noreferrer">Entitlement management</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_AAD_ERM/DashboardBlade" target="_blank" rel="noopener noreferrer">Access reviews</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade" target="_blank" rel="noopener noreferrer">Privileged Identity Management</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_AAD/LifecycleManagement/CommonMenuBlade" target="_blank" rel="noopener noreferrer">Lifecycle workflows</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_card_ui_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;External Identities</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/CompanyRelationshipsMenuBlade/~/ExternalIdentitiesGettingStarted/menuId/ExternalIdentitiesGettingStarted" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/CompanyRelationshipsMenuBlade/~/IdentityProviders/menuId/IdentityProviders" target="_blank" rel="noopener noreferrer">All identity providers</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/CompanyRelationshipsMenuBlade/menuId/CustomExtension" target="_blank" rel="noopener noreferrer">Custom authentication extensions<span class="ms-fontSize-10 tag-preview">Preview</span></a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/CompanyRelationshipsMenuBlade/~/UserFlows/menuId/UserFlows" target="_blank" rel="noopener noreferrer">User flows</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/CompanyRelationshipsMenuBlade/~/CrossTenantAccessSettings/menuId/CrossTenantAccessSettings" target="_blank" rel="noopener noreferrer">Cross-tenant access settings</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/CompanyRelationshipsMenuBlade/~/Settings/menuId/Settings" target="_blank" rel="noopener noreferrer">External collaboration settings</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_AAD_Connect_Provisioning/CrossTenantSynchronizationMainMenuBlade/menuId/CrossTenantSynchronizationMainManuBladeId" target="_blank" rel="noopener noreferrer">Cross-tenant synchronisation</a></li>
+					
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_highlight_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;User experiences</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_AAD_UsersAndTenants/CompanyBrandingOverview.ReactView" target="_blank" rel="noopener noreferrer">Company branding</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_cloud_sync_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Hybrid management</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_Connect_Provisioning/CloudSyncMenuBlade/~/CloudSyncConfigurations" target="_blank" rel="noopener noreferrer">Entra Connect | Cloud Sync</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_Connect_Provisioning/AADConnectMenuBlade/~/ConnectSync" target="_blank" rel="noopener noreferrer">Entra Connect | Connect Sync</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_heart_pulse_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Monitoring &amp; Health</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/SignInEventsV3Blade/timeRangeType/last24hours/showApplicationSignIns~/true" target="_blank" rel="noopener noreferrer">Sign-in logs</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/AuditEventsV2PillsBlade/timeRangeType/last24hours/activityType/All/showExport~/true" target="_blank" rel="noopener noreferrer">Audit logs</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_Connect_Provisioning/ProvisioningEventsBlade" target="_blank" rel="noopener noreferrer">Provisioning logs</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_AAD_DXP/ScenarioHealthSummary.ReactView" target="_blank" rel="noopener noreferrer">Health<span class="ms-fontSize-10 tag-preview">Preview</span></a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/NewLogAnalyticsBlade" target="_blank" rel="noopener noreferrer">Log Analytics</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_Azure_Monitoring/DiagnosticsLogsBlade/queryInputs/%7B%22id%22%3A%22%2Fproviders%2Fmicrosoft.aadiam%22%7D" target="_blank" rel="noopener noreferrer">Diagnostic settings</a></li>
+					<li><a href="https://entra.microsoft.com/#blade/Microsoft_AAD_IAM/NewLogAnalyticsBlade" target="_blank" rel="noopener noreferrer">Workbooks</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/UsageAndInsightsMenuBlade/~/Azure%20AD%20application%20activity" target="_blank" rel="noopener noreferrer">Usage &amp; insights</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_IAM/TasksListBlade/asyncTaskType~/%5B%22all%22%5D" target="_blank" rel="noopener noreferrer">Bulk operations</a></li>
+				</ul>
+			
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_checkmark_starburst_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Verified ID</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_DecentralizedIdentity/ResourceOverviewBlade" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_DecentralizedIdentity/CardsListBlade" target="_blank" rel="noopener noreferrer">Credentials</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_DecentralizedIdentity/IssuerSettingsBlade" target="_blank" rel="noopener noreferrer">Organisation settings</a></li>
+					<li><a href="https://entra.microsoft.com/#view/Microsoft_AAD_DecentralizedIdentity/DomainUpdateBlade" target="_blank" rel="noopener noreferrer">Domain</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_document_one_page_sparkle_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Permissions</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://pm.cloudknox.io/portal" target="_blank" rel="noopener noreferrer">Permissions management</a></li>
+				</ul>
+			
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Exchange [Start] -->
+		<div id="admincentre_section_exchange" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(19, 122, 209) 0%, rgb(16, 106, 183) 74%);">
+			
+				<i class="ms-Icon ms-Icon--ExchangeLogo container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://admin.exchange.microsoft.com" target="_blank" rel="noopener noreferrer">Exchange</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_mail_open_person_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Recipients</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.exchange.microsoft.com/#/mailboxes" target="_blank" rel="noopener noreferrer">Mailboxes</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/groups" target="_blank" rel="noopener noreferrer">Groups</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/resources" target="_blank" rel="noopener noreferrer">Resources</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/contacts" target="_blank" rel="noopener noreferrer">Contacts</a></li>		
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_mail_inbox_arrow_right_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Mail flow</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.exchange.microsoft.com/#/alerts/recentalertsmailflowdetails" target="_blank" rel="noopener noreferrer">Alerts</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/alerts/alertpolicydetails" target="_blank" rel="noopener noreferrer">Alert policies</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/accepteddomains" target="_blank" rel="noopener noreferrer">Accepted domains</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/connectors" target="_blank" rel="noopener noreferrer">Connectors</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/messagetrace" target="_blank" rel="noopener noreferrer">Message trace</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/remotedomains" target="_blank" rel="noopener noreferrer">Remote domains</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/transportrules" target="_blank" rel="noopener noreferrer">Rules</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_document_one_page_sparkle_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Roles</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.exchange.microsoft.com/#/adminRoles" target="_blank" rel="noopener noreferrer">Admin roles</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/userroles" target="_blank" rel="noopener noreferrer">User roles</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/owapolicies" target="_blank" rel="noopener noreferrer">Outlook web app policies</a></li>
+				</ul>
+				
+			</div>
+		
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_phone_chat_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Mobile</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.exchange.microsoft.com/#/mobiledeviceaccess" target="_blank" rel="noopener noreferrer">Mobile device access</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/mobiledevicemailboxpolicy" target="_blank" rel="noopener noreferrer">Mobile device mailbox policy</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_organization_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Organisation</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.exchange.microsoft.com/#/sharing" target="_blank" rel="noopener noreferrer">Sharing</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/addins" target="_blank" rel="noopener noreferrer">Add ins</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_folder_globe_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Public folders</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.exchange.microsoft.com/#/publicfolders" target="_blank" rel="noopener noreferrer">Public folders</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/publicfoldersmailboxes" target="_blank" rel="noopener noreferrer">Public folder mailboxes</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_more_horizontal_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Other</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.exchange.microsoft.com/#/adminRoles" target="_blank" rel="noopener noreferrer">Admin roles</a></li>
+					<li><a href="https://compliance.microsoft.com/contentsearchv2" target="_blank" rel="noopener noreferrer">Content search</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/insights" target="_blank" rel="noopener noreferrer">Insights</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/migrationbatch" target="_blank" rel="noopener noreferrer">Migration batch</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/reports/autoforwardedmessages" target="_blank" rel="noopener noreferrer">Reports - Auto Forwarded messages</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/reports/mailflowreportsmain" target="_blank" rel="noopener noreferrer">Reports - Mail flow</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/reports/migrationreportsmain" target="_blank" rel="noopener noreferrer">Reports - Migration</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/otherFeatures" target="_blank" rel="noopener noreferrer">Other features</a></li>
+					<li><a href="https://admin.exchange.microsoft.com/#/settings" target="_blank" rel="noopener noreferrer">Settings</a></li>
+					<li><a href="https://outlook.office365.com/ecp/?form=eac&mkt=en-GB" target="_blank" rel="noopener noreferrer">Classic Admin Centre</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Favourites [Start] -->
+		<div id="admincentre_section_favourites">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(232 203 94) 0%, rgb(246 165 61) 74%);">
+			
+				<i class="fluentui_system_icons icon-ic_fluent_star_line_horizontal_3_24_regular fluentui_system_icons_container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="#" target="_blank" rel="noopener noreferrer">Favourites</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div id="list_fav_none" style="display: none;" class="container_body_menu ms-depth-4">
+		
+				<p style="text-align: center;"><img id="centre_appicon" src="assets/images/shooting-star.png" alt="Favourites" width="128" height="128"></p>
+				<p style="text-align: center;"><strong>Your favourites can be here!</strong></p>
+				<p style="text-align: center;">Have up to ten of your favourite shortcuts pinned here for quick access. <br><br></p>
+						
+			</div>
+		
+			<div id="list_fav" class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_apps_list_detail_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Your favourites</span>
+							
+				<ul id="fav_list" class="ms-fontSize-14">
+					<li id="list_fav_1"><a id="fav_1" href="#" target="_blank" rel="noopener noreferrer">Entry One</a></li>
+					<li id="list_fav_2"><a id="fav_2" href="#" target="_blank" rel="noopener noreferrer">Entry Two</a></li>
+					<li id="list_fav_3"><a id="fav_3" href="#" target="_blank" rel="noopener noreferrer">Entry Three</a></li>
+					<li id="list_fav_4"><a id="fav_4" href="#" target="_blank" rel="noopener noreferrer">Entry Four</a></li>
+					<li id="list_fav_5"><a id="fav_5" href="#" target="_blank" rel="noopener noreferrer">Entry Five</a></li>
+					<li id="list_fav_6"><a id="fav_6" href="#" target="_blank" rel="noopener noreferrer">Entry Six</a></li>
+					<li id="list_fav_7"><a id="fav_7" href="#" target="_blank" rel="noopener noreferrer">Entry Seven</a></li>
+					<li id="list_fav_8"><a id="fav_8" href="#" target="_blank" rel="noopener noreferrer">Entry Eight</a></li>
+					<li id="list_fav_9"><a id="fav_9" href="#" target="_blank" rel="noopener noreferrer">Entry Nine</a></li>
+					<li id="list_fav_10"><a id="fav_10" href="#" target="_blank" rel="noopener noreferrer">Entry Ten</a></li>
+				</ul>
+				
+			</div>
+		
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_pen_sparkle_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Customise</span>
+							
+				<ul class="ms-fontSize-14 notsearchable">
+					<li><a href="faveeditor.html">Edit Favourites...</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Intune [Start] -->
+		<div id="admincentre_section_endpointmgr" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(30, 131, 133) 0%, rgb(30, 131, 133) 74%);">
+			
+				<i class="fluentui_system_icons icon-ic_fluent_tablet_laptop_24_regular fluentui_system_icons_container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/DevicesMenu/overview" target="_blank" rel="noopener noreferrer">InTune</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_tablet_laptop_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Platform</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/DevicesMenu/overview" target="_blank" rel="noopener noreferrer">Windows</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/DevicesMenu/mDMDevicesPreview" target="_blank" rel="noopener noreferrer">iOS/iPadOS</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/monitor" target="_blank" rel="noopener noreferrer">macOS</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/DevicesMenu/overview" target="_blank" rel="noopener noreferrer">Android</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/DevicesMenu/overview" target="_blank" rel="noopener noreferrer">Linux</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_tablet_laptop_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Manage Devices</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/configuration" target="_blank" rel="noopener noreferrer">Configuration policies</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/compliance" target="_blank" rel="noopener noreferrer">Compliance</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_AAD_ConditionalAccess/ConditionalAccessBlade/~/Overview" target="_blank" rel="noopener noreferrer">Conditional Access</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/scripts" target="_blank" rel="noopener noreferrer">Scripts and remediations</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/windows10Update" target="_blank" rel="noopener noreferrer">Windows 10 and later updates</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/iOSiPadOSUpdate" target="_blank" rel="noopener noreferrer">Apple updates</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/policyAnalyticsReport" target="_blank" rel="noopener noreferrer">Group Policy analytics</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_Workflows/PolicySetMenuBlade/~/policySets" target="_blank" rel="noopener noreferrer">Policy Sets<span class="ms-fontSize-10 tag-preview">Preview</span></a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/fotaDeployment" target="_blank" rel="noopener noreferrer">Android FOTA deployments</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/deviceCleanUp" target="_blank" rel="noopener noreferrer">Device clean-up rules</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/deviceCategories" target="_blank" rel="noopener noreferrer">Device categories</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/assignmentFilters" target="_blank" rel="noopener noreferrer">Filters</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Azure_Surface/SurfaceManagement.ReactView" target="_blank" rel="noopener noreferrer">Surface Management Portal</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_phone_desktop_add_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Device onboarding</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/Cloud%20PC" target="_blank" rel="noopener noreferrer">Windows 365 (Cloud PC)</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/DevicesMenu/~/enrollment" target="_blank" rel="noopener noreferrer">Enrolment</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_apps_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Apps</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/allApps" target="_blank" rel="noopener noreferrer">All Apps</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/appCategories" target="_blank" rel="noopener noreferrer">App categories</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/appConfig" target="_blank" rel="noopener noreferrer">App configuration policies</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/appProtection" target="_blank" rel="noopener noreferrer">App protection policies</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/appSelectiveWipe" target="_blank" rel="noopener noreferrer">App selective wipe</a></li>	
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/eBooks" target="_blank" rel="noopener noreferrer">eBooks</a></li>	
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/iosAppProvisioning" target="_blank" rel="noopener noreferrer">iOS app provisioning profiles</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/monitor" target="_blank" rel="noopener noreferrer">Monitor</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/officeProPlusPolicies" target="_blank" rel="noopener noreferrer">Policies for Office apps</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/AppsMenu/appProtection" target="_blank" rel="noopener noreferrer">Protection Policies</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/AppsMenu/~/quietTime" target="_blank" rel="noopener noreferrer">Quiet time</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/AppsMenu/~/wdacPolicy" target="_blank" rel="noopener noreferrer">S mode supplemental policies</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_laptop_shield_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Endpoint security</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_Workflows/SecurityManagementMenu/overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_Workflows/SecurityManagementMenu/~/accountprotection" target="_blank" rel="noopener noreferrer">Account protection</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_Workflows/SecurityManagementMenu/~/appControl" target="_blank" rel="noopener noreferrer">App Control for Business<span class="ms-fontSize-10 tag-preview">Preview</span></a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_Workflows/SecurityManagementMenu/~/antivirus" target="_blank" rel="noopener noreferrer">Antivirus</a></li>				
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_Workflows/SecurityManagementMenu/~/asr" target="_blank" rel="noopener noreferrer">Attack surface reduction</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/DevicesComplianceMenu/policies" target="_blank" rel="noopener noreferrer">Device Compliance</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_Workflows/SecurityManagementMenu/~/diskencryption" target="_blank" rel="noopener noreferrer">Disk encryption</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_Workflows/SecurityManagementMenu/~/epm" target="_blank" rel="noopener noreferrer">Endpoint Privilege Management</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_Workflows/SecurityManagementMenu/~/edr" target="_blank" rel="noopener noreferrer">Endpoint Detection and Response</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_Workflows/SecurityManagementMenu/~/firewall" target="_blank" rel="noopener noreferrer">Firewall</a></li>				
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_Workflows/SecurityManagementMenu/securityBaselines" target="_blank" rel="noopener noreferrer">Security Baselines</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_Workflows/SecurityManagementMenu/securityTasks" target="_blank" rel="noopener noreferrer">Security Tasks</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_radar_rectangle_multiple_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Reports</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_Enrollment/ReportingMenu/~/Overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_Enrollment/ReportingMenu/deviceCompliance" target="_blank" rel="noopener noreferrer">Device compliance</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_Enrollment/ReportingMenu/cloudAttachReporting" target="_blank" rel="noopener noreferrer">Cloud attached devices<span class="ms-fontSize-10 tag-preview">Preview</span></a></li>					
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_Enrollment/ReportingMenu/defender" target="_blank" rel="noopener noreferrer">Microsoft Defender antivirus</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_Enrollment/ReportingMenu/firewall" target="_blank" rel="noopener noreferrer">Firewall</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_Enrollment/ReportingMenu/uxAnalytics" target="_blank" rel="noopener noreferrer">Endpoint analytics</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+										
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_desktop_tower_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Intune for Education</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://intuneeducation.portal.azure.com/#dashboard" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+					<li><a href="https://intuneeducation.portal.azure.com/#blade/Microsoft_Intune_Edu/WelcomeWizardBlade" target="_blank" rel="noopener noreferrer">Express configuration</a></li>
+					<li><a href="https://intuneeducation.portal.azure.com/#blade/Microsoft_Intune_Edu/GroupsSummaryBlade" target="_blank" rel="noopener noreferrer">Groups</a></li>					
+					<li><a href="https://intuneeducation.portal.azure.com/#blade/Microsoft_Intune_Edu/DeviceSearchBlade" target="_blank" rel="noopener noreferrer">Devices</a></li>
+					<li><a href="https://intuneeducation.portal.azure.com/#blade/Microsoft_Intune_Edu/UserSearchBlade" target="_blank" rel="noopener noreferrer">Users</a></li>
+					<li><a href="https://intuneeducation.portal.azure.com/#blade/Microsoft_Intune_Edu/AppsBlade" target="_blank" rel="noopener noreferrer">Apps</a></li>
+					<li><a href="https://intuneeducation.portal.azure.com/#blade/Microsoft_Intune_Edu/EnrollmentAccountsBlade" target="_blank" rel="noopener noreferrer">Enrolment managers</a></li>
+					<li><a href="https://intuneeducation.portal.azure.com/#blade/Microsoft_Intune_Edu/ReportingMenuBlade" target="_blank" rel="noopener noreferrer">Reports</a></li>
+					<li><a href="https://intuneeducation.portal.azure.com/#blade/Microsoft_Intune_Edu/TenantSettingsMenuBlade" target="_blank" rel="noopener noreferrer">Tenant settings</a></li>
+					<li><a href="https://intuneeducation.portal.azure.com/#blade/Microsoft_Intune_Edu/Barcode.ReactView" target="_blank" rel="noopener noreferrer">Barcode scanner</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_people_settings_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Tenant admin</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/TenantAdminMenu/tenantStatus" target="_blank" rel="noopener noreferrer">Tenant status</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/TenantAdminMenu/microsoftTunnelGateway" target="_blank" rel="noopener noreferrer">Microsoft Tunnel Gateway</a></li>
+					<li><a href="https://intune.microsoft.com/#view/Microsoft_Intune_DeviceSettings/TenantAdminMenu/~/caManagement" target="_blank" rel="noopener noreferrer">Cloud PKI</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/TenantAdminMenu/connectorsAndTokens" target="_blank" rel="noopener noreferrer">Connectors and tokens</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/TenantAdminMenu/companyPortalBranding" target="_blank" rel="noopener noreferrer">End user customisation</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/TenantAdminMenu/customNotifications" target="_blank" rel="noopener noreferrer">Custom notifications</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/TenantAdminMenu/termsAndConditions" target="_blank" rel="noopener noreferrer">Terms and conditions</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/TenantAdminMenu/managedDesktopTenantEnrollment" target="_blank" rel="noopener noreferrer">Managed Desktop tenant enrollment</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_wrench_screwdriver_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Troubleshooting</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/SupportMenu/guidedScenarios" target="_blank" rel="noopener noreferrer">Guided scenarios</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/SupportMenu/troubleshooting" target="_blank" rel="noopener noreferrer">Troubleshoot</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/SupportMenu/helpSupport" target="_blank" rel="noopener noreferrer">Help and support</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - OneDrive [Start] -->
+		<div id="admincentre_section_onedrive" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(19, 122, 209) 0%, rgb(16, 106, 183) 74%);">				
+				
+				<i class="ms-Icon ms-Icon--OneDriveLogo container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://admin.microsoft.com/sharepoint?page=settings&modern=true" target="_blank" rel="noopener noreferrer">OneDrive</a>
+				</span>
+				
+			</div>
+			
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_settings_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Settings</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/sharepoint?page=accessControl&modern=true" target="_blank" rel="noopener noreferrer">Device Access</a></li>
+					<li><a href="https://admin.microsoft.com/sharepoint?page=settings&modern=true" target="_blank" rel="noopener noreferrer">Settings</a></li>			
+					<li><a href="https://admin.microsoft.com/sharepoint?page=sharing&modern=true" target="_blank" rel="noopener noreferrer">Sharing</a></li>
+					<li><a href="https://admin.microsoft.com/sharepoint?page=settings&modern=true" target="_blank" rel="noopener noreferrer">Storage</a></li>
+					<li><a href="https://admin.microsoft.com/sharepoint?page=settings&modern=true" target="_blank" rel="noopener noreferrer">Sync</a></li>
+				</ul>
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Power Platform [Start] -->
+		<div id="admincentre_section_powerplatform" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(115, 43, 115) 0%, rgb(102, 38, 102) 74%);">				
+				
+				<i class="ms-Icon ms-Icon--PowerApps container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://admin.powerplatform.microsoft.com" target="_blank" rel="noopener noreferrer">Power Platform</a>
+				</span>
+				
+			</div>
+			
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_data_scatter_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Analytics</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.powerplatform.microsoft.com/analytics/d365ce" target="_blank" rel="noopener noreferrer">Dataverse</a></li>
+					<li><a href="https://admin.powerplatform.microsoft.com/analytics/flow" target="_blank" rel="noopener noreferrer">Power Automate</a></li>
+					<li><a href="https://admin.powerplatform.microsoft.com/analytics/powerapps" target="_blank" rel="noopener noreferrer">Power Apps</a></li>
+					<li><a href="https://admin.powerplatform.microsoft.com/analytics/dataexport" target="_blank" rel="noopener noreferrer">Data Export<span class="ms-fontSize-10 tag-preview">Preview</span></a></li>
+
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="ms-Icon ms-Icon--PowerApps2Logo icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Resources</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.powerplatform.microsoft.com/advisor" target="_blank" rel="noopener noreferrer">Advisor<span class="ms-fontSize-10 tag-preview">Preview</span></a></li>
+					<li><a href="https://admin.powerplatform.microsoft.com/resources/capacity" target="_blank" rel="noopener noreferrer">Capacity</a></li>
+					<li><a href="https://admin.powerplatform.microsoft.com/ext/DataGateways" target="_blank" rel="noopener noreferrer">Data<span class="ms-fontSize-10 tag-preview">Preview</span></a></li>
+					<li><a href="https://admin.powerplatform.microsoft.com/ext/DataIntegration" target="_blank" rel="noopener noreferrer">Data Integration</a></li>
+					<li><a href="https://admin.powerplatform.microsoft.com/resources/applications" target="_blank" rel="noopener noreferrer">Dynamics 365 Apps</a></li>
+					<li><a href="https://admin.powerplatform.microsoft.com/environments" target="_blank" rel="noopener noreferrer">Environments</a></li>
+					<li><a href="https://admin.powerplatform.microsoft.com/dlp" target="_blank" rel="noopener noreferrer">Data Policies</a></li>
+					<li><a href="https://admin.powerplatform.microsoft.com/resources/portals" target="_blank" rel="noopener noreferrer">Portals</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="ms-Icon ms-Icon--PowerBILogo icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Power BI</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://app.powerbi.com/admin-portal/tenantSettings" target="_blank" rel="noopener noreferrer">Tenant Settings</a></li>
+					<li><a href="https://app.powerbi.com/admin-portal/usageMetrics" target="_blank" rel="noopener noreferrer">Usage Metrics</a></li>
+					<li><a href="https://app.powerbi.com/admin-portal/ppuTenantSettings" target="_blank" rel="noopener noreferrer">Premium Per User</a></li>
+					<li><a href="https://app.powerbi.com/admin-portal/capacities" target="_blank" rel="noopener noreferrer">Capacities</a></li>
+					<li><a href="https://app.powerbi.com/admin-portal/embedCodes" target="_blank" rel="noopener noreferrer">Embed Codes</a></li>
+					<li><a href="https://app.powerbi.com/admin-portal/organizationVisuals" target="_blank" rel="noopener noreferrer">Organisation Visuals</a></li>
+					<li><a href="https://app.powerbi.com/admin-portal/byoresources" target="_blank" rel="noopener noreferrer">Azure connections</a></li>
+					<li><a href="https://app.powerbi.com/admin-portal/workspaces" target="_blank" rel="noopener noreferrer">Workspaces</a></li>
+					<li><a href="https://app.powerbi.com/admin-portal/branding" target="_blank" rel="noopener noreferrer">Custom branding</a></li>
+					<li><a href="https://app.powerbi.com/admin-portal/promotedContent" target="_blank" rel="noopener noreferrer">Featured content</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Compliance [Start] -->
+		<div id="admincentre_section_comply" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(37, 160, 37) 0%, rgb(33, 143, 33) 74%);">
+			
+				<i class="fluentui_system_icons icon-ic_fluent_notebook_eye_20_regular fluentui_system_icons_container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://compliance.microsoft.com/homepage" target="_blank" rel="noopener noreferrer">Purview</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_briefcase_person_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Compliance Manager</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/compliancemanager?viewid=overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://compliance.microsoft.com/compliancemanager?viewid=ImprovementActions" target="_blank" rel="noopener noreferrer">Improvement Actions</a></li>
+					<li><a href="https://compliance.microsoft.com/compliancemanager?viewid=Solutions" target="_blank" rel="noopener noreferrer">Solutions</a></li>
+					<li><a href="https://compliance.microsoft.com/compliancemanager?viewid=Assessments" target="_blank" rel="noopener noreferrer">Assessments</a></li>
+					<li><a href="https://compliance.microsoft.com/compliancemanager?viewid=AssessmentTemplate" target="_blank" rel="noopener noreferrer">Assessment Templates</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_document_ribbon_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Audit</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/auditlogsearch" target="_blank" rel="noopener noreferrer">Audit search</a></li>
+					<li><a href="https://compliance.microsoft.com/auditlogsearch?viewid=Test%20Tab" target="_blank" rel="noopener noreferrer">Classic Search</a></li>
+					<li><a href="https://compliance.microsoft.com/auditlogsearch?viewid=Retention" target="_blank" rel="noopener noreferrer">Retention policies</a></li>
+
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_database_search_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;eDiscovery</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/classicediscovery" target="_blank" rel="noopener noreferrer">Standard</a></li>
+					<li><a href="https://compliance.microsoft.com/advancedediscovery?viewid=Overview" target="_blank" rel="noopener noreferrer">Premium</a></li>
+					<li><a href="https://compliance.microsoft.com/userdatasearch" target="_blank" rel="noopener noreferrer">User data search</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_squares_nested_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Roles and Scopes</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/permissions" target="_blank" rel="noopener noreferrer">Permissions</a></li>
+					<li><a href="https://compliance.microsoft.com/adaptivescope" target="_blank" rel="noopener noreferrer">Adaptive Scopes</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_tag_multiple_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Data classification</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/dataclassification/overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://compliance.microsoft.com/dataclassificationclassifiers?viewid=classifiers" target="_blank" rel="noopener noreferrer">Classifiers</a></li>
+					<li><a href="https://compliance.microsoft.com/dataclassification/contentexplorer" target="_blank" rel="noopener noreferrer">Content explorer</a></li>
+					<li><a href="https://compliance.microsoft.com/dataclassification/activityexplorer" target="_blank" rel="noopener noreferrer">Activity explorer</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_delete_lines_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Data loss prevention</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/datalossprevention/overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://compliance.microsoft.com/datalossprevention/policies" target="_blank" rel="noopener noreferrer">Policies</a></li>
+					<li><a href="https://compliance.microsoft.com/datalossprevention/alertspage" target="_blank" rel="noopener noreferrer">Alerts</a></li>
+					<li><a href="https://compliance.microsoft.com/datalossprevention/activityexplorer" target="_blank" rel="noopener noreferrer">Activity explorer</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_database_link_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Data lifecycle mgmt</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/informationgovernance" target="_blank" rel="noopener noreferrer">Microsoft 365</a></li>
+					<li><a href="https://compliance.microsoft.com/exchangeinformationgovernance" target="_blank" rel="noopener noreferrer">Exchange (legacy)</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_document_lock_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Information Protection</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/informationprotection/overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://compliance.microsoft.com/informationprotection/labels" target="_blank" rel="noopener noreferrer">Labels</a></li>
+					<li><a href="https://compliance.microsoft.com/informationprotection/labelpolicies" target="_blank" rel="noopener noreferrer">Label policies</a></li>
+					<li><a href="https://compliance.microsoft.com/informationprotection/autolabeling" target="_blank" rel="noopener noreferrer">Auto-labeling</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_data_usage_toolbox_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Information barriers</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/informationbarrieroverview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://compliance.microsoft.com/ibsegments" target="_blank" rel="noopener noreferrer">Segments</a></li>
+					<li><a href="https://compliance.microsoft.com/ibpolicies" target="_blank" rel="noopener noreferrer">Policies</a></li>
+					<li><a href="https://compliance.microsoft.com/ibapplications" target="_blank" rel="noopener noreferrer">Policy application</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_fingerprint_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Privacy risk management</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/privacymgmtoverview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+					<li><a href="https://compliance.microsoft.com/privacymgmtprofile" target="_blank" rel="noopener noreferrer">Data profile</a></li>
+					<li><a href="https://compliance.microsoft.com/privacymgmtpolicy" target="_blank" rel="noopener noreferrer">Policies</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_checkmark_note_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Solutions</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/solutioncatalog" target="_blank" rel="noopener noreferrer">Solution Catalog</a></li>
+					<li><a href="https://compliance.microsoft.com/cloudapps/app-governance" target="_blank" rel="noopener noreferrer">App governance</a></li>
+					<li><a href="https://compliance.microsoft.com/contentsearchv2" target="_blank" rel="noopener noreferrer">Content search</a></li>
+					<li><a href="https://compliance.microsoft.com/supervisoryreview" target="_blank" rel="noopener noreferrer">Communication compliance</a></li>
+					<li><a href="https://compliance.microsoft.com/insiderriskmgmt" target="_blank" rel="noopener noreferrer">Insider risk management</a></li>
+					<li><a href="https://compliance.microsoft.com/recordsmanagement" target="_blank" rel="noopener noreferrer">Records management</a></li>
+					<li><a href="https://compliance.microsoft.com/privacymgmtsrm" target="_blank" rel="noopener noreferrer">Subject rights requests</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_button_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Admin controls</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/connectorlanding" target="_blank" rel="noopener noreferrer">Data Connectors</a></li>
+					<li><a href="https://compliance.microsoft.com/compliancealertsv2" target="_blank" rel="noopener noreferrer">Alerts</a></li>
+					<li><a href="https://compliance.microsoft.com/reports" target="_blank" rel="noopener noreferrer">Reports</a></li>
+					<li><a href="https://compliance.microsoft.com/compliancepolicies" target="_blank" rel="noopener noreferrer">Policies</a></li>
+					<li><a href="https://compliance.microsoft.com/trialHorizontalHub" target="_blank" rel="noopener noreferrer">Trials</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_settings_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Settings</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://compliance.microsoft.com/compliancesettings/deviceonboarding" target="_blank" rel="noopener noreferrer">Device onboarding</a></li>
+					<li><a href="https://compliance.microsoft.com/compliancesettings/compliance_manager" target="_blank" rel="noopener noreferrer">Compliance Manager</a></li>
+					<li><a href="https://compliance.microsoft.com/compliancesettings/co-authoring_for_files_with_sensitivity_labels" target="_blank" rel="noopener noreferrer">Co-authoring for files with sensitivity labels</a></li>
+					<li><a href="https://compliance.microsoft.com/compliancesettings/scanner_onboarding" target="_blank" rel="noopener noreferrer">Information protection scanner</a></li>
+					<li><a href="https://compliance.microsoft.com/compliancesettings/dlp-jit-protection" target="_blank" rel="noopener noreferrer">Just-in-time protection</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - SharePoint [Start] -->
+		<div id="admincentre_section_sharepoint" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(19, 122, 209) 0%, rgb(18, 112, 209) 74%);">
+			
+				<i class="ms-Icon ms-Icon--SharepointLogo container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://admin.microsoft.com/sharepoint?page=siteManagement&modern=true" target="_blank" rel="noopener noreferrer">Sharepoint</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_book_open_globe_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Sites</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/sharepoint?page=siteManagement&modern=true" target="_blank" rel="noopener noreferrer">Active sites</a></li>
+					<li><a href="https://admin.microsoft.com/sharepoint?page=recycleBin&modern=true" target="_blank" rel="noopener noreferrer">Deleted sites</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_document_ribbon_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Policies</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/sharepoint?page=sharing&modern=true" target="_blank" rel="noopener noreferrer">Sharing</a></li>
+					<li><a href="https://admin.microsoft.com/sharepoint?page=accessControl&modern=true" target="_blank" rel="noopener noreferrer">Access control</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_settings_cog_multiple_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Content services</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/sharepoint?page=termStoreAdminCenter&modern=true" target="_blank" rel="noopener noreferrer">Term store</a></li>
+					<li><a href="https://admin.microsoft.com/sharepoint?page=contentTypes&modern=true" target="_blank" rel="noopener noreferrer">Content type gallery</a></li>
+				</ul>
+				
+			</div>
+
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_more_horizontal_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Other</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/sharepoint?page=settings&modern=true" target="_blank" rel="noopener noreferrer">Settings</a></li>
+					<li><a href="https://admin.microsoft.com/sharepoint?page=geoLocations&modern=true" target="_blank" rel="noopener noreferrer">Geo locations</a></li>
+					<li><a href="https://admin.microsoft.com/sharepoint?page=classicFeatures&modern=true" target="_blank" rel="noopener noreferrer">More features</a></li>
+					<li><a href="https://admin.microsoft.com/sharepoint?page=ClassicFeatures" target="_blank" rel="noopener noreferrer">User Profiles</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Stream [Start] -->
+		<div id="admincentre_section_stream" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(194, 32, 94) 0%, rgb(175, 29, 85) 74%);">
+			
+				<i class="ms-Icon ms-Icon--StreamLogo container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://web.microsoftstream.com/admin/" target="_blank" rel="noopener noreferrer">Stream</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_window_apps_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Manage</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://web.microsoftstream.com/admin/?view=Administrators" target="_blank" rel="noopener noreferrer">Administrators</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=SpotlightVideos" target="_blank" rel="noopener noreferrer">Spotlight videos</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=LiveEvents" target="_blank" rel="noopener noreferrer">Live events</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=CompanyPolicies" target="_blank" rel="noopener noreferrer">Company policies</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=UsageDetails" target="_blank" rel="noopener noreferrer">Usage details</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=RecycleBin" target="_blank" rel="noopener noreferrer">Recycle Bin</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=Comments" target="_blank" rel="noopener noreferrer">Comments</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=ContentCreation" target="_blank" rel="noopener noreferrer">Content creation</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=PersonalData" target="_blank" rel="noopener noreferrer">Manage user data</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=ForgottenUsers" target="_blank" rel="noopener noreferrer">Manage deleted users</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=NetworkCaching" target="_blank" rel="noopener noreferrer">eCDN solutions</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_document_lock_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Data privacy</span>
+							
+				<ul>
+					<li><a href="https://web.microsoftstream.com/admin/?view=PersonalData" target="_blank" rel="noopener noreferrer">Manage user data</a></li>
+					<li><a href="https://web.microsoftstream.com/admin/?view=ForgottenUsers" target="_blank" rel="noopener noreferrer">Manage deleted users</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Teams [Start] -->
+		<div id="admincentre_section_teams" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(122, 125, 178) 0%, rgb(99, 102, 165) 74%);">
+			
+				<i class="ms-Icon ms-Icon--TeamsLogo container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://admin.teams.microsoft.com/dashboard" target="_blank" rel="noopener noreferrer">Teams</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_people_team_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Teams</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/teams/manage" target="_blank" rel="noopener noreferrer">Manage Teams</a></li>
+					<li><a href="https://admin.teams.microsoft.com/company-wide-settings/teams-settings" target="_blank" rel="noopener noreferrer">Teams settings</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/channels" target="_blank" rel="noopener noreferrer">Teams policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/teams/templates" target="_blank" rel="noopener noreferrer">Team templates</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/template-policy" target="_blank" rel="noopener noreferrer">Templates policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/updatemanagement" target="_blank" rel="noopener noreferrer">Teams update policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/company-wide-settings/teams-upgrade" target="_blank" rel="noopener noreferrer">Teams upgrade settings</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_people_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Users</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/users" target="_blank" rel="noopener noreferrer">Manage users</a></li>
+					<li><a href="https://admin.teams.microsoft.com/company-wide-settings/guest-configuration" target="_blank" rel="noopener noreferrer">Guest access</a></li>
+					<li><a href="https://admin.teams.microsoft.com/company-wide-settings/external-communications" target="_blank" rel="noopener noreferrer">External access</a></li>
+				</ul>
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_tablet_laptop_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Teams devices</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/devices/store" target="_blank" rel="noopener noreferrer">Store</a></li>
+					<li><a href="https://admin.teams.microsoft.com/devices/roomsystems" target="_blank" rel="noopener noreferrer">Teams Rooms on Windows</a></li>
+					<li><a href="https://admin.teams.microsoft.com/devices/collaborationbars" target="_blank" rel="noopener noreferrer">Teams Rooms on Android</a></li>
+					<li><a href="https://admin.teams.microsoft.com/devices/surfacehubs" target="_blank" rel="noopener noreferrer">Surface Hubs</a></li>
+					<li><a href="https://admin.teams.microsoft.com/devices/teamspanels" target="_blank" rel="noopener noreferrer">Panels</a></li>
+					<li><a href="https://admin.teams.microsoft.com/devices/ipphones" target="_blank" rel="noopener noreferrer">Phones</a></li>
+					<li><a href="https://admin.teams.microsoft.com/devices/collaborationpanels" target="_blank" rel="noopener noreferrer">Displays
+					</a></li>
+					<li><a href="https://admin.teams.microsoft.com/meetings/templates" target="_blank" rel="noopener noreferrer">SIP Devices</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_apps_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Teams apps</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/policies/manage-apps" target="_blank" rel="noopener noreferrer">Manage apps</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/app-setup" target="_blank" rel="noopener noreferrer">Setup policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/customize-appstore" target="_blank" rel="noopener noreferrer">Customise store</a></li>
+				</ul>
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_calendar_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Meetings</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/policies/audioConferencing" target="_blank" rel="noopener noreferrer">Audio Conferencing</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/meetings" target="_blank" rel="noopener noreferrer">Meeting policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/branding" target="_blank" rel="noopener noreferrer">Customisation policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/meetings/settings" target="_blank" rel="noopener noreferrer">Meeting settings</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/broadcasts" target="_blank" rel="noopener noreferrer">Live events policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/broadcasts/settings" target="_blank" rel="noopener noreferrer">Live events settings</a></li>
+					<li><a href="https://admin.teams.microsoft.com/meetings/templates" target="_blank" rel="noopener noreferrer">Meeting templates</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/meeting-template-policy" target="_blank" rel="noopener noreferrer">Meeting template policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/events-policies" target="_blank" rel="noopener noreferrer">Events policies</a></li>
+			
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_chat_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Messaging</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/policies/messaging" target="_blank" rel="noopener noreferrer">Messaging policies</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_person_voice_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Voice</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/phone-numbers" target="_blank" rel="noopener noreferrer">Phone numbers</a></li>
+					<li><a href="https://admin.teams.microsoft.com/operators/myOperators" target="_blank" rel="noopener noreferrer">Operator Connect</a></li>
+					<li><a href="https://admin.teams.microsoft.com/direct-routing/v2" target="_blank" rel="noopener noreferrer">Direct Routing</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/calling" target="_blank" rel="noopener noreferrer">Calling policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/callholdpolicy" target="_blank" rel="noopener noreferrer">Call hold policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/callpark" target="_blank" rel="noopener noreferrer">Call park policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/callinglineid" target="_blank" rel="noopener noreferrer">Caller ID policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/teamsdialplan" target="_blank" rel="noopener noreferrer">Dial plans</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/emergency-calling" target="_blank" rel="noopener noreferrer">Emergency policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/mobility" target="_blank" rel="noopener noreferrer">Mobility policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/sharedcalling" target="_blank" rel="noopener noreferrer">Shared calling policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/teamsonlinevoicerouting" target="_blank" rel="noopener noreferrer">Voice routing policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/onlineVoicemail" target="_blank" rel="noopener noreferrer">Voicemail policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/auto-attendants" target="_blank" rel="noopener noreferrer">Auto attendants</a></li>
+					<li><a href="https://admin.teams.microsoft.com/call-queues" target="_blank" rel="noopener noreferrer">Call queues</a></li>
+					<li><a href="https://admin.teams.microsoft.com/company-wide-settings/holidays" target="_blank" rel="noopener noreferrer">Holidays</a></li>
+					<li><a href="https://admin.teams.microsoft.com/company-wide-settings/resource-accounts" target="_blank" rel="noopener noreferrer">Resource accounts</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policies/voiceapplications" target="_blank" rel="noopener noreferrer">Voice applications policies</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_earth_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Locations</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/locations" target="_blank" rel="noopener noreferrer">Emergency addresses</a></li>
+					<li><a href="https://admin.teams.microsoft.com/tenantnetworksite" target="_blank" rel="noopener noreferrer">Network topology</a></li>
+					<li><a href="https://admin.teams.microsoft.com/networklocationmapping/subnet" target="_blank" rel="noopener noreferrer">Networks &amp; locations</a></li>
+				</ul>
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_people_team_toolbox_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Frontline deployment</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/frontlinedeployment/teams" target="_blank" rel="noopener noreferrer">Manage frontline teams</a></li>
+					<li><a href="https://admin.teams.microsoft.com/frontlinedeployment/apps" target="_blank" rel="noopener noreferrer">Manage frontline experience</a></li>
+			
+				</ul>
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_document_ribbon_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Policies</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/policies/enhancedEncryptionPolicy" target="_blank" rel="noopener noreferrer">Enhanced encryption policies</a></li>
+					<li><a href="https://admin.teams.microsoft.com/policy-packages" target="_blank" rel="noopener noreferrer">Policy packages</a></li>
+				</ul>
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_notebook_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Planning</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/teams-deployment" target="_blank" rel="noopener noreferrer">Teams advisor</a></li>
+					<li><a href="https://admin.teams.microsoft.com/networkplanner/organization" target="_blank" rel="noopener noreferrer">Network planner</a></li>
+				</ul>
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_radar_rectangle_multiple_20_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Analytics and reports</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/analytics/reports" target="_blank" rel="noopener noreferrer">Usage reports</a></li>
+					<li><a href="https://admin.teams.microsoft.com/reporting-labels" target="_blank" rel="noopener noreferrer">Reporting labels</a></li>
+					<li><a href="https://admin.teams.microsoft.com/analytics/reports" target="_blank" rel="noopener noreferrer">Usage reports</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_alert_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Notifications &amp; Alerts</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.teams.microsoft.com/notifications/rules" target="_blank" rel="noopener noreferrer">Rules</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_code_circle_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Developer</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://dev.teams.microsoft.com/home" target="_blank" rel="noopener noreferrer">Home</a></li>
+					<li><a href="https://dev.teams.microsoft.com/cards" target="_blank" rel="noopener noreferrer">Adaptive Cards</a></li>
+					<li><a href="https://dev.teams.microsoft.com/apps" target="_blank" rel="noopener noreferrer">Apps</a></li>
+					<li><a href="https://dev.teams.microsoft.com/identity" target="_blank" rel="noopener noreferrer">Azure app registrations</a></li>
+					<li><a href="https://dev.teams.microsoft.com/bots" target="_blank" rel="noopener noreferrer">Bots Management</a></li>
+					<li><a href="https://dev.teams.microsoft.com/scenes" target="_blank" rel="noopener noreferrer">Scene Studio</a></li>
+					<li><a href="https://dev.teams.microsoft.com/validation" target="_blank" rel="noopener noreferrer">Teams Store app validation</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Viva [Start] -->
+		<div id="admincentre_section_yammer" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(65, 159, 151) 0%, rgb(44, 116, 140) 74%);">
+			
+				<i class="fluentui_system_icons icon-ic_fluent_people_community_24_regular fluentui_system_icons_container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://admin.microsoft.com/AdminPortal/Home?#/viva" target="_blank" rel="noopener noreferrer">Viva</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_megaphone_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Viva Engage</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/viva/engage" target="_blank" rel="noopener noreferrer">Options</a></li>
+					<li><a href="https://web.yammer.com/main/admin" target="_blank" rel="noopener noreferrer">Admin Centre</a></li>
+					<li><a href="https://web.yammer.com/main/admin/manage-roles" target="_blank" rel="noopener noreferrer">Corporate Communicators</a></li>
+					<li><a href="https://web.yammer.com/main/admin/tenant-settings" target="_blank" rel="noopener noreferrer">Tenant settings</a></li>
+					<li><a href="https://web.yammer.com/main/admin/data-export" target="_blank" rel="noopener noreferrer">Governance &amp; compliance</a></li>
+					<li><a href="https://web.yammer.com/main/admin/settings/storyline" target="_blank" rel="noopener noreferrer">Manage Storyline</a></li>
+					<li><a href="https://web.yammer.com/main/admin/settings/storyline/advanced" target="_blank" rel="noopener noreferrer">Storyline advanced settings</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_people_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Viva Connections</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/viva/connections" target="_blank" rel="noopener noreferrer">Options</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home?#/viva/connections/experiences" target="_blank" rel="noopener noreferrer">Manage Experiences</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_hat_graduation_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Viva Learning</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://learning.cloud.microsoft/admin" target="_blank" rel="noopener noreferrer">Manage providers</a></li>
+					<li><a href="https://learning.cloud.microsoft/admin" target="_blank" rel="noopener noreferrer">Learner records</a></li>
+					<li><a href="https://learning.cloud.microsoft/admin" target="_blank" rel="noopener noreferrer">Settings</a></li>
+					<li><a href="https://learning.cloud.microsoft/admin" target="_blank" rel="noopener noreferrer">Language preferences</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_earth_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Yammer (Classic)</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://www.yammer.com/admin/usage_policy" target="_blank" rel="noopener noreferrer">Usage Policy</a></li>
+					<li><a href="https://www.yammer.com/admin/network/relationships" target="_blank" rel="noopener noreferrer">External Networks</a></li>
+					<li><a href="https://www.yammer.com/admin/monitor_list" target="_blank" rel="noopener noreferrer">Monitor keywords</a></li>
+					<li><a href="https://www.yammer.com/admin/report_conversation_settings" target="_blank" rel="noopener noreferrer">Report conversations</a></li>
+					<li><a href="https://www.yammer.com/admin/migration" target="_blank" rel="noopener noreferrer">Network Migration</a></li>
+					<li><a href="https://www.yammer.com/admin/new_yammer_rollout" target="_blank" rel="noopener noreferrer">New Yammer</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- ADMIN CENTRE SECTION - Support and Licensing [Start] -->
+		<div id="admincentre_section_troubleshooting" class="admincentre_section">
+			
+			<!-- TITLE [Start] -->
+			<div class="container_body_admincentresectiontitle ms-depth-4" style="background-image: linear-gradient(135deg, rgb(98, 89, 92) 0%, rgb(70, 64, 66) 74%);">
+			
+				<i class="fluentui_system_icons icon-ic_fluent_desktop_pulse_24_regular fluentui_system_icons_container_body_admincentresectiontitle_icon titleiconcolor"></i>
+				<span class="ms-fontSize-24 ms-fontWeight-bold">
+					<a href="https://admin.microsoft.com/AdminPortal/Home#/servicehealth" target="_blank" rel="noopener noreferrer">Support, Licensing</a>
+				</span> <br>
+			
+			</div>
+			<!-- TITLE [End] -->
+			
+			<!-- SECTIONS [Start] -->
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_heart_pulse_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Service health, Support</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/servicehealth" target="_blank" rel="noopener noreferrer">All services</a></li>
+					<li><a href="https://portal.azure.com/#create/Microsoft.Support" target="_blank" rel="noopener noreferrer">Azure new support request</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/servicehealth/incidents" target="_blank" rel="noopener noreferrer">Incidents</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/servicehealth/advisories" target="_blank" rel="noopener noreferrer">Advisories</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/servicehealth/history" target="_blank" rel="noopener noreferrer">History</a></li>
+					<li><a href="https://fasttrack.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft FastTrack</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/MessageCenter" target="_blank" rel="noopener noreferrer">Message centre</a></li>
+					<li><a href="https://serviceshub.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft Services Hub</a></li>
+					<li><a href="https://admin.microsoft.com/AdminPortal/Home#/servicehealth/reportedissues" target="_blank" rel="noopener noreferrer">Reported issues</a></li>
+				</ul>
+				
+			</div>
+			
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_connector_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Network connectivity</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://cqd.teams.microsoft.com/spd/#/Dashboard" target="_blank" rel="noopener noreferrer">Call quality dashboard</a></li>
+					<li><a href="https://connectivity.office.com/" target="_blank" rel="noopener noreferrer">Connectivity test</a></li>
+					<li><a href="https://connectivity.office.com/status" target="_blank" rel="noopener noreferrer">Network health status test</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_tablet_laptop_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;InTune</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/SupportMenu/guidedScenarios" target="_blank" rel="noopener noreferrer">Guided scenarios</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/SupportMenu/troubleshooting" target="_blank" rel="noopener noreferrer">Troubleshoot</a></li>
+					<li><a href="https://intune.microsoft.com/#blade/Microsoft_Intune_DeviceSettings/SupportMenu/helpSupport" target="_blank" rel="noopener noreferrer">Help and support</a></li>
+				</ul>
+				
+			</div>
+
+			<div class="container_body_menu ms-depth-4">
+				
+				<span class="ms-fontSize-20 ms-fontWeight-semibold"><i class="fluentui_system_icons icon-ic_fluent_certificate_24_regular fluentui_system_icons_icondrop"></i></span>
+				<span class="ms-fontSize-20 ms-fontWeight-semibold">&nbsp;Licensing</span>
+							
+				<ul class="ms-fontSize-14">
+					<li><a href="https://account.azure.com/Subscriptions" target="_blank" rel="noopener noreferrer">Azure subscriptions</a></li>
+					<li><a href="https://ea.azure.com/" target="_blank" rel="noopener noreferrer">Azure Enterprise portal</a></li>
+					<li><a href="https://businessaccount.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft Business Account</a></li>
+					<li><a href="https://mla.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft License Advisor</a></li>
+					<li><a href="https://partner.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft Partner Centre</a></li>
+					<li><a href="https://manage.visualstudio.com/" target="_blank" rel="noopener noreferrer">Visual Studio subscriptions</a></li>
+					<li><a href="http://www.microsoft.com/licensing/servicecenter" target="_blank" rel="noopener noreferrer">Volume Licensing Service Centre</a></li>
+				</ul>
+				
+			</div>
+			
+			<!-- SECTIONS [End] -->
+		</div>
+		<!-- ADMIN CENTRE SECTION [End] -->
+		
+		<!-- SEARCH HELPER [Start] -->
+		
+		<!-- <div class="nomoreresults" style="display: none;">
+			<span><strong>No more results</strong></span>
+		</div> -->
+		
+		<div id="container_globalsearch_helper" style="display: none;" class="nomoreresults container_body_menu ms-depth-4">
+		
+			<p style="text-align: center;"><img id="centre_globalsearchhelperappicon" src="assets/images/search-results.png" alt="Search" width="64" height="64"></p>
+			<p style="text-align: center;"><strong>No more results</strong></p>
+			<p style="text-align: center;">There are no other items corresponding to your search query.<br><br></p>
+					
+		</div>
+		
+		<div id="container_focusedsearch_helper" style="display: none;" class="container_body_menu ms-depth-4">
+		
+			<p style="text-align: center;"><img id="centre_focusedsearchhelperappicon" src="assets/images/search-results.png" alt="Search" width="64" height="64"></p>
+			<p style="text-align: center;"><strong>No more results in this admin centre</strong></p>
+			<p style="text-align: center;">Focused search only shows results from the active admin centre. Try changing the scope of your search using the admin centre menu on the left.<br><br></p>
+					
+		</div>
+		<!-- SEARCH HELPER [End] -->
+				
+	</div>
+	
+	<script src="assets/logic/admincentres.js"></script>
+	<script src="assets/logic/favs.js"></script>
+	<script src="assets/logic/search.js"></script>
+	<script src="assets/logic/notificationbanner.js"></script>
+	
+  </body>
+</html>

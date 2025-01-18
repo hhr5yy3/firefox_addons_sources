@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/v2/chrome.runtime.js"></script>
+  <title>Options Page :: Open In GIMP editor</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+  <div class="ot">
+    <span>Path to GIMP executable (e.g: <code>C:\GIMP\GIMP.exe</code>):</span>
+    <input type="text" id="path">
+  </div>
+  <p class="note">On Windows, if the path is not provided (is empty) "<code>%ProgramFiles%\GIMP 2\bin\gimp-(version).exe</code>" directory is used. On Linux, if the path is not set, it is assumed that the "gimp" binary can be found in the PATH environment variable. In Mac OS, If the box is empty <code>open -a Gimp</code> command is used, otherwise, the name of the provided program is used with the <code>open</code> command.</p>
+
+  <div class="mt">
+    <label for="download">Always download image files and send local paths to the GIMP application instead of the actual URLs</label>
+    <input type="checkbox" id="download">
+  </div>
+
+  <div class="ot">
+    <span>Add "Open in GIMP" context menu item for the following file extensions (clear the box to remove link context menu item):</span>
+    <input type="text" id="extensions">
+  </div>
+
+  <p>
+    <input type="button" id="reset" value="Factory Reset">
+    <input type="button" id="support" value="Support Development"> - <input type="button" id="save" value="Save Options">
+    <span id="toast"></span>
+  </p>
+
+  <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+:root {
+    --transition: "0s";
+    --primary-color: #18B8FF;
+    --opacity-default: 0.7;
+    --opacity-onhover: 1;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(./fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(./fonts/Roboto-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(./fonts/Roboto-Bold.ttf);
+    font-weight: bold;
+}
+
+html, body {
+    min-width: 200px;
+    max-width: 500px;
+    height: fit-content;
+    background-color: #ffffff;
+    font-size: 14px;
+    font-family: Roboto;
+}
+
+table {
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    color: #1d1719;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label {
+    font-size: 14px;
+}
+
+hr {
+    height: 0px;
+    border: none;
+    border-top: 1px solid #1d1719;
+}
+
+.options-link {
+    text-align: left;
+    color: #1d1719;
+    opacity: var(--opacity-default);
+    font-size: 14px;
+}
+
+.options-link:hover {
+    cursor:pointer;
+    opacity: var(--opacity-onhover);
+}
+
+.button {
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-family: Roboto;
+    padding: 6px 0px;
+    margin: 0px;
+    width: 100%;
+    border-radius: 5px;
+}
+  
+.button1 {
+    background-color: #ccc;
+    color: #1d1719;
+    border: none;
+}
+
+.button1:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tooltip-icon {
+    background-color : #8d8d8d;
+    opacity: var(--opacity-default);
+    width: 12px;
+    height: 12px;
+    margin-bottom: -1px;
+    -webkit-mask: url(./images/tooltip-icon.svg) no-repeat center;
+    mask: url(./images/tooltip-icon.svg) no-repeat center;
+}
+
+.tooltip-icon:hover {
+    opacity: var(--opacity-onhover);
+}
+
+.inline {
+    white-space: nowrap;
+}
+
+.inline > * {
+    display: inline-block;
+}
+
+table {
+    border-spacing: 0px;
+}
+
+/* Aligns right column to the right */
+table tr td:nth-child(2) {
+    text-align: right;
+}
+
+.btmPadded {
+    padding-bottom: 7px;
+}
+
+.btmPaddedLarge {
+    padding-bottom: 15px;
+}
+
+.flexContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.flexChild {
+    flex: 1; 
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: var(--transition);
+    opacity: var(--opacity-default);
+}
+
+.switch-slider:hover {
+    opacity: var(--opacity-onhover);
+}
+
+.switch-slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #1d1719;
+    transition: var(--transition);
+}
+
+input:checked + .switch-slider {
+    background-color: var(--primary-color);
+}
+
+input:focus + .switch-slider {
+    box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .switch-slider:before {
+    transform: translateX(30px);
+}
+
+/* Rounded sliders */
+.switch-slider.round {
+    border-radius: 20px;
+}
+
+.switch-slider.round:before {
+    border-radius: 50%;
+}
+
+
+.slidecontainer {
+    width: 100%;
+}
+  
+.slider {
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 5px;
+    background: #8d8d8d;
+    outline: none;
+    opacity: var(--opacity-default);
+    transition: opacity .2s;
+    margin: 0px;
+}
+
+.slider:hover {
+    opacity: var(--opacity-onhover);
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+.footer {
+    text-align: center;
+}

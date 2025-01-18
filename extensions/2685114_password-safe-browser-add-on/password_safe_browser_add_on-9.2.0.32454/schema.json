@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "managedSettings": {
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "webAppAddress": {
+                "type": "string"
+              },
+              "endpoint": {
+                "type": "string"
+              },
+              "database": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "webAppAddress",
+              "endpoint",
+              "database"
+            ]
+          }
+        },
+        "options": {
+          "type": "object",
+          "properties": {
+            "allowCrossClientAuth": {
+              "type": "boolean"
+            }
+          },
+          "required": [ ]
+        }
+      },
+      "required": [ ]
+    }
+  },
+  "required": [
+    "managedSettings"
+  ]
+}

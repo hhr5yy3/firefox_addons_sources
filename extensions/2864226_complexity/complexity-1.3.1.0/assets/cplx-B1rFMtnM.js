@@ -1,0 +1,1 @@
+const t={action:"Извези",copied:"Копирано",options:{default:"Стандардно",withoutCitations:"Без цитати",download:"Преземи како текстуална датотека"}},o={exportButton:t};export{o as default,t as exportButton};

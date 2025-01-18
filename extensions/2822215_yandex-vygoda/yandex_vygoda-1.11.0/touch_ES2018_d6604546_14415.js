@@ -1,0 +1,1 @@
+﻿"use strict";(self.webpackChunkv4fire_1=self.webpackChunkv4fire_1||[]).push([[14415],{14415:(e,a,n)=>{n.r(a),n.d(a,{default:()=>s});var t=n(40787),r=n(39910);function s(){return new Promise((e=>{(a=>{Object.set(r.ZP,"env.saveData",Boolean(Object.get(navigator,"connection.saveData"))),e(a),(0,t.Z)("envReady")})()}))}}}]);

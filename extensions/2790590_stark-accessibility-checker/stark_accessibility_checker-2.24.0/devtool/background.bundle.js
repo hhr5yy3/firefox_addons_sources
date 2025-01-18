@@ -1,0 +1,1 @@
+(()=>{"use strict";chrome.devtools.panels.create("Stark Accessibility Tools","/stark-16.png","/devtool/panel.html"),chrome.devtools.panels.elements.createSidebarPane("Stark Element Scan",(e=>{e.setPage("/devtool/sidebar.html")}))})();

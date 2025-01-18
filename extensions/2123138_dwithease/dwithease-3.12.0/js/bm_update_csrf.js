@@ -1,0 +1,1 @@
+window.addEventListener("message",(n=>{const{data:{action:e,csrfToken:o}}=n;"BMCSRFInjector"in window&&"updateCsrfToken"===e&&o.length&&"updateToken"in window.BMCSRFInjector&&window.BMCSRFInjector.updateToken(o)}));

@@ -1,0 +1,44 @@
+/* source: https://stackoverflow.com/questions/17437847/html-sup-and-sub-not-working */
+sub, sup {
+    /* Specified in % so that the sup/sup is the right size relative to the surrounding text */
+    font-size: 6pt !important;
+  
+    /* Zero out the line-height so that it doesn't interfere with the positioning that follows */
+    line-height: 0;
+  
+    /* Where the magic happens: makes all browsers position the sup/sup properly, relative to the surrounding text */
+    position: relative;
+  
+    /* Note that if you're using Eric Meyer's reset.css, this is already set and you can remove this rule */
+    vertical-align: baseline;
+  }
+  
+  sup {
+    /* Move the superscripted text up */
+    top: -0.5em;
+  }
+  
+  sub {
+    /* Move the subscripted text down, but only half as far down as the superscript moved up */
+    bottom: -0.25em;
+  }
+
+  table { border-collapse: collapse; } 
+  table, th, td { border: 1px solid; } 
+  td { text-align: center; font-weight: normal; } 
+  th, td { padding: 8px; }
+
+  .pt, .pt-subtotal{
+    width: 4em;
+    text-align: center;
+  }
+
+  .pt-total {
+    width: 8em;
+    font-weight: bold;
+  }
+
+  input[type='number']::-webkit-inner-spin-button, 
+  input[type='number']::-webkit-outer-spin-button { 
+    opacity: 1;
+  }

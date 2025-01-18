@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="options_title">Settings</title>
+    <link rel="stylesheet" href="style/options.css?v=11">
+</head>
+<body>
+    <div class="centered">
+
+        <img class="logo" src="img/icon_128.png" alt="Smart Downloader" />
+
+        <!-- Tab navigation -->
+        <div class="tab-menu">
+            <button id="info-tab" class="tab-button">
+                <img src="img/info.png" data-i18n-alt="popup_info" alt="info" class="tab-icon">
+            </button>
+            <button id="history-tab" class="tab-button">
+                <img src="img/history.png" data-i18n-alt="popup_history" alt="History" class="tab-icon">
+            </button>
+            <button id="settings-tab" class="tab-button active">
+                <img src="img/settings.png" data-i18n-alt="popup_settings" alt="Settings" class="tab-icon">
+            </button>
+        </div>
+
+        <!-- info section -->
+        <div id="info-section" class="tab-content">
+            <div class="section-container">
+                <h2 class="left" data-i18n="popup_info">Info</h2>
+                <div>
+                    <p data-i18n="options_info_desc_1"><b>Smart Video & Audio Downloader</b> lets you snag videos and audio straight from your browser.</p>
+                    <p data-i18n="options_info_desc_2">Best of all? It’s completely <b>free</b> and always will be!</p>
+                    <p data-i18n="options_info_desc_3">Enjoying this? Show some love with a quick review!</p>
+                    <p data-i18n="options_info_desc_4"><b>Happy downloading!</b></p>
+                    <p style="text-align: center !important;"><img src="img/sep.png" alt="&mdash;"/></p>
+                    <p data-i18n="options_info_desc_5">Disclaimer: By using this extension, you confirm that you have the legal right to download the content. The developers are not responsible for misuse of this tool.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- History section -->
+        <div id="history-section" class="tab-content">
+            <div class="section-container">
+                <h2 class="center" data-i18n="popup_history">History</h2>
+                <div id="no-downloads-message" style="display:none; text-align: center;" data-i18n="options_no_downloads_message">No downloads found.</div>
+                
+                <div id="filters-container" class="filters-container">
+                    <div id="filter-buttons" class="btn-group" role="group" aria-label="Filter Downloads">
+                        <button type="button" class="btn active" id="filter-all">All</button>
+                        <button type="button" class="btn" id="filter-video">Video</button>
+                        <button type="button" class="btn" id="filter-audio">Audio</button>
+                    </div>
+                    <input type="text" id="search" placeholder="Search..." data-i18n-placeholder="options_search_placeholder" />
+                </div>
+
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <!-- Select All Checkbox will prepend here -->
+                            <th style="text-align: left;" data-i18n="options_column_url">URL</th>
+                            <th style="text-align: left;" data-i18n="options_column_file">FILE</th>
+                            <th style="text-align: left;" data-i18n="options_column_date">DATE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body">
+                        <!-- Rows will be populated by JavaScript -->
+                    </tbody>
+                </table>                
+                <div id="pagination" class="pagination-container">
+                    <button id="prev-page" class="pagination-button">Previous</button>
+                    <span id="page-info" class="pagination-info">Page 1</span>
+                    <button id="next-page" class="pagination-button">Next</button>
+                </div>
+                
+                <div class="button-container edit-buttons-container">
+                    <button id="download-history" class="download" data-i18n="options_download_history">Download History</button>
+                    <button id="import-history" class="import" data-i18n="options_import_history">Import History</button>
+                    <button id="edit-history" class="edit" data-i18n="options_edit_history">Edit</button>
+                    <button id="clear-history" class="clear" data-i18n="options_clear_history">Clear History</button>
+                    <button id="delete-history" class="delete" style="display:none;" data-i18n="options_delete_selected">Delete Selected</button>
+                    <button id="cancel-edit" class="cancel" style="display:none;" data-i18n="options_cancel_edit">Cancel</button>
+                    <input type="file" id="file-input" style="display:none;">
+                </div> 
+            </div>
+        </div>
+
+        <!-- Settings section -->
+        <div id="settings-section" class="tab-content active">
+            <div class="section-container">
+                <h2 class="right" data-i18n="popup_settings">Settings</h2>
+                <div class="setting">
+                    <label for="notifications" class="checkbox-container">
+                        <input type="checkbox" id="notifications" checked>
+                        <div class="checkbox"></div>
+                        <span><b data-i18n="options_notifications_title">In-Page Notifications:</b> 
+                        <span data-i18n="options_notifications_desc">Toggle to show or hide download notifications at the top of the page.</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="setting">
+                    <input type="number" id="searchRetries" min="1" max="3" value="2">
+                    <label for="searchRetries">
+                        <span><b data-i18n="options_search_retries_title">Searching Retries:</b> 
+                        <span data-i18n="options_search_retries_desc">Increase retries to improve video detection on complex pages.</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="setting">
+                    <input type="number" id="failRetries" min="1" max="5" value="3">
+                    <label for="failRetries">
+                        <span><b data-i18n="options_fail_retries_title">Failover Retries:</b> 
+                        <span data-i18n="options_fail_retries_desc">Increase retries to improve download success rate, though it may slow down the process.</span>
+                        </span>
+                    </label>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <div id="custom-confirm-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <p id="modal-message" data-i18n="options_confirm_clear_history">Are you sure you want to clear the download history? This action cannot be undone.</p>
+            <button id="modal-confirm" data-i18n="options_confirm_yes">Yes</button>
+            <button id="modal-cancel" data-i18n="options_confirm_cancel">Cancel</button>
+        </div>
+    </div>
+    
+    <div id="popup_no_selected_items" class="modal" style="display:none;">
+        <div class="modal-content">
+          <p data-i18n="options_no_selected_items">Please select items to delete.</p>
+          <button id="modal-ok" data-i18n="options_ok">OK</button>
+        </div>
+      </div>
+      
+      <div id="popup_confirm_delete_selected" class="modal" style="display:none;">
+        <div class="modal-content">
+          <p data-i18n="options_confirm_delete_selected">Are you sure you want to delete the selected items?</p>
+          <button id="modal-confirm" data-i18n="options_confirm_yes">Yes</button>
+          <button id="modal-cancel" data-i18n="options_confirm_cancel">Cancel</button>
+        </div>
+      </div>
+      
+      <div id="popup_items_deleted" class="modal" style="display:none;">
+        <div class="modal-content">
+          <p data-i18n="options_items_deleted">Selected items have been deleted.</p>
+          <button id="modal-ok" data-i18n="options_ok">OK</button>
+        </div>
+      </div>       
+
+    <script src="js/i18n.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/options-tabs.js"></script>
+    <script src="js/options-table.js"></script>
+    <script src="js/options-history.js"></script>
+    <script src="js/options.js"></script>
+</body>
+</html>

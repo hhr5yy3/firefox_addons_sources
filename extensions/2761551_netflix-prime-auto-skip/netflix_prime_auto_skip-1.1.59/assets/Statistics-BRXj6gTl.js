@@ -1,0 +1,1 @@
+import{_ as o}from"./Statistics.vue_vue_type_script_setup_true_lang-Da-Na1q8.js";import{b as s}from"./gift-DYdWkef2.js";import{f as c,o as e}from"./storeTypes-CGrbvTi_.js";import"./RouterLinkUp.vue_vue_type_script_setup_true_lang-CHRyuLmY.js";const r={};function a(n,_){const t=o;return e(),c(t,{"advanced-settings":""})}const d=s(r,[["render",a]]);export{d as default};

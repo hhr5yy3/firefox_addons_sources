@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<title>TrackingTime Options</title>
+	
+	<meta charset="UTF-8">
+
+	<!-- /// -->
+	
+	<!-- iconos -->
+	<link rel="stylesheet" type="text/css" href="font-icons/style.css" />
+	<link rel="stylesheet" type="text/css" href="font-awesome/css/all.min.css" />
+
+	<!-- general -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/tt-root-settings.css" />
+	<link rel="stylesheet" type="text/css" href="css/tt-root-logo.css" />
+	<link rel="stylesheet" type="text/css" href="css/tt-logo.css" />
+	<link rel="stylesheet" type="text/css" href="css/tt-forms.css" />
+	<link rel="stylesheet" type="text/css" href="css/tt-dropdown.css" />
+	<link rel="stylesheet" type="text/css" href="css/ListView.css" />
+	<link rel="stylesheet" type="text/css" href="css/options.css" />
+
+	<!-- /// -->
+
+	<script type="text/javascript" src="js/lib/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="environment.js"></script>
+	<script type="text/javascript" src="settings.js"></script>
+	<script type="text/javascript" src="js/components/ListView.js"></script>
+	<script type="text/javascript" src="js/options.js"></script>
+	<script type="text/javascript" src="js/options-ui.js"></script>
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		
+		<div id="header">
+			<div class="flex">
+	
+				<a href="#" data-link="#/profile" target="_blank" class="tt-tracking-time-logo"></a>
+	
+				<ul class="nav" data-comp="tabs">
+					<li><a class="button_ small_ theme_" href="#permissions"><u>Permissions</u></a></li>
+					<li><a class="button_ small_ theme_" href="#custom-domains"><u>Custom Domains</u></a></li>
+					<li><a class="button_ small_ theme_" href="#notifications"><u>Notifications</u></a></li>
+					<li><a class="button_ small_ theme_" href="#" data-link="#/dashboard" target="_blank" title="Dashboard"><u>Dashboard</u> <i class="icon-external-link"></i></a></li>
+					<li><a class="button_ small_ theme_" href="http://help.trackingtime.co/article/169-button-help" target="_blank"><u>Support</u> <i class="icon-external-link"></i></a></li>
+				</ul>
+	
+				<div class="login" id="loginStatus">
+					
+					<div style="display: none;" data-status="loading">
+						<div class="alert loading_and_block"></div>
+					</div>
+					
+					<div style="display: none;" data-status="error">
+						<div class="alert error">
+							<i class="icon-appTT_error"></i>
+						</div>
+					</div>
+					
+					<div style="display: none;" data-status="logged">
+	
+						<div class="drop_ on_hover_ right_ logged-drop">
+							<div class="logged-avatar" data-comp="userAvatar"></div>
+							<div class="drop_pop_">
+								<div class="user-info" data-comp="userInfo"></div>
+								<ul class="drop_list_ drop_pop_space_">
+									<li class="right_ico_"><a href="#logout" target="_blank"><i class="icon-log-out ico_"></i><u>Logout</u></a></li>
+								</ul>
+							</div>
+						</div>
+	
+					</div>
+					
+					<div style="display: none;" data-status="login">
+						<a href="#signup" target="_blank" class="button_inline_ text_uppercase text_bold inline"><u>Sign up</u></a>
+						<a href="#login" class="button_ small_ text_uppercase"><u>Login</u></a>
+					</div>
+				
+				</div>
+	
+			</div>
+		</div>
+
+		<div id="rate" class="hide">
+			<h2>Do you like the TrackingTime Button?</h2>
+			<a data-comp="open-rate" href="https://addons.mozilla.org/es/firefox/addon/time-tracking-button/" target="_blank" class="firefox cta">Rate us!</a>
+			<a data-comp="open-rate" href="https://chrome.google.com/webstore/detail/tracking-time-button/fglmkdhomaklnckgbjfnfmbfmlkjippg/reviews" target="_blank" class="chrome cta">Rate us!</a>
+			<a data-comp="close-rate" href="#" class="close"><i class="icon-icontt_close"></i></a>
+		</div>
+	
+		<div id="content">
+	
+			<div class="section all_domains_enabled" id="permissions" data-section="permissions">
+	
+				<div class="enabled-all-banner">
+					<div class="message">
+						<h2>Add the TrackingTime Button to your favorites productivity apps</h2>
+						<div class="check-container">
+							<div class="check_ toggle right no_margin">
+								<input id="toggleAllDomains" name="toggleAllDomains" type="checkbox">
+								<label for="toggleAllDomains">Enable in all domains</label>
+							</div>
+						</div>
+					</div>
+					
+					<div class="video" id="openVideo">
+						<div class="play">
+							<i class="icon-icontt_play"></i>
+						</div>
+					</div>
+
+				</div>
+	
+				<form class="integrations-list" name="integrations">
+					<div class="form_text_">
+						<h3><strong>Enable deeper integrations</strong></h3>
+						<p class="IS_ADMIN">Control which integrations your teams should use</p>
+						<p class="not_logged">You need to be logged in order to set deeper integrations.</p>
+					</div>
+					<ul class="list" data-comp="list"></ul>
+				</form>
+	
+				<div class="domains-list">
+	
+					<div class="title">
+						<h2>Don’t want to enable all? Select the apps you want to integrate</h2>
+						<div class="version">
+							<p>Domains file version <b data-comp="domains-version"></b></p>
+							<a href="#" name="update_domains" class="button_inline_">Reload</a>
+						</div>
+					</div>
+	
+					<form class="list-container hidden-no-featured" name="permissions">
+						<div class="search">
+							<i class="icon-icontt_search"></i>
+							<input type="text" placeholder="Search" name="searchDomains" />
+						</div>
+						<div class="list-title">Domains</div>
+						<div class="list" data-comp="list"></div>
+						<div class="more-domains">
+							<a href="#more-domains"><u>More domains</u> <i class="icon-icontt_nav-top"></i></a>
+						</div>
+					</form>
+	
+				</div>
+	
+			</div>
+					
+			<div class="section" id="custom-domains" data-section="custom-domains">
+					
+				<div class="form_text_ no_pad">
+					<h2>Enter a base domain and choose the rule you want to apply.</h2>
+				</div>
+
+				<form name="custom-domains">
+
+					<div class="add-domain">
+						<div class="input_">
+							<label for="domain">Add one domain at the time</label>
+							<input type="text" autocomplete="off" required="" name="domain" placeholder="example.com or app.example.com">
+						</div>
+						<div class="select_">
+							<label>Select Domain</label>
+							<select name="rule"></select>
+						</div>
+						<a href="#" name="submit" class="button_">Add domain</a>
+					</div>
+					
+					<div class="domains-list">
+						<div class="list-container">
+							<div class="list" data-comp="list"></div>
+						</div>
+					</div>
+				
+				</form>
+	
+			</div>
+	
+			<div class="section" id="notifications" data-section="notifications">
+				
+				<div class="section-message loadingMessage">
+					Loading...
+				</div>
+
+				<div class="section-message errorMessage">
+					Error Loading Settings...
+				</div>
+
+				<div class="tray-banner">
+					<h2>For better notifications download TrackingTime Assistant:</h2>
+					<div class="stores">
+						<a href="https://trackingtime.co/time-tracker-app?mac" target="_blank">
+							<div class="ico" style="background-image: url(img/stores/apple-store.png);"></div>
+							<div class="text">
+								<small>Desktop app</small>
+								<p>Tracking Time for <strong>Mac</strong></p>
+							</div>
+						</a>
+						<a href="https://trackingtime.co/time-tracker-app?win" target="_blank">
+							<div class="ico" style="background-image: url(img/stores/microsoft.png);"></div>
+							<div class="text">
+								<small>Desktop app</small>
+								<p>Tracking Time for <strong>Windows</strong></p>
+							</div>
+						</a>
+					</div>
+				</div>
+				
+				<div class="form_text_ no_pad">
+					<h2 class="logged">Configure your preferences for browser notifications.</h2>
+					<h2 class="not_logged">You need to be logged in order to set the notifications.</h2>
+				</div>
+
+				<form name="notifications" class="logged">
+
+					<div class="check_ toggle">
+						<input id="disable_notifications" type="checkbox" name="disable_notifications">
+						<label for="disable_notifications">Enable notifications</label>
+					</div>
+
+					<div class="notifications-list">
+
+						<div class="separator_"></div>
+						
+						<div class="check_">
+							<input id="notify_not_tracking" type="checkbox" name="notify_not_tracking">
+							<label for="notify_not_tracking">When I'm not tracking</label>
+							<input type="number" id="notify_not_tracking_interval">
+						</div>
+					
+						<div class="check_">
+							<input id="notify_when_tracking" type="checkbox" name="notify_when_tracking">
+							<label for="notify_when_tracking">About what I'm tracking</label>
+							<input type="number" id="notify_when_tracking_interval">
+						</div>
+
+						<div class="separator_"></div>
+
+						<div class="select_">
+							<label for="notify_on">Select</label>
+							<select id="notify_on" name="notify_on">
+								<option value="week_days">Week Days</option>
+								<option value="custom_days">Custom Days</option>
+							</select>
+						</div>
+
+						<div class="notification-type" data-value="week_days">
+							<div class="hours-selector">
+								<div class="input_">
+									<label for="notify_from">From</label>
+									<input type="time" autocomplete="off" id="notify_from" name="notify_from">
+								</div>
+								<div class="input_">
+									<label for="notify_to">To</label>
+									<input type="time" autocomplete="off" id="notify_to" name="notify_to">
+								</div>
+							</div>
+						</div>
+
+						<div class="notification-type" data-value="custom_days">
+							
+							<div class="day-hours-selector">
+								
+								<div class="table">
+									<div class="cell c_day"><div class="title">Day</div></div>
+									<div class="cell c_from"><div class="title">From</div></div>
+									<div class="cell c_to"><div class="title">To</div></div>
+								</div>
+							
+								<div class="table day">
+									<div class="cell c_day">
+										<div class="check_ toggle no_margin">
+											<input id="notify_mon" type="checkbox" name="notify_mon">
+											<label for="notify_mon">Monday</label>
+										</div>	
+									</div>
+									<div class="cell c_from">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_mon_from" name="notify_mon_from">
+										</div>
+									</div>
+									<div class="cell c_to">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_mon_to" name="notify_mon_to">
+										</div>
+									</div>
+								</div>
+								
+								<div class="table day">
+									<div class="cell c_day">
+										<div class="check_ toggle no_margin">
+											<input id="notify_tue" type="checkbox" name="notify_tue">
+											<label for="notify_tue">Tuesday</label>
+										</div>
+									</div>
+									<div class="cell c_from">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_tue_from" name="notify_tue_from">
+										</div>
+									</div>
+									<div class="cell c_to">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_tue_to" name="notify_tue_to">
+										</div>
+									</div>
+								</div>
+								
+								<div class="table day">
+									<div class="cell c_day">
+										<div class="check_ toggle no_margin">
+											<input id="notify_wed" type="checkbox" name="notify_wed">
+											<label for="notify_wed">Wednesday</label>
+										</div>
+									</div>
+									<div class="cell c_from">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_wed_from" name="notify_wed_from">
+										</div>
+									</div>
+									<div class="cell c_to">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_wed_to" name="notify_wed_to">
+										</div>
+									</div>
+								</div>
+								
+								<div class="table day">
+									<div class="cell c_day">
+										<div class="check_ toggle no_margin">
+											<input id="notify_thu" type="checkbox" name="notify_thu">
+											<label for="notify_thu">Thursday</label>
+										</div>
+									</div>
+									<div class="cell c_from">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_thu_from" name="notify_thu_from">
+										</div>
+									</div>
+									<div class="cell c_to">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_thu_to" name="notify_thu_to">
+										</div>
+									</div>
+								</div>
+								
+								<div class="table day">
+									<div class="cell c_day">
+										<div class="check_ toggle no_margin">
+											<input id="notify_fri" type="checkbox" name="notify_fri">
+											<label for="notify_fri">Friday</label>
+										</div>
+									</div>
+									<div class="cell c_from">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_fri_from" name="notify_fri_from">
+										</div>
+									</div>
+									<div class="cell c_to">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_fri_to" name="notify_fri_to">
+										</div>
+									</div>
+								</div>
+								
+								<div class="table day">
+									<div class="cell c_day">
+										<div class="check_ toggle no_margin">
+											<input id="notify_sat" type="checkbox" name="notify_sat">
+											<label for="notify_sat">Saturday</label>
+										</div>
+									</div>
+									<div class="cell c_from">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_sat_from" name="notify_sat_from">
+										</div>
+									</div>
+									<div class="cell c_to">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_sat_to" name="notify_sat_to">
+										</div>
+									</div>
+								</div>
+								
+								<div class="table day">
+									<div class="cell c_day">
+										<div class="check_ toggle no_margin">
+											<input id="notify_sun" type="checkbox" name="notify_sun">
+											<label for="notify_sun">Sunday</label>
+										</div>
+									</div>
+									<div class="cell c_from">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_sun_from" name="notify_sun_from">
+										</div>
+									</div>
+									<div class="cell c_to">
+										<div class="input_ no_margin">
+											<input type="time" autocomplete="off" id="notify_sun_to" name="notify_sun_to">
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="tt-form-save sticky active">
+							<div class="flex_space_"></div>
+							<a href="#" class="button_" id="save_notifications">Save</a>
+						</div>
+						
+					</div>
+
+				</form>
+
+			</div>
+	
+		</div>
+
+	</div>
+
+	<div id="wrapperLoading">
+		<div class="message">
+			<div class="loading_and_block"></div>
+			<h2>Attempting to login, please wait.</h2>
+		</div>
+	</div>
+
+</body>
+
+</html>

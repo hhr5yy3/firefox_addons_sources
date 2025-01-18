@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="../js/shared/ext_settings.obj.js"></script>
+	<script src="../js/shared/classes/cons_log.js"></script>
+	<script src="../js/shared/globals.obj.js"></script>
+	<script src="../js/shared/classes/addon_api.js"></script>	
+	<script src="../js/shared/prefs.obj.js"></script>
+	<script src="../js/shared/classes/utils.cls.js"></script>
+	<script src="../js/shared/classes/user_prefs.cls.js"></script>
+	<script src="../js/popup/classes/locale_binder.proto.js"></script>
+	<script src="../js/options/options.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../css/options.css">
+</head>
+<body>
+	<div id="options">
+		<div class="top-section">
+			<div class="top-section-title text-title-30" data-locale data-locale-inner="options_general_title">{{General}}</div>
+
+			<div id="theme" class="section">
+				<div id="theme-title" class="section-title text-title-20" data-locale data-locale-inner="options_general_themes_title">{{Color Theme}}</div>
+				<div class="section-items text-body-10">
+					<div class="radio-button">
+						<input id="theme-color-dark" type="radio" class="radio-button-sub" name="theme-color" value="dark">
+						<label for="theme-color-dark" data-locale data-locale-inner="options_general_themes_dark">{{Dark}}</label>
+					</div>
+					<div class="radio-button">
+						<input id="theme-color-light" type="radio" class="radio-button-sub" name="theme-color" value="light">
+						<label for="theme-color-light" data-locale data-locale-inner="options_general_themes_light">{{Light}}</label>
+					</div>
+					
+				</div>
+			</div>
+
+			<div id="flash-and-video" class="section">
+				<div id="flash-and-video-title" class="section-title text-title-20" data-locale data-locale-inner="options_general_flashAndVideos_title">{{Flash &amp; Videos}}</div>
+				<div class="section-items text-body-10">
+					<div class="checkbox">
+						<input id="show-flash" type="checkbox" />
+						<label for="show-flash" data-locale data-locale-inner="options_general_flashAndVideos_showFlashFilesResults">{{Show Flash file results}}</label>
+					</div>
+					<div class="checkbox">
+						<input id="show-video" type="checkbox" />
+						<label for="show-video" data-locale data-locale-inner="options_general_flashAndVideos_showVideosFilesResults">{{Show Video file results}}</label>
+					</div>					
+				</div>
+			</div>
+
+			<div id="downloads" class="section">
+				<div id="downloads-title" class="section-title text-title-20" data-locale data-locale-inner="options_general_downloads_title">{{Downloads}}</div>
+				<div class="section-items text-body-10">
+					<div class="checkbox">
+						<input id="download-immediately" type="checkbox" />
+						<label for="download-immediately" data-locale data-locale-inner="options_general_downloads_startDownloadsImmediately">{{Start downloads immediately}}</label>
+					</div>
+					<div class="checkbox">
+						<input id="suggest-alt" type="checkbox" />
+						<label for="suggest-alt" data-locale data-locale-inner="options_general_downloads_suggestAlternativeFilenames">{{Suggest alternative file names when downloading}}</label>
+					</div>
+					<div class="checkbox">
+						<input id="add-quality-suffix" type="checkbox" />
+						<label for="add-quality-suffix" data-locale data-locale-inner="options_general_downloads_addQualitySuffixToFilename">{{Add quality suffix to file name when applicable (e.g. [360p], [720p], [1080p])}}</label>
+					</div>	
+				</div>			
+			</div>
+		</div>
+
+		<div class="top-section text-title-30">
+			<div class="top-section-title" data-locale data-locale-inner="options_youtube_title">{{YouTube}}</div>
+
+			<div id="yt-displayed-formats" class="section">
+				<div id="yt-displayed-formats-title" class="section-title text-title-20" data-locale data-locale-inner="options_youtube_formats_title">{{Displayed formats}}</div>
+				<div class="section-items text-body-10">
+					<div class="checkbox">
+						<input id="yt-format-mp4" type="checkbox" />
+						<label for="yt-format-mp4">MP4</label>
+					</div>
+					<div class="checkbox">
+						<input id="yt-format-webm" type="checkbox" />
+						<label for="yt-format-webm">WEBM</label>
+					</div>
+					<div class="checkbox">
+						<input id="yt-format-flv" type="checkbox" />
+						<label for="yt-format-flv">FLV</label>
+					</div>
+					<div class="checkbox">
+						<input id="yt-format-3gp" type="checkbox" />
+						<label for="yt-format-3gp">3GP</label>
+					</div>					
+				</div>
+			</div>
+
+			<div id="yt-displayed-qualities" class="section">
+				<div id="yt-displayed-qualities-title" class="section-title text-title-20" data-locale data-locale-inner="options_youtube_qualities_title">{{Displayed qualities}}</div>
+				<div class="section-items text-body-10">
+					<div class="checkbox">
+						<input id="yt-quality-144p" type="checkbox" />
+						<label for="yt-quality-144p">144p</label>
+					</div>
+					<div class="checkbox">
+						<input id="yt-quality-240p" type="checkbox" />
+						<label for="yt-quality-240p">240p</label>
+					</div>
+					<div class="checkbox" style="display: none">
+						<input id="yt-quality-270p" type="checkbox" />
+						<label for="yt-quality-270p">270p</label>
+					</div>
+					<div class="checkbox">
+						<input id="yt-quality-360p" type="checkbox" />
+						<label for="yt-quality-360p">360p</label>
+					</div>
+					<div class="checkbox">
+						<input id="yt-quality-720p" type="checkbox" />
+						<label for="yt-quality-720p">720p</label>
+					</div>					
+				</div>
+			</div>			
+		</div>
+
+	</div>
+</body>
+</html>

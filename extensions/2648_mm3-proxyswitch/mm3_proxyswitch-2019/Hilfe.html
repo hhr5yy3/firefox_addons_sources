@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang='de'><head><meta charset='utf-8'/>
+<title>MM3-ProxySwitch - Firefox &amp; Chrome Erweiterung (Add-ons)</title>
+<meta name='viewport' content='width=device-width,initial-scale=1'/>
+<link rel='stylesheet' type='text/css' href='img/MM3-ProxySwitch.css'/>
+<link rel='shortcut icon' href='MM3-ProxySwitch.png'/></head><body>
+
+<h1><a href='https://Proxy-Offline-Browser.de/ProxySwitch/'>ProxySwitch</a></h1>
+
+<div class='WebAssistant'><h3>Sie möchten Web-Seiten speichern und offline benutzen?</h3><div>
+Der <dfn>ProxySwitch</dfn> ergänzt ideal den <a href='https://Proxy-Offline-Browser.de' title='Zum Download: MM3-WebAssistant - Proxy Offline Browser'><dfn>WebAssistant</dfn> - Proxy Offline Browser</a>.</div></div>
+
+<nav><ul>
+<li><a href='#Bedienung'>Bedienung</a></li>
+<li><a href='#Struktur'>Struktur der Proxy-Konfiguration</a></li>
+<li><a href='#ProxyKonfiguration'>Proxy-Konfiguration</a></li>
+<li><a href='#SystemAuto'>Vordefinierte Proxy-Konfigurationen</a></li>
+<li><a href='#Homepage'>Homepage</a></li>
+<li><a href='#CacheLöschen'>Browser Cache löschen</a></li>
+<li><a href='#Tastenkombination'>Tastenkombination (shortcut)</a></li>
+<li><a href='#Aktivierung'>Aktivierung einer Proxy-Konfiguration</a></li>
+<li><a href='#Symbol'>Symbol ändern</a></li>
+<li><a href='#Kommentar'>Kommentar</a></li>
+
+<li><a href='#DNSLookups'>Auflösung Domainnamen (DNS lookups)</a></li>
+<li><a href='#AutomatischesUmschalten'>Automatisches Umschalten</a></li>
+</ul></nav>
+
+<main>
+
+<h3 id='Bedienung'>Bedienung</h3><div><ul>
+<li>Mit einem Klick auf das Symbol <dfn>ProxySwitch</dfn> können Sie zwischen der direkten Internet-Verbindung und einer Proxy-Konfiguration umschalten.<br/><br/>
+
+Die genutzte Verbindung erkennen Sie am Symbol:<ul>
+<li class='off'>direkte Internet-Verbindung</li>
+<li class='on'>eine Proxy-Konfiguration</li></ul>
+
+<h5>Tool-Tipp</h5><div>
+Dieser gibt den Namen der benutzten Konfiguration an.</div><br/></li>
+
+<li>Aus dem Popup Menü können Sie eine Proxy-Konfiguration auswählen.</li>
+<li>Die Proxy-Konfigurationen können Sie editieren über den Menü Eintrag: <strong>Einstellungen</strong></li></ul></div>
+
+<h3 id='Struktur'>Struktur der Proxy-Konfiguration</h3><div><p>
+Jede Proxy-Konfiguration hat einen eindeutigen Namen und beginnt mit der öffnenden Klammer <b>[</b> und endet mit der schließenden Klammer <b>]</b>.<br/>
+Der Name der Proxy-Konfiguration wird im Popup Menü angezeigt.<br/>
+Die beiden Klammern <b>[</b> bzw. <b>]</b> sowie jedes <b>Schlüsselwort</b> muss in einer neuen Zeile stehen.<br/>
+Entsprechend dem Aufbau im folgenden Beispiel.</p>
+
+<h5>Beispiel</h5><div><code>
+[<span class='n'>Name</span>
+  <span class='k'>http</span>=...
+]</code></div>
+</div>
+
+<h3 id='ProxyKonfiguration'>Proxy-Konfiguration</h3><div><p>
+Zur Konfiguration können Sie folgende Schlüsselwörter verwenden:</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>http  </span>=<span class='i'>IP-Adresse</span>:[<span class='p'><b>  80</b>|Port</span>]
+<span class='k'>https </span>=<span class='i'>IP-Adresse</span>:[<span class='p'><b> 443</b>|Port</span>]
+<span class='k'>ftp   </span>=<span class='i'>IP-Adresse</span>:[<span class='p'><b>  21</b>|Port</span>]
+<span class='k'>all   </span>=<span class='i'>IP-Adresse</span>:[<span class='p'><b>  80</b>|Port</span>]
+<span class='k'>socks </span>=<span class='i'>IP-Adresse</span>:[<span class='p'><b>1080</b>|Port</span>]
+<span class='k'>socks4</span>=<span class='i'>IP-Adresse</span>:[<span class='p'><b>1080</b>|Port</span>]
+<span class='k'>noProxy</span>=...
+<span class='k'>url</span>=...</code>
+
+<dl>
+  <dt>http<s>,</s> https<s>,</s> ftp<s>,</s> socks <s>bzw.</s> socks4</dt>
+  <dd>Geben Sie für jedes benötigte Protokoll den Proxy an.</dd>
+
+  <dt>all</dt>
+  <dd>Für die Protokolle http, https und ftp wird der gleiche Proxy verwendet.</dd>
+
+  <dt>noProxy</dt>
+  <dd>Für die angegebenen Domains soll der Proxy nicht benutzt werden.<br/>
+
+  Mehre Domains sind durch Komma zu trennen. Dies entspricht der <a href='https://developer.mozilla.org/en-US/docs/No_Proxy_For_configuration' target='_blank'>Syntax von Firefox</a>.</dd>
+
+  <dt>url</dt>
+  <dd>URL zum Skript für die automatische Proxy-Konfiguration.</dd>
+</dl></div>
+
+<h5>Beispiel</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>   =<span class='i'>127.0.0.1</span>:<span class='p'>8080</span>
+  <span class='k'>https</span>  =<span class='i'>127.0.0.1</span>:<span class='p'>8080</span>
+  <span class='k'>ftp</span>    =<span class='i'>127.0.0.1</span>:<span class='p'>8080</span>
+  <span class='k'>noProxy</span>=<span class='i'>127.0.0.1</span>
+]
+[<span class='n'>localProxy</span>
+  <span class='k'>all</span>=<span class='i'>192.168.0.1</span>:<span class='p'>8080</span>
+]
+[<span class='n'>provider</span>
+  <span class='k'>http</span>=HTTP-Proxy of you provider
+]
+[<span class='n'>script</span>
+  <span class='k'>url</span>=http://www.example.com/proxy.pac
+]</code></div>
+</div>
+
+<h3 id='SystemAuto'>Vordefinierte Proxy-Konfigurationen</h3><div>
+<p>Die beiden folgenden Proxy-Konfigurationen sind vordefiniert.
+  Mit zusätzlichen Einstellungen können diese erweitert werden.</p>
+
+<h5>Syntax</h5><div><code>
+[<span class='n'>System</span>
+  ...
+]
+[<span class='n'>Auto</span>
+]</code>
+
+<dl>
+  <dt>System</dt>
+  <dd>Proxy-Einstellungen des Systems verwenden.</dd>
+
+  <dt>Auto</dt>
+  <dd>Die Proxy-Einstellungen für dieses Netzwerk automatisch erkennen.</dd>
+</dl></div>
+</div>
+
+<h3 id='Homepage'>Homepage</h3><div>
+<p>Möchten Sie beim Wechsel der Proxy-Konfiguration eine Homepage anzeigen,
+können Sie diese bei der jeweiligen Proxy-Konfiguration mit dem Schlüsselwort <b>homepage</b> angeben.</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>homepage</span>=URL</code>
+</div>
+
+<h5>Beispiel</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+
+  <span class='k'>homepage</span>=https://Proxy-Offline-Browser.de
+]</code></div>
+</div>
+
+<h3 id='CacheLöschen'>Browser Cache löschen</h3><div>
+<p>Bevor Sie den <a href='https://Proxy-Offline-Browser.de' target='_blank'><dfn>WebAssistant - Proxy Offline Browser</dfn></a> benutzen, sollte der Browser Cache gelöscht werden.
+Mit dem Schlüsselwort <b>clear</b> erfolgt dies automatisch.</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>clear</span>=cache</code>
+</div>
+
+<h5>Beispiel</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+
+  <span class='k'>clear</span>=cache
+]</code></div>
+</div>
+
+<h3 id='Tastenkombination'>Tastenkombination (shortcut)</h3><div>
+<p>Zur Umschaltung zwischen verschiedenen Proxy-Konfigurationen können Sie die vier folgenden Tastenkombinationen nutzen:<br/><br/>
+
+<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>1</kbd><br/>
+...<br/>
+<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd><br/><br/>
+
+Die ersten vier Proxy-Konfigurationen werden damit aktiviert bzw. umgeschaltet.</p>
+
+<h6>Hinweis</h6><div>Eine individuelle Belegung der Kurztasten durch Benutzer sieht WebExtension nicht vor.
+  Sollte bereits eine andere Erweiterung die selben Tastenkombination belegen, müssen Sie entscheiden, welche Erweiterung diese Kurztasten benutzen soll.
+  In diesem Fall löschen Sie beide Erweiterungen und installieren die Erweiterung zuerst, die die Tastenkombination verwenden soll.</div>
+</div>
+
+<h3 id='Aktivierung'>Aktivierung einer Proxy-Konfiguration</h3><div>
+<p>Wählen Sie eine Proxy-Konfiguration aus, so wird standardmäßig diese sofort verwendet.
+Mit <b>active=no</b> wird die ausgewählte Konfiguration eingetragen, jedoch die direkte Verbindung zum Internet benutzt.</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>active</span>=[<b>yes</b>|no]</code>
+</div>
+
+<h5>Beispiel</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+
+  <span class='k'>active</span>=no
+]</code></div>
+
+<h6>Hinweis</h6><div>
+Dies bietet sich an, wenn Sie die <a href='#AutomatischesUmschalten'>Automatisierung der Proxy-Konfiguration</a> verwenden und nicht an jedem Standort einen Proxy benötigen.</div>
+</div>
+
+<h3 id='Symbol'>Symbol ändern</h3><div>
+<p>Mit dem Schlüsselwort <b>symbol</b> kann die Darstellung für eine Proxy-Konfiguration geändert werden.
+Damit kann jede aktive Proxy-Konfiguration bzw. eine direkte Internet-Verbindung unterschiedlich dargestellt werden.</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>symbol</span>=[<span class='k2'>color</span>:<span class='v2'>Farbwert</span>;] [<span class='k2'>colorActive</span>:<span class='v2'>Farbwert</span>;] [<span class='k2'>shape</span>[:<span class='v2'>square</span>]]</code>
+
+  <dl>
+    <dt>color<s>:Farbwert</s></dt>
+    <dd>Für eine direkte Internet-Verbindung<br/>
+        Standardwert ist #808080 für grau</dd>
+
+    <dt>colorActive<s>:Farbwert</s></dt>
+    <dd>Für eine aktive Proxy-Konfiguration<br/>
+        Standardwert ist #900 für rot</dd>
+  </dl>
+
+  <p>Farbwert ist nach HTML- oder CSS-Syntax anzugeben.<br/><br/></p>
+
+  <dl>
+    <dt>shape</dt>
+    <dd>Standardmäßig wird das Symbol <span class='on'> verwendet.</span></dd>
+
+    <dt>shape<s>:square</s></dt>
+    <dd>Symbol wird als Quadrat dargestellt</dd>
+  </dl>
+</div>
+
+<p>Diese Schlüsselwörter können innerhalb und außerhalb einer Proxy-Konfiguration definiert werden;
+innerhalb gelten die Schlüsselwörter nur für diese Proxy-Konfiguration.</p>
+
+<h5>Beispiel</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+  <span class='k'>symbol</span>=<span class='k2'>colorActive</span>:<span class='v2'>green</span>
+]
+[<span class='n'>Firma</span>
+  <span class='k'>http</span>=...
+  <span class='k'>symbol</span>=<span class='k2'>colorActive</span>:<span class='v2'>blue</span>;<span class='k2'>shape</span>:<span class='v2'>square</span>
+]
+...
+<span class='k'>symbol</span>=<span class='k2'>color</span>:<span class='v2'>#000</span></code>
+
+<p>Für eine direkte Internet-Verbindung wird das Symbol immer in "schwarz" (#000) dargestellt.
+Ist die Proxy-Konfiguration "MM3-WebAssistant" aktiviert wird das Symbol "MM3" "grün" dargestellt.
+Ist die Proxy-Konfiguration "Firma" selektiert wird das Symbol als Quadrat dargestellt.
+Wird "Firma" dann aktiviert, verändert sich die Farbe von "schwarz" zu "blau".</p>
+</div>
+</div>
+
+<h3 id='Kommentar'>Kommentar</h3><div>
+
+  <p>Einzelne Zeilen können als Kommentarzeile gekennzeichnet sein;
+    diese dürfen nur Kommentare enthalten.</p>
+
+  <h5>Syntax</h5><div><p><br/>
+    Kommentarzeilen beginnen mit dem Zeichen: <span class='c'>#</span></p>
+  </div>
+
+  <h5>Beispiel</h5><div><code>
+<span class='c'># Dies sind drei Kommentarzeilen:
+# Proxy-Konfiguration zur Nutzung des
+# MM3-WebAssistant - Proxy Offline Browser</span>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+]</code></div>
+</div>
+
+<h3 id='DNSLookups'>Auflösung Domainnamen (DNS lookups)</h3><div>
+<p>Das Schlüsselwort <b>proxyDNS</b> steuert, ob der Browser oder der Proxy den Domainnamen mit socks Version 5 auflöst.
+Mit dem Wert true frägt der Proxy-Server den DNS an.</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>proxyDNS</span>=[<b>false</b>|true]</code>
+</div>
+
+<h5>Beispiel</h5><div><code>
+[<span class='n'>Company</span>
+  <span class='k'>socks</span>=...
+  <span class='k'>proxyDNS</span>=true
+]</code></div>
+</div>
+
+<h3 id='AutomatischesUmschalten'>Automatisches Umschalten</h3><div>
+<p>Nutzen Sie mit Ihrem Laptop verschiedene Netzwerke,
+so kann die benötigte Proxy-Konfiguration automatisch bestimmt werden.</p>
+
+<p>Beim Starten des Firefox wird geprüft, ob eine URL erreichbar ist.
+In Abhängigkeit von diesem Test, wird die direkte Internet-Verbindung oder der Proxy genutzt.</p>
+
+  <h5>Syntax</h5><div><code>
+<span class='k'>testUrl</span>=<span class='d'>URL</span> [direct|proxy|<b>both</b>]</code>
+
+    <dl>
+      <dt>URL</dt>
+      <dd>Zu überprüfende URL.</dd>
+
+      <dt>Modus</dt>
+      <dd><dl>
+        <dt>direct</dt>
+        <dd>Prüfung erfolgt nur, falls im Firefox aktiviert ist: Direkte Verbindung zum Internet.</dd>
+
+        <dt>proxy</dt>
+        <dd>Prüfung erfolgt nur, bei einer aktivierten Proxy-Konfigurationen.</dd>
+
+        <dt>both</dt>
+        <dd>Prüfung erfolgt immer.</dd>
+      </dl></dd>
+    </dl>
+  </div>
+
+  <p>Ist bei der Prüfung die URL erreichbar, wird die Proxy-Konfiguration benutzt.</p>
+
+  <p>Die testURL kann innerhalb und außerhalb einer Proxy-Konfiguration notiert werden;
+    für innerhalb, gilt die testURL nur für diese Proxy-Konfiguration.</p>
+
+  <h5>Beispiel</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+
+  <span class='k'>testUrl</span>=<span class='d'>http://127.0.0.1:8080</span> both
+]</code>
+
+    <p>Hier wird die Verfügbarkeit des <a href='https://Proxy-Offline-Browser.de' target='_blank'><dfn>WebAssistant - Proxy Offline Browser</dfn></a> geprüft.<br/>
+      Ist dieser Proxy gestartet, so wird dieser Proxy genutzt.</p>
+  </div>
+</div>
+
+<h3>Produkt Homepage</h3><div>
+<a href='https://Proxy-Offline-Browser.de/ProxySwitch/'>Proxy-Offline-Browser.de/ProxySwitch</a></div>
+
+<h3>Danksagung und Entwicklungsgeschichte</h3><div>
+<a href='https://Proxy-Offline-Browser.de/ProxySwitch/Aktuelles.html'>Proxy-Offline-Browser.de/ProxySwitch/Aktuelles</a></div>
+
+<h3>Beteiligen Sie sich</h3><div>
+<a href='https://Proxy-Offline-Browser.de/ProxySwitch/Benefit.html'>Proxy-Offline-Browser.de/ProxySwitch/Benefit</a></div>
+
+<h3 id='license'>Lizenz</h3><div>
+<a href='https://creativecommons.org/licenses/by-sa/4.0/deed.de' title='Dieser Inhalt ist unter eine                                                             Creative Commons Lizenz
+Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International lizenziert.'>
+<img src='CreativeCommons.org-by-sa-4.0.png' alt='Creative Commons'/>Creative Commons</a>
+
+<a href='http://www.gnu.org/licenses/gpl-3.0.html' title='GNU General Public Lizenz'>
+<img src='GNU-General-Public-License-3.png' alt='GNU GPL'/>GNU GPL</a></div>
+
+</main>
+
+<div class='WebAssistant'><h3>Sie möchten Web-Seiten speichern und offline benutzen?</h3><div>
+Mit dem <dfn>WebAssistant</dfn> - Proxy Offline Browser wird jedes mal wenn Sie einen Link anklicken,
+die Seite wie bisher angezeigt und zusätzlich auf der Festplatte gespeichert.
+Komfortables Offline-Surfen mit Bookmarks und Suchfunktion wird damit möglich.<br/><br/>
+
+Zum Download des <a href='https://Proxy-Offline-Browser.de' title='Zum Download: MM3-WebAssistant - Proxy Offline Browser'><dfn>WebAssistant</dfn> - Proxy Offline Browser</a></div></div>
+
+<footer>
+<a id='imprint' href='https://Proxy-Offline-Browser.de/ProxySwitch/Impressum.html'>Impressum</a>
+<a id='privacy' href='https://Proxy-Offline-Browser.de/ProxySwitch/Datenschutzerklaerung.html'>Datenschutzerklärung</a>
+<a id='legal' href='https://Proxy-Offline-Browser.de/ProxySwitch/RechtlicherHinweis.html'>Rechtliches</a>
+<a id='mail' href='mailto:WebAssistant@MM3Tools.de?subject=Fragen%20zu%20dem%20MM3-ProxySwitch'>WebAssistant@MM3Tools.de</a>
+<a rel='copyright' href='https://Proxy-Offline-Browser.de/ProxySwitch/'>&copy; MM3Tools, 2019</a>
+</footer></body></html>

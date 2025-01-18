@@ -1,0 +1,53 @@
+{
+  "applications": {
+    "gecko": {
+      "id": "developer@p0w.ru"
+    }
+  },
+
+  "manifest_version": 2,
+  "name": "Desktop Meter by Romir",
+  "author": "developer@p0w.ru",
+  "version": "0.2.2",
+  "description": "Cпециальное браузерное расширение для респондентов Consumer Scan Panel",
+  "icons": {
+    "16": "images/romir_logo.jpg",
+    "48": "images/romir_logo.jpg",
+    "128": "images/romir_logo.jpg"
+  },
+  "incognito": "spanning",
+  "permissions": [
+    "tabs",
+    "<all_urls>",
+    "storage",
+    "management",
+    "geolocation",
+    "cookies"
+  ],
+  "background": {
+    "scripts": [
+      "js/jquery-3.4.1.min.js",
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://ssp.rmh.ru/*"
+      ],
+      "js": [
+        "ssp.js"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_title": "SSP",
+    "default_icon": "images/romir_logo.jpg",
+    "default_popup": "options.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
+}

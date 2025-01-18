@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title data-langMessage="popupTitle">OurStickys</title>
+		<link rel="stylesheet" href="/popup/popup.css">
+		<link rel="stylesheet" href="/css/themes.css">
+		<script src="/js/classes/send.js"></script>
+		<script src="/js/globals.js"></script>
+		<script src="/js/helper.js"></script>
+		<script src="/js/functions.js"></script>
+		<script src="/js/classes/stickys.js"></script>
+		<script src="/popup/popup.js"></script>
+	</head>
+	<body>
+		<div id="page_header">
+			<div id="tag_search_wrapper">
+				<label id="tag_search_label" data-langMessage="popupTagSearch">
+					Search by Tag:
+				</label>
+				<input list="tag_search_list" id="tag_search_input" value="" />
+				<datalist id="tag_search_list"></datalist>
+			</div>
+			<div id="header_tools">
+				<span id="hide_all" class="header_tool"><img src="/img/hide.png"></span>
+				<span id="show_all" class="header_tool"><img src="/img/show.png"></span>
+				<span id="add_new" class="header_tool"><img src="/img/plus.png"></span>
+				<span id="expand" class="header_tool"><img src="/img/expand-popup.png"></span>
+			</div>
+		</div>
+		<div id="page_body">
+			<div id="no_authenticated">
+				<span data-langMessage="popupNotLogged">You will not be able to sync OurStickys between different browsers because you are not logged in.</span><br />
+				<img src="/img/google-login-button.png" id="google_authenticate" />
+				<a id="facebook_authenticate" target="_blank" href="">
+					<img src="/img/facebook-login-button.png" /><br />
+				</a>
+			</div>
+			<div id="refresh_page" data-langMessage="popupFinishInstall">
+				Before you are able to add any notes to this page you will need refresh the page to fully install the extension
+			</div>
+			<div class="tabs">
+				<ul class="tab-menu">
+					<li id="popupTabMyNotes"><a href="#mine" class="active" id="popupTabMyNotesLink" data-langMessage="popupTabMyNotes">My Stickys</a></li>
+					<li id="popupTabSharedNotes"><a href="#shared" id="popupTabSharedNotesLink" data-langMessage="popupTabSharedNotes">Shared</a></li>
+					<li id="popupTabChannels"><a href="#channels" id="popupTabChannelsLink" data-langMessage="popupTabChannels">Channels</a></li>
+					<li id="popupTabSettings"><a href="#settings" id="popupTabSettingsLink" data-langMessage="popupTabSettings">Settings</a></li>
+				</ul>
+				<div class="tab-content" id="mine">
+					<div id="found_notes">
+						<ul id="notes" class="list_notes"></ul>
+					</div>
+					<div id="no_found_notes">
+						<p data-langMessage="popupMyNotesNoFound">You do not have any notes.<br /><br />To add a note right click on any page and choose "Add Note"</p>
+					</div>
+				</div>
+				<div class="tab-content" id="shared">
+					<div id="found_shared_notes">
+						<ul id="shared_notes" class="list_notes"></ul>
+					</div>
+					<div id="no_found_shared_notes">
+						<p data-langMessage="popupSharedNotesNoFound">You do not have any shared notes.</p>
+					</div>
+				</div>
+				<div class="tab-content" id="channels">
+					<div id="channels_menu">
+						<button id="channels_open_create" data-langMessage="popupChannelsCreate">Create New</button>
+						<button id="channels_open_subscribe" data-langMessage="popupChannelsSubscribe">Subscribe</button>
+					</div>
+					<div id="channels_create">
+						<label id="channels_create_label" data-langMessage="popupChannelsCreateLabel">
+							Channel's Name:
+						</label>
+						<input id="channels_create_input" value="" />
+						<button id="channels_create_button" data-langMessage="popupChannelsCreateButton">Create</button>
+					</div>
+					<div id="channels_rename">
+						<label id="channels_rename_label" data-langMessage="popupChannelsRenameLabel">
+							Channel's Name:
+						</label>
+						<input id="channels_rename_input" value="" />
+						<button id="channels_rename_button" data-langMessage="popupChannelsRenameButton">Rename</button>
+					</div>
+					<div id="channels_subscribe">
+						<label id="channels_subscribe_label" data-langMessage="popupChannelsSubscribeLabel">
+							Channel's Code:
+						</label>
+						<input id="channels_subscribe_input" value="" />
+						<button id="channels_subscribe_button" data-langMessage="popupChannelsSubscribeButton">Add</button>
+					</div>
+					<div id="found_channels">
+						<ul id="channels_list" class="list_channels"></ul>
+					</div>
+				</div>
+				<div class="tab-content" id="settings">
+					<span data-langMessage="popupSettingInstruction">The following settings will apply to all the newly Created Stickys.</span><br />
+					<div class="tab-sub-wrapper" id="__myNoteThemesContainer"></div>
+					<div class="tab-sub-wrapper" id="__myNoteInfoContainer"></div>
+					<div class="tab-sub-wrapper" id="extraSettings">
+						<div>
+							<div id="extensionVersion"></div>
+							<label id="advancedFeaturedEnabledWrapper"><input type="checkbox" data-langMessage="popupSettingEnableAdvanceFeatured" id="advancedFeaturedEnabled" checked="false" />Enable advanced features</label>
+						</div>
+						<div>
+							<button id="forceRefreshData" data-langMessage="popupSettingRefreshStickys">Refresh Stickys</button>
+							<label id="liveUpdatesEnabledWrapper"><input type="checkbox" data-langMessage="popupSettingEnableLiveUpdates" id="liveUpdatesEnabled" checked="false" />Enable Live Updates</label>
+						</div>
+						<div id="exportImport">
+							<button id="exportStickys" data-langMessage="popupSettingExportStickys">Export Stickys</button>
+							<button id="importStickys" data-langMessage="popupSettingImportStickys">Import Stickys</button>
+							<button id="deleteAllStickys" data-langMessage="popupSettingDeleteAllStickys">Delete All</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="page_footer">
+			<div id="authenticated">
+				<span id="authenticatedWith"></span>
+				<span id="authenticatedLogout" data-langMessage="popupLogout">
+					logout
+				</span>
+			</div>
+		</div>
+	</body>
+</html>

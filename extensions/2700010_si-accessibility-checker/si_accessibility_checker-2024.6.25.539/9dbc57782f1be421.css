@@ -1,0 +1,131 @@
+.content-switcher_content-switcher__1LmRh {
+  display: flex; }
+  .content-switcher_content-switcher__1LmRh > :first-child {
+    border-top-left-radius: 125rem;
+    border-bottom-left-radius: 125rem; }
+  .content-switcher_content-switcher__1LmRh > :last-child {
+    border-top-right-radius: 125rem;
+    border-bottom-right-radius: 125rem; }
+  .content-switcher_content-switcher__1LmRh.content-switcher_large__2zLx7 > :first-child {
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem; }
+  .content-switcher_content-switcher__1LmRh.content-switcher_large__2zLx7 > :last-child {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem; }
+
+@media (max-width: 48rem) {
+  .content-switcher_content-switcher__1LmRh.content-switcher_large__2zLx7 {
+    flex-direction: column; }
+    .content-switcher_content-switcher__1LmRh.content-switcher_large__2zLx7 > :first-child {
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 1rem; }
+    .content-switcher_content-switcher__1LmRh.content-switcher_large__2zLx7 > :last-child {
+      border-top-right-radius: 0rem;
+      border-bottom-right-radius: 1rem;
+      border-bottom-left-radius: 1rem; } }
+
+/*
+	  This will hide the focus indicator if the element receives focus via the mouse,
+	  but it will still show up on keyboard focus.
+	  More information at: https://github.com/WICG/focus-visible
+	*/
+html .content-switcher_toggle-btn__3FL-Z:focus:not(:focus-visible) {
+  outline: none; }
+
+html .content-switcher_toggle-btn__3FL-Z::-moz-focus-inner {
+  border: 0; }
+
+.content-switcher_toggle-btn__3FL-Z {
+  transition: 0.1s;
+  display: inline-flex;
+  height: 2rem;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid #62737a;
+  padding: 0 0.75rem;
+  border-radius: 0;
+  user-select: none;
+  background-color: #ffffff;
+  color: #1f2b3f;
+  outline: none;
+  margin: 0; }
+  .content-switcher_toggle-btn__3FL-Z:not(:first-child):not(:disabled) {
+    margin-left: -1px; }
+  .content-switcher_toggle-btn__3FL-Z:hover:not(:focus-visible):not(:disabled) {
+    z-index: 55;
+    border-color: #2666f1;
+    box-shadow: 0 0 0 0.1875rem rgba(27, 78, 161, 0.2); }
+  .content-switcher_toggle-btn__3FL-Z:focus-visible:not(:disabled) {
+    z-index: 100;
+    outline: 0;
+    box-shadow: 0 0 0 0.125rem #ffffff, 0 0 0 0.25rem #2666f1; }
+  .content-switcher_toggle-btn__3FL-Z:active {
+    background-color: #ebf6ff;
+    border-color: #2666f1;
+    box-shadow: inset 0 0 0 1px #2666f1 !important; }
+  .content-switcher_toggle-btn__3FL-Z:disabled {
+    cursor: default;
+    color: #62737a;
+    background-color: #f4f5f6;
+    border-color: #e8e9ec; }
+  .content-switcher_toggle-btn__3FL-Z > svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.25rem; }
+  .content-switcher_toggle-btn__3FL-Z.content-switcher_selected__2jqtp {
+    z-index: 100;
+    background-color: #ebf6ff;
+    font-weight: 500;
+    border-color: #2666f1;
+    box-shadow: inset 0 0 0 1px #2666f1; }
+    .content-switcher_toggle-btn__3FL-Z.content-switcher_selected__2jqtp:focus-visible:not(:disabled) {
+      box-shadow: inset 0 0 0 0.05rem #2666f1, 0 0 0 0.125rem #ffffff, 0 0 0 0.25rem #2666f1; }
+  .content-switcher_toggle-btn__3FL-Z.content-switcher_large__2zLx7 {
+    height: auto;
+    align-items: flex-start;
+    flex: 1;
+    text-align: left;
+    padding: 1rem 1.5rem; }
+    .content-switcher_toggle-btn__3FL-Z.content-switcher_large__2zLx7 > svg,
+    .content-switcher_toggle-btn__3FL-Z.content-switcher_large__2zLx7 img {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 1rem;
+      flex-shrink: 0; }
+
+@media (max-width: 48rem) {
+  .content-switcher_toggle-btn__3FL-Z.content-switcher_large__2zLx7:not(:first-child):not(:disabled) {
+    margin-left: 0;
+    margin-top: -1px; } }
+
+/*
+ * This creates a block of text that sits below some text
+ * If you imagine this text 'Hallo World' then this block
+ * would go here            -------------
+ * This block of text is bolded which means it has a slightly longer width, but is otherwise invisible.
+ *
+ * The use case for this is to not have total width of the component 'jump' on state changes
+ */
+.content-switcher_fixed-width-text__20j0I {
+  white-space: nowrap; }
+  .content-switcher_fixed-width-text__20j0I::after {
+    content: attr(data-text);
+    font-weight: 500;
+    display: block;
+    /* Hide the text, in a way that maintains width */
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    user-select: none;
+    pointer-events: none; }
+    @media speech {
+      .content-switcher_fixed-width-text__20j0I::after {
+        display: none; } }

@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SiteAnalyzer SEO Tools</title>
+    <link rel="stylesheet" type="text/css" href="./css/popup.css" />
+    <link rel="stylesheet" type="text/css" href="./css/checkbox.css" />
+    <script src="./lib/html2canvas.min.js"></script>
+    <script src="./js/donut.min.js"></script>
+    <script src="./js/userAgent.js"></script>
+    <script src="./js/punycode.js"></script>
+    <script src="./js/helper.js"></script>
+    <script src="./js/social-patterns.js"></script>
+    <script src="./js/translations/translations.js"></script>
+    <script src="./js/translations/lang/ru.js"></script>
+    <script src="./js/translations/lang/en.js"></script>
+    <script src="./js/translations/lang/es.js"></script>
+    <script src="./js/translations/lang/uk.js"></script>
+    <script src="./js/navigation.js"></script>
+    <script src="./js/accordion.js"></script>
+    <script src="./js/cms.js"></script>
+    <script src="./js/web-vitals.attribution.iife.js"></script>
+    <script src="./js/export-all.js"></script>
+    <script src="./js/criteria.js"></script>
+    <script src="./js/tabs/analyze.js"></script>
+    <script src="./js/tabs/summary.js"></script>
+    <script src="./js/tabs/titles.js"></script>
+    <script src="./js/tabs/images.js"></script>
+    <script src="./js/tabs/links.js"></script>
+    <script src="./js/tabs/status.js"></script>
+    <script src="./js/tabs/settings.js"></script>
+    <script src="./js/tabs/tools.js"></script>
+    <script src="./js/tabs/content.js"></script>
+    <script src="./js/tabs/og.js"></script>
+    <script src="./js/tabs/schema.js"></script>
+    <script src="./js/tabs/sitemap.js"></script>
+    <script src="./js/tabs/pageDepth.js"></script>
+    <script src="./js/tabs/pageRank.js"></script>
+    <script src="./js/tabs/photos.js"></script>
+    <script src="./js/tabs/help.js"></script>
+    <script src="./js/window/subdomains.js"></script>
+    <script src="./js/window/ips.js"></script>
+    <script src="./js/window/ssl.js"></script>
+    <script src="./js/window/source.js"></script>
+    <script src="./js/window/capture.js"></script>
+  </head>
+
+  <body>
+    <button class="settings-button" data-tab="settings">
+      <img src="./res/icons/settings.svg" data-translated-title="settings" />
+    </button>
+    <button class="export-button" id="export-all-button">
+      <img
+        src="./res/icons/csv-export.svg"
+        data-translated-title="exportToCSV"
+      />
+    </button>
+    <h1>
+      SiteAnalyzer <span>SEO Tools</span
+      ><a href="#" target="_blank" class="link-to-updated-version"
+        ><em class="version"></em
+      ></a>
+    </h1>
+    <h2 class="target_site">
+      <span data-print="page-icon">
+        <img src="./res/icons/default-icon.png" class="page-icon" />
+      </span>
+      <span data-print="page-href"></span>
+      <img
+        src="./res/icons/lock-2-gray.png"
+        class="ssl-icon"
+        data-translated-title="sslInfo"
+      />
+      <img
+        src="./res/icons/subdomains.png"
+        class="ssl-icon ssl-icon--active"
+        id="open-subdomains-window"
+        data-translated-title="sslSubdomains"
+      />
+      <img
+        src="./res/icons/source-code.png"
+        class="source-icon"
+        data-translated-title="pageSource"
+      />
+    </h2>
+    <nav class="tabs">
+      <div
+        class="tab active"
+        data-tab="summary"
+        data-translated-title="summary"
+      >
+        <img class="tab-icon" src="./res/icons/tab-summary.svg" />
+      </div>
+      <div class="tab" data-tab="titles" data-translated-title="titles">
+        <span
+          class="tab-icon"
+          style="filter: none; text-align: center; font-weight: 700"
+          >H1</span
+        >
+      </div>
+      <div class="tab" data-tab="content" data-translated-title="content">
+        <img class="tab-icon" src="./res/icons/tab-content.svg" />
+      </div>
+      <div
+        class="tab"
+        data-tab="images"
+        data-translated-title="images"
+        data-dispatch-event="ImagesTabOpened"
+      >
+        <img class="tab-icon" src="./res/icons/tab-images.svg" />
+      </div>
+      <div
+        class="tab"
+        data-tab="links"
+        data-translated-title="links"
+        data-dispatch-event="LinksTabOpen"
+      >
+        <img
+          class="tab-icon"
+          style="height: 18px"
+          src="./res/icons/tab-links.svg"
+        />
+      </div>
+      <div class="tab" data-tab="status" data-translated-title="statusHeader">
+        <img class="tab-icon" src="./res/icons/tab-status.svg" />
+      </div>
+      <div
+        class="tab"
+        data-tab="og"
+        data-translated-title="ogTab"
+        data-dispatch-event="SchemaTabOpen"
+      >
+        <img class="tab-icon" src="./res/icons/tab-schema.svg" />
+      </div>
+      <div
+        class="tab"
+        data-tab="sitemap"
+        data-translated-title="clusterSitemap"
+        data-dispatch-event="SitemapTabOpened"
+      >
+        <img class="tab-icon" src="./res/icons/tab-sitemap.svg" />
+      </div>
+      <div
+        class="tab"
+        data-tab="pageDepth"
+        data-translated-title="pageDepth"
+        data-dispatch-event="PageDepthTabOpened"
+      >
+        <img class="tab-icon" src="./res/icons/tab-pageDepth.svg" />
+      </div>
+      <div
+        class="tab"
+        data-tab="pageRank"
+        data-translated-title="pageRank"
+        data-dispatch-event="PageRankTabOpened"
+      >
+        <img class="tab-icon" src="./res/icons/tab-pageRank.svg" />
+      </div>
+      <div class="tab" data-tab="analyze" data-translated-title="analyze">
+        <img class="tab-icon" src="./res/icons/tab-analyze.svg" />
+      </div>
+      <div class="tab" data-tab="photos" data-translated-title="photosTab">
+        <img class="tab-icon" src="./res/icons/tab-photos.svg" />
+      </div>
+      <div class="tab" data-tab="tools" data-translated-title="tools">
+        <img class="tab-icon" src="./res/icons/tab-tools.svg" />
+      </div>
+      <!-- <div class="tab dropdown-toggle">
+      <img src="./res/icons/menu.png">
+    </div>
+    <div class="dropdown-list">
+    </div> -->
+    </nav>
+    <section class="container">
+      <span hidden data-export=""></span>
+      <span hidden data-export="summary"></span>
+      <div class="source_tab active" data-tab-content="summary">
+        <div class="summary-table">
+          <b style="margin-bottom: 3px"
+            ><span>Title</span>
+            <span
+              data-print="title-length"
+              class="criteria"
+              data-criteria
+              data-criteria-min="30"
+              data-criteria-max="70"
+              data-criteria-range="20"
+              >0</span
+            >
+            <span data-help>
+              <img class="question-icon" src="./res/icons/information.png" />
+              <span class="help-window">
+                <div>
+                  <span class="status-indicator status-indicator--good"></span>
+                  <span data-translation="good"></span>: 30-70
+                </div>
+                <div>
+                  <span
+                    class="status-indicator status-indicator--warning"
+                  ></span>
+                  <span data-translation="normal"></span>: 10-29 - 71-90
+                </div>
+                <div>
+                  <span class="status-indicator status-indicator--bad"></span>
+                  <span data-translation="bad"></span>: 0-9 - 90+
+                </div>
+              </span>
+            </span>
+          </b>
+          <span
+            style="margin-bottom: 3px"
+            data-print="title"
+            data-export="title"
+          >
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b style="margin-bottom: 3px"
+            ><span>Description</span>
+            <span
+              data-print="description-length"
+              class="criteria"
+              data-criteria
+              data-criteria-min="150"
+              data-criteria-max="250"
+              data-criteria-range-min="75"
+              data-criteria-range-max="50"
+              >0</span
+            >
+            <span data-help>
+              <img class="question-icon" src="./res/icons/information.png" />
+              <span class="help-window">
+                <div>
+                  <span class="status-indicator status-indicator--good"></span>
+                  <span data-translation="good"></span>: 150-250
+                </div>
+                <div>
+                  <span
+                    class="status-indicator status-indicator--warning"
+                  ></span>
+                  <span data-translation="normal"></span>: 75-149 - 251-300
+                </div>
+                <div>
+                  <span class="status-indicator status-indicator--bad"></span>
+                  <span data-translation="bad"></span>: 0-74 - 300+
+                </div>
+              </span>
+            </span>
+          </b>
+          <span
+            style="margin-bottom: 3px"
+            data-print="description"
+            data-export="Description"
+          >
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <span style="margin-bottom: 3px">
+            <a href="#" data-tab="titles"><b>H1</b></a>
+            <b
+              data-print="h1-length"
+              class="criteria"
+              data-criteria
+              data-criteria-min="20"
+              data-criteria-max="60"
+              data-criteria-range-min="15"
+              data-criteria-range-max="10"
+              >0</b
+            >
+            <span data-help>
+              <img class="question-icon" src="./res/icons/information.png" />
+              <span class="help-window">
+                <div>
+                  <span class="status-indicator status-indicator--good"></span>
+                  <span data-translation="good"></span>: 20-60
+                </div>
+                <div>
+                  <span
+                    class="status-indicator status-indicator--warning"
+                  ></span>
+                  <span data-translation="normal"></span>: 5-19 - 61-70
+                </div>
+                <div>
+                  <span class="status-indicator status-indicator--bad"></span>
+                  <span data-translation="bad"></span>: 0-4 - 70+
+                </div>
+              </span>
+            </span>
+          </span>
+          <span style="margin-bottom: 3px" data-print="h1" data-export="H1">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="content"></b>
+          <span data-print="page-characters-sum">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+        </div>
+        <div class="delimiter"></div>
+        <div class="summary-table" style="position: relative">
+          <a class="speedometer" data-tab="analyze" id="link-to-quality-tests">
+            <img src="./res/speedometer.png" class="speedometer__background" />
+            <span
+              data-translation="testQuality"
+              class="speedometer__title"
+            ></span>
+          </a>
+          <b data-translation="pageSize"></b
+          ><span data-print="page-size" data-export="pageSize">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="loadTime"></b
+          ><span data-print="load-time" data-export="loadTime">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="internalLinksCount"></b
+          ><a href="#" data-tab="links" data-print="internal-links-count">
+            <img src="./res/loader.gif" class="loader"
+          /></a>
+          <b data-translation="externalLinksCount"></b>
+          <a href="#" data-tab="links" data-print="external-links-count">
+            <img src="./res/loader.gif" class="loader" />
+          </a>
+          <b data-translation="images"></b>
+          <a href="#" data-tab="images" data-print="images-count">
+            <img src="./res/loader.gif" class="loader" />
+          </a>
+          <b>Robots.txt</b>
+          <span data-print="robots">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b>Sitemap.xml</b>
+          <span data-print="sitemap">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="encoding"></b>
+          <span data-print="encoding" data-export="encoding">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <!--<b>User-Agent</b>
+          <span data-print="user-agent">
+            <img src="./res/loader.gif" class="loader" />
+          </span>-->
+        </div>
+        <div class="summary-table">
+          <b data-translation="pageLang"></b>
+          <span data-print="page-lang" data-export="pageLang">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+        </div>
+        <div class="hreflang">
+          <div class="hreflang__header summary-table">
+            <b data-translation="hrefLang"></b>
+            <span data-print="page-href-lang-count">
+              <img src="./res/loader.gif" class="loader" />
+            </span>
+          </div>
+          <div class="hreflang__list summary-table"></div>
+        </div>
+        <div class="summary-table">
+          <b data-translation="status"></b>
+          <span data-print="status" data-export="status">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="cms"></b>
+          <span data-print="cms" data-export="cms">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="domainCreateDate"></b>
+          <div>
+            <span data-print="domain-create" data-export="domainCreateDate">
+              <img src="./res/loader.gif" class="loader" />
+            </span>
+            <span id="web-archive" hidden
+              >(<span data-print="web-archive"></span> |
+              <span data-print="similar-web"></span>)</span
+            >
+          </div>
+          <b data-translation="domainExpiresDate"></b>
+          <span data-print="domain-expires" data-export="domainExpiresDate">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="domainAge"></b>
+          <span data-print="domain-age" data-export="domainAge">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="ipAddress"></b>
+          <span data-print="ip_address" data-export="ipAddress">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b>Canonical</b>
+          <span style="display: flex; align-items: center; gap: 4px">
+            <span data-print="canonical-link" data-export="Canonical">
+              <img src="./res/loader.gif" class="loader" />
+            </span>
+            <span class="status-indicator" id="canonical-status"></span>
+          </span>
+          <b>Meta Robots</b>
+          <span data-print="robots-tag" data-export="Meta Robots">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b>X-Robots-Tag</b>
+          <span data-print="x-robots-tag" data-export="X-Robots-Tag">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="isPageIndexing"></b>
+          <span data-print="is-page-indexing" data-export="isPageIndexing">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="counters"></b>
+          <div>
+            <span class="counter-detector" id="google-counter-detector"
+              >Google</span
+            >
+            |
+            <span
+              data-translation="yandex"
+              class="counter-detector"
+              id="yandex-counter-detector"
+            ></span>
+          </div>
+          <b data-translation="mapProfiles"></b>
+          <div>
+            <span data-print="google-maps-link"></span>
+            <span data-enable-only-for-russia>|</span>
+            <span
+              data-enable-only-for-russia
+              data-print="yandex-maps-link"
+            ></span>
+            <span data-disable-only-for-russia>|</span>
+            <span
+              data-disable-only-for-russia
+              data-print="bing-maps-link"
+            ></span>
+          </div>
+          <a data-tab="links" id="socials-link-to-links-tab" data-disabled
+            ><b data-translation="pageSocialLinks"></b
+          ></a>
+          <div class="summary-socials">
+            <a
+              class="social-link"
+              data-social-link="twitter"
+              data-export-attribute="href"
+            >
+              <img src="./res/icons/socials/twitterx.svg" class="social-icon" />
+            </a>
+            <a
+              class="social-link"
+              data-social-link="facebook"
+              data-export-attribute="href"
+            >
+              <img src="./res/icons/socials/facebook.svg" class="social-icon" />
+            </a>
+            <a
+              class="social-link"
+              data-social-link="linkedin"
+              data-export-attribute="href"
+            >
+              <img src="./res/icons/socials/linkedin.svg" class="social-icon" />
+            </a>
+            <a
+              class="social-link"
+              data-social-link="telegram"
+              data-export-attribute="href"
+            >
+              <img src="./res/icons/socials/telegram.svg" class="social-icon" />
+            </a>
+            <a
+              class="social-link"
+              data-social-link="youtube"
+              data-export-attribute="href"
+            >
+              <img src="./res/icons/socials/youtube.svg" class="social-icon" />
+            </a>
+            <a
+              class="social-link"
+              data-social-link="pinterest"
+              data-export-attribute="href"
+            >
+              <img
+                src="./res/icons/socials/pinterest.svg"
+                class="social-icon"
+              />
+            </a>
+            <a
+              class="social-link"
+              data-social-link="instagram"
+              data-export-attribute="href"
+            >
+              <img
+                src="./res/icons/socials/instagram.svg"
+                class="social-icon"
+              />
+            </a>
+            <a
+              class="social-link"
+              data-social-link="discord"
+              data-export-attribute="href"
+            >
+              <img src="./res/icons/socials/discord.svg" class="social-icon" />
+            </a>
+            <a
+              class="social-link"
+              data-social-link="vk"
+              data-export-attribute="href"
+            >
+              <img src="./res/icons/socials/vk.svg" class="social-icon" />
+            </a>
+          </div>
+          <b>Core Web Vitals</b>
+          <span data-print="web-vitals">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+        </div>
+        <div class="delimiter"></div>
+        <div class="summary-table">
+          <b data-translation="yandexSqi" data-enable-only-for-russia></b>
+          <span
+            data-print="yandex_sqi"
+            data-enable-only-for-russia
+            data-export="Yandex SQI"
+          >
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="indexY" data-enable-only-for-russia></b>
+          <span
+            data-print="index_y"
+            data-enable-only-for-russia
+            data-export="Yandex Index"
+          >
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="indexG"></b
+          ><span data-print="index_g" data-export="Google Index">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="indexYahoo"></b>
+          <span data-print="index_yahoo" data-export="Yahoo Index">
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="pageIndexY" data-enable-only-for-russia></b>
+          <span
+            data-print="page_index_y"
+            data-enable-only-for-russia
+            data-export="Is page index by Yandex"
+          >
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="pageIndexG"></b
+          ><span
+            data-print="page_index_g"
+            data-export="Is page index by Google"
+          >
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+          <b data-translation="pageIndexB" data-disable-only-for-russia></b>
+          <span
+            data-print="page_index_b"
+            data-disable-only-for-russia
+            data-export="Is page index by Bing"
+          >
+            <img src="./res/loader.gif" class="loader" />
+          </span>
+        </div>
+      </div>
+      <div class="source_tab" data-tab-content="titles">
+        <span hidden data-export=""></span>
+        <span hidden data-export="titles"></span>
+        <div class="headers__counters">
+          <div class="headers__counter" data-filter="H1">
+            <span class="headers__counter-level">H1</span>
+            <span
+              class="headers__counter-number"
+              data-print="h1-headers-counter"
+              data-export="H1"
+              >0</span
+            >
+          </div>
+          <div class="headers__counter" data-filter="H2">
+            <span class="headers__counter-level">H2</span>
+            <span
+              class="headers__counter-number"
+              data-print="h2-headers-counter"
+              data-export="H2"
+              >0</span
+            >
+          </div>
+          <div class="headers__counter" data-filter="H3">
+            <span class="headers__counter-level">H3</span>
+            <span
+              class="headers__counter-number"
+              data-print="h3-headers-counter"
+              data-export="H3"
+              >0</span
+            >
+          </div>
+          <div class="headers__counter" data-filter="H4">
+            <span class="headers__counter-level">H4</span>
+            <span
+              class="headers__counter-number"
+              data-print="h4-headers-counter"
+              data-export="H4"
+              >0</span
+            >
+          </div>
+          <div class="headers__counter" data-filter="H5">
+            <span class="headers__counter-level">H5</span>
+            <span
+              class="headers__counter-number"
+              data-print="h5-headers-counter"
+              data-export="H5"
+              >0</span
+            >
+          </div>
+          <div class="headers__counter" data-filter="H6">
+            <span class="headers__counter-level">H6</span>
+            <span
+              class="headers__counter-number"
+              data-print="h6-headers-counter"
+              data-export="H6"
+              >0</span
+            >
+          </div>
+          <div class="headers__counter headers__counter--selected" data-filter>
+            <span class="headers__counter-level">H1-H6</span>
+            <span
+              class="headers__counter-number"
+              data-print="all-headers-counter"
+              data-export="headers"
+              >0</span
+            >
+          </div>
+          <div class="headers__counter" data-filter="doubles">
+            <span
+              class="headers__counter-level"
+              data-translation="doubles"
+            ></span>
+            <span
+              class="headers__counter-number"
+              data-print="double-titles-counter"
+              data-export="Doubles"
+              >0</span
+            >
+          </div>
+          <div class="headers__toggle-highlight">
+            <button
+              class="button"
+              name="highlightHeaders"
+              style="margin-left: 16px"
+              data-translation="highlightHeaders"
+            ></button>
+          </div>
+        </div>
+        <div class="delimiter"></div>
+        <div class="headers_container"></div>
+      </div>
+      <div class="source_tab" data-tab-content="content">
+        <div class="content">
+          <div>
+            <div class="content__general">
+              <p>
+                <b data-translation="contentParameter"></b>
+                <span data-translation="contentValue" class="bold"></span>
+              </p>
+              <div>
+                <span class="left"
+                  ><b data-translation="totalTextLength"></b>
+                  <span data-help>
+                    <img
+                      class="question-icon"
+                      src="./res/icons/information.png"
+                    />
+                    <span class="help-window" style="width: 248px">
+                      <div data-translation="totalTextLengthHelp"></div>
+                      <br />
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--good"
+                        ></span>
+                        <span data-translation="good"></span>: 1500-35000
+                      </div>
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--warning"
+                        ></span>
+                        <span data-translation="normal"></span>: 500-1499 -
+                        35001-45000
+                      </div>
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--bad"
+                        ></span>
+                        <span data-translation="bad"></span>: 0-499 - 45000+
+                      </div>
+                    </span>
+                  </span>
+                </span>
+                <span>
+                  <span
+                    class="status-indicator status-indicator--small"
+                    id="text-length-indicator"
+                  ></span>
+                  <span
+                    data-print="total-text-length"
+                    data-export="totalTextLength"
+                  >
+                    <img src="./res/loader.gif" class="loader" />
+                  </span>
+                </span>
+              </div>
+              <div>
+                <span class="left"
+                  ><b data-translation="cleanTextLength"></b>
+                  <span data-help>
+                    <img
+                      class="question-icon"
+                      src="./res/icons/information.png"
+                    />
+                    <span class="help-window">
+                      <div data-translation="cleanTextLengthHelp"></div>
+                    </span>
+                  </span>
+                </span>
+                <span>
+                  <span
+                    data-print="clean-text-length"
+                    data-export="cleanTextLength"
+                  >
+                    <img src="./res/loader.gif" class="loader" />
+                  </span>
+                </span>
+              </div>
+              <div>
+                <span class="left"
+                  ><b data-translation="totalWordsCount"></b>
+                  <span data-help>
+                    <img
+                      class="question-icon"
+                      src="./res/icons/information.png"
+                    />
+                    <span class="help-window">
+                      <div data-translation="totalWordsCountHelp"></div>
+                    </span>
+                  </span>
+                </span>
+                <span>
+                  <span
+                    data-print="total-words-count"
+                    data-export="totalWordsCount"
+                  >
+                    <img src="./res/loader.gif" class="loader" />
+                  </span>
+                </span>
+              </div>
+              <div>
+                <span class="left"
+                  ><b data-translation="cleanWordsCount"></b>
+                  <span data-help>
+                    <img
+                      class="question-icon"
+                      src="./res/icons/information.png"
+                    />
+                    <span class="help-window">
+                      <div data-translation="cleanWordsCountHelp"></div>
+                    </span>
+                  </span>
+                </span>
+                <span>
+                  <span
+                    data-print="clean-words-count"
+                    data-export="cleanWordsCount"
+                  >
+                    <img src="./res/loader.gif" class="loader" />
+                  </span>
+                </span>
+              </div>
+              <div>
+                <span class="left"
+                  ><b data-translation="coreWordsCount"></b>
+                  <span data-help>
+                    <img
+                      class="question-icon"
+                      src="./res/icons/information.png"
+                    />
+                    <span class="help-window">
+                      <div data-translation="coreWordsCountHelp"></div>
+                    </span>
+                  </span>
+                </span>
+                <span>
+                  <span
+                    data-print="core-words-count"
+                    data-export="coreWordsCount"
+                  >
+                    <img src="./res/loader.gif" class="loader" />
+                  </span>
+                </span>
+              </div>
+              <div>
+                <span class="left">
+                  <b data-translation="waterPercent"></b>
+                  <span data-help>
+                    <img
+                      class="question-icon"
+                      src="./res/icons/information.png"
+                    />
+                    <span class="help-window" style="width: 220px">
+                      <div data-translation="waterPercentHelp"></div>
+                      <br />
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--good"
+                        ></span>
+                        <span data-translation="good"></span>: 0-15
+                      </div>
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--warning"
+                        ></span>
+                        <span data-translation="normal"></span>: 16-30
+                      </div>
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--bad"
+                        ></span>
+                        <span data-translation="bad"></span>: 30+
+                      </div>
+                    </span>
+                  </span>
+                </span>
+                <span>
+                  <span
+                    class="status-indicator status-indicator--small"
+                    id="water-percent-indicator"
+                  ></span>
+                  <span data-print="water-percent" data-export="waterPercent">
+                    <img src="./res/loader.gif" class="loader" />
+                  </span>
+                </span>
+              </div>
+              <div>
+                <span class="left">
+                  <b data-translation="nauseaPercent"></b>
+                  <span data-help>
+                    <img
+                      class="question-icon"
+                      src="./res/icons/information.png"
+                    />
+                    <span class="help-window">
+                      <div data-translation="nauseaPercentHelp"></div>
+                      <br />
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--good"
+                        ></span>
+                        <span data-translation="good"></span>: 5-15
+                      </div>
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--warning"
+                        ></span>
+                        <span data-translation="normal"></span>: 0-4 - 16-30
+                      </div>
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--bad"
+                        ></span>
+                        <span data-translation="bad"></span>: 30+
+                      </div>
+                    </span>
+                  </span>
+                </span>
+                <span>
+                  <span
+                    class="status-indicator status-indicator--small"
+                    id="nausea-index-indicator"
+                  ></span>
+                  <span data-print="nausea-index" data-export="nauseaPercent">
+                    <img src="./res/loader.gif" class="loader" />
+                  </span>
+                </span>
+              </div>
+              <div>
+                <span class="left">
+                  <b>Text/HTML</b>
+                  <span data-help>
+                    <img
+                      class="question-icon"
+                      src="./res/icons/information.png"
+                    />
+                    <span class="help-window">
+                      <div data-translation="plainTextPercentHelp"></div>
+                      <br />
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--good"
+                        ></span>
+                        <span data-translation="good"></span>: 51-100%
+                      </div>
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--warning"
+                        ></span>
+                        <span data-translation="normal"></span>: 11-50%
+                      </div>
+                      <div>
+                        <span
+                          class="status-indicator status-indicator--bad"
+                        ></span>
+                        <span data-translation="bad"></span>: 0-10%
+                      </div>
+                    </span>
+                  </span>
+                </span>
+                <span>
+                  <span
+                    class="status-indicator status-indicator--small"
+                    id="plain-text-index-indicator"
+                  ></span>
+                  <span data-print="plain-text-index" data-export="plainTextPercent">
+                    <img src="./res/loader.gif" class="loader" />
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div>
+              <!-- <h4 style="margin: 16px 0 4px; text-align: center;">ТОП-10 анкоров</h4> -->
+              <table class="content__top-anchors" style="margin: 16px 0 0">
+                <thead>
+                  <tr>
+                    <th data-translation="topAnchors"></th>
+                    <th class="right" data-translation="contentWordsCount"></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="content__words">
+            <div class="content__buttons">
+              <div class="content__words-buttons">
+                <button
+                  class="content__button content__button--selected"
+                  data-words-count="1"
+                  data-translation="oneGram"
+                ></button>
+                <button
+                  class="content__button"
+                  data-words-count="2"
+                  data-translation="twoGram"
+                ></button>
+                <button
+                  class="content__button"
+                  data-words-count="3"
+                  data-translation="threeGram"
+                ></button>
+              </div>
+              <input
+                type="text"
+                class="input"
+                id="content-words-filter"
+                data-translated-placeholder="search"
+              />
+              <button
+                class="export-data-button"
+                id="export-words-to-csv-button"
+              >
+                <img
+                  src="./res/icons/csv-export.svg"
+                  data-translated-title="exportToCSV"
+                />
+              </button>
+            </div>
+            <table border="0" id="content-words-list">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th data-translation="contentWord"></th>
+                  <th>
+                    <span data-translation="contentWordsCount"></span>
+                    <span data-help>
+                      <img
+                        class="question-icon"
+                        src="./res/icons/information.png"
+                      />
+                      <span class="help-window help-window--center">
+                        <div data-translation="contentWordsCountHelp"></div>
+                      </span>
+                    </span>
+                  </th>
+                  <th>
+                    <span data-translation="contentWordsRelevance"></span>
+                    <span data-help>
+                      <img
+                        class="question-icon"
+                        src="./res/icons/information.png"
+                      />
+                      <span class="help-window help-window--center">
+                        <div data-translation="contentWordsRelevanceHelp"></div>
+                      </span>
+                    </span>
+                  </th>
+                  <th>
+                    <span data-translation="contentWordsCorePercent"></span>
+                    <span data-help>
+                      <img
+                        class="question-icon"
+                        src="./res/icons/information.png"
+                      />
+                      <span class="help-window help-window--center">
+                        <div
+                          data-translation="contentWordsCorePercentHelp"
+                        ></div>
+                      </span>
+                    </span>
+                  </th>
+                  <th>
+                    <span data-translation="contentWordsPercent"></span>
+                    <span data-help>
+                      <img
+                        class="question-icon"
+                        src="./res/icons/information.png"
+                      />
+                      <span class="help-window help-window--left">
+                        <div data-translation="contentWordsPercentHelp"></div>
+                      </span>
+                    </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div class="content__pagination"></div>
+          </div>
+        </div>
+      </div>
+      <div class="source_tab" data-tab-content="images">
+        <span hidden data-export=""></span>
+        <span hidden data-export="images"></span>
+        <div class="images_counter_container">
+          <div class="item item--selected" data-images-filter="all">
+            <p data-translation="allLinks"></p>
+            <span data-print="images-all-count" data-export="imagesAll">0</span>
+          </div>
+          <div class="item" data-images-filter="alt">
+            <p data-translation="imagesWithoutAlt"></p>
+            <span data-print="images-without-alt" data-export="imagesWithoutAlt"
+              >0</span
+            >
+          </div>
+          <div class="item" data-images-filter="title">
+            <p data-translation="imagesWithoutTitle"></p>
+            <span
+              data-print="images-without-title"
+              data-export="imagesWithoutTitle"
+              >0</span
+            >
+          </div>
+          <div class="item" data-images-filter="404">
+            <p>4XX-5XX</p>
+            <span data-print="images-not-found" data-export="4XX-5XX">0</span>
+          </div>
+          <div class="item" data-images-filter="size">
+            <p>
+              <span
+                data-translation="imageWeight"
+                style="text-decoration: none"
+              ></span
+              >&darr;
+            </p>
+            <span data-print="images-size-all-count">0</span>
+          </div>
+          <div class="item">
+            <button
+              class="export-button-with-image"
+              id="export-images-to-csv-button"
+            >
+              <img src="./res/icons/csv-export.svg" />
+            </button>
+          </div>
+        </div>
+        <div class="images_total">
+          <div class="images-list"></div>
+        </div>
+      </div>
+      <div class="source_tab" data-tab-content="links">
+        <span hidden data-export=""></span>
+        <span hidden data-export="links"></span>
+        <div class="links_counter_container">
+          <div class="item">
+            <p data-translation="allLinks"></p>
+            <span data-print="links-all-counter" data-export="allLinks">0</span>
+          </div>
+          <div class="item">
+            <p data-translation="uniqueLinks"></p>
+            <span data-print="unique-links-counter" data-export="uniqueLinks"
+              >0</span
+            >
+          </div>
+          <div class="item">
+            <p data-translation="externalLinks"></p>
+            <span
+              data-print="external-links-counter"
+              data-export="externalLinks"
+              >0</span
+            >
+          </div>
+          <div class="item">
+            <p data-translation="internalLinks"></p>
+            <span
+              data-print="internal-links-counter"
+              data-export="internalLinks"
+              >0</span
+            >
+          </div>
+          <div class="item">
+            <button
+              class="export-button-with-image"
+              id="export-links-to-csv-button"
+            >
+              <img src="./res/icons/csv-export.svg" />
+            </button>
+          </div>
+        </div>
+        <div class="link-accordions">
+          <div class="accordion">
+            <div class="accordion__header">
+              <div>
+                <span data-translation="checkInternalLinks"></span>
+                (<span data-print="accordion-internal-links-count">0</span>)
+              </div>
+              <span class="accordion__arrow"
+                ><img src="./res/icons/arrow.png"
+              /></span>
+            </div>
+            <div class="accordion__body">
+              <div class="links-list" data-type="internal"></div>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion__header">
+              <div>
+                <span data-translation="checkExternalLinks"></span>
+                (<span data-print="accordion-external-links-count">0</span>)
+              </div>
+              <span class="accordion__arrow"
+                ><img src="./res/icons/arrow.png"
+              /></span>
+            </div>
+            <div class="accordion__body">
+              <div class="links-list" data-type="external"></div>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion__header">
+              <div>
+                <span data-translation="checkBrokenLinks"></span>
+                (<span data-print="accordion-broken-links-count">0</span>)
+              </div>
+              <span class="accordion__arrow"
+                ><img src="./res/icons/arrow.png"
+              /></span>
+            </div>
+            <div class="accordion__body">
+              <div class="links-list" data-type="broken"></div>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion__header">
+              <div>
+                <span data-translation="checkRedirectLinks"></span>
+                (<span data-print="accordion-redirect-links-count">0</span>)
+              </div>
+              <span class="accordion__arrow"
+                ><img src="./res/icons/arrow.png"
+              /></span>
+            </div>
+            <div class="accordion__body">
+              <div class="links-list" data-type="redirect"></div>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion__header">
+              <div>
+                <span data-translation="socialLinks"></span>
+                (<span data-print="accordion-social-links-count">0</span>)
+              </div>
+              <span class="accordion__arrow"
+                ><img src="./res/icons/arrow.png"
+              /></span>
+            </div>
+            <div class="accordion__body">
+              <div class="links-list" data-type="social"></div>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion__header">
+              <div>
+                <span>JS</span>
+                (<span data-print="accordion-js-links-count">0</span>)
+              </div>
+              <span class="accordion__arrow"
+                ><img src="./res/icons/arrow.png"
+              /></span>
+            </div>
+            <div class="accordion__body">
+              <div class="links-list" data-type="js"></div>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion__header">
+              <div>
+                <span>CSS</span>
+                (<span data-print="accordion-css-links-count">0</span>)
+              </div>
+              <span class="accordion__arrow"
+                ><img src="./res/icons/arrow.png"
+              /></span>
+            </div>
+            <div class="accordion__body">
+              <div class="links-list" data-type="css"></div>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion__header">
+              <div>
+                <span>Word, Excel, PDF</span>
+                (<span data-print="accordion-word-links-count">0</span>)
+              </div>
+              <span class="accordion__arrow"
+                ><img src="./res/icons/arrow.png"
+              /></span>
+            </div>
+            <div class="accordion__body">
+              <div class="links-list" data-type="word"></div>
+            </div>
+          </div>
+          <div class="accordion">
+            <div class="accordion__header">
+              <div>
+                <span data-translation="checkOtherLinks"></span>
+                (<span data-print="accordion-other-links-count">0</span>)
+              </div>
+              <span class="accordion__arrow"
+                ><img src="./res/icons/arrow.png"
+              /></span>
+            </div>
+            <div class="accordion__body">
+              <div class="links-list" data-type="other"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="source_tab status-tab" data-tab-content="status">
+        <span hidden data-export=""></span>
+        <span hidden data-export="statusHeader"></span>
+        <div class="status-tab__header">
+          <img src="./res/icons/check.png" class="status-tab__icon" />
+          <div class="status-tab__info">
+            <span data-print="status-href">
+              <img src="./res/loader.gif" class="loader" />
+            </span>
+            <span data-print="status-code">
+              <img src="./res/loader.gif" class="loader" />
+            </span>
+          </div>
+        </div>
+        <table class="status-tab-table">
+          <thead>
+            <tr>
+              <th data-translation="contentParameter"></th>
+              <th data-translation="contentValue"></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="source_tab" data-tab-content="tools">
+        <div id="tools-container"></div>
+      </div>
+      <div class="source_tab og-tab" data-tab-content="og">
+        <span hidden data-export=""></span>
+        <span hidden data-export="ogTab"></span>
+        <div class="og-tabs">
+          <a
+            href="#"
+            class="og-tab-link og-tab-link--active"
+            data-translation="allTabs"
+            data-micro-markup-open
+          ></a>
+          <a href="#" class="og-tab-link" data-micro-markup-open="schema"
+            >Schema</a
+          >
+          <a href="#" class="og-tab-link" data-micro-markup-open="og"
+            >Open Graph</a
+          >
+          <a href="#" class="og-tab-link" data-micro-markup-open="twitter"
+            >Twitter</a
+          >
+        </div>
+        <div data-micro-markup="schema">
+          <h2 class="og-header">Schema</h2>
+          <div class="schema-container"></div>
+        </div>
+        <div data-micro-markup="og">
+          <h2 class="og-header">Open Graph</h2>
+          <table class="og-table">
+            <thead>
+              <tr>
+                <th data-translation="contentParameter"></th>
+                <th data-translation="contentValue"></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div data-micro-markup="twitter">
+          <h2 class="og-header">Twitter</h2>
+          <table class="og-table">
+            <thead>
+              <tr>
+                <th data-translation="contentParameter"></th>
+                <th data-translation="contentValue"></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="source_tab sitemap-tab" data-tab-content="sitemap">
+        <div class="sitemap-tab__header">
+          <div
+            style="
+              min-width: 200px;
+              display: flex;
+              gap: 8px;
+              align-items: center;
+            "
+          >
+            <button
+              class="button"
+              data-translation="parseSitemap"
+              id="parse-sitemap-button"
+              disabled
+            ></button>
+            <img
+              src="./res/loader.gif"
+              class="loader"
+              id="sitemap-clusterize-loader"
+              hidden
+            />
+            <button
+              class="button"
+              data-translation="getStatusCodes"
+              id="get-urls-status-button"
+              disabled
+            ></button>
+          </div>
+          <div>
+            <span data-translation="totalSitemapUrls"></span>:
+            <span data-print="total-sitemaps-urls">0</span>
+          </div>
+
+          <div class="tab-head-buttons-group">
+            <button
+                class="export-data-button"
+                id="export-sitemap-button"
+                disabled
+            >
+              <img
+                  src="./res/icons/csv-export.svg"
+                  data-translated-title="exportToCSV"
+              />
+            </button>
+
+            <button
+              class="js-help-link tab-header-button"
+              data-to-key="helpUrlClusterization"
+              title="Info"
+            >
+              <img
+                src="./res/icons/information.png"
+              />
+            </button>
+          </div>
+        </div>
+        <div style="height: 16px"></div>
+        <div class="progress-bar" id="get-urls-status-progress">
+          <div class="progress-bar__progress"></div>
+        </div>
+        <table id="sitemap-segments-table" hidden>
+          <thead>
+            <tr>
+              <th data-translation="pathSegments"></th>
+              <th data-translation="totalURLs"></th>
+              <th>%</th>
+              <th data-translation="dateFrom"></th>
+              <th data-translation="dateTo"></th>
+              <th style="width: 110px"></th>
+            </tr>
+          </thead>
+          <tbody class="sitemap-tbody"></tbody>
+        </table>
+      </div>
+      <div class="source_tab pageDepth-tab" data-tab-content="pageDepth">
+        <div class="pageDepth-tab__header">
+          <div
+            style="
+              min-width: 200px;
+              display: flex;
+              gap: 8px;
+              align-items: center;
+            "
+          >
+            <button
+              class="button import-button"
+              id="import-sitemap-button"
+              data-translated-title="importSitemap"
+              disabled
+            >
+              <img class="tab-icon" src="./res/icons/import-sitemap.svg" />
+              <span data-translation="sitemap"></span>
+            </button>
+            <img
+              src="./res/loader.gif"
+              class="loader"
+              id="pageDepth-loader"
+              hidden
+            />
+            <button
+              class="button"
+              data-translation="pageDepthCalculate"
+              id="calculate-pageDepth-button"
+              disabled
+            ></button>
+            <button
+              class="button"
+              data-translated-title="vizualizePageDepth"
+              id="vizualize-pageDepth-button"
+              style="display: flex"
+              disabled
+            >
+              <img class="tab-icon" src="./res/icons/tab-pageDepth.svg" />
+            </button>
+          </div>
+          <div class="pageDepth-text-total-url">
+            <span data-translation="totalSitemapUrls"></span>:
+            <span class="total-pageDepth-urls-count">0</span>
+          </div>
+          <div class="pageDepth-text-percent">
+            <span data-translation="totalPagedDepthUrls"></span>:
+            <span data-print="total-pageDepth-urls-crawled">0</span>
+            <!-- /
+            <span data-print="total-pageDepth-urls-crawled-all">0</span> -->
+          </div>
+          <div class="tab-head-buttons-group">
+            <button
+              class="js-help-link tab-header-button"
+              data-to-key="helpUrlVisualization"
+              title="Info"
+            >
+            <img
+              src="./res/icons/information.png"
+            />
+            </button>
+          </div>
+        </div>
+        <div style="height: 16px"></div>
+        <div class="progress-bar" id="pageDepth-crawl-progress">
+          <div class="progress-bar__progress"></div>
+        </div>
+        <table id="pageDepth-segments-table" hidden>
+          <thead>
+            <tr>
+              <th data-translation="pageDepthUrl"></th>
+              <th data-translation="pageDepthStatus"></th>
+              <th data-translation="pageDepthLinks"></th>
+              <th data-translation="pageDepthLevel"></th>
+            </tr>
+          </thead>
+          <tbody class="pageDepth-tbody"></tbody>
+        </table>
+      </div>
+      <div class="source_tab pageRank-tab" data-tab-content="pageRank">
+        <div class="pageRank-tab__header">
+          <div
+            style="
+              min-width: 200px;
+              display: flex;
+              gap: 8px;
+              align-items: center;
+            "
+          >
+            <button
+              class="button import-button"
+              id="import-sitemap-pageRank-button"
+              data-translated-title="importSitemap"
+              disabled
+            >
+              <img class="tab-icon" src="./res/icons/import-sitemap.svg" />
+              <span data-translation="sitemap"></span>
+            </button>
+            <img
+              src="./res/loader.gif"
+              class="loader"
+              id="pageRank-loader"
+              hidden
+            />
+            <button
+              class="button"
+              data-translation="pageRankCalculate"
+              id="calculate-pageRank-button"
+              disabled
+            ></button>
+          </div>
+          <div class="pageRank-text-total-url">
+            <span data-translation="totalSitemapUrls"></span>:
+            <span class="total-pageRank-urls-count">0</span>
+          </div>
+          <div class="pageRank-text-total-url-links">
+            <span data-translation="totalPageRankLinks"></span>:
+            <span data-print="total-pageRank-links-crawled">0</span>
+            <span>/</span>
+            <span data-print="total-pageRank-links-crawled-all">0</span>
+          </div>
+          <div class="pageRank-text-total-url-iterations">
+            <span data-translation="totalPageRankIterations"></span>:
+            <span data-print="total-pageRank-iterated">0</span><span>/15</span>
+          </div>
+          <div class="tab-head-buttons-group">
+            <button
+              class="export-data-button"
+              id="export-pageRank-button"
+              disabled
+            >
+              <img
+                src="./res/icons/csv-export.svg"
+                data-translated-title="exportToCSV"
+              />
+            </button>
+
+            <button
+              class="js-help-link tab-header-button"
+              data-to-key="helpUrlPageRank"
+              title="Info"
+            >
+              <img
+                src="./res/icons/information.png"
+              />
+            </button>
+          </div>
+        </div>
+        <div style="height: 16px"></div>
+        <div class="progress-bar" id="pageRank-crawl-progress">
+          <div class="progress-bar__progress"></div>
+        </div>
+        <table id="pageRank-segments-table" hidden>
+          <thead>
+            <tr>
+              <th data-translation="pageRankUrl"></th>
+              <th data-translation="pageRankStatus"></th>
+              <th data-translation="pageRankLinks"></th>
+              <th
+                id="sort-column-by-pageRank"
+                data-translation="pageRankLevel"
+              ></th>
+            </tr>
+          </thead>
+          <tbody class="pageRank-tbody"></tbody>
+        </table>
+      </div>
+      <div class="source_tab analyze-tab photos" data-tab-content="photos">
+        <div>
+          <h2 class="tab-header" style="margin-bottom: 12px">
+            <span data-translation="photos"></span> «<span
+              data-print="photos-search-engine"
+            ></span
+            >»
+          </h2>
+        </div>
+        <div class="photos__search-selector">
+          <div class="form_radio photos__search-selector">
+            <input
+              type="radio"
+              name="photos-search"
+              value="google"
+              id="radio-google"
+              checked
+            />
+            <label for="radio-google">Google</label>
+          </div>
+          <div class="form_radio photos__search-selector">
+            <input
+              type="radio"
+              name="photos-search"
+              value="bing"
+              id="radio-bing"
+            />
+            <label for="radio-bing">Bing</label>
+          </div>
+          <div class="form_radio photos__search-selector">
+            <input
+              type="radio"
+              name="photos-search"
+              value="yandex"
+              id="radio-yandex"
+            />
+            <label for="radio-yandex" data-translation="yandex"></label>
+          </div>
+        </div>
+        <form class="photos__search" action="#">
+          <input
+            type="text"
+            class="input"
+            data-translated-placeholder="searchQuery"
+            id="photos-search-query-input"
+          />
+          <button
+            class="button"
+            id="search-photos"
+            data-translation="showAll"
+            type="submit"
+          ></button>
+          <button
+            class="button"
+            id="analyze-photos"
+            data-translation="contentAnalyze"
+            type="button"
+            disabled
+          ></button>
+        </form>
+        <table class="fancy-table" id="photos-results">
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="source_tab analyze-tab" data-tab-content="analyze">
+        <div>
+          <h2 class="tab-header tab-header-analyze">
+            <span data-translation="analyze"></span>:
+            <span data-print="quality-percent"></span>
+            <span
+              id="export_to_png"
+              data-translation="analyzeToPng"
+              class="export-to-png"
+            ></span>
+          </h2>
+        </div>
+        <div class="analyze-dashboard">
+          <div class="speedometer" id="site-quality-speedometer">
+            <img src="./res/speedometer.png" class="speedometer__background" />
+            <img src="./res/arrow.png" class="speedometer__arrow" />
+          </div>
+          <div id="dashboard-pie"></div>
+          <div class="dashboard-info">
+            <div>
+              <span data-translation="testCritically"></span>:
+              <span data-print="quality-bad-scores"></span>
+            </div>
+            <div>
+              <span class="status-indicator status-indicator--bad"></span>
+              <span data-translation="criticallyBad"></span>:
+              <span data-print="bad-tests-count"></span>
+            </div>
+            <div>
+              <span class="status-indicator status-indicator--warning"></span>
+              <span data-translation="criticallyWarning"></span>:
+              <span data-print="warning-tests-count"></span>
+            </div>
+            <div>
+              <span class="status-indicator status-indicator--not-good"></span>
+              <span data-translation="criticallyNotGood"></span>:
+              <span data-print="not-good-tests-count"></span>
+            </div>
+            <div>
+              <span class="status-indicator status-indicator--good"></span>
+              <span data-translation="criticallyGood"></span>:
+              <span data-print="good-tests-count"></span>
+            </div>
+          </div>
+        </div>
+        <div class="progress-bar" id="quality-tests-progress">
+          <div class="progress-bar__progress" style="width: 0%"></div>
+        </div>
+        <table class="analyze-tests-container fancy-table">
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="source_tab settings-tab" data-tab-content="settings">
+        <h2 class="settings-tab__title" data-translation="settings"></h2>
+        <!--div class="delimiter"></div-->
+        <select name="language" class="settings-tab__select">
+          <option value="en" data-translation="lngEn">English</option>
+          <option value="es" data-translation="lngEs">Español</option>
+          <option value="ru" data-translation="lngRu">Русский</option>
+          <option value="uk" data-translation="lngUk">Український</option>
+        </select>
+        <div style="height: 1rem"></div>
+        <label class="control control-checkbox">
+          <span data-translation="nofollowSetting"></span>
+          <input type="checkbox" name="highlightNoFollow" />
+          <div class="control_indicator"></div>
+        </label>
+        <label class="control control-checkbox">
+          <span data-translation="sponsoredSetting"></span>
+          <input type="checkbox" name="highlightSponsored" />
+          <div class="control_indicator"></div>
+        </label>
+        <label class="control control-checkbox">
+          <span data-translation="ugcSetting"></span>
+          <input type="checkbox" name="highlightUGC" />
+          <div class="control_indicator"></div>
+        </label>
+        <label class="control control-checkbox">
+          <span data-translation="noindexSetting"></span>
+          <input type="checkbox" name="highlightNoindex" />
+          <div class="control_indicator"></div>
+        </label>
+        <label class="control control-checkbox">
+          <span data-translation="highlightBrokenLinks"></span>
+          <input type="checkbox" name="highlightBrokenLinks" />
+          <div class="control_indicator"></div>
+        </label>
+        <div style="height: 1rem"></div>
+        <label class="control control-checkbox">
+          <span data-translation="disableCssSetting"></span>
+          <input type="checkbox" name="disableCSS" />
+          <div class="control_indicator"></div>
+        </label>
+        <label class="control control-checkbox">
+          <span data-translation="disableJsSetting"></span>
+          <input type="checkbox" name="disableJS" />
+          <div class="control_indicator"></div>
+        </label>
+        <select
+          id="custom-user-agent"
+          name="custom-user-agent"
+          class="settings-tab__select"
+        ></select>
+        <div class="settings-tab__hint">
+          User-Agent:
+          <span id="current-user-agent"></span>
+        </div>
+      </div>
+    </section>
+    <footer style="width: 100%" class="footer-rate-us">
+      <div class="left">
+        <span data-print="rate-us-link"></span>
+        <svg
+          width="13"
+          height="13"
+          viewBox="0 0 13 13"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.31818 9.38494L2.55966 12.0994L4.04119 7.68466L0.272727 4.96023H4.88636L6.31818 0.545454L7.75 4.96023H12.3636L8.59517 7.68466L10.0767 12.0994L6.31818 9.38494Z"
+            fill="#EFC529"
+          />
+        </svg>
+      </div>
+      <div style="height: 16px">
+        <a
+          href="https://t.me/siteanalyzer"
+          target="_blank"
+          class="telegram-link"
+          data-enable-only-for-russia
+        >
+          <img src="./res/icons/telegram-icon.png" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/andrey-simagin/"
+          target="_blank"
+          class="telegram-link"
+          data-disable-only-for-russia
+        >
+          <img src="./res/icons/link_linkedin_sm.png" />
+        </a>
+      </div>
+      <div class="right">
+        <img src="./res/icons/logo-16.png" />
+        <span data-print="website-link"></span>
+      </div>
+    </footer>
+    <div class="overlay">
+      <div class="overlay__background"></div>
+      <div class="overlay__content">
+        <div class="modal-window">
+          <button class="modal-window__close">
+            <img src="./res/icons/close.svg" class="modal-window__close-icon" />
+          </button>
+          <div class="modal-window__header"></div>
+          <div class="modal-window__content"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="update-window">
+      <div>
+        <span data-translation="extensionUpdated"></span>:
+        <b data-print="updated-version"></b>
+      </div>
+      <a href="#" target="_blank" id="link-to-changelog">
+        <span data-translation="goToChangelog"></span>
+        <span data-print="updated-version-link"></span>
+        &gt;&gt;
+      </a>
+    </div> -->
+
+    <template id="tools-block">
+      <h3 class="tools-block__title"></h3>
+      <div class="tools-block__links-container"></div>
+    </template>
+
+    <template id="links-item">
+      <a target="_blank" href="#" class="link-item__href"></a>
+      <div class="link-item__info">
+        <span data-translation="linkStatus"></span>:
+        <span class="link-item__status">
+          <img src="./res/loader.gif" class="loader" />
+        </span>
+        <span class="link-item__anchor-wrapper"
+          >| <span data-translation="anchor"></span>:
+          <span class="link-item__anchor"></span
+        ></span>
+      </div>
+    </template>
+
+    <template id="content-word-stats">
+      <td class="content__word-index"></td>
+      <td class="content__word"></td>
+      <td class="content__word-matches"></td>
+      <td class="content__word-relevance"></td>
+      <td class="content__word-core-percent"></td>
+      <td class="content__word-percent"></td>
+    </template>
+
+    <template id="photo-word-stats">
+      <td class="photos__word-index"></td>
+      <td class="photos__word"></td>
+      <td class="photos__word-matches"></td>
+    </template>
+
+    <template id="content-pagination">
+      <a href="#" class="pagination__link pagination__back">«</a>
+      <a href="#" class="pagination__link pagination__first-page">1</a>
+      <span class="pagination__ellipsis pagination__first-ellipsis">…</span>
+      <div class="pagination__pages"></div>
+      <span class="pagination__ellipsis pagination__last-ellipsis">…</span>
+      <a href="#" class="pagination__link pagination__last-page"></a>
+      <a href="#" class="pagination__link pagination__forward">»</a>
+    </template>
+
+    <template id="schema-accordion">
+      <div class="accordion schema-accordion">
+        <div class="accordion__header">
+          <div class="accordion__title"></div>
+          <span class="accordion__arrow"
+            ><img src="./res/icons/arrow.png"
+          /></span>
+        </div>
+        <div class="accordion__body">
+          <div class="accordion__content schema-accordion__content"></div>
+        </div>
+      </div>
+    </template>
+
+    <template id="photos-window">
+      <div class="photos__words">
+        <div class="photos__buttons">
+          <div class="photos__words-buttons">
+            <button
+              class="photos__button photos__button--selected"
+              data-words-count="1"
+              data-translation="oneGram"
+            ></button>
+            <button
+              class="photos__button"
+              data-words-count="2"
+              data-translation="twoGram"
+            ></button>
+            <button
+              class="photos__button"
+              data-words-count="3"
+              data-translation="threeGram"
+            ></button>
+          </div>
+          <input
+            type="text"
+            class="input"
+            id="photos-words-filter"
+            data-translated-placeholder="search"
+          />
+          <button class="export-data-button" id="export-photos-words-to-csv">
+            <img
+              src="./res/icons/csv-export.svg"
+              data-translated-title="exportToCSV"
+            />
+          </button>
+        </div>
+        <table border="0" class="photos__words-list">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th data-translation="contentWord"></th>
+              <th>
+                <span data-translation="contentWordsCount"></span>
+                <span data-help>
+                  <img
+                    class="question-icon"
+                    src="./res/icons/information.png"
+                  />
+                  <span class="help-window help-window--left">
+                    <div data-translation="contentWordsCountHelp"></div>
+                  </span>
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="photos__pagination"></div>
+      </div>
+    </template>
+  </body>
+</html>

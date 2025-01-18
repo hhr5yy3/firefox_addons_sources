@@ -1,0 +1,1 @@
+import"./chunk-1ebdbb1b.js";/* empty css              */import{a as t,C as s}from"./chunk-70aa1672.js";const e=document.getElementById("accept"),n=document.getElementById("refuse");e==null||e.addEventListener("click",async()=>{t.runtime.sendMessage({action:s}),window.close()});n==null||n.addEventListener("click",()=>{t.management.uninstallSelf()});

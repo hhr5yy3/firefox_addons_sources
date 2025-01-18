@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link rel="stylesheet" href="css/materialize.min.css" />
+    <link rel="stylesheet" href="css/popup.css" />
+    <title></title>
+    <style>
+      .column {
+        float: left;
+        width: 33.33%;
+      }
+      /* Clear floats after the columns */
+
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="nav-extended">
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a class="active" href="#overview">Overview</a></li>
+          <li class="tab"><a href="#headings">Headings</a></li>
+          <li class="tab">
+            <a href="#status"
+              >Status <span id="status-header-status">&#9679;</span></a
+            >
+          </li>
+          <li class="tab"><a href="#links">Links</a></li>
+          <li class="tab"><a href="#images">Images</a></li>
+          <li class="tab"><a href="#schema">Schema</a></li>
+          <li class="tab"><a href="#social">Social</a></li>
+          <li class="tab"><a href="#quicklinks">Resources</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- OVERVIEW -->
+
+    <div id="overview" class="main-tab-content col s12">
+      <div class="content">
+        <div class="row">
+          <div class="col s3">
+            <b>TITLE</b>
+            <div class="tooltip">
+              <img src="images/ic_help.svg" />
+              <span class="tooltiptext tooltip-right"
+                >The Title Tag is found in the &lt;head&gt; section of a page
+                and specifies its title. It also serves as a clickable link on
+                the search engine results page and as a name shown in the
+                browser tab.</span
+              >
+            </div>
+            <br />
+            <span><label class="count-title"></label></span>
+          </div>
+
+          <div class="col s9 content-title"></div>
+        </div>
+
+        <div class="row">
+          <div class="col s3">
+            <b>DESCRIPTION</b>
+            <div class="tooltip">
+              <img src="images/ic_help.svg" />
+              <span class="tooltiptext tooltip-right"
+                >The Meta Description Tag is found in the &lt;head&gt; section
+                of a page and specifies its description. It serves as a page
+                description on the search engine results page (but can often be
+                re-written by Google).</span
+              >
+            </div>
+            <br />
+            <span><label class="count-description"></label></span>
+          </div>
+
+          <div class="col s9 content-description"></div>
+        </div>
+
+        <div class="row">
+          <div class="col s3">
+            <b>URL</b>
+            <div class="tooltip">
+              <img src="images/ic_help.svg" />
+              <span class="tooltiptext tooltip-right"
+                >This is the URL of the page you are researching right now. A
+                URL is a unique web address of a page.</span
+              >
+            </div>
+          </div>
+
+          <div class="col s9">
+            <a target="_blank" class="content-url"></a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s3">
+            <b>CANONICAL</b>
+            <div class="tooltip">
+              <img src="images/ic_help.svg" />
+              <span class="tooltiptext tooltip-right">
+                <p>
+                  The Canonical Tag is found in the &lt;head&gt; section of a
+                  page. The Canonical Tag tells search engines which URL should
+                  be seen as the master URL. It helps to avoid content
+                  duplication.
+                </p>
+                <p class="right-align">
+                  <a
+                    href="https://marketingsyrup.com/why-rel-canonical-doesnt-work/#What_is_rel=canonical"
+                    target="_blank"
+                    >Read more</a
+                  >
+                </p>
+              </span>
+            </div>
+          </div>
+
+          <div class="col s9">
+            <div style="display: flex">
+              <div class="badge canonical-badge"></div>
+              <a target="_blank" class="content-canonical"></a>
+              <div class="content-canonical-na"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s3">
+            <b>META ROBOTS</b>
+            <div class="tooltip">
+              <img src="images/ic_help.svg" />
+              <span class="tooltiptext tooltip-right"
+                >The Meta Robots tag gives search engine bots instructions on
+                indexing your page. ‘Index, follow’ is a default state.</span
+              >
+            </div>
+          </div>
+
+          <div class="col s9">
+            <div style="display: flex">
+              <div class="badge metarobots-badge"></div>
+              <div class="content-meta_robots"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s3">
+            <b>WEB VITALS</b>
+            <div class="tooltip">
+              <img src="images/ic_help.svg" />
+              <span class="tooltiptext tooltip-right">
+                <p>
+                  Core Web Vitals are part of the page user experience metrics
+                  used by Google in its ranking signals. Don’t see any data?
+                  Click “Read more” to know how SEO Pro extension displays Core
+                  Web Vitals info.
+                </p>
+                <p class="right-align">
+                  <a
+                    href="https://marketingsyrup.com/seo-pro-extension/#faq"
+                    target="_blank"
+                    >Read more</a
+                  >
+                </p>
+              </span>
+            </div>
+          </div>
+
+          <div class="col s9">
+            <div class="row" style="margin-left: 2px; margin-bottom: 0px">
+              <div class="column" id="lcpDataExtension">Loading...</div>
+              <div class="column" id="inpDataExtension"></div>
+              <div class="column" id="clsDataExtension"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s3">
+            <b>WORD COUNT</b>
+            <div class="tooltip">
+              <img src="images/ic_help.svg" />
+              <span class="tooltiptext tooltip-right"
+                >Word count shows the number of words on the page.</span
+              >
+            </div>
+          </div>
+
+          <div class="col s5 content-word_count"></div>
+
+          <div class="col s4">
+            <button
+              id="export_page_copy"
+              class="btn t"
+              style="position: relative; bottom: 6px"
+            >
+              EXPORT PAGE COPY
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary">
+        <div></div>
+        <div>
+          <b class="header-h1">H1</b><br /><span class="count-h1"></span>
+        </div>
+        <div>
+          <b class="header-h2">H2</b><br /><span class="count-h2"></span>
+        </div>
+        <div>
+          <b class="header-h3">H3</b><br /><span class="count-h3"></span>
+        </div>
+        <div>
+          <b class="header-h4">H4</b><br /><span class="count-h4"></span>
+        </div>
+        <div>
+          <b class="header-h5">H5</b><br /><span class="count-h5"></span>
+        </div>
+        <div>
+          <b class="header-h6">H6</b><br /><span class="count-h6"></span>
+        </div>
+        <div></div>
+        <div></div>
+        <div><b>LINKS</b><br /><span class="count-links"></span></div>
+        <div><b>IMAGES</b><br /><span class="count-images"></span></div>
+        <div></div>
+      </div>
+
+      <div class="footer">
+        <div class="row">
+          <div class="col s6" style="margin-top: 6px">
+            <a target="_blank" class="url-sitemap">Sitemap</a>
+            <div class="tooltip">
+              <img src="images/ic_help.svg" />
+              <span class="tooltiptext"
+                >The XML Sitemap is a file listing all indexable pages on the
+                website.</span
+              >
+            </div>
+            <a target="_blank" class="url-robots">Robots.txt</a>
+            <div class="tooltip">
+              <img src="images/ic_help.svg" />
+              <span class="tooltiptext"
+                >The Robots.txt file gives search engine bots instructions on
+                how to crawl the website.</span
+              >
+            </div>
+          </div>
+
+          <div class="col s6 right-align">
+            SEO Pro Extension by&nbsp;
+            <a
+              href="https://marketingsyrup.com/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+              target="_blank"
+              ><img src="images/marketingsyrup_logo.png"
+            /></a>
+          </div>
+        </div>
+
+        <div class="footer-link">
+          <a
+            href="https://techseo.pro/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+            target="_blank">
+            Become an Advanced Technical SEO Professional with Tech SEO Pro course >>></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- HEADINGS -->
+
+    <div id="headings" class="main-tab-content col s12">
+      <div class="summary">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div>
+          <b class="header-h1">H1</b><br /><span class="count-h1"></span>
+        </div>
+        <div>
+          <b class="header-h2">H2</b><br /><span class="count-h2"></span>
+        </div>
+        <div>
+          <b class="header-h3">H3</b><br /><span class="count-h3"></span>
+        </div>
+        <div>
+          <b class="header-h4">H4</b><br /><span class="count-h4"></span>
+        </div>
+        <div>
+          <b class="header-h5">H5</b><br /><span class="count-h5"></span>
+        </div>
+        <div>
+          <b class="header-h6">H6</b><br /><span class="count-h6"></span>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="content"></div>
+
+      <div class="footer">
+        <div class="row">
+          <div class="col s6">
+            <button id="export_headings" class="btn export-headings bg-orange">
+              EXPORT HEADINGS
+            </button>
+          </div>
+
+          <div class="col s6 right-align">
+            SEO Pro Extension by&nbsp;
+            <a
+              href="https://marketingsyrup.com/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+              target="_blank"
+              ><img src="images/marketingsyrup_logo.png"
+            /></a>
+          </div>
+        </div>
+
+        <div class="footer-link">
+          <a
+            href="https://techseo.pro/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+            target="_blank">
+            Become an Advanced Technical SEO Professional with Tech SEO Pro course >>></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- STATUS -->
+
+    <div id="status" class="main-tab-content col s12">
+      <div class="list-status"></div>
+
+      <div class="footer">
+        <div class="row valign-wrapper">
+          <div class="col s6"></div>
+
+          <div class="col s6 right-align">
+            SEO Pro Extension by&nbsp;
+            <a
+              href="https://marketingsyrup.com/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+              target="_blank"
+              ><img src="images/marketingsyrup_logo.png"
+            /></a>
+          </div>
+        </div>
+
+        <div class="footer-link">
+          <a
+            href="https://techseo.pro/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+            target="_blank">
+            Become an Advanced Technical SEO Professional with Tech SEO Pro course >>></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- LINKS -->
+
+    <div id="links" class="main-tab-content col s12">
+      <div class="summary">
+        <div></div>
+        <div><b>TOTAL</b><br /><span class="count-total_links"></span></div>
+        <div><b>UNIQUE</b><br /><span class="count-unique_links"></span></div>
+        <div>
+          <b>INTERNAL</b><br /><span class="count-internal_links"></span>
+        </div>
+        <div>
+          <b>EXTERNAL</b><br /><span class="count-external_links"></span>
+        </div>
+        <div>
+          <button id="highlight_nofollow_links" class="btn t">
+            HIGHLIGHT NOFOLLOW LINKS
+          </button>
+        </div>
+      </div>
+
+      <div class="list-links">
+        <div class="tabbing">
+          <h3>Internal links</h3>
+          <div class="textTabbing internal-links"></div>
+
+          <br />
+
+          <h3>External links</h3>
+          <div class="textTabbing external-links"></div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="row valign-wrapper">
+          <div class="col s6">
+            <button id="export_internal_links" class="btn">
+              EXPORT INTERNAL LINKS
+            </button>
+            <button
+              id="export_all_links"
+              class="btn t"
+              style="position: fixed; left: 200px"
+            >
+              EXPORT ALL LINKS
+            </button>
+          </div>
+
+          <div class="col s6 right-align">
+            SEO Pro Extension by&nbsp;
+            <a
+              href="https://marketingsyrup.com/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+              target="_blank"
+              ><img src="images/marketingsyrup_logo.png"
+            /></a>
+          </div>
+        </div>
+
+        <div class="footer-link">
+          <a
+            href="https://techseo.pro/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+            target="_blank">
+            Become an Advanced Technical SEO Professional with Tech SEO Pro course >>></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGES -->
+
+    <div id="images" class="main-tab-content col s12">
+      <div class="summary">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div><b>TOTAL</b><br /><span class="count-total_images"></span></div>
+        <div>
+          <b>WITH ALT</b><br /><span class="count-with_alt_images"></span>
+        </div>
+        <div>
+          <b>WITHOUT ALT</b><br /><span class="count-without_alt_images"></span>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <div class="list-images">
+        <div class="tabbing">
+          <h3 class="no-collapse">Images</h3>
+          <div class="textTabbing" style="display: block"></div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="row valign-wrapper">
+          <div class="col s6">
+            <button id="export_images" class="btn">EXPORT IMAGES</button>
+          </div>
+          <div class="col s6 right-align">
+            SEO Pro Extension by&nbsp;
+            <a
+              href="https://marketingsyrup.com/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+              target="_blank"
+              ><img src="images/marketingsyrup_logo.png"
+            /></a>
+          </div>
+        </div>
+
+        <div class="footer-link">
+          <a
+            href="https://techseo.pro/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+            target="_blank">
+            Become an Advanced Technical SEO Professional with Tech SEO Pro course >>></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHEMA -->
+
+    <div id="schema" class="main-tab-content col s12">
+      <div class="tabbing"></div>
+
+      <div class="footer">
+        <div class="row valign-wrapper">
+          <div class="col s6"></div>
+
+          <div class="col s6 right-align">
+            SEO Pro Extension by&nbsp;
+            <a
+              href="https://marketingsyrup.com/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+              target="_blank"
+              ><img src="images/marketingsyrup_logo.png"
+            /></a>
+          </div>
+        </div>
+
+        <div class="footer-link">
+          <a
+            href="https://techseo.pro/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+            target="_blank">
+            Become an Advanced Technical SEO Professional with Tech SEO Pro course >>></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Social -->
+
+    <div id="social" class="main-tab-content col s12">
+      <div class="content">
+        <div class="social-content">
+          <div class="social-group">
+            <b>FACEBOOK / LINKEDIN PREVIEW</b>
+            <div class="social-preview">
+                <img id="social-og-image" alt="og" src="images/no-image.jpg">
+                <div class="social-preview-text">
+                    <span class="social-preview-sitename"></span>
+                    <span id="social-og-title" class="social-preview-title">No Open Graph meta tags found.</span>
+                    <span id="social-og-description" class="social-preview-description"></span>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="social-content">
+          <div class="social-group">
+            <b>TWITTER / X PREVIEW</b>
+            <div class="social-preview">
+                <img id="social-twitter-image" alt="twitter" src="images/no-image.jpg">
+                <div class="social-preview-text">
+                    <span class="social-preview-sitename"></span>
+                    <span id="social-twitter-title" class="social-preview-title">No Open Graph meta tags found.</span>
+                    <span id="social-twitter-description" class="social-preview-description"></span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="row valign-wrapper">
+          <div class="col s6"></div>
+
+          <div class="col s6 right-align">
+            SEO Pro Extension by&nbsp;
+            <a
+              href="https://marketingsyrup.com/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+              target="_blank"
+              ><img src="images/marketingsyrup_logo.png"
+            /></a>
+          </div>
+        </div>
+
+        <div class="footer-link">
+          <a
+            href="https://techseo.pro/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+            target="_blank">
+            Become an Advanced Technical SEO Professional with Tech SEO Pro course >>></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- RESOURCES -->
+
+    <div id="quicklinks" class="main-tab-content col s12">
+      <div class="content">
+        <div>
+          <b>FREE RESOURCES</b>
+          <div id="quicklinks-resources">
+            <div class="quicklinks-resource">
+              <img src="images/seo-pro-free-tech-seo-webinar.png" alt="webinar" />
+              <span>Watch a Free Technical SEO Webinar</span>
+              <a
+                class="btn"
+                href="https://techseo.pro/free/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-resources"
+                target="_blank"
+                >WATCH NOW</a
+              >
+            </div>
+            <div class="quicklinks-resource">
+              <img src="images/seo-pro-free-tech-seo-quiz.png" alt="quiz" />
+              <span>Take a Free Technical SEO Quiz</span>
+              <a
+                class="btn"
+                href="https://techseo.pro/quiz/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-resources"
+                target="_blank"
+                >TAKE A QUIZ</a
+              >
+            </div>
+            <div class="quicklinks-resource">
+              <img src="images/newsletter.jpg" alt="newsletter" />
+              <span
+                >The Smart SEO Newsletter. Join 8000+ smart SEOs who’re striving
+                for more!</span
+              >
+              <a
+                class="btn"
+                href="https://marketingsyrup.com/smart-seo-newsletter/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-links-tab"
+                target="_blank"
+                >SUBSCRIBE</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 32px">
+          <b>FOLLOW FOR MORE SEO TIPS</b>
+          <div id="quicklinks-social">
+            <a
+              class="btn"
+              href="https://www.linkedin.com/in/kristinaazarenko/"
+              target="_blank"
+              >LinkedIn</a
+            >
+            <a class="btn" href="https://twitter.com/azarchick" target="_blank"
+              >Twitter / X</a
+            >
+            <a
+              class="btn"
+              href="https://www.youtube.com/@byKristinaAzarenko"
+              target="_blank"
+              >YouTube</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="row valign-wrapper">
+          <div class="col s6"></div>
+
+          <div class="col s6 right-align">
+            SEO Pro Extension by&nbsp;
+            <a
+              href="https://marketingsyrup.com/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+              target="_blank"
+              ><img src="images/marketingsyrup_logo.png"
+            /></a>
+          </div>
+        </div>
+
+        <div class="footer-link">
+          <a
+            href="https://techseo.pro/?utm_source=seo-extension&utm_medium=referral&utm_campaign=seo-extension-footer"
+            target="_blank">
+            Become an Advanced Technical SEO Professional with Tech SEO Pro course >>></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script src="js/materialize.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/types.js"></script>
+    <script src="js/popup.js"></script>
+  </body>
+</html>

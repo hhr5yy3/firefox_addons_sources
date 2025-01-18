@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <link rel="stylesheet" type="text/css" href="../assets/css/style.css"> </head>
+
+<body>
+
+  <!-- Tab links -->
+<div id="citation-first" class="text-center">
+    <h1 class="title-b"> <span class="title-img"> <img src="../assets/images/logo.png" width="48" alt=""> </span> <span class="title-span"> Hero Citation Maker </span> </h1>
+    <p> Citations can take time and style guides can be difficult to remember. We have simplified your writing process. <br> Select citation style to generate citations and bibliographies. </p>
+
+    <table width="100%">
+        <tr>
+          <td width="20%"> <button type="button" class="btn btn-default btn-tb" id="apa-citation_option"> APA </button>   </td>
+          <td width="20%"> <button type="button" class="btn btn-default btn-tb" id="mla-citation_option"> MLA </button>  </td>
+          <td width="20%"> <button type="button" class="btn btn-default btn-tb" id="harvard-citation_option"> Harvard </button>  </td>
+          <td width="20%"> <button type="button" class="btn btn-default btn-tb" id="chicago-citation_option"> Chicago </button>  </td>
+          <td width="20%"> <button type="button" class="btn btn-default btn-tb" id="ieee-citation_option"> IEEE </button>  </td>
+        </tr>
+    </table>
+
+<br><br>
+    <strong> Powered by </strong> <a target="blank" href="https://plagiarismcheckerx.com"> Plagiarism Checker X</a>
+</div>
+
+
+<div id="citation-second">
+
+  <h4 class="text-center f-16"> Generate a <span id="category_label"> Website </span> citation Automatically </h4>
+
+  <div class="filter tab" id="portfolio">
+   <!--  <button class="tablinks bold-li" id="website-tabid"> Website </button>
+    <button class="tablinks bold-li" id="journal-tabid"> Journal </button>
+    <button class="tablinks bold-li" id="book-tabid"> Book </button>
+    <button class="tablinks bold-li" id="newspaper-tabid"> Newspaper </button>
+    <button class="tablinks bold-li" id="reports-tabid"> Reports </button>
+    <button class="tablinks bold-li" id="images-tabid"> Images </button> -->
+    <button class="tablinks bold-li active" id='category_website'> Website </button>
+    <button class="tablinks bold-li" id='category_journal'> Journal </button>
+    <button class="tablinks bold-li" id='category_book'> Book </button>
+    <button class="tablinks bold-li" id='category_newspaper'> Newspaper </button>
+    <button class="tablinks bold-li" id='category_report'> Reports </button>
+    <button class="tablinks bold-li" id='category_image'> Images </button>
+  </div>
+
+
+  <form action="#" method="post" id="citationform" class="mt-15 mb-15">
+    <input type="hidden" name="category_name" id="category_name" value="" />
+    <input type="hidden" name="citation_method" id="citation_method" value="auto" />
+    <input type="hidden" name="citation_style" id="citation_style" value="" />
+
+
+    <div class="col col-md-12" id="form_top_fix">
+      <div class="row" id="row_url">
+          <div class="col col-md-8">
+            <input name="txt_url" id="txt_url" required placeholder="Enter web page URL here" type="text" value="" />
+          </div>
+          <div class="col col-md-4">
+            <button type="button" id="create_citation_url_submit" class="btn btn-default btn-navy btn-submit remove-margin"> Create Citation </button>
+          </div>
+      </div>
+
+
+      <div class="row collapse" id="row_authors">
+        <div class="col col-md-12">
+          <h3 class="mt-15">Author </h3>
+        </div>
+        <div class="col col-md-6" id="author_1_fname_row">
+          <input class="w-175" id="author_1_fname" name="author_1_fname" placeholder="First Name" maxlength="25" type="text" />
+        </div>
+        <div class="col col-md-6" id="author_1_lname_row">
+          <input class="w-175" id="author_1_lname" name="author_1_lname" placeholder="Last Name" maxlength="25" type="text" />
+        </div>
+        <div class="col col-md-12 mb-15">
+          <label> <input type="checkbox" id="author_1_unknown" name="author_1_unknown" /> <b> Unknown </b> </label>
+          <label> <input id="author_1_is_organization" name="author_1_is_organization" type="checkbox" /> <b> Organization </b>  </label>
+        </div>
+      </div>
+    </div>
+    <!-- Tab content -->
+
+  <div id="citation-second-formarea">
+
+      <div class="row collapse" id="row_website">
+        <h3 class="mt-15"> Website </h3>
+        <div class="col-md-12">Page Title *
+          <br>
+          <input id='website_title' name="website_title" placeholder="Most beautiful universities in East Asia " maxlength="255" type="text" /> </div>
+        <div class="col-md-12">Website Name *
+          <br>
+          <input id='website_name' name="website_name" placeholder="Wikipedia" type="text" maxlength="255" /> </div>
+        <div class="col-md-12">URL *
+          <br>
+          <input id='website_url' name="website_url" type="text" placeholder="https://www.wikipedia.org" maxlength="1024" /> </div>
+      </div>
+
+
+      <div class="row collapse" id="row_journal">
+        <h3 class="mt-15"> Journal </h3>
+        <div class="col col-md-12">Article Title *
+          <br>
+          <input id='journal_title' name="journal_title" placeholder="Standards for Quantitative Research in Psychology" maxlength="255" type="text" /> </div>
+        <div class="col col-md-6">From Page *
+          <br>
+          <input class="w-175" id='journal_page_from' name="journal_page_from" placeholder="Page number article starts from" type="text" maxlength="6" /> </div>
+        <div class="col col-md-6">To Page
+          <br>
+          <input class="w-175" name="journal_page_to" placeholder="Page number article ends to" type="text" maxlength="6" /> </div>
+        <div class="col col-md-12">Journal *
+          <br>
+          <input id='journal_name' name="journal_name" placeholder="Cambridge University Press" type="text" maxlength="255" /> </div>
+        <div class="col col-md-6">Volume
+          <br>
+          <input class="w-175" name="journal_volume" placeholder="For example: 3" type="text" maxlength="255" /> </div>
+        <div class="col col-md-6">Issue
+          <br>
+          <input class="w-175" name="journal_issue" placeholder="For Example: 5" type="text" maxlength="255" /> </div>
+        <div class="col col-md-12">
+          <div class="tabs tabs-top tab">
+            <button type="button" id="journal_tab_doi_link" class="btn-default tabbtn tab-active"> DOI </button>
+            <button type="button" id="journal_tab_url_link" class="btn-default tabbtn"> URL </button>
+            <div class="panel-container inner-top-sm">
+              <div class="tab-content" id="journal_tab_doi">
+                <div class="row">
+                  <div class="col col-md-12 mt-15">DOI *
+                    <br> <input id='journal_doi' name="journal_doi" type="text" maxlength="1024" /> </div>
+                </div>
+              </div>
+              <div class="tab-content" id="journal_tab_url" style="display:none">
+                <div class="row">
+                  <div class="col col-md-12 mt-15">URL *
+                    <br>
+                    <input id='journal_url' name="journal_url" type="text" maxlength="1024" /> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row collapse" id="row_book">
+        <h3 class="mt-15"> Book </h3>
+        <div class="col col-md-12">Book Title *
+          <br>
+          <input id='book_title' name="book_title" placeholder="A Brief History of Time" maxlength="255" type="text" /> </div>
+        <div class="col col-md-6">Edition
+          <br>
+          <input name="book_edition" placeholder="For example: 3" type="text" maxlength="3" /> </div>
+        <div class="col col-md-6">Volume
+          <br>
+          <input name="book_volume" placeholder="For example: 5" type="text" maxlength="255" /> </div>
+        <div class="col col-md-12" id="book_publisher_row">Publisher *
+          <br>
+          <input list="book_publishers_list" id="book_publisher" name="book_publisher" placeholder="Macmillan Publishers" type="text" maxlength="255" />
+          <datalist id="book_publishers_list"></datalist>
+        </div>
+        <div class="col col-md-12">
+          <div class="tabs tabs-top tab">
+            <button type="button" id="book_tab_doi_link" class="btn-default tabbtn tab-active" href="#book_tab_doi">Print</button>
+            <button type="button" id="book_tab_url_link" class="btn-default tabbtn" href="#book_tab_url">Digital</button>
+            <div class="panel-container inner-top-sm">
+              <div class="tab-content" id="book_tab_doi">
+                <div class="row mt-15">
+                  <div class="col col-md-12 mt-15">DOI
+                    <br>
+                    <input id="book_doi" name="book_doi" type="text" maxlength="1024" /> </div>
+                </div>
+              </div>
+              <div class="tab-content" id="book_tab_url" style="display:none">
+                <div class="row">
+                  <div class="col col-md-12 mt-15">URL *
+                    <br>
+                    <input id='book_url' name="book_url" type="text" maxlength="1024" /> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row collapse" id="row_newspaper">
+        <h3 class="mt-15"> Newspaper </h3>
+        <div class="col col-md-12">Article Title *
+          <br>
+          <input id='newspaper_title' name="newspaper_title"  placeholder="United States Presidential Elections" maxlength="255" type="text" /> </div>
+        <div class="col col-md-12">Newspaper Name *
+          <br>
+          <input id='newspaper_name' name="newspaper_name" placeholder="The New York Times" type="text" maxlength="255" /> </div>
+        <div class="col col-md-12">
+          <div class="tabs tabs-top tab">
+            <div class="col col-md-12">
+              <button type="button" id="newspaper_tab_url_link" class="btn-default tabbtn tab-active"> Online </button>
+              <button type="button" id="newspaper_tab_print_link" class="btn-default tabbtn"> Print </button>
+            </div>
+            <div class="panel-container inner-top-sm">
+              <div class="tab-content" id="newspaper_tab_url">
+                <div class="row">
+                  <div class="col col-md-12 mt-15">URL *
+                    <br>
+                    <input id='newspaper_url' name="newspaper_url" type="text" maxlength="1024" /> </div>
+                </div>
+              </div>
+              <div class="tab-content" id="newspaper_tab_print" style="display:none">
+                <div class="row">
+                  <div class="col col-md-6 mt-15">From Page *
+                    <br>
+                    <input class="w-175" id='newspaper_page_from' name="newspaper_page_from" placeholder="Page number article starts from" type="text" maxlength="6" /> </div>
+                  <div class="col col-md-6 mt-15">To Page
+                    <br>
+                    <input class="w-175" id="newspaper_page_to" name="newspaper_page_to" placeholder="Page number article ends to" type="text" maxlength="6" /> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row collapse" id="row_report">
+        <h3 class="mt-15"> Reports </h3>
+        <div class="col col-md-12">Report Title *
+          <br>
+          <input id='report_title' name="report_title" placeholder="World Health Statistics Report" maxlength="255" type="text" /> </div>
+        <div class="col col-md-12">Number
+          <br>
+          <input name="report_number" placeholder="" type="text" maxlength="255" /> </div>
+        <div class="col col-md-12" id="report_publisher_row">Publisher
+          <br>
+          <input id="report_publisher" name="report_publisher" placeholder="World Health Organization" type="text" maxlength="255" /> </div>
+        <div class="col col-md-12">DOI
+          <br>
+          <input name="report_doi" type="text" maxlength="1024" /> </div>
+        <div class="col col-md-12">
+          <div class="tabs tabs-top tab">
+            <div class="col col-md-12 mb-15">
+              <button type="button" id="report_tab_url_link" class="btn-default tabbtn tab-active"> Online </button>
+              <button type="button" id="report_tab_print_link" class="btn-default tabbtn"> Print </button>
+            </div>
+            <div class="panel-container inner-top-sm">
+              <div class="tab-content" id="report_tab_url">
+                <div class="row">
+                  <div class="col col-md-12 mt-15">URL *
+                    <br>
+                    <input id='report_url' name="report_url" type="text" maxlength="1024" /> </div>
+                </div>
+              </div>
+              <div class="tab-content" id="report_tab_print">
+                <div class="row"> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row collapse" id="row_image">
+        <h3 class="mt-15"> Images </h3>
+        <div class="col col-md-12">Title *
+          <br>
+          <input id='image_title' name="image_title" placeholder="Golden Gate Bridge California" maxlength="255" type="text" />
+        </div>
+        <div class="col col-md-12">Type *
+          <br>
+          <input id='image_type' name="image_type" placeholder="E.g. Photograph, Illustration, etc." type="text" maxlength="255" />
+        </div>
+        <div class="col col-md-12">URL *
+          <br>
+          <input id='image_url' name="image_url" type="text" maxlength="1024" />
+        </div>
+      </div>
+    </div>
+
+  <div id="form_bottom_fix">
+    <div class="row collapse" id="row_bottom">
+      <div class="col-md-12">
+        <h3> Published Date </h3></div>
+      <div class="col col-md-3" id="published_day_row"> Day
+        <br>
+        <input class="w-70" id="published_day" name="published_day" placeholder="DD" type="text" maxlength="2" /> </div>
+      <div class="col col-md-3" id="published_month_row"> Month
+        <br>
+        <input class="w-70" id="published_month" name="published_month" placeholder="MM" type="text" maxlength="2" /> </div>
+      <div class="col col-md-3" id="published_year_row"> Year *
+        <br>
+        <input class="w-70" id="published_year" name="published_year" placeholder="YYYY" type="text" maxlength="4" /> </div>
+      <div class="col col-md-3 mt-30" id="published_unknown_row">
+         <label>  <input id="published_unknown" name="published_unknown" type="checkbox" /> &nbsp;Unknown </label>
+      </div>
+
+      <div id="row_accessed">
+        <div class="col col-md-12">
+          <h3> Accessed Date </h3></div>
+        <div class="col col-md-3">Day
+          <br>
+          <input class="w-70" id="accessed_day" name="accessed_day" placeholder="DD" type="text" maxlength="2" /> </div>
+        <div class="col col-md-3">Month
+          <br>
+          <input class="w-70" id="accessed_month" name="accessed_month" placeholder="MM" type="text" maxlength="2" /> </div>
+        <div class="col col-md-3">Year
+          <br>
+          <input class="w-70" id="accessed_year" name="accessed_year" placeholder="YYYY" type="text" maxlength="4" /> </div>
+        <div class="col col-md-3 mt-30">
+          <span class="text-blue" id="accessed_set_today" class="themeColor"> Today </span> </div>
+      </div>
+      <div class="col col-md-12 text-center inner-top-xs mb-15">
+        <button type="button" id="create_citation_submit" class="btn btn-default btn-navy btn-submit remove-margin"> Create Citation </button>
+      </div>
+    </div>
+
+  </div>
+
+
+  <br><br>
+  <div class="loading text-center" id="loading"> <img src="../assets/images/loading.gif"> </div>
+
+  <div id="citation-third">
+      <div class="alert alert-success">
+
+        <h3 class="text-center"> Your Bibliography </h3>
+        <div class="tooltip"> <p id="bibliography_text" class="text-center green-bg"  data-rel="tooltip" data-placement="top" rel="tooltip" data-original-title="Click to copy"> sdfdsfsdv </p>  <span id="tooltip_bibliography" class="tooltiptext"> Click to copy </span> </div>
+
+        <h3 class="text-center"> In-text Citation </h3>
+        <div class="tooltip"> <p id="citation_intext" class="text-center red-bg" data-rel="tooltip" data-placement="top" rel="tooltip" data-original-title="Click to copy"> fdb ghb dhng h h </p> <span id="tooltip_intext" class="tooltiptext"> Click to copy </span> </div>
+
+      </div>
+  </div>
+
+  </form>
+
+</div>
+
+
+
+
+
+
+
+
+<script src="../background.js"></script>
+<script src="../assets/js/helper.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "name": "Places Near Me",
+  "short_name": "Places Near Me",
+  "icons": {
+    "128": "icons/asset.png"
+  },
+  "description": "Places Near Me replaces your new tab with quick access to Nearby Places & Yahoo web search.",
+  "manifest_version": 2,
+  "version": "1.1",
+  "browser_action": {
+    "browser_style": false,
+    "default_icon": {
+      "128": "icons/asset.png"
+    },
+    "default_title": "Places Near Me"
+  },
+  "permissions": [
+    "*://placesnearme.org/*",
+    "tabs",
+    "search",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://placesnearme.org/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "*.json"
+  ],
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "web search by Yahoo",
+      "keyword": "Places Near Me",
+      "favicon_url": "icons/asset.png",
+      "search_url": "https://search.yahoo.com/yhs/search?hspart=infospace&hsimp=yhs-084&p={searchTerms}&grd=1",
+      "suggest_url": "https://search.yahoo.com/sugg/ie?output=fxjson&command={searchTerms}&nResults=10",
+      "is_default": true
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "placesnearme@placesnearme.org"
+    }
+  }
+}

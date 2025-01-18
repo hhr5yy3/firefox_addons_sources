@@ -1,0 +1,201 @@
+{
+  "manifest_version": 2,
+  "name": "Auction Dec",
+  "version": "1.3.8.3",
+  "description": "Monitoring Web auctions",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "scripting",
+    "cookies",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking",
+    "http://*/*",
+    "https://*/*",
+    "*://copart.com/*",
+    "*://copart.ca/*",
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "images/logos/logo.webp",
+    "48": "images/logos/logo.webp",
+    "128": "images/logos/logo.webp"
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "AuctionDec",
+    "default_icon": {
+      "16": "images/logos/logo.webp",
+      "48": "images/logos/logo.webp",
+      "128": "images/logos/logo.webp"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://g2auction.copart.com/*",
+        "*://g2auction.copart.ca/*"
+      ],
+      "js": [
+        "iframe-content.js"
+      ],
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://www.ca.iaai.com/*",
+        "*://ca.iaai.com/*"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "content.js",
+        "content-auction-details-ca.js",
+        "captureScreen.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://www.iaai.com/*",
+        "*://iaai.com/*",
+        "*://portal.auctionnow.iaai.com/*",
+        "*://www.portal.auctionnow.iaai.com/*"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "content_us.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://portal.auctionnow.iaai.com/*",
+        "*://www.portal.auctionnow.iaai.com/*"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "captureScreen.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://www.iaai.com/VehicleDetail/*",
+        "*://iaai.com/VehicleDetail/*"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "content-auction-details.js",
+        "captureScreen.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://www.iaai.com/vehicledetail/*",
+        "*://iaai.com/vehicledetail/*"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "content-auction-details.js",
+        "captureScreen.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://www.iaai.com/MyVehiclesNew*",
+        "*://iaai.com/MyVehiclesNew*"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "content-auction-details.js",
+        "captureScreen.js",
+        "iaaiMyVehiclesBids.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://www.copart.com/lot/*",
+        "*://copart.com/lot/*"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "content-auction-details-copart.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.icbc.com/*"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "content_icbc.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.progi.com/*"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "js/progiLoginControl.js",
+        "content_progi.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://www.copart.com/*",
+        "*://*.copart.com/*"
+      ],
+      "css": [
+        "styles/loader.css",
+        "/styles/popUpSweetchState.css"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "utils/copartXsrfInclude.js",
+        "js/copartUsLoginControl.js",
+        "content_us_copart.js",
+        "captureScreen.js",
+        "content-auction-details-copart.js",
+        "displayErrors.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://www.copart.ca/*",
+        "*://*.copart.ca/*"
+      ],
+      "css": [
+        "styles/loader.css",
+        "/styles/popUpSweetchState.css"
+      ],
+      "js": [
+        "lib/jquery.min.js",
+        "utils/copartXsrfInclude.js",
+        "js/copartCaLoginControl.js",
+        "content_ca_copart.js",
+        "captureScreen.js",
+        "content-auction-details-copart.js",
+        "displayErrors.js"
+      ]
+    }
+  ],
+  "background": {
+    "scripts": [
+      "api.js",
+      "ca_iaa.js",
+      "us_iaa.js",
+      "ca_icbc.js",
+      "us_copart.js",
+      "/utils/utils.js",
+      "background.js",
+      "auth.js"
+    ]
+  },
+  "applications": {
+    "gecko": {
+      "id": "mnt.developer24@gmail.com",
+      "strict_min_version": "68.0"
+    }
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'"
+}

@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Adobe Experience Cloud Bookmarks</title>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="popup.js"></script>
+<link rel="stylesheet" href="popup.css" type="text/css">
+</head>
+<body>
+
+<div id="activation" class="hide">
+    <div class="welcome">
+        <span>Open <a href="https://experience.adobe.com/">Experience Cloud Homepage</a>
+            and then click on the Extension icon again to automatically configure the&nbsp;Bookmarks.<br /><br /></span>
+        <button id="go-to-options2">Or click here to configure it manually<!--Click here to get started--></button>
+    </div>
+</div>
+
+<div id="bookmarks">
+    <div class="selector">
+        <span class="spectrum-Heading--subtitle3">Experience Cloud</span>
+        <select id="organization-selector">
+            <option value=""></option>
+        </select>
+        <a href="#" id="go-to-options">⚙️</a>
+        <div id="importedOrganizations" class="imported-organizations hide">
+        </div>
+    </div>
+
+    <nav class="spectrum--dark switcher">
+        <figure class="switcher-Solution-Item">
+
+            <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/analytics" title="Adobe Analytics" target="_blank">
+                <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Analytics">&bull;<span></span></span><svg viewBox="0 0 1152 1152" focusable="false" aria-hidden="true" role="img" class="spectrum-Icon spectrum-Icon--sizeL">
+                    <path fill="#E2D8FF" d="M447.7 581.6h-53v348.3c16.1 8.1 35.7 15.2 53 21.1V581.6zm97.6-22.3v410.3c7.4.4 18.4 4.2 25.9 4.2 9.4 0 17.9-.1 27.1-.8V559.3h-53zm304.1 291.3c18.8-19.9 38.5-43.9 53-67.4V517.4h-53v333.2zM268.8 603.8l122.4-141.1L507.5 506l248-177.9 125 118.3 62.8-50.3-9.6-20.8-52.5 44.3-123.3-115.3L506 484.6l-117-45.4-130.3 147.4-81.6 19.2v18.8l91.7-20.8zm25.5 83.8h-53v102.8c14.7 22.5 34.3 43.5 53 62.5V687.6zm457.4-234.3h-53v495.8c17.3-6.2 36.9-13.6 53-22.1V453.3z"></path>
+                    <path fill="#9F7FFF" d="M0 576c0 318.1 257.9 576 576 576s576-257.9 576-576S894.1 0 576 0 0 257.9 0 576zm59.4 0C59.4 290.3 290.7 58.8 576 58.8s516.6 231.6 516.6 517.2-231.3 517.2-516.6 517.2S59.4 861.7 59.4 576z"></path>
+                </svg>
+
+            </a>
+
+            <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/target/activities/" title="Adobe Target" target="_blank">
+                <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Target">&bull;<span></span></span><svg viewBox="0 0 1152 1152" focusable="false" aria-hidden="true" role="img" class="spectrum-Icon spectrum-Icon--sizeL">
+                  <path fill="#17D8FF" d="M0 576c0 318.1 257.9 576 576 576s576-257.9 576-576S894.1 0 576 0 0 257.9 0 576zm59.4 0C59.4 290.3 290.7 58.8 576 58.8s516.6 231.6 516.6 517.2-231.3 517.2-516.6 517.2S59.4 861.7 59.4 576z"></path>
+                  <path fill="#CBF0FE" d="M330.5 465.3c28 0 54.3 10.9 74.1 30.8 19.8 19.9 30.7 46.3 30.7 74.5 0 28.1-10.9 54.6-30.7 74.5-19.8 19.9-46.1 30.9-74.1 30.9s-54.3-11-74.1-30.9-30.7-46.3-30.7-74.4c0-28.1 10.9-54.6 30.7-74.5 19.8-20 46.1-30.9 74.1-30.9zm244.8-246.1c28 0 54.3 11 74.1 30.9 40.8 41 40.8 107.9 0 148.9-19.8 19.9-46.1 30.8-74.1 30.8S521 418.9 501.2 399c-40.8-41.1-40.8-107.9 0-148.9 19.8-20 46.1-30.9 74.1-30.9zm-9.7 482.4c28 0 54.3 10.9 74.1 30.8 19.8 19.9 30.7 46.3 30.7 74.5 0 28.1-10.9 54.6-30.7 74.5s-46.1 30.9-74.1 30.9-54.3-11-74.1-30.9c-40.8-41.1-40.8-107.9 0-149 19.8-19.9 46.1-30.8 74.1-30.8zm244.8-226.2c22.6 0 44 8.9 60 25s24.9 37.5 24.9 60.3-8.8 44.2-24.9 60.4c-16 16.1-37.3 25-60 25s-44-8.9-60-25c-16-16.2-24.9-37.6-24.9-60.4 0-22.8 8.8-44.2 24.9-60.4 16-16 37.3-24.9 60-24.9zm-479.9-30.1c-31.9 0-63.8 12.2-88.1 36.7-48.7 48.9-48.7 128.3 0 177.2 24.3 24.4 56.2 36.7 88.1 36.7s63.8-12.2 88.1-36.7c46.2-46.5 48.5-120.4 6.9-169.7l70.5-69.8c20.8 17.9 46 27.7 71.6 29.7v232.2h-.5c-31.9 0-65.4 12.2-89.7 36.7-48.6 48.9-48.6 128.3 0 177.2 24.4 24.5 56.2 36.7 88.1 36.7 31.9 0 63.8-12.2 88.1-36.7 43.2-43.3 48.1-110.6 14.7-159.4l71.1-72.2c21.3 14.8 46 22.1 70.8 22.1 31.9 0 63.8-12.2 88.1-36.7 48.7-48.9 48.7-128.3 0-177.2-24.3-24.5-56.2-36.7-88.1-36.7-31.9 0-63.8 12.2-88.1 36.7-48.7 48.9-48.7 128.3 0 177.2l2.2 2.2-68.7 68.9-4.2-2.2c-19-19.1-42.6-30.7-67.2-34.9v-234c28.1-2.5 55.4-14.6 76.9-36.2 48.6-48.9 50.8-128.3 2.2-177.2-24.4-24.5-56.2-36.7-88.1-36.7-31.9 0-63.8 12.2-88.1 36.7-46.2 46.5-48.5 120.4-6.9 169.6l-69.1 69.6c-23.1-19.9-51.8-29.8-80.6-29.8zm535.1 113.2c0 29.5-19.1 55.6-53.5 56.3-36.3.7-56.1-24.1-56.1-53.6s24.8-56.8 54.1-56.8c29.4-.1 55.5 24.6 55.5 54.1z"></path>
+                </svg>
+            </a>
+
+            <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/audience-manager" title="Adobe Audience Manager" target="_blank">
+                <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Audience Manager">&bull;<span></span></span><svg viewBox="0 0 1152 1152" focusable="false" aria-hidden="true" role="img" class="spectrum-Icon spectrum-Icon--sizeL">
+                    <path fill="#6390FF" d="M0 576c0 318.1 257.9 576 576 576s576-257.9 576-576S894.1 0 576 0 0 257.9 0 576zm59.4 0C59.4 290.3 290.7 58.8 576 58.8s516.6 231.6 516.6 517.2-231.3 517.2-516.6 517.2S59.4 861.7 59.4 576z"></path>
+                    <path fill="#CAE4FF" d="M826.5 324.3c-73.9-73.9-161.2-90.9-165-91.6l-3.2 11.5c-107.1-24.7-223.9 3.9-308.1 85.6l-12-12c-138.4 138.4-140.4 363.1-3.6 499.9s361 135 499.7-3.7l-11.8-11.8c82.3-84.7 110.7-202.6 85.2-310.3l11.5-3.1c-1-3.7-19.8-91.5-92.7-164.5zM595.4 556.7l72.6-279c27.7 8.4 82.7 29.7 129.1 76.1 45.9 45.9 67.8 100.7 76.6 128.3l-278.3 74.6zm57.8-294.9l-79.9 291.3-210.4-210.3c79.4-77 189.4-103.9 290.3-81zm130.9 527.9c-119 105.9-300.6 103.6-412.9-8.7-112.2-112.3-114.5-294.3-8.8-413.1l421.7 421.8zm25.4-.4L599 578.8l291-82.1c23.8 101.5-3 212.6-80.5 292.6z"></path>
+                </svg>
+            </a>
+
+            <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/campaign" title="Adobe Campaign" target="_blank">
+                <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Campaign">&bull;<span></span></span><svg viewBox="0 0 1152 1152" focusable="false" aria-hidden="true" role="img" class="spectrum-Icon spectrum-Icon--sizeL">
+                    <path fill="#D4F10D" d="M0 576c0 318.1 257.9 576 576 576s576-257.9 576-576S894.1 0 576 0 0 257.9 0 576zm59.4 0C59.4 290.3 290.7 58.8 576 58.8s516.6 231.6 516.6 517.2-231.3 517.2-516.6 517.2S59.4 861.7 59.4 576z"></path>
+                    <path fill="#F8FFCB" d="M575.7 670.3c-16.1 0-31.2-4.2-44.3-11.5v51c13.9 4.7 28.8 7.3 44.3 7.3 76.1 0 142.3-56.3 142.3-138.3V206.9c-15.2-5.8-31-12.6-46.9-16.4V579c-.1 56.7-45.2 91.3-95.4 91.3zm1.1-182.2c16.2 0 27.8 4.3 41 11.7v-51.1c-14-4.8-29-7.4-44.5-7.4-76.1 0-136.8 62.1-136.8 138.1v369.2c15.2 5.6 31.5 10.4 47.4 14.1V579c.1-50.1 42.7-90.9 92.9-90.9zm194.5 90.2c.7 124.2-90.7 194.4-195.6 194.4-15.2 0-30.1-3.2-44.3-6.6v19c14.3 3.1 29.1 4.7 44.3 4.7 116.2 0 213-83.8 212.3-210.7V240.9c-6.7-4.3-10-9-17-12.8l.3 350.2zM575.9 386c15.3-.1 28.2.3 41.9 4.5v-17.2c-14.4-3.1-29.3-4.8-44.5-4.8-116.2 0-206.4 87.3-206.4 203.4v341.8c6.7 4.2 9.6 7.9 16.6 11.6V579c.1-104.8 80-192.5 192.4-193zm264.9 192.8c2.2 155.4-112.1 263.1-265.1 263.1-15.1 0-29.9-2-44.3-4.5v19.1c14.4 2.3 29.2 3.5 44.3 3.5 154.9 0 283.6-107.1 282.1-280.9V297.6c-6.6-6.7-9.9-12.5-17-18.7v299.9zM297.4 857.9c6.6 6.5 9.4 13.1 16.4 19.2V576.9c.7-158.8 107.1-258.8 250.7-258.8 15.2 0 33.3 1.4 47.8 3.9v-20.1c-14.5-2.3-29.4-3.6-44.5-3.6C412.8 298.4 297 408.1 297 577l.4 280.9z"></path>
+                </svg>
+            </a>
+
+            <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/experiencemanager" title="Adobe Experience Manager" target="_blank">
+                <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Experience Manager">&bull;<span></span></span><svg viewBox="0 0 1152 1152" focusable="false" aria-hidden="true" role="img" class="spectrum-Icon spectrum-Icon--sizeL">
+                    <path fill="#FF7618" d="M0 576c0 318.1 257.9 576 576 576s576-257.9 576-576S894.1 0 576 0 0 257.9 0 576zm59.4 0C59.4 290.3 290.7 58.8 576 58.8s516.6 231.6 516.6 517.2-231.3 517.2-516.6 517.2S59.4 861.7 59.4 576z"></path>
+                    <path fill="#FFE0CB" d="M576 234.2c42.5 0 79.3 24.6 97 60.3-9.7 5.7-18.7 12.7-26.8 20.9-18.7 18.7-43.6 29-70.1 29s-51.4-10.3-70.1-29c-8.1-8.1-17.2-15.1-26.9-20.9 17.6-35.7 54.4-60.3 96.9-60.3zm107.4 96.1c.4 3.9.6 7.9.6 11.9 0 69.4 56.5 125.8 125.9 125.8 4 0 8 .2 11.9.7-3.1 4.2-6.5 8.3-10.3 12C786 506.2 772 540 772 576s14 69.8 39.5 95.3c3.8 3.8 7.2 7.8 10.3 12.1-3.9.4-7.9.7-11.9.7C740.5 684 684 740.5 684 809.8c0 4-.2 8-.6 11.9-4.2-3.1-8.3-6.5-12.1-10.3C645.8 786 612 772 576 772s-69.8 14-95.3 39.4c-3.8 3.8-7.9 7.2-12.1 10.3-.4-3.9-.6-7.9-.6-11.9 0-69.4-56.5-125.8-125.9-125.8-4 0-7.9-.2-11.9-.7 3.1-4.2 6.5-8.3 10.3-12C366 645.8 380 612 380 576s-14-69.8-39.5-95.3c-3.8-3.8-7.3-7.8-10.3-12 3.9-.4 7.9-.7 11.9-.7 69.4 0 125.9-56.5 125.9-125.8 0-4 .2-8 .6-11.9 4.2 3.1 8.3 6.5 12.1 10.3C506.2 366 540 380 576 380s69.8-14 95.3-39.5c3.8-3.7 7.8-7.1 12.1-10.2zm174.2 148.8c35.7 17.6 60.4 54.4 60.4 96.9s-24.6 79.3-60.4 96.9c-5.7-9.7-12.7-18.7-20.9-26.8-18.7-18.7-29-43.6-29-70.1s10.3-51.4 29-70.1c8.1-8.1 15.1-17.1 20.9-26.8zM673 857.5c-17.7 35.7-54.5 60.3-97 60.3s-79.3-24.6-97-60.3c9.7-5.7 18.7-12.7 26.9-20.9 18.7-18.7 43.6-29 70.1-29s51.4 10.3 70.1 29c8.1 8.2 17.2 15.2 26.9 20.9zM294.4 672.9C258.7 655.3 234 618.5 234 576s24.6-79.3 60.3-96.9c5.7 9.7 12.7 18.7 20.9 26.8 18.7 18.7 29 43.6 29 70.1s-10.3 51.4-29 70.1c-8 8.1-15 17.2-20.8 26.8zM576 935.7c49.4 0 92.3-28.6 112.9-70.2 16.4 6.9 34.2 10.6 52.5 10.6 36 0 69.8-14 95.3-39.5 25.5-25.4 39.5-59.3 39.5-95.3 0-18.3-3.6-36.1-10.6-52.5 41.5-20.6 70.2-63.4 70.2-112.8s-28.6-92.3-70.2-112.8c6.9-16.4 10.6-34.2 10.5-52.5 0-36-14-69.8-39.5-95.3-25.5-25.4-59.3-39.5-95.3-39.5-18.4 0-36.1 3.7-52.5 10.6-20.6-41.5-63.5-70.6-112.9-70.6s-92.2 29.1-112.8 70.6c-16.4-6.9-34.2-10.6-52.5-10.6-36 0-69.8 14-95.3 39.4-25.4 25.5-39.5 59.3-39.5 95.3 0 18.4 3.6 36.1 10.5 52.6-41.5 20.6-70.1 63.4-70.1 112.8s28.6 92.3 70.2 112.8c-6.9 16.4-10.6 34.2-10.6 52.5 0 36 14 69.8 39.5 95.3 25.4 25.4 59.3 39.5 95.3 39.5 18.3 0 36.1-3.7 52.5-10.6 20.6 41.5 63.5 70.2 112.9 70.2zm124-104.3c1.2-7 1.8-14.2 1.8-21.6 0-59.6 48.5-108 108-108 7.4 0 14.6-.6 21.6-1.8 5.9 12.8 9 26.9 9 41.4 0 26.5-10.3 51.4-29 70.1-18.7 18.7-43.6 29-70.1 29-14.5-.1-28.5-3.2-41.3-9.1zM831.5 452c-7-1.2-14.3-1.8-21.6-1.8-59.6 0-108-48.5-108-108 0-7.4-.6-14.6-1.9-21.6 12.8-5.9 26.9-9 41.4-9 26.5 0 51.4 10.3 70.1 29 18.7 18.7 29 43.6 29 70.1 0 14.5-3.1 28.5-9 41.3zM452 320.6c-1.2 7-1.8 14.3-1.8 21.6 0 59.6-48.5 108-108.1 108-7.4 0-14.6.6-21.6 1.8-5.9-12.8-9-26.8-9-41.4 0-26.5 10.3-51.4 29-70.1s43.6-29 70.1-29c14.6.1 28.6 3.2 41.4 9.1zM320.5 700c7 1.2 14.2 1.8 21.6 1.8 59.6 0 108.1 48.5 108.1 108 0 7.4.6 14.6 1.8 21.6-12.8 5.9-26.8 9-41.4 9-26.5 0-51.4-10.3-70.1-29s-29-43.6-29-70.1c0-14.5 3.1-28.5 9-41.3z"></path>
+                </svg>
+            </a>
+
+            <a href="#" data-url="https://%orgTenantId%.experiencecloud.adobe.com/mediaoptimizer" title="Adobe Media Optimizer" target="_blank">
+                <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Advertising Cloud">&bull;<span></span></span><svg viewBox="0 0 1152 1152" focusable="false" aria-hidden="true" role="img" class="spectrum-Icon spectrum-Icon--sizeL">
+                    <path fill="#07F792" d="M0 576c0 318.1 257.9 576 576 576s576-257.9 576-576S894.1 0 576 0 0 257.9 0 576zm59.4 0C59.4 290.3 290.7 58.8 576 58.8s516.6 231.6 516.6 517.2-231.3 517.2-516.6 517.2S59.4 861.7 59.4 576z"></path>
+                    <path fill="#CBFFE9" d="M853.3 301.2l-5-7.1-247.2 247.4V297.1h-21.8c-72.5.4-143.6 27.8-193.7 72.9l-76.3-79.7-7.1 7c-74.1 73.3-116.3 171.2-117.1 275.6s40.1 202.6 113.2 277l7.9 7 253-247.1v247.9H581c72.4-.3 134.6-28.2 184.7-73.7l76.7 76.7 7-6.9c154.9-152.5 157.9-394.5 3.9-552.6zm-294 35.5v217H334.5c9.9-117.9 107.2-206.8 224.8-217zm-250.1-18.2l63.6 63.3C324 432.3 291.6 501 291.4 576.7v18.9h257.1l-243 235.5c-134-143.5-132.4-370.9 3.7-512.6zm291.9 506v-229h220.7c-8.2 119.9-101.5 218.8-220.7 229zm241.4 8.1l-61.4-63.7c49.5-51.6 82.6-121.9 82.2-199.2v-16H617.6l228.5-230c134.1 143.6 132.4 367.1-3.6 508.9z"></path>
+                </svg>
+            </a>
+
+            <a href="#" data-url="https://%orgTenantId%.experiencecloud.adobe.com/social" title="Adobe Social" target="_blank">
+                <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Social">&bull;<span></span></span><svg viewBox="0 0 1152 1152" focusable="false" aria-hidden="true" role="img" class="spectrum-Icon spectrum-Icon--sizeL">
+                    <path fill="#FF179C" d="M0 576c0 318.1 257.9 576 576 576s576-257.9 576-576S894.1 0 576 0 0 257.9 0 576zm59.4 0C59.4 290.3 290.7 58.8 576 58.8s516.6 231.6 516.6 517.2-231.3 517.2-516.6 517.2S59.4 861.7 59.4 576z"></path>
+                    <path fill="#FFCBE8" d="M344.5 751.1c.7-2.2.7-5 .7-7.2 0-5.7-1.1-11.2-2.8-16.9l303.5-156.3c8.3 11.8 21.7 20.1 37.4 21.7L696.1 820c-16.2 3.3-29.1 14-36.3 28.4l-315.3-97.3zm189-466.6c9.4 14 25.6 23 43.6 23 3.9 0 7.9-.7 11.2-1.1l73.1 186.9c-8.3 5-15.1 12.3-20.1 20.6L330.9 406.2c.7-2.8 1.1-6.1 1.1-9.4 0-5-.7-10.1-2.2-15.1l203.7-97.2zM787 340.3c-.7 3.3-1.1 6.8-1.1 10.1 0 14 5 26.3 14 35.7l-85.3 107.2c-7.9-4.4-16.6-7.2-26.3-7.2-3.9 0-7.9.7-11.2 1.1L604 300.3c8.3-5 15.1-11.8 19.5-20.1L787 340.3zM879.5 616c-8.3 2.8-15.5 7.9-21.7 14.4l-119.9-72.7c2.2-5.5 3.3-11.8 3.3-18.4 0-14-5-26.3-14-35.7l85.3-107.2c7.9 4.4 16.6 7.2 26.3 7.2h1.1L879.5 616zm-580.8 74.9l-9.4-241.6c15.5-3.3 29.1-13.3 36.3-27.4l310.8 107.7c-.7 2.8-1.1 6.1-1.1 9.4 0 5.5 1.1 11.2 2.8 16.6l-303 156.3c-8.6-11.6-21.9-19.5-36.4-21zm413.4 128.2l-12.9-227.6c11.2-2.2 20.6-8.3 28-16.2l119.9 72.4c-2.2 5.7-3.3 11.8-3.3 18.4 0 12.3 4.4 24.1 11.2 32.8L735.5 828.1c-6.1-5-14.4-8.3-23.4-9zm184.7-206.3h-1.1l-39-212.7c20.6-7.2 35.2-26.7 35.2-50.3 0-29.5-23.4-53-53-53-20.1 0-37.4 11.2-46.4 27.4L629 264.5c.7-3.3 1.1-6.8 1.1-10.1 0-29.5-23.4-53-53-53-29.1 0-53 24.1-53 53 0 5 .7 10.1 2.2 15.1L322.8 367c-9.4-14-25.6-23-43.6-23-29.1 0-53 24.1-53 53 0 27.4 20.1 49.7 46.8 53l9.4 241.6c-24.5 5-42.5 26.3-42.5 51.9 0 29.5 23.4 53 53 53 20.6 0 39.2-12.3 47.5-29.5l315.4 97.6c-.7 2.2-.7 5-.7 7.2 0 29.5 23.4 53 53 53 29.1 0 53-24.1 53-53 0-12.3-4.4-24.1-11.2-32.8l119.5-128.9c8.3 5.5 18.4 9 29.5 9 29.1 0 53-24.1 53-53-1.9-29.5-25.5-53.3-55.1-53.3z"></path>
+                </svg>
+            </a>
+
+            <a href="#" data-url="https://%orgTenantId%.experiencecloud.adobe.com/primetime" title="Adobe Primetime" target="_blank">
+                <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Primetime">&bull;<span></span></span><svg viewBox="0 0 1152 1152" focusable="false" aria-hidden="true" role="img" class="spectrum-Icon spectrum-Icon--sizeL">
+                    <path fill="#FF1828" d="M0 576c0 318.1 257.9 576 576 576s576-257.9 576-576S894.1 0 576 0 0 257.9 0 576zm59.4 0C59.4 290.3 290.7 58.8 576 58.8s516.6 231.6 516.6 517.2-231.3 517.2-516.6 517.2S59.4 861.7 59.4 576z"></path>
+                    <path fill="#F9C9CD" d="M883.5 353.4L615.8 209.6c-11.7-6.3-26.2-5.9-37.6.8-11.4 6.8-19 18.9-19 32.3v26.2L485 228.4c-5.8-3.2-11.5-4.1-18-4.7-2.4-.1-7.5-.1-8.5 0-24 2.3-44.3 22-44.3 46.5V506c0 26.3 22.6 47.7 48.8 47.7 9.5 0 16.9-3 22.3-6l217.3-119.4c15.2-8.4 24.8-24.5 24.7-42-.1-17.4-11-33.4-26.4-41.6L576 278.4v-35.7c0-7 5-13.4 10.9-16.9s13.7-3.7 19.8-.4l268 143.8c6.5 3.5 10.5 10 10.5 17.3s-3.7 13.8-10.1 17.3L565.6 574.1 256.3 739.5c-12.3 6.6-19.7 19-19.7 33s7.2 26.3 19.4 33l267.6 147.3c5.7 3.1 11.8 4.7 18 4.7 6.5 0 11.6-1.7 17.5-5.2 11.5-6.8 16.9-18.9 16.9-32.3v-28.5l68.4 36.8c4.3 2.4 10 5.1 18.2 5.1 22.5 0 41.7-18.4 41.7-41.1V656.4c0-20.5-15.1-37.8-34.8-40.8-1.3-.3-2.8-.6-4.2-.6h-2.1c-1.5 0-3 .3-4.4.7-4.3.7-8.6 2.2-12.9 4.5L429.1 736.8c-13.2 7.1-21.5 20.9-21.6 36-.1 15 7.2 28.8 20.4 36.1l131.4 72.8V920c0 7.1-2.7 13.4-8.7 17-5.9 3.5-12.7 3.6-18.7.3L264.4 789.9c-6.4-3.5-10.1-10-10.1-17.3 0-7.4 4-13.8 10.4-17.3l309.5-165.4 309.6-170.4c12.2-6.7 19.5-19.1 19.4-33 0-14.1-7.4-26.4-19.7-33.1zM443.2 772.9c0-1.2.4-3.4 2.8-4.7l211.6-113.7c.6-.3 2.5-1.5 3.1-1.6 3.3-1.6 4.6.5 4.6 3.6v235.8c0 3.1-1.4 5.4-3.9 4.1-.3-.2-1.6-.7-2.1-1L445.5 777.5c-2.2-1.2-2.3-3.1-2.3-4.6z"></path>
+                </svg>
+            </a>
+
+        </figure>
+
+        <aside class="switcher-aside--right">
+            <div class="switcher-Services-Column">
+                <ul class="switcher-Services-Column-List">
+                    <li class="switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/implement" target="_blank">Activation</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Launch">&bull;<span></span></span> <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/data-collection/client/" target="_blank" title="Adobe Experience Platform Data Collection">AEP Launch</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Dynamic Tag Management">&bull;<span></span></span> <a href="#" data-url="https://dtm.adobe.com/dashboard?ims=1" target="_blank">DTM</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Auditor">&bull;<span></span></span> <a href="#" data-url="https://auditor.adobe.com/" target="_blank">Auditor</a> /
+                        <a href="#" data-url="https://debug.adobe.com/" title="Adobe Debug tool" target="_blank">Debug</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Griffon.adobe.com">&bull;<span></span></span> <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/griffon/" title="Project Griffon" target="_blank">Griffon</a> /
+                        <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/custom-apps" title="Project Firefly" target="_blank">Firefly</a>
+                    </li>
+                    <li class="switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <a href="#" data-url="https://%orgTenantId%.experiencecloud.adobe.com/audiences.html/%orgTenantId%/audiences/folder" target="_blank">Audience Library</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Customer Attributes">&bull;<span></span></span> <a href="#" data-url="https://%orgTenantId%.experiencecloud.adobe.com/crs.html/%orgTenantId%/datasources" target="_blank">Customer Attributes</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Live Stream Triggers">&bull;<span></span></span> <a href="#" data-url="https://%orgTenantId%.experiencecloud.adobe.com/triggers.html/%orgTenantId%/triggers/list" target="_blank">Triggers</a>
+                    </li>
+
+                    <li class="switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Experience Platform">&bull;<span></span></span> <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/platform" target="_blank">Experience Platform</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Journey Orchestration">&bull;<span></span></span> <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/journeys" target="_blank" title="">Journey Orchestration</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Customer Journey Analytics">&bull;<span></span></span> <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/platform/analytics/" target="_blank" title="Customer Journey Analytics">Journey Analytics</a>
+                    </li>
+
+                    <li class="switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <a href="#" data-url="https://%orgTenantId%.experiencecloud.adobe.com/assets.html/content/dam/mac/%orgTenantId%" target="_blank">Assets</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Mobile Services UI">&bull;<span></span></span> <a href="#" data-url="https://mobilemarketing.adobe.com/" target="_blank">Mobile Services</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Places">&bull;<span></span></span> <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/places" target="_blank">Places</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Marketing Cloud Exchange">&bull;<span></span></span> <a href="#" data-url="https://exchange.adobe.com/experiencecloud" target="_blank">Exchange</a> /
+                        <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/downloads" target="_blank">Software Distribution</a>
+                    </li>
+                    <li class="switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Sign In">&bull;<span></span></span> <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/" target="_blank">Login</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Admin tool">&bull;<span></span></span> <a href="#" data-url="https://experience.adobe.com/#/@%orgTenantId%/admin" target="_blank">Admin Tool</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="Adobe Admin Console">&bull;<span></span></span> <a href="#" data-url="https://adminconsole.adobe.com/%orgId%/overview" target="_blank">Admin Console</a> /
+                        <span class="adobe-status adobe-status-hide" title="" data-service="I/O Console">&bull;<span></span></span> <a href="#" data-url="https://console.adobe.io/" target="_blank">I/O Console</a> /
+                        <a href="#" data-url="https://privacyui.cloud.adobe.io/" target="_blank" title="formerly GDPR UI">Privacy Service</a>
+                    </li>
+
+                    <li class="switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <a href="#" data-url="https://experienceleague.adobe.com/docs/" target="_blank">Documentation</a> /
+                        <a href="#" data-url="https://training.osadchuka.com/adobe-video-courses?utm_source=aecbookmarks&utm_medium=firefox-extension&utm_campaign=video-courses" target="_blank">Video Courses</a> /
+                        <a href="#" data-url="https://experienceleaguecommunities.adobe.com" target="_blank">Community</a> /
+                        <a href="#" data-url="https://status.adobe.com/" target="_blank">Adobe System Status</a>
+                    </li>
+
+                    <li id="marketoBookmarks" class="hide switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <a href="#" data-url="https://login.marketo.com" target="_blank">Marketo Engage</a>:
+                        <a href="#" data-url="https://help.marketo.com/hc/en-us" target="_blank">Help</a> /
+                        <a href="#" data-url="https://docs.marketo.com" target="_blank">Documentation</a> /
+                        <a href="#" data-url="https://nation.marketo.com" target="_blank">Community</a>
+                    </li>
+                    <li id="magentoBookmarks" class="hide switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <a href="#" data-url="https://account.magento.com/customer/account/login" target="_blank">Magento</a>:
+                        <a href="#" data-url="https://marketplacesupport.magento.com/hc/en-us" target="_blank">Help</a> /
+                        <a href="#" data-url="https://magento.com/technical-resources" target="_blank">Documentation & Resources</a> /
+                        <a href="#" data-url="https://community.magento.com" target="_blank">Community</a>
+                    </li>
+
+                    <li id="indicateAdobeStatusInfo" class="hide switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <div class="new-feature">
+                            <a href="#" id="go-to-options">New feature available: Enable Status Indication of Adobe Services</a>
+                        </div>
+                    </li>
+                    <li id="version1416" class="hide switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <div class="new-feature">
+                            <a href="#" id="go-to-options">Have you noticed the new features for Adobe Analytics, Target, Launch, Marketo Engage and Magento? — review the ⚙️ Settings.</a>
+                        </div>
+                    </li>
+                    <li id="launchinspector" class="hide switcher-Services-Column-Item spectrum-Heading--subtitle4">
+                        <div class="new-feature">
+                            <a href="https://go.osadchuka.com/ow3" target="_blank">Introducing Launch Inspector - new add-on for Launch Developers</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+    </nav>
+</div>
+
+
+</body>
+</html>

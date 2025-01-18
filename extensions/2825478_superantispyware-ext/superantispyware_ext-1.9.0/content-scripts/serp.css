@@ -1,0 +1,95 @@
+/**
+ * Style for
+ *
+ * * the "ticks" or "crosses" showing next to serch results
+ * * the "tooltip" showing when hovering a tick or cross on a SERP
+ *
+ * The name of this file is hard coded in the manifest builder.
+ */
+.webscannerpro_tick {
+  display: inline-block;
+  cursor: default;
+}
+#webscannerpro_tooltip {
+  --tooltip-size: 68px;
+  --logo-width: 130px;
+  --padding: 10px;
+  font-family: sans-serif;
+  position: absolute;
+  z-index: 2147483647;
+  opacity: 0;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: normal;
+  padding: 0;
+  color: white;
+  border-radius: 1rem;
+}
+#webscannerpro_tooltip.webscannerpro_green {
+  background-color: #04B72F;
+}
+#webscannerpro_tooltip.webscannerpro_orange {
+  background-color: #04B72F;
+}
+#webscannerpro_tooltip.webscannerpro_red {
+  background-color: #F30011;
+}
+#webscannerpro_tooltip.webscannerpro_grey {
+  background-color: #7F7F7F;
+}
+#webscannerpro_tooltip > .webscannerpro_badge,
+#webscannerpro_tooltip > .webscannerpro_msg,
+#webscannerpro_tooltip > .webscannerpro_logo {
+  margin: 0;
+  padding: 0;
+}
+#webscannerpro_tooltip > .webscannerpro_badge {
+  background-color: #285972;
+  background-repeat: no-repeat;
+  background-size: calc(var(--tooltip-size) - var(--padding));
+  background-position: center;
+  width: var(--tooltip-size);
+  height: var(--tooltip-size);
+  float: left;
+  border-radius: 1rem 0 0 1rem;
+}
+.webscannerpro_tick.webscannerpro_green,
+#webscannerpro_tooltip.webscannerpro_green > .webscannerpro_badge {
+  background-image:
+    url('chrome-extension://__MSG_@@extension_id__/resources/circle-tick.svg'),
+    url('moz-extension://__MSG_@@extension_id__/resources/circle-tick.svg');
+}
+.webscannerpro_tick.webscannerpro_orange,
+.webscannerpro_tick.webscannerpro_red,
+#webscannerpro_tooltip.webscannerpro_orange > .webscannerpro_badge,
+#webscannerpro_tooltip.webscannerpro_red > .webscannerpro_badge {
+  background-image:
+    url('chrome-extension://__MSG_@@extension_id__/resources/circle-cross.svg'),
+    url('moz-extension://__MSG_@@extension_id__/resources/circle-cross.svg');
+}
+.webscannerpro_tick.webscannerpro_grey,
+#webscannerpro_tooltip.webscannerpro_grey > .webscannerpro_badge {
+  background-image:
+    url('chrome-extension://__MSG_@@extension_id__/resources/circle-questionmark.svg'),
+    url('moz-extension://__MSG_@@extension_id__/resources/circle-questionmark.svg');
+}
+#webscannerpro_tooltip > .webscannerpro_msg {
+  margin: var(--padding);
+  margin-left: calc(var(--tooltip-size) + var(--padding));
+}
+#webscannerpro_tooltip > .webscannerpro_logo {
+  position: absolute;
+  bottom: 6px;
+  left: calc(var(--tooltip-size) + var(--padding));
+  width: var(--logo-width);
+  height: calc(var(--logo-width) / 6.75714);
+  background-image:
+    url('chrome-extension://__MSG_@@extension_id__/resources/SASExt_logo.png'),
+    url('moz-extension://__MSG_@@extension_id__/resources/SASExt_logo.png');
+  background-repeat: no-repeat;
+  background-size: var(--logo-width) auto;
+}
+#webscannerpro_tooltip b {
+  text-transform: uppercase;
+}

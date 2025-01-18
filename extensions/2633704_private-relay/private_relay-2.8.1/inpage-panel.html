@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Firefox Relay</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/in-page.css" />
+    <script src="/js/libs/browser-polyfill.min.js"></script>
+    <script src="/js/shared/utils.js"></script>
+    <script src="/js/shared/metrics.js"></script>
+    <script src="/js/other-websites/inpage_menu.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body
+    id="fxRelayMenuBody"
+    class="fx-relay-menu-body fx-relay is-premium is-loading"
+  >
+    <header class="fx-relay-menu-header">
+      <div class="fx-relay-menu-header-logo-bar">
+        <h1 class="fx-relay-menu-logo">
+          <img
+            class="fx-relay-menu-logo-image-fx-relay"
+            src="/images/logo-image-fx-relay.svg"
+            alt=""
+          />
+          <img
+            class="fx-relay-menu-logo-text"
+            alt="Firefox Relay"
+            src="/images/logo-text-fx-relay.svg"
+          />
+        </h1>
+        <a
+          class="fx-relay-menu-dashboard-link"        
+          href="https://relay.firefox.com"
+        >
+          <span class="fx-relay-menu-dashboard-link-tooltip"></span>
+          <img src="/icons/nebula-external-link-blue.svg" alt="" />
+        </a>
+      </div>
+      <div class="fx-relay-menu-filter-active-site">
+        <button class="fx-relay-menu-filter-active-site-button is-active" data-mask-list=".fx-relay-menu-masks-list-this-website" data-string-id="labelFromThisWebsite"></button>
+        <button class="fx-relay-menu-filter-active-site-button" data-mask-list=".fx-relay-menu-masks-list-all-masks"  data-string-id="labelAllEmailMasks"></button>
+      </div>
+    </header>
+    <main class="fx-relay-menu">
+      <div class="fx-relay-menu-loading-bar">
+        <div class="fx-relay-menu-loading-bar-wrapper">
+          <div class="fx-relay-menu-loading-bar-border">
+            <div class="fx-relay-menu-loading-bar-whitespace">
+              <div class="fx-relay-menu-loading-bar-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Logged Out -->
+      <section class="fx-relay-menu-content fx-content-signed-out is-hidden">
+        <p class="fx-relay-menu-sign-up-message"></p>
+        <a
+          
+          class="fx-relay-c-button t-primary fx-relay-menu-sign-up-btn"
+          href="https://relay.firefox.com"
+        ></a>
+      </section>
+
+      <!-- Logged In / Free Tier -->
+      <section class="fx-relay-menu-content fx-content-signed-in-free is-hidden">
+        <p class="fx-relay-menu-remaining-aliases"></p>
+        <button
+          
+          class="fx-relay-c-button t-primary fx-relay-menu-generate-alias-btn"
+        ></button>
+
+        <div class="fx-relay-menu-masks-lists">
+          <!-- Reused Alias Menu -->
+          <div class="fx-relay-menu-masks-list t-website fx-relay-menu-masks-free-this-website">
+            <span data-string-id="pageInputIconPreviouslyUsedMask" class="fx-relay-menu-masks-list-label"></span>
+            <ul class="is-loading">
+              <li class="fx-relay-menu-masks-list-loading">
+                <img
+                  class="fx-relay-animation-spin"
+                  src="/icons/button-loading-dark.svg"
+                  alt=""
+                />
+              </li>
+            </ul>
+          </div>
+
+          <div class="fx-relay-menu-masks-list fx-relay-menu-masks-free-other">
+            <span
+            
+              data-string-id="pageInputIconAdditionalEmailMasks"
+              class="fx-relay-menu-masks-list-label"
+            ></span>
+            <ul class="is-loading">
+              <li class="fx-relay-menu-masks-list-loading">
+                <img
+                  class="fx-relay-animation-spin"
+                  src="/icons/button-loading-dark.svg"
+                  alt=""
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <a
+          
+          
+          class="fx-relay-c-button t-secondary fx-relay-menu-get-unlimited-aliases"
+          href="https://relay.firefox.com/premium"
+        ></a>
+      </section>
+
+      <!-- Logged In / Premium Tier -->
+      <section class="fx-relay-menu-content fx-content-signed-in-premium is-hidden">
+        <div class="fx-relay-menu-masks-search">
+          <form class="fx-relay-menu-masks-search-form">
+            <input
+              type="search"
+              class="fx-relay-menu-masks-search-input fx-relay-c-search-input"
+            />
+            <div class="fx-relay-c-search-controls">
+              <div class="fx-relay-filter-mask-count">
+                <span class="js-filter-masks-visible"></span>
+                /
+                <span class="js-filter-masks-total"></span>
+              </div>
+            </div>
+          </form>
+          <div class="fx-relay-menu-masks-list t-search fx-relay-menu-masks-list-this-website is-loading">
+            <ul class="">
+              <li class="fx-relay-menu-masks-list-loading">
+                <img
+                  class="fx-relay-animation-spin"
+                  src="/icons/button-loading-dark.svg"
+                  alt=""
+                />
+              </li>
+            </ul>
+          </div>
+          <div class="fx-relay-menu-masks-list t-search fx-relay-menu-masks-list-all-masks is-loading">
+            <ul class="">
+              <li class="fx-relay-menu-masks-list-loading">
+                <img
+                  class="fx-relay-animation-spin"
+                  src="/icons/button-loading-dark.svg"
+                  alt=""
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="fx-relay-menu-content-footer">
+          <button
+            
+            class="fx-relay-c-button t-primary fx-relay-menu-generate-alias-btn"
+          ></button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

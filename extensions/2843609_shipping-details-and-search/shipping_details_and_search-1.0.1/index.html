@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Details & Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="./images/logo.svg" alt="Shipping Details">
+        </header>
+        <main>
+            <div class="cont-wrap">
+                <form class="search"  id="searchForm">
+                    <div class="form-wrap">
+                            <img src="./images/search.svg" alt="Search">
+                        <input id="searchInput" class="search-input" type="text" placeholder="Search the web" autocomplete="off">
+                    </div>
+                </form>
+                <div class="bottom-sec">
+                    <div class="tracker top-sec-inner" id="topSection">
+                        <div class="disabled-overlay" style="display: none;">
+                            <div class="disabled-inner">
+                              <p class="disabled-head">Welcome to Shipping Details &amp; Search</p>
+                              <p class="disabled-desc">To activate this feature, an opt-in is necessary. Please grant us the required permissions.</p>
+                              <a class="enable-optinCta">View Permissions</a>
+                            </div>
+                        </div>
+                        <div class="privacyOptin-overlay" style="display: none;">
+                            <div class="optin-wrap">
+                              <p class="optin-head">Your Privacy is Our Priority</p>
+                              <div class="p-icon-wrap">
+                                <img src="./images/privacy.svg" alt="privacy-icon">
+                              </div>
+                              <div class="privacy-cont">
+                                <form id="uninstallForm">
+                                    <div class="form-group">
+                                        <ul>
+                                            <li>
+                                                Can we collect and process the following technical data:
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            IP Address and user agent details: We collect this information to enhance our product, identify troubleshooting issues, and assist in fraud detection. Please note that we anonymize your IP address as soon as possible. Furthermore, this data cannot be used to personally identify any user.
+                                        </p>
+                                    </div>
+                                </form>
+                                <p class="ref-desc">
+                                    Refraining from sharing this data will affect our ability to to offer appropriate package tracking results.
+                                    <br> <b>You can continue to enjoy the customized web browsing feature.</b>
+                                </p>
+                                <div class="button-flex">
+                                    <a class="optin-cta disagree">Decline</a>
+                                    <a class="optin-cta agree">Accept</a>
+                                </div>
+                                <p class="privacy-desc">
+                                    For detailed information on the data collected by the application and the purposes behind it, please
+                                    read our
+                                    <a href="https://shippingdetails.com/public/privacypolicy_ff.html" target="_blank">Privacy Policy</a>.
+                                </p>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="Package-cont-search">
+                                <p class="package-num-error"><img src="./images/erroricon.svg" alt="error-icon">
+                                    <span id="error-message">Incorrect tracking number</span>
+                                </p>
+                                <form 
+                                id="tracking-form"
+                                >
+                                    <div class="field-wrap">
+                                        <input
+                                        type="text"
+                                        placeholder="Enter your tracking number"
+                                        id="tracking-number-input"
+                                        autofocus
+                                        />
+                                        <select id="courier-select">
+                                            <option>Carrier (Optional)</option>
+                                            <option>Fedex</option>
+                                            <option>UPS</option>
+                                            <option>USPS</option>
+                                            <option>DHL Express</option>
+                                            <option>Canada Post</option>
+                                            <option>Others</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit">Track Package</button>
+                                </form>
+                            </div>
+                            <div class="Package-cont-result" style="display: none;">
+                                <form 
+                                id="tracking-form-res"
+                                >
+                                    <div class="field-wrap-result">
+                                        <input type="text"
+                                        id="tracking-number-input-res"
+                                        />
+                                        <!-- <span class="sep"></span> -->
+                                        <select id="courier-select-res">
+                                            <option id="optional">Carrier (Optional)</option>
+                                            <option>Fedex</option>
+                                            <option>UPS</option>
+                                            <option>USPS</option>
+                                            <option>DHL Express</option>
+                                            <option>Canada Post</option>
+                                            <option>Others</option>
+                                        </select>
+                                        <button type="submit" id="form-submit">Track Package</button>
+                                    </div>
+                                </form>
+                                <div class="package-result-wrap">
+                                    <div id="close-button" style="display:none;">
+                                        <span class="close-btn">
+                                            <img src="./images/close-icon.svg" alt="close-btn">
+                                        </span>
+                                    </div>
+                                    
+                                    <div id="loader" style="display:none;">
+                                        <img src="./images/loader.gif" alt="loader-icon">
+                                    </div>
+                                    <div id="notFound" style="display:none;">
+                                        <div class="notFound-inner">
+                                            <div class="notFound-left">
+                                                <img src="./images/notFound.svg" alt="notFound-icon">
+                                                <p>Status not found</p>
+                                            </div>
+                                            <div class="notFound-right">
+                                                <p>Your tracking info was not found,</p>
+                                                <p>Possible reasons:</p>
+                                                <p>1: The carrier hasn't accepted your package yet.</p>
+                                                <p>2: The carrier hasn't scanned and entered your package tracking information into their system yet.</p>
+                                                <p>3: Your tracking number is incorrect or invalid.</p>
+                                                <p>4: Your tracking number has expired and removed from carrier's system.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="result-view" style="display:none;">
+                                        <div class="result-view-top">
+                                            <ul class="loc-info">
+                                            </ul>
+                                        </div>
+                                        <div class="result-view-btm">
+                                            <div class="status-wrap">
+                                                Status: <span class="curr-pack-status">out for delivery</span>
+                                            </div>
+                                            <div class="result-wrap">
+                                                <ul id="parent-ul">
+                                                    <li class="result-view main-status delivery-inforeceived">
+                                                        <div class="date-time-details">
+                                                            <p class="date"></p>
+                                                            <p class="time"></p>
+                                                        </div>
+                                                        <div class="item"></div>
+                                                        <div class="package-status-main">Info Received</div>
+                                                    </li>
+                                                    
+                                                    <li class="result-view main-status delivery-intransit">
+                                                        <div class="date-time-details">
+                                                            <p class="date"></p>
+                                                            <p class="time"></p>
+                                                        </div>
+                                                        <div class="item"></div>
+                                                        <div class="package-status-main">In Transit</div>
+                                                    </li>
+                                                    
+                                                    <li class="result-view main-status delivery-outfordelivery">
+                                                        <div class="date-time-details">
+                                                            <p class="date"></p>
+                                                            <p class="time"></p>
+                                                        </div>
+                                                        <div class="item"></div>
+                                                        <div class="package-status-main">Out For Delivery</div>
+                                                        <div class="package-status-main"></div>
+                                                    </li>
+                                                    
+                                                    <li class="result-view main-status delivery-delivered">
+                                                        <div class="date-time-details">
+                                                            <p class="date"></p>
+                                                            <p class="time"></p>
+                                                        </div>
+                                                        <div class="item"></div>
+                                                        <div class="package-status-main">Delivered</div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            
+                                        </div>              
+                                    </div>                   
+                                </div>                     
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-menu">
+                        <ul>
+                            <li>
+                                <a href="https://shippingdetails.com/public/privacypolicy_ff.html" target="_blank">Privacy Policy</a>
+                            </li><li>
+                                <a href="https://shippingdetails.com/public/termsofservice_ff.html" target="_blank">Terms of Service</a>
+                            </li><li>
+                                <a href="https://shippingdetails.com/public/contactus_ff.html" target="_blank">Contact Us</a>
+                            </li><li>
+                                <a href="https://shippingdetails.com/public/uninstall_ff.html" target="_blank">Uninstall</a>
+                            </li><li>
+                                <a href="https://shippingdetails.com/public/ccpa_ff.html" target="_blank">Do Not Share My Personal Information</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+    <script type="module" src="./js/script.js"></script>
+</body>
+</html>

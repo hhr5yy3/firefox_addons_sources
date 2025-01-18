@@ -1,0 +1,1 @@
+export default "/assets/images/UnreadMails0.png";

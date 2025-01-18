@@ -1,0 +1,50 @@
+{
+  "name": "SiteAnalyzer SEO Tools: Meta & SEO Checker",
+  "description": "It is a browser extension providing a set of tools for analyzing web site SEO indicators, URL analysis and fix the SEO errors.",
+  "version": "2.1.107",
+  "manifest_version": 2,
+  "icons": {
+    "16": "res/icons/logo-16.png",
+    "32": "res/icons/logo-32.png",
+    "48": "res/icons/logo-48.png",
+    "128": "res/icons/logo-128.png"
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "tabs",
+    "storage",
+    "declarativeNetRequest",
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "css": [
+        "css/links-highlight.css"
+      ],
+      "js": [
+        "webVitals.js",
+        "content.js",
+        "source.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6f7ce15f-5dfd-4cb2-b570-9e1f6dfb1ee3}"
+    }
+  }
+}

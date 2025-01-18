@@ -1,0 +1,10 @@
+// [snowpack] add styles to the page (skip if no document exists)
+if (typeof document !== 'undefined') {
+  const code = ".dropdown[data-v-1aab9ef9] {\n  position: relative;\n}\n.dropdown__dropdown[data-v-1aab9ef9] {\n  display: flex;\n  align-items: center;\n  height: min-content;\n  cursor: pointer;\n  user-select: none;\n}\n.dropdown__dropdown:hover .dropdown__title[data-v-1aab9ef9] {\n  text-decoration: underline;\n}\n.dropdown-list[data-v-1aab9ef9] {\n  cursor: default;\n  z-index: 100;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  position: absolute;\n  min-width: max-content;\n  top: 50px;\n  left: 0;\n  border-radius: var(--brd-rad);\n  overflow: hidden;\n  box-shadow: 10px 10px 41px 9px hsl(var(--clr-white), 0.12);\n}\n.dropdown-list__item[data-v-1aab9ef9] {\n  cursor: pointer;\n  position: relative;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  background-color: hsl(var(--clr-grey));\n  height: 70px;\n  padding: 1rem 1rem;\n  z-index: 2;\n}\n.dropdown-list__item[data-v-1aab9ef9]:hover {\n  background-color: hsl(var(--clr-black));\n}\n.dropdown-list__item:hover .dropdown-list__arrow[data-v-1aab9ef9] {\n  transform: translateX(20px);\n  opacity: 0.4;\n}\n.dropdown-list__item--selected[data-v-1aab9ef9] {\n  background-color: hsl(var(--clr-primary));\n}\n.dropdown-list__item--selected[data-v-1aab9ef9]:hover {\n  background-color: hsl(var(--clr-primary));\n  filter: brightness(0.8);\n}\n.dropdown-list__image[data-v-1aab9ef9] {\n  max-height: 100%;\n}\n.dropdown-list__title[data-v-1aab9ef9] {\n  margin-left: 0.8rem;\n}\n.dropdown-list__arrow[data-v-1aab9ef9] {\n  position: absolute;\n  right: 25px;\n  transition: transform 200ms ease, opacity 200ms ease;\n  color: hsl(var(--clr-primary));\n  height: 100%;\n  width: 20%;\n  opacity: 0.2;\n  z-index: 1;\n}\n.light .dropdown-list__item[data-v-1aab9ef9]:hover {\n  color: hsl(var(--clr-white));\n}";
+
+  const styleEl = document.createElement("style");
+  const codeEl = document.createTextNode(code);
+  styleEl.type = 'text/css';
+  styleEl.appendChild(codeEl);
+  document.head.appendChild(styleEl);
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Config - Library Extension</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+ min-width: 500px;
+ width: 100%;
+ height: 580px;
+ font-family: Arial;
+ font-size: 14px;
+ margin: 0;
+ padding: 6px 15px 6px 9px;
+ user-select: none;
+ -webkit-user-select: none;
+ cursor: default;
+ overflow: hidden;
+}
+
+h1 { padding: 0; margin: 0; font-weight: normal;}
+h1 img { margin-right: 5px; }
+h2 { font-size: 16pt; }
+
+div.title { padding-bottom: 6px; font-size: 16pt; }
+span.warning { font-size: 10pt; text-decoration: bold; }
+div.warning { border-radius: 4px; border: 1px solid red; background-color: lightyellow; font-size: 10pt; text-decoration: bold; padding: 6px; }
+
+div.centered {
+  margin: 0px auto;
+}
+
+div.setting-info { font-size: 14px; margin-bottom: 6px; }
+div.setting label { margin-left: 5px; }
+
+/* Override the ul padding */
+ul { padding: 0;}
+/* Override the bootstrap margin */
+input[type=checkbox], input[type=radio] { margin-top: 0px; }
+
+div.modal_background { display: block; position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; overflow: none; background: #cccecece; }
+div.modal { display: block; top: 15px; background: white; border: solid 1px #97976b; border-radius: 3px; padding: 5px 5px 5px 5px; position: absolute; width: 500px; height: 300px; margin: 0 auto; }
+
+.items .panel{ position: relative; float: left; width: 100%; height: 350px; margin 0 auto; }
+
+.citations { font-size: xx-small; padding: 15px 0px 15px 0px; }
+.contact { font-size: 12pt; }
+
+img {margin: 0 2px 0 0;}
+
+.nav { cursor: pointer; margin: 6px 0px 6px 0px; padding: 5px 8px 5px 8px; font: bold 9pt Arial; text-align: center; position: relative; background: -webkit-linear-gradient(top, #f4f4e1 0%, #c8c8ab 100%); border: solid 1px #97976b; border-radius: 3px; }
+.nav:hover { background: -webkit-linear-gradient(top, #c8c8ab 0%, #f4f4e1 100%); }
+.done { position: absolute; bottom: 4px; right: 10px; }
+
+#libraryContainer {height: 50vh; overflow-y: scroll; overflow-x: hidden; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; }
+#sitesContainer {height: 64vh; overflow-y: scroll; overflow-x: hidden; border-radius: 4px; border: 1px solid lightgrey; }
+#entries {height: 83vh; overflow-y: scroll; overflow-x: hidden; border-radius: 4px; padding: 6px 5px 2px 5px; border: 1px solid lightgrey; }
+
+.libraryName {width: 375px; float: left;}
+.libraryBook {width: 75px; float: left;}
+.libraryEbook {width: 75px; float: left;}
+
+.link { text-decoration: underline; color: blue; }
+
+.ttl {font-size: 12pt; font-weight: bold;}
+
+.selimg { height: 24px; vertical-align: top; cursor: pointer;}
+.inline { float: left; }
+.hidden { display: none; }
+.libraryStatus  { font-size: 8pt; }
+
+.versionInfo { font-size: 8pt; }
+
+.setting { margin-bottom: 10px; padding: 6px 6px 6px 6px; border: solid 1px lightgrey; border-radius: 4px; }
+.setting button { margin-left: 10px; }
+
+.libraryDataInfo { font-size: 8pt; margin-bottom: 6px; }
+
+.library_data_action { text-decoration: underline; color: blue; cursor: pointer; }
+
+.fa { font-style: normal; }
+.fa-check:before { color: lightgreen; content: "\2714" }
+.fa-info:before { color: blue; content: "\2139" }
+
+#view { margin-top: 5px; padding-top: 6px; }
+#view li { text-align: left; list-style-type: none; font-size: 82%; padding: 6px 0px 6px 4px; cursor: pointer; }
+#view li.selected { text-decoration: underline; background: #cecece }
+
+#add_library { margin-right: 4px; float: right; }
+
+#main-column { margin-top: 5px; padding: 6px 10px 0px 10px;}
+#main-column .cell { display: none; }
+#main-column .cell.selected { display: block; }
+
+.list-item { position: relative; clear: both; margin-right: 0px; margin-left: 0px; padding: 7px 4px 7px 4px; }
+.list-item:nth-child(even) { background-color: #ececec; }
+
+.libraryNewRow .position-group { display: none; }
+.libraryNewRow:hover .position-group { display: block; }
+.position-group { position: absolute; right: 5px; bottom: 5px; color: lightgrey; }
+.position-item:hover { color: black; cursor: pointer; }
+
+.library-remove-action { float: right; font-size: 10pt; }
+.library-name { font-size: 12pt;  }
+.library-location { text-transform: uppercase; font-size: 10pt; }
+.library-url { font-size: 10pt; }
+
+.catalog-listing { margin-left: 15px; font-size: 10pt }
+.catalog-url { font-size: 10pt; }
+.catalog-enable-action { margin-left: -15px; font-size: 10pt; float: left; }
+.catalog-permissions-warning { float: right; font-size: 10px; }
+
+.site-listing { padding-left: 19px; font-size: 10pt }
+
+.site-name { font-size: 12pt;  }
+.site-url { font-size: 10pt; }
+.site-enable-action { margin-left: -15px; font-size: 10pt; float: left; }
+
+#about .row { margin-bottom: 15px; }
+
+div#specialCatalogs {
+  border: 2px solid lightgrey;
+  border-radius: 6px;
+  padding: 10px 10px 10px 10px;
+  margin: 3px 3px 3px 3px;
+  background-color: lightyellow;
+  height: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+div#specialCatalogs button {
+  margin: 6px auto;
+}
+
+input { margin-right: 4px; }
+img.openlibrary_logo { height: 21px; width: 85px;}
+
+#config-text { width: 100%; height: 150px; }
+
+    </style>
+</head>
+<body role="document">
+
+<div role="main">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="versionInfo">
+        <div>You currently have version <span id="version"></span><span id="release_notes"></span></div>
+        <div id="version_check"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2">
+      <ul id="view">
+        <li data-target="libraries" class="selected">Libraries <span class="annotation"></span></li>
+        <li data-target="sites">Sites <span class="annotation"></span></li>
+        <li data-target="general">General Settings</li>
+        <li data-target="help">Help / Support</li>
+        <li data-target="about">About</li>
+      </ul>
+    </div>
+
+    <div class="col-xs-10" id="main-column" >
+
+      <div id="libraries" class="cell selected">
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="libraryDataInfo">
+              <div id="library_data_msg"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6">
+              <select class="form-control" id="country"></select>
+          </div>
+          <div class="col-xs-6">
+              <select class="form-control" name="states" id="states">
+                <option value="--">Choose your state</option>
+              </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-10">
+            <select class="form-control" name="library" id="library" style="margin-right: 5px;"></select>
+          </div>
+          <div class="col-xs-2">
+            <button class="nav" id="add_library" title="Add this library">Add</button>
+          </div>
+        </div>
+
+        <div id="libraryContainer">
+          <div id="librariesRows">
+            <div>Loading...</div>
+          </div>
+        </div>
+
+        <div class="row" id="specialCatalogs" style="display: none;">
+           <div class="message"></div>
+        </div>
+
+        <div class="row" id="debug">
+          <div id="actions"></div>
+        </div>
+
+      </div>
+
+      <div id="sites" class="cell">
+        <div class="row">
+          <div class="col-xs-12">
+            The following sites are currently supported by the extension. You can enable any site by checking the box next to it.
+            If you have not previously enabled this site, your browser may request permissions from you in order to access the content
+            so that the book details can be pulled and used to check your local library.
+          </div>
+        </div>
+
+        <div id="sitesContainer">
+        </div>
+
+      </div>
+
+      <div id="general" class="cell">
+        <div id="entries">
+        </div>
+
+        <div id="generalDebug"></div>
+
+      </div>
+
+      <div id="help" class="cell">
+        <div class="col-xs-12">
+          If you are having any issues with the Library Extension, we're happy to help
+        </div>
+
+        <div class="col-xs-12" id="config-helper">
+          If you have been asked to send your configuration settings to us, enter your email address and the case number provided, and click the button to send your configuration for further review
+
+          <div>
+            <label for="config-email">Email Address</label>
+            <div>
+              <input type="text" name="config-email" id="config-email" aria-label="Email Address" />
+            </div>
+
+            <label for="config-email">Case Number</label>
+            <div>
+              <input type="text" name="config-case-number" id="config-case-number" aria-label="Case Number" />
+            </div>
+
+            <input type="button" name="config-submit" id="config-submit" value="Send configuration" aria-label="Send configuration for analysis" />
+          </div>
+        </div>
+
+        <div class="col-xs-12" id="config-download">
+          You can download your library configuration to keep as a backup, or to share on another computer <button id="config-download">Download</button>
+        </div>
+
+        <div class="col-xs-12" id="config-apply">
+          Install an existing configuration <button id="config-pick">Install Configuration</button>
+        </div>
+
+        <div class="col-xs-12" id="config-entry">
+        </div>
+
+        <div class="col-xs-12" id="config-status">
+        </div>
+
+      </div>
+
+      <div id="about" class="cell">
+        <div class="row">
+          <div class="col-xs-12">
+            Library Extension <br/>
+            Copyright &copy; 2019&ndash;2025 Quotidian LLC. All Rights Reserved.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            Comments? Questions?  Visit us online at <a href="http://www.libraryextension.com/contact-us" target="blank">http://www.libraryextension.com/contact-us</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            Love the extension?  <a id="reviewLink" target="blank">Write a review</a>
+            or find out more about supporting the project at <a href="https://www.libraryextension.com/support-us?utm_source=libraryextension-config" target="blank">https://www.libraryextension.com/support-us</a>!
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="citations">
+              <img src="images/bookcase.png" height="16" width="16"> icon used with permission from <a href="http://commons.wikimedia.org/wiki/File:Nuvola_apps_bookcase_pastel.png" target="blank">http://commons.wikimedia.org/wiki/File:Nuvola_apps_bookcase_pastel.png</a>
+            </div>
+          </div>
+        </div>
+
+        <div id="permissions"></div>
+        <div id="messages"></div>
+        <div id="generalDebug"></div>
+      </div>
+    </div>
+
+    <div class="nav done">Close</div>
+
+  </div>
+</div>
+</div>
+
+    <script type="text/javascript" src="config.js"></script>
+  </body>
+</html>

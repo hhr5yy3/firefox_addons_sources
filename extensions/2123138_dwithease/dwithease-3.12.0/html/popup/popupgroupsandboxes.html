@@ -1,0 +1,95 @@
+<md-tabs class="group-tabs-sandboxes" ng-class="{hasMessage: message}" md-border-bottom md-swipe-content md-dynamic-height>
+    <md-tab ng-repeat="group in groupedSandboxes track by group.id" label="{{group.text}}" ng-if="groupSettings[group.text].visible && group.sandboxes.length" class="sandbox-group">
+
+        <div class="custom-link-chips" ng-include="'./popup/customlinkchips.html'"></div>
+
+        <md-list class="sandbox-list sandboxes" ng-cloak>
+            <md-list-item class="md-2-line sandbox" ng-repeat-start="sandbox in group.sandboxes" ng-click="openSandbox(sandbox.url)">
+
+                <div class="md-list-item-text sandbox-name" layout="column">
+                    {{sandbox.name ? sandbox.name : sandbox.url}}
+                </div>
+
+                <md-fab-trigger class="sandbox-buttons align-with-text">
+                    <md-button aria-label="menu"  ng-click="quickOpen(sandbox.url, $event)" class="action-btn">
+                        <md-tooltip i18n-content="popup_tooltip_btn_quick_open" md-direction="top"></md-tooltip>
+                        <md-icon md-font-set="material-icons">burst_mode</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-trigger class="align-with-text">
+                    <md-button aria-label="menu" class="action-btn" ng-click="copyToClipboard(sandbox, $event)">
+                        <md-tooltip ng-if="!isInClipboard" i18n-content="popup_tooltip_btn_share" md-direction="top"></md-tooltip>
+                        <md-tooltip ng-if="isInClipboard" i18n-content="popup_tooltip_btn_share_copy" md-visible="isInClipboard" md-direction="top"></md-tooltip>
+                        <md-icon md-font-set="material-icons">file_copy</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-trigger class="align-with-text">
+                    <md-button aria-label="menu" class="action-btn" ng-click="editSbOptions(sandbox)">
+                        <md-tooltip i18n-content="sandbox_buttons_edit" md-direction="top"></md-tooltip>
+                        <md-icon md-font-set="material-icons">edit</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-trigger class="align-with-text">
+                    <md-button aria-label="menu" class="action-btn" ng-click="toggleContextMenu(sandbox)">
+                        <md-tooltip i18n-content="popup_tooltip_context_menu" md-direction="top"></md-tooltip>
+                        <md-icon md-font-set="material-icons">view_headline</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-trigger class="align-with-text" ng-if="!sandbox.whitelisted">
+                    <md-button aria-label="menu" class="action-btn action-warn md-warn md-hue-2" ng-click="editUrlWhitelist()">
+                        <md-tooltip i18n-content="sandbox_buttons_not_whitelisted" md-direction="top"></md-tooltip>
+                        <md-icon md-font-set="material-icons">warning</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+            </md-list-item>
+
+            <md-list-item class="md-2-line sandbox alias" ng-repeat="alias in sandbox.aliases" ng-repeat-end ng-click="openSandbox(alias.url)">
+                <md-icon md-font-set="material-icons" class="alias-icon">alternate_email</md-icon>
+
+                <div class="md-list-item-text sandbox-name" layout="column">
+                    {{alias.url}}
+                </div>
+
+                <md-fab-trigger class="sandbox-buttons align-with-text">
+                    <md-button aria-label="menu"  ng-click="quickOpen(alias.url, $event)" class="action-btn">
+                        <md-tooltip i18n-content="popup_tooltip_btn_quick_open" md-direction="top"></md-tooltip>
+                        <md-icon md-font-set="material-icons">burst_mode</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-trigger class="align-with-text">
+                    <md-button aria-label="menu" class="action-btn" ng-click="copyToClipboard(sandbox, $event)">
+                        <md-tooltip ng-if="!isInClipboard" i18n-content="popup_tooltip_btn_share" md-direction="top"></md-tooltip>
+                        <md-tooltip ng-if="isInClipboard" i18n-content="popup_tooltip_btn_share_copy" md-visible="isInClipboard" md-direction="top"></md-tooltip>
+                        <md-icon md-font-set="material-icons">file_copy</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-trigger class="align-with-text">
+                    <md-button aria-label="menu" class="action-btn" ng-click="editSbOptions(sandbox)">
+                        <md-tooltip i18n-content="sandbox_buttons_edit" md-direction="top"></md-tooltip>
+                        <md-icon md-font-set="material-icons">edit</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-trigger class="align-with-text">
+                    <md-button aria-label="menu" class="action-btn" ng-click="toggleContextMenu(alias)">
+                        <md-tooltip i18n-content="popup_tooltip_context_menu" md-direction="top"></md-tooltip>
+                        <md-icon md-font-set="material-icons">view_headline</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+
+                <md-fab-trigger class="align-with-text" ng-if="!alias.whitelisted">
+                    <md-button aria-label="menu" class="action-btn action-warn md-warn md-hue-2" ng-click="editUrlWhitelist()">
+                        <md-tooltip i18n-content="sandbox_buttons_not_whitelisted" md-direction="top"></md-tooltip>
+                        <md-icon md-font-set="material-icons">warning</md-icon>
+                    </md-button>
+                </md-fab-trigger>
+            </md-list-item>
+        </md-list>
+    </md-tab>
+</md-tabs>

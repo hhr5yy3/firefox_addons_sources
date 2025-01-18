@@ -1,0 +1,313 @@
+@import "./fonts/fonts.css";
+
+body {
+    padding: 0;
+    margin: 0;
+}
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: rgb(245, 245, 245);
+    box-shadow: rgb(225, 225, 225) 0 0.5px 0 0;
+    height: 34px;
+    z-index: 100;
+}
+nav.searchmanager {
+    background-color: #fff;
+    box-shadow: none;
+    padding: 5px 0;
+    opacity: 0.85;
+}
+nav #nav-left, nav #nav-right {
+    position: absolute;
+}
+nav #nav-left {
+    left: 10px;
+    white-space: nowrap;
+}
+nav #nav-left .nav-item {
+    margin-right: 15px;
+}
+nav #nav-right {
+    top: 0;
+    right: 10px
+}
+nav #nav-right .nav-item {
+    margin-left: 15px;
+}
+nav form.nav-item {
+    padding-left: 0;
+    margin: -2px 0 0 0;
+    width: 300px;
+    height: 34px;
+}
+nav form.nav-item input {
+    position: absolute;
+    height: 30px;
+    width: 100%;
+    border-radius: 4px 0 0 4px;
+    padding: 0 50px 0 10px;
+    line-height: 30px;
+    color: #444;
+    margin: 3px 0;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    font: 14px Roboto, sans-serif;
+}
+nav form.nav-item button {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    height: 30px;
+    width: 40px;
+    border: 0;
+    border-radius: 4px;
+    background-color: rgb(59, 125, 230);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 150ms linear;
+}
+nav form.nav-item button:hover {
+    background-color: rgb(42, 93, 230);
+}
+nav .nav-item {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 0 0 20px;
+    text-decoration: none;
+    height: 34px;
+}
+nav a.nav-item span {
+    cursor: pointer;
+}
+nav a.nav-item:hover span {
+    text-decoration: underline;
+}
+nav .nav-item .nav-item-text {
+    vertical-align: middle;
+    font: 15px/34px Roboto, sans-serif;
+    color: #555;
+    margin-left: 10px;
+}
+nav .nav-item .nav-item-image {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 24px;
+    width: 24px;
+    border-radius: 3px;
+}
+nav .nav-item.dropdown {
+    padding-left: 10px;
+}
+nav .nav-item.dropdown svg {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    border-radius: 3px;
+    color: #444;
+}
+nav .nav-item .dropdown-items {
+    display: none;
+    position: absolute;
+    top: calc(100% - 3px);
+    left: 0;
+    min-width: 150px;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 5px 15px;
+}
+nav .nav-item.dropdown:hover .dropdown-items {
+    display: block;
+}
+nav .nav-item.dropdown .nav-item {
+    display: block;
+}
+nav .nav-item.dropdown .nav-item:last-of-type {
+    margin-bottom: 0;
+}
+nav .nav-item.dropdown .nav-item:hover {
+    text-decoration: underline;
+}
+nav .nav-item.dropdown .nav-item .nav-item-text {
+    text-decoration: none !important;
+    white-space: nowrap;
+    height: 40px;
+    display: block;
+    line-height: 40px;
+}
+main #content {
+    width: 700px;
+    margin: 20vh auto 0;
+}
+main #content .search-form {
+    display: block;
+    margin: 0 auto 0 auto;
+    text-align: center;
+}
+main #content .datetime {
+    display: block;
+    color: rgb(179, 179, 179);
+    text-shadow: 1px 1px #616161;
+    font: 15px Roboto, sans-serif;
+    text-align: center;
+    margin-bottom: 15px;
+}
+main #content .search-form {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+main #content .search-form input {
+    height: 50px;
+    width: 100%;
+    border-radius: 6px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    outline: 0;
+    box-sizing: border-box;
+    padding: 0 90px 0 20px;
+    font: 20px Roboto, sans-serif;
+    color: #444;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+main #content .search-form button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: 0;
+    outline: 0;
+    background-color: rgb(59, 125, 230);
+    color: rgb(255, 255, 255);
+    width: 70px;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+main .banner {
+    display: block;
+    margin: 20px auto 0 auto;
+    width: 90%;
+}
+main .banner img {
+    max-width: 100%;
+}
+
+main .quicklinks {
+    position: relative;
+    margin: 20px auto 0 auto;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+main .quicklinks a {
+    width: calc(100% / 7);
+    padding: 15px 0;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+main .quicklinks a:hover {
+    background-color: #f2f2f2;
+}
+main .quicklinks a .circle {
+    display: block;
+    margin: 0 auto 15px auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+    padding: 5px;
+    background: #f1f3f4;
+    border: 1px solid #dadde3;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+main .quicklinks a .circle img {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+}
+main .quicklinks a span {
+    display: block;
+    font: 11px Roboto, sans-serif;
+    color: rgb(179, 179, 179);
+    text-shadow: 1px 1px #616161;
+}
+footer {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 10px 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+footer .footer-item {
+    font: 12px/16px Roboto, sans-serif;
+    margin-right: 30px;
+    color: #888;
+    text-decoration: none;
+}
+footer .footer-item img {
+    height: 16px;
+    width: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+footer a.footer-item:hover {
+    text-decoration: underline;
+}
+footer .footer-item:last-child {
+    margin-right: 0;
+}
+/*Searchbar Autosuggest*/
+.searchbar__suggestions {
+    position: absolute;
+    font-family: roboto;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%, 0);
+    list-style-type: none;
+}
+.searchbar__suggestions li {
+    font-size: 20px;
+}
+.searchbar__suggestions.active {
+    color: #222;
+    background-color: #ffffff;
+    border-radius: 15px;
+    border: 1px solid #616161;
+    margin: 0 auto;
+    width: 36vw;
+    font-size: 0.5em;
+    text-align: left;
+    padding: 10px 0;
+}
+.searchbar__suggestions.active li {
+    padding: 2px 10px;
+}
+.searchbar__suggestions.active li:hover {
+    background-color: #dddddd;
+    cursor: pointer;
+}
+.searchbar__suggestions.active li.selected {
+    background-color: #dddddd;
+}

@@ -1,0 +1,100 @@
+<div id="redirects">
+    <div class="content">
+        <h1 i18n-content="redirects_title"></h1>
+
+        <div i18n-content="redirects_description" class="description"></div>
+
+        <div class="redirectsSettings">
+            <div class="excludeRedirects highlightable">
+                <!-- Use directive ng-sortable -->
+                <div class="active list-title" i18n-content="redirects_exclude_title"></div>
+
+                <ul class="list-group" ng-sortable="excludeURLsConfig">
+                    <li class="list-group-item" ng-repeat="item in excludeURLsList.items track by item.itemId">
+                        <dl>
+                            <dd>
+                                <span>{{item.url}}</span>
+                            </dd>
+                        </dl>
+
+                        <md-button ng-if="!item.defaultItem" class="md-icon-button action-btn edit" aria-label="Edit" ng-click="editURLItem(item)">
+                            <md-tooltip i18n-content="button_edit" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons" class="md-icon-size-16">edit</md-icon>
+                        </md-button>
+
+                        <md-button ng-if="!item.defaultItem" class="md-icon-button action-btn delete" aria-label="Delete" ng-click="removeUrlItemModal(item)">
+                            <md-tooltip i18n-content="button_delete" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons" class="md-icon-size-16">delete_forever</md-icon>
+                        </md-button>
+                    </li>
+                </ul>
+                <md-button class="md-raised md-primary" aria-label="Add New Exclude URL" ng-click="newURLModal(true)" i18n-content="button_add_redirect_exclude"></md-button>
+            </div>
+            <div class="includeRedirects highlightable">
+                <div class="active list-title" i18n-content="redirects_included_title"></div>
+
+                <ul class="list-group" ng-sortable="includeURLsConfig">
+                    <li class="list-group-item" ng-repeat="item in includeURLsList.items track by item.itemId">
+                        <dl>
+                            <dd>
+                                <span>{{item.url}}</span>
+                            </dd>
+                        </dl>
+
+                        <md-button ng-if="!item.defaultItem" class="md-icon-button action-btn edit" aria-label="Edit" md-tooltip="Edit" ng-click="editURLItem(item)">
+                            <md-tooltip i18n-content="button_edit" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons">edit</md-icon>
+                        </md-button>
+
+                        <md-button ng-if="!item.defaultItem" class="md-icon-button action-btn delete" aria-label="Delete" md-tooltip="Test" ng-click="removeUrlItemModal(item)">
+                            <md-tooltip i18n-content="button_delete" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons">delete_forever</md-icon>
+                        </md-button>
+                    </li>
+                </ul>
+                <md-button class="md-raised md-primary" aria-label="Add New Include URL" ng-click="newURLModal(false)" i18n-content="button_add_redirect_include">Add new</md-button>
+            </div>
+
+            <div ng-class="(deleteURLModal === true) ? 'deleteModal customModal' : 'hidden'">
+                <div>
+                    <div class="delete-confirm-text" i18n-content="redirect_delete_item_confirmation_dialog">
+                    <!--directive: i18n-substitute $1:<b>{{selectedURL.url}}</b>-->
+                    </div>
+
+                    <md-button class="md-icon-button action-btn close" aria-label="Close" ng-click="closeModal()">
+                        <md-icon md-font-set="material-icons">close</md-icon>
+                    </md-button>
+
+                    <md-button i18n-content="button_delete" class="md-button md-raised md-primary delete-confirm-btn" aria-label="Delete" ng-click="removeURLItem(selectedURL)">
+                    </md-button>
+                </div>
+            </div>
+            <div ng-class="(urlItemModal === true) ? 'newRedirectUrlModal customModal' : 'hidden'">
+                <div>
+                    <h2 i18n-content="redirects_url_caption"></h2>
+
+                    <form name="redirectUrlForm" novalidate validate-submit="saveURL(excludeModal)">
+
+                        <md-input-container class="md-block">
+                            <label i18n-content="redirects_new_url_action"></label>
+                            <input name="url" type="text" required ng-model="urlItemInfo.url" />
+
+                            <div ng-messages="redirectUrlForm.url.$error" ng-show="redirectUrlForm.url.$dirty">
+                                <div ng-message="required" i18n-content="forms_messages_required"></div>
+                            </div>
+                        </md-input-container>
+
+                        <div class="form-group">
+                            <md-button i18n-content="button_save" class="md-button md-raised md-primary save" aria-label="Save Button" type="submit" value="Save" title="Save">
+                            </md-button>
+
+                            <md-button class="md-icon-button action-btn close" aria-label="Close" ng-click="closeModal()">
+                                <md-icon md-font-set="material-icons">close</md-icon>
+                            </md-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

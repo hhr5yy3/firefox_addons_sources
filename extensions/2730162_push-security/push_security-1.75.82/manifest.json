@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "name": "Push Security",
+  "version": "1.75.82",
+  "description": "Keep your users secure.",
+  "browser_action": {
+    "default_icon": {
+      "16": "assets/push16.png",
+      "24": "assets/push24.png",
+      "32": "assets/push32.png"
+    },
+    "default_popup": "dist/popup/index.html"
+  },
+  "background": {
+    "page": "dist/background/index.html",
+    "persistent": false
+  },
+  "icons": {
+    "16": "assets/push16.png",
+    "48": "assets/push48.png"
+  },
+  "permissions": [
+    "alarms",
+    "declarativeNetRequestWithHostAccess",
+    "identity",
+    "scripting",
+    "storage",
+    "tabs",
+    "unlimitedStorage",
+    "webNavigation",
+    "webRequest",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "web_accessible_resources": [
+    "dist/assets/fonts/*",
+    "dist/contentScripts/**.css",
+    "dist/urlBlocking/*"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{7c4c19b9-2441-4942-873e-cb9eeee18a97}"
+    }
+  }
+}

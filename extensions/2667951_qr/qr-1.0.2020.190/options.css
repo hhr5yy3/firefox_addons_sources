@@ -1,0 +1,347 @@
+@charset "utf-8";
+/* äöü */
+
+html, body, div, header, footer {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: menu;
+}
+
+@supports (not ( background-image: linear-gradient(125deg, rgb(128,128,128) 0%, white 50%) ) )
+{
+	body {
+		background-color: rgb(237, 237, 237);
+		background-color: rgb(207, 207, 207);
+	}
+}
+
+body {
+	background-image: linear-gradient(125deg, rgb(209,209,209) 0%, rgb(247,247,247) 33%, rgb(245,245,245) 50%, rgb(245,245,245) 60%, rgb(209,224,247));
+}
+
+
+#wallpaper {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#container {
+	position: relative;
+	max-width: 900px;
+	min-width: 770px;
+	min-height: 500px;
+	margin: 0 auto;
+}
+
+#sidebar {
+	position: fixed;
+	z-index: 10;
+	box-sizing: border-box;
+	width: 230px;
+
+	margin-top: 30px;
+	border: thin solid rgb(198, 198, 198);
+	border-radius: 12px 0 0 12px;
+	padding: 20px;
+	
+	background-origin: content-box;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+#content {
+	position: relative;
+	z-index: 4;
+	box-sizing: border-box;
+	min-height: 100%;
+	min-height: 100vh;
+
+	margin-left: 229px;
+	border: thin solid rgba(0, 0, 0, 0.25);
+	border-top: none;
+	border-bottom: none;
+	padding: 30px;
+
+	background-color: white;
+}
+
+
+#sidebar-icon {
+	display: block;
+	width: 96px;
+	height: 96px;
+	padding: 0;
+	background-clip: border-box;
+	background-size: contain;
+	background-position: center;
+	background-image: linear-gradient(to bottom right, white, rgb(128,128,148) 25%, white);
+}
+
+
+#sidebar menu {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 20px;
+	list-style-type: none;
+	padding: 0 0 0 1em;
+}
+
+@supports (padding-start: 1em) or (-webkit-padding-start: 1em) {
+	#sidebar menu {
+		padding: initial;
+		-webkit-padding-start: 1em;
+		padding-start: 1em;
+	}
+}
+
+#sidebar menu li {
+	position: relative;
+	padding: 5px 0;
+	color: rgb(96,96,104);
+	cursor: pointer;
+}
+
+#sidebar menu li.selected {
+	color: black;
+	cursor: default;
+}
+
+#sidebar menu li.selected::after {
+	border-top: 1px solid rgba(0, 0, 0, .2);
+	border-left: 1px solid rgba(0, 0, 0, .2);
+	background: -webkit-linear-gradient(-45deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 60%, transparent 60%, transparent 100%);
+	background: linear-gradient(to left top, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 60%, transparent 60%, transparent 100%);
+	background-clip: content-box;
+	height: 12px;
+	content: '';
+	display: block;
+	margin-top: -6px;
+	position: absolute;
+	top: 50%;
+	right: -26px;
+	width: 12px;
+	-webkit-transform: rotate(-45deg);
+	-webkit-transform-origin: 50% 50%;
+	transform: rotate(-45deg);
+	transform-origin: 50% 50%;
+}
+
+#sidebar a {
+	text-decoration: none;
+}
+
+
+footer {
+	display: none;
+}
+
+
+#content {
+	font-size: 1rem;
+}
+
+#content div.tabnav /* :not(:first-of-type) */ {
+	display: none;
+}
+
+#content div.tabnav.tabactive {
+	display: block;
+}
+
+
+#content section {
+	margin-left: 16px;
+}
+
+#content section h3 {
+	display: flex;
+	margin-left: -16px;
+}
+
+#content section h3::after {
+	content: '';
+	flex: auto;
+	margin-left: 16px;
+	background-image: linear-gradient(rgba(64,64,64,0.75), transparent 1px);
+	background-size: 100% 1px;
+	background-position: left 55%;
+	background-repeat: no-repeat;
+}
+
+
+
+#content dl {
+	display: block;
+}
+
+#content dl dt, #content dl dd {
+	display: block;
+	align-self: baseline;
+	padding: .2em 0;
+
+	font-size: .9em;
+}
+
+#content dl dt {
+	font-weight: bold;
+}
+
+#content dl dt::after {
+	content: ':';
+}
+
+#content dl dd {
+}
+
+
+#content dl *.title {
+	-xa-align-self: foot;
+	padding-bottom: 2em;
+	font-size: 1em;
+}
+
+#content dl dt.title {
+	text-transform: uppercase;
+	-xa-text-transform: capitalize;
+	-xa-font-variant: small-caps;
+}
+
+#content dl dt.title::after {
+	content: none;
+}
+
+#content dl dd.title {
+	font-style: italic;
+}
+
+
+#content dl dd > p {
+	margin-top: 0.5em;
+}
+#content dl dd > p:first-of-type {
+	margin-top: 0;
+}
+
+
+#content a {
+	border-bottom: dotted 1px #999;
+	color: rgba(8, 8, 16, 0.85);
+	text-decoration: none;
+}
+	
+#content a:hover {
+	border-bottom: solid 1px #555;
+}
+
+@supports ( background-image: radial-gradient(66% 1px at 33% bottom, black, transparent 100%) ) {
+
+	#content a {
+		background-image: radial-gradient(66% 1px at 33% bottom, black, transparent 100%);
+		color: rgba(8, 8, 16, 0.85);
+		text-decoration: none;
+		border-bottom: none;
+	}
+	
+	#content a:hover {
+		background-image: radial-gradient(85% 1px at 50% bottom, black, transparent 100%);
+	}
+
+}
+
+/* ********************* */
+
+.smallprint {
+	font-size: 0.66rem !important;
+}
+
+.texticon {
+	display: inline-block;
+	margin: 0 0 -0.1em 0;
+	width: 1em;
+	height: 1em;
+	padding: 0;
+	background-clip: content-box;
+	background-size: contain;
+	background-position: center bottom;
+}
+
+.smallprint .texticon {
+	margin: 0 0 -2px 0;
+	width: 10px;
+	height: 10px;
+	-xa-background-image: url(icons/icon-16x16.png);
+}
+
+
+kbd, samp {
+	font-family: monospace;
+}
+
+/* samp.p {
+	display: inline-block;
+	margin: .2em 0 .2em 1em;
+}
+
+	samp.p::before {
+	position: relative;
+	display: inline-block;
+	content: '»»';
+	margin-right: 1.5em;
+}*/
+
+samp.omni {
+	display: inline-block;
+	margin: .2em .2em .2em 1em;
+	border: 1px solid rgb(198, 198, 198);
+	border-radius: 3px;
+	padding: 4px 6px;
+	background-clip: content-box;
+	background-color: rgb(240, 240, 240);
+}
+samp.omni::before {
+	content: '※| ';
+	color: rgb(128, 128, 128);
+}
+samp.omni::after {
+	content: '             ';
+}
+
+
+/* ********************* background animation */
+
+@-webkit-keyframes smoothbg {
+	from {
+		background-position: top 0% left 0%;
+	}
+	50% {
+		background-position: top 0% left 75%;
+	}
+	to {
+		background-position: top 0% left 0%;
+	}
+}
+
+@keyframes smoothbg {
+	from {
+		background-position: top 0% left 0%;
+	}
+	50% {
+		background-position: top 0% left 75%;
+	}
+	to {
+		background-position: top 0% left 0%;
+	}
+}
+
+body {
+	-webkit-animation: smoothbg 8s ease-in 1s infinite both;
+	animation: smoothbg 8s ease-in 1s infinite both;
+	background-size: 200% 100%;
+}
+
+/* ********************* */

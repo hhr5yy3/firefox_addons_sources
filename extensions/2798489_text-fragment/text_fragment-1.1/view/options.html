@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/icon.svg">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>__MSG_options__ - __MSG_ext_name__</title>
+    <meta name="color-scheme" content="dark light">
+    <style>
+        @media (prefers-color-scheme: dark) {
+
+            html,
+            body {
+                background-color: #23222b;
+                color: #fbfbfe;
+            }
+        }
+
+        fieldset {
+            border: 1px gray solid;
+        }
+
+        .section {
+            max-width: 600px;
+            padding: 1rem;
+        }
+
+        fieldset {
+            margin-bottom: 1rem;
+        }
+
+        legend {
+            padding: 0 0.5rem;
+        }
+
+        label {
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        input[type=number] {
+            width: 60px;
+        }
+
+        .btn-group {
+            margin: 1rem 0;
+        }
+
+        .message {
+            margin: 0 0.5rem;
+            opacity: 1;
+        }
+
+        .message.timeout {
+            opacity: 0.5;
+            transition-duration: 2s;
+        }
+
+        [data-native-supported="0"] .native-supported-only {
+            display: none;
+        }
+
+        [data-native-supported="1"] .options-find {
+            opacity: 0.7;
+        }
+    </style>
+    <script src="/lib/util.js"></script>
+</head>
+
+<body>
+    <form class="section options" data-native-supported="0">
+        <fieldset class="options-find">
+            <legend>
+                __MSG_label_find__
+                <span class="native-supported-only" title="__MSG_tips_natively_supported__">
+                    ( __MSG_natively_supported__ )</span>
+            </legend>
+            <label class="native-supported-only">
+                <input type="checkbox" data-setting="auto_disable" />
+                __MSG_label_auto_disable__
+            </label>
+            <label>
+                <input type="checkbox" data-setting="remove_fragment_directive" />
+                __MSG_label_remove_fragment_directive__
+            </label>
+            <label>
+                __MSG_label_highlight_type__:
+                <select data-setting="highlight_type">
+                    <option value="auto">__MSG_auto__</option>
+                    <option value="find">Find API</option>
+                    <option value="selection">Selection API</option>
+                </select>
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>__MSG_label_copy_link__</legend>
+            <label>
+                <input type="checkbox" data-setting="keep_url_hash" />
+                __MSG_label_keep_url_hash__
+            </label>
+            <label>
+                <input type="checkbox" data-setting="extend_incomplete_word" />
+                __MSG_label_extend_incomplete_word__
+            </label>
+            <label>
+                __MSG_label_exact_match_limit__:
+                <input type="number" min="5" step="1" required data-setting="exact_match_limit" />
+            </label>
+            <label>
+                __MSG_label_range_match_word_count__:
+                <input type="number" min="1" step="1" required data-setting="range_match_word_count" />
+            </label>
+            <label>
+                __MSG_label_context_word_count__:
+                <input type="number" min="1" step="1" required data-setting="context_word_count" />
+            </label>
+        </fieldset>
+        <div class="btn-group">
+            <button type="button" class="save">__MSG_save__</button>
+            <!-- <button type="button" class="reset right">Reset to default</button> -->
+            <span class="message"></span>
+        </div>
+    </form>
+    <script src="./options.js"></script>
+</body>
+
+</html>

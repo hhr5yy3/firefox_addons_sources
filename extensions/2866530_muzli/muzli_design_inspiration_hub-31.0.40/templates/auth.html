@@ -1,0 +1,69 @@
+<div class="blocker welcome auth overlay">
+  
+  <div class="auth-email" ng-if="user.showEmailSignIn == true">
+    <dialog ng-include="'templates/dialog.email.html'" class="auth-email" ng-if="true" click-outside="user.showEmailSignIn = false" ng-controller="emailAuthController" ng-cloak></dialog>
+  </div>
+  
+  <div class="frame">
+
+    <a href="" ui-sref="all" class="close" ng-if="!user.hasUserLogin && user.allowAnonymous">
+      <i class="icon-close"></i>
+    </a>
+
+    <div ng-if="user.hasUserLogin">
+
+      <p>Sign back in to fetch your preferences.</p>
+      
+      <div class="buttons">
+        <a class="button google" href="" ng-click="loginGoogle()" ng-if="!user.provider || user.provider === 'google'">Sign in with Google</a>
+        <a class="button facebook" href="" ng-click="loginFacebook()" ng-if="!user.provider || user.provider === 'facebook'">Sign in with Facebook</a>
+        <a class="button twitter" href="" ng-click="loginTwitter()" ng-if="!user.provider || user.provider === 'twitter'">Sign in with Twitter</a>
+        <a class="button email" href="" ng-click="user.showEmailSignIn = true" ng-if="!user.provider || user.provider === 'email'"><i class="icon-email"></i>  Sign in with Email</a>
+      </div>
+
+      <p>Other Sign In options:</p>
+      <div class="buttons alt-auth" ng-if="user.provider">
+        <i class="icon-google" ng-click="loginGoogle()" ng-if="user.provider !== 'google'"></i>
+        <i class="icon-facebook" ng-click="loginFacebook()" ng-if="user.provider !== 'facebook'"></i>
+        <i class="icon-twitter" ng-click="loginTwitter()" ng-if="user.provider !== 'twitter'"></i>
+        <i class="icon-email" ng-click="user.showEmailSignIn = true" ng-if="user.provider !== 'email'"></i>
+      </div>
+
+      <div class="notes">
+        <p><strong>We'll never</strong> post to Twitter, Facebook or Google on your behalf or without permission.</p>
+      </div>
+    </div>
+
+    <div ng-if="!user.hasUserLogin" is-eu-user>
+
+      <p>Create an account to unlock all the benefits of Muzli - easily save, like, or submit your favorite content.</p>
+      
+      <div class="buttons">
+        <a class="button google" href="" ng-click="loginGoogle()">Sign up with Google</a>
+        <a class="button facebook" href="" ng-click="loginFacebook()">Sign up with Facebook</a>
+        <a class="button twitter" href="" ng-click="loginTwitter()">Sign up with Twitter</a>
+
+        <span class="separator"></span>
+
+        <a class="button email" href="" ng-click="user.showEmailSignIn = true"><i class="icon-email"></i> Sign up via Email</a>
+        
+      </div>
+
+      <div class="notes">
+        <p>
+          By signing in I agree to Muzli's <a href="https://muz.li/terms" target="_blank">Terms of Service</a> and <a href="https://muz.li/privacy" target="_blank">Privacy Policy</a>.
+        </p>
+        <p>
+          <strong>We'll never</strong> post to Twitter, Facebook or Google on your behalf or without permission.
+        </p>
+      </div>
+    </div>
+
+    <div class="bg">
+      <div class="face face-1"></div>
+      <div class="face face-3"></div>
+    </div>
+
+  </div>
+
+</div>

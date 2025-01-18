@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Balcão Virtual</title>
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+		<style>
+			
+			body {
+				font-family: "NunitoSans Regular", "Arial", sans-serif;
+				font-size: 0.8em;
+				color: #333;
+				font-weight: normal;
+				padding-left: 10px;
+				line-height:1.5;
+				background: black;
+			}
+			
+			#extensao_meet_pauta {
+				position: relative;
+				top: 0; 
+				width: 100%; 
+				height: 100%; 
+				left: 0; 
+				z-index: 1000;
+			}
+			
+			#container {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				position: absolute;
+			}
+			
+			#cabecalho {
+				z-index: 2;
+				border-radius: 15px 15px 0 0;
+				font-size: 3rem;
+				color: white;
+				background-color: rgb(64, 64, 64);
+				width: 90%;
+				height: 15%; 
+				box-shadow: 1px 2px 6px rgba(0,0,0,0.5);
+				position: fixed;
+				top: 0;
+				left: 5.5%;
+				right: 5.5%;
+			}
+			
+			#barra_superior {
+				z-index: 2;
+				background-color: rgb(217,217,217);
+				width: 90%;
+				height: 5%; 
+				text-align: right; 
+				box-shadow: 1px 2px 6px rgba(0,0,0,0.5);
+				position: fixed;
+				top: 15%;
+				left: 5.5%;
+				right: 5.5%;
+			}
+			
+			#pauta {
+				z-index: 1;
+				width: 100%;
+				margin-bottom: 10vh;
+			}
+			
+			#barra_inferior {
+				z-index: 2;
+				border-radius: 0 0 15px 15px;
+				background-color: rgb(217,217,217);
+				color: red;
+				width: 90%;
+				height: 10%; 
+				box-shadow: 1px 2px 6px rgba(0,0,0,0.5);
+				position: fixed;
+				bottom: 0;
+				left: 5.5%;
+				right: 5.5%;
+			}
+						
+			@keyframes shake {
+				0% { transform: translate(1px, 1px) rotate(0deg); }
+				10% { transform: translate(-1px, -2px) rotate(-1deg); }
+				20% { transform: translate(-3px, 0px) rotate(1deg); }
+				30% { transform: translate(3px, 2px) rotate(0deg); }
+				40% { transform: translate(1px, -1px) rotate(1deg); }
+				50% { transform: translate(-1px, 2px) rotate(-1deg); }
+				60% { transform: translate(-3px, 1px) rotate(0deg); }
+				70% { transform: translate(3px, 1px) rotate(-1deg); }
+				80% { transform: translate(-1px, -1px) rotate(1deg); }
+				90% { transform: translate(1px, 2px) rotate(0deg); }
+				100% { transform: translate(1px, -2px) rotate(-1deg); }
+			}
+			
+			.fade-in {
+				animation: fadein 2s;
+			}
+			
+			@keyframes fadein {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+			
+			.fade-out {
+				animation: fadeout 2s;
+			}
+			
+			@keyframes fadeout {
+				0% {opacity: 1;}
+				100% {opacity: 0;} 
+			}
+			
+		</style>		
+	</head>
+
+	<body>		
+		<div id="extensao_meet_pauta">
+			<div id="container">
+				<nav id="cabecalho">
+					<div style="height: 100%;display: grid; justify-content: center;">
+						<span id="nm_orgao" style="align-self: flex-end;text-align: center;">
+							Nome da Vara
+						</span>
+					</div>
+				</nav>
+				<nav id="barra_superior">
+					<a id="extensao_meet_mensagem" title="Criar Aviso" style="cursor: pointer; position: relative; top: 3px; width: 20px; font-size: 1.5rem; color: gray; z-index: 1; padding: 15px;">
+						<i class="fas fa-comment"></i>
+					</a>
+				</nav>
+				<nav id="pauta">
+					<div style="background-color: white; width: 89%; height: 100vh; display: inline-flex; margin-left: 5.5%;margin-right: 5%;padding: 5px 0;vertical-align: middle;">
+						<span style = "align-self: center;text-align: center;font-size: 3rem;width: 100%;">
+							Seja bem-vindo ao Balcão Virtual.
+							<br>
+							Já iremos lhe atender.
+							<br>
+							Aguarde.
+						</span>
+					</div>
+				</nav>
+				<nav id="barra_inferior">
+					<div style="height: 100%;display: grid; justify-content: center;">
+						<span style = "align-self: center;text-align: center;font-size: 1.2rem;">
+							Dúvidas, utilize o chat!
+						</span>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<script src="pauta.js"></script>
+	</body>
+</html>

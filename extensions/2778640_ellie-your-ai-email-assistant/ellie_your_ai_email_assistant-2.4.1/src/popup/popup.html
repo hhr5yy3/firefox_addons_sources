@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+  <div id="popup-content">
+    <div class="header">
+      <h1>Ellie Anywhere</h1>
+      <div class="header-btns">
+        <div id="ellie-roles">
+          <button id="roles-toggle-btn" class="ellie-dropdown-btn">🧑‍💼 Roles <span>▼</span></button>
+          <ul class="dropdown-options" id="role-options" style="display: none"></ul>
+        </div>
+        <button id="feedback-btn" class="btn"><span>❓</span></button>
+        <button id="close-btn" class="btn"><span>x</span></button>
+      </div>
+    </div>
+    <p>Ellie can write replies to emails from anywhere here!</p>
+    <p class="label">
+      Highlight some text on the page and choose your tone/interest:
+    </p>
+    <div class="ellie">
+      <div class="ellies-first-row">
+        <div class="ellies-moods">
+          <button data-value="respectful">Respectful</button>
+          <button data-value="casual">Casual</button>
+          <button data-value="annoyed">Annoyed</button>
+        </div>
+      </div>
+      <div class="ellies-second-row">
+        <div class="ellies-interest">
+          <button data-value="interested">Interested</button>
+          <button data-value="uninterested">Not interested</button>
+        </div>
+        <div class="ellies-reply-length">
+          <button data-value="short">Short reply</button>
+        </div>
+      </div>
+
+      <p class="label">Text to reply to:</p>
+      <textarea id="ellies-reply-to" class="ellie-textarea" rows="2" maxlength="1000"
+        placeholder="Select some text on the page or type/paste it here..."></textarea>
+      <span>Ellie will reply to this text. Max 1000 characters. <a rel="noopener noreferrer" target="_ellie-help"
+          href="https://help.tryellie.com/getting-started/dc945YcaCg6LHS6Efo79Af/launching-%E2%80%9Cellie-anywhere%E2%80%9D/eSgo96ojLEyRMfVwrrREFT"
+          class="ellie-link">Not seeing your selection?</a></span>
+
+      <p class="label">Extra context:</p>
+      <textarea id="ellies-thoughts" class="ellie-textarea ellies-thoughts" rows="2" maxlength="500"
+        placeholder="Keep it short! E.g. 'I am available on Friday' or 'Invite for dinner' or 'Apologize for the late reply'"></textarea>
+      <span>Ellie will try to include this information in the reply. Max 500
+        characters</span>
+
+      <button id="write-btn" class="ellies-status">Write ✏️</button>
+
+      <p id="upgrade" class="hidden ellies-notification ellies-upgrade">
+        <span>You've run out of replies for the day! Click </span>
+        <a rel="noopener noreferrer" target="_ellie-website" id="ellie-upgrade-link"
+          class="ellie-link ellie-upgrade-link" href="https://tryellie.com/upgrade?ref=popup">here</a>
+        <span>to get more replies or remove the limit.</span>
+      </p>
+
+      <div id="done" class="hidden">
+        <pre id="reply" class="ellies-reply"></pre>
+        <p id="copy-reply" class="hidden"></p>
+        <hr />
+        <div class="copied">
+          <p>✔️ Copied to your clipboard</p>
+          <button id="copy-btn" class="btn">
+            <span>Copy again 📄</span>
+          </button>
+        </div>
+      </div>
+      <p id="error" class="hidden ellies-notification ellies-error"></p>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>

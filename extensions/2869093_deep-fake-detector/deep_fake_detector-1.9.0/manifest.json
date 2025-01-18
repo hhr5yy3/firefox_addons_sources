@@ -1,0 +1,76 @@
+{
+  "version": "1.9.0",
+  "manifest_version": 3,
+  "minimum_chrome_version": "88",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{ddd3c206-589e-431d-93d0-897378f9200a}",
+      "strict_min_version": "58.0"
+    }
+  },
+  "name": "Deep Fake Detector",
+  "description": "The Fakespot Deepfake Detector will help you sort out text written by humans from text that has been created using AI tools.",
+  "short_name": "Deep Fake Detector",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; img-src *; media-src *;"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "content.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Deep Fake Detector",
+    "default_icon": "assets/icons/icon128.png"
+  },
+  "permissions": [
+    "unlimitedStorage",
+    "activeTab",
+    "storage",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "*.png",
+        "*.css",
+        "*.otf",
+        "*.svg",
+        "*.gif",
+        "*.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "commands": {
+    "analyze_selection": {
+      "description": "Analyze the currently selected text",
+      "suggested_key": {
+        "default": "Ctrl+Shift+Comma",
+        "mac": "Command+Shift+Comma"
+      }
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}

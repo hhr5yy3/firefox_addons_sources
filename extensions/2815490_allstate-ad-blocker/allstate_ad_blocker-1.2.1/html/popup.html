@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="antd.min.css" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 600px;
+        /* 
+         * Have to flag width as important due to Antd setting a width on the body for modals. 
+         * Issue only happens in Firefox
+         */
+        width: 356px !important;
+      }
+
+      #thanks-mozilla {
+        height: 100%;
+      }
+
+      #app {
+        height: 100%;
+      }
+
+      /* Firefox hacks. */
+      @supports (-moz-appearance: none) {
+        html {
+          /**
+           * override antd.min.css which sets height: 100%.
+           * required for the Firefox overflow menu to have height.
+           */
+          height: auto !important;
+        }
+
+        /**
+        * https://bugzilla.mozilla.org/show_bug.cgi?id=1373490#c25
+        *
+        * In short: Firefox popups invoked from inside the *overflow menu* have
+        * a platform-dependent fixed width of roughly 377px-425px.
+        *
+        * We want to take up all this space when inside the overflow menu, but
+        * maintain our own max width otherwise.
+        *
+        * This can be solved with media queries for popups that would normally
+        * be larger than the fixed width of the overflow menu.
+        *
+        * However since we _grow_ to fit the overflow menu we use this hack.
+        * This can probably be removed when the above bug is resolved.
+        */
+        #thanks-mozilla {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+
+      /**
+       * Removes fixed width only in Safari. Otherwise the popup opens slowly.
+       * https://www.browserstack.com/guide/create-browser-specific-css
+       */
+      @media not all and (min-resolution: 0.001dpcm) {
+        @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+          body {
+            width: auto;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="thanks-mozilla">
+      <div id="app"></div>
+      <script src="app.js" async></script>
+    </div>
+  </body>
+</html>

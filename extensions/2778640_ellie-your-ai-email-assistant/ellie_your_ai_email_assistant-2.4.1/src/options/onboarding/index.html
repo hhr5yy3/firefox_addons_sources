@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Ellie - Extension Settings</title>
+  <link rel="icon" type="image/png" href="../assets/icon32.png" />
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="../styles/reset.css" />
+  <link rel="stylesheet" href="../styles/typography.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/auth.css" />
+  <link rel="stylesheet" href="../styles/onboarding.css" />
+  <style></style>
+</head>
+
+<body>
+  <div class="onboarding" data-step="1">
+    <h1 class="title">
+      <img class="logo" src="../assets/logo.png" />
+      <span class="step-title step-title-1">Welcome to Ellie! Lets get started.</span>
+      <span class="step-title step-title-2">Train Ellie on your emails</span>
+      <span class="step-title step-title-3">Awesome, you're all set!</span>
+    </h1>
+    <div class="step step-1 active" data-valid="false">
+      <form id="step-1-form">
+        <div class="content">
+          <p class="label">Enter your name:</p>
+          <div class="input-group">
+            <input type="text" name="your-name" id="your-name" class="input" />
+            <span class="input-result fail">❌ Please enter a name so Ellie knows who to sign the emails from</span>
+            <span class="form-field-info">So Ellie knows who to sign the emails from :)</span>
+          </div>
+        </div>
+
+        <div class="content">
+          <p class="label">Enter your licence key:</p>
+          <div class="input-group">
+            <input type="text" name="licence-key" id="licence-key" class="input code" />
+            <span class="input-result ok">✅ That licence key is great! You're all set, let's go!
+            </span>
+            <span class="input-result fail">❌ <span id="input-error">That licence key doesn't look right. Click
+                <a rel="noopener noreferrer" target="_ellie-website" href="https://tryellie.com/downloads">here</a> to
+                get
+                one.</span>
+            </span>
+            <span class="form-field-info">
+              Don't have a licence key yet? You can get one for free from our
+              website <a rel="noopener noreferrer" target="_ellie-website"
+                href="https://tryellie.com/downloads">here</a>.
+            </span>
+          </div>
+          <p class="form-description">
+            Your licence key helps us to keep track of your preferences for when
+            you change browser or use a different computer. You can get a free
+            licence key now and upgrade to a paid plan later if you need to.
+          </p>
+        </div>
+      </form>
+      <div class="actions">
+        <a class="btn btn-muted" rel="noopener noreferrer" target="_ellie-help"
+          href="https://help.tryellie.com/getting-started/dc945YcaCg6LHS6Efo79Af/installation--setup/51bHGPabADwrFtZ4obkJ21">Get
+          help</a>
+        <a href="#step-2" id="submit-step-1" class="btn next-btn">Next</a>
+        <!-- <a href="#done" id="done-btn" class="btn next-btn">Let's go!</a> -->
+      </div>
+    </div>
+
+    <div class="step step-2" data-valid="false">
+      <p class="lead">Ellie can learn from past emails you have sent to drastically improve the replies it writes.</p>
+      <div class="content">
+        <div class="left">
+          <div class="form-group">
+            <div class="forward-container">
+              <span class="form-field-info">
+                Forward your sent emails to this address
+              </span>
+              <img src="/src/options/assets/arrow.png" class="arrow" />
+            </div>
+            <input type="text" name="ellie-email-address" id="ellie-email-address" class="input code" value="" />
+            <p class="form-field-info">
+              Remember to "Forward as attachment" for this to work!
+            </p>
+
+            <p class="show-when-free-user">
+              You can forward us <strong><span class="email-training-max-limit">10</span> sent emails</strong> to train
+              Ellie
+              with <span>(to send more and improve the training you can <a class="text-link pricing-link"
+                  href="https://tryellie.com/upgrade" target="_blank">upgrade your plan</a>)</span>.
+            </p>
+            <p class="show-when-paid-user">
+              You can forward us <strong><span class="email-training-batch-limit">50</span> sent emails at a
+                time</strong> up
+              to a
+              <strong>max of <span class="email-training-max-limit">200</span></strong>, the more you send us
+              the better the training will be!
+            </p>
+
+          </div>
+          <div class="training-output-container">
+            <div class="training-output">
+              <div class="training-output-img">
+                <img src="/src/options/assets/logo.png" />
+              </div>
+              <div class="bubble-container">
+                <div class="speech-bubble">
+                  <p id="training-emails-waiting" class="waiting">
+                    I'm waiting for your emails...
+                  </p>
+                  <p style="display: none" id="training-emails-received">
+                    I've received
+                    <strong><span class="email-count">0</span> emails</strong> to train my responses
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p class="pending">
+              <span>We've received and processed</span>
+              <strong><span class="email-count">0</span> emails</strong><span> from you so far</span>.
+              <span class="send-more hidden">You can always send more later!</span>
+            </p>
+          </div>
+        </div>
+        <div class="right">
+          <video class="video" autoplay="true" muted>
+            <source src="https://ellie-cdn.b-cdn.net/ellie-email-training.mp4" />
+          </video>
+          <p class="video-description" style="line-height: 20px">
+            The easiest way to send us emails is to go to your
+            <strong>"Sent"</strong> items in Gmail, click the
+            <strong>"Select all"</strong> box, and click
+            <strong>"Forward as attachment"</strong>. <br />
+            This way you will be able to send us 50 emails at a time.
+          </p>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-muted" rel="noopener noreferrer" target="_ellie-help"
+          href="https://help.tryellie.com/getting-started/dc945YcaCg6LHS6Efo79Af/installation--setup/51bHGPabADwrFtZ4obkJ21">Get
+          help</a>
+        <a href="#step-1" style="margin-left: auto; margin-right: 5px" class="btn btn-muted back-btn">Back</a>
+        <a href="#step-3" style="margin-right: 5px" class="btn btn-muted skip-btn">Skip this step</a>
+        <a href="#step-3" id="submit-step-2" class="btn next-btn">Next</a>
+      </div>
+    </div>
+
+    <div class="step step-3">
+      <p class="lead">Before you get stuck in, here's a few more things that Ellie can do...</p>
+      <div class="content" style="padding: 0 20px 20px 20px">
+        <div style="margin-top: 1.5em;">
+          <h3 style="margin-bottom: 5px">🎓 Knowledge Base</h3>
+          <p>Ellie can learn more information from websites and documents, and use that when writing replies. E.g. your
+            company website, help center, technical documentation, customer success guidelines etc. The possibilities
+            are
+            endless!</p>
+        </div>
+
+        <div style="margin-top: 1.5em;">
+          <h3 style="margin-bottom: 5px">🧑‍💼 Roles</h3>
+          <p>Create different roles for replying to different types of email and give Ellie instructions on how to
+            respond
+            for each one. E.g. Customer Support, Administrator, Technical Support, Social Media Manager and anything
+            else you can think of!</p>
+        </div>
+
+        <div style="margin-top: 1.5em;">
+          <h3 style="margin-bottom: 5px">⚙️ Additional Email Training</h3>
+          <p>Train Ellie on your style of writing even further by sending us more of your sent emails. The more emails
+            you send us, the better the training and replies will be!</p>
+        </div>
+
+      </div>
+      <div class="actions">
+        <a class="btn btn-muted" rel="noopener noreferrer" target="_ellie-help"
+          href="https://help.tryellie.com/getting-started/dc945YcaCg6LHS6Efo79Af/installation--setup/51bHGPabADwrFtZ4obkJ21">Get
+          help</a>
+        <a href="#step-2" style="margin-left: auto; margin-right: 5px;" class="btn btn-muted back-btn">Back</a>
+        <a href="#step-3" id="submit-step-3" class="btn next-btn">Let's go!</a>
+      </div>
+    </div>
+
+  </div>
+  <script type="module" src="onboarding.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<div class="editor-wrapper">
+    <nav class="navbar navbar-default editor-toolbar">
+
+            <div class="navbar-header ">
+                <div class="btn-group">
+                    <button title="Back to previous diff" class="btn-success back-icon pull-left back-to-diff toolbar-btn"></button>
+                </div>
+                <a class="navbar-brand collapse editor-file-name" href="#" target="_blank"></a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <div class="btn-group">
+                    <button title="Save file" id="main-editor-save-file" class="save-file toolbar-btn" data-editor="main" disabled></button>
+                    <button title="Open file location" class="file-location toolbar-btn"></button>
+                    <button title="Open history folder" class="history-folder toolbar-btn"></button>
+                </div>
+
+                <div class="btn-group">
+                    <button title="Undo" class="undo-action toolbar-btn" disabled></button>
+                    <button title="Redo" class="redo-action toolbar-btn" disabled></button>
+                </div>
+
+                <div class="btn-group">
+                    <button title="Copy to clipboard" class="copy-to-clipboard toolbar-btn"></button>
+                    <button title="Show key shortcuts" class="show-key-shortcuts toolbar-btn">
+                        Shortcuts
+                    </button>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="file-history dropdown-toggle toolbar-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    History <span class="caret"></span>
+                    </button>
+                    <ul class="file-history-list dropdown-menu"></ul>
+                </div>
+
+                <div class="select-theme nav navbar-nav navbar-right editor-options">
+                    <select class="select-theme-option form-control" style="width: 200px;"></select>
+                </div>
+                <div class="select-font-size nav navbar-nav navbar-right editor-options">
+                    <select class="select-font-size-option form-control"></select>
+                </div>
+            </div>
+
+    </nav>
+    <div id="ace-editor"></div>
+    <div class="loader-wrapper loading-background">
+        <div class="loader"></div>
+    </div>
+</div>
+<div class="diff-wrapper">
+        <div class="diff-files-actions">
+            <div class="original-file-actions">
+                <nav class="navbar navbar-default editor-toolbar">
+                    <div class="container-fluid">
+                        <div class="navbar-header ">
+                            <a class="navbar-brand collapse navbar-collapse editor-original-file-name" href="#" target="_blank"></a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <div class="btn-group">
+                                <button title="Save file" class="save-file toolbar-btn" data-editor="left"></button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="files-gutter">
+                <button type="button" class="back-to-editor back-icon back-icon-alt toolbar-btn" title="Back to editor"></button>
+            </div>
+            <div class="history-file-actions">
+                <nav class="navbar navbar-default editor-toolbar">
+                    <div class="container-fluid">
+                        <div class="navbar-header ">
+                            <a class="navbar-brand collapse navbar-collapse editor-history-file-name" href="#" target="_blank"></a>
+                        </div>
+                        <div class="collapse navbar-collapse">
+                            <div class="btn-group">
+                                <button title="Save file" class="save-file toolbar-btn" data-editor="right"></button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="acediff"></div>
+        <div class="found-diffs">Found diffs: <span class="diff-counter"></span></div>
+</div>

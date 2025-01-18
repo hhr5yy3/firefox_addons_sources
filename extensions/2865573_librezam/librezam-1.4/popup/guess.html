@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link href="/libs/material-icons/material-icons.css" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="/libs/materialize/materialize.min.css" media="screen,projection"/>
+        <link href="popup.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div id="surfaceContainer" class="center">
+            <a href="/popup/settings.html" class="right"><i id="settingsButton" class="material-icons">settings</i></a>
+
+            <div id="circler" class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div><div class="gap-patch">
+                    <div class="circle"></div>
+                  </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+            </div>
+
+            <table id="resultTable" style="display:none; text-align: center;">
+                <tbody>
+                  <tr>
+                    <td>Title</td>
+                    <td id="titleResult"></td>
+                  </tr>
+                  <tr>
+                    <td>Artist</td>
+                    <td id="artistResult"></td>
+                  </tr>
+                  <tr>
+                    <td>Year</td>
+                    <td id="yearResult"></td>
+                  </tr>
+                </tbody>
+            </table><br>
+            <div id="streamProviders" style="display:none;">
+              <a id="appleMusicLink"><img src="/images/apple.png"  width="32px" class="circle responsive-img"></a>
+              <a id="deezerLink"><img src="/images/deezer.png" width="32px" class="circle responsive-img"></a>
+              <a id="spotifyLink"><img src="/images/spotify.png" width="32px" class="circle responsive-img"></a>
+              <a id="youtubeLink"><img src="/images/youtube.png" width="32px" class="circle responsive-img"></a>
+            </div>
+        </div>
+        <hr>
+        <table id="historyTable" style="text-align: center;">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Artist</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <tbody id="historyTBody"></tbody>
+        </table>
+        <script src="/libs/materialize/materialize.min.js"></script>
+        <script src="./guess.js" type="module"></script>
+    </body>
+</html>

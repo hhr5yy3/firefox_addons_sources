@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_siteimprove_alfa_web_extension=self.webpackChunk_siteimprove_alfa_web_extension||[]).push([[3958],{3958:e=>{e.exports=JSON.parse('{"$schema":"../schema/rule.json","source":"https://www.w3.org/WAI/standards-guidelines/act/rules/2eb176/","responsibility":"content","difficulty":1,"affects":["hearing","cognition","vision"],"category":"audio"}')}}]);

@@ -1,0 +1,434 @@
+/* .nav-elem Semantic element */
+.nav-elem,
+.nav-elem button,
+.nav-elem button.mega-pm-button,
+.nav-elem a {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+    border: none;
+}
+
+.nav-elem > *:not(:last-child),
+.nav-elem button > *:not(:last-child),
+.nav-elem button.mega-pm-button > *:not(:last-child),
+.nav-elem a > *:not(:last-child) {
+    margin-inline-end: 10px;
+    -webkit-margin-end: 10px;
+}
+
+.nav-elem.password-item:hover {
+    background: var(--surface-1);
+}
+
+.nav-elem.primary:not(.icon-only):active,
+.nav-elem.primary:active {
+    background: var(--button-primary-pressed);
+    color: var(--text-inverse);
+}
+.nav-elem.password-item.sk-loading:hover {
+    background: var(--page-background);
+}
+
+.nav-elem.active {
+    background: var(--surface-2);
+}
+
+/* Button and Link styles */
+.nav-elem.text-only.link {
+    font: var(--font-label-underline);
+    text-decoration: none;
+}
+.nav-elem.text-only.link:hover .primary-text,
+.nav-elem.text-only.link:active .primary-text,
+.nav-elem.text-only.link:focus .primary-text {
+    color: var(--button-primary-pressed);
+}
+.nav-elem.text-only.link:active .primary-text {
+    color: var(--button-primary-pressed);
+}
+.nav-elem.text-only.link:focus {
+    outline: var(--outline);
+}
+
+.nav-elem.loading.sprite-pm-ext-theme-after::after,
+.nav-elem.mega-pm-loading.sprite-pm-ext-theme-after::after,
+.nav-elem.loading.sprite-pm-ext-uni-after::after,
+.nav-elem.mega-pm-loading.sprite-pm-ext-uni-after::after {
+    animation-name: rotate;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(8, end);
+    margin: auto; /* Justify in center */
+    display: block;
+    --icon-size: 22px;
+    position: absolute;
+}
+
+.nav-elem.loading .text-box-wrapper.sk-elm,
+.nav-elem.loading > i,
+.nav-elem.mega-pm-loading span {
+    opacity: 0;
+}
+
+/* Default type */
+.nav-elem,
+.nav-elem.normal {
+    height: 48px;
+    width: auto;
+    border-radius: var(--border-radius-medium);
+    box-sizing: border-box;
+    text-decoration: none;
+    --icon-size: 22px;
+    color: var(--text-primary);
+}
+
+button.nav-elem,
+button.nav-elem.normal,
+button.mega-pm-button.nav-elem,
+button.mega-pm-button.nav-elem.normal,
+.nav-elem.primary {
+    color: var(--text-inverse);
+    background: var(--button-primary);
+    font: var(--font-label-underline);
+}
+
+button.nav-elem.outline,
+button.mega-pm-button.nav-elem.outline {
+    background: none;
+    border: solid 2px var(--button-outline);
+    color: var(--button-outline);
+}
+button.nav-elem.normal.outline span.primary-text {
+    color: var(--button-outline);
+}
+button.nav-elem.outline.disabled,
+button.nav-elem.outline.disabled:active {
+    background: none;
+    border: solid 2px var(--border-disabled);
+    color: var(--text-disabled);
+}
+button.nav-elem.normal.outline:not(.icon-only):active {
+    background: none;
+    border: solid 2px var(--button-primary-pressed);
+    color: var(--button-primary-pressed);
+}
+button.nav-elem.text-icon.outline:not(.icon-only):focus span.primary-text,
+button.nav-elem.text-icon.outline:not(.icon-only):focus .sprite-pm-ext-mono {
+    color: var(--text-primary);
+}
+button.nav-elem.outline:not(.icon-only):active .primary-text,
+button.nav-elem.normal.outline:active .sprite-pm-ext-mono {
+    color: var(--button-primary-pressed);
+}
+button.nav-elem:focus {
+    background: var(--button-primary-pressed);
+    color: var(--text-inverse-accent);
+}
+.nav-elem.normal.block {
+    width: 100%;
+    max-width: 380px;
+}
+
+.nav-elem.normal.block .primary-text {
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Full width of container */
+.nav-elem.full-width {
+    width: 100%;
+    height: 56px;
+    border-radius: 0;
+    display: flex;
+    justify-content: flex-start;
+    --icon-size: 24px;
+}
+
+.nav-elem.full-width > *:not(:last-child) {
+    margin-inline-end: 16px;
+    -webkit-margin-end: 16px;
+}
+
+/* .nav-elem text */
+.nav-elem span {
+    color: inherit;
+    text-decoration: inherit;
+    font: var(--font-copy-regular);
+}
+.nav-elem.semibold span {
+    font-weight: var(--font-weight-semibold);
+}
+
+button.nav-elem.normal span.primary-text {
+    color: var(--text-inverse-accent);
+}
+
+.nav-elem.button span.primary-text {
+    font: var(--font-button-label);
+}
+
+.nav-elem.semibold span {
+    font-weight: var(--font-weight-semibold);
+}
+
+.nav-elem .text-box-wrapper {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+
+.nav-elem .multi-text-box > *:not(:last-child) {
+    margin-bottom: 2px;
+}
+
+.nav-elem .multi-text-box .sub-text {
+    font: var(--font-caption-small-regular);
+    color: var(--text-secondary);
+    line-height: 120%;
+}
+
+/* Only enforce a default background for
+button-type elements.
+ */
+button.nav-elem {
+    color: var(--text-inverse-accent);
+    background: var(--button-primary);
+    cursor: pointer;
+}
+.nav-elem {
+    cursor: pointer;
+}
+
+button.nav-elem.destructive,
+.nav-elem.destructive,
+.nav-elem.destructive.no-active:active,
+button.nav-elem.normal.destructive:not(.icon-only):hover,
+button.nav-elem.loading.destructive:focus {
+    background: var(--button-error);
+    color: var(--text-on-color);
+}
+.nav-elem.destructive.disabled,
+.nav-elem.destructive.disabled:active {
+    background: var(--button-disabled);
+    color: var(--text-on-color-disabled);
+}
+button.nav-elem.normal.destructive:active,
+.nav-elem.destructive:active {
+    background: var(--button-error-pressed);
+    color: var(--text-on-color);
+}
+
+button.nav-elem.destructive span.primary-text {
+    color: inherit;
+}
+
+.nav-elem.text-only,
+button.mega-pm-button.nav-elem.text-only,
+button.nav-elem.text-icon,
+button.mega-pm-button.nav-elem.text-icon {
+    background: none;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+button.nav-elem.text-icon.normal span.primary-text,
+button.mega-pm-button.nav-elem.text-icon span.primary-text {
+    background: none;
+    color: var(--text-primary);
+}
+button.nav-elem.text-icon.normal:not(.icon-only):hover,
+button.nav-elem.text-icon.normal:not(.icon-only):active,
+button.nav-elem.text-icon.normal:not(.icon-only):active .sprite-pm-ext-mono {
+    background: none;
+    color: var(--button-primary-pressed);
+}
+button.nav-elem.text-icon.normal:active .sprite-pm-ext-mono,
+button.nav-elem.text-icon.normal:active span.primary-text {
+    color: var(--button-primary-pressed);
+}
+button.nav-elem.text-icon.normal:not(.icon-only):hover span.primary-text,
+button.nav-elem.text-icon.normal:not(.icon-only):hover .sprite-pm-ext-mono {
+    color: var(--mobile-button-primary-pressed);
+}
+.nav-elem.text-icon.disabled,
+.nav-elem.text-icon.disabled:active {
+    color: var(--text-disabled);
+    text-decoration-line: underline;
+    text-decoration-color: var(--text-disabled);
+}
+
+button.nav-elem.normal:not(.icon-only):hover {
+    background: var(--button-primary-hover);
+}
+button.nav-elem.normal.secondary:not(.icon-only):hover,
+button.nav-elem.normal.secondary:focus {
+    background: var(--button-secondary-hover);
+}
+button.nav-elem.normal:not(.icon-only):active {
+    background: var(--button-primary-pressed);
+}
+button.nav-elem.normal.secondary:active {
+    background: var(--button-secondary-pressed);
+}
+button.nav-elem.normal:hover span.primary-text,
+button.nav-elem.normal:focus span.primary-text,
+button.nav-elem.normal:hover .sprite-pm-ext-mono,
+button.nav-elem.normal:focus .sprite-pm-ext-mono {
+    color: var(--text-on-color);
+}
+button.nav-elem.normal.secondary:hover span.primary-text,
+button.nav-elem.normal.secondary:hover i,
+button.nav-elem.icon-only.secondary:hover i,
+button.nav-elem.normal.secondary:focus span.primary-text,
+button.nav-elem.normal.secondary:focus i,
+button.nav-elem.icon-only.secondary:focus i {
+    color: var(--text-secondary);
+}
+button.nav-elem.normal.secondary:active span.primary-text,
+button.nav-elem.normal.secondary:active i,
+button.nav-elem.icon-only.secondary:active i {
+    color: var(--text-placeholder);
+}
+button.nav-elem.normal:active span.primary-text,
+button.nav-elem.normal:active .sprite-pm-ext-mono {
+    color: var(--text-inverse-accent);
+}
+button.nav-elem.loading {
+    pointer-events: none;
+    justify-content: center;
+}
+button.nav-elem.loading:hover,
+button.nav-elem.loading:focus,
+button.nav-elem.loading:active,
+button.nav-elem.mega-pm-loading:hover,
+button.nav-elem.mega-pm-loading:focus,
+button.nav-elem.mega-pm-loading:active {
+    color: var(--text-inverse);
+    background: var(--button-primary);
+}
+
+button.nav-elem.icon-only,
+a.nav-elem.icon-only {
+    padding: 12px;
+    height: 40px;
+}
+.nav-elem.icon-only {
+    cursor: pointer;
+}
+
+.nav-elem.normal.link {
+    padding: 0;
+    background: none;
+}
+
+.nav-elem.normal.link span,
+.nav-elem.normal.link i {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.nav-elem.normal.link span {
+    font: var(--font-label-semibold);
+}
+.nav-elem.normal.link:hover span,
+.nav-elem.normal.link:active span,
+.nav-elem.normal.link:hover i,
+.nav-elem.normal.link:active i {
+    color: var(--button-primary-pressed);
+}
+
+/* Skeleton loading */
+
+.nav-elem.sk-loading .sk-elm > * {
+    height: 32px;
+    display: block;
+    width: 200px;
+}
+.nav-elem.sk-loading.password-item .sk-elm .primary-text {
+    height: 14px;
+    width: 120px;
+}
+.nav-elem.sk-loading.password-item .sk-elm .sub-text {
+    height: 14px;
+}
+
+.nav-elem.sk-loading i.sk-elm::after,
+.sk-loading .nav-elem i.sk-elm::after {
+    width: 32px;
+    height: 32px;
+}
+.sk-loading.nav-elem .multi-text-box > *:not(:last-child) {
+    margin-bottom: 4px;
+}
+.sk-loading.nav-elem.full-width {
+    height: 64px;
+}
+.sk-loading.nav-elem {
+    padding: 16px 24px;
+}
+.sk-loading .sk-elm > * {
+    color: transparent !important;
+    font-size: 0 !important;
+}
+
+button.nav-elem.secondary {
+    background: var(--button-secondary);
+}
+button.nav-elem.normal.secondary span.primary-text,
+button.nav-elem.normal.secondary i,
+button.nav-elem.icon-only.secondary i {
+    color: var(--text-primary);
+}
+
+button.nav-elem.normal.disabled,
+button.nav-elem.normal:disabled {
+    background: var(--button-disabled);
+    pointer-events: none;
+}
+
+button.nav-elem.normal.disabled .primary-text,
+button.nav-elem.normal:disabled .primary-text {
+    color: var(--text-on-color-disabled);
+}
+
+a.nav-elem.secondary {
+    background: var(--button-secondary);
+    color: var(--text-primary);
+}
+
+a.nav-elem.secondary:hover {
+    background: var(--button-secondary-hover);
+    color: var(--text-secondary);
+}
+
+a.nav-elem.secondary:active {
+    background: var(--button-secondary-hover);
+    color: var(--text-inverse);
+}
+
+.nav-elem i.icon-size-16 {
+    --icon-size: 16px;
+}
+.nav-elem i.icon-size-20 {
+    --icon-size: 20px;
+}
+.nav-elem i.icon-size-22 {
+    --icon-size: 22px;
+}
+.nav-elem i.icon-size-24 {
+    --icon-size: 24px;
+}
+.nav-elem i.icon-size-28 {
+    --icon-size: 28px;
+}
+.nav-elem i.icon-size-32 {
+    --icon-size: 32px;
+}
+.nav-elem i.icon-size-48 {
+    --icon-size: 48px;
+}
+.nav-elem i.icon-size-80 {
+    --icon-size: 80px;
+}

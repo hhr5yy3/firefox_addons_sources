@@ -1,0 +1,357 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-main: rgb(0 0 0);
+  --color-tip: rgb(128 128 128 / 95%);
+  --color-sub-title: rgb(137 139 141);
+  --color-active: rgb(63 162 72/ 20%);
+  --color-active-tip: rgb(10 92 21/ 70%);
+  --color-active-border: rgb(63 162 72/ 80%);
+  --color-inactive: rgb(87 96 106/ 15%);
+  --color-inactive-bg: rgb(87 96 106/ 40%);
+  --color-slider: rgb(128 128 128);
+  --color-black: rgb(0 0 0);
+  --color-green: rgb(63 162 72);
+  --color-disable-bg: rgb(87 96 106/ 15%);
+  --color-disable-title: rgb(136 136 138);
+  --color-disable-slider: rgb(128 128 128 / 60%);
+}
+
+html,
+body {
+  width: 340px;
+}
+
+body {
+  overflow: hidden;
+}
+
+.container {
+  font-size: 1.05em;
+}
+
+.option-container {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--color-main);
+}
+
+.ya_search {
+  padding: 8px 0;
+  background-color: var(--color-inactive);
+  border-bottom: 1px solid;
+  border-bottom-color: var(--color-inactive-bg);
+}
+
+.option-container.ya_search.active {
+  background-color: var(--color-active);
+  border-bottom-color: var(--color-active-border);
+}
+
+.ya_search.active .tip {
+  color: var(--color-active-tip);
+}
+
+.option-container:last-child {
+  border: 0;
+}
+
+.option-container .option-item {
+  display: grid;
+  grid-template-columns: 75% 24%;
+  align-items: center;
+  padding: 14px 16px;
+  column-gap: 10px;
+}
+
+.option-container .option-item .title {
+  font-weight: bold;
+}
+
+.option-container .option-item .state {
+  align-self: start;
+  justify-self: center;
+}
+
+.option-container .tip {
+  margin-top: 8px;
+  color: var(--color-tip);
+  font-size: 0.9em;
+}
+
+.options-group {
+  margin-left: 0;
+}
+
+.options-group h5.title {
+  margin: 0;
+  padding: 4px 0 4px 16px;
+  color: var(--color-sub-title);
+}
+
+.options-group .option-container {
+  margin: 0;
+}
+
+.options-group:not(.options-group ~ .options-group) {
+  border-top: 1px solid white;
+}
+
+.disable .options-group {
+  background: var(--color-inactive);
+}
+
+.disable .options-group .option-item .title {
+  color: var(--color-disable-title);
+}
+
+.disable .options-group input:checked + .slider {
+  background-color: var(--color-disable-slider);
+}
+
+.disable .options-group input + .slider {
+  background-color: var(--color-disable-slider);
+}
+
+.disable .options-group:not(.options-group ~ .options-group) {
+  border-top-color: var(--color-inactive-bg);
+}
+
+/* Donation
+   ========================================================================== */
+.donation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  font-size: 0.9em;
+  text-align: center;
+  border-top: 1px solid var(--color-inactive-bg);
+}
+
+.donation i {
+  margin-right: 10px;
+}
+
+.donation a {
+  color: var(--color-tip);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.donation a:hover {
+  color: var(--color-main);
+}
+
+/* Toggle button
+   ========================================================================== */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-slider);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+
+  /* border: 1px solid #aaa; */
+  border-radius: 50%;
+  transition: 0.4s;
+  content: "";
+}
+
+input:checked + .slider {
+  background-color: var(--color-green);
+}
+
+input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--color-green);
+}
+
+/* Icons
+   ========================================================================== */
+
+.checkmark {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-green);
+  border-radius: 100px;
+  transform: scale(1);
+}
+
+.checkmark::after {
+  position: absolute;
+  top: -1px;
+  left: 3px;
+  display: inline;
+  box-sizing: border-box;
+  width: 6px;
+  height: 10px;
+  border-color: var(--color-green);
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  transform-origin: bottom left;
+  content: "";
+}
+
+.checkmark-sad {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-radius: 100px;
+}
+
+.checkmark-sad::after,
+.checkmark-sad::before {
+  position: absolute;
+  left: 4px;
+  display: block;
+  box-sizing: border-box;
+  content: "";
+}
+
+.checkmark-sad::before {
+  top: 5px;
+  width: 2px;
+  height: 2px;
+  background: currentcolor;
+  border-radius: 50%;
+  box-shadow: 6px 0 0;
+}
+
+.checkmark-sad::after {
+  top: 9px;
+  width: 8px;
+  height: 4px;
+  border: 2px solid var(--color-tip);
+  border-top-color: transparent;
+  border-radius: 0 0 150px 150px;
+  transform: scaleY(-1);
+}
+
+.icon-code,
+.icon-code::after,
+.icon-code::before {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 8px;
+  height: 18px;
+  transform: translateZ(10px);
+}
+
+.icon-code::after,
+.icon-code::before {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 8px;
+  border-bottom: 2px solid var(--color-tip);
+  border-left: 2px solid var(--color-tip);
+  transform: rotate(45deg) scaleY(1);
+  content: "";
+}
+
+.icon-code::after {
+  left: 6px;
+  transform: rotate(-45deg) scaleX(-1);
+}
+
+.icon-smile-mouth-open {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-radius: 100px;
+  transform: scale(1) rotateX(-90deg) translateZ(10px);
+}
+
+.icon-smile-mouth-open::after,
+.icon-smile-mouth-open::before {
+  position: absolute;
+  left: 4px;
+  display: block;
+  box-sizing: border-box;
+  content: "";
+}
+
+.icon-smile-mouth-open::before {
+  top: 5px;
+  width: 2px;
+  height: 2px;
+  background: currentcolor;
+  border-radius: 50%;
+  box-shadow: 6px 0 0;
+}
+
+.icon-smile-mouth-open::after {
+  top: 9px;
+  width: 8px;
+  height: 4px;
+  border: 2px solid;
+  border-radius: 0 0 150px 150px;
+}
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 16px;
+  transform-style: preserve-3d; /* <-NB */
+  transition: -webkit-transform 0.33s;
+  transition: transform 0.33s; /* Animate the transform properties */
+}
+
+.icon-container .icon-smile-mouth-open {
+  left: -2px;
+}
+
+.icon-container .icon-code,
+.icon-container .icon-smile-mouth-open {
+  position: absolute;
+}
+
+.donation:hover .icon-container {
+  transform: rotateX(90deg);
+}

@@ -1,0 +1,283 @@
+.flpl {
+  font-family: "Roboto-Medium", sans-serif;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 600px;
+  height: 100vh;
+  transition: all .3s;
+  transform: translateX(100%);
+  z-index: 1000000000; }
+  .flpl.active {
+    transform: translateX(0); }
+  .flpl.myFlashes .flpl-embed-msg-flashesOnPage {
+    display: none; }
+  .flpl.flashesOnPage .flpl-embed-msg-select-flash {
+    display: none; }
+  .flpl * {
+    padding: 0;
+    margin: 0;
+    font-size: 14px; }
+  .flpl a {
+    text-decoration: none;
+    color: inherit; }
+  .flpl ::-webkit-scrollbar-button {
+    background-repeat: no-repeat;
+    width: 0;
+    height: 0; }
+  .flpl ::-webkit-scrollbar-track {
+    background-color: #ecedee;
+    opacity: .5; }
+  .flpl ::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background-color: #949494;
+    opacity: .5; }
+  .flpl ::-webkit-scrollbar-thumb:hover {
+    background-color: #2f4050; }
+  .flpl ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px; }
+  .flpl .flpl-header {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #191919;
+    color: #fff;
+    padding: 0 20px;
+    border-bottom: 1px solid #000; }
+    .flpl .flpl-header .flpl-logo-box {
+      display: flex;
+      align-items: center; }
+    .flpl .flpl-header .flpl-logo-title {
+      font-size: 14px;
+      font-weight: bold; }
+    .flpl .flpl-header .flpl-logo {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      background: url(chrome-extension://__MSG_@@extension_id__/img/logo.png) center/contain no-repeat; }
+    .flpl .flpl-header .flpl-menu {
+      padding-top: 4px; }
+      .flpl .flpl-header .flpl-menu .flpl-menu-link {
+        text-align: center;
+        padding: 7px 10px;
+        margin: 0 5px;
+        user-select: none;
+        font-size: 12px;
+        background: #f99f37;
+        color: #fff;
+        border-radius: 4px; }
+        .flpl .flpl-header .flpl-menu .flpl-menu-link:hover {
+          transition: all .3s;
+          opacity: .6;
+          cursor: pointer; }
+    .flpl .flpl-header .flpl-close-icon {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-mask: url('data:image/svg+xml;utf8,<svg fill="#f99f37" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/> <path d="M0 0h24v24H0z" fill="none"/> </svg>') center center/contain no-repeat;
+      background: #fff;
+      cursor: pointer;
+      transition: all 200ms; }
+      .flpl .flpl-header .flpl-close-icon:hover {
+        background: #333; }
+  .flpl .flpl-body {
+    background: #191919;
+    padding: 15px;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+    height: calc(100% - 60px); }
+    .flpl .flpl-body .flpl-embed-box {
+      width: 100%;
+      height: 400px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      position: relative;
+      background: #000; }
+      .flpl .flpl-body .flpl-embed-box embed, .flpl .flpl-body .flpl-embed-box iframe {
+        width: 100%;
+        height: 100%;
+        background: rgba(49, 55, 65, 0.5);
+        position: relative;
+        z-index: 1000; }
+      .flpl .flpl-body .flpl-embed-box .flpl-embed-msg {
+        position: absolute;
+        top: 47%;
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
+        z-index: 1000;
+        color: #fff; }
+      .flpl .flpl-body .flpl-embed-box .flpl-embed-msg-can-not-run {
+        top: 47%;
+        z-index: 999;
+        color: #fff; }
+    .flpl .flpl-body .flpl-flashes-ul {
+      height: calc(100vh - 550px);
+      overflow-y: auto;
+      width: 100%;
+      line-height: 1; }
+      .flpl .flpl-body .flpl-flashes-ul li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #989898;
+        transition: all 200ms;
+        height: 40px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        width: 100%;
+        line-height: 1;
+        text-align: left; }
+        .flpl .flpl-body .flpl-flashes-ul li.active {
+          color: #f99f37; }
+        .flpl .flpl-body .flpl-flashes-ul li:hover {
+          background: #292929; }
+          .flpl .flpl-body .flpl-flashes-ul li:hover .flpl-btns {
+            display: block; }
+        .flpl .flpl-body .flpl-flashes-ul li .flpl-flash-title {
+          cursor: pointer;
+          user-select: none;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          font-size: 16px;
+          width: 80%;
+          white-space: nowrap; }
+        .flpl .flpl-body .flpl-flashes-ul li .flpl-btns {
+          display: none; }
+          .flpl .flpl-body .flpl-flashes-ul li .flpl-btns .flpl-icon {
+            margin-left: 3px; }
+        .flpl .flpl-body .flpl-flashes-ul li .flpl-icon {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          margin-left: 5px;
+          cursor: pointer; }
+          .flpl .flpl-body .flpl-flashes-ul li .flpl-icon.flpl-download {
+            background: url('data:image/svg+xml;utf8,<svg fill="#f99f37" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/> <path d="M0 0h24v24H0z" fill="none"/> </svg>') center center/contain no-repeat; }
+          .flpl .flpl-body .flpl-flashes-ul li .flpl-icon.flpl-edit {
+            background: url('data:image/svg+xml;utf8,<svg fill="#f99f37" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/> <path d="M0 0h24v24H0z" fill="none"/> </svg>') center center/contain no-repeat; }
+          .flpl .flpl-body .flpl-flashes-ul li .flpl-icon.flpl-remove {
+            background: url('data:image/svg+xml;utf8,<svg fill="#f99f37" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/> <path d="M0 0h24v24H0z" fill="none"/> </svg>') center center/contain no-repeat; }
+          .flpl .flpl-body .flpl-flashes-ul li .flpl-icon.flpl-link {
+            background: url('data:image/svg+xml;utf8,<svg fill="#f99f37" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="M0 0h24v24H0z" fill="none"/> <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/> </svg>') center center/contain no-repeat; }
+        .flpl .flpl-body .flpl-flashes-ul li .flpl-add-btn {
+          display: inline-block;
+          box-sizing: border-box;
+          background: #cdcdcd;
+          transition: all 200ms;
+          border: none;
+          margin-left: 5px;
+          outline: none;
+          border-radius: 0;
+          cursor: pointer;
+          color: #000;
+          font-size: 13px;
+          padding: 5px 10px; }
+          .flpl .flpl-body .flpl-flashes-ul li .flpl-add-btn:hover {
+            background: #333;
+            color: #fff; }
+    .flpl .flpl-body .flpl-add-by-url {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      text-align: center;
+      user-select: none;
+      background: #f99f37;
+      color: #fff;
+      padding: 7px;
+      border-radius: 4px;
+      width: 150px;
+      line-height: 1;
+      font-size: 14px; }
+      .flpl .flpl-body .flpl-add-by-url:hover {
+        transition: all .3s;
+        opacity: .6;
+        cursor: pointer; }
+
+.flpl .flpl-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  z-index: 1099;
+  justify-content: center;
+  align-items: center; }
+  .flpl .flpl-modal-overlay .flpl-modal {
+    width: 300px;
+    background: #191919;
+    position: relative;
+    border-radius: 0;
+    z-index: 1100; }
+    .flpl .flpl-modal-overlay .flpl-modal .flpl-modal-header {
+      padding: 15px 20px;
+      background: #f99f37;
+      color: #fff;
+      text-align: left;
+      font-weight: bold;
+      border-radius: 0; }
+    .flpl .flpl-modal-overlay .flpl-modal .flpl-modal-close-icon {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      -webkit-mask: url('data:image/svg+xml;utf8,<svg fill="#f99f37" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/> <path d="M0 0h24v24H0z" fill="none"/> </svg>') center center/contain no-repeat;
+      background: #fff;
+      cursor: pointer;
+      transition: all 200ms; }
+      .flpl .flpl-modal-overlay .flpl-modal .flpl-modal-close-icon:hover {
+        background: #333; }
+    .flpl .flpl-modal-overlay .flpl-modal .flpl-modal-body {
+      padding: 10px 20px 5px; }
+      .flpl .flpl-modal-overlay .flpl-modal .flpl-modal-body .flpl-input-box {
+        margin-bottom: 15px; }
+        .flpl .flpl-modal-overlay .flpl-modal .flpl-modal-body .flpl-input-box label {
+          display: block;
+          color: #fff;
+          font-size: 12px;
+          line-height: 1.5;
+          text-align: left; }
+        .flpl .flpl-modal-overlay .flpl-modal .flpl-modal-body .flpl-input-box input {
+          display: block;
+          width: 100%;
+          background: #cdcdcd;
+          box-sizing: border-box;
+          padding: 5px;
+          outline: none;
+          border: none;
+          border-radius: 0;
+          line-height: 1;
+          height: auto;
+          color: #000;
+          text-align: left; }
+    .flpl .flpl-modal-overlay .flpl-modal .flpl-modal-footer {
+      padding: 0 20px 20px;
+      display: flex;
+      justify-content: flex-end; }
+      .flpl .flpl-modal-overlay .flpl-modal .flpl-modal-footer .flpl-modal-btn {
+        display: inline-block;
+        width: 80px;
+        padding: 9px 0;
+        box-sizing: border-box;
+        background: #cdcdcd;
+        transition: all 200ms;
+        border: none;
+        margin-left: 5px;
+        outline: none;
+        border-radius: 0;
+        cursor: pointer; }
+        .flpl .flpl-modal-overlay .flpl-modal .flpl-modal-footer .flpl-modal-btn:hover {
+          background: #333;
+          color: #fff; }
+    .flpl .flpl-modal-overlay .flpl-modal.flpl-remove-modal .flpl-modal-body {
+      padding: 20px;
+      color: #fff;
+      font-size: 16px; }
+
+/*# sourceMappingURL=flpl-sidebar.css.map */

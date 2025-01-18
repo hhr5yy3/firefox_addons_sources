@@ -1,0 +1,1 @@
+const e={tooltip:"Vybrat jazykový model"},o={tooltip:"Vybrat model pro generování obrázků"},l={languageModelSelector:e,imageGenModelSelector:o};export{l as default,o as imageGenModelSelector,e as languageModelSelector};

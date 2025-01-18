@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>VK Plus</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=cp1251'/>
+    <link rel="shortcut icon" href="icons/icon.png">
+    <style type="text/css">
+        body { background: #507299; font-family: Tahoma; font-size: 13px; min-width: 338px; padding: 14px; }
+        .wrapper { background: #fff; border: 1px solid #ccc; border-radius: 3px; }
+        table { margin: 18px auto; width: 86%; border-collapse: collapse; }
+        tr { height: 34px; line-height: 34px; padding: 0px; -moz-user-select: none; cursor: pointer; transition: all 0.2s; }
+        tr:hover { color: #1e4c74; }
+        tr > td { border-bottom: 1px solid #aaa; margin: 0px; }
+        tr:last-child > td { border-bottom: none; }
+        tr > td:last-child { width: 36px; }
+        input[type="checkbox"] {
+           display: none;
+        }
+        .checkbox {
+           float: right;
+           margin-right: 8px;
+           display: block;
+           position: relative;
+           width: 26px;
+           height: 8px;
+           background-color: #aaa;
+           border: 1px solid #a8a8a8;
+           box-shadow: inset 0px 0px 3px 1px rgba(56, 56, 56, 0.14);
+           border-radius: 4px;
+           cursor: pointer;
+           transition: background-color 0.1s linear 0.18s, border-color 0.1s linear 0.18s;
+        }
+        .checkbox:before {
+           display: block;
+           content: '';
+           position: absolute;
+           left: -3px;
+           top: -3px;
+           width: 12px;
+           height: 12px;
+           background: #efefef;
+           border: 1px solid #eaeaec;
+           border-radius: 6px;
+           transition: left 0.2s linear;
+        }
+        .checkbox.enabled {
+           background-color: #507299;
+           border: 1px solid #4f7097;
+        }
+        .checkbox.enabled:before {
+           left: 20px;
+        }
+    </style>
+    <script src="js/popup.js"></script>
+</head>
+<body>
+<div class="wrapper">
+<table border="0">
+<tr><td>Скрывать шапку по Ctrl+Click</td><td><div class="checkbox" data-value="header"><input type="checkbox" /></div></td></tr>
+<tr><td>Расширять стену при прокрутке</td><td><div class="checkbox" data-value="wall"><input type="checkbox" /></div></td></tr>
+<tr><td>Использовать квадратные аватарки</td><td><div class="checkbox" data-value="square_pics"><input type="checkbox" /></div></td></tr>
+<tr><td>Использовать старый вид диалогов</td><td><div class="checkbox" data-value="old_im"><input type="checkbox" /></div></td></tr>
+<tr><td>Использовать синюю шапку</td><td><div class="checkbox" data-value="old_navbar"><input type="checkbox" /></div></td></tr>
+<tr><td>Не показывать статистику в профилях</td><td><div class="checkbox" data-value="nocounters"><input type="checkbox" /></div></td></tr>
+<tr><td>Кнопка скрытия комментариев к фото</td><td><div class="checkbox" data-value="photo_comments"><input type="checkbox" /></div></td></tr>
+<tr><td>Fullscreen фото по нажатию Enter</td><td><div class="checkbox" data-value="photo_fullscreen"><input type="checkbox" /></div></td></tr>
+<tr><td>Выводить аудиозаписи по центру</td><td><div class="checkbox" data-value="audio_largeblock"><input type="checkbox" /></div></td></tr>
+<tr><td>Использовать Flash для аудио</td><td><div class="checkbox" data-value="audio_flash"><input type="checkbox" /></div></td></tr>
+<tr><td>Ночной режим</td><td><div class="checkbox" data-value="night_mode"><input type="checkbox" /></div></td></tr>
+</table>
+</div>
+</body>
+</html>

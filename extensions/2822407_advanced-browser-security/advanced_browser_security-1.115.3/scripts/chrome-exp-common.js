@@ -1,0 +1,1 @@
+(()=>{"use strict";var n,e,i;(e={}).ChromeExpMessageKind=e.FunctionOptions=void 0,(i=e.FunctionOptions||(e.FunctionOptions={})).Prevent="prevent",i.OnlyTrack="onlyTrack",(n=e.ChromeExpMessageKind||(e.ChromeExpMessageKind={})).FunctionCalled="functionCalled",n.SetConfiguration="setConfiguration",n.RequestConfiguration="requestConfiguration"})();

@@ -1,0 +1,238 @@
+<html lang="EN">
+<head>
+	<meta charset="UTF-8">
+	<title>AI YouTube Summary</title>
+	<style>
+      :root {
+          --n-btn-base-color: #FFFFFF;
+          --n-btn-border-color: #E0E0E0;
+      }
+
+      button {
+          text-decoration: none;
+          color: inherit;
+          padding: 10px 15px;
+      }
+
+      .n-btn {
+          font-family: 'Helvetica', sans-serif;
+          font-weight: 300;
+          letter-spacing: 0.12em;
+          margin: 10px;
+          border: 2px solid var(--n-btn-border-color);
+          background-color: var(--n-btn-base-color);
+          background-clip: padding-box;
+          border-radius: 10px;
+          text-wrap: nowrap;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          color: #333;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .n-btn:hover {
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+          filter: brightness(0.8);
+      }
+
+      .n-btn:active {
+          transform: scale(0.97);
+          filter: brightness(0.7);
+      }
+
+      .n-btn svg {
+          width: 20px;
+          height: 20px;
+          margin-right: 8px;
+      }
+
+      .n-btn svg:last-child {
+          margin-right: 0;
+      }
+
+      .n-info {
+          --n-btn-base-color: #AED4F0;
+          --n-btn-border-color: #97B9D3;
+      }
+
+      .n-green {
+          --n-btn-base-color: #D7E8D4;
+          --n-btn-border-color: #BCCCB9;
+      }
+
+      .n-beige {
+          --n-btn-base-color: #F5ECD9;
+          --n-btn-border-color: #f1ddb2;
+      }
+
+      body {
+          min-width: 400px;
+          background: linear-gradient(45deg, rgba(131, 87, 245, 0.5), rgba(249, 218, 101, 0.5), rgba(126, 216, 223, 0.5));
+          font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+          font-size: 15px;
+          font-weight: 400;
+          letter-spacing: 0.05em;
+          padding: 10px;
+      }
+
+      .center {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-bottom: 20px;
+      }
+
+      .setting-wrapper {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          flex-wrap: wrap;
+          margin-bottom: 35px;
+					gap: 1rem;
+      }
+
+      .custom-select {
+          position: relative;
+          display: inline-block;
+          font-family: 'Helvetica Neue', sans-serif;
+          font-size: 16px;
+      }
+
+      .custom-select select{
+          appearance: none;
+          position: relative;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          border: 2px solid var(--n-btn-border-color);
+          background-color: var(--n-btn-base-color);
+          border-radius: 10px;
+          padding: 5px 40px 5px 10px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+      }
+
+      .custom-select select:hover,
+      .custom-select select:focus {
+          background-color: #E9D9B5;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          outline: none;
+      }
+
+      .custom-select::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          right: 12px;
+          transform: translateY(-50%);
+          width: 20px;
+          height: 20px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23AAC9A9'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          pointer-events: none;
+      }
+
+      .custom-select select option {
+          background-color: #F5ECD9;
+          color: #8D6D4E;
+          padding: 10px;
+      }
+
+      .custom-select select option:hover,
+      .custom-select select option:focus {
+          background-color: #E9D9B5;
+      }
+
+			.select-wrapper, .range-container {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+					label {
+              margin-right: 10px;
+					}
+			}
+
+			h1,h2,h3,h4 {
+          margin: 0 0 5px;
+      }
+
+      input:checked + .toggle-slider {
+          background-color: #8EB48C;
+      }
+
+      input:focus + .toggle-slider {
+          box-shadow: 0 0 1px #8EB48C;
+      }
+
+      input:checked + .toggle-slider:before {
+          transform: translateX(26px);
+      }
+	</style>
+</head>
+<body>
+<div style="margin-bottom: 20px">
+	<h2 style="text-align: center">Gemini AI Youtube Summarizer</h2>
+</div>
+<p id="main-description"></p>
+
+<div style="margin-bottom: 20px">
+	<h3 style="text-align: center" id="settings-text"></h3>
+</div>
+<div class="setting-wrapper" id="settings">
+	<div class="select-wrapper">
+		<label for="language-select" id="language-select-text"></label>
+		<div class="custom-select">
+			<select class="n-beige" id="language-select">
+			</select>
+		</div>
+	</div>
+
+	<div class="select-wrapper">
+		<label for="model-select" id="preferred-ai-model"></label>
+		<div class="custom-select">
+			<select class="n-beige" id="model-select">
+				<option value="gemini-1.5-flash" id="model-default"></option>
+				<option value="gemini-1.0-pro">Gemini Pro</option>
+				<option value="gemini-1.5-flash-8b">Gemini Flash-8B</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="select-wrapper">
+		<label for="summary-length" id="summary-length-text"></label>
+		<div class="custom-select">
+			<select class="n-beige" id="summary-length">
+				<option value="1" id="summary-length-detailed"></option>
+				<option value="2" id="summary-length-average"></option>
+				<option value="3" id="summary-length-short"></option>
+			</select>
+		</div>
+	</div>
+
+	<div class="select-wrapper">
+		<label for="button-animation" id="button-shine-text">
+		</label>
+		<div class="custom-select">
+			<select class="n-beige" id="button-animation">
+				<option value="on" id="button-shine-enabled"></option>
+				<option value="off" id="button-shine-disabled"></option>
+			</select>
+		</div>
+	</div>
+</div>
+<p id="popup-support-description"></p>
+<div class="center">
+	<button id="support-paypal" class="n-btn n-info"></button>
+	<button id="support-crypto" class="n-btn n-beige"></button>
+	<button id="review" class="n-btn n-green"></button>
+</div>
+<script src="popup.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title data-fhc-i18n="contextMenuItemManageHistory">Manage history</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="lib/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" href="/theme/formhistorycontrol-generic.css"/>
+    <link rel="stylesheet" href="/theme/navigation.css"/>
+    <link rel="stylesheet" href="theme/jquery.mCustomScrollbar.css"/>
+    <link rel="stylesheet" href="theme/buttons.dataTables.css"/>
+    <link rel="stylesheet" href="theme/table-theme.css"/>
+    <link rel="stylesheet" href="theme/loadingstatus.css"/>
+    <link rel="stylesheet" href="theme/popup-big.css"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/formhistorycontrol-generic-dark.css" data-title="Dark"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/formhistorycontrol-generic-orange.css" data-title="Orange"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/formhistorycontrol-generic-blue.css" data-title="Blue"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/navigation-dark.css" data-title="Dark"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/navigation-orange.css" data-title="Orange"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/navigation-blue.css" data-title="Blue"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/table-theme-dark.css" data-title="Dark"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/table-theme-orange.css" data-title="Orange"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/table-theme-blue.css" data-title="Blue"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/popup-dark.css" data-title="Dark"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/popup-orange.css" data-title="Orange"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/popup-blue.css" data-title="Blue"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/loadingstatus-dark.css" data-title="Dark"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/loadingstatus-orange.css" data-title="Orange"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/loadingstatus-blue.css" data-title="Blue"/>
+</head>
+<body>
+    <div id="overlaystatus"><div data-fhc-i18n="loading_status">Loading...</div></div>
+    <nav>
+        <ul>
+            <li><span data-fhc-i18n="menuFile">File</span>
+                <ul>
+                    <li><span id="import" data-fhc-i18n="menuItemFileImport" class="icon-item icon-import">Import</span></li>
+                    <li><span id="export" data-fhc-i18n="menuItemFileExport" class="icon-item icon-export">Export</span></li>
+                    <li><span class="menu-spacer"><span></span></span></li>
+                    <li><span id="close" data-fhc-i18n="menuItemFileClose" class="icon-item icon-close">Close</span></li>
+                </ul>
+            </li>
+            <li><span data-fhc-i18n="menuEdit">Edit</span>
+                <ul>
+                    <li><span id="add" data-fhc-i18n="menuItemEditAdd" class="icon-item icon-insert">Add</span></li>
+                    <li><span id="modify" data-fhc-i18n="menuItemEditModify" class="icon-item icon-edit">Modify</span></li>
+                    <li><span id="delete" data-fhc-i18n="menuItemEditDelete" class="icon-item icon-delete">Delete</span></li>
+                    <li><span class="menu-spacer"><span></span></span></li>
+                    <li><span id="copy2clipboard" data-fhc-i18n="menuItemEditClipboard" class="icon-item icon-copy">Copy to clipboard</span></li>
+                    <li><span id="copy2clipboardText" data-fhc-i18n="menuItemText2Clipboard" class="icon-item icon-copy">Copy clean text only</span></li>
+                    <li><span class="menu-spacer"><span></span></span></li>
+                    <li><span id="selectall" data-fhc-i18n="menuItemEditSelectAll" class="icon-item icon-selectall">Select all</span></li>
+                    <li><span id="selectnone" data-fhc-i18n="menuItemEditSelectNone" class="icon-item icon-selectnone">Select none</span></li>
+                    <li><span id="selectinvert" data-fhc-i18n="menuItemEditSelectInvert" class="icon-item icon-selectinvert">Invert selection</span></li>
+                </ul>
+            </li>
+            <li><span data-fhc-i18n="menuDisplay">Display</span>
+                <ul>
+                    <li><span id="refresh" data-fhc-i18n="menuItemDisplayRefresh" class="icon-item icon-refresh">Refresh</span></li>
+                </ul>
+            </li>
+            <li><span data-fhc-i18n="menuExtra">Extra</span>
+                <ul>
+                    <li><span id="cleanup" data-fhc-i18n="menuItemExtraCleanupNow" class="icon-item icon-clean">Cleanup now</span></li>
+                    <li><span class="menu-spacer"><span></span></span></li>
+                    <li><span id="preferences" data-fhc-i18n="menuItemExtraPreferences" class="icon-item icon-preferences">Preferences</span></li>
+                </ul>
+            </li>
+            <li><span data-fhc-i18n="menuHelp">Help</span>
+                <ul>
+                    <li><span id="helpoverview" data-fhc-i18n="menuItemHelpOverview" class="icon-item icon-help">Help overview</span></li>
+                    <li><span id="releasenotes" data-fhc-i18n="menuItemHelpReleasenotes" class="icon-item icon-releasenotes">Release Notes</span></li>
+                    <li><span class="menu-spacer"><span></span></span></li>
+                    <li><span id="about" data-fhc-i18n="menuItemHelpAbout" class="icon-item icon-about">About</span></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <table id="fhcTable" class="dataTable display compact nowrap" width="100%" cellspacing="0">
+        </table>
+    </div>
+    <div id="buttons">
+        <button id="buttonAdd" data-fhc-i18n="buttonAdd">Add</button>
+        <button id="buttonDelete" data-fhc-i18n="buttonDelete">Delete</button>
+        <button id="buttonModify" data-fhc-i18n="buttonModify">Modify</button>
+        <button id="buttonClose" data-fhc-i18n="buttonClose" class="button-right">Close</button>
+    </div>
+
+    <div id="context-menu-container">
+        <div id="context-menu-wrapper">
+            <ul class="context-menu">
+                <li><span id="add-ctx" data-fhc-i18n="menuItemEditAdd" class="context-menu-item icon-item icon-insert">Add</span></li>
+                <li><span id="modify-ctx" data-fhc-i18n="menuItemEditModify" class="context-menu-item icon-item icon-edit">Modify</span></li>
+                <li><span id="delete-ctx" data-fhc-i18n="menuItemEditDelete" class="context-menu-item icon-item icon-delete">Delete</span></li>
+                <li class="context-separator"></li>
+                <li><span id="copy2clipboard-ctx" data-fhc-i18n="menuItemEditClipboard" class="context-menu-item icon-item icon-copy">Copy to clipboard</span></li>
+                <li class="context-separator"></li>
+                <li><span id="selectall-ctx" data-fhc-i18n="menuItemEditSelectAll" class="context-menu-item icon-item icon-selectall">Select all</span></li>
+                <li><span id="selectnone-ctx" data-fhc-i18n="menuItemEditSelectNone" class="context-menu-item icon-item icon-selectnone">Select none</span></li>
+                <li><span id="selectinvert-ctx" data-fhc-i18n="menuItemEditSelectInvert" class="context-menu-item icon-item icon-selectinvert">Invert selection</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="/common/CleanupConst.js"></script>
+    <script src="/common/OptionsUtil.js"></script>
+    <script src="/common/ThemeUtil.js"></script>
+    <script src="/common/DbConst.js"></script>
+    <script src="/common/WindowUtil.js"></script>
+    <script src="/common/DateUtil.js"></script>
+    <script src="/common/translation.js"></script>
+    <script src="/common/MiscUtil.js"></script>
+    <script src="lib/jquery-3.7.0.min.js"></script>
+    <script src="lib/jquery.dataTables.min.js"></script>
+    <script src="lib/dataTables.responsive.js"></script>
+    <script src="lib/dataTables.select.js"></script>
+    <script src="lib/dataTables.buttons.js"></script>
+    <script src="lib/buttons.colVis.js"></script>
+    <script src="lib/jquery.mousewheel.js"></script>
+    <script src="lib/jquery.mCustomScrollbar.js"></script>
+    <script src="DataTableUtil.js"></script>
+    <script src="popup-common.js"></script>
+    <script src="popup-big.js"></script>
+</body>
+</html>

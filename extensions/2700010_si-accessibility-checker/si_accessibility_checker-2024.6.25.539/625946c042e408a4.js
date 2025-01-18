@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_siteimprove_alfa_web_extension=self.webpackChunk_siteimprove_alfa_web_extension||[]).push([[3520],{73520:e=>{e.exports=JSON.parse('{"$schema":"../schema/rule.json","requirements":["https://www.w3.org/TR/WCAG2/#contrast-enhanced"],"responsibility":"visual","difficulty":2,"affects":["vision","color-perception"],"category":"forms"}')}}]);

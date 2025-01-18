@@ -1,0 +1,1 @@
+(()=>{"use strict";var e;function n(){document.body.classList.add("privacy-on")}document.addEventListener("mouseover",(function(){document.body.classList.remove("privacy-on")})),null===(e=document.querySelector("body"))||void 0===e||e.addEventListener("mouseleave",n),document.addEventListener("mouseleave",n),document.addEventListener("blur",n),document.hasFocus()||n()})();

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbrowser_extension=self.webpackChunkbrowser_extension||[]).push([[821],{94903:(e,s,r)=>{r.d(s,{a:()=>t});r(97107),r(33873),r(10865),r(98376),r(47010),r(71651),r(62337);let t=function(e){return e.both="both",e.source="source",e.result="result",e}({})},96959:(e,s,r)=>{r(97107),r(33873),r(47010),r(31085),r(14041),r(60807),r(1729);r(25873)}}]);

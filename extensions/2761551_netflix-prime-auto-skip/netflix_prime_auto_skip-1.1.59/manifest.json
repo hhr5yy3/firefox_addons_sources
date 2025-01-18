@@ -1,0 +1,143 @@
+{
+  "name": "Streaming enhanced Netflix Disney Prime Video",
+  "description": "Skip ads, intros, credits and add adjust speed, etc. on Netflix, Prime video, Disney+, Crunchyroll and HBO max.",
+  "version": "1.1.59",
+  "manifest_version": 2,
+  "background": {
+    "scripts": [
+      "service-worker-loader.js"
+    ],
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "assets/crunchyroll.ts-loader-BlA4dotU.js"
+      ],
+      "matches": [
+        "*://*.crunchyroll.com/*"
+      ]
+    },
+    {
+      "js": [
+        "assets/amazon.ts-loader-DCkZ-vzk.js"
+      ],
+      "matches": [
+        "*://*.primevideo.com/*",
+        "*://*.amazon.com/*",
+        "*://*.amazon.co.jp/*",
+        "*://*.amazon.de/*",
+        "*://*.amazon.co.uk/*"
+      ]
+    },
+    {
+      "js": [
+        "assets/netflix.ts-loader-BQmwsVLG.js"
+      ],
+      "matches": [
+        "*://*.netflix.com/*",
+        "*://*.netflix.ca/*",
+        "*://*.netflix.com.au/*"
+      ]
+    },
+    {
+      "js": [
+        "assets/disney.ts-loader-CwvYqOYG.js"
+      ],
+      "matches": [
+        "*://*.disneyplus.com/*",
+        "*://*.hotstar.com/*",
+        "*://*.starplus.com/*"
+      ]
+    },
+    {
+      "js": [
+        "assets/max.ts-loader-CmnucTEx.js"
+      ],
+      "matches": [
+        "*://*.max.com/*",
+        "*://*.hbomax.com/*"
+      ]
+    },
+    {
+      "js": [
+        "assets/static.crunchyroll.ts-loader-BATHIWVQ.js"
+      ],
+      "all_frames": true,
+      "matches": [
+        "https://static.crunchyroll.com/vilos-v2/web/vilos/player.html*"
+      ]
+    }
+  ],
+  "options_page": "src/ui/options-page/index.html",
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.disneyplus.com/*",
+    "*://*.starplus.com/*",
+    "*://*.primevideo.com/*",
+    "*://*.amazon.com/*",
+    "*://*.amazon.co.jp/*",
+    "*://*.amazon.de/*",
+    "*://*.amazon.co.uk/*",
+    "*://*.max.com/*",
+    "*://*.hbomax.com/*"
+  ],
+  "optional_permissions": [
+    "tabs"
+  ],
+  "icons": {
+    "16": "src/assets/Logo/NetflixAmazon Auto-Skip.svg",
+    "48": "src/assets/Logo/NetflixAmazon Auto-Skip.svg",
+    "96": "src/assets/Logo/NetflixAmazon Auto-Skip.svg",
+    "128": "src/assets/Logo/NetflixAmazon Auto-Skip.svg",
+    "400": "src/assets/Logo/NetflixAmazon Auto-Skip.svg"
+  },
+  "homepage_url": "https://github.com/Dreamlinerm/Netflix-Prime-Auto-Skip",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "NetflixPrime@Autoskip.io"
+    }
+  },
+  "web_accessible_resources": [
+    "assets/content-script-D7YBjZpd.js",
+    "assets/shared-functions-50IQFOKT.js",
+    "assets/storeTypes-CGrbvTi_.js",
+    "assets/chunk-QIZ4XBKF-C_NfkaUr.js",
+    "assets/_commonjsHelpers-CqkleIqs.js",
+    "assets/crunchyroll.ts-BqZH4PNo.js",
+    "assets/content-script-D7YBjZpd.js",
+    "assets/shared-functions-50IQFOKT.js",
+    "assets/storeTypes-CGrbvTi_.js",
+    "assets/chunk-QIZ4XBKF-C_NfkaUr.js",
+    "assets/_commonjsHelpers-CqkleIqs.js",
+    "assets/amazon.ts-DUt0UrIO.js",
+    "assets/content-script-D7YBjZpd.js",
+    "assets/shared-functions-50IQFOKT.js",
+    "assets/storeTypes-CGrbvTi_.js",
+    "assets/chunk-QIZ4XBKF-C_NfkaUr.js",
+    "assets/_commonjsHelpers-CqkleIqs.js",
+    "assets/netflix.ts-CwhiWHCI.js",
+    "assets/content-script-D7YBjZpd.js",
+    "assets/shared-functions-50IQFOKT.js",
+    "assets/storeTypes-CGrbvTi_.js",
+    "assets/chunk-QIZ4XBKF-C_NfkaUr.js",
+    "assets/_commonjsHelpers-CqkleIqs.js",
+    "assets/disney.ts-Co6WL1yt.js",
+    "assets/shared-functions-50IQFOKT.js",
+    "assets/content-script-D7YBjZpd.js",
+    "assets/storeTypes-CGrbvTi_.js",
+    "assets/chunk-QIZ4XBKF-C_NfkaUr.js",
+    "assets/_commonjsHelpers-CqkleIqs.js",
+    "assets/max.ts--Bo76SLq.js",
+    "assets/content-script-D7YBjZpd.js",
+    "assets/storeTypes-CGrbvTi_.js",
+    "assets/chunk-QIZ4XBKF-C_NfkaUr.js",
+    "assets/_commonjsHelpers-CqkleIqs.js",
+    "assets/static.crunchyroll.ts-DlLPXKgt.js"
+  ],
+  "browser_action": {
+    "default_popup": "src/ui/action-popup/index.html"
+  }
+}

@@ -1,0 +1,1 @@
+const e={tooltip:"Nyelvi modell kiválasztása"},l={tooltip:"Képgeneráló modell kiválasztása"},o={languageModelSelector:e,imageGenModelSelector:l};export{o as default,l as imageGenModelSelector,e as languageModelSelector};

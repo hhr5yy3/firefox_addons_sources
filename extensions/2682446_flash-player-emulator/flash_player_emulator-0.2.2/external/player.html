@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<style>
+html {
+font-family: sans-serif;
+}
+
+html,body {
+margin: 0;
+overflow: hidden;
+height: 100%;
+overflow: hidden;
+/*cursor: pointer;*/
+}
+
+#player-container {
+    height: 100%;
+}
+
+body, #overlay {
+    background:#f8f8f8;
+}
+body.initialized {
+    background: transparent;
+}
+
+#overlay {
+    display: grid;
+    height: 100%;
+    font-size: 1.3em;
+    
+    color: #646464;
+    /*color: #606060;*/
+    
+    cursor: pointer;
+}
+
+#overlay p {
+    margin: 0.5em 0;
+}
+
+#overlay .center {
+    margin: auto;
+    text-align: center;
+}
+#overlay .icon {
+    filter: grayscale(0.8) brightness(1.5);
+    /*width: 50%;*/
+}
+#overlay:hover .icon {
+    filter: grayscale(0.5) brightness(1.5);
+}
+
+</style>
+</head>
+<body>
+<!--
+<p>This frame might need to be loaded over HTTPS</p>
+-->
+<div id="player-container">
+    <div id="overlay">
+        <div class="center">
+            <!-- img width/height attributes added to prevent content jumping -->
+            <!--<img class="icon" width="80" height="80" src="/icons/icon192.png">-->
+            <img class="icon" width="80" height="80" src="/icons/playicon600.png">
+            <p>Click to Start Flash Emulator</p>
+        </div>
+    </div>
+</div>
+
+<script src="/player.js"></script>
+
+</body>
+</html>

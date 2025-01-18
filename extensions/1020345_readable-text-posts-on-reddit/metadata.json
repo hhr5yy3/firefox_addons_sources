@@ -1,0 +1,152 @@
+{
+    "id": 1020345,
+    "authors": [
+        {
+            "id": 10122504,
+            "name": "creesch",
+            "url": "https://addons.mozilla.org/en-US/firefox/user/10122504/",
+            "username": "creesch"
+        }
+    ],
+    "average_daily_users": 213,
+    "categories": [
+        "appearance",
+        "social-communication"
+    ],
+    "contributions_url": "",
+    "created": "2019-01-10T13:41:55Z",
+    "current_version": {
+        "id": 5400599,
+        "compatibility": {
+            "firefox": {
+                "min": "57.0",
+                "max": "*"
+            },
+            "android": {
+                "min": "57.0",
+                "max": "68.*"
+            }
+        },
+        "edit_url": "https://addons.mozilla.org/en-US/developers/addon/readable-text-posts-on-reddit/versions/5400599",
+        "file": {
+            "id": 3944944,
+            "created": "2022-05-05T10:28:31Z",
+            "hash": "sha256:c86be242ee0ae964f23cc67f5999edbeb6cb441e64e0e641e3004f501dcda68e",
+            "is_mozilla_signed_extension": false,
+            "size": 95026,
+            "status": "public",
+            "url": "https://addons.mozilla.org/firefox/downloads/file/3944944/readable_text_posts_on_reddit-0.15.0.xpi",
+            "permissions": [
+                "https://*.reddit.com/",
+                "storage",
+                "tabs",
+                "https://*.reddit.com/*"
+            ],
+            "optional_permissions": [],
+            "host_permissions": []
+        },
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 7479,
+            "is_custom": true,
+            "name": {
+                "en-US": "Apache License 2.0"
+            },
+            "slug": null,
+            "url": "https://addons.mozilla.org/en-US/firefox/addon/readable-text-posts-on-reddit/license/"
+        },
+        "release_notes": {
+            "en-US": "<ul>                    <li>Reworked extension structure to work with upcoming <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/b27cefd3d283fddb0fc6eb43233b89e48d9530c6169e471aa398b11adba8d932/https%3A//developer.chrome.com/docs/extensions/mv3/intro/\" rel=\"noopener noreferrer nofollow\">Chrome manifest changes</a>. </li>                    <li>Various libraries have been updated to the latest version.</li>                    <li>use currentTarget for inline reddit link opening.</li>                    <li>Made it a bit more clear when clicking certain links that content is loading.</li>                </ul>"
+        },
+        "reviewed": "2022-05-05T10:31:18Z",
+        "version": "0.15.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "I greatly enjoy reading stories that are posted on subreddits like <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/9cf8b9be0172a0aae34e7b626b8799f65ec57e5302add582e3f7061b0d092f79/https%3A//www.reddit.com/r/WritingPrompts\" rel=\"nofollow\">/r/WritingPrompts</a> and <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/c85ae79da39a1f64a5a5a66d10dd4a708e22b4f73d413e50e49c1e6ff2a07394/https%3A//www.reddit.com/r/HFY\" rel=\"nofollow\">/r/HFY</a> as well as the sort of long form comments like found on <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/fe58a23e7e2247f0e9cf4cf221187e9aeebbec62db0c3e446bed80ccf43832e5/https%3A//www.reddit.com/r/AskHistorians\" rel=\"nofollow\">/r/AskHistorians</a> and <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/2ec0f22cb86daa7c956a6081ce886da09cd75cad80ab2a192054897a540d81b1/https%3A//www.reddit.com/r/askscience\" rel=\"nofollow\">/r/askscience</a> What I like less is reading these on my computer. Both old and new reddit put too much clutter around text and the formatting itself always feels less than ideal for long pieces of text. \nA while ago I had a realization <em>\"I can fix this!\"</em>, which is what I promptly set out to do. I started out with a bit of custom css, then I realized I could do better with some scripting. That sort of spiraled out of control and before I knew it I had made it in a full blown browser extension. \n    <b>So what does this extension do?</b>\nThe extension takes text posts or comments and transforms the text from <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/048eb3b63ceae3361aa190a997a97d105c8f767bad899c48a1b1bebe31201fcb/https%3A//www.creesch.com/dump/img/img_5c37109ddbe6c.png\" rel=\"nofollow\">this</a> into something more readable with less distractions <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/f6b913e3fc6ae485fcfecb19f0dac2e4e28a459ec7e3e4305b1405857be2760b/https%3A//www.creesch.com/dump/img/img_5c3ba528d9dbe.png\" rel=\"nofollow\">like this</a>\nOr if you are more into dark themes <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/b63b0b5ad308de74dba8f8775abbb171d3d038e7b54eed862be0e999197ef840/https%3A//www.creesch.com/dump/img/img_5c3ba502b7c7c.png\" rel=\"nofollow\">it will actually look like this</a>\nIt is even somewhat \"smart\" about how it grabs the text, so when you encounter one of those authors who didn't have enough space and needed to continue as replies to their original story it will also include the text from those comments! It does this by going over the comments in posting order, picking those made by the author (if there are any) and adding those to the story. It repeats that for child comments until the entire story has been combined. \n    <b>Features</b>\n    <ul>        <li>Works on both old and redesigned reddit.</li>        <li>Has a light and dark mode.</li>        <li>Allows you to choose your own font.</li>        <li>Adjustable font size.</li>        <li>Adjustable text width. </li>        <li>Works on both text posts and comments. </li></ul><a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/632628c82959977dd7c1788fbd50cc1b625a7c2fbe9ef01cccce8b69c988b804/https%3A//www.creesch.com/dump/img/img_5c3ba55f5d996.png\" rel=\"nofollow\">Screenshot of the settings</a>\n\n    <b>So how do I make it work?</b>\nThere a few methods actually! You can activate it for a text post, all the top level comments in a post or just one specific comment. \nActivating for a text post or all the top level comments is done through the <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/902ac0a79f7f892274884d94f6e0f0022319f11015f57a50724a23ce20752f34/https%3A//creesch.com/dump/img/img_5c370f60503b6.png\" rel=\"nofollow\">floating button</a> on the bottom right corner when you are visiting a post. Once you hover over it <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/cd1eef39659cc54974f701f6129a8821dfde6398b301ae65c361e9875ba2c662/https%3A//www.creesch.com/dump/img/img_5c3a68c84cc4e.png\" rel=\"nofollow\">you get to choose between text posts or comments</a>. \nIf you just want to read an individual comment you can click on the \"read\" link that has been added to it. \n    <b>Open source</b>\nThe thing is entirely open source, the <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/10e716aa9bdac0e3d5cef82170672f978406e6657fff99d75ef089d6c4095b48/https%3A//github.com/creesch/readReddit\" rel=\"nofollow\">source can be found here</a>. \n    <b>Future plans</b>\n    <ul>        <li>Make the button position a setting. </li>        <li>Setting to only show the button in selected subreddits</li>        <li>Custom themes.</li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.mozilla.org/en-US/developers/addon/readable-text-posts-on-reddit/edit",
+    "guid": "readReddit@toolbox.team",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.mozilla.org/user-media/addon_icons/1020/1020345-64.png?modified=3c78901e",
+    "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/1020/1020345-32.png?modified=3c78901e",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/1020/1020345-64.png?modified=3c78901e",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/1020/1020345-128.png?modified=3c78901e"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "last_updated": "2022-05-05T10:31:18Z",
+    "name": {
+        "en-US": "readReddit, readable text posts on reddit"
+    },
+    "previews": [
+        {
+            "id": 213343,
+            "caption": {
+                "en-US": "Before and after"
+            },
+            "image_size": [
+                1280,
+                800
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/213/213343.png?modified=1622133967",
+            "position": 0,
+            "thumbnail_size": [
+                533,
+                333
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/213/213343.jpg?modified=1622133967"
+        },
+        {
+            "id": 213344,
+            "caption": {
+                "en-US": "Dark mode"
+            },
+            "image_size": [
+                1280,
+                800
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/213/213344.png?modified=1622133971",
+            "position": 1,
+            "thumbnail_size": [
+                533,
+                333
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/213/213344.jpg?modified=1622133971"
+        }
+    ],
+    "promoted": null,
+    "ratings": {
+        "average": 4.9167,
+        "bayesian_average": 4.410667869523883,
+        "count": 12,
+        "text_count": 4
+    },
+    "ratings_url": "https://addons.mozilla.org/en-US/firefox/addon/readable-text-posts-on-reddit/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.mozilla.org/en-US/reviewers/review/1020345",
+    "slug": "readable-text-posts-on-reddit",
+    "status": "public",
+    "summary": {
+        "en-US": "Takes any text post and reformats it to a pleasant to read format.\n\nreadReddit adds a pleasant and clutter free reading mode for reddit text posts and comments."
+    },
+    "support_email": null,
+    "support_url": {
+        "url": {
+            "en-US": "https://github.com/creesch/readReddit"
+        },
+        "outgoing": {
+            "en-US": "https://prod.outgoing.prod.webservices.mozgcp.net/v1/10e716aa9bdac0e3d5cef82170672f978406e6657fff99d75ef089d6c4095b48/https%3A//github.com/creesch/readReddit"
+        }
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.mozilla.org/en-US/firefox/addon/readable-text-posts-on-reddit/",
+    "versions_url": "https://addons.mozilla.org/en-US/firefox/addon/readable-text-posts-on-reddit/versions/",
+    "weekly_downloads": 4,
+    "_score": null
+}

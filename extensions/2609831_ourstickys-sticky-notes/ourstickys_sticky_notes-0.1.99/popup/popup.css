@@ -1,0 +1,392 @@
+*{
+	user-select: none;
+}
+body{
+	width: 400px;
+	font-family: "Segoe UI", Tahoma, sans-serif;
+	font-size: 75%;
+}
+h1{
+	text-align: center;
+	width: 100%;
+}
+.list_notes{
+	list-style: none;
+	margin: 0;
+    padding: 0;
+}
+.list_notes li{
+	list-style: none;
+	cursor: pointer;
+	/*margin-bottom: 4px;*/
+	padding: 2px;
+	/*height: 30px;*/
+	border-bottom: 1px solid #ddd;
+    padding: 5px 0;
+}
+.list_notes li:first-child{
+	border-top: 1px solid #ddd;
+}
+.list_notes li:nth-child(even){
+	background-color: #EFEFFF;
+}
+.list_notes li:hover{
+	background-color: #888888;
+	color: #FFF;
+}
+.list_notes li span.title{
+	font-size: 12px;
+	font-weight: bold;
+	color: #000;
+	display: block;
+	height: 16px;
+	/*float: left;*/
+}
+.list_notes li span.date{
+	font-weight: normal;
+	color: #999;
+	text-align: right;
+	display: block;
+	height: 10px;
+	font-size: 10px;
+	float: right;
+}
+.list_notes li img.sticky_channel_icon{
+    float: left;
+	width: 10px;
+	height: 10px;
+	margin: 0 2px 0 10px;
+}
+.list_notes li span.sticky_channel_list{
+	font-size: 10px;
+    line-height: 10px;
+    display: block;
+}
+.list_notes li span.url{
+	font-weight: normal;
+	color: #999;
+	text-align: left;
+	display: block;
+	height: 10px;
+	font-size: 10px;
+	/*float: left;*/
+	clear: both;
+}
+.list_notes li .__myNoteDeleteIcon{
+	float: right;
+	margin-left: 2px;
+	margin-right: 2px;
+	display: none;
+}
+.list_notes li:hover .__myNoteDeleteIcon{
+	display: block;
+}
+.list_notes li .__myNoteToThisPage{
+	float: right;
+	margin-left: 2px;
+	margin-right: 2px;
+	display: none;
+}
+.list_notes li:hover .__myNoteToThisPage{
+	display: block;
+}
+.list_notes li:hover span.title,
+.list_notes li:hover span.date,
+.list_notes li:hover span.sticky_channel_list,
+.list_notes li:hover span.url{
+	color: #FFF;
+}
+
+#refresh_page{
+	width: 100%;
+	text-align: center;
+	color: red;
+	font-weight: bold;
+	cursor: pointer;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+#no_authenticated{
+	width: 100%;
+	text-align: center;
+	color: red;
+	font-weight: bold;
+	border-bottom: 2px solid red;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+}
+#refresh_page:hover,
+#no_authenticated:hover{
+	background-color: #eee;
+}
+#google_authenticate,
+#facebook_authenticate{
+	border: 0;
+	cursor: pointer;
+}
+#google_authenticate img,
+#facebook_authenticate img{
+	background: white;
+}
+#authenticated{
+	color: #AAA;
+}
+#extensionVersion{
+	float: right;
+	color: #AAA;
+	font-size: 10px;
+}
+#authenticatedWith{
+	float: left;
+}
+#authenticatedLogout{
+	float: right;
+	cursor: pointer;
+}
+#page_header{
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    /*border-bottom: 1px solid #ddd;*/
+    padding: 2px 8px;
+}
+#page_body{
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+#page_footer{
+	background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 8px;
+    right: 8px;
+    height: 20px;
+    border-top: 1px solid #ddd;
+	padding-top: 5px;
+}
+/* TABS */
+.tabs{
+	overflow:hidden;
+	/*clear:both;*/
+	display:inline;
+}
+.tabs ul.tab-menu{
+	list-style-type:none;
+	bottom: -1px;
+	position:relative;
+	padding-left: 0;
+}
+.tabs ul.tab-menu li{
+	float:left;
+}
+
+.tabs ul.tab-menu li a{
+	display:block;
+	padding:5px 10px;
+	background-color: #EEE;
+	color: #000;
+	text-decoration: none;
+	margin: 0 4px;
+	border-top:1px solid #CCC;
+	border-left:1px solid #DDD;
+	border-right:1px solid #DDD;
+	/*font:13px/18px verdana,arial,sans-serif;*/
+	border-bottom:1px solid #CCC;
+}
+.tabs a.active{
+	background-color: #fff !important;
+	border-bottom:1px solid #fff !important;
+}
+.tabs div.tab-content{
+	clear: both;
+	border:1px solid #CCC;
+	padding:5px;
+	font-family:verdana;
+	font-size:13px;
+	background-color: #fff;
+	display:none;
+    max-height: 450px;
+    overflow: auto;
+}
+/* END TABS */
+/* TOP TOOLBAR*/
+#header_tools{
+	float: right;
+}
+.header_tool{
+	cursor: pointer;
+	margin-left: 10px;
+}
+#hide_all{
+}
+#show_all{
+}
+/* END TOP TOOLBAR*/
+.tab-sub-wrapper{
+	clear: both;
+}
+#extraSettings{
+	padding-top: 4px;
+    border-top: 1px solid #ddd;
+    margin-top: 8px;
+}
+#extraSettings label{
+	display: block;
+}
+#forceRefreshData{
+	background:none!important;
+	border:none;
+	padding:0!important;
+	font: inherit;
+	/*border is optional*/
+	border-bottom:1px solid #444;
+	cursor: pointer;
+	float: right;
+}
+#__myNoteInfoContainer{
+	margin: 4px !important;
+}
+#__myNoteInfoContainer div,
+#__myNoteInfoContainer label{
+    margin: 4px 0 !important;
+	padding-top: 2px !important;
+	display: block;
+}
+#__myNoteInfoContainer select{
+	display: inline !important;
+	background-color: #FFF !important;
+	border: 1px solid #ccc !important;
+	margin-left: 2px !important;
+	width: 120px !important;
+}
+#tag_search_wrapper{
+	float: left;
+}
+#tag_search_input{
+	font-size: 10px;
+	padding: 2px;
+	color: #000;
+	width: 150px;
+}
+#channels_open_create,
+#channels_open_subscribe{
+	width: calc( 50% - 4px );
+	padding: 2px;
+}
+#channels_create,
+#channels_rename,
+#channels_subscribe{
+	display: none;
+	border: 1px solid #ddd;
+	margin: 2px 0;
+	padding: 2px;
+}
+#channels_create label,
+#channels_rename label,
+#channels_subscribe label{
+	width: 140px;
+	display: inline-block;
+}
+#channels_create input,
+#channels_rename input,
+#channels_subscribe input{
+	width: 120px;
+}
+#channels_create button,
+#channels_rename button,
+#channels_subscribe button{
+	width: 100px;
+}
+.list_channels{
+	list-style: none;
+	margin: 0;
+    padding: 0;
+}
+.list_channels li{
+	list-style: none;
+	/*margin-bottom: 4px;*/
+	padding: 2px;
+	/*height: 30px;*/
+	border-bottom: 1px solid #ddd;
+    padding: 5px 0;
+}
+.list_channels li:first-child{
+	border-top: 1px solid #ddd;
+}
+.list_channels li:nth-child(even){
+	background-color: #EFEFFF;
+}
+.list_channels li:hover{
+	background-color: #888888;
+	color: #FFF;
+}
+.list_channels li .title{
+	font-size: 12px;
+	font-weight: bold;
+	color: #000;
+	display: block;
+	height: 16px;
+	padding-left: 15px;
+	text-indent: -15px;
+}
+.list_channels li:hover .title{
+	color: #FFF;
+}
+.list_channels li .title input{
+	width: 13px;
+	height: 13px;
+	padding: 0;
+	margin:0 2px;
+	vertical-align: bottom;
+	position: relative;
+	top: -1px;
+	*overflow: hidden;
+}
+.list_channels li .deleteChannelIcon,
+.list_channels li .editChannelIcon,
+.list_channels li .channelOwnerIcon{
+	float: right;
+	margin-right: 4px;
+}
+.list_channels li .editChannelIcon,
+.list_channels li .deleteChannelIcon{
+	cursor: pointer;
+}
+.list_channels li .code{
+	font-weight: normal;
+	color: #000;
+	text-align: right;
+	display: block;
+	height: 10px;
+	font-size: 10px;
+	float: left;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.list_channels li:hover .code{
+	color: #FFF;
+}
+.list_channels li .user_sticky{
+	font-weight: normal;
+	color: #999;
+	text-align: right;
+	display: block;
+	height: 10px;
+	font-size: 10px;
+	/*float: left;*/
+	clear: both;
+	padding-right: 4px;
+}
+.list_channels li:hover .user_sticky{
+	color: #FFF;
+}
+#exportImport{
+	padding-top: 8px;
+    border-top: 1px solid #ddd;
+    margin-top: 4px;
+}

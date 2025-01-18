@@ -1,0 +1,1 @@
+clockifyButton.render(".taskCard:not(.clockify)",{observe:!0},(t=>{const e={description:()=>text(".title",t),projectName:()=>text(".primaryTextSectionTitle"),tagNames:()=>textList(".labelTag > span",t),small:!0},o=clockifyButton.createButton(e);$(".leftSection",t).after(o)}));

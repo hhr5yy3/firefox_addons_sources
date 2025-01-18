@@ -1,0 +1,161 @@
+/* General Styling */
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+#removeButton {
+
+    width: 33px;
+    /* Set width to match remove button size */
+    height: 33px;
+    /* Set height to match remove button size */
+
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-optical-sizing: auto;
+    padding: 30px 15px 30px 15px;
+    transition: background-color 0.3s, color 0.3s;
+    overflow-y: auto;
+    /* Allow page scrolling only when necessary */
+    border-radius: 30px;
+    /* Reduced border-radius for a subtle effect */
+}
+
+/* Default (Light Mode) Styles */
+body {
+    background-color: #F5F7FA;
+    color: #333;
+}
+
+#websiteInput {
+    border: 1px solid #ced4da;
+    text-align: center;
+    width: 100%;
+    padding: 5px 50px 5px 5px;
+    /* Adjust padding to make room for the button inside */
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* Set height to match button */
+    position: relative;
+}
+
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #000000;
+        color: #f8f9fa;
+    }
+
+    #websiteInput {
+        background-color: #495057;
+        color: #f8f9fa;
+        border-color: #6c757d;
+    }
+
+    #blockedWebsitesList li {
+        background-color: #495057;
+        color: #f8f9fa;
+        border-color: #6c757d;
+    }
+
+
+    #addWebsite {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        border: none;
+        padding: 2px;
+        border-radius: 50%;
+        /* Match the style of the remove button */
+        cursor: pointer;
+        font-size: 16px;
+        background-color: #007bff;
+        /* Updated for better accessibility */
+        box-sizing: border-box;
+        width: 33px;
+        /* Set width to match remove button size */
+        height: 33px;
+        /* Set height to match remove button size */
+        outline: none;
+    }
+
+    #blockedWebsitesList li {
+        border-bottom-color: #6c757d;
+    }
+
+    #blockedWebsitesList li button {
+        background-color: #dc3545;
+        /* Increased contrast for better accessibility */
+    }
+}
+
+/* Input and Button Styling */
+.input-with-button {
+    position: relative;
+    width: 100%;
+}
+
+#addWebsite {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #007bff;
+    /* Updated for better accessibility */
+    box-sizing: border-box;
+    width: 33px;
+    height: 33px;
+    outline: none;
+}
+
+#addWebsite:focus {
+    outline: none;
+    /* Remove green focus ring */
+    box-shadow: none;
+    /* Remove any default focus shadow */
+}
+
+/* Ensure list item adjusts height based on text length */
+#blockedWebsitesList li {
+    display: flex;
+    text-align: left;
+    padding: 5px;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-x: hidden;
+    max-height: 100px;
+    /* Set a maximum height to prevent overflow */
+    overflow-y: auto;
+    /* Allow scrolling for long text */
+}
+
+/* Adjust the URL text box to expand based on text size */
+#blockedWebsitesList li span {
+    word-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+}
+
+/* Heading and paragraph centering */
+h5,
+h6,
+p,
+.container {
+    text-align: center;
+}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <title eALangID="licenseTitle">Eye-Able® Schnelltest Lizenz</title>
+    <link rel="stylesheet" href="popUpLicensing.css">
+    <script src="public/lang/eyeAble_lang_de.js"></script>
+    <script src="public/lang/eyeAble_lang_en.js"></script>
+    <script src="public/lang/eyeAble_lang_nl.js"></script>
+    <script src="public/lang/eyeAble_lang_fr.js"></script>
+    <script src="public/lang/eyeAble_lang_it.js"></script>
+    <script src="public/lang/eyeAble_lang_pl.js"></script>
+    <script src="public/lang/eyeAble_lang_pt.js"></script>
+    <script src="public/lang/eyeAble_lang_es.js"></script>
+    <script src="public/lang/eyeAble_lang_zh.js"></script>
+    <style>
+        .categoryImg {
+            width: 30px;
+            height: 30px;
+            margin-right: 15px;
+        }
+
+        .settingsDetails {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <img src='/public/images/eye-able-white_logo.svg'
+         style="width: 45px;;display: block;margin-left: auto;float: right;margin-right: auto;" alt="">
+    <h1 eALangID="licenseHeading">Eye-Able® Lizenzierung</h1>
+</div>
+
+<section tabindex="0" eaAriaLangID="licenseRegion" aria-label="Lizenzeingabe" class="inputBox">
+    <label for="apiKeyInput" eALangID="licenseKey">Ihr Zugangsschlüssel</label>
+    <input type="text" name="zugangsschlüssel" id="apiKeyInput"/>
+    <div>
+        <button id="getLicenses" eALangID="licenseKeyButton">Ihre Lizenzen abfragen</button>
+        <p aria-live="polite" style="margin-top: 10px; display: none;" id="keyWarning" eALangID="licenseKeyError">Kein Nutzer für diesen Schlüssel gefunden</p>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section style="max-height: 400px;overflow-y: scroll;" tabindex="0" eaAriaLangID="licenseTableRegion" aria-label="Lizenzen Übersicht">
+    <h2 eALangID="licenseTableHeading">Ihre verfügbaren Lizenzen</h2>
+    <table id="licensesTable" style="text-align: left;margin-top: 20px; width: 100%;border-collapse: collapse;">
+        <tr class="bottomBorder"  id="topLevelTable">
+            <th eALangID="licenseTable1">Domains</th>
+            <th eALangID="licenseTable2">Gültig bis</th>
+        </tr>
+        <tr>
+            <td eALangID="licenseTableNo">Keine Lizenzen vorhanden.</td>
+            <td></td>
+        </tr>
+    </table>
+</section>
+
+<div class="divider"></div>
+
+<section tabindex="0" eaAriaLangID="settingsRegion" aria-label="Einstellungen" class="inputBox">
+    <div >
+        <h2 style="margin-top: 0;margin-bottom: 5px;font-size: 22px; text-decoration: underline" eALangID="settingsHeading">Einstellungen</h2>
+        <p style="margin-left: 0;" eALangID="settingsHeadingExtraTxt">Änderungen werden automatisch gespeichert.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div>
+        <div class="settingsFlexbox" style="justify-content: flex-start;">
+            <label for="langSetting" eALangID="langSetting">Sprache ändern</label>
+            <select type="checkbox" id="langSetting">
+                <option value="zh">中文</option>
+                <option value="de">Deutsch</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="it">Italiano</option>
+                <option value="nl">Nederlands</option>
+                <option value="pl">Polski</option>
+                <option value="pt">Português</option>
+            </select>
+        </div>
+        <p class="settingsDetails" eALangID="langSettingText">Das Menü auf der Seite kann auch über ALT + F5 geöffnet werden.</p>
+        <div class="dividerHeavy"></div>
+        <div >
+            <h3 style="margin-top: 0;margin-bottom: 5px;" eALangID="filterSettingsHeading">Filter einstellen</h3>
+            <p style="margin-left: 0;" eALangID="filterSettingsHeadingExtraTxt">Zeigen Sie nur bestimmte Kategorien von Regeln an oder nehmen Sie Elemente von der Prüfung aus.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="settingsFlexbox" style="flex-direction: column;">
+            <label eALangID="categorySetting">Tests folgender Kategorien anzeigen</label>
+            <div class="settingsFlexboxCategories settingsDetails" style="align-items: center;">
+                <img class="categoryImg" alt="" eaAriaLangID="codeSymbolAlt" src="public/images/eye-able-code-symbol.svg">
+                <label class="noDots" for="codeSetting" eALangID="codeSetting">
+                    Code Regeln
+                </label>
+                <input class="categoryInput" type="checkbox" checked id="codeSetting"/>
+                <img class="categoryImg" alt="" eaAriaLangID="designSymbolAlt" src="public/images/eye-able-design-symbol.svg">
+                <label class="noDots" for="designSetting" eALangID="designSetting">
+                    Design Regeln
+                </label>
+                <input class="categoryInput" type="checkbox" checked id="designSetting"/>
+                <img class="categoryImg" alt="" eaAriaLangID="contentSymbolAlt" src="public/images/eye-able-content-symbol.svg">
+                <label class="noDots" for="contentSetting" eALangID="contentSetting">
+                    Inhaltliche Regeln
+                </label>
+                <input class="categoryInput" type="checkbox" checked id="contentSetting"/>
+            </div>
+        </div>
+        <p  class="settingsDetails" eALangID="categoryText">Falls nur Regeln einer bestimmten Kategorie angezeigt werden sollen, können hier entsprechende Filter aktiviert werden.</p>
+        <div class="divider"></div>
+        <div class="settingsFlexbox">
+            <label for="skipSelectorSetting" eALangID="skipSelectorSetting">Elemente von Tests ausnehmen</label>
+            <input placeholder=".cmsContainer, #myToolbar" style="width: 70%;" type="text" id="skipSelectorSetting"/>
+        </div>
+        <p  class="settingsDetails" eALangID="skipSelectorText">Geben Sie kommagetrennt CSS-Selektoren an um Elemente und deren Kinder von der Prüfung auszunehmen. Die Syntax entspricht der, welche auch in CSS-Regeln verwendet wird.</p>
+        <div class="dividerHeavy"></div>
+        <div >
+            <h3 style="margin-top: 0;margin-bottom: 5px;" eALangID="variousSettingsHeading">Aussehen und Verhalten anpassen</h3>
+            <p style="margin-left: 0;" eALangID="variousSettingsHeadingExtraTxt">Blenden Sie das Logo oder Markierungen aus oder beeinflussen Sie das Prüfverhalten von Audit.</p>
+        </div>
+        <div class="divider"></div>
+        <div class="settingsFlexbox">
+            <label for="hideIconSetting" eALangID="hideLogoSetting">Logo auf der Seite ausblenden</label>
+            <input type="checkbox" id="hideIconSetting"/>
+        </div>
+        <p  class="settingsDetails" eALangID="hideLogoText">Das Menü auf der Seite kann auch über ALT + F5 geöffnet werden.</p>
+        <div class="divider"></div>
+        <div class="settingsFlexbox">
+            <label for="markupSetting" eALangID="markupSetting">Markierungen auf der Seite anzeigen</label>
+            <input type="checkbox" id="markupSetting"/>
+        </div>
+        <p  class="settingsDetails" eALangID="markupText">Wenn diese Option deaktiviert ist, werden die Markierungen auf der Webseite beim Öffnen des Dashboards nicht mehr angezeigt.</p>
+        <div class="divider"></div>
+        <div class="settingsFlexbox">
+            <label for="autoAuditSetting" eALangID="autoAuditSetting">Test nach Laden der Seite automatisch durchführen</label>
+            <input type="checkbox" id="autoAuditSetting"/>
+        </div>
+        <p  class="settingsDetails" eALangID="autoAuditText">Running a test can require a lot of performance. Disabling this setting will run test only when entering the on site dashboard.</p>
+        <div class="divider"></div>
+        <div class="settingsFlexbox">
+            <label for="srHighlightAuditSetting" eALangID="srHighlightAuditSetting">Screenreader Fokus Modus aktivieren</label>
+            <input type="checkbox" id="srHighlightAuditSetting"/>
+        </div>
+        <p  class="settingsDetails" eALangID="srHighlightAuditText">Mit dem aktiven Screenreader Fokus Modus wird beim Klick auf den Highlight-Button der Fokus direkt auf das Element in der Seite gesetzt. Dadurch kann der Fehler mit dem Screenreader genauer untersucht werden. Zurück zur Eye-Able Audit Toolbar kommt man mit ALT + F7.</p>
+        <div class="divider"></div>
+        <div class="settingsFlexbox">
+            <label for="alfaDisableAuditSetting" eALangID="alfaDisableAuditSetting">Alfa deaktivieren</label>
+            <input type="checkbox" id="alfaDisableAuditSetting"/>
+        </div>
+        <p  class="settingsDetails" eALangID="alfaDisableAuditText">Aktivieren Sie diese Funktion nur nach einem Hinweis des Eye-Able Supports. In sehr seltenen Fällen kann das Alfa Prüfmodul fehlschlagen und kann dann deaktiviert werden. Der Einfluss auf das Prüfergebnis ist minimal.</p>
+
+        <button style="display: none" id="saveSettings" eALangID="saveSettingsButtonTxt">Save Settings</button>
+    </div>
+</section>
+
+<section tabindex="0" eaAriaLangID="rulesOverviewRegion" aria-label="Regeln" class="inputBox">
+    <div >
+        <h2 style="margin-top: 0" eALangID="rulesOverviewHeading"></h2>
+        <p style="margin-left: 0;" eALangID="rulesOverviewTxt"></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <ul id="rulesOverviewList">
+    </ul>
+</section>
+
+<div id="admin_menu" style="display: none; margin-top: 20px">
+    <h2>Admin</h2>
+
+    <div style="display: flex;align-items: center;justify-content: space-between;width: 100%;">
+        <button id="checkApiButton" style="width: 50%;">API Status check:</button>
+        <div class="statusDiv" id="apiUpDiv"></div>
+    </div>
+
+    <div class="bottomBorder" style="display: flex;margin-top: 15px; margin-bottom: 10px;">
+        <div style="font-size: 15px;font-weight: bold;width: 30%;">API Response:</div>
+        <textarea id="apiFeedbackTxt" style="min-height: 100px"></textarea>
+    </div>
+
+    <div class="bottomBorder">
+        <span>New User</span>
+        <form id="userData" style="display: flex">
+            <div style="width: 50%">
+                <label for="fname">Surname</label><br>
+                <input required type="text" id="fname" name="surname"><br>
+                <label for="lname">Name</label><br>
+                <input required type="text" id="lname" name="name"><br>
+                <label for="role">Role</label><br>
+                <input required type="text" id="role" name="role" value="customer"><br>
+            </div>
+            <div style="width: 50%">
+                <label for="email">E-Mail</label><br>
+                <input required type="text" id="email" name="email"><br>
+                <label for="company">Company</label><br>
+                <input required type="text" id="company" name="company"><br>
+                <label for="phone">Phone</label><br>
+                <input type="text" id="phone" name="phone"><br>
+            </div>
+        </form>
+        <button style="margin-left: 25%;" id="createUser">Create User</button>
+    </div>
+
+    <div class="bottomBorder">
+        <div style="margin-top: 20px">
+            <label for="newUserKey" >User Key</label>
+            <textarea id="newUserKey" style="height: 25px;width: 250px"></textarea>
+        </div>
+        <button style="margin-left: 25%;" id="getUser">Get User Info</button>
+    </div>
+
+    <div class="bottomBorder">
+        <form id="licenseData">
+            <label for="licenseUserId">User-ID</label><br>
+            <input required type="text" id="licenseUserId" name="userId"><br>
+            <label for="domainsLicense">Domains</label><br>
+            <input required type="text" id="domainsLicense" name="domains"><br>
+            <label for="endDateId">Enddate</label><br>
+            <input required type="text" id="endDateId" name="endDate" value="2040-05-05"><br>
+        </form>
+        <button style="margin-left: 25%;" id="addLicense">Add license</button>
+    </div>
+
+</div>
+
+<script src="public/js/rules/ea_rules_de.js"></script>
+<script src="public/js/rules/ea_rules_en.js"></script>
+<script src="public/js/rules/ea_rules_es.js"></script>
+<script src="public/js/rules/ea_rules_fr.js"></script>
+<script src="public/js/rules/ea_rules_it.js"></script>
+<script src="public/js/rules/ea_rules_pt.js"></script>
+<script src="public/js/rules/ea_rules_pl.js"></script>
+<script src="public/js/rules/ea_rules_nl.js"></script>
+<script src="public/js/rules/ea_rules_meta.js"></script>
+<script src="public/js/rules/wcag_rules_de.js"></script>
+<script src="public/js/rules/wcag_rules_en.js"></script>
+<script src="public/js/rules/wcag_rules_nl.js"></script>
+<script src="public/js/rules/wcag_rules_es.js"></script>
+<script src="public/js/rules/wcag_rules_fr.js"></script>
+<script src="public/js/rules/wcag_rules_it.js"></script>
+<script src="public/js/rules/wcag_rules_pt.js"></script>
+<script src="public/js/rules/wcag_rules_pl.js"></script>
+<script src="public/js/rules/wcag_rules_meta.js"></script>
+<script src="licensing.js"></script>
+
+
+
+</body>
+</html>

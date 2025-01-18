@@ -1,0 +1,1 @@
+!function(){const e="undefined"!=typeof browser?browser:chrome,t=document.createElement("script");t.src=e.runtime.getURL("autosbc.js"),document.documentElement.appendChild(t)}();

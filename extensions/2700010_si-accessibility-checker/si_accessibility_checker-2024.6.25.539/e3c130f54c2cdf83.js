@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_siteimprove_alfa_web_extension=self.webpackChunk_siteimprove_alfa_web_extension||[]).push([[1919],{81919:e=>{e.exports=JSON.parse('{"$schema":"../schema/rule.json","source":"https://www.w3.org/WAI/standards-guidelines/act/rules/b40fd1/","responsibility":"development","difficulty":2,"affects":[],"category":"layout"}')}}]);

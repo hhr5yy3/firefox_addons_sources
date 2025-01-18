@@ -1,0 +1,52 @@
+{
+  "manifest_version": 2,
+  "name": "Mark my Word - Web Highlighter",
+  "description": "Highlight text on any website with the Mark my Word browser extension. Export the highlights and keep what is important to you.",
+  "version": "0.6.0",
+  "icons": {
+    "16": "icon/16.png",
+    "32": "icon/32.png",
+    "48": "icon/48.png",
+    "96": "icon/96.png",
+    "128": "icon/128.png"
+  },
+  "browser_action": {
+    "default_title": "Mark my Word"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "strict_min_version": "124.0",
+      "id": "{8bdd571a-3065-4003-b986-5f020182522e}"
+    },
+    "gecko_android": {
+      "strict_min_version": "124.0"
+    }
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "clipboardWrite",
+    "<all_urls>"
+  ],
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "sidebar_action": {
+    "default_panel": "sidepanel.html",
+    "default_title": "Mark my Word",
+    "open_at_install": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content-scripts/content.js"
+      ]
+    }
+  ]
+}

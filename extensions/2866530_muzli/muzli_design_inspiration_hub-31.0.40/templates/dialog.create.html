@@ -1,0 +1,56 @@
+<div class="wrapper" ng-if="!isLoading" ng-cloak>
+
+  <form ng-submit="::submitItem(item.link, $event)" id="itemForm">
+
+    <h1>Share something great with us</h1>
+    <p>New and awesome design content will be added to our network, and may even end up on the Muzli Picks feed.</p>
+    
+    <input tabindex="1" type="text" ng-model="item.link" placeholder="Page URL" name="itemLink" autofocus="400"/>
+    
+
+
+    <h3 class="error" ng-if="displayError">{{displayError}}</h3>
+    <h3 class="error" ng-if="existingUrl">You can check out the existing link <a href="{{existingUrl}}" target="_blank">here</a>.</h3>
+
+    <label>
+      <input type="checkbox" ng-model="item.ownContent" ng-true-value="true" ng-false-value="false">
+      <span class="checkbox"><i class="icon-check"></i></span>
+      <span>I’ve created this</span>
+    </label>
+    
+    <div class="cta">
+      <button type="submit" ng-disabled="!item.ownContent">Share</button>
+    </div>
+
+  </form>
+
+  <div class="guidelines">
+    <h3>Sharing guidelines</h3>
+    <p> We accept quality design/visual projects, animations, 3D, UI/UX prototypes, or any other visual design project.</p>
+    <p>We don’t accept content that is promotional, copyrighted, trademarked, or inappropriate.</p>
+    <p>Read the full <a href="http://muz.li/content-guidelines/" target="_blank">content guidelines</a></p>
+  </div>
+
+</div>
+
+<div class="loading" ng-if="isLoading" ng-cloak>
+
+  <div class="loader">
+
+    <h1>Fetching content, please hold...</h1>
+
+    <div class="preloader-wrapper active">
+      <div class="spinner-layer" [ngStyle]="{'border-color': color}">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

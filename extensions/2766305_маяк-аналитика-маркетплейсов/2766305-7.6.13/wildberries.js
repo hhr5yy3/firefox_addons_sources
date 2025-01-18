@@ -1,0 +1,1 @@
+(()=>{var{fetch:e}=window,s=/catalog\.wb\.ru\/catalog\/[^/]+\/[^/]+\/[^/]+\/catalog\?/,n=/search\.wb\.ru\/exactmatch\/[^/]+\/[^/]+\/[^/]+\/search\?/;window.fetch=async(...c)=>{let a=await e(...c);try{let[t]=c;if(s.test(t)||n.test(t)){let o=await a.clone().json();window.postMessage({type:"fetch_wb_products",body:o},"*")}}catch{}return a};})();

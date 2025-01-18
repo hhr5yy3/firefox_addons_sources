@@ -1,0 +1,1 @@
+﻿"use strict";(self.webpackChunkv4fire_1=self.webpackChunkv4fire_1||[]).push([[39270],{39270:(a,e,t)=>{t.r(e),t.d(e,{default:()=>r});var i=t(40787),n=t(19949),c=t(51040);function r(){n.o.navigation={stack:(0,c.e)(),historyLength:0},(0,i.Z)("wrcNavigationStackReady")}}}]);

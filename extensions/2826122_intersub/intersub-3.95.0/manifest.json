@@ -1,0 +1,147 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_appName__",
+  "short_name": "InterSub.cc",
+  "description": "__MSG_appDescription__",
+  "default_locale": "en",
+  "version": "3.95.0",
+  "permissions": [
+    "storage",
+    "https://*.intersub.cc/*",
+    "https://analytics.google.com/*",
+    "https://hls.ted.com/*",
+    "https://*.nflxvideo.net/*",
+    "https://*.2sub.movie/*",
+    "https://*.2sub.pro/*",
+    "https://*.voidboost.com/*",
+    "https://*.pv-cdn.net/*",
+    "https://*.udemycdn.com/*",
+    "https://cr-play-service.prd.crunchyrollsvc.com/*",
+    "https://*.ororo-mirror.tv/*",
+    "https://*.crunchyroll.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "browser-polyfill.js",
+        "content-script.js",
+        "content-script-loader.js"
+      ],
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": [
+        "https://*.netflix.com/*"
+      ],
+      "js": [
+        "netflix-subtitle-sniffer-injector.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://*.newplayjj.com/*",
+        "https://*.thealloha.club/*",
+        "https://*.pljjalgo.online/*",
+        "https://*.allarknow.online/*",
+        "https://*.online-serial.com/*",
+        "https://*.algonoew.online/*"
+      ],
+      "js": [
+        "alloha-tv-subtitle-sniffer-injector.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "https://kino.pub/*"
+      ],
+      "js": [
+        "kinopub-subtitle-sniffer-injector.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://*.2sub.movie/*",
+        "https://*.2sub.pro/*"
+      ],
+      "js": [
+        "two-sub-movie-subtitle-sniffer-injector.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://*.primevideo.com/*",
+        "https://*.amazon.com/*",
+        "https://*.amazon.co.uk/*",
+        "https://*.amazon.de/*",
+        "https://*.amazon.co.jp/*"
+      ],
+      "js": [
+        "amazon-prime-subtitle-sniffer-injector.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://*.crunchyroll.com/*"
+      ],
+      "js": [
+        "crunchyroll-subtitle-sniffer-injector.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "https://*.ororo.tv/*"
+      ],
+      "js": [
+        "ororo-subtitle-sniffer-injector.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "scripts": [
+      "service-worker.js"
+    ]
+  },
+  "icons": {
+    "48": "assets/images/icon48.png",
+    "128": "assets/images/icon128.png",
+    "512": "assets/images/icon512.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "48": "assets/images/icon48.png",
+      "128": "assets/images/icon128.png",
+      "512": "assets/images/icon512.png"
+    },
+    "default_title": "__MSG_actionDefaultTitle__",
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    "assets/*",
+    "netflix-subtitle-sniffer.js",
+    "alloha-tv-subtitle-sniffer.js",
+    "kinopub-subtitle-sniffer.js",
+    "two-sub-movie-subtitle-sniffer.js",
+    "amazon-prime-subittle-sniffer.js",
+    "crunchyroll-subtitle-sniffer.js",
+    "ororo-subtitle-sniffer.js",
+    "*.css"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "acc@intersub.cc"
+    }
+  }
+}

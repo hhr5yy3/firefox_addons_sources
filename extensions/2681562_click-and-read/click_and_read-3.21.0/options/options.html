@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Click and Read options</title>
+  </head>
+  <body>
+    <main class="flexrow">
+      <div id="leftside">
+        <div class="logos flexrow">
+          <img
+            src="../assets/img/logo_cr.svg"
+            alt="log clickandread"
+            class="logoCR" />
+          <a href="https://www.cnrs.fr/fr/personne/click-read" noopener>
+            <img
+              src="../assets/img/cristal1.jpg"
+              class="cristal"
+              alt="cristal" />
+          </a>
+          <img
+            src="../assets/img/logo_cnrs.svg"
+            alt="log CNRS"
+            class="logoCNRS" />
+        </div>
+        <div class="leftText">
+          <br />
+          <br />
+          <h1 id="optionsPageTitle"></h1>
+          <div id="optionsContent">
+            <div class="leftContent">
+              <br />
+              <div id="inst-container">
+                <label
+                  for="instList"
+                  id="selectInst"
+                  class="form-label fs-6 fw-bold"></label
+                ><i
+                  class="bi bi-info-circle fs-5 m-3"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  data-bs-custom-class="custom-tooltip"></i>
+                <select
+                  class="form-select"
+                  id="instList"
+                  name="institution"
+                  title="Institution list">
+                  <option></option>
+                </select>
+                <br />
+                <div
+                  class="alert alert-warning fw-bold"
+                  role="alert"
+                  id="selectInstWarning"
+                  hidden></div>
+                <div id="instGroup" class="list-group"></div>
+                <br />
+                <br />
+                <br />
+              </div>
+              <div id="source-container" hidden>
+                <label
+                  for="sourceList"
+                  id="selectSource"
+                  class="form-label fs-6 fw-bold"></label
+                ><i
+                  class="bi bi-info-circle fs-5 m-3"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  data-bs-custom-class="custom-tooltip"></i>
+                <div id="sourceList" class="list-group"></div>
+                <br />
+                <br />
+              </div>
+              <div id="gs-container" hidden>
+                <div class="form-check form-switch fs-4">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="enableGS" />
+                  <label
+                    class="form-check-label fs-6 fw-bold"
+                    for="enableGS"
+                    id="googleScholarConfig"></label
+                  ><i
+                    class="bi bi-info-circle fs-5 m-3"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip"></i>
+                </div>
+                <br />
+                <br />
+              </div>
+              <br />
+              <div id="saveAlert"></div>
+              <div class="d-flex justify-content-around">
+                <button
+                  type="button"
+                  class="btn btn-success col-3 fw-bold saveOptionsBtn"
+                  title="Save Options"
+                  id="saveOptionsBtn"></button>
+                <button
+                  type="button"
+                  class="btn btn-secondary col-3 fw-bold resetOptionsBtn"
+                  title="Reset Options"
+                  id="resetOptionsBtn"></button>
+              </div>
+            </div>
+          </div>
+          <h3 id="serverErrorMsg" hidden></h3>
+          <br />
+          <br />
+          <br />
+          <br />
+          <div class="contact-text">
+            <label id="contactUsDesc"></label>
+            <a id="assistantTeam" rel="noopener noreferrer" target="_blank"></a>
+            <br />
+            <br />
+            <br />
+            <div id="addonVersion"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- BibDomains Modal -->
+    <div
+      class="modal fade"
+      id="bibDomainsModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="bibDomainsModalTitle"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bibDomainsModalTitle"></h5>
+          </div>
+          <div class="modal-body bibDomainsModalBody"></div>
+          <div class="modal-footer flex-column">
+            <div
+              class="alert alert-warning fw-bold"
+              role="alert"
+              id="bibDomainsWarning"></div>
+            <button
+              id="bibDomainsModalValidateBtn"
+              type="button"
+              class="btn btn-success bibDomainsModalValidateBtn fw-bold"
+              data-bs-dismiss="modal"
+              disabled></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Data collect Modal -->
+    <div
+      class="modal fade"
+      id="dataCollectModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="dataCollectModalTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="dataCollectModalTitle"></h5>
+          </div>
+          <div class="modal-body dataCollectModalBody"></div>
+          <div class="modal-footer d-flex justify-content-evenly">
+            <button
+              id="dataCollectModalAgreeBtn"
+              type="button"
+              class="btn btn-success dataCollectModalAgreeBtn fw-bold"
+              data-bs-dismiss="modal"></button>
+            <button
+              id="dataCollectModalDeclineBtn"
+              type="button"
+              class="btn btn-secondary dataCollectModalDeclineBtn fw-bold"
+              data-bs-dismiss="modal"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="../lib/common.js"></script>
+    <script src="../lib/select.js"></script>
+    <script src="./js/options.js"></script>
+    <title>Webp Converter options</title>
+    <link type="text/css" rel="stylesheet" href="css/options.css">
+</head>
+
+<body>
+    <div id="content-wrapper">
+    <header>
+		<nav>
+			<span></span>
+            <span class="menu-item advanced-option" data-section="content-action">Action</span>
+            <span class="menu-item" data-section="content-conversion">Conversion</span>
+            <span class="menu-item advanced-option" data-section="content-defaults">Defaults</span>
+            <span class="menu-item" data-section="content-downloadPath">Download path</span>
+            <span class="menu-item" data-section="content-generic">Generic</span>
+            <span class="menu-item advanced-option" data-section="content-layout">Popup layout</span>
+            <span></span>
+		</nav>
+    </header>
+    <div id="section-wrapper">
+    <section id="content-layout" class="content" >
+        <table id="options_layout_table">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Setting</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Default display Mode:</td>
+            <td>
+                <select name="layout-defaultDisplayMode">
+                    <option value="basic">Basic</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Default tab when opening:</td>
+            <td>
+                <select name="layout-defaultTabWhenOpening">
+                    <option value="conversion">Conversion</option>
+                    <option value="defaults">Defaults</option>
+                    <option value="downloadPath">Download path</option>
+                    <option value="generic">Generic</option>
+                    <option value="layout">Popup layout</option>
+                    <option value="action">Action</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Show download path hints in &quot;Download path&quot; tab:</td>
+            <td><input type="checkbox" name="layout-showDownloadPathHints" id="layout-showDownloadPathHints"><label for="layout-showDownloadPathHints">&nbsp;</label></td>
+        </tr>
+        <tr>
+            <td>Show quality slider in &quot;conversion&quot; path tab while in basic display mode:</td>
+            <td><input type="checkbox" name="layout-showQualitySlider" id="layout-showQualitySlider"><label for="layout-showQualitySlider">&nbsp;</label></td>
+        </tr>
+        <tr>
+            <td>Popup theme:</td>
+            <td>
+                <select name="layout-theme">
+                    <option value="auto">Automatic</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+        </table>
+
+    </section>
+    <section id="content-action" class="content">
+        <div class="tab-header">Specifiy the action of the addon when clicking the &quot;Convert and save image as&quot; button in the image context menu.<sup class="info" title="The context menu appears when you right click on an image.&#013;&#010;The settings of the &quot;Conversion&quot; tab are used when set to &quot;Autodetect&quot;.&#013;&#010;When &quot;Don't Convert&quot; is selected no conversion is applied, however the settings from the &quot;Download path&quot; tab are still applied.">i</sup><span class="no-webkit"> A modefier key can be used to trigger alternative behavior.</span></div>
+        <table id="options_action_table">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Convert to</th>
+                <th>Quality</th>
+                <th>Background</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Click</td>
+            <td>
+                <select name="image-staticClick-conversion">
+                    <option value="auto">Autodetect</option>
+                    <option value="jpg">jpg</option>
+                    <option value="png">png</option>
+                    <option value="webp" class="gecko-min-96">webp</option>
+                    <option value="none">Don't convert</option>
+                </select>
+            </td>
+            <td>
+                <div id="image-staticClick-quality-level" class="quality-level">100%</div>
+                <input type="range" name="image-staticClick-quality" min="0" max="1" step="0.01">
+            </td>
+            <td>
+                <input type="color" name="image-staticClick-background" rgba>
+            </td>
+        </tr>
+        <tr class="no-webkit">
+            <td><span class="ctrlKey">Ctrl</span> + Click</td>
+            <td>
+                <select name="image-staticCtrlClick-conversion">
+                    <option value="auto">Autodetect</option>
+                    <option value="jpg">jpg</option>
+                    <option value="png">png</option>
+                    <option value="webp" class="gecko-min-96">webp</option>
+                    <option value="none">Don't convert</option>
+                </select>
+            </td>
+            <td>
+                <div id="image-staticCtrlClick-quality-level" class="quality-level">100%</div>
+                <input type="range" name="image-staticCtrlClick-quality" min="0" max="1" step="0.01">
+            </td>
+            <td>
+                <input type="color" name="image-staticCtrlClick-background" rgba>
+            </td>
+        </tr>
+        <tr class="no-webkit">
+            <td>Shift + Click</td>
+            <td>
+                <select name="image-staticShiftClick-conversion">
+                    <option value="auto">Autodetect</option>
+                    <option value="jpg">jpg</option>
+                    <option value="png">png</option>
+                    <option value="webp" class="gecko-min-96">webp</option>
+                    <option value="none">Don't convert</option>
+                </select>
+            </td>
+            <td>
+                <div id="image-staticShiftClick-quality-level" class="quality-level">100%</div>
+                <input type="range" name="image-staticShiftClick-quality" min="0" max="1" step="0.01">
+            </td>
+            <td>
+                <input type="color" name="image-staticShiftClick-background" rgba>
+            </td>
+        </tr>
+        <tr class="no-webkit">
+            <td><span class="ctrlKey">Ctrl</span> + Shift + Click</td>
+            <td>
+                <select name="image-staticCtrlShiftClick-conversion">
+                    <option value="auto">Autodetect</option>
+                    <option value="jpg">jpg</option>
+                    <option value="png">png</option>
+                    <option value="webp" class="gecko-min-96">webp</option>
+                    <option value="none">Don't convert</option>
+                </select>
+            </td>
+            <td>
+                <div id="image-staticCtrlShiftClick-quality-level" class="quality-level">100%</div>
+                <input type="range" name="image-staticCtrlShiftClick-quality" min="0" max="1" step="0.01">
+            </td>
+            <td>
+                <input type="color" name="image-staticCtrlShiftClick-background" rgba>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+
+    </section>
+    <section id="content-defaults" class="content" >
+        <table id="options_defaults_table">
+            <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Setting</th>
+                </tr>
+            </thead>
+            <tbody>
+        <tr>
+            <td>Default quality for JPG conversion</td>
+            <td>
+                <div id="defaults-jpgDefaultQuality-level" class="quality-level">100%</div>
+                <input type="range" name="defaults-jpgDefaultQuality" min="0" max="1" step="0.01">
+            </td>
+        </tr>
+        <tr  class="gecko-min-98">
+            <td>Default quality for WebP conversion</td>
+            <td>
+                <div id="defaults-webpDefaultQuality-level" class="quality-level">100%</div>
+                <input type="range" name="defaults-webpDefaultQuality" min="0" max="1" step="0.01">
+            </td>
+        </tr>
+        </tbody>
+        </table>
+    </section>
+    <section id="content-downloadPath" class="content" >
+        <div class="tab-header">Enter your desired download path and filename here.</div>
+        <div class="options_download_path">
+            <span>Download path: </span>
+            <span class="hasinput">
+                <span>Downloads</span><span class="directorySeperator">/</span>
+                <input name="downloadPath-subfolder" />
+                <span class="directorySeperator">/</span>
+            </span>
+        </div>
+        <div class="options_download_path">
+            <span>Filename:</span>
+            <span class="hasinput">
+                <input name="downloadPath-filename" />
+                <span>.jpg</span>
+            </span>
+        </div>
+        <div class="options_download_path">
+            <span>Result:</span>
+            <span id="filename-example"></span>
+        </div>
+        <div id="downloadPath-control-button" ><button id="saveDownloadPath">Save</button> <button id="undoDownloadPathChanges">Undo</button><td colspan="2" style="text-align:center"></div>
+        <div id="options_download_hints_container">
+            Note: <br>
+            &bull; All downloads are relative to the <a id="openDownbloadsPage" class="no-gecko">default download folder</a><span class="no-webkit">default download folder</span></span>.<br>
+            &bull; Use a &quot;<span class="directorySeperator">/</span>&quot; to create additional subfolders in the download path.<br>
+            &bull; It is also possible to use the following tokens to create the subfolder(s) or the filename:
+            <div class="spacer"></div>
+            <table id="options_download_hints_table">
+                <tbody>
+                    <tr><td>&lt;originalname&gt;</td><td>The original filename</td></tr>
+                    <tr><td>&lt;originaltype&gt;</td><td>The extension corresponding with the original image</td></tr>
+                    <tr><td>&lt;savetype&gt;</td><td>The extension corresponding with the converted image</td></tr>
+                    <tr><td>&lt;imagehost&gt;</td><td>Hostname of server the image is downloaded from</td></tr>
+                    <tr id="pagehost" class="gecko-min-86"><td>&lt;pagehost&gt;</td><td>Hostname of the page the image is download from</td></tr>
+                    <tr><td style="vertical-align: top;">&lt;time:***&gt;</td><td>Time of the download
+                    and conversion of the image. *** must be replaced with one or more characters of
+                    the table:
+                    <table id="options_download_hints_table_tokens">
+                        <thead><tr><th></th><th>Token</th><th>Result</th><th>Token</th><th>Result</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Year</td><td>Y</td><td>2021</td><td>y</td><td>21</td></tr>
+                            <tr><td>Month</td><td>M</td><td>08</td><td>m</td><td>8</td></tr>
+                            <tr><td>Day of month</td><td>D</td><td>03</td><td>d</td><td>3</td></tr>
+                            <tr><td>Hour 24h</td><td>H</td><td>14</td><td>h</td><td>14</td></tr>
+                            <tr><td>Hour 12h</td><td>G</td><td>02</td><td>g</td><td>2</td></tr>
+                            <tr><td>Minutes</td><td>I</td><td>05</td><td>i</td><td>5</td></tr>
+                            <tr><td>Seconds</td><td>S</td><td>07</td><td>s</td><td>7</td></tr>
+                            <tr><td>AM/PM</td><td>A</td><td>AM/PM</td><td>a</td><td>am/pm</td></tr>
+                            <tr><td>Seperators</td><td>- _ .</td><td></td></tr>
+                        </tbody>
+                    </table>
+                    </td>
+                    </tr>
+                </tbody>
+            </table>
+            Example: <span style="font-weight:bold">&lt;time:Y-M-D_H.I.S&gt;</span> results in: <span style="font-weight:bold">2021-08-03_02.05.07</span>
+        </div>
+    </section>
+    <section id="content-generic" class="content" >
+        <table id="options_generic_table">
+        <thead>
+            <tr>
+                <th>Option</th>
+                <th>Setting</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Display mode: </td>
+                <td><button id="advanced">Basic</button>
+                </td>
+            </tr>
+            <tr class="advanced-option no-webkit">
+                <td>Browser mode for downloads: <sup class="info" title="When mass downloading it might be usefull to use &quot;Always incognito&quot;. This will make the browser forget the download and will not clutter your download history.&#013;&#010;&#013;&#010;This option requires that &quot;Run in private windows&quot; permission is set. To set this permission navigate to the extension management page of Firefox.">i</sup></td>
+                <td>
+                    <select name="generic-incognitoMode" disabled="disabled">
+                        <option value="false">Same as active tab</option>
+                        <option value="true">Always incognito</option>
+                        <option value="default">Always regular</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="advanced-option">
+                <td>Show &quot;Save as&quot; popup:</td>
+                <td>
+                    <select name="generic-saveAsWindow">
+                        <option value="default">Browser default</option>
+                        <option value="true">Always</option>
+                        <option value="false">Never</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="advanced-option">
+                <td>Filename conflict action:
+                    <sup class="info no-webkit" title="When a filename conflict occurs, the default option &quot;uniquify&quot; will cause the suggested filename to contain an additional number to make it unique. However, you can use the &quot;overwrite&quot; option to ignore this safety feature and use the original filename.&#013;&#010;&#013;&#010;Beware when using the option &quot;overwrite&quot; while the &quot;save as&quot; popup is disabled the original file will be automatically overwritten.">i</sup>
+                    <sup class="info no-gecko" title="When a filename conflict occurs, the default option &quot;uniquify&quot; will cause the suggested filename to contain an additional number to make it unique. However, you can use the &quot;overwrite&quot; option to ignore this safety feature and use the original filename.&#013;&#010;&#013;&#010;Beware when using the option &quot;overwrite&quot; while the &quot;save as&quot; popup is disabled the original file will be automatically overwritten.&#013;&#010;Alternatively, you can use the &quot;prompt&quot; option, to force a &quot;save as&quot; popup even when the popup behavior is set to not appear.">i</sup>
+                </td>
+                <td>
+                    <select name="generic-filenameConflictAction">
+                        <option value="uniquify">Uniquify</option>
+                        <option value="overwrite">Overwrite</option>
+                        <option value="prompt" class="no-gecko">Prompt</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="no-webkit advanced-option gecko-min-79 gecko-max-92" id="gecko-experimentalAvif">
+                <td>Experimental Avif support enabled: <sup class="info" title="By default the addon does not tell a server that Avif is enabled. When you have enabled experimental Avif support in the browser you can correct this behavior of the addon. Otherwise leave this option unticked.">i</sup></td>
+                <td><input type="checkbox" name="generic-experimentalAvif" id="generic-experimentalAvif"><label for="generic-experimentalAvif">&nbsp;</label></td>
+            </tr>
+            <tr class="no-webkit advanced-option gecko-min-93" id="gecko-preferAvif">
+                <td>Prefer to convert from Avif images: <sup class="info" title="When making a download request the default behavior of the browser is to let the server know that Avif images are supported. When you have turned off the behavior you can tell the addon to ommit this information aswell and thereby keeping your conversion behavior consistent. Otherwise leave this option ticked.">i</sup></td>
+                <td><input type="checkbox" name="generic-preferAvif" id="generic-preferAvif"><label for="generic-preferAvif">&nbsp;</label></td>
+            </tr>
+            <tr class="no-webkit advanced-option gecko-min-65" id="gecko-preferWebp">
+                <td>Prefer to convert from Webp images: <sup class="info" title="When making a download request the default behavior of the browser is to let the server know that WebP images are supported. When you have turned off the behavior you can tell the addon to ommit this information aswell and thereby keeping your conversion behavior consistent. Otherwise leave this option ticked.">i</sup></td>
+                <td><input type="checkbox" name="generic-preferWebp" id="generic-preferWebp"><label for="generic-preferWebp">&nbsp;</label></td>
+            </tr>
+            <tr class="advanced-option">
+                <td><button class="menu-item" data-section="content-reset">Reset</button></td>
+                <td id="version-number-container">Version: <span id="version-number"></span></td>
+            </tr>
+            </tbody>
+            </table>
+        </section>
+    </section>
+    <section id="content-reset" class="content" >
+        <table id="options_generic_table">
+        <thead>
+            <tr>
+                <th>Are you sure you want to reset all your setting and revert back to the default settings?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr> <td style="text-align:center">
+                <button class="" id="reset">I understand, reset</button>
+                <button class="menu-item" data-section="content-generic">Cancel</button>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+        </section>
+    </section>
+    <section id="content-conversion" class="content" >
+
+    <table id="options_conversion_table">
+        <thead>
+            <tr>
+                <th>Extension</th>
+                <th>Convert to<sup id="no-autodetect-warning" class="info" title="Currently there is no action set to &quot;Autodetect&quot;, therefore these settings are not used. You can set an action to &quot;Autodetect&quot; in the &quot;Action&quot; tab while in &quot;Advanced&quot; menu mode.">i</sup></th>
+                <th class="advanced-option quality-option">Quality</th>
+                <th class="advanced-option">Background</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="gecko-min-79 webkit-min-85">
+                <td>avif</td>
+                <td>
+                    <select name="image-avif-conversion">
+                        <option value="none">Don't convert</option>
+                        <option value="jpg">jpg</option>
+                        <option value="png">png</option>
+                        <option class="gecko-min-96" value="webp">webp</option>
+                    </select>
+                </td>
+                <td class="advanced-option quality-option">
+                    <div id="image-avif-quality-level" class="quality-level">100%</div>
+                    <input type="range" name="image-avif-quality" min="0" max="1" step="0.01">
+                </td>
+            </tr>
+            <tr>
+                <td>bmp</td>
+                <td>
+                    <select name="image-bmp-conversion">
+                        <option value="none">Don't convert</option>
+                        <option value="jpg">jpg</option>
+                        <option value="png">png</option>
+                        <option class="gecko-min-96" value="webp">webp</option>
+                    </select>
+                </td>
+                <td class="advanced-option quality-option">
+                    <div id="image-bmp-quality-level" class="quality-level">100%</div>
+                    <input type="range" name="image-bmp-quality" min="0" max="1" step="0.01">
+                </td>
+            </tr>
+            <tr>
+                <td>gif</td>
+                <td>
+                    <select name="image-gif-conversion">
+                        <option value="none">Don't convert</option>
+                        <option value="jpg">jpg</option>
+                        <option value="png">png</option>
+                        <option class="gecko-min-96" value="webp">webp</option>
+                    </select>
+                </td>
+                <td class="advanced-option quality-option">
+                    <div id="image-gif-quality-level" class="quality-level">100%</div>
+                    <input type="range" name="image-gif-quality" min="0" max="1" step="0.01">
+                </td>
+                <td class="advanced-option">
+                    <input type="color" name="image-gif-background" rgba>
+                </td>
+            </tr>
+            <tr>
+                <td>ico</td>
+                <td>
+                    <select name="image-ico-conversion">
+                        <option value="none">Don't convert</option>
+                        <option value="jpg">jpg</option>
+                        <option value="png">png</option>
+                        <option class="gecko-min-96" value="webp">webp</option>
+                    </select>
+                </td>
+                <td class="advanced-option quality-option">
+                    <div id="image-ico-quality-level" class="quality-level">100%</div>
+                    <input type="range" name="image-ico-quality" min="0" max="1" step="0.01">
+                </td>
+                <td class="advanced-option">
+                    <input type="color" name="image-ico-background">
+                </td>
+            </tr>
+            <tr>
+                <td>jpg/jpeg</td>
+                <td>
+                    <select name="image-jpg-conversion">
+                        <option value="none">Don't convert</option>
+                        <option value="png">png</option>
+                        <option class="gecko-min-96" value="webp">webp</option>
+                    </select>
+                </td>
+                <td class="advanced-option quality-option">
+                    <div id="image-jpg-quality-level" class="quality-level">100%</div>
+                    <input type="range" name="image-jpg-quality" min="0" max="1" step="0.01">
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>png</td>
+                <td>
+                    <select name="image-png-conversion">
+                        <option value="none">Don't convert</option>
+                        <option value="jpg">jpg</option>
+                        <option class="gecko-min-96" value="webp">webp</option>
+                    </select>
+                </td>
+                <td class="advanced-option quality-option">
+                    <div id="image-png-quality-level" class="quality-level">100%</div>
+                    <input type="range" name="image-png-quality" min="0" max="1" step="0.01">
+                </td>
+                <td class="advanced-option">
+                    <input type="color" name="image-png-background">
+                </td>
+            </tr>
+            <tr class="gecko-min-65">
+                <td>webp</td>
+                <td>
+                    <select name="image-webp-conversion">
+                        <option value="none">Don't convert</option>
+                        <option value="jpg">jpg</option>
+                        <option value="png">png</option>
+                    </select>
+                </td>
+                <td class="advanced-option quality-option">
+                    <div id="image-webp-quality-level" class="quality-level">100%</div>
+                    <input type="range" name="image-webp-quality" min="0" max="1" step="0.01">
+                </td>
+                <td class="advanced-option">
+                    <input type="color" name="image-webp-background">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </section>
+    </div>
+    </div>
+</body>
+
+</html>

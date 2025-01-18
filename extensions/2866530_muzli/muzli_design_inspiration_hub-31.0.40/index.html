@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <base href="">
+
+  <title>New Tab</title>
+  <meta charset="UTF-8">
+  <script src="js/const.global.js"></script>
+  <script src="js/const.js"></script>
+  <script src="js/bootstrap.js"></script>
+
+  <meta http-equiv="Cache-control" content="public">
+
+  <link rel="stylesheet" href="stylesheets/muzli.css"/>
+
+  <link rel="preconnect" href="https://gamma.api.muz.li" />
+  <link rel="preconnect" href="https://bobo.api.muz.li" />
+  
+</head>
+
+<body
+  style="display: none;"
+  ng-app="muzli"
+  ng-keyup="bodyKeyUp($event)"
+  ng-keydown="bodyKeyDown($event)"
+  ng-class="{
+    bootstrapped: bootstrapped,
+    dark: theme === 'dark',
+    menuOpen: menuOpen,
+    uninstallOpen: uninstall,
+    overlay: vm.showCreateDialog || vm.showAdsDialog || vm.showDiscordDialog || vm.showOverlay || vm.showKeepItDialog || vm.showKeepItPrepDialog || blocker,
+    error: errors.length
+  }"
+  class="{{getBodyClass()}}" ng-strict-di>
+
+<div id="overlay"></div>
+
+<!-- Main wrapper -->
+<div id="container">
+
+  <header ng-controller="headerController" ng-include="'templates/header.html'" ng-class="{compound: $state.current.name === 'search'}"></header>
+
+  <div class="alert {{alerts[0].type}}" ng-if="alerts.length" ng-cloak>
+    <i></i>
+    <span bind-html-compile="alerts[0].content" ng-click="logAlertCta(alerts[0], $event)"></span>
+    <a href="" class="close" ng-click="closeAlert(alerts[0])"></a>
+  </div>
+
+  <main>
+
+    <div class="shortcuts fade-in var3" 
+      ng-hide="!feedVisibleClass || !showShortcuts" 
+      ng-class="{
+        active: shortcutsActive,
+      }"
+      ng-cloak>
+
+      <ul>
+
+        <li class="home" 
+            title="Home page"
+            title-right="true"
+            ng-class="{
+              active: $state.current.name === 'all',
+            }">
+            <a href="" ng-click="$state.goHome()"><i class="icon-home"></i></a>
+        </li>
+        
+        <span class="separator">• • •</span>
+
+        <li ng-repeat="shortcut in shortcuts"
+            ng-click="clickSource(shortcut)"
+            title="{{shortcut.title}}"
+            title-right="true"
+            ng-class="{
+              unread: shortcut.unread,
+              active: shortcut.name === currentSource.name,
+            }">
+            
+            <i class="shortcut"
+            ng-style="::{'background-image': 'url({{shortcut.icon}})'}"></i>
+
+        </li>
+        
+        <li>
+            <i ng-click="toggleSidebar()" class="icon-edit" title="Customise shortcuts" title-right="true"></i>
+        </li>
+
+      </ul>
+
+      <div class="pull-tab" ng-click="toggleShortcuts()">
+        <i class="icon-right"></i>
+        <div class="ftx-pop sidebar-promo" ng-if="vm.ftxLeft.indexOf('shortcuts') !== -1" ng-cloak></div>
+      </div>
+
+    </div>
+
+    <div ui-view></div>
+
+    <div class="video-container">
+      <div class="iframe-wrapper"></div>
+      <div class="close" ng-if="currentPlayingItem.isPopup" ng-click="closeVideoPopup()" ng-cloak><span class="icon-close"></span></div>
+    </div>
+
+    <div class="unread-indicator fade-in" ng-if="(!feedVisibleClass && unreadSources) || vm.showFtx === 'scroll'" 
+      ng-class="{
+        read: !unreadSources.length,
+        ftx: vm.showFtx === 'scroll',
+      }"
+      ng-click="jumpToRecent()" 
+      ng-cloak
+    >
+      <ul>
+        <li>
+          <span ng-if="!unreadSources.length">You're All Caught Up</span>
+          <i class="icon-right"></i>
+        </li>
+        <li ng-repeat="source in unreadSources">
+            <i ng-style="::{'background-image': 'url({{source.icon}})'}"></i>
+        </li>
+      </ul>
+    </div>
+
+
+  </main>
+
+  <div id="oops" ng-show="errors.length" class="ng-hide">
+    
+    <div>
+      <h2>Oops! Something went wrong</h2>
+      <p>Doing one of the following things could help:</p>
+      <ul>
+        <li>Checking the network cable or router</li>
+        <li>Resetting the modem or router</li>
+        <li>Reconnecting to Wi-Fi</li>
+      </ul>
+      <a href="" class="cta" ng-click="reload()">Try again</a>
+    </div>    
+
+  </div>
+
+  <div class="sidebar"
+    ng-hide="!showSidebar"
+    click-outside="::toggleSidebar()"
+    outside-if-not="menuOpener, sidebar, ftx-tip" 
+    ng-include="'templates/sidebar.html'"
+    ng-cloak
+  ></div>
+
+  <aside class="aside" 
+    click-outside="::closeMenu()" 
+    outside-if-not="menuOpener, aside, ftx-tip" 
+    ng-include="'templates/settings.html'"
+    ng-class="{front: vm.showFtx === 'settings'}"
+  ></aside>
+
+
+  <!-- NG view for blocker screens -->
+  <div ui-view="blocker" autoscroll="false"></div>
+  <div ui-view="modal" autoscroll="false"></div>
+
+  <!-- Dialogs -->
+  <dialog ng-include="'templates/dialog.advertise.html'" class="advertise" ng-if="vm.showAdsDialog === true" click-outside="vm.showAdsDialog = false" ng-cloak></dialog>
+  <dialog ng-include="'templates/dialog.discord.html'" class="discord" ng-if="vm.showDiscordDialog === true" click-outside="vm.showDiscordDialog = false" ng-cloak></dialog>
+  <dialog ng-include="'templates/dialog.create.html'" class="create" ng-if="vm.showCreateDialog" click-outside="vm.showCreateDialog = false" ng-controller="contentController" ng-cloak></dialog>
+  <dialog ng-include="'templates/dialog.blocker.html'" class="blocker" ng-if="blocker" ng-cloak click-outside="shakeBlocker()" outside-if-not="wrapper"></dialog>
+  <dialog ng-include="'templates/dialog.keep-it.html'" class="keep-it" ng-class="{win: vm.showKeepItDialogWin}" ng-if="vm.showKeepItDialog" click-outside="vm.showKeepItDialog = false" ng-cloak></dialog>
+  <dialog ng-include="'templates/dialog.keep-it-prep.html'" class="keep-it-prep" ng-if="vm.showKeepItPrepDialog" click-outside="vm.showKeepItPrepDialog = false" ng-cloak></dialog>
+
+  <!-- FTX -->
+  <div ng-include="'templates/ftx.walktrough.html'"></div>
+
+  <!-- User error bubble -->
+  <div id="errorBubble" class="error" ng-cloak ng-class="{ hide: userError && hideUserError, show: userError && !hideUserError}" click-outside="clickOutsideBubble($event)">
+    <p ng-if="userError === 'signed-out'" class="message">You have to <a href="" class="auth" ui-sref="sign-in">sign-in</a> to continue.</p>
+    <p ng-if="userError === '401'" class="message">You were signed out, click here to <a href="" class="auth" ui-sref="sign-in">sign-in</a>.</p>
+    <p ng-if="userError === 'missing_email'" class="message">Your Muzli account is pending due to missing info.<br /><a href="" ng-click="clickUser()">Click here</a> to continue.</p>
+    <p ng-if="userError === 'general_error'" class="message">Oops, something went wrong. Try <a href="" ng-click="reloadPage()">reloading</a> Muzli</p>
+  </div>
+
+  <div class="discord-chat">
+    <a ng-click="vm.showDiscordDialog = true">
+      <img alt="Reach us out!" src="images/discord.png">
+    </a>
+  </div>
+  
+  <admin-bar></admin-bar>
+
+</div>
+<!-- /Main wrapper -->
+
+<script src="js/bootstrap-body.js"></script>
+<script src="lib/jquery.js"></script>
+<script src="lib/jquery-ui.js"></script>
+<script src="lib/tooltipsy.source.js"></script>
+<script src="lib/angular.js"></script>
+<script src="lib/angular-animate.js"></script>
+<script src="lib/angular-ui-router.js"></script>
+<script src="lib/sortable.js"></script>
+<script src="lib/ng-infinite-scroll.js"></script>
+<script src="lib/clickoutside.directive.js"></script>
+<script src="lib/mixpanel-jslib-snippet.min.js"></script>
+<script src="dist/template.js"></script>
+<script src="modules/bootstrap/module.js"></script>
+<script src="modules/user/module.js"></script>
+<script src="modules/user/module.js"></script>
+<script src="modules/user/user.srv.js"></script>
+<script src="modules/search/module.js"></script>
+<script src="modules/search/search.srv.js"></script>
+<script src="modules/search/search.drv.js"></script>
+<script src="modules/search/suggestions.js" defer></script>
+<script src="modules/sources/module.js"></script>
+<script src="modules/sources/sources.const.js"></script>
+<script src="modules/sources/sources.service.js"></script>
+<script src="modules/sources/welcome.controller.js"></script>
+<script src="modules/feed/module.js"></script>
+<script src="modules/feed/scrollable.drv.js"></script>
+<script src="modules/feed/fetch.service.js"></script>
+<script src="modules/feed/lazy-image.drv.js"></script>
+<script src="modules/feed/video.drv.js"></script>
+<script src="modules/sites/module.js"></script>
+<script src="modules/sites/recent-sites.srv.js"></script>
+<script src="modules/chrome/module.js"></script>
+<script src="modules/chrome/chrome.srv.js"></script>
+<script src="modules/muzli/module.js"></script>
+<script src="modules/muzli/storage.srv.js"></script>
+<script src="modules/muzli/social.srv.js"></script>
+<script src="modules/muzli/track.srv.js"></script>
+<script src="modules/muzli/experiments.srv.js"></script>
+<script src="modules/muzli/utils.drv.js"></script>
+<script src="modules/muzli/header.controller.js"></script>
+<script src="modules/community/module.js"></script>
+<script src="modules/community/content.service.js"></script>
+<script src="modules/speed-dial/module.js"></script>
+<script src="modules/speed-dial/speed-dial.service.js"></script>
+<script src="modules/shorts/shorts.module.js"></script>
+<script src="modules/referral/referral.module.js"></script>
+
+<!-- Dev scripts - must be removed on build -->
+
+
+<!-- [safari_placeholder] -->
+
+
+</body>
+</html>

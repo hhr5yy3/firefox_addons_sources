@@ -1,0 +1,243 @@
+<div id="accounts">
+    <div class="content">
+        <h1 i18n-content="account_page_header"></h1>
+
+        <div class="whitelist-totp-domain" ng-if="twoFactorDomainNotWhitelisted">
+            <h3 i18n-content="account_totp_whitelist_heading" class="whitelist-totp-domain-heading"></h3>
+            <p i18n-content="account_totp_whitelist_text" class="whitelist-totp-domain-text"></p>
+            <md-button id="whitelistTotpDomainBtn" class="md-button md-raised md-primary whitelist-totp-domain-btn"
+                aria-label="Whitelist TOTP Domain" ng-click="whitelistTwoFactorDomain()"
+                i18n-content="account_totp_whitelist_cta"></md-button>
+        </div>
+
+        <div class="am-welcome-text">
+            <p i18n-content="account_account_manager_body"></p>
+        </div>
+
+        <div layout="column">
+            <div class="accounts-main-buttons">
+                <md-button id="newAccountBtn" class="md-button md-raised md-primary new-account-btn"
+                    aria-label="New Account Button" ng-click="openModal('newAccountModal')"
+                    i18n-content="account_add_new_btn"></md-button>
+            </div>
+        </div>
+
+        <div ng-if="showUpdatePassword" layout="column" class="update-password">
+            <md-toolbar class="md-warn">
+                <div class="md-toolbar-tools">
+                    <h3 i18n-content="update_account_password"></h3>
+                </div>
+            </md-toolbar>
+        </div>
+
+        <div class="accountDetails" layout="column" ng-repeat="account in accounts"
+            data-index="{{account.id}}">
+            <form name="accountForm" id="account-{{account.id}}" #f="form" validate-submit="editAccount(account)">
+
+                <div>
+                    <md-toolbar class="md-primary">
+                        <div class="md-toolbar-tools">
+
+                        </div>
+                        <div class="account-buttons-flex">
+                            <md-button class="md-icon-button action-btn" aria-label="Delete"
+                                ng-click="delAccount(account)" md-tooltip="Delete">
+                                <md-tooltip md-direction="top" i18n-content="sandbox_buttons_delete"></md-tooltip>
+                                <md-icon md-font-set="material-icons" class="ng-scope md-default-theme material-icons"
+                                    role="img" aria-hidden="true">delete_forever</md-icon>
+                            </md-button>
+
+                            <md-button class="md-icon-button action-btn" aria-label="Reveal" ng-if="user.registered && user.apr"
+                                ng-click="revealPassword(account)" md-tooltip="Reveal">
+                                <md-tooltip md-direction="top" i18n-content="sandbox_buttons_reveal_password"></md-tooltip>
+                                <md-icon md-font-set="material-icons" ng-if="account.showMaskedPassword" class="ng-scope md-default-theme material-icons"
+                                    role="img" aria-hidden="true">visibility</md-icon>
+                                <md-icon md-font-set="material-icons" ng-if="!account.showMaskedPassword" class="ng-scope md-default-theme material-icons"
+                                    role="img" aria-hidden="true">visibility_off</md-icon>
+                            </md-button>
+                        </div>
+                    </md-toolbar>
+                </div>
+                <div layout="column">
+                    <div class="group">
+                        <md-input-container class="md-block">
+                            <label class="pref-name md-no-float md-container-ignore" for="username"
+                                i18n-content="settings_xchange_username"></label>
+                            <input class="pref-value md-primary xchange-credentials xchange-username" name="username"
+                                type="email" id="username" ng-model="account.username"
+                                ng-pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,53}$/"
+                                aria-label="Account Manager Username" ng-focus="focusInput($event)" ng-blur="editAccount(account, $event)" required />
+                                <div ng-messages="accountForm.username.$error" ng-show="accountForm.username.$dirty">
+                                    <div ng-message="required" i18n-content="forms_messages_required"></div>
+                                    <div ng-message="pattern">Please enter valid Username</div>
+                                </div>
+                        </md-input-container>
+
+                        <!-- Masked password input container -->
+                        <md-input-container class="md-block" ng-if="account.showMaskedPassword">
+                            <label class="pref-name md-no-float md-container-ignore" for="password"
+                                i18n-content="settings_xchange_password"></label>
+                            <input class="pref-value md-primary xchange-credentials xchange-password" name="password"
+                                type="password" id="password" ng-model="account.maskedPassword" aria-label="Account Manager Password" ng-keyup="capsDetector($event, account.id)" ng-focus="focusInput($event)" ng-blur="editAccount(account, $event)" required />
+                            <div class="fieldFeedback pref-name">
+                            <span i18n-content="settings_xchange_password_masked"
+                            ng-if="account.showMaskedPassword && account.maskedPassword.length > 0 && !(capsEnabled && inputBoxId == account.id)">
+                            </span>
+                            <div ng-if="capsEnabled && inputBoxId == account.id" i18n-content="vault_warn_capslock">
+                            </div>
+                        </div>
+                        </md-input-container>
+
+                        <!-- Plain text password input container -->
+                        <md-input-container class="md-block" ng-if="!account.showMaskedPassword">
+                            <label class="pref-name md-no-float md-container-ignore" for="password"
+                                i18n-content="settings_xchange_password"></label>
+
+                            <input class="pref-value md-primary xchange-credentials xchange-password" name="password"
+                                type="text" id="password" ng-model="account.maskedPassword" aria-label="Account Manager Password" ng-keyup="capsDetector($event)" ng-focus="focusInput($event)" ng-blur="editAccount(account, $event)" required />
+                            <div class="caps-warning" ng-class="{'show-caps-enabled': capsEnabled}" i18n-content="vault_warn_capslock"></div>
+                            <div class="fieldFeedback pref-name" ng-if="account.showMaskedPassword && account.maskedPassword.length > 0"
+                                i18n-content="settings_xchange_password_masked"></div>
+                        </md-input-container>
+
+                        <!-- Masked TOTP secret input container -->
+                        <md-input-container class="md-block" ng-if="account.showMaskedTotpSecret">
+                            <label class="pref-name md-no-float md-container-ignore" for="totp-secret"
+                                i18n-content="settings_xchange_totp_secret"></label>
+                            <input class="pref-value md-primary xchange-credentials xchange-totp-secret" name="totp-secret"
+                                type="password" id="totp-secret" ng-model="account.maskedTotpSecret" aria-label="Account Manager TOTP Secret" ng-focus="focusInput($event)" ng-blur="editAccount(account, $event)" />
+                            <div class="fieldFeedback pref-name">
+                            <span i18n-content="settings_xchange_totp_secret_masked"
+                            ng-if="account.showMaskedTotpSecret && account.maskedTotpSecret.length > 0">
+                            </span>
+                        </div>
+                        <div ng-messages="accountForm.totpSecret.$error" ng-if="totpSecretError">
+                            <div ng-message="required" i18n-content="forms_messages_required"></div>
+                            <div class="totp-error">{{ totpSecretErrorMessage }}</div>
+                        </div>
+                        </md-input-container>
+
+                        <!-- Plain text totp-secret input container -->
+                        <md-input-container class="md-block" ng-if="!account.showMaskedTotpSecret">
+                            <label class="pref-name md-no-float md-container-ignore" for="totp-secret"
+                                i18n-content="settings_xchange_totp_secret"></label>
+
+                            <input class="pref-value md-primary xchange-credentials xchange-totp-secret" name="totp-secret"
+                                type="text" id="totp-secret" ng-model="account.maskedTotpSecret" aria-label="Account Manager TOTP Secret" ng-keyup="capsDetector($event)" ng-focus="focusInput($event)" ng-blur="editAccount(account, $event)" required />
+                            <div class="caps-warning" ng-class="{'show-caps-enabled': capsEnabled}" i18n-content="vault_warn_capslock"></div>
+                            <div class="fieldFeedback pref-name" ng-if="account.showMaskedTotpSecret && account.maskedTotpSecret.length > 0"
+                                i18n-content="settings_xchange_totp_secret_masked"></div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block" ng-if="account.totpSecret">
+                            <label class="pref-name md-no-float md-container-ignore" for="totp-secret"
+                                i18n-content="settings_xchange_totp_password"></label>
+                            <a href="#" class="pref-value md-primary xchange-credentials xchange-totp-password" ng-click="copyToClipboard($event)" ng-if="account.totpPassword">
+                                {{ account.totpPassword }}
+
+                                <div class="countdown">
+                                    <svg viewBox="0 0 16 16">
+                                        <circle cx="8" cy="8" r="4"></circle>
+                                    </svg>
+                                </div>
+                            </a>
+                            <div class="fieldFeedback pref-name"i18n-content="settings_xchange_totp_password_hint"></div>
+                        </md-input-container>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="del-account-modal" ng-class="(deleteAccountModal === true) ? 'deleteModal customModal' : 'hidden'" class="lowerZIndex">
+            <div class="form-group">
+                <h2 class="mat-h1" i18n-content="account_modal_header"></h2>
+                <div i18n-content="account_delete_text">
+                    <!--directive: i18n-substitute $1:<b>{{ selectedAccount.username }}</b>-->
+                </div>
+                <div class="button-holder">
+                    <md-button class="md-button md-raised" aria-label="Close" ng-click="close()"
+                        i18n-content="sandbox_buttons_delete_cancel"></md-button>
+
+                    <md-button id="delButton" class="md-button md-raised md-primary" aria-label="Remove Account"
+                        i18n-content="sandbox_buttons_delete"></md-button>
+                </div>
+                <md-button class="md-icon-button action-btn close" aria-label="Close"
+                    ng-click="close()">
+                    <md-icon md-font-set="material-icons">close</md-icon>
+                </md-button>
+            </div>
+        </div>
+
+        <div id="edit-account-modal" ng-class="(editAccountModal === true) ? 'deleteModal customModal' : 'hidden'" class="lowerZIndex">
+            <div class="form-group">
+                <h2 class="mat-h1" i18n-content="account_modal_header"></h2>
+                <div i18n-content="account_save_text">
+                    <!--directive: i18n-substitute $1:<b>{{ selectedAccount.username }}</b>-->
+                </div>
+
+                <md-button class="md-button md-raised" aria-label="Close" ng-click="close()"
+                    i18n-content="sandbox_buttons_delete_cancel"></md-button>
+
+                <md-button id="saveButton" class="md-button md-raised md-primary" aria-label="Remove Account"
+                    i18n-content="sandbox_buttons_save"></md-button>
+
+                <md-button class="md-icon-button action-btn close" aria-label="Close"
+                    ng-click="close()">
+                    <md-icon md-font-set="material-icons">close</md-icon>
+                </md-button>
+            </div>
+        </div>
+
+        <div id="new-account-modal" ng-class="(newAccountModal === true) ? 'deleteModal customModal' : 'hidden'" class="lowerZIndex">
+            <div>
+                <h2 class="mat-h1" i18n-content="account_modal_header"></h2>
+
+                <form name="accountForm" validate-submit="addNewAccount()">
+                    <div class="form-group">
+                        <md-input-container class="md-block">
+                            <label>E-Mail Address</label>
+                            <input name="username" type="text" ng-pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,56}$/"
+                                ng-model="unifiedAccount.username" required />
+                                <div ng-messages="accountForm.username.$error" ng-show="accountForm.username.$dirty">
+                                    <div ng-message="required" i18n-content="forms_messages_required"></div>
+                                    <div ng-message="pattern">Please enter a valid E-Mail</div>
+                                </div>
+                            </md-input-container>
+                    </div>
+
+                    <div class="form-group">
+                        <md-input-container class="md-block">
+                            <label i18n-content="account_password"></label>
+                            <input name="password" id="accounts-new-password" type="password" ng-model="unifiedAccount.password" ng-keyup="capsDetector($event)" required />
+                            <div ng-messages="null" id="show-caps-warning-container"> <!-- Using the input API's under input textfield -->
+                                <div class="caps-warning small-caps-warning" ng-class="{'show-caps-enabled': capsEnabled}" i18n-content="vault_warn_capslock"></div>
+                            </div>
+                            <md-icon tabindex="-1" class="onepass-login-reveal-icon" ng-show="unifiedAccount.password"
+                                ng-click="unifiedAccount.showPassword()" md-font-set="material-icons accounts-show-password"
+                                role="img">visibility</md-icon>
+                        </md-input-container>
+                    </div>
+
+                    <div class="form-group">
+                        <md-input-container class="md-block">
+                            <label i18n-content="account_totp_secret"></label>
+                            <input name="totpSecret" type="text" ng-model="unifiedAccount.totpSecret" />
+                        </md-input-container>
+                    </div>
+
+                    <div class="form-group" class="button-holder">
+                        <!-- onClick Remove class customModal -->
+                        <md-button class="md-button md-raised md-primary save" aria-label="Add Account" type="submit"
+                            value="Save" title="Save" i18n-content="account_add_new_btn" >
+                        </md-button>
+
+                        <md-button class="md-icon-button action-btn close" aria-label="Close"
+                            ng-click="close()">
+                            <md-icon md-font-set="material-icons">close</md-icon>
+                        </md-button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

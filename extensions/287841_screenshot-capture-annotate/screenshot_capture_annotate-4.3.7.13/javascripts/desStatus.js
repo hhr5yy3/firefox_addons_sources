@@ -1,0 +1,1 @@
+if(/awesomescreenshot.com\/api\/v1\/account\/callback\/token/.test(window.location.href)){var dataMessage=document.getElementById("data").innerText;browser.runtime.sendMessage({action:"accountConnected",data:dataMessage}).then((e=>{})).catch((e=>{}))}

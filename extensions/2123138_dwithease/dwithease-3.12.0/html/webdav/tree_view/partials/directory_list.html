@@ -1,0 +1,33 @@
+<span data-href="{{ href }}"
+    class="{{ itemClass }} icon dwe-tree-view__element__link is-from-list"
+    data-file="{{ stringifiedContent }}" data-element-name="{{ name }}">
+    <span class="dwe-tree-view__element__link--icon
+        {{#isDirectoryEmpty}}
+            empty-directory
+        {{/isDirectoryEmpty}} icon-code-icons-dark {{ iconName }}">
+    </span>
+
+    <span class="dwe-tree-view__element__link--name">
+        <span class="dwe-tree-view__element__link--name--inner">
+            {{ name }}
+        </span>
+
+        <div class="dwe-tree-view__element--progress-container dot-flashing"></div>
+    </span>
+
+    <div class="dwe-tree-view__element__actions">
+        {{ #actions }}
+            <span
+                class="dwe-tree-view__element__actions__action icon-code-icons-light icon-{{ iconName }} is-action"
+                data-action-name="{{ name }}"
+                data-tippy-content="{{ title }}"></span>
+        {{ /actions }}
+    </div>
+
+    <div class="dwe-tree-view__element__link__info item-info">
+        {{ #size }}
+            <span class="dwe-tree-view__element__link__info--size item-size" data-tippy-content="Size"> {{ . }} </span>
+        {{ /size }}
+        <span class="dwe-tree-view__element__link__info--last-modified item-last-modified" data-tippy-content="Last Modified"> {{ lastModified }} </span>
+    </div>
+</span>

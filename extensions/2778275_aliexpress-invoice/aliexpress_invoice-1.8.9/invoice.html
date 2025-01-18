@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./src/bulma/bulma.css" />
+        <title>Invoice</title>
+
+        <style>
+            th:not(:first-child),
+            td:not(:first-child) {
+                width: 13%;
+            }
+            .table {
+                width: 100%;
+            }
+            .table th {
+                border-bottom: 1px solid black;
+            }
+            .table td {
+                border: none;
+                border-width: 0 0 0px;
+            }
+            table tbody:not(:last-child) {
+                border-bottom: 2px solid black;
+            }
+            table tr.article-item {
+                border-bottom: 1px solid #dbdbdb;
+            }
+            .article-item img {
+                width: 70px;
+                height: 70px;
+                margin-right: 10px;
+            }
+            td:not(:first-child) {
+                border-left: 1px solid #dbdbdb;
+            }
+            .order-head {
+                min-height: 110px;
+            }
+            .order-head .price-red,
+            .order-total .price-red {
+                color: #e62e04;
+            }
+
+            .floating-menu,
+            .floating-menu-invoice-from-links {
+                z-index: 9999;
+                color: #fff;
+                position: fixed;
+                top: 40px;
+                left: 0px;
+                background-color: #617da1;
+            }
+
+            .floating-menu-invoice-from-links {
+                display: none;
+            }
+
+            .menu-item {
+                text-align: center;
+                font-size: 15px;
+                color: white;
+                width: 100%;
+                padding: 5px;
+                border-bottom: 1px solid white;
+            }
+
+            .menu-logo {
+                text-align: center;
+                padding: 10px 0 10px 0;
+                border-bottom: 1px solid white;
+            }
+
+            .menu-item:hover {
+                cursor: pointer;
+                background-color: rgb(179, 214, 236);
+                color: #617da1;
+            }
+
+            .ali-bill-date-picker,
+            .ali-bill-search {
+                color: white;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                font-size: 15px;
+                padding: 5px 0px;
+            }
+
+            .ali-bill-date-picker,
+            .ali-bill-search {
+                border-bottom: 1px solid white;
+            }
+
+            .ali-bill-date-picker input,
+            .ali-bill-date-picker button,
+            .ali-bill-search input {
+                height: 25px;
+                width: 135px;
+                margin: 3px !important;
+            }
+
+            .paper-view {
+                margin-top: 10px;
+                padding: 10px;
+                border: 2px solid black;
+                box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+                    rgba(17, 17, 26, 0.1) 0px 16px 56px,
+                    rgba(17, 17, 26, 0.1) 0px 24px 80px;
+                background-color: white;
+                min-height: 1400px;
+            }
+
+            .checkbox-alibill {
+                margin-left: 3px;
+            }
+
+            thead > tr > th {
+                vertical-align: middle !important;
+            }
+
+            .product-image-element,
+            .order-date-element,
+            .store-name-element,
+            .store-number-element,
+            .tracking-number-element,
+            .customer-info-element,
+            .payment-info-element,
+            .order-status-element,
+            .tax-element {
+                display: none;
+            }
+
+            @keyframes glow-animation {
+                from { 
+                    box-shadow: 0 0 17px 3px #ffff01,0 0 4px 2px #ffff01;
+                }
+                to {
+                    box-shadow: 0 0 17px 3px hsl(123, 100%, 50%),0 0 4px 2px #ffff01;
+                }
+            }
+
+            .glow {
+                box-shadow: 0 0 17px 3px #ffff01,0 0 4px 2px #ffff01;
+                animation-name: glow-animation;
+                animation-duration: 1.2s;
+                animation-iteration-count: infinite;
+            }
+
+            @media print {
+                :root {
+                    font-size: 10px;
+                }
+                .container {
+                    min-width: 100%;
+                }
+                .paper-view {
+                    margin-top: 10px;
+                    border: 0;
+                    box-shadow: none;
+                }
+                .print-buttons,
+                .floating-menu,
+                .floating-menu-invoice-from-links,
+                .menu-logo,
+                .menu-item,
+                .checkbox-alibill,
+                .c297943f88,
+                .delete-order {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="floating-menu">
+            <div class="menu-logo">
+                <img src="./logo/icon48.png" />
+            </div>
+            <div class="menu-item print-invoice">Print/Save invoice</div>
+            <div class="menu-item invoice-settings">Invoice Settings</div>
+            <div class="ali-bill-date-picker">
+                <label>Show orders from: </label>
+                <input id="ali-bill-date-from" class="mr-5" type="date" />
+                <label>Show orders to: </label>
+                <input id="ali-bill-date-to" type="date" />
+            </div>
+            <div class="ali-bill-search">
+                <label>Search: </label>
+                <input id="ali-bill-search" type="text" />
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="product-image-checkbox">
+                Product image
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="date-time-checkbox">
+                Order date
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="store-name-checkbox">
+                Store name
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="store-number-checkbox">
+                Store number
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="order-status-checkbox">
+                Order status
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="customer-info-checkbox">
+                Customer info
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="tracking-number-checkbox">
+                Tracking number
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="payment-info-checkbox">
+                Payment info
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="tax-info-checkbox">
+                Tax info
+            </div>
+        </div>
+        <div class="floating-menu-invoice-from-links pb-3 pr-1">
+            <div class="menu-logo">
+                <img src="./logo/icon48.png" />
+            </div>
+            <div class="menu-item print-invoice">Print/Save invoice</div>
+            <div class="menu-item invoice-settings">Invoice Settings</div>
+            <div class="menu-item insert-order">Insert Order</div>
+            <div class="menu-item delete-orders">Delete Orders</div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="product-image-checkbox">
+                Product image
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="date-time-checkbox">
+                Order date
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="store-name-checkbox">
+                Store name
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="store-number-checkbox">
+                Store number
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="order-status-checkbox">
+                Order status
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="customer-info-checkbox">
+                Customer info
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="tracking-number-checkbox">
+                Tracking number
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="payment-info-checkbox">
+                Payment info
+            </div>
+            <div class="checkbox-alibill">
+                <input type="checkbox" class="tax-info-checkbox">
+                Tax info
+            </div>
+        </div>
+
+        <div class="container mb-6 paper-view">
+            <div class="columns px-6 py-2 is-vcentered">
+                <img
+                    src=""
+                    class="seller-logo"
+                    style="height: 40px; width: 166px"
+                />
+
+                <div class="column has-text-right">
+                    <p class="seller-name" contenteditable></p>
+                    <p class="seller-address" contenteditable></p>
+                    <p class="seller-state" contenteditable></p>
+                    <p class="seller-vat" contenteditable></p>
+                </div>
+            </div>
+            <div
+                class="columns px-6 py-2 is-vcentered"
+                style="border-top: 2px solid black"
+            >
+                <div class="column has-text-weight-bold">
+                    <h1 class="column is-size-1" style="padding-left: 0px">
+                        INVOICE
+                    </h1>
+                    <p class="has-text-grey">Invoice Number</p>
+                    <p class="invoice-number" contenteditable>000000</p>
+                    <br />
+                    <p class="has-text-grey">Date Of Issue</p>
+                    <p class="invoice-date" contenteditable>10/07/14</p>
+                </div>
+                <div
+                    class="column has-text-weight-bold"
+                    style="text-align: right"
+                >
+                    <p class="has-text-grey">Billed to</p>
+                    <p class="company-name" contenteditable>Client Name</p>
+                    <p class="company-address" contenteditable>
+                        1 Client Address
+                    </p>
+                    <p class="company-state" contenteditable>
+                        City, State, Country
+                    </p>
+                    <p class="company-vat" contenteditable>VAT</p>
+                    <p class="company-reg" contenteditable>Reg</p>
+                </div>
+            </div>
+            <div>
+                <table class="table w-100">
+                    <thead>
+                        <tr>
+                            <th>Product Details</th>
+                            <th>Price Per Unit</th>
+                            <th>Quantity</th>
+                            <th class="tax-element">Tax</th>
+                            <th>Product Amount</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <script src="./src/lib/jquery.min.js"></script>
+        <script src="./src/content/models/Order.js"></script>
+        <script src="./src/content/models/OrderItem.js"></script>
+        <script src="./src/content/models/Invoice.js"></script>
+        <script src="./src/content/models/Filter.js"></script>
+        <script src="./src/content/models/Options.js"></script>
+        <script src="./src/content/dataStorage.js"></script>
+        <script src="./src/content/ui.js"></script>
+        <script src="./invoiceScript.js"></script>
+    </body>
+</html>

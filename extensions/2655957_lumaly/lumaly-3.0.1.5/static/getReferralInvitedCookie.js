@@ -1,0 +1,1 @@
+function getReferralInvitedCookie(){const e="referralInvited";let t=document.cookie.split("; ").find((t=>t.startsWith(e+"=")));return t&&(t=t.split(e+"=")[1]),{refCookie:t}}getReferralInvitedCookie();

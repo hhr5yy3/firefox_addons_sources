@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="css/source.css" type="text/css" />
+    <title>SiteAnalyzer SEO Tools - source code</title>
+  </head>
+  <body>
+    <body>
+      <div id="wrapper">
+        <div id="list">
+          <div id="drag"></div>
+          <div id="listinner">
+            <h2>HTML</h2>
+            <ol id="htmllist"></ol>
+            <h2>Javascript: <span id="jstotal"></span> 
+                <i>(external <span id="jsext"></span>,
+                inline <span id="jsin"></span>)</i>
+            </h2>
+            <ol id="jslist"></ol>
+            <h2>CSS: <span id="csstotal"></span> 
+                <i>(external <span id="cssext"></span>,
+                inline <span id="cssin"></span>)</i>
+            </h2>
+            <ol id="csslist"></ol>
+            <h2>JSON: <span id="jsontotal"></span> 
+                <i>(external <span id="jsonext"></span>,
+                    inline <span id="jsonin"></span>)</i>
+            </h2>
+            <ol id="jsonlist"></ol>
+            <h2>Others: <span id="othertotal"></span> 
+                <i>(external <span id="otherext"></span>,
+                    inline <span id="otherin"></span>)</i>
+            </h2>
+            <ol id="otherlist">
+            </ol>
+            <div id="tips">
+              <p>Tips</p>
+              <div>
+                  <ul>
+                    <li>Shows current sources in the DOM.</li>
+                    <li>"INJECTED" nodes have been injected to DOM by Javascript after
+                    initial page load.</li>
+                    <li>Press B to toggle beautifier.</li>
+                    <li>Press N to toggle line numbers.</li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="srcview">
+          <div id="srchead">
+            <h2 id="fname">&nbsp;</h2>
+            <a href="#" id="copy2clip" title="Copy source code">
+              <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.9983 10C20.9862 7.82497 20.8897 6.64706 20.1213 5.87868C19.2426 5 17.8284 5 15 5H12C9.17157 5 7.75736 5 6.87868 5.87868C6 6.75736 6 8.17157 6 11V16C6 18.8284 6 20.2426 6.87868 21.1213C7.75736 22 9.17157 22 12 22H15C17.8284 22 19.2426 22 20.1213 21.1213C21 20.2426 21 18.8284 21 16V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M3 10V16C3 17.6569 4.34315 19 6 19M18 5C18 3.34315 16.6569 2 15 2H11C7.22876 2 5.34315 2 4.17157 3.17157C3.51839 3.82475 3.22937 4.69989 3.10149 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
+            <a href="#" id="beautify" title="Beautify">
+              <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.5 9L15.6716 9.17157C17.0049 10.5049 17.6716 11.1716 17.6716 12C17.6716 12.8284 17.0049 13.4951 15.6716 14.8284L15.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M13.2942 7.17041L12.0001 12L10.706 16.8297" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M8.49994 9L8.32837 9.17157C6.99504 10.5049 6.32837 11.1716 6.32837 12C6.32837 12.8284 6.99504 13.4951 8.32837 14.8284L8.49994 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C21.5093 4.43821 21.8356 5.80655 21.9449 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+          <p id="showerr">Error loading page</p>
+          <pre id="src"><ol></ol><code></code></pre>
+        </div>
+      </div>
+  </body>
+  </body>
+  <script type="text/javascript" src="js/source/page.js"></script>
+  <script type="text/javascript" src="lib/highlight.pack.js"></script>
+  <script type="text/javascript" src="lib/beautify.min.js"></script>
+  <script type="text/javascript" src="lib/beautify-html.min.js"></script>
+  <script type="text/javascript" src="lib/beautify-css.min.js"></script>
+</html>

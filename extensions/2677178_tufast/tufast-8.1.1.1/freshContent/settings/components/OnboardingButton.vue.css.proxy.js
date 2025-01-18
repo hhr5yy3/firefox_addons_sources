@@ -1,0 +1,10 @@
+// [snowpack] add styles to the page (skip if no document exists)
+if (typeof document !== 'undefined') {
+  const code = ".onboarding-btn {\n  border-radius: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 8rem;\n  min-width: 8rem;\n  height: 8rem;\n  min-height: 8rem;\n  box-shadow: 0 0 3rem 4px hsl(var(--clr-white), 0.4);\n  z-index: 0;\n  cursor: pointer;\n}\n.onboarding-btn:hover {\n  box-shadow: 0 0 3rem 4px hsl(var(--clr-primary), 0.4);\n}\n.onboarding-btn:hover .onboarding-btn__inner {\n  transform: scale(1.1);\n}\n.onboarding-btn__inner {\n  transition: all 200ms ease;\n  border-radius: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 80%;\n  height: 80%;\n  background-color: hsl(var(--clr-white));\n  z-index: 2;\n  position: relative;\n}\n.onboarding-btn__progress {\n  height: 100%;\n  width: 100%;\n  z-index: 3;\n  position: absolute;\n}\n.onboarding-btn__progress circle {\n  transition: all 400ms ease;\n  stroke: hsl(var(--clr-primary));\n  stroke-width: 4;\n  stroke-linecap: round;\n  stroke-linejoin: round;\n  fill: none;\n  stroke-dasharray: var(--done) 280;\n}\n.onboarding-btn__arrow {\n  width: 80%;\n  height: 80%;\n  z-index: 2;\n  color: hsl(var(--clr-black));\n}\n.light .onboarding-btn {\n  box-shadow: 0 0 3rem 4px hsl(var(--clr-black), 0.4);\n}\n.light .onboarding-btn:hover {\n  box-shadow: 0 0 3rem 4px hsl(var(--clr-primary), 0.4);\n}\n.light .onboarding-btn__inner {\n  background-color: hsl(var(--clr-black));\n}\n.light .onboarding-btn__arrow {\n  color: hsl(var(--clr-white));\n}";
+
+  const styleEl = document.createElement("style");
+  const codeEl = document.createTextNode(code);
+  styleEl.type = 'text/css';
+  styleEl.appendChild(codeEl);
+  document.head.appendChild(styleEl);
+}

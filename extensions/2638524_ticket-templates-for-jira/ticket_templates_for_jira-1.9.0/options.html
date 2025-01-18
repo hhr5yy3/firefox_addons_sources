@@ -1,0 +1,383 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>__MSG_general_app_name__</title>
+  <link rel="icon" type="image/png" href="assets/icons/icon16.png">
+  <link href="styles/options.css" rel="stylesheet">
+  <script defer src="scripts/utils.js" charset="utf-8"></script>
+  <script defer src="scripts/ui.js" charset="utf-8"></script>
+  <script defer src="scripts/templates.js" charset="utf-8"></script>
+  <script defer src="scripts/import.js" charset="utf-8"></script>
+  <script defer src="./init.js" charset="utf-8"></script>
+  <!--<script defer src="scripts/com.atlassian.jira.issue.collector.plugin.js"></script>-->
+</head>
+
+<body>
+
+  <svg id="spinner" class="hidden" viewBox="0 0 50 50">
+    <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+  </svg>
+
+  <div class="main-container hidden">
+    <div class="container">
+      <!--START Table for templates-->
+      <div id="table" class="collapsed">
+        <div id="head" class="">
+          <div class="headline">__MSG_options_table_headline__</div>
+          <div class="button-container mb0">
+            <a class="button button__top mt0 btn--shockwave" target="_blank"
+              href="https://forms.gle/iYDkqRedbtmGBDx37">short survey</a>
+            <a id="help" class="button mt0 ml15" target="_blank"
+              href="https://docs.google.com/presentation/d/1qHY8FyY7PEjWKJ22KPRipMMIkR3yWtMWfZImJ4gArMQ/edit?usp=sharing">__MSG_options_table_headline_help_button__</a>
+            <a id="head-buymeacoffee" class="button buymeacoffee mt0 ml15"
+              href="https://www.buymeacoffee.com/thisissteven" target="_blank"></a>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2">__MSG_options_table_th_ticket_description__</th>
+              <th colspan="1">__MSG_options_table_th_displayName__</th>
+              <th colspan="1">
+                <div id="openAllForEdit" class="">
+                  <span title="open all config sections">
+                    <i class="material-icons button-icon edit">edit</i>
+                    __MSG_options_table_headline_open_all_button__
+                  </span>
+                </div>
+              </th>
+              <th colspan="1"></th>
+            </tr>
+          </thead>
+          <tbody id=ticketTemplates></tbody>
+        </table>
+      </div>
+      <!--END Table for templates-->
+      <!--START Container with Create Ticket, Save and Open Options Button -->
+      <div class="button-container">
+        <div id="createButton" class="button">
+          <span title="New Template">
+            <i class="material-icons button-icon add_to_photos">add_to_photos</i>
+            __MSG_options_table_button_create_new_template__
+          </span>
+        </div>
+        <div class="button no-border cursor-normal">
+          __MSG_general_app_data__
+        </div>
+        <div class="button-container">
+          <div id="saveAllChanges" class="button">
+            <span id="saveChanges" title="save all (Ctrl + S)">
+              <i class="material-icons button-icon">save</i>
+              __MSG_advanced_options_button_save_all_changes__
+            </span>
+            <span id="saveOptions" class="hidden" title="save all (Ctrl + S)">
+              <i class="material-icons button-icon">save</i> __MSG_advanced_options_button_save_options__
+            </span>
+          </div>
+          <div id="menu" class="button">
+            <span id="openMenu" title="open options">
+              <i class="material-icons button-icon tune">tune</i>
+              __MSG_options_table_button_open_advanced_options__
+            </span>
+            <span id="closeMenu" class="hidden" title="close options">
+              <i class="material-icons button-icon tune">tune</i>
+              __MSG_options_table_button_close_advanced_options__
+            </span>
+          </div>
+        </div>
+      </div>
+      <!--END Container with Create Ticket, Save and Open Options Button -->
+      <!--START Options -->
+      <div id="advancedOptions" class="collapsed">
+
+        <div class="line"></div>
+
+        <section>
+          <h3 class="collapsible clickable">
+            __MSG_advanced_options_section2_options_headline__<span class="material-icons">keyboard_arrow_up</span>
+          </h3>
+          <div class="collapsed">
+
+            <!--feature toggle autofill-->
+            <div>
+              <table id="advancedOptionsTable">
+                <tbody>
+                  <tr>
+                    <td>
+                      <label class="switch">
+                        <input type="checkbox" id="featureToggleAutofill">
+                        <span class="slider round"></span>
+                      </label>
+                      <label for="featureToggleAutofill">__MSG_advanced_options_section2_label_autofill__</label>
+                    </td>
+                    <td>__MSG_advanced_options_section2_explanation_autofill__</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label class="switch">
+                        <input type="checkbox" id="featureToggleQuickAccess">
+                        <span class="slider round"></span>
+                      </label>
+                      <label for="featureToggleQuickAccess">__MSG_advanced_options_section2_label_quickaccess__</label>
+                    </td>
+                    <td>__MSG_advanced_options_section2_explanation_quickaccess__</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label class="switch">
+                        <input type="checkbox" id="featureToggleContextMenu">
+                        <span class="slider round"></span>
+                      </label>
+                      <label for="featureToggleContextMenu">__MSG_advanced_options_section2_label_contextmenu__</label>
+                    </td>
+                    <td>__MSG_advanced_options_section2_explanation_contextmenu__</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label class="switch">
+                        <input type="checkbox" id="featureToggleKeepText">
+                        <span class="slider round"></span>
+                      </label>
+                      <label for="featureToggleKeepText">__MSG_advanced_options_section2_label_keeptext__</label>
+                    </td>
+                    <td>__MSG_advanced_options_section2_explanation_keeptext__</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <!--separator input-->
+                      <input id="separatorString" type="text"></input>
+                    </td>
+                    <td>
+                      <span class="optionLabel">__MSG_advanced_options_section2_explanation_set_separator__</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <!--valid domains input-->
+                      <input id="validDomains" type="text"></input>
+                    </td>
+                    <td>
+                      <span class="optionLabel">__MSG_advanced_options_section2_explanation_set_domains__</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="button-container flex-start">
+                <div id="reset" class="button">
+                  <span title="reset app to initial state">
+                    __MSG_advanced_options_button_reset_to_default__
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <div class="line"></div>
+
+        <section>
+          <h3 class="collapsible clickable">
+            __MSG_advanced_options_section1_import_headline__<span class="material-icons">keyboard_arrow_up</span>
+          </h3>
+          <div class="collapsed">
+            <!--export templates-->
+            <div class="explanation">__MSG_advanced_options_explanation_export_templates__</div>
+            <div class="button-container flex-start">
+              <div id="exportConfigJSON" class="button">
+                <span title="export">
+                  <i class="material-icons button-icon">cloud_download</i>
+                  __MSG_advanced_options_button_export_configjson__
+                </span>
+              </div>
+            </div>
+
+            <br>
+
+            <!--import templates-->
+            <div class="explanation">__MSG_advanced_options_explanation_import_templates__</div>
+            <div class="button-container flex-start">
+              <div id="importConfigJSON" class="button">
+                <span title="upload">
+                  <i class="material-icons button-icon">cloud_upload</i>
+                  __MSG_advanced_options_button_import_configjson__
+                </span>
+              </div>
+              <div id="importModeRadios">
+                <label class="container-radios">__MSG_advanced_options_radio_import_merge__
+                  <input type="radio" checked="checked" name="importMode" value="MERGE">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container-radios">__MSG_advanced_options_radio_import_overwrite__
+                  <input type="radio" name="importMode" value="OVERWRITE">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+
+            <br>
+
+            <!--url input-->
+            <div class="explanation">__MSG_advanced_options_explanation_import_templates_via_url__</div>
+            <div class="pair">
+
+              <input id="importUrl" type="text" placeholder="https://www.mycompany.com/files/templates.json"></input>
+              <div id="syncTemplateJSON" class="button">
+                <span title="sync">
+                  <i class="material-icons button-icon loop">loop</i>
+                  __MSG_advanced_options_button_sync_templatejson__
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!--feedback section-->
+        <div class="line"></div>
+
+        <section>
+          <h3 class="collapsible clickable">
+            __MSG_advanced_options_section3_feedback__<span class="material-icons">keyboard_arrow_up</span>
+          </h3>
+          <div class="collapsed">
+            <!--button-->
+            <div class="button-container text">__MSG_advanced_options_explanation_rate_and_donate__</div>
+
+            <div class="button-container list">
+              <a id="faq-buymeacoffee" class="button buymeacoffee" href="https://www.buymeacoffee.com/thisissteven"
+                target="_blank">
+              </a>
+              <a id="appstore" target="_blank" class="button">
+                <span class='material-icons'>thumb_up</span> __MSG_advanced_options_button_go_for_rate__
+              </a>
+              <a id="faq" target="_blank"
+                href="https://docs.google.com/presentation/d/1qHY8FyY7PEjWKJ22KPRipMMIkR3yWtMWfZImJ4gArMQ/edit?usp=sharing"
+                class="button">
+                <span class='material-icons'>help</span> __MSG_advanced_options_button_go_to_faq__
+              </a>
+              <a id="feedback" target="_blank" href="https://forms.gle/q3Dhjnj1qkWC9Gij6" class="button">
+                <span class='material-icons'>question_answer</span> __MSG_advanced_options_button_go_to_feedback__
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!--statistics section-->
+        <div class="line"></div>
+
+        <section hidden>
+          <h3 class="collapsible clickable">
+            __MSG_advanced_options_section4_statistics_headline__<span class="material-icons">keyboard_arrow_up</span>
+          </h3>
+          <div class="collapsed">
+            <div class="mb20">
+              <div>__MSG_advanced_options_section4_my_stats_template_count__<span id="statsTemplatesTotal"></span></div>
+              <div>__MSG_advanced_options_section4_my_stats_autofilled__<span id="templatesAutofilled"></span></div>
+              <div>__MSG_advanced_options_section4_my_stats_btn_dd_cm_used__<span id="buttonsDropdownsUsed"></span>
+              </div>
+              <div>__MSG_advanced_options_section4_my_stats_characters_typed__<span id="charactersTyped"></span></div>
+              <div>__MSG_advanced_options_section4_my_stats_time_saved__<span
+                  id="timeSaved"></span>__MSG_advanced_options_section4_my_stats_time_saved_2__</div>
+              <br>
+              <div>__MSG_advanced_options_section4_my_stats_date_start_counting__<span id="supportsYouSince"></span>
+              </div>
+              <br>
+              <br>
+              <div>__MSG_advanced_options_section4_calc_timesaved__</div>
+            </div>
+          </div>
+        </section>
+
+        <div hidden class="line"></div>
+
+      </div>
+      <!--END Options -->
+    </div>
+    <input id="hiddenImportButton" type="file" accept=".json"></input>
+  </div>
+
+  <!--START New Template Table -->
+  <table hidden>
+    <tr id=ticketTemplate uuid="" hidden>
+      <td colspan="2">
+        <div class="input-wrapper">
+          <textarea class="ticketDesc">Insert your template here...</textarea>
+        </div>
+      </td>
+      <td colspan="1">
+        <div class="input-wrapper">
+          <input type="text" class="templateName" value="default" placeholder="Template Name"></input>
+        </div>
+      </td>
+      <td colspan="1">
+        <div class="input-wrapper">
+          <i class="material-icons button-icon edit" title="open edit section">edit</i>
+          <i class="material-icons button-icon close hidden" title="close edit section">close</i>
+          <i class="material-icons button-icon delete" title="delete template">delete</i>
+        </div>
+      </td>
+      <td colspan="1">
+        <div class="input-wrapper">
+          <i class="material-icons button-icon template-move-up" title="move template up">keyboard_arrow_up</i>
+          <i class="material-icons button-icon template-move-down" title="move template down">keyboard_arrow_down</i>
+        </div>
+      </td>
+    </tr>
+    <tr id="configOptions">
+      <td colspan="1">
+        __MSG_configure_input_template_type__
+        <div class="input-wrapper">
+          <input type="text" class="issueType" title="Story, Bug, Comment" placeholder="Story, Bug, Comment">
+        </div>
+      </td>
+      <td colspan="1">
+        __MSG_configure_input_projects__
+        <div class="input-wrapper">
+          <input type="text" class="projects" title="ABC, IT, DEV, default" placeholder="ABC, IT, DEV, default">
+        </div>
+      </td>
+      <td colspan="1">
+        <div class="quickAccessHeadline">__MSG_configure_headline_quickaccess__</div>
+        <div class="input-wrapper">
+          <input type="checkbox" id="isInDropdown" class="quickAccessDropdown" checked="checked">
+          <label for="isInDropdown">__MSG_configure_qa_dropdown__</label>
+        </div>
+        <div class="input-wrapper">
+          <input type="checkbox" id="isButton" name="isButton" class="quickAccessButton" checked="checked">
+          <label for="isButton">__MSG_configure_qa_button__</label>
+        </div>
+        <div class="input-wrapper">
+          <input type="checkbox" id="isButtonForComments" name="isButtonForComments" class="quickAccessCommentButton"
+            checked="checked">
+          <label for="isButtonForComments">__MSG_configure_qa_button_for_comments__</label>
+        </div>
+        <div class="input-wrapper">
+          <input type="checkbox" id="isContextMenu" name="isContextMenu" class="quickAccessContextMenu"
+            checked="checked">
+          <label for="isContextMenu">__MSG_configure_qa_contextmenu__</label>
+        </div>
+      </td>
+      <td colspan="1">
+        <div class="input-wrapper" title="save template (Ctrl + S)">
+          <i class="material-icons button-icon save hidden">save</i>
+        </div>
+      </td>
+      <td colspan="1"></td>
+    </tr>
+  </table>
+  <!--END New Template Table -->
+
+  <footer>
+    <span>
+      <small>&copy; 2021 Steven Herrmann</small>
+    </span>
+    <span>
+      <a id="privacyPolicy"
+        href="https://www.gdprprivacynotice.com/live.php?token=rkNd7ofasU1lXgLYdLFug3UZhBiwj2mN">Privacy Policy</a>
+    </span>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<div class="dev-console__category" data-category-index="{{categoryIndex}}">
+    <div class="dev-console__category-header bg-transparent {{ #custom }}{{ ^collapsed }}opened{{ /collapsed }}{{ /custom }}"
+        data-toggle="collapse"
+        data-target=".collapse.{{snippetsContainerClass}}-{{categoryIndex}}"
+        data-is-custom="{{ #custom }}true{{ /custom }}"
+        data-is-empty="{{ #emptyCategory }}true{{ /emptyCategory }}">
+        <span class="icon-code-icons-light icon-chevron-right"></span>
+
+        <div class="dev-console__category-header-title">
+            <h4 class="w-100">{{categoryName}}</h4>
+        </div>
+
+        {{ #custom }}
+            <a href="#" class="dev-console__category-header-remove dev-console-btn-secondary" data-tippy-content="Remove">
+                <span class="icon-code-icons-light icon-trash"></span>
+            </a>
+        {{ /custom }}
+    </div>
+
+    <div class="dev-console__category-content dev-console__category-snippets collapse {{snippetsContainerClass}}-{{categoryIndex}} {{ #custom }}{{ ^collapsed }}show{{ /collapsed }}{{ /custom }}" data-category-index="{{categoryIndex}}">
+        {{{categorySnippets}}}
+    </div>
+</div>

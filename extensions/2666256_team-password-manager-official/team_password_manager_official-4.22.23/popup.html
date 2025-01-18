@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript" src="js/clipboard.js"></script>
+		<script type="text/javascript" src="js/bootstrap-tooltip.js"></script>
+		<script type="text/javascript" src="js/popup.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/popup.css">
+	</head>
+	<body style="width:500px">
+		<div id="tpm_popup">
+			<div id="tpm_popup_header">
+				<div id="tpm_logo"></div>
+				<h1>Team Password Manager</h1>
+				<div id="tpm_extension_version">__MSG_popBE__</div> <!-- BROWSER EXTENSION --> 
+			</div>
+
+			<div style="clear:both;"></div>
+
+			<ul id="tpmPopupTabs" class="nav nav-tabs">
+				<li id="tpmPopupSearchLi" class="active">
+    			 	<a id="tpmPopupSearchTab" style="cursor:pointer">__MSG_popTabsSearch__</a> <!-- Search -->
+  				</li>
+  				<li id="tpmPopupOptionsLi">
+  					<a id="tpmPopupOptionsTab" style="cursor:pointer">__MSG_popTabsOptions__</a> <!-- Options -->
+  				</li>
+			</ul>
+
+			<div id="tpm_connection_instructions" style="display:none">
+				<p>__MSG_popInstructions1__</p>
+				<!-- To automatically connect the extension to your installation of Team Password Manager, open a new tab on your browser and navigate to Team Password Manager. -->
+
+				<p>__MSG_popInstructions2__</p>
+				<!--Log in if you're logged out. If you're already logged in just refresh the current page. When the extension icon turns blue, the extension is connected.-->
+
+				<p>__MSG_popInstructions3__
+				<a id="tpm_api_connect" href="#">__MSG_popInstructions4__</a></p>
+
+				<!-- If your installation of Team Password Manager is older that v. 9.x then use this link: -->
+				<!-- manually connect the extension using the API -->
+			</div>
+			
+			<form id="tpm_login_form" style="display:none">
+				<p>__MSG_popLoginInstructions__</p>
+				<!-- Please connect the extension to your installation of Team Password Manager: -->
+
+				<div id="tpm_errors"></div>
+				<label><strong>__MSG_popLoginURL__</strong></label> <!-- URL -->
+				<input type="text" class="span11" name="tpm_url_name" id="tpm_url" placeholder="" />
+				<span class="help-block" style="font-size: 12px">__MSG_popLoginURLHelp__ https://tpm.mycompany.com</span>
+
+				<!-- Do not include index.php, e.g.: -->
+
+				<label><strong>__MSG_popLoginUsername__</strong></label> <!-- Username -->
+				<input type="text" class="span6" name="tpm_username_name" id="tpm_username" placeholder=""/>
+
+				<label><strong>__MSG_popLoginPassword__</strong></label> <!-- Password -->
+				<input type="password" class="span6" name="tpm_password_name" id="tpm_password" placeholder=""/>
+
+				<label class="checkbox" style="margin-top: 5px; margin-bottom: 20px">
+					<input type="checkbox" name="tpm_save_password" id="tpm_save_password"> __MSG_popLoginSavePassword__ <!-- Save password -->
+				</label>
+
+
+				<label style="margin-top: 10px"><strong>__MSG_popLoginOptions__</strong></label> <!-- Options -->
+
+				<label class="checkbox" style="margin-top: 15px; margin-bottom: 0px">
+					<input type="checkbox" name="tpm_archived" id="tpm_archived"> __MSG_popLoginOptionsUseArchived__ <!-- Use archived passwords -->
+				</label>
+
+				<label class="checkbox" style="margin-top: 15px; margin-bottom: 15px">
+					<input type="checkbox" name="tpm_offer" id="tpm_offer"> __MSG_popLoginOptionsOfferSave__ <!-- Offer to save web passwords -->
+				</label>
+				
+				<div style="padding-top: 15px; padding-bottom: 10px">
+					<input type="submit" class="btn btn-primary btn-large" value="__MSG_popLoginConnect__"/> <!-- Connect -->
+					<a target="_blank" style="float:right; padding-top: 20px; padding-right: 10px" href="https://teampasswordmanager.com/docs/chrome-extension/">__MSG_popLoginHelp__</a> <!-- Help -->
+				</div>
+			</form>
+
+			<div id="tpm_connection_data" style="display:none">
+				<p>__MSG_popConnected__</p>
+				<!--This extension is connected to:-->
+
+				<p style="margin-bottom: 20px">__MSG_popLoginURL__: <strong><span id="tpm_cd_url"></span></strong><br/>
+				__MSG_popLoginUsername__: <strong><span id="tpm_cd_username"></span></strong></p>
+				
+				<label class="checkbox" style="margin-top: 15px; margin-bottom: 0px">
+					<input type="checkbox" id="tpm_archived_check"> __MSG_popLoginOptionsUseArchived__ <!-- Use archived passwords -->
+				</label>
+				
+				<label class="checkbox" style="margin-top: 10px; margin-bottom: 20px">
+					<input type="checkbox" id="tpm_offer_check"> __MSG_popLoginOptionsOfferSave__ <!-- Offer to save web passwords --><br/><span style="font-size: 12px" id="tpm_cd_offer"></span>
+				</label>
+
+				<div style="padding-top: 10px">
+					<button class="btn btn-large" id="tpm_btn_close">__MSG_popClose__</button> <!-- Close -->
+					
+					<a target="_blank" style="padding-top: 20px; padding-left: 10px" href="http://teampasswordmanager.com/docs/chrome-extension/">__MSG_popLoginHelp__</a>
+
+					<button style="float:right" class="btn btn-large" id="tpm_btn_disconnect">__MSG_popDisconnect__</button> <!-- Disconnect -->
+				</div>
+			</div>
+
+			<div id="tpm_search">
+				<div id="tpm_search_inside" style="margin-bottom: 10px">
+					<form id="tpm_search_form" class="form-inline" style="margin: 0">
+						
+						<input type="text" autocomplete="off" style="width: 250px" name="tpm_search_string_name" id="tpm_search_string" placeholder="__MSG_popSearchStringPlaceholder__" /> <!-- Search string -->
+
+						<select id="tpm_search_where" style="width: 82px">
+	  						<option value="shared">__MSG_popSearchShared__</option> <!-- Shared -->
+	  						<option value="my">__MSG_popSearchMy__</option> <!-- My -->
+	  					</select>
+	 
+						<input type="submit" class="btn" value="__MSG_popSearchButton__"/> <!-- Search -->						
+					</form>
+				</div>
+
+				<div id="tpm_search_results_main" sytle="padding: 0; margin: 0">
+
+					<div style="text-align: center; font-size: 14px">
+						<p id="tpm_img_wait_search" style="margin-top: 20px; margin-bottom: 0; display:none"><img src="../../img/wait.gif" /> __MSG_popSearchingPwds__</p> <!-- Searching passwords -->
+						<p id="tpm_no_pwds_found" style="margin-top: 20px; margin-bottom: 0; display:none">__MSG_popSearchNoPwdsFound__</p> <!-- No paswords found -->
+					</div>
+
+					<!-- Number of passwords found -->
+					<p id="tpm_num_passwords_found" style="display:none; font-size: 12px; margin-top: 0px"></p>
+
+					<!-- Fetching label next/previous page -->
+					<p id="tpm_img_wait_page" style="display:none; font-size: 12px"><img src="../../img/wait.gif" />  __MSG_popSearchFetchingPwds__</p> <!-- Fetching passwords -->
+
+					<div style="margin-bottom: 10px; font-size: 12px;">
+						<div class="tpm_pagination"><a style="display:none" class="tpm_previous_page" href="#">&laquo; __MSG_generalPrevious__</a><span style="display:none" class="tpm_previous_page">&nbsp;&nbsp;</span><a style="display:none" class="tpm_next_page" href="#">__MSG_generalNext__ &raquo;</a></div>
+					</div>
+
+					<div id="tpm_search_results" style="display: none; background-color: #fff; padding: 5px 0 5px 0"></div>
+
+					<div style="margin-bottom: 10px; font-size: 12px;">
+						<div class="tpm_pagination"><a style="display:none" class="tpm_previous_page" href="#">&laquo; __MSG_generalPrevious__</a><span style="display:none" class="tpm_previous_page">&nbsp;&nbsp;</span><a style="display:none" class="tpm_next_page" href="#">__MSG_generalNext__ &raquo;</a></div>
+					</div>
+
+				</div>
+
+			</div>
+
+			
+		</div> <!-- tpm_popup -->
+	</body>
+</html>

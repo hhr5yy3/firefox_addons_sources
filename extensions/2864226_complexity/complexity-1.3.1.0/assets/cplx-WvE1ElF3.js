@@ -1,0 +1,1 @@
+const e={tooltip:"Изабери језички модел"},o={tooltip:"Изабери модел за слике"},l={languageModelSelector:e,imageGenModelSelector:o};export{l as default,o as imageGenModelSelector,e as languageModelSelector};

@@ -1,0 +1,1 @@
+const e={header:"Sitzung abgelaufen",description:"Ihre Sitzung ist abgelaufen (wahrscheinlich wegen Cloudflare).",buttons:{reload:"Neu laden",dismiss:"Schließen"}},a={dialog:e};export{a as default,e as dialog};

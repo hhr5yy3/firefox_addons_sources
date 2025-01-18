@@ -1,0 +1,254 @@
+<!--
+ Ce document est la propriété intellectuelle de Druide informatique inc. Toute reproduction ou publication est interdite.
+ Copyright 2022 Druide informatique inc.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<link rel="stylesheet" type="text/css" href="css/racine.css">
+	<link rel="stylesheet" type="text/css" href="css/option.css">
+	<script language="javascript" type="text/javascript" src="../src/tierces_parties/browser-polyfill.min.js"></script>
+	<script language="javascript" type="text/javascript" src="../src/cstAntidote.js"></script>
+	<script language="javascript" type="text/javascript" src="../src/dictionnaire.js"></script>
+	<script language="javascript" type="text/javascript" src="../src/gestion-t.js"></script>
+	<script language="javascript" type="text/javascript" src="../src/outils.js"></script>
+	<script language="javascript" type="text/javascript" src="../extensions/Dialogue/dialogue_patron.js"></script>
+	<script language="javascript" type="text/javascript" src="../extensions/Dialogue/dialogue.js"></script>
+	<script language="javascript" type="text/javascript" src="option.js"></script>
+	<!-- <link rel="stylesheet" type="text/css" href="../resources/druide.css"> -->
+	<title>Réglages du Connecteur Antidote</title>
+</head>
+
+<body>
+	<table id="parent_titre">
+        <tr>
+            <td id="contenant_titre">
+                <div class="sur_ligne"><img id="image_titre" src="../images/Fiole_128.png"></div>
+                <div class="sur_ligne"><h1 id="titre">Configuration du Connecteur Antidote</h1></div>
+				<div id="beta" class="etiquette-beta" style="display: none;">Bêta</div>
+            </td>
+        </tr>
+    </table>
+	<div id="reglages" class="wrapper">
+		<div id="menu_nav" class="box c">
+			<!-- <div id="reglagetitre_m" class="box">Réglages</div> -->
+			<div id="contextmenu_m" class="box menu" data-panneau="contextmennu_p" style="box-shadow: 0 3px 0 #2496ff;">Connecteur</div>
+			<div id="detecteurweb_m" class="box menu" data-panneau="detecteurweb_p" style="display: none;">Correction express</div>
+			<div id="propos_m" class="box menu" data-panneau="propos_p">À propos</div>
+		</div>
+
+		<div id="contextmennu_p" class="box d contextmennu_p panneau" style="display: block;">
+			<div id="setcion_mc" style="display: none;">
+				<div id="titre_contextmenu" class="sous_titre">Menu contextuel</div>
+				<div id="description_contextmenu" class="box description">Description, lorem ipsum dolor, sit amet
+					consectetur adipisicing elit. Veniam nam voluptates in hic excepturi consectetur totam voluptatem
+					asperiores, pariatur est error amet ducimus saepe beatae, aspernatur architecto maxime! Eligendi, ex!
+				</div>
+				<div id="choix_contextmenu" class="box liste_radio" >
+					<div class="contenant_radio">
+						<input type="radio" id="mc_regroupay" name="choix_menu_contextuel" value="mc_regroupay" checked />
+						<label id="menuanti" for="mc_regroupay" class="label_radio">Menu &#171; Antidote &#187;</label>
+					</div>
+					<div class="contenant_radio">
+						<input type="radio" id="mc_correcteur" name="choix_menu_contextuel" value="mc_correcteur" />
+						<label id="menucorr" for="mc_correcteur" class="label_radio">Menu &#171; Correcteur &#187;</label>
+					</div>
+					<div class="contenant_radio">
+						<input type="radio" id="mc_dictionnaires" name="choix_menu_contextuel" value="mc_dictionnaires" />
+						<label id="menudict" for="mc_dictionnaires" class="label_radio">Menu &#171; Dictionnaires &#187;</label>
+					</div>
+					<div class="contenant_radio">
+						<input type="radio" id="mc_guides" name="choix_menu_contextuel" value="mc_guides" />
+						<label id="menuguid" for="mc_guides" class="label_radio">Menu &#171; Guides &#187;</label>
+					</div>
+				</div>
+				<hr>
+			</div>
+			<div id="titre_antidoteweb" class="sous_titre">Antidote Web</div>
+			<div id="description_antidoteweb" class="box description">Description Antidote Web, lorem ipsum dolor, sit amet
+				consectetur adipisicing elit. Veniam nam voluptates in hic excepturi consectetur totam voluptatem
+				asperiores, pariatur est error amet ducimus saepe beatae, aspernatur architecto maxime! Eligendi, ex!
+			</div>
+			<div id="setcion_aw">
+				<div id="choix_antidoteweb" class="box liste_radio">
+					<div class="contenant_radio">
+						<input type="radio" id="nouvel_onglet" name="choix_aweb" value="nouvel_onglet"  />
+						<label id="nouvel_onglet_aweb_label" class="label_radio" for="nouvel_onglet">Ouvrir dans un nouvel onglet</label>
+					</div>
+					<div class="contenant_radio">
+						<input type="radio" id="nouvelle_fenetre" name="choix_aweb" value="nouvelle_fenetre" checked />
+						<label id="nouvelle_fenetre_aweb_label" class="label_radio" for="nouvelle_fenetre">Ouvrir dans une nouvelle fenêtre</label>
+					</div>
+				</div>
+			</div>
+
+			<div id="setcion_thunderbird_signature" style="display: none;">
+				<div id="titre_thunderbird_signature" class="sous_titre">Signature</div>
+				<div id="description_thunderbird_signature" class="box description">
+					<input type="checkbox" id="antioups_traitesignature" />
+					<label id="traitesignature_label" class="label_checkbox" for="antioups_traitesignature">Corriger la signature</label>
+				</div>
+			</div>
+	
+			<div id="etat_aweb_boite" class="box f" style="display:none">
+				<div id="etat_aweb" class="aweb_etat aweb_connecter">Antidote Web est connecté</div>
+			</div>
+		</div>
+
+		<div id="detecteurweb_p" class="box d detecteurweb_p panneau" style="display: none;">
+			<div class="div_sp_chevron"><img src="../images/icone-chevron.svg" id="dw_chevron" class="_svg chevron img_chevron"></div>
+			<div id="activation_detecteurweb" class="box f">
+				<div class="contenant_checkbox">
+					<input type="checkbox" id="detecteurweb_activation" />
+					<label id="detecteurweb_label" class="label_checkbox" for="detecteurweb_activation">Activer Correction Express</label>
+				</div>
+				<div id="choix_detecteurweb" class="liste_radio" style="display: none;">
+					<div class="contenant_radio">
+						<input type="radio" id="antidote_defaut_choix" name="choix_dweb" value="0" checked/>
+						<label id="antidote_defaut_dweb_label" class="label_radio" for="antidote_defaut_choix">Utiliser Antidote selon les réglages</label>
+					</div>		
+					<div class="contenant_radio">
+						<input type="radio" id="antidote_local_choix" name="choix_dweb" value="1"  />
+						<label id="antidote_local_dweb_label" class="label_radio" for="antidote_local_choix">Utiliser Antidote 12</label>
+					</div>
+					<div class="contenant_radio">
+						<input type="radio" id="antidote_web_choix" name="choix_dweb" value="2"  />
+						<label id="antidote_web_dweb_label" class="label_radio" for="antidote_web_choix">Utiliser Antidote Web</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="box div_liste">
+				<div id="description_listeexclusion_detecteurweb" class="div_description_liste">Liste des exclusions</div>
+				<div id="listeexclusion_detecteurweb" class="div_contenu_liste">
+				</div>
+				<div class="div_modification_liste">
+					<div id="ajoute_exclue" class="div_modification_liste_plus">
+						<img class="liste_image_plus" src="../images/plus13x13.svg">
+					</div>
+					<div id="enleve_exclue" class="div_modification_liste_moins">
+						<img class="liste_image_moins" src="../images/moins13x13.svg">
+					</div>
+				</div>
+			</div>
+			
+			<div class="box f" style="display: none;">
+				<div class="contenant_checkbox">
+					<input type="checkbox" id="detecteurweb_antioups_activation"/>
+					<label id="detecteurweb_antioups_activation_label" class="label_checkbox" for="detecteurweb_antioups_activation">Activer l'Anti-Oups</label>
+				</div>
+				<div class="div_liste">
+					<div id="antioups_detecteurweb" class="div_contenu_liste">
+					</div>
+					<div class="div_modification_liste">
+						<div id="ajoute" class="div_modification_liste_plus">
+							<img class="liste_image_plus" src="../images/plus13x13.svg">
+						</div>
+						<div id="enleve" class="div_modification_liste_moins">
+							<img class="liste_image_moins" src="../images/moins13x13.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="dev_dweb" style="display: none;" class="dev" >
+				<h2> DEV seulement</h2>
+				<div id="choix_dweb" class="box f">
+					<div>
+						<input type="radio" id="dweb_defaut" name="choix_dweb_dev" value="dweb_defaut" checked />
+						<label id="dweb_beta_dev_label" class="label_radio" for="dweb_defaut">Utiliser *.antidote.app</label>
+					</div>
+					<div>
+						<input type="radio" id="dweb_autre" name="choix_dweb_dev" value="dweb_autre" checked />
+						<label id="dweb_autre_dev_label" class="label_radio" for="dweb_autre">Utiliser https://<input id="nouvelle_adresse_dweb"></input></label>
+					</div>
+					<div>
+						<input type="radio" id="dweb_docker" name="choix_dweb_dev" value="dweb_docker"  />
+						<label id="dweb_docker_dev_label" class="label_radio" for="dweb_docker">Utiliser Docker</label>
+					</div>
+				</div>
+			</div>
+			<div id="description_detecteurweb" class="box description">Description, lorem ipsum dolor, sit amet
+				consectetur adipisicing elit. Veniam nam voluptates in hic excepturi consectetur totam voluptatem
+				asperiores, pariatur est error amet ducimus saepe beatae, aspernatur architecto maxime! Eligendi, ex!
+			</div>
+			
+		</div>
+
+		<div id="propos_p" class="box d propos_p panneau" style="display: none;">
+			<div class="div_sp_chevron"><img src="../images/icone-chevron.svg" id="propos_chevron" class="_svg chevron img_chevron"></div>
+			<div id="description_propos" class="box description" style="display: none;">Description A propos, lorem ipsum dolor, sit amet
+				consectetur adipisicing elit. Veniam nam voluptates in hic excepturi consectetur totam voluptatem
+				asperiores, pariatur est error amet ducimus saepe beatae, aspernatur architecto maxime! Eligendi, ex!
+			</div>
+			<div id="version_interne_label" class="sous_titre">Version</div>
+			<div id="version_interne_val" class="box sur_ligne">11.0.0</div><br/>
+			<div id="section_credit" class="box f">
+				<div id="credit" class="sous_titre">Crédit</div>
+				<div id="description_credit" class="box description">Le connecteur d’Antidote utilise des librairies provenant de tierces parties.</div>
+				<ul id="liste_mentions">
+					<li>
+						<div class="tierce_partie sur_ligne"><a href="https://github.com/google/diff-match-patch" class="lien_tierce_partie">diff_match_patch</a></div>
+						<div class="licence sur_ligne">(<a href="https://github.com/google/diff-match-patch/blob/master/LICENSE" class="lien_licence">Licence Apache-2.0</a>)</div><br/>
+					</li>
+					<li>
+						<div class="tierce_partie sur_ligne"><a href="https://github.com/facebook/react/" class="lien_tierce_partie">React</a></div>
+						<div class="licence sur_ligne">(<a href="https://github.com/facebook/react/blob/main/LICENSE" class="lien_licence">MIT</a>)</div><br/>
+					</li>
+					<div class="pour_beta_a12"></div>
+					<li>
+						<div class="tierce_partie sur_ligne"><a href="https://github.com/InboxSDK/InboxSDK" class="lien_tierce_partie">InboxSDK</a></div>
+						<div class="licence sur_ligne">(<a href="https://github.com/InboxSDK/InboxSDK/blob/main/LICENSE-MIT.txt" class="lien_licence">MIT</a>)</div><br/>
+					</li>
+					<div class="pour_chrome_mv2">
+					<li>
+							<div class="tierce_partie sur_ligne"><a href="https://github.com/mozilla/webextension-polyfill" class="lien_tierce_partie">WebExtension browser API Polyfill</a></div>
+							<div class="licence sur_ligne ">(<a href="https://github.com/mozilla/webextension-polyfill/blob/master/LICENSE" class="lien_licence">Mozilla Public License 2.0</a>)</div>
+						</li>
+					</div>		
+				</ul>
+			</div>
+			<div id="titre_boite_adresse" class="sous_titre">Avancé</div>
+			<div id="boite_adresse" class="box">
+				<input id="barre_adresse" spellcheck="false">
+				<button id="bouton-go" type="button" class="bouton-actions bouton-nondefaut">Soumettre</button>
+			</div>
+			
+
+			<div id="erreur_log_section" style="display: none;" class="dev">
+				<h2> log des erreurs</h2>
+				<div>
+					<textarea id="erreur_log_textarea"></textarea>
+				</div>
+				<div>
+					<button id="bouton-supprime_erreur_log" type="button" class="bouton-actions bouton-defaut">Supprimer les logs</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="boutons">
+		<button id="bouton-valider" type="button" class="bouton-actions bouton-defaut">OK</button>
+	</div>
+
+	<div id="extensionsperimees" style="display:none">
+		<div id="extensionsperimees_note">
+			<h2 id="extper_titre"></h2>
+			<div id="extper_message"> </div>
+			<br />
+			<div id="extper_autorisation"> </div>
+			<br />
+			<div id="extper_message2"> </div>
+			<div id="extper_liste" class="uneliste"> </div>
+			<br />
+			<button id="extper_effacer"></button>
+		</div>
+	</div>
+
+</body>
+
+</html>

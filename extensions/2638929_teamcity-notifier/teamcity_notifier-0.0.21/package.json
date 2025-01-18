@@ -1,0 +1,91 @@
+{
+  "name": "browser-notifier",
+  "version": "0.0.21",
+  "description": "Browser extension for TeamCity notifications",
+  "main": "index.js",
+  "author": "JetBrains",
+  "license": "Apache-2.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "node build-assets.js",
+    "lint": "eslint . --cache && web-ext lint -i src",
+    "start": "webpack --mode development --watch | web-ext run -t chromium -t firefox-desktop",
+    "start-android": "web-ext run -t chromium -t firefox-android",
+    "build-dist": "webpack --mode production",
+    "build": "npm run build-dist && npm run lint && web-ext build -i src -i package-lock.json --overwrite-dest",
+    "sign": "web-ext sign -i src --api-key=$MOZILLA_API_KEY --api-secret=$MOZILLA_API_SECRET --id=teamcity-notifier-extension@jetbrains.com",
+    "zip-src": "bestzip src.zip src package.json package-lock.json README.md webpack.config.js build-assets.js",
+    "update-version": "npm version patch --no-git-tag-version && node publish-scripts/version.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/eslint-parser": "^7.13.8",
+    "@hypnosphi/chrome-store-api": "^1.0.5",
+    "@jetbrains/babel-preset-jetbrains": "^2.1.4",
+    "@jetbrains/eslint-config": "^5.3.1",
+    "bestzip": "^2.1.7",
+    "convert-svg-to-png": "^0.5.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.0",
+    "fs-extra": "^9.0.1",
+    "html-webpack-plugin": "^4.3.0",
+    "postcss": "^8.2.6",
+    "prettier": "^2.0.5",
+    "teamcity-service-messages": "^0.1.11",
+    "web-ext": "^5.5.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "@jetbrains/icons": "^3.7.0",
+    "@jetbrains/logos": "^2.2.29",
+    "@jetbrains/ring-ui": "^3.1.9",
+    "classnames": "^2.2.6",
+    "core-js": "^3.6.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webextension-polyfill": "^0.6.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@jetbrains/eslint-config/base",
+      "@jetbrains/eslint-config/es6",
+      "@jetbrains/eslint-config/browser",
+      "@jetbrains/eslint-config/react",
+      "prettier",
+      "prettier/react"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "parser": "@babel/eslint-parser",
+    "env": {
+      "browser": true,
+      "es2020": true,
+      "webextensions": true
+    },
+    "rules": {
+      "no-unused-vars": "warn",
+      "no-undef": "error",
+      "prettier/prettier": "warn",
+      "default-case": "off",
+      "no-magic-numbers": "off",
+      "import/no-commonjs": "off",
+      "react/prop-types": "off"
+    }
+  },
+  "prettier": {
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": false,
+    "arrowParens": "avoid",
+    "endOfLine": "lf"
+  }
+}

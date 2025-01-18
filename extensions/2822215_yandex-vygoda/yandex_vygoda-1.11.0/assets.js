@@ -1,0 +1,11 @@
+PATH['error-init.standalone'] = 'touch_ES2018_ffa7873d_error-init.standalone.js';
+PATH['rum-init.standalone'] = 'touch_ES2018_727165af_rum-init.standalone.js';
+PATH['rum-opts.standalone'] = 'touch_ES2018_cdd51bc3_rum-opts.standalone.js';
+PATH['std'] = 'touch_ES2018_834285ae_std.js';
+PATH['sw.standalone'] = 'sw.standalone.js';
+PATH['favicons'] = 'touch_ES2018_assets/f631394b_favicons';
+PATH['p-root_style'] = 'touch_ES2018_9a558cf5_p-root_style.css';
+PATH['p-root'] = 'touch_ES2018_1d782a27_p-root.js';
+PATH['p-root_tpl'] = 'touch_ES2018_00b794e1_p-root_tpl.js';
+PATH['vendor'] = 'touch_ES2018_1350a0ec_vendor.js';
+PATH['p-root_view'] = 'touch_ES2018_fef1b0cf_p-root_view.js';

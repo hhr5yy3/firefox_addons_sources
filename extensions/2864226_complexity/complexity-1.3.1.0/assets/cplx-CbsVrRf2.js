@@ -1,0 +1,1 @@
+const a={header:"Sessione scaduta",description:"La tua sessione è scaduta (probabilmente a causa di Cloudflare).",buttons:{reload:"Ricarica",dismiss:"Chiudi"}},e={dialog:a};export{e as default,a as dialog};

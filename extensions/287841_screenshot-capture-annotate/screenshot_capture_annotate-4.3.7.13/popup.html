@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="font-awesome-5.9.0/css/all.min.css" />
+    <link href="stylesheets/popup.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body class="popup_page">
+    <div id="main-menu" class="layout-view">
+      <div class="popup vertical closable" data-name="sign-in">
+        <div class="center-block">
+          <div class="close">+</div>
+          <p class="content">
+            Please sign in first.
+          </p>
+          <div class="btn-area">
+            <div class="popup-btn primary" id="popup-sign-in-btn">
+              Sign in
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="popup" id="res-upgrade">
+        <div class="close">+</div>
+        <div class="center">
+          <h2>Upgrade to unlock the high resolution recording feature</h2>
+          <p>
+            High resolution video takes lots of disk space, so you need to
+            upgrade to use this feature.
+          </p>
+          <div
+            class="btn upgrade-btn"
+            id="goToUpgrade"
+            data-reason="Record_resolution"
+          >
+            Go To Upgrade
+          </div>
+        </div>
+      </div> -->
+      <div class="header">
+        <div class="logo">
+        </div>
+      </div>
+      <div class="tab-container">
+        <div class="tab-item tab-screenshot">
+          <div class="tab-title" >
+            <span>Screenshot</span>
+          </div>
+          <ul class="vertical">
+            <li><a id="visible" class="i18n"></a></li>
+            <li>
+              <a id="delay" class="i18n"
+                ><span></span></a
+              >
+            </li>
+            <!--<li class="sep"></li>-->
+            <li>
+              <a id="selected" class="i18n"><span></span>Capture selected area</a
+              >
+            </li>
+            <li><a id="entire" class="i18n"></a></li>
+            <li>
+              <a id="upload" class="i18n"><span></span></a>
+            </li>
+          </ul>
+        </div>
+        <hr/>
+        <div class="tab-item tab-record">
+          <div class="tab-title" >
+            <span>Record</span>
+          </div>
+          <ul class="vertical">
+            <li><a id="screen" class="i18n"></a></li>
+            <li><a id="camera" class="i18n"></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="aws-account">
+        <div class="aws-info">
+          <div class="aws-user-container">
+            <div class="aws-login">
+              <a href="#" id="aws-login">Sign in</a>
+            </div>
+            <div class="aws-user">
+              <div class="user-icon"></div>
+              <span class="user-name"></span>
+              <a id="aws-info-upgrade" target="_blank" class="aws-upgrade"
+                >upgrade</a
+              >
+              <span
+                class="aws-premium-icon shine-effect"
+                title="Premium user"
+              ></span>
+            </div>
+
+            <div class="action-area">
+              <div class="action-btn option">
+                <div class="tooltip">Options</div>
+              </div>
+              <div class="action-btn feedback">
+                <div class="tooltip">Send Feedback</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="more-links">
+          <div class="more-links-container">
+            <div class="more-links-item mp">
+              <div class="more-links-icon"></div>
+              My Screenshots
+            </div>
+            <div class="more-links-item mv">
+              <div class="more-links-icon"></div>
+              My Videos
+            </div>
+            <div class="sep"></div>
+            <div class="more-links-item logout">
+              <div class="more-links-icon"></div>
+              Log out
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <ul id="moreLinks" class="clearfloat horizontal">
+        <li>
+          <a id="option"><span></span>Options</a>
+        </li>
+        <li>
+          <a id="help"><span></span>Send Feedback</a>
+        </li>
+      </ul> -->
+    <!--<div class="sep"></div>-->
+    <div id="recording-view" class="layout-view">
+      <div class="popup" id="discard-popup">
+        <h3>Warning</h3>
+        <p>
+          Discarded recording will be permanently deleted. Are you sure you want
+          to discard this recording?
+        </p>
+        <div class="btn-area">
+          <div class="popup-btn" id="discard-cancel">No</div>
+          <div class="popup-btn discard-btn" id="discard-confirm">
+            Yes, discard
+          </div>
+        </div>
+      </div>
+      <div id="recording-error" class="recording-error">
+        Recording paused due to network error. Check your network and click
+        resume to continue recording after your network is back to normal; or
+        click Stop to save what has been recorded and then report the issue to
+        us.
+      </div>
+      <div class="title-area">
+        <div>
+          <div class="title-icon"></div>
+          Recording...
+        </div>
+        <div class="camera-action" id="toggle-camera">
+          <div class="camera-action-icon"></div>
+          <span>Embed Camera</span>
+        </div>
+      </div>
+      <div class="time">00:59</div>
+      <div class="recording-action">
+        <div class="recording-action-btn discard" id="record-discard">
+          <i class="fa fa-trash"></i>
+          DISCARD
+        </div>
+        <div class="recording-action-btn pause" id="record-pause">
+          <i class="fa fa-pause"></i>
+          PAUSE
+        </div>
+        <div class="recording-action-btn resume" id="record-resume">
+          <i class="fa fa-play"></i>
+          RESUME
+        </div>
+        <div class="recording-action-btn stop" id="record-stop">
+          <i class="fa fa-stop"></i>
+          STOP
+        </div>
+      </div>
+      <!-- <div class="camera-action" id="show-camera">
+        Show Camera
+      </div> -->
+    </div>
+    <div id="video-prepare-view" class="layout-view">
+      <div class="loading">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+      <div class="prepare-tip">
+        Preparing for recording ...
+      </div>
+    </div>
+
+    <div id="capturing-view" class="layout-view">
+      <div class="capturing-title">Entire page capturing...</div>
+      <div class="progress-bar">
+        <div class="progress-percentage" id="entire-progress-percentage">
+          0%
+        </div>
+        <div class="progress-bar-inner" id="entire-progress"></div>
+      </div>
+      <div class="capturing-tip">
+        Please <span>do not scroll</span> or move your mouse pointer while
+        capturing in order to get the best result.
+      </div>
+      <div class="capturing-tip" id="stop-msg">
+        For very long pages or infinite scroll pages, you can end the capturing
+        manually by clicking <a id="stop-entire-capture">stop</a>.
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="javascripts/libs/jquery-3.4.0.min.js"
+    ></script>
+    <script type="text/javascript" src="javascripts/detect.js"></script>
+    <script type="text/javascript" src="javascripts/popup.js"></script>
+  </body>
+</html>

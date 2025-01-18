@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link
+			rel="icon"
+			type="image/x-icon"
+			href="./images/favicon.svg"
+		/>
+		<title>Document Converter & Search</title>
+		<link
+			rel="stylesheet"
+			href="./css/extStyle.css"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,300;1,500&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<img
+					src="./images/logo-search.svg"
+					alt="site-logo"
+				/>
+			</header>
+			<section class="widget-sec">
+				<div
+					class="disabled-overlay"
+					style="display: none"
+				>
+					<div class="disabled-inner">
+						<p class="disabled-head">Welcome to Document Converter &amp; Search</p>
+						<p class="disabled-desc">To activate this feature, an opt-in is necessary. Please grant us the required permissions.</p>
+						<a class="enable-optinCta">View Permissions</a>
+					</div>
+				</div>
+				<div
+					class="grid"
+					style="display: none"
+				>
+					<div class="left-widget-sec">
+						<h1>Select your conversion format</h1>
+						<div class="convert-wrap">
+							<div class="convert-wrap-inner convert-wrap-inner-1">
+								<h2>Convert to PDF:</h2>
+								<ul class="menu">
+									<li id="docToPdf">
+										<img
+											src="./images/doc-pdf.svg"
+											alt="format-img"
+										/>
+										<p>DOC to PDF</p>
+									</li>
+									<li id="jpgToPdf">
+										<img
+											src="./images/jpg-pdf.svg"
+											alt="format-img"
+										/>
+										<p>JPG to PDF</p>
+									</li>
+									<li id="pngToPdf">
+										<img
+											src="./images/png-pdf.svg"
+											alt="format-img"
+										/>
+										<p>PNG to PDF</p>
+									</li>
+									<li id="pptToPdf">
+										<img
+											src="./images/ppt-pdf.svg"
+											alt="format-img"
+										/>
+										<p>PPT to PDF</p>
+									</li>
+									<li id="xlsToPdf">
+										<img
+											src="./images/xls-pdf.svg"
+											alt="format-img"
+										/>
+										<p>XLS to PDF</p>
+									</li>
+									<li id="mergeToPdf">
+										<img
+											src="./images/merge-pdf.svg"
+											alt="format-img"
+										/>
+										<p>Merge to PDF</p>
+									</li>
+								</ul>
+							</div>
+							<div class="convert-wrap-inner convert-wrap-inner-2">
+								<h2>Convert from PDF:</h2>
+								<ul class="menu">
+									<li id="pdfToDoc">
+										<img
+											src="./images/pdf-doc.svg"
+											alt="format-img"
+										/>
+										<p>PDF to DOC</p>
+									</li>
+									<li id="pdfToJpg">
+										<img
+											src="./images/pdf-jpg.svg"
+											alt="format-img"
+										/>
+										<p>PDF to JPG</p>
+									</li>
+									<li id="pdfToPng">
+										<img
+											src="./images/pdf-png.svg"
+											alt="format-img"
+										/>
+										<p>PDF to PNG</p>
+									</li>
+									<li id="pdfToPpt">
+										<img
+											src="./images/pdf-ppt.svg"
+											alt="format-img"
+										/>
+										<p>PDF to PPT</p>
+									</li>
+									<li id="pdfToXls">
+										<img
+											src="./images/pdf-xls.svg"
+											alt="format-img"
+										/>
+										<p>PDF to XLS</p>
+									</li>
+									<li id="mergePdf">
+										<img
+											src="./images/merge-pdf-2.svg"
+											alt="format-img"
+										/>
+										<p>Merge PDF</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div
+						class="right-widget-sec disable-upload"
+						id="right-widget"
+					>
+						<div
+							class="upload-sec"
+							id="drop-file"
+						>
+							<img
+								src="./images/upload-icon.svg"
+								alt="uploadIcon"
+							/>
+							<p class="text-1">Drag your files here, or</p>
+
+							<form
+								id="upload-form"
+								enctype="multipart/form-data"
+							>
+								<input
+									type="file"
+									name="file"
+									id="file-input"
+									style="display: none"
+									multiple
+								/>
+								<button
+									id="browse-button"
+									type="button"
+								>
+									Browse File
+								</button>
+								<button
+									type="submit"
+									style="display: none"
+								>
+									Convert
+								</button>
+							</form>
+							<p class="text-2">Supports files up to 5 MB</p>
+							<p
+								class="error-text"
+								style="display: none"
+							></p>
+						</div>
+						<div class="convert-sec">
+							<div class="convert-sec-inner">
+								<ul class="file-list"></ul>
+								<div
+									class="upload-wrap"
+									style="display: none"
+								>
+									<form enctype="multipart/form-data">
+										<input
+											type="file"
+											multiple
+											style="display: none"
+											id="fileInput"
+										/>
+										<img src="./images/plus_add.svg" />
+										<p class="plus_add_text">
+											Add more<br />
+											files
+										</p>
+									</form>
+								</div>
+							</div>
+							<button id="convert-files">Convert</button>
+						</div>
+						<div class="loader-sec">
+							<img
+								src="./images/loader-img.svg"
+								alt="loader-img"
+							/>
+							<p class="loader-text">Conversion in progress...</p>
+							<button disabled>Download</button>
+						</div>
+						<div class="download-sec">
+							<img
+								class="file-type"
+								id="file-type"
+								src="./images/pdf.svg"
+								alt="file-type"
+							/>
+
+							<p
+								class="file_name"
+								id="converted_file_name"
+							>
+								file_name.pdf
+							</p>
+							<p class="file-size">405 KB</p>
+							<p class="download-sec-title">Your file is ready.</p>
+							<button id="download">Download</button>
+							<ul class="feature-list">
+								<li>
+									<div class="icon-wrap">
+										<img
+											src="./images/preview.svg"
+											alt="preview"
+										/>
+									</div>
+									<p>Preview</p>
+								</li>
+								<li>
+									<div class="icon-wrap">
+										<img
+											src="./images/delete.svg"
+											alt="preview"
+										/>
+									</div>
+									<p>Discard</p>
+								</li>
+								<li>
+									<div class="icon-wrap">
+										<img
+											src="./images/whatsapp.svg"
+											alt="preview"
+										/>
+									</div>
+									<p>WhatsApp</p>
+								</li>
+								<li>
+									<div class="icon-wrap">
+										<img
+											src="./images/mail.svg"
+											alt="preview"
+										/>
+										<a
+											id="mailtoLink"
+											style="display: none"
+										></a>
+									</div>
+									<p>Mail</p>
+								</li>
+								<li class="copied">
+									<div class="icon-wrap">
+										<img
+											src="./images/share.svg"
+											alt="preview"
+										/>
+									</div>
+									<p>Share Link</p>
+									<span
+										class="link-copied"
+										style="display: none"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="11"
+											height="8"
+											viewBox="0 0 11 8"
+											fill="none"
+										>
+											<path
+												d="M3.86762 5.48035L1.25211 3.476L0 5.03795L3.62648 7.81875C3.81682 7.95808 4.05493 8.02079 4.29148 7.9939C4.52803 7.96701 4.74489 7.85257 4.89713 7.67429L11 0.153486L8.31029 0L3.86762 5.48035Z"
+												fill="#24A0ED"
+											/>
+										</svg>
+										Link Copied
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section
+				class="search-sec"
+				style="display: none"
+			>
+				<div class="grid-form">
+					<form id="searchForm">
+						<input
+							type="text"
+							id="searchInput"
+							placeholder="Search the web"
+						/>
+					</form>
+				</div>
+			</section>
+			<footer>
+				<ul>
+					<li>
+						<a
+							href="https://documentconverter.com/public/privacypolicy_ff.html"
+							target="_blank"
+							>Privacy Policy</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://documentconverter.com/public/termsofservice_ff.html"
+							target="_blank"
+							>Terms of Service</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://documentconverter.com/public/contactus_ff.html"
+							target="_blank"
+							>Contact Us</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://documentconverter.com/public/uninstall_ff.html"
+							target="_blank"
+							>Uninstall</a
+						>
+					</li>
+					<li>
+						<a
+							href="https://documentconverter.com/public/ccpa_ff.html"
+							target="_blank"
+							>Do not share my personal information</a
+						>
+					</li>
+				</ul>
+			</footer>
+		</div>
+		<div
+			class="privacyOptin-overlay"
+			style="display: none"
+		>
+			<div class="optin-wrap">
+				<p class="optin-head">Your Privacy is Our Priority</p>
+				<div class="p-icon-wrap">
+					<img
+						src="./images/privacy.svg"
+						alt="privacy-icon"
+					/>
+				</div>
+				<div class="privacy-cont">
+					<form id="uninstallForm">
+						<div class="form-group">
+							<ul>
+								<li>Can we collect and process the following personal data:</li>
+							</ul>
+							<p>
+								User inputs (files): While using the add-on, we collect and process the files uploaded by you to convert them to a specific file
+								format. This data cannot be used to personally identify any user.
+							</p>
+						</div>
+					</form>
+					<p class="ref-desc">
+						Refraining from sharing this data will affect our ability to offer relevant conversion results.
+						<br />
+						<b>You can continue to enjoy the customized web browsing feature.</b>
+					</p>
+					<div class="button-flex">
+						<a class="optin-cta disagree">Decline</a>
+						<a class="optin-cta agree">Accept</a>
+					</div>
+					<p class="privacy-desc">
+						For detailed information on the data collected by the application and the purposes behind it, please read our
+						<a
+							href="https://documentconverter.com/public/privacypolicy_ff.html"
+							target="_blank"
+							>Privacy Policy</a
+						>.
+					</p>
+				</div>
+			</div>
+		</div>
+		<script src="./js/script.js"></script>
+	</body>
+</html>

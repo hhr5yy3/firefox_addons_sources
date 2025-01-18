@@ -1,0 +1,43 @@
+{
+  "version"         : "1.0.8",
+  "manifest_version": 2,
+  "name"            : "ECP",
+  "short_name"      : "ARM ECP",
+  "description"     : "Расширение для плагина ARM ECP",
+  "permissions"     : [
+    "nativeMessaging",
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts" : [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js"     : [
+        "./js/content.js"
+      ],
+      "run_at" : "document_end"
+    }
+  ],
+  "icons"           : {
+    "128": "./images/test_icon_128x128.png",
+    "48" : "./images/test_icon_48x48.png",
+    "16" : "./images/test_icon_16x16.png"
+  },
+  "browser_action"  : {
+    "default_icon" : "./images/test_icon48.png",
+    "default_popup": "./html/popup.html",
+    "default_title": "ECP: Нажмите для более подробной информации"
+  },
+  "background"      : {
+    "scripts": [
+      "./js/background.js"
+    ]
+  },
+  "applications"    : {
+    "gecko": {
+      "id": "ecp-extension@epc"
+    }
+  }
+}

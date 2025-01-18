@@ -1,0 +1,1 @@
+﻿(()=>{"use strict";(globalThis.chrome||globalThis.browser).runtime.setUninstallURL("https://vknext.net/uninstall/vcf")})();

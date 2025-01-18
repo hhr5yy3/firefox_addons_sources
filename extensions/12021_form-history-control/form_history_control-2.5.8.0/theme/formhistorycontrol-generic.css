@@ -1,0 +1,260 @@
+:root {
+    --main-bg-color: #f0f0f0;
+    --main-text-color: #000000;
+
+    --select-bg-color: #1c336d;
+    --select-text-color: #ffffff;
+
+    --a-text-color: #0000ee;
+
+    --button-text-color: #000000;
+    --button-bg-color: #e3e3e9;
+    --button-border-color: #bab6ae;
+    --button-hover-text-color: #000000;
+    --button-hover-bg-color: #f1f5ff;
+    --button-hover-border-color: #4b74ff;
+    --button-disabled-text-color: #808080;
+    --button-disabled-bg-color: #d4d0c8;
+    --button-disabled-border-color: var(--button-border-color);
+
+    --field-bg-color: -moz-default-background-color;
+    --field-text-color: -moz-default-color;
+    --field-border-color: #cccccc;
+    --field-disabled-bg-color: #d4d0c8;
+    --field-disabled-text-color: #575757;
+
+    --fieldset-bg-color: #f1f5ff;
+    --fieldset-border-color: #4b74ff;
+    --legend-bg-color: #fafaff;
+    --legend-text-color: #1d2063;
+    --legend-border-color: var(--fieldset-border-color);
+
+    --modal-title-text-color: #ffffff;
+    --modal-text-color: #000000;
+    --modal-title-bg-color: rgba(16, 50, 101, 0.92);
+    --modal-bg-color: hsla(0, 0%, 93%, 0.85);
+    --modal-border-color: #ffffff;
+    --modal-yes-color:  #009b00;
+    --modal-no-color: #9b0000;
+    --modal-yes-hover-color: #00c300;
+    --modal-no-hover-color: #c30000;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 100%;
+}
+
+html {
+    margin: 0;
+    font-size: 12px;
+}
+
+body {
+    background: var(--main-bg-color);
+    color: var(--main-text-color);
+    margin: 0 auto;
+    padding: 0 2px;
+    height: inherit;
+    cursor: default;
+}
+
+a {
+    color: var(--a-text-color);
+}
+
+button {
+    background: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: 1px solid var(--button-border-color);
+    margin: 2px 2px;
+    min-width: 7em;
+    height: 25px;
+    font-size: 12px;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg-color);
+    color: var(--button-hover-text-color);
+    border-color: var(--button-hover-border-color);
+}
+
+button:disabled,
+button:disabled:hover {
+    background-color: var(--button-disabled-bg-color);
+    color: var(--button-disabled-text-color);
+    border-color: var(--button-disabled-border-color);
+}
+
+input, select, textarea {
+    background-color: var(--field-bg-color) !important;
+    color: var(--field-text-color);
+    border: 2px inset var(--field-border-color) !important;
+}
+
+input, select, textarea, fieldset {
+    border-radius: 4px;
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+    color: var(--field-disabled-text-color);
+    background-color: var(--field-disabled-bg-color);
+}
+
+fieldset {
+    margin-top: 15px;
+    border: 1px solid var(--fieldset-border-color);
+    background-color: var(--fieldset-bg-color);
+}
+
+fieldset:nth-child(1) > legend {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.51);
+}
+
+legend {
+    padding: 0.2em 0.5em;
+    border: 1px solid var(--legend-border-color);
+    border-radius: 4px;
+    color: var(--legend-text-color);
+    background: var(--legend-bg-color);
+    font-weight: bold;
+    font-size: 125%;
+}
+
+::selection {
+    background: var(--select-bg-color);
+    color: var(--select-text-color);
+}
+::-moz-selection {
+    background: var(--select-bg-color);
+    color: var(--select-text-color);
+}
+
+
+.modal-content {
+    background: var(--modal-bg-color);
+    position: absolute;
+    margin: 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 5px 3px 30px black;
+    border-radius: 4px;
+    border: 1px solid var(--modal-border-color);
+    width: 80%;
+    max-width: 450px;
+    min-height: 60px;
+    color: var(--main-text-color);
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 100%;
+}
+
+.modal-header {
+    border-radius: 4px 4px 0 0;
+    width: 100%;
+    height: 25px;
+    background-color:var(--modal-title-bg-color);
+    padding-top: 9px;
+}
+
+.modal-icon {
+    margin: 15px 6px 8px 15px;
+    width: 32px;
+    height: 32px;
+    animation: flip 5s infinite linear;
+    animation-delay: 5s;
+    order: 1;
+}
+@keyframes flip {
+    from {transform: rotateY(0deg);}
+    to {transform: rotateY(360deg);}
+}
+
+.modal-message {
+    margin: 15px;
+    overflow: hidden;
+    color: var(--modal-text-color);
+    text-align: left;
+    white-space: pre-wrap;
+    flex: 1;
+    order: 2;
+}
+
+.modal-buttons {
+    margin-right: 15px;
+    flex: 1 100%;
+    order: 3;
+}
+
+.modal-title {
+    margin-left: 20px;
+    color: var(--modal-title-text-color);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: url("/theme/icons/dialog/close.png") no-repeat top left;
+    height: 16px;
+    width: 16px;
+    z-index: 2;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    transform: rotate(180deg);
+    transform-origin: 50% 45% 0;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.modal-buttons button {
+    float: right;
+    min-width: 5em;
+    height: 23px;
+    margin: 8px 4px 12px 8px;
+}
+
+.modal-error {
+    background: url("/theme/icons/dialog/error.png") no-repeat top left;
+}
+.modal-warning {
+    background: url("/theme/icons/dialog/warning.png") no-repeat top left;
+}
+.modal-information {
+    background: url("/theme/icons/dialog/information.png") no-repeat top left;
+}
+.modal-question {
+    background: url("/theme/icons/dialog/question.png") no-repeat top left;
+}
+
+.modal-button {
+    color: white;
+}
+
+.modal-yes,
+.modal-okay {
+    background-color: var(--modal-yes-color);
+}
+
+.modal-no,
+.modal-cancel {
+    background-color: var(--modal-no-color);
+}
+
+.modal-yes:hover,
+.modal-okay:hover {
+    background-color: var(--modal-yes-hover-color);
+}
+
+.modal-no:hover,
+.modal-cancel:hover {
+    background-color:  var(--modal-no-hover-color);
+}

@@ -1,0 +1,1 @@
+const t={action:"Izvoz",copied:"Kopirano",options:{default:"Zadano",withoutCitations:"Bez citata",download:"Preuzmi kao tekstualnu datoteku"}},o={exportButton:t};export{o as default,t as exportButton};

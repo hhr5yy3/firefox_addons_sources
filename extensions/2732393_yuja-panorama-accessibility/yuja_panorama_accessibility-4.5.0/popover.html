@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Panorama</title>
+        <style type="text/css">
+            body {
+                margin: 0;
+                width: max-content;
+                min-width: 600px;
+                border-radius: 20px;
+            }
+
+            .header {
+                padding: 10px;
+                color: black !important;
+                background-color: #dad0ea;
+                display: flex;
+                align-items: center;
+                height: 50px;
+                justify-content: center;
+            }
+            .header-placeholder {
+                padding: 10px;
+                color: black !important;
+                background-color: white;
+                display: flex;
+                align-items: center;
+                height: 30px;
+                justify-content: center;
+            }
+
+            .yuja-logo {
+                position: relative;
+                top: -20px;
+            }
+
+            .plugin-title {
+                padding: 10px;
+                color: #442b6f;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                margin-top: -15px;
+            }
+
+            .logout-btn {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+
+            .popup {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                left: 30%;
+                width: 70%;
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                margin-top: -10px;
+            }
+            .triangle-top {
+                position: relative;
+                left: 57%;
+                width: 0;
+                height: 0;
+                border-left: 23px solid transparent;
+                border-bottom: 23px solid rgba(0, 0, 0, 0.2);
+                border-right: 23px solid transparent;
+            }
+
+            .inner-triangle {
+                position: relative;
+                top: 1px;
+                left: -22px;
+                width: 0;
+                height: 0;
+                border-left: 22px solid transparent;
+                border-bottom: 22px solid white;
+                border-right: 22px solid transparent;
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+
+            #loginStatusText {
+                margin: auto;
+                margin-top: 10px;
+                padding-bottom: 10px;
+                text-align: center;
+            }
+
+            #loginDetails,
+            .loginStatus {
+                margin: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            #launchPortalContainer,
+            #launchWebsiteAccessibilityContainer,
+            #copyTokenContainer {
+                border: 3px solid #442b6f;
+                border-radius: 6.06316px;
+                padding: 0px 10px;
+                height: 2.5em;
+            }
+
+            #copyTokenBtn,
+            #launchWebsiteAccessibilityButton {
+                color: #442b6f;
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                height: 100%;
+                align-items: center;
+            }
+            #launchPortalContainer {
+                color: #442b6f;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            #launchPortalContainer:hover,
+            #copyTokenContainer:hover,
+            #launchWebsiteAccessibilityContainer:hover {
+                background-color: #442b6f;
+                cursor: pointer;
+            }
+
+            #logoutButtonContainer {
+                border: 4px solid #c93e3e;
+                border-radius: 6.06316px;
+            }
+
+            #logoutButton {
+                color: #c93e3e;
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                height: 100%;
+                align-items: center;
+            }
+
+            #logoutButtonContainer:hover {
+                background-color: #c93e3e;
+            }
+
+            #launchPortalContainer:hover #launchPortalBtn,
+            #copyTokenContainer:hover #copyTokenBtn,
+            #launchWebsiteAccessibilityContainer:hover
+                #launchWebsiteAccessibilityButton {
+                color: #ffffff;
+            }
+
+            .hidden {
+                display: none !important;
+            }
+
+            .pano-extension-icon {
+                background-size: 100% !important;
+                background-repeat: no-repeat !important;
+                width: 24px;
+                height: 24px;
+                margin-left: auto;
+            }
+
+            .failed-icon {
+                background: url('./cross-mark.svg');
+            }
+            .success-icon {
+                background: url('./check-mark.svg');
+            }
+
+            .launch-icon {
+                background: url('./launch-icon.svg');
+                height: 24px;
+                width: 24px;
+                display: flex;
+            }
+
+            #launchPortalContainer:hover .launch-icon {
+                background: url('./launch-icon-white.svg');
+            }
+
+            .logout-icon {
+                background: url('./logout-icon.svg');
+                height: 24px;
+                width: 24px;
+                display: flex;
+            }
+
+            #logoutButtonContainer:hover .logout-icon {
+                background: url('./logout-icon-white.svg');
+            }
+
+            .sub-text {
+                font-size: 14px;
+            }
+            .textDiv {
+                display: block;
+                margin-left: 20px;
+                max-width: 400px;
+            }
+            .list-tile {
+                height: 3rem;
+                align-items: center;
+                background: #f7f7f7;
+
+                display: flex;
+                padding: 0 10px;
+                margin: 5px 10px;
+
+                width: 100%;
+            }
+
+            .large-list-tile {
+                height: 5rem;
+                align-items: center;
+                background: #f7f7f7;
+
+                display: flex;
+                padding: 0 10px;
+                margin: 10px 10px 20px 10px;
+
+                max-width: 541px;
+            }
+
+            .extra-large-height {
+                height: 7rem;
+            }
+
+            .switch {
+                margin-left: auto;
+                position: relative;
+                display: inline-block;
+                width: 80px;
+                height: 34px;
+            }
+
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 5px;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: 0.4s;
+                transition: 0.4s;
+            }
+
+            .slider:before {
+                position: absolute;
+                content: '';
+                height: 26px;
+                width: 26px;
+                left: 2px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: 0.4s;
+                transition: 0.4s;
+            }
+
+            input:checked + .slider {
+                background-color: #0b6f85;
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px #0b6f85;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(26px);
+                -ms-transform: translateX(26px);
+                transform: translateX(26px);
+            }
+
+            #SmartSpeakerIcon {
+                width: 38px;
+                height: 38px;
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+                border-radius: 34px;
+            }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+        </style>
+        <link rel="stylesheet" href="spinner.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+            integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+            crossorigin="anonymous"
+        />
+    </head>
+
+    <body>
+        <main>
+            <div class="header">
+                <span
+                    id="logoutBtn"
+                    class="logout-btn"
+                    role="button"
+                    title="Log Out"
+                    aria-label="Log Out"
+                    tabindex="0"
+                >
+                    <img src="./power-icon.svg" />
+                </span>
+            </div>
+
+            <div class="header-placeholder">
+                <span class="yuja-logo">
+                    <img src="./yuja-icon-2.svg" />
+                </span>
+            </div>
+
+            <div class="plugin-title">
+                <div role="heading" aria-level="1">
+                    YuJa Panorama Accessibility Platform
+                </div>
+                <span
+                    id="loginDetailsBtn"
+                    role="button"
+                    tabindex="0"
+                    title="Login Details"
+                    aria-label="Login Details"
+                    style="position: relative; padding-left: 5px"
+                >
+                    <img src="./info.svg" />
+                </span>
+            </div>
+
+            <!-- The Modal -->
+            <div
+                id="loginDetailsModal"
+                class="popup"
+                aria-modal="true"
+                role="dialog"
+                aria-label="Login Details"
+            >
+                <div class="triangle-top">
+                    <div class="inner-triangle"></div>
+                </div>
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div id="loginDetails2">
+                        <div style="display: flex">
+                            <img src="./userid.svg" alt="" />
+                            <div class="list-tile" tabindex="0">
+                                <strong
+                                    style="margin-right: 5px; color: #442b6f"
+                                    >User ID:
+                                </strong>
+                                <span id="userId"></span>
+                            </div>
+                        </div>
+                        <div style="display: flex">
+                            <img src="./institution.svg" alt="" />
+                            <div class="list-tile" tabindex="0">
+                                <strong
+                                    style="margin-right: 5px; color: #442b6f"
+                                    >Institution:
+                                </strong>
+                                <span id="institution"></span>
+                            </div>
+                        </div>
+                        <div style="display: flex">
+                            <img src="./domain.svg" alt="" />
+                            <div
+                                class="list-tile"
+                                style="display: inline-flex"
+                                tabindex="0"
+                            >
+                                <strong
+                                    style="margin-right: 5px; color: #442b6f"
+                                    >Domain:
+                                </strong>
+                                <span id="domain"></span>
+                                <i
+                                    id="domain-check"
+                                    class="pano-extension-icon failed-icon"
+                                    tabindex="0"
+                                ></i>
+                            </div>
+                        </div>
+                        <div style="display: flex">
+                            <img src="./token.svg" alt="" />
+                            <div class="list-tile" style="background: white">
+                                <input
+                                    type="text"
+                                    id="token"
+                                    style="display: none"
+                                />
+                                <div id="copyTokenContainer" tabindex="0">
+                                    <div id="copyTokenBtn" role="button">
+                                        Copy Authentication Token
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loginDetails" style="min-height: 100px">
+                <div id="WAListTile" class="large-list-tile" hidden>
+                    <img
+                        id="accessibilityIcon"
+                        src="./accessibility-icon.svg"
+                    />
+                    <div id="accessibilityTextDiv" class="textDiv">
+                        <strong
+                            role="heading"
+                            aria-level="2"
+                            style="margin-right: 5px; color: #442b6f"
+                            >Website Accessibility Widget
+                        </strong>
+                        <div id="accessibilityDescriptionText" class="sub-text">
+                            Enhance website accessibility and create a
+                            customized viewing experience of any website.
+                        </div>
+                    </div>
+                    <label class="switch">
+                        <input
+                            id="enableWACheckbox"
+                            type="checkbox"
+                            aria-label="Enable Panorama Website Accessibility"
+                        />
+                        <span id="waSlider" class="slider round"></span>
+                    </label>
+                </div>
+
+                <div
+                    id="SmartSpeakerListTile"
+                    class="large-list-tile extra-large-height"
+                    hidden
+                >
+                    <img id="SmartSpeakerIcon" src="./smart-speaker-icon.svg" />
+                    <div id="smartSpeakerTextDiv" class="textDiv">
+                        <strong
+                            role="heading"
+                            aria-level="2"
+                            style="margin-right: 5px; color: #442b6f"
+                            >SmartSpeaker AI Platform</strong
+                        >
+                        <div id="smartSpeakerDescriptionText" class="sub-text">
+                            The SmartSpeaker feature is a digital voice
+                            solution that enables users to have text on the page
+                            read out loud, enhancing comprehension of the
+                            content.
+                        </div>
+                    </div>
+                    <label class="switch">
+                        <input
+                            id="enableSmartSpeakerCheckbox"
+                            type="checkbox"
+                            aria-label="Enable Smart Speaker Accessibility"
+                        />
+                        <span
+                            id="smartSpeakerSlider"
+                            class="slider round"
+                        ></span>
+                    </label>
+                </div>
+
+                <div id="launchPortalListTile" class="large-list-tile" hidden>
+                    <img src="./launch.svg" />
+                    <div class="textDiv">
+                        <strong
+                            role="heading"
+                            aria-level="2"
+                            style="margin-right: 5px; color: #442b6f"
+                            >Launch Portal
+                        </strong>
+                        <div id="launchDescriptionText" class="sub-text">
+                            The Panorama Platform offers accessibility tools,
+                            advanced analytics and reporting for all learning
+                            environments.
+                        </div>
+                    </div>
+                    <div
+                        id="launchPortalContainer"
+                        style="margin-left: auto"
+                        tabindex="0"
+                    >
+                        <div id="launchPortalBtn" role="button">Launch</div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="pluginSpinner"
+                style="
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, 15%);
+                    color: #0b6f85;
+                "
+            >
+                <div class="la-ball-spin la-2x">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+            <div id="loginStatusText" hidden>You are not logged in</div>
+            <div class="loginStatus"></div>
+
+            <script src="popover.js"></script>
+        </main>
+    </body>
+</html>

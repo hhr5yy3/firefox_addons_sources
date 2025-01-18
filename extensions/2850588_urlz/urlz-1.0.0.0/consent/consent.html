@@ -1,0 +1,104 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Urlz</title>
+  <style>
+
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #overlay {
+      background-color: #000000;
+      height: 100vh;
+      left: 0;
+      opacity: 0.5;
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      z-index: -1;
+    }
+
+    #modals {
+      background: no-repeat url('head.jpg') #FFFFFF;
+      border: 2px solid #52B3F4;
+      margin: 150px auto 0 auto;
+      min-height: 500px;
+      width: 790px;
+    }
+
+    #title {
+	  color: #FFFFFF;
+      margin: 40px 0 0 40px;
+      font-size: 2em;
+      font-weight: 600;
+    }
+
+    #content {
+      margin: 70px 100px 0 60px;
+      text-align: justify;
+    }
+
+    .subtitle {
+      color: #1088D9;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .buttons {
+	  padding-top: 30px;
+	}
+
+    .button {
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 1.2em;
+      min-width: 180px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .b1 {
+      background-color: #79ABCC;
+	  float: left;
+    }
+
+    .b2 {
+      background-color: #47B5FF;
+	  float: right;
+    }
+
+    .clear {
+      clear: both;
+    }
+
+  </style>
+  </head>
+  <body>
+    <div id="overlay"></div>
+    <div id="modals">
+      <div id="modal">
+        <div id="title">&nbsp; &nbsp;</div>
+        <div id="content">
+          <div class="subtitle">Nous vous remercions d'avoir installé notre extension.</div>
+          Pour que notre service fonctionne correctement, nous devons collecter le mot-clé de votre recherche afin de pouvoir vous proposer des annonces correspondant à votre recherche.<br><br>
+          Si vous choisissez de ne pas nous permettre de collecter le mot-clé de votre recherche, nous ne serons pas en mesure de vous proposer de contenus.<br><br>
+          Pour plus d'informations, vous pouvez consulter notre <a href="https://addons.mozilla.org/firefox/addon/urlz/privacy/" target="_blank">politique de confidentialité</a>.<br><br>
+          Acceptez-vous que nous collections temporairement le mot-clé de votre recherche afin de vous proposer des annonces et contenus pertinents ?
+          <div class="buttons">
+            <span class="button b1" id="reject">Ne pas accéder au service</span> <span class="button b2" id="accept">Autoriser</span>
+			<div class="clear"></div>
+          </div>
+        </div>
+       </div>
+    </div>
+    <script src="consent.js"></script>
+  </body>
+</html>

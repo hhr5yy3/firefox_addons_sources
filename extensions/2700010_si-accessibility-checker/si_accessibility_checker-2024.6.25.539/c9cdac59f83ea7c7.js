@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_siteimprove_alfa_web_extension=self.webpackChunk_siteimprove_alfa_web_extension||[]).push([[623],{10623:e=>{e.exports=JSON.parse('{"$schema":"../schema/rule.json","source":"https://github.com/act-rules/act-rules.github.io/pull/1539","responsibility":"ux","difficulty":2,"affects":["motion","cognition"],"category":"layout"}')}}]);

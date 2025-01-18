@@ -1,0 +1,887 @@
+[
+  {
+    "id": "0f60aac4-7ff4-4fef-831f-addcb8f0d2e0",
+    "status": "hotfix",
+    "comment": "override-override for auth0.com",
+    "rules": [],
+    "hostnameContains": "cloudsecurityalliance.auth0.com"
+  },
+  {
+    "id": "57314ef7-d919-494b-b330-77532cb431c0",
+    "status": "hotfix",
+    "comment": "The UI is at \"login.domaindiscount24.com\", which causes lots of false positive two-step form matches. So we add a negative override here saying that no form exists unless a password input is available field is present.",
+    "rules": [
+      {
+        "type": "noForm",
+        "predicate": {
+          "type": "elementExists",
+          "selector": "input[type=password]",
+          "negated": true
+        }
+      }
+    ],
+    "hostnameContains": "login.domaindiscount24.com"
+  },
+  {
+    "id": "88c8636a-496e-48d5-b816-c2e37187f68e",
+    "status": "hotfix",
+    "comment": "twostep login with no redeeming qualities",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": null,
+          "usernameElement": "input[type=email].form-control",
+          "totpElements": null,
+          "submitElement": "input[type=submit].btn-primary",
+          "stayLoggedInElement": null,
+          "formElement": null
+        }
+      }
+    ],
+    "hostnameContains": "odc.officeapps.live.com"
+  },
+  {
+    "id": "15bd1701-c685-4ad2-8e41-e6a94ec3ae0b",
+    "status": "hotfix",
+    "rules": [
+      {
+        "type": "formKindHint",
+        "kind": "login"
+      }
+    ],
+    "hostnameContains": "admin.arubabusiness.it"
+  },
+  {
+    "id": "33bd8c7e-1175-417b-9056-5cd5cc008bf7",
+    "status": "hotfix",
+    "comment": "The submit button is not detected as such, which causes the second step of the login to fail. Fixed by specifying the submit button explicitly.\nThere is no form, but the button is the only button element in the detected container. Might be fixable?",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "input[name=\"password\"]",
+          "usernameElement": "input[name=\"email\"]",
+          "totpElements": null,
+          "submitElement": "button.password__button",
+          "stayLoggedInElement": null,
+          "formElement": "div.password"
+        }
+      }
+    ],
+    "hostnameContains": "app.botconversa.com.br"
+  },
+  {
+    "id": "78ef7380-21f6-4a17-9f39-103ab3cef804",
+    "comment": "password / one-time passcode throws off our detection. likely not something we can change",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "#login_password",
+          "usernameElement": "#email",
+          "totpElements": null,
+          "submitElement": "button[data-track-name=login]",
+          "stayLoggedInElement": null,
+          "formElement": "form"
+        }
+      }
+    ],
+    "hostnameContains": "www.holidayextras.com"
+  },
+  {
+    "id": "789c8374-a121-4301-88ef-94c6a2ea7046",
+    "status": "hotfix",
+    "comment": "difficult to detect two-step login",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": null,
+          "usernameElement": "#txtBenutzername",
+          "totpElements": null,
+          "submitElement": "div[data-actiontype=\"backend\"]",
+          "stayLoggedInElement": null,
+          "formElement": "#assistent"
+        }
+      }
+    ],
+    "hostnameContains": "kundencenter.htp.net"
+  },
+  {
+    "id": "4534e01e-cd65-4263-80f1-f4fd3df87d80",
+    "status": "hotfix",
+    "comment": "submit button is outside of form",
+    "rules": [
+      {
+        "type": "registrationForm",
+        "selectors": {
+          "formElement": "form",
+          "passwordElement": "#passwd input",
+          "repeatPasswordElement": "#confirm-passwd input",
+          "usernameElement": "#username",
+          "submitElement": "#accountDetailsNext button"
+        }
+      }
+    ],
+    "hostnameContains": "accounts.google.com"
+  },
+  {
+    "id": "460c2f72-aebc-49ea-89d5-bbef22ba1f73",
+    "status": "hotfix",
+    "comment": "https://support.heylogin.dev/#ticket/zoom/1591",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "input[name=kennwort]",
+          "usernameElement": "input[name=login]",
+          "totpElements": null,
+          "submitElement": "form > input[type=image]",
+          "stayLoggedInElement": null,
+          "formElement": "form"
+        }
+      }
+    ],
+    "hostnameContains": "www.schwackenet.de"
+  },
+  {
+    "id": "b7ad4088-48ac-4cc7-99af-cea0e059f47b",
+    "status": "hotfix",
+    "comment": "This looks like it should be detectable. Perhaps add \"ident\" to heuristics terms?",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "#identPw",
+          "usernameElement": "form",
+          "totpElements": null,
+          "submitElement": "input[type=submit]",
+          "stayLoggedInElement": null,
+          "formElement": "#identName"
+        }
+      }
+    ],
+    "hostnameContains": "spareparts.paus.de"
+  },
+  {
+    "id": "caf32928-86b3-4174-bc0e-5703129079cd",
+    "status": "hotfix",
+    "rules": [
+      {
+        "type": "formKindHint",
+        "kind": "login",
+        "predicate": {
+          "type": "elementExists",
+          "selector": "app-login-server-error"
+        }
+      }
+    ],
+    "hostnameContains": "kita-planer.kdo.de"
+  },
+  {
+    "id": "b9f56d36-455b-436a-9229-4eb588a6029b",
+    "status": "hotfix",
+    "comment": "confirm password without wrapping form",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": ".idms-modal.passwordChallenge input[type=password]",
+          "usernameElement": null,
+          "totpElements": null,
+          "submitElement": null,
+          "stayLoggedInElement": null,
+          "formElement": null
+        }
+      }
+    ],
+    "hostnameContains": "appleid.apple.com"
+  },
+  {
+    "id": "beac2731-e18c-4499-9541-d5ff6dd08abf",
+    "status": "hotfix",
+    "comment": "Login and registration in  full page form on namecheap.com/myaccount/login-signup/",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": ".login-module .nc_password",
+          "usernameElement": ".login-module .nc_username",
+          "totpElements": null,
+          "submitElement": ".login-module .nc_login_submit",
+          "stayLoggedInElement": null,
+          "formElement": "#aspnetForm"
+        }
+      },
+      {
+        "type": "registrationForm",
+        "selectors": {
+          "formElement": "#aspnetForm",
+          "passwordElement": ".create-account-module .nc_password",
+          "repeatPasswordElement": ".create-account-module .nc_password_confirm",
+          "usernameElement": ".create-account-module .nc_username",
+          "submitElement": ".create-account-module .nc_signup_submit"
+        }
+      }
+    ],
+    "hostnameContains": "www.namecheap.com"
+  },
+  {
+    "id": "6403bccf-7029-4ef7-98fa-35143adcf2fe",
+    "status": "hotfix",
+    "comment": "registration and login too similar",
+    "rules": [
+      {
+        "type": "registrationForm",
+        "selectors": {
+          "formElement": "[data-automation=\"AuthForm_container_div\"] form",
+          "passwordElement": "[data-automation=\"SignupForm_input_fields\"] input[data-automation=\"SignUpForm_password_input\"]",
+          "repeatPasswordElement": null,
+          "usernameElement": "[data-automation=\"SignupForm_input_fields\"] input[data-automation=\"SignUpForm_email_input\"]",
+          "submitElement": "[data-automation=\"AuthForm_container_div\"] button[data-automation=\"SignUpForm_submit_button\"]"
+        }
+      }
+    ],
+    "hostnameContains": "shutterstock.com"
+  },
+  {
+    "id": "70b91506-a4bd-4ee9-88a0-c0e47305b41b",
+    "status": "hotfix",
+    "comment": "Not sure why this was misdetected, but a hotfix helps. Curiously, the form was correctly detected *while the element selector was active* but not otherwise.",
+    "rules": [
+      {
+        "type": "registrationForm",
+        "selectors": {
+          "formElement": "form",
+          "passwordElement": "div.form-group:nth-of-type(2) input[type=password]",
+          "repeatPasswordElement": "div.form-group:nth-of-type(3) input[type=password]",
+          "usernameElement": "div.form-group:nth-of-type(1) input[type=text]",
+          "submitElement": "form button"
+        }
+      }
+    ],
+    "hostnameContains": "app.fastpages.io"
+  },
+  {
+    "id": "f925afad-2617-40a3-a7ad-494f91467e94",
+    "status": "hotfix",
+    "comment": "this form looks pretty straightforward, but for some reason the totp field is misdetected as a username",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": null,
+          "usernameElement": null,
+          "totpElements": "input[name=totptoken]",
+          "submitElement": null,
+          "stayLoggedInElement": null,
+          "formElement": "form"
+        }
+      }
+    ],
+    "hostnameContains": "app.lexoffice.de"
+  },
+  {
+    "id": "1754d7ac-80a3-43c1-9fee-956c7be1eb12",
+    "status": "hotfix",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "#password",
+          "usernameElement": "#email",
+          "totpElements": null,
+          "submitElement": "button[type=\"submit\"]",
+          "stayLoggedInElement": null,
+          "formElement": "form"
+        }
+      }
+    ],
+    "hostnameContains": "my.ico-cert.org"
+  },
+  {
+    "id": "947ce6d1-d4ec-4f18-8cbf-2d0fdd9135f9",
+    "status": "hotfix",
+    "comment": "login and registration are too similar. match on edit email button in the registration form",
+    "rules": [
+      {
+        "type": "formKindHint",
+        "kind": "registration",
+        "predicate": {
+          "type": "elementExists",
+          "selector": "a[data-link-name=\"edit-email\"]"
+        }
+      }
+    ],
+    "hostnameContains": "auth0.auth0.com"
+  },
+  {
+    "id": "f1065e9c-75ee-4ec7-a6f3-ccae75062fa2",
+    "comment": "ts-code + license code instead of user and password, will definitely never be found by our regular matcher",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "#liz",
+          "usernameElement": "#TS",
+          "totpElements": null,
+          "submitElement": "#contactForm button[type=\"submit\"]",
+          "stayLoggedInElement": null,
+          "formElement": "#contactForm"
+        }
+      }
+    ],
+    "hostnameContains": "schulkartei.com"
+  },
+  {
+    "id": "3f6e466f-b51e-4d8a-b9d2-57356331eb33",
+    "status": "hotfix",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "#password",
+          "usernameElement": "#login",
+          "totpElements": null,
+          "submitElement": "form > div.cl-button",
+          "stayLoggedInElement": null,
+          "formElement": "form"
+        }
+      }
+    ],
+    "hostnameContains": "speedmaster.at"
+  },
+  {
+    "id": "4517dee3-f994-4b32-bf6f-8879a4eccc21",
+    "status": "hotfix",
+    "comment": "The username and password inputs are internally hidden while not focused, throwing off our algorithm",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "#password",
+          "usernameElement": "#username",
+          "totpElements": null,
+          "submitElement": ".sui-button--primary",
+          "stayLoggedInElement": null,
+          "formElement": "form.login-form"
+        }
+      }
+    ],
+    "hostnameContains": "banking.dkb.de"
+  },
+  {
+    "id": "81f7a73d-abca-4c46-b9f1-69a7f490279b",
+    "status": "hotfix",
+    "comment": "username has type=\"search\"",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "#password",
+          "usernameElement": "#userID",
+          "totpElements": null,
+          "submitElement": "#signin",
+          "stayLoggedInElement": null,
+          "formElement": "form"
+        }
+      }
+    ],
+    "hostnameContains": "signin.att.com"
+  },
+  {
+    "id": "011af147-2848-427f-ac93-1d9076117550",
+    "status": "hotfix",
+    "comment": "two-step login not recognized",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": null,
+          "usernameElement": "input[name=\"email\"]",
+          "totpElements": null,
+          "submitElement": "button[type=\"submit\"]",
+          "stayLoggedInElement": null,
+          "formElement": "form"
+        }
+      }
+    ],
+    "hostnameContains": "www.canva.com"
+  },
+  {
+    "id": "34ede5f7-0611-4238-85c3-b80d18a03a39",
+    "status": "hotfix",
+    "comment": "Schufa login form gets mistedected as a registration form Note: this is a three-part login, so it needs a custom field with name \"Temp~instituteID\" to work",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "input[name=\"Temp~password\"]",
+          "usernameElement": "input[name=\"Temp~loginName\"]",
+          "totpElements": null,
+          "submitElement": "form[name=formular] input[type=submit]",
+          "stayLoggedInElement": null,
+          "formElement": "form[name=formular]"
+        }
+      }
+    ],
+    "hostnameContains": "web.schufa.de"
+  },
+  {
+    "id": "92a274ae-d86f-4dca-8197-4f99b1631d3b",
+    "status": "hotfix",
+    "comment": "",
+    "rules": [
+      {
+        "type": "formKindHint",
+        "kind": "login"
+      }
+    ],
+    "hostnameContains": "dcd.ionos.com"
+  },
+  {
+    "id": "e793ce1b-9e55-495f-a3b5-8a2221baab97",
+    "status": "hotfix",
+    "comment": "matching fails due to opacity 0 on email address field",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": null,
+          "usernameElement": "#userEmail",
+          "totpElements": null,
+          "submitElement": ".ta-button",
+          "stayLoggedInElement": null,
+          "formElement": ".auth-email"
+        }
+      }
+    ],
+    "hostnameContains": "app.navan.com"
+  },
+  {
+    "id": "ea122da7-c9df-4b6e-8342-3c85d84168c7",
+    "status": "hotfix",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "input[name=\"password\"]",
+          "usernameElement": "input[name=\"email\"]",
+          "totpElements": null,
+          "submitElement": "button[name=\"login-button\"]",
+          "stayLoggedInElement": null,
+          "formElement": null
+        }
+      },
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": null,
+          "usernameElement": "input[name=\"email\"]",
+          "totpElements": null,
+          "submitElement": "button[name=\"login-button\"]",
+          "stayLoggedInElement": null,
+          "formElement": null
+        }
+      }
+    ],
+    "hostnameContains": "app.ontask.io"
+  },
+  {
+    "id": "1781b9d4-3b30-4a63-865a-b2dd008bfd03",
+    "status": "hotfix",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "input[type=password]",
+          "usernameElement": "input[type=email",
+          "totpElements": null,
+          "submitElement": "#logInButton",
+          "stayLoggedInElement": null,
+          "formElement": "#subLogin"
+        }
+      }
+    ],
+    "hostnameContains": "api-cloud.de"
+  },
+  {
+    "id": "5172b78c-4e5e-4e27-9294-50c205a815e7",
+    "status": "hotfix",
+    "comment": "Misdetects social login as login button",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "#sign-in-input-password",
+          "usernameElement": "#sign-in-input-email",
+          "totpElements": null,
+          "submitElement": "button > .sip-sign-in-button",
+          "stayLoggedInElement": null,
+          "formElement": "orgos-container[aspect=\"card\"]:last-child"
+        }
+      }
+    ],
+    "hostnameContains": "app.kenjo.io"
+  },
+  {
+    "id": "8ba0ac28-fcf4-43d8-9596-3f9a66494df1",
+    "status": "hotfix",
+    "comment": "TOTP field has no heuristics",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": null,
+          "usernameElement": null,
+          "totpElements": "input[inputmode=\"numeric\"]",
+          "submitElement": null,
+          "stayLoggedInElement": null,
+          "formElement": null
+        }
+      }
+    ],
+    "hostnameContains": "twitter.com"
+  },
+  {
+    "id": "b37aa60d-ea41-4014-9f31-1f4574a4b4db",
+    "status": "hotfix",
+    "comment": "This page adds a TOTP field to the same form for a second submission during login. We don't support that yet. I added this override so at least our overlay is removed when the TOTP code is requested, but obviously this is not an ideal fix.",
+    "rules": [
+      {
+        "type": "noForm",
+        "predicate": {
+          "type": "elementExists",
+          "selector": "#twoFactorLoginCode",
+          "requireVisible": true
+        }
+      }
+    ],
+    "hostnameContains": "porkbun.com"
+  },
+  {
+    "id": "173e8e60-35c4-408b-a447-c679d014cd9a",
+    "status": "hotfix",
+    "comment": "registration and login use identical fields with \"register\". classes toggle by visibility of \"redeem code\" link, err on the side of login",
+    "rules": [
+      {
+        "type": "formKindHint",
+        "kind": "login",
+        "predicate": {
+          "type": "elementExists",
+          "selector": ".Register__redeem-toggle",
+          "requireVisible": true,
+          "negated": true
+        }
+      },
+      {
+        "type": "formKindHint",
+        "kind": "registration",
+        "predicate": {
+          "type": "elementExists",
+          "selector": ".Register__redeem-toggle",
+          "requireVisible": true
+        }
+      }
+    ],
+    "hostnameContains": "octopus.do"
+  },
+  {
+    "id": "622b9f06-b078-4c3a-a43c-97e535d394ca",
+    "status": "hotfix",
+    "comment": "the battle.net login overrides the user's password with a ..... login. this override just disables the overlay for now.",
+    "rules": [
+      {
+        "type": "noForm"
+      }
+    ],
+    "hostnameContains": "battle.net"
+  },
+  {
+    "id": "9417b11b-78bd-4238-968c-7d283957238c",
+    "status": "hotfix",
+    "comment": "Has login and registration inputs without any surrounding form element, which mix together into a registration form with password and repeat-password field.",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": ".login-input-password",
+          "usernameElement": ".login-input-email",
+          "totpElements": null,
+          "submitElement": ".login-button-submit button[type=submit]",
+          "stayLoggedInElement": "input[type=checkbox][name=\"rememberme\"]",
+          "formElement": null
+        }
+      },
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": null,
+          "usernameElement": null,
+          "totpElements": "input[maxlength=\"6\"]",
+          "submitElement": null,
+          "stayLoggedInElement": null,
+          "formElement": null
+        }
+      },
+      {
+        "type": "registrationForm",
+        "selectors": {
+          "formElement": null,
+          "passwordElement": ".register-input-password",
+          "repeatPasswordElement": null,
+          "usernameElement": ".register-input-email",
+          "submitElement": ".register-button-submit button[type=submit]"
+        }
+      }
+    ],
+    "hostnameContains": "pcloud.com"
+  },
+  {
+    "id": "56098a2a-4cfe-4503-8201-d4da193aaf05",
+    "status": "hotfix",
+    "comment": "not sure why this one isn't detected correctly, looks straightforward",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "input[name=password]",
+          "usernameElement": "input[name=userId]",
+          "totpElements": null,
+          "submitElement": "input[type=submit]",
+          "stayLoggedInElement": null,
+          "formElement": "form"
+        }
+      }
+    ],
+    "hostnameContains": "flatex.at"
+  },
+  {
+    "id": "a85ba9c6-5393-4503-8985-9221dc08264c",
+    "status": "hotfix",
+    "comment": "UDemy sets opacity to 0 on the input elements while not focused.",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "div[data-module-id=auth]  input[name=password]",
+          "usernameElement": "div[data-module-id=auth] input[name=email]",
+          "totpElements": null,
+          "submitElement": "div[data-module-id=auth]  button[type=submit]",
+          "stayLoggedInElement": null,
+          "formElement": "div[data-module-id=auth] form"
+        },
+        "predicate": {
+          "type": "elementExists",
+          "selector": "input[name=signup]",
+          "negated": true
+        }
+      },
+      {
+        "type": "registrationForm",
+        "selectors": {
+          "formElement": "div[data-module-id=auth] form",
+          "passwordElement": "div[data-module-id=auth] input[name=password]",
+          "repeatPasswordElement": null,
+          "usernameElement": "div[data-module-id=auth] input[name=email]",
+          "submitElement": "div[data-module-id=auth] button[type=submit]"
+        },
+        "predicate": {
+          "type": "elementExists",
+          "selector": "input[name=signup]",
+          "negated": false
+        }
+      }
+    ],
+    "hostnameContains": "udemy.com"
+  },
+  {
+    "id": "abe53750-47f6-44e9-8f4f-217ef64dd76c",
+    "status": "hotfix",
+    "comment": "\"auth\" in the hostname leads to too many mis-detections, disable further matching. Note that due to the preceding website override for auth0.auth0.com matching there still happens normally",
+    "rules": [
+      {
+        "type": "noForm"
+      }
+    ],
+    "hostnameContains": "auth0.com"
+  },
+  {
+    "id": "dff6c6ac-4af0-4927-84dd-8afcebae02ff",
+    "status": "hotfix",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "input[type=password]",
+          "usernameElement": "input[type=email]",
+          "totpElements": null,
+          "submitElement": ".tf_button",
+          "stayLoggedInElement": null,
+          "formElement": "form"
+        }
+      }
+    ],
+    "hostnameContains": "magix.com"
+  },
+  {
+    "id": "e3f0a133-5b5b-415b-935d-8ce1ff8abac5",
+    "status": "hotfix",
+    "comment": "password inputs have autocomplete=\"current-password\"",
+    "rules": [
+      {
+        "type": "registrationForm",
+        "selectors": {
+          "formElement": "form",
+          "passwordElement": "#password-input",
+          "repeatPasswordElement": null,
+          "usernameElement": "#signup-username",
+          "submitElement": "button[type=submit]"
+        }
+      }
+    ],
+    "hostnameContains": "twitch.tv"
+  },
+  {
+    "id": "7bb39e5e-3489-4f5e-9a16-c04da1443e9f",
+    "status": "hotfix",
+    "comment": "Presents password entry as a new form while the username entry form is still visible. With the override we force the password entry form to be prioritized.",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": ".auth-dialog .auth-input",
+          "usernameElement": null,
+          "totpElements": null,
+          "submitElement": ".auth-dialog .auth-form__submit-btn",
+          "stayLoggedInElement": null,
+          "formElement": ".auth-dialog form"
+        }
+      }
+    ],
+    "hostnameContains": "paper.id"
+  },
+  {
+    "id": "5735a88e-948f-4aa3-ab98-a13870344ba3",
+    "status": "hotfix",
+    "comment": "AirBNB hides the email input field while it is not focused.",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": null,
+          "usernameElement": "#email-login-email",
+          "totpElements": null,
+          "submitElement": "button[type=submit]",
+          "stayLoggedInElement": null,
+          "formElement": "div[data-testid=\"login-pane\"] > form"
+        }
+      },
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "input[type=password]",
+          "usernameElement": null,
+          "totpElements": null,
+          "submitElement": null,
+          "stayLoggedInElement": null,
+          "formElement": "form[action=\"/authenticate\"]"
+        }
+      }
+    ],
+    "hostnameContains": "airbnb"
+  },
+  {
+    "id": "6de97282-3bcd-4626-8a27-e961046a4345",
+    "status": "hotfix",
+    "comment": "Prevent overlay for entering totp code over amazon coupon code entry form. This should be solved in a more generic way for all pages in the long term, but for now amazon is most problematic one",
+    "rules": [
+      {
+        "type": "noForm",
+        "predicate": {
+          "type": "elementExists",
+          "selector": "input[name*=\"claimCode\"]"
+        }
+      }
+    ],
+    "hostnameContains": "amazon"
+  },
+  {
+    "id": "b8f2e478-01ca-423d-a173-4ff5aa08319d",
+    "status": "hotfix",
+    "comment": "New password input is annotated with autocomplete=\"current-password\". Common to all discourse instances, thus using predicate instead of hostnameContains",
+    "rules": [
+      {
+        "type": "registrationForm",
+        "selectors": {
+          "formElement": ".login-form > form",
+          "passwordElement": "#new-account-password",
+          "repeatPasswordElement": null,
+          "usernameElement": "#new-account-email",
+          "submitElement": null
+        }
+      }
+    ],
+    "predicate": {
+      "type": "elementExists",
+      "selector": "#discourse-modal.create-account"
+    }
+  },
+  {
+    "id": "c893d302-b781-40db-8e8b-9c202613ba59",
+    "status": "hotfix",
+    "comment": "universal override for citrix netscaler. currently missing single step totp token input",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "#passwd",
+          "usernameElement": "#login",
+          "totpElements": null,
+          "submitElement": "#Logon",
+          "stayLoggedInElement": null,
+          "formElement": "form.credentialform"
+        }
+      }
+    ],
+    "predicate": {
+      "type": "elementExists",
+      "selector": "#explicit-auth-screen",
+      "requireVisible": true,
+      "negated": false
+    }
+  },
+  {
+    "id": "df530514-de3d-4e70-bc3f-92fda1bf56a9",
+    "status": "hotfix",
+    "comment": "Pretalx has both login and registration in a single form, throwing off our detection",
+    "rules": [
+      {
+        "type": "loginForm",
+        "selectors": {
+          "passwordElement": "#id_login_password",
+          "usernameElement": "#id_login_email",
+          "totpElements": null,
+          "submitElement": "#auth-form > div:first-of-type > button[type=submit]",
+          "stayLoggedInElement": null,
+          "formElement": "#auth-form > div:first-of-type"
+        }
+      },
+      {
+        "type": "registrationForm",
+        "selectors": {
+          "formElement": "#auth-form > div:nth-of-type(2)",
+          "passwordElement": "input[name=register_password]",
+          "repeatPasswordElement": "input[name=register_password_repeat]",
+          "usernameElement": "#id_register_email",
+          "submitElement": "#auth-form > div:nth-of-type(2) button[type=submit]"
+        }
+      }
+    ],
+    "predicate": {
+      "type": "elementExists",
+      "selector": "meta[name=application-name][content=pretalx]"
+    }
+  }
+]

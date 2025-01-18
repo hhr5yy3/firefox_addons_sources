@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_siteimprove_alfa_web_extension=self.webpackChunk_siteimprove_alfa_web_extension||[]).push([[5100],{15100:e=>{e.exports=JSON.parse('{"$schema":"../schema/rule.json","requirements":["https://www.w3.org/TR/WCAG2/#target-size-minimum"],"responsibility":"visual","difficulty":4,"affects":["motion"],"category":"layout"}')}}]);

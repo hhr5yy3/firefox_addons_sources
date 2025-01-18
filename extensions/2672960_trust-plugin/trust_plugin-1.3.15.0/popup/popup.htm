@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>TrustPlugin</title>
+          <link href="./fonts.css" rel="stylesheet" type="text/css">
+          <script src="../includes/formats.js"></script>
+          <script src="../includes/jquery.js"></script>
+          <script src="../includes/base64.js"></script>
+          <script src="../includes/error_handler.js"></script>
+          <script src="popup.js"></script>
+
+          <style>
+               @font-face {
+                   font-family: 'roboto-regular';
+                   src: url("../fonts/roboto-regular.ttf") format("truetype");
+               }
+               * {
+                   font-family: "roboto-regular";
+                   font-size: 10pt;
+                   padding: 0;
+                   margin: 0;
+               }
+               html {
+                   width: 245px;
+                   min-height: 252px;
+               }
+               body {
+                   width: 245px;
+                   min-height: 252px;
+               }
+               div.anchor {
+                    display: none;
+               }
+               div.anchor.active {
+                    display: block;
+               }
+
+               div.warning {
+                    color: #F2994A;
+               }
+               div.error {
+                    color: #CF1818;
+               }
+               div.blocks {
+                    margin-top: 17px;
+               }
+               div.block {
+                    margin-left: 15px;
+               }
+               div.logo {
+                    overflow: auto;
+               }
+               div.space{
+                 background-color: transparent;
+                 height: 10px;
+                 display: block;
+               }
+
+               button.download {
+                    margin-left: 12px; 
+                    margin-top: 15px; 
+                    margin-bottom: 15px;
+               }
+
+               .text {
+                   margin-top: 2px;
+                   font-size: 12px;
+                   color: #37373B;
+               }
+               .tab {
+                   padding-top: 10px;
+               }
+               .back-button {
+                   padding-top: 2px;
+               }
+               a {
+                   vertical-align: top;
+                   font-size: 12px;
+                   height: 32px;
+                   border-width: 0px;
+                   background: transparent;
+                   color: #1957A6;
+                   text-decoration: none;
+               }
+               a:hover {
+                   color: #1B4584;
+               }
+               .link-button {
+                   padding-left: 10px;
+                   vertical-align: top;
+                   width: 100%;
+                   font-size: 12px;
+                   height: 32px;
+                   border-width: 0px;
+                   background: transparent;
+                   color: #1957A6;
+                   text-align: left;
+               }
+               .link-button:hover {
+                   background: #E9E9EA;
+               }
+               .push-button {
+                   font-size: 12px;
+                   height: 32px;
+                   color:  white;
+                   padding: 8px;
+                   border-radius: 4px;
+                   border-width: 0px;
+                   background: #1E4D92;
+               }
+               .push-button:hover {
+                   background: #1B4584;
+               }
+               .push-button:active {
+                   background: #183E75;
+               }
+               .push-button:disabled {
+                   background: #8198BB;
+               }
+               .push-button-text {
+                   display: inline-block; 
+                   height: 18px; 
+                   vertical-align: top; 
+                   padding-top: 2px;
+                   padding-left: 5px;
+               }
+               h2 {
+                   font-size: 16px;
+                   margin-left: 57px; 
+                   margin-top: 15px;
+               }
+               h4 {
+                   font-size: 10px;
+                   font-weight: normal; 
+                   color: #79797C;
+                   text-transform: uppercase;
+               }
+               img.logo{
+                   float: left;
+                   height: 48px;
+                   width: 48px;
+                   content: url(data:image/png;base64,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);
+               }
+               img.module{
+                   float: left; 
+                   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAI4SURBVDhPjVRNctpQDH56Nj/tik1n7HZR36DkBskJSmZaIHE7CSdIcoKQE9CeAGZaiGkXCSeAG4SeoN508K7etUxiq58eNoWGhnwzIFny05P0SSa1BW59UIM4V6SqkBOmeSsKWqFxrkBnciOcZtdDgCvRmfkCwiMujSu1bkVsq3gwkEqLxyJY0370xW8rTs7w6BUKRU/sq9gYSG589rZf1aRfLiy/zT9rbTLRTLvOm0/mZxzAvR69OOxX00SN4Vqmzym3oq9+z6kPekTqKDPnCNG3vXuB3Mbgu1FQBmsVW1rHPwb+VExO8xIl3a2UpdEz1cGl07VAkipZ1pgp2YuC95PM/CDcRv8DAh3Z8iDsEBdAc96T7ZA+Pi2WT1ilUmqsZU5AKcrRSFGdmrcegSelUpeJ24yytMX7lPfk13y+Uy6XK8RJbTZ8h3T/j7wFUM9mw0PzrtDvqVSN4utWHAUH4bYgBrZeNPy2ZIZVIIEm+H8tt7iNz6duPehsmtx16AURhdtlK0goJWZJc0nrY1hzmv02MZ1Dlb37uKTfaaJuJiym7vwbSKbcTsnjwny6urAIdkwpnWCsveWKyEFO2AxeDikRZIxtTTfKVlfC7vP6pWRhEAV+jxWPoFbWds2iu9goyaKZoFgO7YLmC1C8I1Iol+zFL8j2Mdy0ItKvKim6xm04QN9mwwP5Jhlgkn+iiaFkQkSvYKqZixbuv2CiFrMaYWJxmCvaStuZKwO+S8QegiBbNtlGgd/+A0uD5IMvM4UmAAAAAElFTkSuQmCC);
+               }
+               img.about{
+                   float: left; 
+                   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAHrSURBVDhPrVRRbhMxEJ1xKiK+2M+N+OjeoOEG6QmaSoWmqVDbI+QEiBP0CAVVaaNWSMkJCCdgucHyRUR/8kmk1o83XjfKNhskEE+y7PHYY/vNPKvUID247LiGO4Foh2YWJiG5qua4x+THp/44zK2gEijtXWSK5gWHDIA5RMYM8N18DLLDrs1mgQvoYnc2OivMZ1gGetkftv2DfLYxvAxmt8cfguMJ0t7wVKHvOEzuPXbvbo9zmw+Byps8+0pzDlWedLQ8qQ5p75rrYYcmvNkru5kzB5/DyfogrcOr89bhdYUTW2NrjbhIhbjWm8su+wwe72tvAvoEL6K1RBlMBhx20h6To7q1R6PYxAmcDn4tFvvRrGA2sj2YC7ZOHABmQr9F3xoUfu95s3kazTUAOlFBx5HuNuAD8/XQLsvAbr0BMDqyQPb/gAUqRN12af49VEKh5uRIvvCNlrl/g1EjmjtxD5atJH093EjoJliVs8s8MHGz0dspjak6PbcKDytWAZmz/NeyWqohSKX4edMfR4lYyfsokaoY6xDFTTWAEnGUyFEpkTBoiJV8Ygv+9MxStKZLJLbnUQ1PvpGlGMNXwZazYMOznMo264lJ0YT9lP/K2aqkKoEeYfqDNLp07lhWbI6buQkM4D9GXlcg8hscq9qpywBfZQAAAABJRU5ErkJggg==);
+               }
+               img.warning{
+                   float: left; 
+                   content: url(   data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEPSURBVHgBlVI7dsIwEJxduw2QGzg3IR3PKXIFUuW55ASGE1D65aUIN0hH6JKj6AYQUrOKVsbGFnLBNJJ2dzT7I0TwV82mFsj0ToC5K3Y/YQx1H8cqn4NpDdhJEGcgWI2K7aYxcKvynpfu9REhKTL1+ZiuYq2kpA4EL2B7cCGfoV2V+axbhhIniCFRYgDG2iv6RjB/XxFFHlN3DvnYgjPciMRx0iFnyvRc987G/VpLcmluCyGawsqE+hOrU9X69XJ8e9qHYxiq0cKa8evXQy0lp0X4a+LUmu3pwnV65c/G8FvlS4qMpafmtmdcbJc9ok+5ms0tU+nqyvrp4UAii1Gx27TKsZ/3bra4pGnuI0v+Dy42aOIxIQmZAAAAAElFTkSuQmCC);
+               }
+               img.error{
+                   float: left; 
+                   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAENSURBVHgBlVK7jcJAEJ3Z3cudHKfL9jrxVUCCwCGUQAVABZQAoRFIlAClOMZCuAB7hxkLEB6tAybZ9Zv3/HY+CJEoR6OUEL3cG6Li93A4aw6+f1yybGqI1gSQKFIRQlgN9vvtEzPPy3U8XiDRRoskGPNozKZkTsdRnETUIYcwM4gVP/mocXFuHfl5C+3SWFswqdI4O6/bUxoB1p40oUb8d3UNfTlDznn4MGzTeNeXdERDdusVO2l1LEFEKSAmGMlJ/S1eTiY3UGPoq5FHUwx2u7+2q9zyuf7rVwhJtH5eBDleLymzbAmRsXQ0iKufPF92hBKyCCJm0CtNxTOdv69crHZxT+khluZ95/lZc+5gW3VFoVaozgAAAABJRU5ErkJggg==);
+               }
+               img.back{
+                   float: left; 
+                   content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAIZSURBVDhPjVRBbhpBEOyeRUG+7XGRDyYv8OYH8IJgKcEEK8L7BF6Qp+DIgmBZkeEFcV6QzQ/ICaRcuCVEZjtVswvGGEhKO5qZ7pnameruUdmB6M11zQWuY6I1TKveaJKqamoPNp5+bo+8bQNPiKJWr6pW7mEIApubyAgEP+gDySm6GI3EE9NFfTZMJvQRa6Ljdj/OlvKFY8ukO7u9uPKOLUSt/qWafsAwfMis/vP2IqXdE+UnefEN07mp4k/v1n/ahaj1CeuNPw1xslc8maMD14Hx/0gIruFaCldIIVppXjdEgzvLLNm8znFz0MnUxdObVrcwPUNxzZ7psu5US69hmzwnkSuIxajtxWzIPTYXK3WcmSES+r3wbZBI+uvPAsc/DDMdq1itBLljs2xMY6U5aHgSAmE4Kpfvjs4HfroNRKybR8ygqXa82CuYW86LIXXkt7cFQRaiW6OENhF1J5zMhu/vIWBCATn/vViczUfJI/kOqPhETaGRfMUdG7k5F9DUEl6ZVyvM+0FpRFMnbklNwuht/zL3FNGw5RmGB0/D8KOrZmYQHKicD5il8SpLafsXirr0JTW9ab/0YiNLE0pIBxfQdgiPJIYSYYaLeCKmvAuEKR96so1rbiPPZtalhdyzKqmtZ2RdjP6pQEuRsD5ZncoJwo6gaIj+Hu9KslmXT4hWYP2ZBA04TxkV2rAZmwwE2UemiV+4hshfXFwCYHf1rj4AAAAASUVORK5CYII=);
+               }
+
+               .message-container {
+                   padding-left: 12px;
+               }
+
+               .message-icon {
+                   display: inline-block;
+                   vertical-align: top;
+               }
+
+               .message-text {
+                   padding-top: 2px;
+                   padding-left: 4px;
+                   display: inline-block;
+                   vertical-align: top;
+                   line-height: normal;
+               }
+
+               ul.permission {
+                    padding-left: 25px;
+               }
+
+               #error_text {
+                    line-height: 1.5;
+               }
+          </style>
+     </head>
+     <body>
+          <div id="main" class="anchor active tab">
+               <div style="margin-left: 10px;">
+                    <div class="logo">
+                         <img class="logo"/>
+                         <h2>TrustPlugin</h2>
+                    </div>
+                    <div class="space"></div>
+                    <div class="space"></div>
+                    <div>
+                         <h4>Версия расширения</h4>
+                         <p id="extension-version" class="text">1.3.15.0</p>
+                    </div>
+               </div>
+               <div class="blocks">
+                    <button hidden id="main_to_module_link" class="link-button"><img class="module"/><span class="push-button-text">Установленные модули</span></button>
+                    <button id="main_to_about_link" class="link-button"><img class="about"/><span class="push-button-text">О программе</span></button>
+
+                    <div hidden id="support_version_message" class='message-container'>
+                         <div class="space"></div>
+                         <div class='message-icon'><img class="warning"/></div>
+                         <div class='message-text warning'>Ваша версия приложения<br/>TrustPlugin устарела.<br/>Рекомендуется установить<br/>новую версию приложения.</div>
+                    </div>
+
+                    <div hidden id="obsolete_version_message" class='message-container'>
+                         <div class="space"></div>
+                         <div class='message-icon'><img class="error"/></div>
+                         <div class='message-text error'>Работа TrustPlugin невозможна.<br/>Обновите версию приложения.</div>
+                    </div>
+
+                    <div hidden id="error_version_message" class='message-container'>
+                         <div id="error_text" class='message-text error'>Ошибка при получении данных.</div>
+                    </div>
+
+                    <button hidden id="download" class="push-button download">Скачать&#160;инсталлятор</button>
+               </div>
+          </div>
+          <div id="module" class="anchor tab">
+               <div>
+                    <button id="module_to_main_link" class="link-button back-button"><img class="back"/><span class="push-button-text">Назад</span></button>
+               </div>
+               <div class="space"></div>
+               <div class="block">
+                    <h4>Версия приложения</h4>
+                    <p id="program-version" class="text">отсутствует</p>
+                    <div class="space"></div>
+                    <h4>Модули</h4>
+                    <div id="modules">
+                         <!-- <p class="text"></p> -->
+                    </div>
+               </div>
+          </div>
+          <div id="about" class="anchor tab">
+               <div>
+                    <button id="about_to_main_link" class="link-button back-button"><img class="back"/><span class="push-button-text">Назад</span></button>
+               </div>
+               <div class="block">
+                    <div class="space"></div>
+                    <h4>Описание</h4>
+                    <p class="text">Расширение браузера для TrustPlugin</p>
+                    <div class="space"></div>
+                    <h4>Разрешения</h4>
+                    <ul class="permission">
+                         <li class="text">Чтение вашего журнала браузера</li>
+                         <li class="text">Обмен данными с взаимодействующими собственными приложениями</li>
+                    </ul>
+                    <div class="space"></div>
+                    <div class="space"></div>
+                    <a href="https://addons.mozilla.org/ru/firefox/addon/trust-plugin/">Открыть веб-сайт расширения</a>
+               </div>
+          </div>
+     </body>
+</html>

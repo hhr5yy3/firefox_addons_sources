@@ -1,0 +1,60 @@
+<div id="changelog">
+    <div class="content">
+        <div class="new-features">
+            <div class="release-notes" ng-repeat="(key, log) in changelog">
+                <div class="release-notes-container" ng-if="changelogModal || (!changelogModal && key === 'current_version')">
+                    <h1 ng-if="!changelogModal" class="updates-page-title" i18n-content="update_page_title">
+                            <!--directive: i18n-substitute $1:{{log.version}}--></h1>
+                    <div class="release-version">
+                        <span class="version-wrapper">
+                            <span ng-if="!changelogModal" i18n-content="update_page_whats_new" class="version"></span>
+                            <span ng-if="$first && changelogModal" i18n-content="update_page_new_version_title" class="version">
+                                <!--directive: i18n-substitute $1:{{log.version}}--></span>
+                            <span ng-if="!$first && changelogModal" i18n-content="update_page_version_title" class="version">
+                                <!--directive: i18n-substitute $1:{{log.version}}--></span>
+                        </span>
+                    </div>
+
+                    <div class="log-list-item" ng-if="log.updates" ng-repeat="update in log.updates">
+
+                        <div ng-bind-html="update.description" class="update-description"></div>
+
+                        <ul class="notes">
+                            <li  ng-repeat="note in update.notes" ng-bind-html="note"></li>
+                        </ul>
+                    </div>
+
+                    <div class="bug-fixes" ng-if="log.bug_fixes">
+                        <div class="bug-fixes-title" ng-if="log.updates" i18n-content="update_page_bugs_fixed_title"></div>
+                        <div class="log-list-item" ng-repeat="fix in log.bug_fixes">
+
+                            <div ng-if="fix.description" ng-bind-html="fix.description" class="fix-description"></div>
+
+                            <ul class="notes">
+                                <li ng-repeat="note in fix.notes" ng-bind-html="note"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="planned-features" ng-if="!changelogModal && log.planned_features">
+                        <div i18n-content="update_page_planned_features_title"></div>
+                        <div class="log-list-item">
+                            <ul class="notes">
+                                <li ng-repeat="feature in log.planned_features" ng-bind-html="feature"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="update-page-actions" ng-if="!changelogModal">
+                        <a class="about-button md-button md-raised md-primary" i18n-content="update_page_about_button" href="/html/options.html#!/about"></a>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/dwithease/" target="_blank"><img src="../../images/icons/social/icon-facebook.png" class="icon icon-fb"></a>
+                            <a href="https://github.com/ForkPoint/dwithease" target="_blank"><img src="../../images/icons/social/icon-github.png" class="icon icon-git"></a>
+                            <a href="https://chrome.google.com/webstore/detail/demandware-with-ease/ffhabonelknmejmdnekedmijlhebpcio" target="_blank"><img src="../../images/icons/social/icon-google.png" class="icon icon-google"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

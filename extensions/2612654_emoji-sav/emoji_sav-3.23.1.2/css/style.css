@@ -1,0 +1,1211 @@
+@font-face {
+    font-family: twemoji;
+    src: url("../font/twemoji.ttf");
+}
+
+@font-face {
+    font-family: twemoji-fix-macos;
+    src: url("../font/twemoji-fix-macos.ttf");
+}
+
+@font-face {
+    font-family: joypixels;
+    src: url("../font/joypixels.ttf");
+}
+
+@font-face {
+    font-family: open-sans;
+    src: url("../font/opensans.ttf");
+}
+
+@font-face {
+    font-family: notocoloremoji;
+    src: url("../font/notocoloremoji.ttf");
+}
+
+@font-face {
+    font-family: openmoji-color;
+    src: url("../font/openmojicolor.ttf");
+}
+
+@font-face {
+    font-family: openmoji-black;
+    src: url("../font/openmojiblack.ttf");
+}
+
+* {
+    scrollbar-color: rgb(10, 132, 255) rgba(150, 150, 150, 0);
+    scrollbar-width: thin;
+    outline: 0px solid transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    /* or add it to the track */
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #3399ff;
+}
+
+body {
+    background-color: transparent;
+    color: black;
+    width: auto;
+    /*It's set in js script*/
+    height: auto;
+    overflow: hidden;
+    font-family: twemoji, sans-serif;
+    margin: 0px;
+}
+
+#popup-content {
+    width: auto;
+    /*It's set in js script*/
+    height: auto;
+    /*It's set in js script*/
+    margin: 0px;
+    border: 0px solid transparent;
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+}
+
+#emojis {
+    position: relative;
+    width: 100%;
+    height: auto;
+    /*it's set in js script*/
+    margin: 0px;
+    padding: 2px;
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 0;
+    border-top: 1px solid rgb(201, 202, 203);
+    margin-top: 1px;
+}
+
+#emoji-skin-choose {
+    position: absolute;
+    width: auto;
+    height: auto;
+    margin: 0px;
+    padding: 2px;
+    overflow: hidden;
+    overflow-y: auto;
+    border-radius: 5px;
+    /*border: 2px solid #3399ff;*/
+    box-shadow: 0px 0px 5px 0px rgba(177, 214, 252, 0.4);
+    z-index: 5;
+    display: none;
+    top: 0px;
+    left: 0px;
+}
+
+.emoji,
+.review-button,
+.message-button,
+.button {
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    color: black;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 22px;
+    /*font-family: twemoji, sans-serif;*/
+    margin: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.1s;
+    box-sizing: border-box;
+    font-family: inherit;
+    text-align: center;
+}
+
+.emoji {
+    background: transparent;
+}
+
+.emoji {
+    padding: 5px;
+}
+
+.button {
+    width: auto;
+    font-family: open-sans, monospace, sans-serif;
+}
+
+.emoji:hover,
+.review-button:hover,
+.message-button:hover,
+.button:hover {
+    background-color: rgba(221, 222, 223, 0.8);
+}
+
+.emoji:active,
+.emoji:focus,
+.review-button:active,
+.message-button:active,
+.button:active, .button:focus {
+    box-shadow: 0px 0px 0px 2px rgba(177, 214, 252, 0.8), 0px 0px 0px 5px rgba(51, 153, 255, 0.2);
+    z-index: 9;
+}
+
+.size-emoji-button-30 {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.size-emoji-button-35 {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+}
+
+.size-emoji-button-40 {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+}
+
+.size-emoji-button-50 {
+    width: 50px;
+    height: 50px;
+    font-size: 28px;
+}
+
+.size-emoji-button-60 {
+    width: 60px;
+    height: 60px;
+    font-size: 34px;
+}
+
+#titles {
+    position: relative;
+    width: 100%;
+    height: 36px;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.section-title {
+    background-color: transparent;
+    width: auto;
+    height: 100%;
+    padding: 3px;
+    color: rgb(10, 132, 255);
+    border: 0px;
+    font-size: 16px;
+    font-family: inherit;
+    margin: 0px;
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
+    transition: 0.1s;
+    border-radius: 5px;
+    border: 0px solid transparent;
+    text-align: center;
+}
+
+.section-title:hover, .letter:hover {
+    background-color: rgba(221, 222, 223, 0.5);
+}
+
+.section-title:focus, .section-title:active {
+    background-color: rgba(201, 202, 203, 0.5);
+}
+
+
+.character-copied, div#review-message, div#opened-addon-message, div#emojis-copied-since-install-message {
+    position: fixed;
+    bottom: 3px;
+    right: 30%;
+    left: 30%;
+    text-align: center;
+    height: auto;
+    width: auto;
+    font-size: 16px;
+    color: rgb(221, 222, 223);
+    z-index: 999;
+    background-color: #3399ff;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0px;
+    border: 0px solid transparent;
+    font-weight: normal;
+    font-family: open-sans, sans-serif;
+}
+
+div#top-message, div#import-message, div#export-message {
+    position: fixed;
+    top: 3px;
+    bottom: 3px;
+    right: 3px;
+    left: 3px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: left;
+    height: auto;
+    width: auto;
+    font-size: 16px;
+    color: rgb(240, 240, 240);
+    z-index: 999;
+    background-color: #3399ff;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0px;
+    border: 0px solid transparent;
+    font-weight: normal;
+    font-family: open-sans, sans-serif;
+}
+
+#top-message ul {
+    list-style: none;
+    margin: 0px;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-indent: 0px;
+}
+
+#top-message li {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+#top-message li:before {
+    content: "●";
+    padding-right: 5px;
+}
+
+#top-message a {
+    color: rgb(255, 255, 255);
+    text-decoration: underline;
+    transition: 0.3s;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+#top-message a:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgba(177, 214, 252, 0.2);
+}
+
+#top-message a:active {
+    color: rgb(255, 255, 255);
+    background-color: rgba(177, 214, 252, 0.5);
+}
+
+#top-message a.button-release {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.1s;
+    box-sizing: border-box;
+    font-family: inherit;
+    text-decoration: none;
+    padding: 2px 7px;
+}
+
+#top-message a.button-release:hover {
+    background-color: rgb(221, 222, 223);
+}
+
+#top-message a.button-release:focus {
+    box-shadow: 0px 0px 0px 2px rgba(177, 214, 252, 0.8), 0px 0px 0px 5px rgba(51, 153, 255, 0.2);
+}
+
+.font-twemoji {
+    font-family: twemoji, sans-serif;
+}
+
+.font-twemoji-fix-macos {
+    font-family: twemoji-fix-macos, sans-serif;
+}
+
+.font-joypixels {
+    font-family: joypixels, sans-serif;
+}
+
+.font-openmojicolor {
+    font-family: openmoji-color, sans-serif;
+    color: #000000 !important;
+
+    .emoji, .section-title {
+        color: #000000;
+    }
+}
+
+.font-openmojiblack {
+    font-family: openmoji-black, sans-serif;
+}
+
+.font-notocoloremoji {
+    font-family: notocoloremoji, sans-serif;
+}
+
+.font-opensans {
+    font-family: open-sans, sans-serif;
+}
+
+.font-zillaslab {
+    font-family: open-sans, sans-serif;
+}
+
+.font-default {
+    font-family: sans-serif;
+}
+
+.font-size-16 {
+    font-size: 16px;
+}
+
+.font-size-18 {
+    font-size: 18px;
+}
+
+.font-size-20 {
+    font-size: 20px;
+}
+
+.font-size-22 {
+    font-size: 22px;
+}
+
+.font-size-25 {
+    font-size: 25px;
+}
+
+.font-color-red {
+    color: #FF0000;
+}
+
+.font-color-lightblue {
+    color: #3399ff;
+}
+
+.font-color-gray {
+    color: rgb(177, 177, 178);
+}
+
+.font-color-gray {
+    color: #000000;
+}
+
+.border-1-black {
+    border: 1px solid #000000;
+}
+
+.border-1-lightblue {
+    border: 1px solid #3399ff;
+}
+
+.border-1-gray {
+    border: 1px solid rgb(177, 177, 178);
+}
+
+.margin-right-5 {
+    margin-right: 5px;
+}
+
+.margin-right-10 {
+    margin-right: 10px;
+}
+
+.margin-top-5 {
+    margin-top: 5px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+div#review-message, div#opened-addon-message, div#emojis-copied-since-install-message {
+    top: 5px;
+    bottom: auto;
+    left: 5px;
+    right: 5px;
+    padding: 10px;
+    font-size: 16px;
+    z-index: 10;
+    font-weight: bold;
+}
+
+div#background-opacity-review, div.background-opacity {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: auto;
+    height: auto;
+    background-color: black;
+    opacity: 0.4;
+    z-index: 9;
+}
+
+button.review-button, button.message-button {
+    width: auto;
+    font-size: 14px;
+    font-family: open-sans, sans-serif;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 30px;
+}
+
+div#review-message-buttons, div#top-message-buttons, div.message-buttons-container {
+    display: block;
+    text-align: right;
+    margin: 0px;
+    margin-top: 10px;
+}
+
+#top-section {
+    background: transparent;
+    margin: 6px;
+    height: 34px;
+    position: relative;
+}
+
+#search-bar-input {
+    border-radius: 5px;
+    padding: 6px;
+    padding-left: 30px;
+    height: 32px;
+    width: 100%;
+    font: inherit;
+    font-size: 14px;
+    transition: 0.1s;
+    font-family: open-sans, sans-serif;
+    background-image: url("../img/search-icon.png");
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 12px auto;
+}
+
+.import-export-textarea {
+    border-radius: 5px;
+    padding: 6px;
+    height: 75%;
+    width: 96%;
+    font: inherit;
+    font-size: 14px;
+    transition: 0.1s;
+    font-family: monospace, open-sans, sans-serif;
+    border: 1px solid transparent;
+    background-color: inherit;
+    color: inherit;
+    resize: none;
+    margin: 0px;
+    margin-left: 2%;
+    margin-right: 2%;
+    overflow: auto;
+}
+
+.import-export-textarea:focus, .import-export-textarea:active {
+    box-shadow: 0px 0px 0px 2px rgba(177, 214, 252, 0.8), 0px 0px 0px 5px rgba(51, 153, 255, 0.2);
+    border: 1px solid rgba(177, 214, 252, 0.8);
+    z-index: 2;
+    transition: 0.5s;
+}
+
+#text-click-on-emoji-to-remove {
+    height: 32px;
+    width: 100%;
+    font-family: open-sans, sans-serif;
+    font-size: 16px;
+    display: none;
+    margin: 5px;
+}
+
+#search-bar-input:focus {
+    border: 1px solid rgba(177, 214, 252, 0.8);
+    box-shadow: 0px 0px 0px 2px rgba(177, 214, 252, 0.8), 0px 0px 0px 5px rgba(51, 153, 255, 0.2);
+}
+
+#search-box {
+    top: 0px;
+    left: 0px;
+    right: 80px;
+    position: absolute;
+    transition: 0.2s;
+}
+
+.light-settings-button {
+    background-image: url("../img/settings-dark.png");
+}
+
+.dark-settings-button {
+    background-image: url("../img/settings-light.png");
+}
+
+.light-delete-button {
+    background-image: url("../img/delete-dark.png");
+}
+
+.dark-delete-button {
+    background-image: url("../img/delete-light.png");
+}
+
+#settings-button, #delete-button, #hide-settings-button, #finish-edit-button {
+    top: 0px;
+    right: 0px;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    margin: 0px;
+    font-family: inherit;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 16px;
+}
+
+#delete-button {
+    right: 40px;
+    display: block;
+}
+
+#finish-edit-button {
+    right: 40px;
+    display: none;
+    width: 80px;
+}
+
+#hide-settings-button {
+    background-image: url("../img/close-dark.png");
+    background-size: auto 12px;
+    top: 6px;
+    right: 6px;
+}
+
+#no_emojis_found,
+#no_most_used_emojis {
+    font-family: open-sans, sans-serif;
+    text-align: center;
+    padding: 50px;
+    width: auto;
+    margin: 5px;
+    font-size: 20px;
+}
+
+div#settings-section {
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: normal;
+    display: none;
+    position: absolute;
+    font-family: open-sans, sans-serif;
+    overflow: auto;
+    z-index: 99;
+}
+
+.red-button {
+    background-color: rgb(255, 214, 214);
+}
+
+.red-button:hover {
+    background-color: rgb(255, 173, 173);
+}
+
+.blue-button {
+    background-color: rgb(214, 228, 255);
+}
+
+.blue-button:hover {
+    background-color: rgb(173, 199, 255);
+}
+
+.green-button {
+    background-color: rgb(224, 255, 214);
+}
+
+.green-button:hover {
+    background-color: rgb(184, 255, 173);
+}
+
+#settings-title, #title-release-notes, .title-message {
+    padding: 0px;
+    padding-left: 10px;
+    margin: 0px;
+    font-size: 25px;
+    font-weight: normal;
+    font-family: inherit;
+    text-align: left;
+}
+
+#settings-section-content {
+    overflow: auto;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+    height: auto;
+    width: auto;
+}
+
+.button-settings {
+    width: auto;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: auto;
+    margin: 2px;
+    font-size: 14px;
+    font-family: open-sans, sans-serif;
+}
+
+div {
+    background-color: inherit;
+}
+
+#made-in-trentino-settings, .text-in-settings {
+    width: auto;
+    text-align: center;
+    font-size: 14px;
+    margin: 0px;
+    background-color: inherit;
+    border-top: 1px solid rgba(177, 214, 252, 0.8);
+    box-sizing: border-box;
+    padding: 10px;
+    font-family: open-sans, sans-serif;
+}
+
+.border-top {
+    border-top: 1px solid rgba(177, 214, 252, 0.8);
+    padding: 10px;
+}
+
+.text-in-settings {
+    padding: 5px;
+    border: 0px solid transparent;
+}
+
+.subsection-settings {
+    position: relative;
+    color: inherit;
+}
+
+.break-new-line {
+    position: relative;
+    display: block;
+    margin: 0px;
+}
+
+.title-subsection-settings {
+    font-size: 16px;
+    height: 30px;
+    font-family: open-sans, sans-serif;
+    display: inline-block;
+    min-width: 60px;
+}
+
+.description-subsection-settings {
+    font-size: 14px;
+    height: 30px;
+    font-family: open-sans, sans-serif;
+    display: none;
+    color: #3399ff;
+    font-style: italic;
+    font-weight: bold;
+    position: relative;
+}
+
+.select {
+    width: 140px;
+    width: auto;
+    font-size: 14px;
+    height: 30px;
+    background-color: #F5F5F5;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 35px;
+    color: black;
+    border: 0px;
+    border-radius: 5px;
+    font-family: open-sans, sans-serif;
+    background-image: url("../img/arrow-select.png");
+    background-repeat: no-repeat;
+    background-position: center right 15px;
+    background-size: 10px auto;
+    margin: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.1s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 0px;
+    text-overflow: '';
+}
+
+.select:hover {
+    background-color: rgb(221, 222, 223);
+}
+
+.select:focus, .select:active {
+    box-shadow: 0px 0px 0px 2px rgba(177, 214, 252, 0.8), 0px 0px 0px 5px rgba(51, 153, 255, 0.2);
+    z-index: 9;
+}
+
+.select-small {
+    /*width: 100px;*/
+    /*background-position: 70px center;*/
+}
+
+.select-big {
+    /*width: 150px;*/
+    /*background-position: 120px center;*/
+}
+
+.select-extra-big {
+    /*width: 250px;*/
+    /*background-position: 220px center;*/
+}
+
+/*Dark and light themes*/
+
+.light,
+.light-settings {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.light-search-bar-input, .textarea-light {
+    background-color: rgb(245, 245, 245);
+    border: 1px solid rgb(225, 225, 226);
+}
+
+.textarea-light {
+    color: #111111;
+}
+
+.light-search-bar-input:hover {
+    border-color: rgb(177, 177, 178);
+}
+
+.dark,
+.dark-button-emoji,
+.dark-settings {
+    background-color: rgb(30, 30, 30);
+    color: #EEEEEE;
+}
+
+.dark-button-emoji {
+    background: transparent;
+}
+
+.light-settings-button,
+.light-btn-settings-button,
+.light-delete-button,
+.light-finish-edit-button {
+    background-color: #F5F5F5;
+}
+
+.dark-settings-button,
+.dark-btn-settings-button,
+.dark-delete-button,
+.dark-finish-edit-button {
+    background-color: rgb(70, 70, 70, 0.8);
+    color: #EEEEEE;
+}
+
+.dark-select {
+    background-color: rgb(70, 70, 70);
+    background-image: url("../img/arrow-select-light.png");
+    color: #EEEEEE;
+}
+
+.dark-select:hover {
+    background-color: rgb(50, 50, 50);
+}
+
+.dark-text {
+    color: #EEEEEE;
+}
+
+.dark-search-bar-input, .textarea-dark {
+    background-color: rgb(70, 70, 70);
+    border: 1px solid rgb(90, 90, 90);
+    color: #EEEEEE;
+}
+
+.textarea-dark {
+    color: #EEEEEE;
+}
+
+.dark-search-bar-input:hover {
+    border: 1px solid rgb(110, 110, 110);
+}
+
+.dark-section-title {
+    border-bottom: 1px solid rgb(70, 70, 70);
+}
+
+.dark-section-title:hover,
+.dark-button-emoji:hover,
+.dark-settings-button:hover,
+.dark-btn-settings-button:hover,
+.dark-delete-button:hover,
+.dark-finish-edit-button:hover {
+    background-color: rgb(50, 50, 50);
+}
+
+.dark-section-title:active {
+    background-color: rgb(70, 70, 70);
+}
+
+.subsection-settings {
+    padding: 5px;
+}
+
+.light-subsection-settings,
+.dark-subsection-settings {
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.no-border-bottom {
+    border-bottom: 0px solid transparent;
+}
+
+.dark-subsection-settings {
+    border-bottom: 1px solid #555555;
+}
+
+#skin-tone-container, #auto-close-container, #multi-copy-container, #space-emoji-container, #insert-emoji-container, #theme-container, #extension-icon-container {
+    position: relative;
+    height: 30px;
+    display: inline-block;
+    top: 0px;
+    margin-left: 10px;
+}
+
+#extension-icon-section-container, #skin-tone-section-container {
+    min-height: 40px;
+}
+
+#skin-tone-section-container > .title-subsection-settings, #extension-icon-section-container > .title-subsection-settings {
+    margin-top: 3px;
+}
+
+#extension-icon-section-container > .title-subsection-settings {
+    margin-top: 6px;
+}
+
+#auto-close-container, #multi-copy-container, #space-emoji-container, #insert-emoji-container, #theme-container {
+    min-width: 100px;
+    width: auto;
+}
+
+.skin-tone-button, .extension-icon-button {
+    border: 0px solid transparent;
+    background: transparent;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    opacity: 1;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.1s;
+}
+
+.skin-tone-button:hover, .extension-icon-button:hover {
+    opacity: 0.8;
+}
+
+.skin-tone-button:active, .skin-tone-button:focus, .extension-icon-button:active, .extension-icon-button:focus {
+    box-shadow: 0px 0px 0px 1px rgba(51, 153, 255, 0.8), 0px 0px 0px 4px rgba(177, 214, 252, 0.8);
+    border: 1px solid rgba(51, 153, 255, 0.8);
+}
+
+.skin-tone-button-selected, .extension-icon-button-selected {
+    border: 2px solid rgba(51, 153, 255, 0.8);
+}
+
+#skin-standard {
+    background-color: #ffDD00;
+}
+
+#skin-light {
+    background-color: #FFDAE6;
+}
+
+#skin-mlight {
+    background-color: #d4adad;
+}
+
+#skin-medium {
+    background-color: #966a6a;
+}
+
+#skin-mdark {
+    background-color: #603a3a;
+}
+
+#skin-dark {
+    background-color: #372323;
+}
+
+.extension-icon-button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 90% auto;
+    background-position: center center;
+}
+
+#extension-icon-1 {
+    background-image: url("../img/extension-icons/extension-icon-1.png");
+}
+
+#extension-icon-2 {
+    background-image: url("../img/extension-icons/extension-icon-2.png");
+}
+
+#extension-icon-3 {
+    background-image: url("../img/extension-icons/extension-icon-3.png");
+}
+
+#extension-icon-4 {
+    background-image: url("../img/extension-icons/extension-icon-4.png");
+}
+
+#extension-icon-5 {
+    background-image: url("../img/extension-icons/extension-icon-5.png");
+}
+
+#extension-icon-6 {
+    background-image: url("../img/extension-icons/extension-icon-6.png");
+}
+
+#extension-icon-7 {
+    background-image: url("../img/extension-icons/extension-icon-7.png");
+}
+
+#extension-icon-8 {
+    background-image: url("../img/extension-icons/extension-icon-8.png");
+}
+
+#extension-icon-9 {
+    background-image: url("../img/extension-icons/extension-icon-9.png");
+}
+
+#extension-icon-10 {
+    background-image: url("../img/extension-icons/extension-icon-10.png");
+}
+
+#extension-icon-11 {
+    background-image: url("../img/extension-icons/extension-icon-11.png");
+}
+
+#extension-icon-12 {
+    background-image: url("../img/extension-icons/extension-icon-12.png");
+}
+
+#extension-icon-13 {
+    background-image: url("../img/extension-icons/extension-icon-13.png");
+}
+
+#skin-tone-container, #extension-icon-container {
+    position: relative;
+    min-height: 30px;
+    display: inline-block;
+    top: 0px;
+    margin: 5px;
+    margin-top: 0px;
+}
+
+#skin-tone-container {
+    position: absolute;
+    margin-left: 10px;
+}
+
+.button-yes-no {
+    /*border: 2px solid #3399ff;*/
+    border: 0px solid transparent;
+    background: transparent;
+    min-width: 50px;
+    width: auto;
+    height: 30px;
+    display: inline-block;
+    opacity: 1;
+    cursor: pointer;
+    color: inherit;
+    text-align: center;
+    transition: 0.2s;
+    position: relative;
+    z-index: 8;
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
+
+.emoji-size-button {
+    /*border: 2px solid #3399ff;*/
+    border: 0px solid transparent;
+    background: transparent;
+    display: inline-block;
+    opacity: 1;
+    cursor: pointer;
+    color: inherit;
+    text-align: center;
+    transition: 0.2s;
+    position: relative;
+    z-index: 8;
+    padding: 0px;
+}
+
+.button-yes-no-dark, .background-button-dark {
+    background-color: rgb(70, 70, 70);
+}
+
+.button-yes-no-light, .background-button-light {
+    background-color: #F5F5F5;
+}
+
+.button-yes-no:hover {
+    background-color: rgba(177, 214, 252, 0.8);
+}
+
+.button-yes-no-selected {
+    background-color: #3399ff;
+    color: #FFFFFF;
+}
+
+.button-yes-no-selected:hover {
+    background-color: rgba(177, 214, 252, 0.8);
+}
+
+
+.button-yes {
+    border-radius: 0px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.button-no {
+    border-radius: 0px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: -5px;
+}
+
+.button-yes-no:active, .button-yes-no:focus {
+    box-shadow: 0px 0px 0px 2px rgba(177, 214, 252, 0.8), 0px 0px 0px 5px rgba(51, 153, 255, 0.2);
+    border: 0px solid rgba(177, 214, 252, 0.8);
+    position: relative;
+    z-index: 9;
+    border-radius: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.padding-5 {
+    padding: 5px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.section-title-selected {
+    background-color: rgba(10, 132, 255, 0.2);
+    border-radius: 5px;
+    border: 0px solid transparent;
+}
+
+.section-title-selected:hover {
+    background-color: rgba(10, 132, 255, 0.3);
+    border-radius: 5px;
+    border: 0px solid transparent;
+}
+
+.section-title-selected:active, .section-title-selected:focus {
+    background-color: rgba(10, 132, 255, 0.45);
+    border-radius: 5px;
+    border: 0px solid transparent;
+}
+
+.margin-left-15 {
+    margin-left: 15px;
+}
+
+.background-lightblue {
+    background-color: rgba(177, 214, 252, 0.5);
+    border: 0px solid transparent;
+    border-radius: 5px;
+    width: auto;
+    padding: 2px 7px;
+}
+
+.blue-selected-button, .blue-selected-button:hover {
+    background-color: #3399ff;
+    color: #ffffff;
+}
+
+.forced-dark-background {
+    background-color: rgb(70, 70, 70);
+}
+
+.forced-light-background {
+    background-color: #F5F5F5;
+}
+
+
+/*The section in "Release notes" for the 5th birthday of the Emoji add-on*/
+.fifth-birthday {
+    margin: 5px;
+    background: padding-box;
+    padding: 10px;
+    background-color: rgba(177, 214, 252, 0.5);
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+
+    br {
+        display: block;
+        margin: 10px;
+    }
+
+    .thanks {
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+
+    a {
+        font-weight: 500;
+        cursor: default;
+        padding: 2px 5px !important;
+        user-select: none;
+    }
+}

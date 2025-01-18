@@ -1,0 +1,1 @@
+!function(){var o,t;o||(o=window.alert),t||(t=window.confirm);const n=function(){var o=document.querySelectorAll("[style*=static] > [style*=static]");return Array.from(o).some((o=>!!o&&o.shadowRoot&&o.shadowRoot.querySelector(".auto-apply-dialog")))};window.alert=function(){if(!n())return o.apply(this,arguments)},window.confirm=function(){return!!n()||t.apply(this,arguments)}}();

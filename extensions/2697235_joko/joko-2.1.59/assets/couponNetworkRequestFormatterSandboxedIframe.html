@@ -1,0 +1,36 @@
+<script>
+    const getFormattedOutput = (couponCode, formattingScript) => {
+        const formatterFunction = new Function(
+            `const couponCode = "${couponCode}";
+             return ${formattingScript};`
+        );
+        const formattedOutput = formatterFunction();
+        return formattedOutput;
+    };
+    window.addEventListener('message', function (event) {
+        const {
+            couponCode,
+            requestUrlParametersFormattingScript,
+            requestBodyFormattingScript,
+            type,
+        } = event.data;
+        if (!type || type !== 'jokoFormatterSandboxedIframeRequest') return;
+        try {
+            const answerMessage = {
+                type: 'jokoFormatterSandboxedIframeResponse',
+                formattedRequestUrlParameters: getFormattedOutput(
+                    couponCode,
+                    requestUrlParametersFormattingScript
+                ),
+                formattedRequestBody: getFormattedOutput(couponCode, requestBodyFormattingScript),
+            };
+            event.source.postMessage(answerMessage, event.origin);
+        } catch (error) {
+            const answerMessage = {
+                type: 'jokoFormatterSandboxedIframeResponse',
+                error,
+            };
+            event.source.postMessage(answerMessage, event.origin);
+        }
+    });
+</script>

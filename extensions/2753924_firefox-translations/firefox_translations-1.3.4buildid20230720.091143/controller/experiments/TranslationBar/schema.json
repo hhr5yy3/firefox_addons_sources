@@ -1,0 +1,120 @@
+[
+    {
+      "namespace": "experiments.translationbar",
+      "functions": [
+        {
+          "name": "isBuiltInEnabled",
+          "type": "function",
+          "description": "Returns true if the built-in version is enabled.",
+          "async": true,
+          "parameters": []
+        },
+        {
+          "name": "show",
+          "type": "function",
+          "description": "Displays the translation bar.",
+          "async": true,
+          "parameters": [
+            {
+                "name": "tabId",
+                "type": "integer",
+                "description": "tabid to host the translation bar"
+            },
+            {
+                "name": "detectedLanguage",
+                "type": "string",
+                "description": "pages langauge"
+            },
+            {
+              "name": "navigatorLanguage",
+              "type": "string",
+              "description": "navigator langauge"
+            },
+            {
+              "name": "localizedLabels",
+              "type": "any",
+              "description": "localized labels for the translation bar"
+            },
+            {
+              "name": "pageActionRequest",
+              "type": "boolean",
+              "description": "determines if the request came from pageAction"
+            },
+            {
+              "name": "infobarSettings",
+              "type": "any",
+              "description": "persisted settings for the infobar"
+            },
+            {
+              "name": "autoTranslate",
+              "type": "any",
+              "description": "determines if the auto translate is set"
+            },
+            {
+              "name": "otSupported",
+              "type": "any",
+              "description": "represents if outbound translations is supported"
+            }
+          ]
+        },
+        {
+          "name": "updateProgress",
+          "type": "function",
+          "description": "Updates progress in translation bar.",
+          "async": true,
+          "parameters": [
+            {
+                "name": "tabId",
+                "type": "integer",
+                "description": "tabId to host the translation bar"
+            },
+            {
+                "name": "progressMessage",
+                "type": "string",
+                "description": "progress message"
+            }
+          ]
+        },
+        {
+          "name": "getLocalizedLanguageName",
+          "type": "function",
+          "description": "Returns the localized language name by its language code.",
+          "async": true,
+          "parameters": [
+            {
+                "name": "languageCode",
+                "type": "string",
+                "description": "language code"
+            }
+          ]
+        },
+        {
+          "name": "isMochitest",
+          "type": "function",
+          "description": "Returns if we are running a mochitest.",
+          "async": true,
+          "parameters": []
+        },
+        {
+          "name": "onDetached",
+          "type": "function",
+          "description": "Raised when the tab holding the translatedbar is detached.",
+          "async": true,
+          "parameters": [
+            {
+              "name": "tabId",
+              "type": "integer",
+              "description": "id of the detached tab"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onTranslationRequest",
+          "type": "function",
+          "description": "Translation requested by the user"
+        }
+      ]
+    }
+  ]

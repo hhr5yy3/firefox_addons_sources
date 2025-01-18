@@ -1,0 +1,64 @@
+/*
+	  This will hide the focus indicator if the element receives focus via the mouse,
+	  but it will still show up on keyboard focus.
+	  More information at: https://github.com/WICG/focus-visible
+	*/
+html .tabs_tab__1HNwq:focus:not(:focus-visible) {
+  outline: none; }
+
+html .tabs_tab__1HNwq::-moz-focus-inner {
+  border: 0; }
+
+.tabs_tabs__2TDQE {
+  display: flex;
+  height: auto;
+  padding: 0;
+  overflow-x: auto;
+  background-image: linear-gradient(to right, #ffffff, #ffffff), linear-gradient(to right, #ffffff, #ffffff), linear-gradient(to right, rgba(60, 72, 94, 0.25), rgba(255, 255, 255, 0)), linear-gradient(to left, rgba(60, 72, 94, 0.25), rgba(255, 255, 255, 0));
+  background-position: left center, right center, left center, right center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+  background-size: 1.25rem 100%, 1.25rem 100%, 0.625rem 100%, 0.625rem 100%;
+  /* Opera doesn't support this in the shorthand */
+  background-attachment: local, local, scroll, scroll; }
+
+.tabs_tab__1HNwq {
+  background-color: transparent;
+  padding: 1.25rem;
+  border: none;
+  transition: box-shadow 0.2s;
+  outline: none;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center; }
+  .tabs_tab__1HNwq:first-of-type {
+    margin-left: auto; }
+  .tabs_tab__1HNwq:last-of-type {
+    margin-right: auto; }
+  .tabs_tab__1HNwq > * + * {
+    margin-left: 0.25rem; }
+  .tabs_tab__1HNwq:hover {
+    background-color: rgba(60, 72, 94, 0.05);
+    box-shadow: inset 0 -0.125rem 0 rgba(60, 72, 94, 0.15); }
+  .tabs_tab__1HNwq:active {
+    background-color: #ebf6ff;
+    box-shadow: inset 0 -0.1875rem 0 0 #2666f1; }
+  .tabs_tab__1HNwq[aria-selected="true"] {
+    box-shadow: inset 0 -0.1875rem 0 0 #2666f1;
+    cursor: default; }
+  .tabs_tab__1HNwq:focus-visible {
+    box-shadow: inset 0 0 0 0.125rem #2666f1; }
+  .tabs_tab__1HNwq:focus-visible[aria-selected="true"] {
+    box-shadow: inset 0 -0.1875rem 0 0 #2666f1, inset 0 0 0 0.125rem #2666f1; }
+
+/* A Card that directly follows an other Card automatically gets a margin-top. This doesn't work for the first Card that makes up the contents of page-level tabs, because those contents are wrapped in divs, with the tabpanel class.
+Likewise, the Card that directly follows a .tabpanel div also doesn't get its usual margin-top.
+This code provides Cards in both situations with their missing margin.
+When tab content is mounted, only the first .tabpanel div directly follows the Card containing the tabs. To target subsequent .tabpanel divs, the tilde (subsequent-sibling combinator) selector is used. */
+.fancy-Card ~ .tabs_tabpanel__3FHxi,
+.tabs_tabpanel__3FHxi + .fancy-Card {
+  margin-top: 1rem; }
+
+.tabs_tab-set-bar__3D3N_ {
+  max-width: 100%; }

@@ -1,0 +1,115 @@
+{
+  "manifest_version": 3,
+  "name": "Secure My Pass",
+  "version": "1.5.91",
+  "description": "Secure My Pass addon.",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "cookies",
+    "clipboardWrite",
+    "sidePanel",
+    "management",
+    "identity"
+  ],
+  "side_panel": {
+    "default_title": "Securemypass",
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "Click to open",
+    "default_icon": {
+      "16": "icons/16x16.png",
+      "48": "icons/32x32.png",
+      "128": "icons/96x96.png"
+    }
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyjcbLah5wr34f1TWOk1VR8MaTklEtr9dISk752ARauzhpJRAe6Fddvpk0NH4ivgPr8qcjEn8t9BnXZSbaHZ9OZOpng6j9fUMS2OFpBUQfk7j46gUBB5mSpW34z6xrnRot8fSahb5kdIG6XZ2UsSVPEAMyTgFjpZRi5EnSCa2Eufdv2go+9d3jiABw8BO9rjpv1pcjGSpEPaVfez0wwZs9JhxuW+uJUx899yS85j+DVR5mygEpjCkL0VBLXYn3h6tBoiZdtk62CuNvW5QhYuXdFyp4fju9odObQDhvEWoACMHhNlDJ2F4EMNMFFqewFsq9mW9zQMulyux5uvv4pObEwIDAQAB",
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/webContentScript.js"],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "resources": ["assets/gsiClient.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "incognito": "split",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.ticketmaster.com/*",
+        "*://*.ticketmaster.ca/*",
+        "*://*.ticketmaster.co.uk/*",
+        "*://*.ticketmaster.de/*",
+        "*://*.ticketmaster.fr/*",
+        "*://*.ticketmaster.es/*",
+        "*://*.ticketmaster.it/*",
+        "*://*.ticketmaster.com.au/*",
+        "*://*.ticketmaster.co.nz/*",
+        "*://*.ticketmaster.co.za/*",
+        "*://*.ticketmaster.com.mx/*",
+        "*://*.ticketmaster.ae/*",
+        "*://*.ticketmaster.ie/*",
+        "*://*.ticketmaster.be/*",
+        "*://*.ticketmaster.dk/*",
+        "*://*.ticketmaster.fi/*",
+        "*://*.livenation.it/*",
+        "*://*.ticketmaster.com.mx/*",
+        "*://*.ticketmaster.nl/*",
+        "*://*.ticketmaster.no/*",
+        "*://*.ticketmaster.se/*",
+        "*://my.livenation.com/order/*",
+        "*://*.livenation.com/*",
+        "*://*.livenation.ca/*",
+        "*://*.mlb.com/*",
+        "*://*.axs.com/*",
+        "*://*.seatgeek.com/*",
+        "*://pay.google.com/*",
+        "*://*.evenue.net/*",
+        "*://*.tickets.com/*",
+        "*://*.securemypass.com/*"
+      ],
+      "js": ["assets/contentScript.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "host_permissions": [
+    "*://*.ticketmaster.com/*",
+    "*://*.ticketmaster.ca/*",
+    "*://*.ticketmaster.co.uk/*",
+    "*://*.ticketmaster.de/*",
+    "*://*.ticketmaster.fr/*",
+    "*://*.ticketmaster.es/*",
+    "*://*.ticketmaster.it/*",
+    "*://*.ticketmaster.com.au/*",
+    "*://*.ticketmaster.co.nz/*",
+    "*://*.ticketmaster.com.mx/*",
+    "*://*.ticketmaster.ie/*",
+    "*://*.ticketmaster.ae/*",
+    "*://*.ticketmaster.be/*",
+    "*://*.ticketmaster.dk/*",
+    "*://*.ticketmaster.fi/*",
+    "*://*.livenation.it/*",
+    "*://*.ticketmaster.com.mx/*",
+    "*://*.ticketmaster.co.za/*",
+    "*://*.ticketmaster.nl/*",
+    "*://*.ticketmaster.no/*",
+    "*://*.ticketmaster.se/*",
+    "*://my.livenation.com/order/*",
+    "*://*.livenation.com/*",
+    "*://*.livenation.ca/*",
+    "*://*.mlb.com/*",
+    "*://*.axs.com/*",
+    "*://*.seatgeek.com/*",
+    "*://pay.google.com/*",
+    "*://*.evenue.net/*",
+    "*://*.tickets.com/*",
+    "*://*.securemypass.com/*"
+  ],
+  "background": {
+    "service_worker": "assets/background.js"
+  }
+}

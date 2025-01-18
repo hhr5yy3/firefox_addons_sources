@@ -1,0 +1,71 @@
+{
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "name": "Track Your Order",
+  "short_name": "Track Your Order",
+  "icons": {
+    "16": "icons/asset16.png",
+    "32": "icons/asset32.png"
+  },
+  "description": "Track Your Order & Custom Web Search extension then click the icon on your toolbar to Track Your Packages plus Yahoo Web Search.",
+  "manifest_version": 2,
+  "version": "1.0",
+  "browser_action": {
+    "browser_style": false,
+    "default_icon": {
+      "16": "icons/asset16.png",
+      "32": "icons/asset32.png"
+    },
+    "default_title": "Track Your Order",
+    "theme_icons": [
+      {
+        "light": "icons/asset_white16.png",
+        "dark": "icons/asset16.png",
+        "size": 16
+      },
+      {
+        "light": "icons/asset_white32.png",
+        "dark": "icons/asset32.png",
+        "size": 32
+      }
+    ]
+  },
+  "permissions": [
+    "*://*.trackyourorders.net/*",
+    "tabs",
+    "search",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.trackyourorders.net/*"
+      ],
+      "js": [
+        "purify.min.js",
+        "content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "*.json"
+  ],
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "web search by Yahoo",
+      "keyword": "Track Your Order",
+      "favicon_url": "icons/asset.png",
+      "search_url": "https://search.yahoo.com/yhs/search?hsimp=yhs-076&hspart=infospace&type=ud-c-us--s-p-nqzwru75--exp-none--subid-fk6j226i&p={searchTerms}",
+      "suggest_url": "https://search.yahoo.com/sugg/ie?output=fxjson&command={searchTerms}&nResults=10",
+      "is_default": true
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "trackyourorders@trackyourorders.net"
+    }
+  }
+}

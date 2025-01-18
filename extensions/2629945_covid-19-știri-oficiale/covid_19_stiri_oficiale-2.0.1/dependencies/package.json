@@ -1,0 +1,58 @@
+{
+    "name": "covid-19-stiri-oficiale",
+    "version": "2.0.1",
+    "description": "Extensie de browser care ajută la identificarea expresiilor cheie legate de COVID-19 (coronavirus) și adaugă peste acestea un infobox care trimite către sursele oficiale de informare. Evidențierea surselor oficiale ajută la diminuarea efectelor 'fake news'. \nConcept dezvoltat ca parte din programul Civic Labs al Code for Romania în parteneriat cu Autoritatea pentru Digitalizarea României.",
+    "scripts": {
+        "start": "npm ci ; npm run dev",
+        "build": "npm ci ; npm run build-firefox ; npm run build-chrome ; npm run build-android",
+        "build-firefox": "gulp build --vendor=firefox --production",
+        "build-chrome": "gulp build --vendor=chrome --production",
+        "build-android": "gulp build --vendor=android --production",
+        "dev": "concurrently \"npm:dev-firefox\" \"npm:dev-chrome\"",
+        "dev-firefox": "gulp --watch --vendor=firefox --verbose",
+        "dev-chrome": "gulp --watch --vendor=chrome --verbose",
+        "dev-android": "gulp --watch --vendor=android --verbose",
+        "dev-firefox-esr": "web-ext run --pref browser.ctrlTab.recentlyUsedOrder=false --firefox-binary /home/andrei/Dev/firefox_esr/firefox -s dist/firefox/",
+        "dev-firefox-nightly": "web-ext run --pref browser.ctrlTab.recentlyUsedOrder=false --firefox-binary /home/andrei/Soft/firefox_nightly_ro/firefox -s dist/firefox/",
+        "gulp": "gulp"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/code4romania/emergency-news-addon.git"
+    },
+    "keywords": [
+        "firefox",
+        "chrome",
+        "extension"
+    ],
+    "author": "petcuandrei@protonmail.com",
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/code4romania/emergency-news-addon/issues"
+    },
+    "homepage": "https://github.com/code4romania/emergency-news-addon#readme",
+    "dependencies": {
+        "@webcomponents/webcomponentsjs": "^2.4.3",
+        "echarts": "^4.7.0",
+        "tippy.js": "^6.0.3",
+        "webextension-polyfill": "^0.6.0"
+    },
+    "devDependencies": {
+        "child_process": "^1.0.2",
+        "concurrently": "^5.1.0",
+        "del": "^5.1.0",
+        "fs-extra": "^9.0.0",
+        "gulp": "^4.0.2",
+        "gulp-cli": "^2.2.0",
+        "gulp-shell": "^0.8.0",
+        "jshint": "^2.11.0",
+        "require-dir": "^1.2.0",
+        "web-ext": "^4.1.0",
+        "yargs": "^15.3.1"
+    },
+    "webExt": {
+        "build": {
+            "overwriteDest": true
+        }
+    }
+}

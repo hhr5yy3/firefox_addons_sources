@@ -1,0 +1,2 @@
+import{L as e,P as l}from"./chunk-QTEEUEUK.js";import{ha as m}from"./chunk-GHLG6R56.js";import{a}from"./chunk-335V6TFQ.js";import{f,h as n,n as o}from"./chunk-XJB76KNJ.js";n();o();var t=f(a()),u=(r,i)=>m(e(typeof r=="string"?Number(r):r),i),g=r=>typeof r.children>"u"?null:t.default.createElement(t.default.Fragment,null,u(r.children,r.format)," SOL");export{g as a};
+//# sourceMappingURL=chunk-FMREIR6A.js.map

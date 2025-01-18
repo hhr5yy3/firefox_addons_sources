@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="/assets/vendor/semanticui/semantic.min.css"/>
+    <link rel="stylesheet" href="/assets/vendor/semanticui/semantic.sandstone.min.css"/>
+    <link rel="stylesheet" href="/assets/default/css/popup.css"/>
+</head>
+<body>
+
+<div class="ui container wbl-main-content">
+
+    <div class="wbl-header js_show_on_save">
+        <table class="ui fixed very basic small table">
+            <tr class="center aligned">
+                <td>
+                    <div id="js-popup-saved-header"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div title="SEOInfo by Weeblr - https://weeblr.com" class="ui top attached menu grid">
+        <div class="middle aligned column">
+            <span class="wbl-white" id="js_page_url"></span>
+        </div>
+    </div>
+
+    <div title="SEOInfo by Weeblr - https://weeblr.com"
+         class="ui bottom attached segment js-remove-on-no-display">
+        <h3 id="js_page_title"></h3>
+    </div>
+
+    <div title="SEOInfo by Weeblr - https://weeblr.com"
+         class="ui centered aligned grid js-remove-on-no-display">
+        <div class="column">
+            <div id="js_status_bar"></div>
+        </div>
+    </div>
+
+    <div class="ui bottom vertical segment">
+        <div class="ui attached menu js-remove-on-no-display">
+            <div class="item js_hide_on_save">
+                <a title="Main tab" id="tabs_main" class="active item js-tab-select js-tab-select-main"
+                   data-tab="main"></a>
+                <a title="AMP validation results tab" id="tabs_amp" class="item js-tab-select js-tab-select-amp"
+                   data-tab="amp"></a>
+                <a title="Structured data tab" id="tabs_sd" class="item js-tab-select js-tab-select-sd"
+                   data-tab="sd"></a>
+                <a title="Links details tab" id="tabs_links" class="item js-tab-select js-tab-select-links"
+                   data-tab="links"></a>
+                <a title="Resources details tab" id="tabs_resources" class="item js-tab-select js-tab-select-resources"
+                   data-tab="resources"></a>
+                <a title="Audit tab" id="tabs_audit" class="item js-tab-select js-tab-select-audit"
+                   data-tab="audit"></a>
+            </div>
+            <div class="wbl-center item js_show_on_save" id="js_saved_page_title">
+            </div>
+            <div class="right item js_hide_on_save js-remove-on-no-display" id="js_toolbar">
+                <button title="Options tab" id="tabs_options" class="ui item primary button js-show-options-tab"
+                        data-tab_name="options"><i class="large fitted cog icon js-show-options-tab"
+                                                   data-tab_name="options"></i></button>
+                <button id="js_popup_save_button" class="ui item primary button js-save"><i
+                        class="large fitted save outline icon js-save"></i></button>
+                <button id="js_popup_reload_button" class="ui item primary button js-reload"><i
+                        class="large fitted redo icon js-reload"></i></button>
+            </div>
+        </div>
+        <div id="js-reload-prompt"></div>
+        <div id="js-popup-main" class="ui active tab" data-tab="main">
+            <div class="wbl-screenshot wbl_screenshot_embedded wbl-hidden-screenshot js-remove-on-no-display"
+                 id="js-wbl_screenshot_embedded"></div>
+            <div class="ui hidden divider"></div>
+            <div id="js_web_vitals" class="js-remove-on-no-display">
+            </div>
+            <div class="ui grid js-remove-on-no-display">
+
+                <div class="ui six wide centered aligned column">
+
+                    <div class="row" id="js_perf_graph_container">
+                        <div class="ui centered aligned" style="position: relative;">
+                            <canvas class="js_graph js_perf_graph" id="js_perf_graph"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="row js_graph_title" id="js_perf_title"></div>
+
+                    <div class="row">
+                        <div id="js_perf_legend">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="ui six wide centered aligned column">
+
+                    <div class="row" id="js_size_graph_container">
+                        <div class="ui centered aligned" style="position: relative;">
+                            <canvas class="js_graph js_size_graph" id="js_size_graph"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="row js_graph_title" id="js_size_title"></div>
+
+                    <div class="row">
+                        <div class="ui centered aligned" id="js_size_legend">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="js_common"></div>
+            <div id="js_crawl"></div>
+            <div id="js_amp_main"></div>
+            <div id="js_perf_main"></div>
+            <div id="js_sw"></div>
+            <div id="js_response"></div>
+            <div id="js_hreflang"></div>
+            <div id="js_ogp"></div>
+            <div id="js_tcards"></div>
+            <div id="js_other_meta"></div>
+            <div id="js_linkelements"></div>
+        </div>
+
+        <div class="ui hidden divider js_show_on_save"></div>
+        <div class="ui attached menu  js_show_on_save_flex">
+            <div class="wbl-center item">
+                <span id="js_saved_accelerated_mobile_pages"></span>
+            </div>
+        </div>
+
+        <div class="ui tab" data-tab="amp">
+            <div id="js_amp_details">
+            </div>
+        </div>
+
+        <div class="ui hidden divider js_show_on_save"></div>
+        <div class="ui attached menu js_show_on_save_flex">
+            <div class="wbl-center item">
+                <span id="js_saved_structured_data"></span>
+            </div>
+        </div>
+
+        <div class="ui tab" data-tab="sd">
+
+            <div class="ui hidden divider"></div>
+            <div class="ui top attached tabular menu js_hide_on_save">
+                <a id="js_sd_validation_tab_title" class="active item" data-tab="sd_validation"></a>
+                <a id="js_sd_json_ld_tab_title" class="item" data-tab="sd_json_ld"></a>
+                <a id="js_sd_microdata_tab_title" class="item" data-tab="sd_microdata"></a>
+            </div>
+
+            <div id="js_sd_validation_tab" class="ui bottom attached active tab segment" data-tab="sd_validation">
+                <div id="js_sd_validation_button"></div>
+                <h3 id="js_sd_validation_tab_title_saved" class="ui large header js_show_on_save"></h3>
+                <div id="js_sd_validation_results"></div>
+            </div>
+
+            <div id="js_sd_json_ld_content_tab" class="ui bottom attached tab segment" data-tab="sd_json_ld">
+                <h3 id="js_sd_json_ld_tab_title_saved" class="ui large header js_show_on_save"></h3>
+                <div id="js_sd_json_ld"></div>
+                <h5 id="sd_only_json_ld" class="ui horizontal divider header"></h5>
+            </div>
+
+            <div id="js_sd_microdata_content_tab" class="ui bottom attached tab segment" data-tab="sd_microdata">
+                <h3 id="js_sd_microdata_tab_title_saved" class="ui large header js_show_on_save"></h3>
+                <div id="js_sd_microdata"></div>
+                <h5 id="sd_only_microdata" class="ui horizontal divider header"></h5>
+            </div>
+        </div>
+
+        <div class="ui hidden divider js_show_on_save"></div>
+        <div class="ui attached menu js_show_on_save_flex">
+            <div class="wbl-center item">
+                <span id="js_saved_links"></span>
+            </div>
+        </div>
+
+        <div id="js_links_tab" class="ui tab js_links_tab" data-tab="links">
+            <div id="js_links_summary"></div>
+            <div id="js_links_details"></div>
+        </div>
+
+        <div class="ui hidden divider js_show_on_save"></div>
+        <div class="ui attached menu js_show_on_save_flex">
+            <div class="wbl-center item">
+                <span id="js_saved_resources"></span>
+            </div>
+        </div>
+
+        <div id="js_resources_tab" class="ui tab js_resources_tab" data-tab="resources">
+            <div class="ui hidden divider"></div>
+            <div class="ui middle aligned grid">
+                <div class="ten wide column">
+                    <i class="teal checkmark icon"></i><span id="resources_loaded_help"></span>
+                    <i class="teal check circle icon"></i><span id="resources_loaded_from_cache_help"></span>
+                    <i class="red exclamation circle icon"></i><span id="resources_loaded_with_error_help"></span>
+                </div>
+                <div class="four wide right aligned column js_hide_on_save">
+                    <div class="ui checkbox js_errors_toggle">
+                        <input type="checkbox" name="errors_toggle">
+                        <label id="resources_switch_only_errors"></label>
+                    </div>
+                </div>
+
+                <div class="two wide right aligned column js_hide_on_save">
+                    <button id="js-download-resources-button"
+                            class="ui primary button wbl-download-button js-download-resources">
+                        <i class="large fitted file excel outline icon wbl-download-button js-download-resources"></i>
+                    </button>
+                </div>
+
+            </div>
+            <div id="js_stylesheet"></div>
+            <div id="js_font"></div>
+            <div id="js_script"></div>
+            <div id="js_image"></div>
+            <div id="js_media"></div>
+            <div id="js_xmlhttprequest"></div>
+            <div id="js_sub_frame"></div>
+        </div>
+
+        <div id="js_audit_tab" class="ui tab js_audit_tab js_hide_on_save" data-tab="audit">
+            <div class="ui hidden divider"></div>
+            <div class="ui top attached tabular menu">
+                <a id="js_audit_mobile_tab_title" class="active item" data-tab="mobile"></a>
+                <a id="js_audit_desktop_tab_title" class="item" data-tab="desktop"></a>
+            </div>
+            <div id="js_audit_tab_mobile" class="ui bottom attached active tab segment" data-tab="mobile">
+                <div id="js_audit_summary_mobile"></div>
+                <div id="js_audit_details_mobile"></div>
+            </div>
+            <div id="js_audit_tab_desktop" class="ui bottom attached tab segment" data-tab="desktop">
+                <div id="js_audit_summary_desktop"></div>
+                <div id="js_audit_details_desktop"></div>
+            </div>
+        </div>
+
+        <div class="ui hidden divider js_show_on_save"></div>
+        <div class="ui attached menu js_show_on_save_flex">
+            <div class="wbl-center item">
+                <span id="js_saved_mobile_audit"></span>
+            </div>
+        </div>
+        <div class="ui hidden divider js_show_on_save"></div>
+        <div id="js_saved_mobile_audit_content"
+             class="wbl_audit_show_opportunity wbl_audit_show_failure wbl_audit_show_success js_show_on_save_flex">
+        </div>
+
+        <div class="ui hidden divider js_show_on_save"></div>
+        <div class="ui attached menu js_show_on_save_flex">
+            <div class="wbl-center item">
+                <span id="js_saved_desktop_audit"></span>
+            </div>
+        </div>
+        <div class="ui hidden divider js_show_on_save"></div>
+        <div id="js_saved_desktop_audit_content"
+             class="wbl_audit_show_opportunity wbl_audit_show_failure wbl_audit_show_success js_show_on_save_flex">
+        </div>
+
+
+        <div class="ui tab js_hide_on_save" data-tab="options">
+            <div id="js_options"></div>
+        </div>
+
+    </div>
+
+    <div class="ui page dimmer">
+        <div id="js-set-dimmer-content" class="content">
+        </div>
+    </div>
+
+    <div class="ui error message wbl-hidden" id="js-error-content">
+        <div>
+            <p id="general_error_try_another_page"></p>
+        </div>
+    </div>
+
+</div>
+
+<div class="wbl-footer">
+    <table class="ui fixed very basic small table">
+        <tr class="center aligned js-remove-on-no-display">
+            <td>
+                <a class="button" href="#">Top</a>
+            </td>
+        </tr>
+        <tr class="center aligned">
+            <td>
+                <div id="js-popup-footer"></div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script src="/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="/assets/vendor/semanticui/semantic.min.js"></script>
+<script src="/app/popup.js"></script>
+
+</body>
+</html>

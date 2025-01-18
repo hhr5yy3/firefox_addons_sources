@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Phishing Detected</title>
+    <!-- <script src="../scripts/alert.js"></script> -->
+</head>
+
+<body>
+
+    <div id="pixm-header" style="display: none">
+        <div class="scanning-container">            
+
+          <div id="pixm-alert-logo" class="scanning-logo">
+                <svg width="23" height="27" viewBox="0 0 23 27" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect width="23" height="27" fill="url(#pattern0)" />
+                    <defs>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                            <use xlink:href="#image0"
+                                transform="translate(0 -0.00094697) scale(0.00568182 0.00484007)" />
+                        </pattern>
+                        <image id="image0" width="176" height="207"
+                            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALAAAADPCAYAAABVw1tKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3VpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDAyIDc5LjE2NDM1MiwgMjAyMC8wMS8zMC0xNTo1MDozOCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo5MjgyMWMxYy1kODlkLTRjMDgtOGQyYi1lZTgzMTQxZTQxYjgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkEwRjlGN0U4NjE3MTFFQTlFMkFFNEQ5MTcyQjUxRTEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkEwRjlGN0Q4NjE3MTFFQTlFMkFFNEQ5MTcyQjUxRTEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjEgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MjgyMWMxYy1kODlkLTRjMDgtOGQyYi1lZTgzMTQxZTQxYjgiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTI4MjFjMWMtZDg5ZC00YzA4LThkMmItZWU4MzE0MWU0MWI4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+16FZlQAAA4xJREFUeNrs3VFupDAQRVGwvP8tO79RS90hiQ1+9rm/I0UEDkUhzTBna+1Q996d1NOp6Vt1Cm6B+/rnIAMcBRdkgJeAC3LnilPwGN5RP8sE1iPYTGOAI+GCbIUYDqotfMMAbOoud/NYIcC1VgAMLshWiCUf1dYKgOMx2I83XyHaYr/HCTC4IFshPHLdoAC7qG5WK4SXnPXXigouyFYIeJ0bE9jFMY33BAzuxpBL+AWAd/MBUJx0JQ+DCq6S14oKrpIhl4ATCa/BEQkYXEMkcoUA11oRCRhckGNXCHjtx5ETGFzTOBIwuCBHAgYX5NgdGF77ceQEBtc0jgQMroZDLoMOGF7dMtBKwkFqKcRdjVRwlbxWVHCVDLnAq+T9uIKr5GlcwVUy5AqukiEXeJW8H1dwlTyNK7hKhlzgVfJaUeBVMmL/S5GiK6avkqewCaz4CSwBLAEsASyApZASPnB9ukyP1gAGN7lzZsgFXiVfk+JEKfnaeIlTdAALYAlgCWABLAEsASwBLIAlgCWAJYAFsASwBLAAlgCWAJYAFsASwBLAEsACWAJYAlgCWABLAEv/rDoFH5vlo84+OWsCx+Kd7VgAlgCWABbAEsASwAJYAlgCWAJYAEsASwBLAAtgCWAJYAlgASwBLAEsgCWAJYAlgAWwBLAEsASwAJYmyfeB++T7vSawBPBTtcNHqAEGWQCDDLC6QhbAprEABhlggQywQAbYi54ANo0BFsgAC2SAQQZYIAOswZAFsGkMsEAGWCADrI0hAwwywJoWMsAyjQEWyAALZIC1GGSAQY5+MQRYV6fxlBMbYF2BPO264euUisFqAmu5AFY8YB9nVmqnCaxYvN9XCFNYkdVX0Ye/5a+AyfvpJc40VgTe1wl8mMZKgfsTYJA1NdyrgEHWlHA/7cBdfrA0Gu9vJrBprKng/gcwyHocbg/AIOsxuH/dge3HmspKHXRgprFuGXJ18IGCrKFP55J64IqBO9RAWeGX0F5T944VwloB7rEa4CuQTWpwpwf8DjK84EYBNnXhXQKwwAVYez4t/atkRa96JrCi31EAVvTLNcCKhGsHVjxeE1ixcAFWNFyAwV0iOzC8JrDABVjgAqxd4NqB4TWBBS7AAtcKAe+umcDgAixwrRCgXDkeeAF2M1kh9oPTwAUYZHCtEIs/yu25AMe+TIFrhYhcK8AFOBIyuFaIyP3YntuxLwEGAMSqwd572wtcAAAAAElFTkSuQmCC" />
+                    </defs>
+                </svg>
+            </div>
+            <div id="company-label" class="scanning-pixm-name"><imag src="../images/default.png"></div>
+            <div class="scanning-pixm-warning">
+                <span class="warning-label"><b>Warning:</b></span>
+                <span id="pixm-warning-message"></span>
+            </div>
+            
+            <div class="learn-more">
+                <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12.7334 5.33105C12.7334 5.15332 12.665 4.98926 12.5283 4.85938L8.25586 0.59375C8.10547 0.450195 7.95508 0.388672 7.79102 0.388672C7.44238 0.388672 7.17578 0.641602 7.17578 0.990234C7.17578 1.16113 7.2373 1.31836 7.35352 1.42773L8.80273 2.9043L10.874 4.79785L9.33594 4.70215H1.26953C0.907227 4.70215 0.647461 4.96191 0.647461 5.33105C0.647461 5.69336 0.907227 5.95312 1.26953 5.95312H9.33594L10.8809 5.85742L8.80273 7.75098L7.35352 9.22754C7.24414 9.33691 7.17578 9.49414 7.17578 9.66504C7.17578 10.0137 7.44238 10.2666 7.79102 10.2666C7.95508 10.2666 8.09863 10.2051 8.24219 10.0752L12.5283 5.7959C12.665 5.66602 12.7334 5.50195 12.7334 5.33105Z"
+                        fill="#012840" />
+                </svg>
+                <div id="learn-more">Learn more</div>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6.78613 13.9619C10.4092 13.9619 13.4102 10.9609 13.4102 7.33105C13.4102 3.70801 10.4023 0.707031 6.7793 0.707031C3.15625 0.707031 0.155273 3.70801 0.155273 7.33105C0.155273 10.9609 3.16309 13.9619 6.78613 13.9619ZM6.78613 12.7793C3.76465 12.7793 1.34473 10.3594 1.34473 7.33105C1.34473 4.30957 3.75781 1.88281 6.7793 1.88281C9.80078 1.88281 12.2275 4.30957 12.2344 7.33105C12.2412 10.3594 9.80762 12.7793 6.78613 12.7793ZM6.73145 5.06836C7.20996 5.06836 7.58594 4.68555 7.58594 4.21387C7.58594 3.72852 7.20996 3.35254 6.73145 3.35254C6.25977 3.35254 5.87695 3.72852 5.87695 4.21387C5.87695 4.68555 6.25977 5.06836 6.73145 5.06836ZM5.64453 10.8789H8.27637C8.5498 10.8789 8.76855 10.6807 8.76855 10.4004C8.76855 10.1406 8.5498 9.93555 8.27637 9.93555H7.50391V6.72266C7.50391 6.36035 7.31934 6.12109 6.98438 6.12109H5.76074C5.4873 6.12109 5.27539 6.32617 5.27539 6.58594C5.27539 6.86621 5.4873 7.06445 5.76074 7.06445H6.4375V9.93555H5.64453C5.37793 9.93555 5.15918 10.1406 5.15918 10.4004C5.15918 10.6807 5.37793 10.8789 5.64453 10.8789Z"
+                        fill="#012840" />
+                </svg>
+            </div>
+            
+            <div class="scanning-grow"> </div>
+            <div id="close-page" class="scanning-pixm-backtosafety">
+                <div>Take me back to safety</div>
+            </div>
+            <div id="safe-link" class="scanning-pixm-proceed">
+                <div>This is safe</div>
+            </div>
+            <div id="scanning-pixm-animation" class="scanning-pixm-animation">
+                <svg width="19" height="23" viewBox="0 0 19 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M9.00035 1.55536L2.02871 5.42849C1.39378 5.78123 1 6.45047 1 7.17681V15.8232C1 16.5495 1.39378 17.2188 2.02871 17.5715L9.00035 21.4446C9.61973 21.7887 10.3749 21.7794 10.9857 21.4202L17.514 17.58C18.1249 17.2206 18.5 16.5648 18.5 15.8561V7.14389C18.5 6.43516 18.1249 5.77936 17.514 5.42002L10.9857 1.57981C10.375 1.22056 9.61973 1.21126 9.00035 1.55536Z"
+                        fill="white" fill-opacity="0.5" stroke="#EA2B2B" />
+                    <path
+                        d="M10.1377 13.3081C10.4224 13.3081 10.6157 13.1201 10.6211 12.8301L10.6694 6.57275C10.6694 6.2666 10.4224 6.05713 10.1323 6.05713C9.84229 6.05713 9.59521 6.2666 9.59521 6.57275L9.6543 12.8301C9.65967 13.1201 9.85303 13.3081 10.1377 13.3081ZM10.1323 16.2676C10.5566 16.2676 10.895 15.9238 10.895 15.5049C10.895 15.0806 10.5566 14.7422 10.1323 14.7422C9.71338 14.7422 9.36963 15.0806 9.36963 15.5049C9.36963 15.9238 9.71338 16.2676 10.1323 16.2676Z"
+                        fill="white" />
+                </svg>
+
+            </div>
+            
+        </div>
+        <div class="scanning-progress"> </div>
+        <div id="learn-more-container" class="learn-more-container" style="display: none; flex-direction: column;">
+            <div style="display: flex;">
+                <div id="learn-more-container-text" class="learn-more-container-text">
+                    <a id="learning-banner-url"></a> is not an authorized <span id="learning-banner-logo"></span>
+                    website. This could be a
+                    fraudulent phishing site trying to steal sensitive information like passwords.
+                </div>
+                <div id="close-button" class="close-button">
+                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8.71735 8.40512C8.95904 8.16343 8.96387 7.76223 8.72702 7.52538L5.74944 4.5478L8.64968 1.64755C8.88653 1.4107 8.89136 0.999832 8.64484 0.753312C8.40316 0.511625 7.99229 0.516458 7.75544 0.753312L4.85519 3.65355L1.87278 0.671138C1.63109 0.429451 1.22989 0.434285 0.988204 0.675972C0.741683 0.922492 0.736849 1.32369 0.978536 1.56538L3.96095 4.5478L1.06071 7.44804C0.823857 7.68489 0.819023 8.09576 1.06071 8.33745C1.30723 8.58397 1.7181 8.57913 1.95495 8.34228L4.85519 5.44204L7.83278 8.41962C8.06963 8.65647 8.47083 8.65164 8.71735 8.40512Z"
+                            fill="#012840" />
+                    </svg>
+                </div>
+            </div>
+
+            <div style="display: flex;">
+                <div id="contact-us-container-text" style="display: none;" class ="contact-us-container-text">
+                    <div>For help, please contact:</div>
+                    <a id="alert-reply-email" class="alert-reply-email" href="">support@pixm.net</a>
+                    <a id="alert-reply-phone" class="alert-reply-phone" href=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pixm-wrapper" class="wrapper">
+        <div class="overlay">
+            <svg class="blur-svg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <filter id="better-blur">
+                    <feGaussianBlur stdDeviation="5" />
+                </filter>
+            </svg>
+            <div class="overlay-tint"></div>
+        </div>
+    </div>
+</body>
+
+</html>

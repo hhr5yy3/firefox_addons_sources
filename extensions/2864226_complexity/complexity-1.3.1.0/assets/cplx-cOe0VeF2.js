@@ -1,0 +1,1 @@
+const o={action:"Exportar",copied:"Copiado",options:{default:"Padrão",withoutCitations:"Sem citações",download:"Baixar como arquivo de texto"}},t={exportButton:o};export{t as default,o as exportButton};

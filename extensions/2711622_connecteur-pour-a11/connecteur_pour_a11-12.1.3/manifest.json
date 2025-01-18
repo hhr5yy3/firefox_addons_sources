@@ -1,0 +1,192 @@
+{
+  "background": {
+    "scripts": [
+      "src/filemessage.js",
+      "src/communicationantioups.js",
+      "src/cstAntidote.js",
+      "src/dictionnaire.js",
+      "src/outils.js",
+      "src/gestion-t.js",
+      "src/background.js",
+      "extensions/DetecteurWeb/wasm/ClientCorrecteurSimple.js",
+      "extensions/DetecteurWeb/backgroundCliCorrSi.js"
+    ]
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "images/Antidote_16.png",
+      "32": "images/Antidote_32.png"
+    },
+    "default_popup": "panneau/popup.html",
+    "default_title": "Antidote"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "antidote_uni11_firefox@druide.com",
+      "strict_min_version": "115.0"
+    }
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "exclude_matches": [
+        "https://*.antidote.app/*",
+        "https://telechargement12.druide.com/texteurs/Outlook/Commun/courant/*",
+        "https://telechargement12.druide.com/texteurs/OfficeJS/Commun/courant/*",
+        "https://docs.google.com/document/*"
+      ],
+      "js": [
+        "src/cstAntidote.js",
+        "src/dictionnaire.js",
+        "src/gestion-t.js",
+        "src/outils.js",
+        "src/filemessage.js",
+        "extensions/DetecteurWeb/tierces_parties/diff_match_patch.js",
+        "extensions/DetecteurWeb/tierces_parties/react.production.min.js",
+        "extensions/DetecteurWeb/tierces_parties/react-dom.production.min.js",
+        "extensions/DetecteurWeb/infobulle/infobulleDW.js",
+        "extensions/DetecteurWeb/detecteurWeb_patron.js",
+        "extensions/DetecteurWeb/detecteurWeb.js",
+        "extensions/DetecteurWeb/objetBoutonBulle.js",
+        "extensions/DetecteurWeb/detecteurWebWordpress.js",
+        "extensions/DetecteurWeb/detecteurWebWordpress_patron.js",
+        "src/antidote.js",
+        "src/AgentTexteurGen.js",
+        "src/AgentTexteurStd.js",
+        "src/AgentTexteurWordpress.js",
+        "src/AgentTexteurGoogleDocs.js",
+        "src/AgentTexteurForm.js",
+        "src/AgentTexteurGrav.js",
+        "extensions/Dialogue/dialogue_patron.js",
+        "extensions/Dialogue/dialogue.js"
+      ],
+      "matches": [
+        "file:///*",
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "all_frames": false,
+      "js": [
+        "src/cstAntidote.js",
+        "src/dictionnaire.js",
+        "src/gestion-t.js",
+        "src/outils.js",
+        "src/filemessage.js",
+        "extensions/DetecteurWeb/tierces_parties/diff_match_patch.js",
+        "extensions/DetecteurWeb/tierces_parties/react.production.min.js",
+        "extensions/DetecteurWeb/tierces_parties/react-dom.production.min.js",
+        "extensions/DetecteurWeb/infobulle/infobulleDW.js",
+        "extensions/DetecteurWeb/detecteurWeb_patron.js",
+        "extensions/DetecteurWeb/detecteurWeb.js",
+        "extensions/DetecteurWeb/objetBoutonBulle.js",
+        "src/antidote.js",
+        "src/AgentTexteurGen.js",
+        "src/AgentTexteurStd.js",
+        "src/AgentTexteurGoogleDocs.js",
+        "src/AgentTexteurForm.js",
+        "src/AgentTexteurGrav.js",
+        "extensions/Dialogue/dialogue_patron.js",
+        "extensions/Dialogue/dialogue.js",
+        "src/injecteurGoogleDocs.js",
+        "extensions/DetecteurWeb/detecteurWebGoogleDocs_patron.js",
+        "extensions/DetecteurWeb/detecteurWebGoogleDocs.js"
+      ],
+      "matches": [
+        "https://docs.google.com/document/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "all_frames": true,
+      "js": [
+        "src/aw-aide.js"
+      ],
+      "matches": [
+        "https://*.antidote.app/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "all_frames": true,
+      "js": [
+        "src/services-druide.js"
+      ],
+      "matches": [
+        "https://services.druide.com/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "all_frames": true,
+      "js": [
+        "src/cstAntidote.js",
+        "src/outils.js",
+        "src/antidoteOfficeAddin.js"
+      ],
+      "matches": [
+        "https://telechargement12.druide.com/texteurs/Outlook/Commun/courant/*",
+        "https://telechargement12.druide.com/texteurs/OfficeJS/Commun/courant/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "all_frames": true,
+      "js": [
+        "src/beta-comm.js"
+      ],
+      "matches": [
+        "https://www.antidote.info/fr/antidote-plus/beta/observation"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'wasm-unsafe-eval';object-src 'self';connect-src *",
+  "default_locale": "fr",
+  "description": "__MSG_description__",
+  "icons": {
+    "128": "images/Fiole_128.png",
+    "16": "images/Fiole_16.png",
+    "48": "images/Fiole_48.png"
+  },
+  "manifest_version": 2,
+  "name": "__MSG_name__",
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "panneau/option.html"
+  },
+  "permissions": [
+    "alarms",
+    "tabs",
+    "activeTab",
+    "contextMenus",
+    "nativeMessaging",
+    "management",
+    "storage",
+    "scripting",
+    "cookies",
+    "<all_urls>"
+  ],
+  "short_name": "Antidote",
+  "version": "12.1.3",
+  "web_accessible_resources": [
+    "images/avertissement.png",
+    "images/Antidote_128.png",
+    "src/dictionnaire.js",
+    "src/gestion-t.js",
+    "src/antidoteGrav.js",
+    "src/antidoteAPIJSConnect.js",
+    "src/antidoteAide.js",
+    "images/*",
+    "extensions/DetecteurWeb/detecteurWeb.css",
+    "extensions/DetecteurWeb/infobulle/*",
+    "ressources/WOFF2/*",
+    "extensions/DetecteurWeb/wasm/ClientCorrecteurSimple.wasm",
+    "panneau/css/*",
+    "src/antidoteGoogleDocs.js",
+    "panneau/aw.html",
+    "panneau/aw.js"
+  ]
+}

@@ -1,0 +1,1 @@
+(()=>{"use strict";(()=>{const t=Element.prototype.attachShadow;Element.prototype.attachShadow=function(...e){e[0]&&"closed"===e[0].mode&&(e[0].mode="open");return t.apply(this,e)}})()})();

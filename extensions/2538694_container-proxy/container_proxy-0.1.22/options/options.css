@@ -1,0 +1,168 @@
+@import "css/index.css";
+@import "css/photon-colors.css";
+@import "css/button.css";
+@import "css/input.css";
+@import "css/checkbox.css";
+@import "nav/Navigation.module.scss";
+/*noinspection CssUnknownTarget*/
+@import "chrome://browser/skin/preferences/containers.css";
+@import "ProxyForm/ProxyForm.css";
+@import "ProxyList.css";
+@import "select.css";
+
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --header-height: 240px;
+    --left-margin: 34px;
+
+    text-rendering: optimizeLegibility;
+    -moz-control-character-visibility: visible;
+}
+:root {
+    --text-color: var(--grey-90);
+    --text-color-a10: var(--grey-90-a10);
+    --text-color-a20: var(--grey-90-a20);
+    --text-color-a30: var(--grey-90-a30);
+    --text-color-a80: var(--grey-90-a80);
+    --bg-color: var(--grey-10);
+    --input-bg: #fff
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: var(--grey-10);
+        --text-color-a10: var(--grey-10-a10);
+        --text-color-a20: var(--grey-10-a20);
+        --text-color-a30: rgba(249, 249, 250, 0.3); /*--grey-10-a30 not defined*/
+        --bg-color: var(--grey-90);
+        --input-bg: #000
+    }
+}
+
+:root {
+    --in-content-category-outline-focus: 1px dotted #0a84ff;
+
+    --in-content-category-text-selected: #0a84ff;
+
+    --in-content-category-text-selected-active: #0060df;
+
+    --in-content-category-background-hover: rgba(12, 12, 13, 0.1);
+
+    --in-content-category-background-active: rgba(12, 12, 13, 0.15);
+
+    --in-content-category-background-selected-hover: rgba(12, 12, 13, 0.15);
+
+    --in-content-category-background-selected-active: rgba(12, 12, 13, 0.2);
+}
+
+:root > * {
+    /**/
+
+}
+
+html, body {
+    height: 100%;
+}
+
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+
+.logo {
+    width: calc(var(--header-height) - var(--left-margin));
+    height: calc(var(--header-height) - var(--left-margin));
+    background-image: url("/icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 34px;
+    background-size: calc(var(--header-height) - var(--left-margin) - 16px * 2);
+}
+
+header {
+    height: var(--header-height);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.36em;
+    flex-shrink: 0;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+}
+
+.content {
+    min-width: 664px;
+    padding: 0 28px 40px 28px;
+    font-size: 1.36em;
+    overflow: auto;
+}
+
+.container-item, .proxy-list-item {
+    display: flex;
+    align-items: center;
+
+    margin-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--text-color-a30);
+}
+
+.container-item:last-of-type {
+    border-bottom: none;
+}
+
+.container-label {
+    display: flex;
+    align-items: center;
+    color: var(--identity-icon-color);
+    min-width: 200px;
+    height: 40px;
+    flex-grow: 1;
+}
+
+.proxy-name {
+    flex-grow: 1;
+}
+
+.container-icon {
+    height: 24px;
+    width: 24px;
+
+    background-image: var(--identity-icon);
+    fill: var(--identity-icon-color);
+    filter: url("icons/filter.svg#fill");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    margin-right: 4px;
+}
+
+.container-item.identity-icon-private-browsing {
+    --identity-icon-color:#8000D7;
+    --identity-icon: url('icons/Private browsing.svg');
+}
+
+.container-item.identity-icon-default {
+    --identity-icon-color: var(--text-color);
+    --identity-icon: url('chrome://branding/content/about-logo.svg');
+}
+
+.container-item.identity-icon-default .container-icon {
+    filter: none;
+    fill: none;
+}

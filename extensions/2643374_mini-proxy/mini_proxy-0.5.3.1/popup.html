@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type="text/css">
+:root {
+  --main-margin: 8px;
+  --input-radius: 3px;
+  --input-height: 18px;
+  --grid-gap-h: 5px;
+  --grid-gap-v: 5px;
+  --color-theme: #aad400;
+}
+:focus-visible {
+  outline: none;
+}
+:focus::placeholder {
+  opacity: 0;
+}
+::-moz-focus-outer, ::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+html {
+  scrollbar-width: none;
+  scrollbar-color: #999 #ddd;
+}
+body, input, div, span {
+  font-family: Arial, Tahoma, sans-serif;
+}
+body {
+  background-color: #eee;
+  font-size: 12px;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+body.hideauth #Authorize, body.hideauth #DnsRequest {
+  display: none;
+}
+a, a:active {
+  outline: none;
+  background: none;
+  text-decoration: none;
+  color: #555;
+}
+img {
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-select: none; /* Chrome,Safari,Opera */
+}
+.hide {
+  display: none;
+}
+.disabled {
+  color: #999;
+}
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.content {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  grid-gap: var(--main-margin);
+  padding: calc(var(--main-margin) - 2px);
+}
+.main {
+  border-radius: var(--input-radius);
+  background-color: #fff;
+  box-shadow: 0 0 0 1px #e3e4e8, 0 0 1px 0 #d7d8db;
+}
+.top {
+  margin-top: var(--main-margin);
+}
+.bottom {
+  margin-bottom: var(--main-margin);
+}
+.wrapper {
+  padding: 10px;
+}
+#Unlist {
+  display: flex;
+  flex-flow: column;
+  grid-gap: var(--grid-gap-v);
+}
+#Unlist.wrapper {
+  padding: 0;
+}
+#Unlist.wrapper:not(:empty) {
+  margin-top: calc(var(--grid-gap-v) * 2);
+}
+#Unlist > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+input[type="text"], input[type="password"] {
+  border: 1px solid #ddd;
+  border-radius: var(--input-radius);
+  background: #fbfbfb;
+  min-width: 0; /* Фикс для старых браузеров */
+}
+input[type="text"]:focus, input[type="password"]:focus {
+  border: 1px solid #888;
+}
+input[disabled] {
+  color: #999;
+}
+input[type="checkbox"] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--input-radius);
+  border: 1px solid #ddd;
+  background: #fbfbfb;
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  flex-shrink: 0;
+  vertical-align: text-bottom;
+  cursor: pointer;
+}
+input[type=checkbox]:checked {
+  border: 1px solid var(--color-theme);
+  background-color: var(--color-theme);
+  background-size: contain;
+  background-image: url("data/icon/icon.svg#ok");
+}
+input[type=checkbox].sw {
+  width: 40px;
+  height: 20px;
+  border: none;
+  background: #c6c6c6;
+  outline: none;
+  border-radius: 50px;
+  transition: 0.1s;
+  position: relative;
+}
+input[type=checkbox].sw:before {
+  content: "";
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  transform: scale(0.7);
+  transition: 0.1s;
+}
+input:checked[type="checkbox"].sw {
+  background: var(--color-theme);
+}
+input:checked[type="checkbox"].sw:before {
+  left: 20px;
+}
+input::placeholder {
+  color: #999;
+  opacity: 1;
+}
+.action {
+  width: calc(var(--input-height) + 6px);
+  height: calc(var(--input-height) + 6px);
+  cursor: pointer;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #ff5555;
+  /* background-color: #ff8c00; */
+  /* background-color: #2db222; */
+  background-image: url("/data/icon/icon.svg#trash");
+  border-top-right-radius: var(--input-radius);
+  border-bottom-right-radius: var(--input-radius);
+  flex-shrink: 0;
+}
+#Add.action {
+  background-color: var(--color-theme);
+  background-image: url("/data/icon/icon.svg#plus");
+}
+#Edit.action {
+  background-color: #ff8c00;
+  background-image: url("/data/icon/icon.svg#edit");
+}
+#Delete.action {
+  background-color: #ff5555;
+  background-image: url("/data/icon/icon.svg#trash");
+}
+.sort {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: var(--color-theme);
+}
+#Sort.sort {
+  background-image: url("/data/icon/icon.svg#arrow");
+}
+#PSS.sort {
+  background-image: url("/data/icon/icon.svg#settings");
+}
+#Shield.sort {
+  background-image: url("/data/icon/icon.svg#shield");
+}
+#Link.sort {
+  background-image: url("/data/icon/icon.svg#link");
+}
+.data {
+  margin-top: var(--grid-gap-v);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.data {
+  grid-gap: var(--grid-gap-h);
+}
+.data.add {
+  grid-gap: initial;
+}
+.adress {
+  display: flex;
+  width: 100%;
+}
+.wrapper .proxy {
+  cursor: default;
+  font-size: 12px;
+}
+[data-type="http"] .proxy:before {
+  content: "Свой HTTP прокси:";
+}
+[data-type="https"] .proxy:before {
+  content: "Свой HTTPS прокси:";
+}
+[data-type="socks4"] .proxy:before {
+  content: "Свой SOCKS4 прокси:";
+}
+[data-type="socks"] .proxy:before {
+  content: "Свой SOCKS5 прокси:";
+}
+.wrapper .block {
+  padding: 2px 4px;
+  width: 100%;
+  height: var(--input-height);
+}
+.wrapper .block.ip {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.wrapper .block.type {
+  width: 45px;
+  height: calc(var(--input-height) + 6px);
+  line-height: calc(var(--input-height) + 6px);
+  padding: 0px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  border-top-right-radius: var(--input-radius);
+  border-bottom-right-radius: var(--input-radius);
+  background-color: var(--color-theme);
+  flex-shrink: 0;
+}
+/* :before не добавляются к input или img, которые не имеют содержимого. */
+[data-type="http"] .block.type:before {
+  content: "Http";
+}
+[data-type="https"] .block.type:before {
+  content: "Https";
+}
+[data-type="socks4"] .block.type:before {
+  content: "Sock4";
+}
+[data-type="socks"] .block.type:before {
+  content: "Sock5";
+}
+[data-type="socks4"] #Authorize input[type="text"],
+[data-type="socks4"] #Authorize input[type="password"] {
+  filter: grayscale(100%) invert(5%);
+  color: #999;
+}
+[data-type="socks4"] #Authorize input[type="checkbox"]:checked,
+[data-type^="http"] #DnsRequest input[type="checkbox"]:checked {
+  border: 1px solid #b0b0b0;
+  background-color: #b0b0b0
+}
+[data-type^="http"] #DnsRequest {
+  color: #999;
+}
+.wrapper .block.port {
+  flex-basis: 60px;
+}
+.wrapper .block.save {
+  height: calc(var(--input-height) + 6px);
+  margin: 0;
+  padding: 2px 4px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  background-color: var(--color-theme);
+  border-radius: var(--input-radius);
+  transition: all 0.5s ease-out;
+}
+.wrapper .block.save:active {
+  text-shadow: 0px 1px 1px #8cae00;
+  background-color: #8cae00;
+  transition: all 0s ease-out;
+}
+.wrapper .block.additem {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.wrapper .block.item {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.bar, .help {
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: var(--grid-gap-h);
+}
+.set {
+  display: flex;
+  align-items: center;
+}
+.set.btn {
+  grid-gap: var(--grid-gap-h);
+}
+.info {
+  display: flex;
+  align-items: center;
+}
+.info:before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  margin: 0 5px 0 0;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: var(--color-theme);
+  background-image: url("/data/icon/icon.svg#donate");
+  flex-shrink: 0;
+}
+.dnsflex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: var(--grid-gap-h);
+}
+#IExport {
+  display: flex;
+  justify-content: center;
+  grid-gap: var(--grid-gap-h);
+}
+#IExport.tab .pop {
+  display: none;
+}
+#IExport.tab .save {
+  flex-basis: 100px;
+}
+</style>
+</head>
+<body>
+  <div class="content" id="Content">
+
+    <div class="main">
+      <div class="wrapper">
+        <div class="bar">
+          <div class="set">
+            <input type="checkbox" id="OnOff" class="sw">
+          </div>
+          <div class="set btn">
+            <a href="popup.html?2" target="_blank" id="Page" class="set" style="display:none;"><div class="sort" id="Link"></div></a>
+            <a href="https://hdmn.work/proxy-list/#612351c0db9a0" class="set" target="_blank"><div class="sort" id="Shield"></div></a>
+            <div class="sort" id="PSS"></div>
+            <div class="sort" id="Sort"></div>
+          </div>
+        </div>
+        <div class="top hide" id="ProxySet" data-type="http">
+          <div class="proxy title" id="UPWarn"></div>
+          <div class="data" id="Address">
+            <div class="adress">
+              <input class="block ip" id="UPAdress" type="text" placeholder="Адрес прокси">
+              <div class="block type" id="UPType"></div>
+            </div>
+            <input class="block port" id="UPPort" type="text" maxlength="5" placeholder="Порт">
+            <input type="checkbox" id="UPOn">
+          </div>
+          <div class="data" id="Authorize">
+            <input class="block username" id="UPLogin" type="text" placeholder="Логин">
+            <input class="block password" id="UPPass" type="password" placeholder="Пароль">
+            <input type="checkbox" id="UPAuth">
+          </div>
+          <div class="dnsflex top" id="DnsRequest">
+            <div class="title">Запросы DNS через прокси</div>
+            <input type="checkbox" id="UPDns" class="">
+          </div>
+          <div id="IExport" class="top tab">
+            <input id="GetFile" type="file" style="display:none;" accept=".json">
+            <input class="block save pop" id="UPImport" type="button" value="Импорт">
+            <input class="block save" id="UPSave" type="button" value="Сохранить">
+            <input class="block save pop" id="UPExport" type="button" value="Экспорт">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="wrapper">
+        <div class="proxy">
+          <div class="title">Ссылка, домен или IP:</div>
+        </div>
+        <div class="data add">
+          <input class="block additem" id="InputAdd" type="text" placeholder="Адрес сайта">
+          <div class="action" id="Add"></div>
+        </div>
+        <div class="wrapper" id="Unlist"></div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="wrapper">
+        <div class="help">
+          <a class="info title" href="https://www.donationalerts.com/r/maksovich" target="_blank">Помочь проекту</a>
+          <a href="https://addons.mozilla.org/firefox/addon/mini-proxy" id="Version"></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<script src="popup.js"></script>
+</body>
+</html>

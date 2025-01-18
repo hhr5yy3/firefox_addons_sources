@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href='icons.css'>
+    <link rel='stylesheet' href='popup.css'>
+    <script type='application/javascript'  src='../jquery-3.2.1.min.js'></script>
+    <script type='application/javascript'  src='../i18n_translations.js'></script>
+    <script type='application/javascript'  src='../browser-polyfill.js'></script>
+    <script type='application/javascript'  src='../purify.min.js'></script>
+    <script src='translates.js'></script>
+    <script src='popup.js'></script>    
+  </head>
+  <body>
+  	<div id='beruby-header-container'>
+  		<a id='beruby-logo'><img src='/images/logo_beruby.png'></a>
+  		<div id='user-account'>
+        <span data-i18n="all_ready_register"></span><a id="btn-login" class="btn btn-login" data-i18n="enter"></a>  
+      </div>
+      <a href="#" class='beruby-close' id='beruby-close'><i class="beruby-fa fa-times" aria-hidden="true"></i></a>
+      <div id="searcher">
+        <div class="input-group">
+          <input id='q' type="text" class="form-control" autocomplete="off" data-i18n="[placeholder]search.placeholder">
+          <div class="input-group-append">
+            <button id='search' class="btn btn-outline-secondary" type="button" data-i18n="search.button">Buscar</button>
+          </div>
+        </div>
+      </div>
+  	</div>
+    <div id='policy-advise'>
+      <h1 data-i18n="cookies_advise.title">Aviso</h1>
+      <p data-i18n="cookies_advise.text">Para que la extensión funcione correctamente debe aceptar el uso de cookies</p>
+      <p class='d-flex-space'>
+        <a href='#' class='btn btn-red accept-cookies' id='accept-cookies' data-i18n="cookies_advise.accept_cookies">Aceptar</a>
+        <a href='#' class='btn btn-red reject-cookies' id='reject-cookies' data-i18n="cookies_advise.reject_cookies">Rechazar</a>
+      </p>
+      <h3 class='text-center' data-i18n="cookies_advise.privacy_title">Politica de privacidad</h3>
+        <p data-i18n="cookies_advise.privacy_text">La extensión de beruby es propiedad y está administrada por MiRubi Internet, SL ('beruby'), compañía también propietaria de la página de Internet beruby.com. Para descargar la extensión, no es necesario estar registrado en beruby.com. Sin embargo, debes tener una cuenta en beruby.com para poder ganar los reembolsos ofrecidos a través de las notificaciones de la alerta. Puedes consultar la política de privacidad de beruby para disponer de más información sobre nuestra actividad. La extensión de beruby es gratuita y te ofrece recordatorios automáticos de reembolsos cuando visitas la página web de una tienda con la que puedes obtener un reembolso por tus compras o reservas (en la actualidad, hay más de 1000 tiendas disponibles). La extensión de beruby recopila información de uso anónima sobre la frecuencia con la que hace clic o ve varios elementos de la interfaz de la extensión del navegador. La extensión identifica las direcciones (las “url”) de los sitios web que visita para verificar si el sitio visitado tiene un acuerdo con beruby en cuyo caso le ofrecemos un reembolso. NO almacenamos ninguna de esta información sobre tu actividad de navegación. Para que funcione la extensión, una vez activado la alerta de reembolso, utilizamos cookies de seguimiento para poder devolverte el reembolso que te corresponde. Puedes consultar la de beruby para obtener todos los detalles. Por último, nos tomamos en serio tu privacidad y estamos comprometidos a protegerla. La extensión NO recopila información de identificación personal y su único propósito es identificar temporalmente el sitio visitado para informarte si hay un reembolso disponible. La extensión puede ser fácilmente desinstalada.</p>
+    </div>    
+  	<div id='advertisers' class='vip-widget-row'>
+     <h1 data-i18n="advertisers_title">Tiendas Top</h1> 
+    </div>
+    <div id='categories' class='vip-widget-row d-none' ><h1 data-i18n="categories_title">Categorías</h1></div>
+    <div id='searcher-container' class='vip-widget-row d-none'></div>
+    <div id='user-balance' class='vip-widget-row d-none'>
+      <h1 data-i18n="balance_title">Saldo</h1>
+      <div class="table">
+        <div class="table-header">
+          <div class="table-column"></div>
+          <div class="table-column" id="balance_to_confirm_text" data-i18n="balance.estimated">Saldo por confirmar</div>
+          <div class="table-column" id="balance_confirmed_text" data-i18n="balance.confirmed">Saldo confirmado</div>
+          <div class="table-column" id="total_balance_text" data-i18n="balance.total">Total</div>
+        </div>
+        <div class="table-body">
+          <div class="table-column" id="direct_text" data-i18n="balance.direct">Directo</div>
+          <div class="table-column" id='direct_estimated'>0,0€</div>
+          <div class="table-column" id='direct_amount'>0,0€</div>
+          <div class="table-column" id='direct_total'>0,0€</div>
+        </div>
+        <div class="table-body">
+          <div class="table-column" id="network_text" data-i18n="balance.my_network">Mi Red</div>
+          <div class="table-column" id='network_estimated'>0,0€</div>
+          <div class="table-column" id='network_amount'>0,0€</div>
+          <div class="table-column" id='network_total'>0,0€</div>
+        </div>
+        <div class="table-footer">
+          <div class="table-column" id="total_text" data-i18n="balance.total">Total</div>
+          <div class="table-column" id='total_estimated'>0,0€</div>
+          <div class="table-column" id='total_amount'>0,0€</div>
+          <div class="table-column" id='total_balance'>0,0€</div>
+        </div>
+      </div>
+    </div>
+  	
+    <div id='beruby-footer-container'>
+  		<ul id='beruby-footer-list'>
+  			<li class='beruby-footer-item'>
+  				<a href='#advertisers' id='home-link' class='footer-link active'><i aria-hidden='true' class='beruby-fa fa-home'></i><span data-i18n="menu.home">Inicio</span></a>
+  			</li>
+  			<li class='beruby-footer-item'>
+  				<a href='#categories' id='categories-link' class='footer-link'><i aria-hidden='true' class='beruby-fa fa-list'></i><span data-i18n="menu.categories">Categorías</span></a>
+  			</li>
+        <li class='beruby-footer-item'>
+          <a href='#user-balance' id='user-balance-link' class='footer-link'><i aria-hidden='true' class='beruby-fa fa-coins'></i><span data-i18n="menu.balance">Saldo</span></a>
+        </li>
+  		</ul>
+  	</div>  	
+  </body>
+</html>

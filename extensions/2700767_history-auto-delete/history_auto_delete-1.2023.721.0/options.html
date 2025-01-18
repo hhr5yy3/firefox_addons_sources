@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>options</title>
+    <link rel="stylesheet" href="options.css">
+    <script src="options.js" defer></script>
+  </head>
+
+  <body>
+    <p dir="ltr"><a title="Crowdin" target="_blank" href="https://crowdin.com/project/history-auto-delete"><img src="https://badges.crowdin.net/history-auto-delete/localized.svg" style="vertical-align: middle;"></a> ← You can help localize this add-on.</p>
+    <form id="form">
+      <p>
+	<label>
+	  <span data-i18n="auto_delete_urls">URLs of page to delete automatically</span><br>
+	  <textarea id="auto_delete_urls" cols="60" rows="10" wrap="off" placeholder="^https://translate\.google\.com&#13;&#10;^https://www\.bing\.com/translator\?&#13;&#10;^https://www\.google\.com/maps/"></textarea>
+	</label>
+	<br>
+	<label>
+	  <span data-i18n="examples">Exapmles</span><br>
+	  <textarea readonly data-ignore="" cols="60" rows="3">^https://translate\.google\.com&#13;&#10;^https://www\.bing\.com/translator\?&#13;&#10;^https://www\.google\.com/maps/</textarea>
+	</label>
+      </p>
+      <p>
+	<label>
+	  <span data-i18n="test_url">Test regular expressions</span>
+	  <input type="url" id="test_url" size="60" placeholder="https://translate.google.com/" data-ignore="true">
+	  <span id="url_test_result"></span>
+	</label>
+      </p>
+      <p>
+	<label>
+	  <input type="number" id="waite_time_before_start" style="width:5em" value="3000" min="0" required="required">
+	  <span data-i18n="waite_time_before_start">Wait time before start deletion (milliseconds)</span>
+	</label>
+      </p>
+      <p>
+	<label>
+	  <input type="number" id="wait_time_between_deletions" style="width:5em" value="2000" min="0" required="required">
+	  <span data-i18n="wait_time_between_deletions">Waiting time between deletions (milliseconds)</span>
+	</label>
+      </p>
+    </form>
+  </body>
+</html>
+

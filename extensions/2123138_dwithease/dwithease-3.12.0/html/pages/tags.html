@@ -1,0 +1,100 @@
+<div id="tags">
+        <div class="content">
+            <h1 i18n-content="tags_title"></h1>
+            <div i18n-content="tags_description" class="description"></div>
+
+            <div class="tag-group" ng-repeat="tagGroupName in ['system', 'custom']">
+                <div class="tag-group-title" ng-if="tagGroupName == 'system'" i18n-content="tags_title_system"></div>
+                <div class="tag-group-description" ng-if="tagGroupName == 'system'" i18n-content="tags_description_system"></div>
+                <div class="tag-group-title" ng-if="tagGroupName == 'custom'" i18n-content="tags_title_custom"></div>
+                <div class="tag-group-description" ng-if="tagGroupName == 'custom'" i18n-content="tags_description_custom"></div>
+                <ul>
+                    <li ng-repeat="tag in tags[tagGroupName] track by tag.id" ng-style="{'border': '2px solid', 'border-color': tag.backgroundColor}" ng-if="!tag.disabled">
+                        <div class="tag" id="{{tag.id}}">
+                            <span class="name" ng-style="{'background-color': tag.backgroundColor, 'color':tag.color}">{{tag.name}}</span>
+
+                            <span class="color-sample-holder background-color tag-button">
+                                <md-tooltip i18n-content="button_background_color" md-direction="top"></md-tooltip>
+                                <span class="color-sample tag-button-content" ng-click="showPicker(tag, 'background-color', 'backgroundColor');">BG</span>
+                            </span>
+
+                            <span class="color-sample-holder color tag-button">
+                                <md-tooltip i18n-content="button_foreground_color" md-direction="top"></md-tooltip>
+                                <span class="color-sample tag-button-content" ng-click="showPicker(tag, 'color', 'color');">FG</span>
+                            </span>
+
+                            <span class="visible tag-button" ng-click="tag.visible = !tag.visible; saveTag(); toggleVisibility(tag);">
+                                <md-tooltip i18n-content="button_visible" md-direction="top"></md-tooltip>
+                                <md-icon md-font-set="material-icons" ng-if="tag.visible" class="tag-button-content">visibility</md-icon>
+                                <md-icon md-font-set="material-icons" ng-if="!tag.visible" class="tag-button-content">visibility_off</md-icon>
+                            </span>
+
+                            <span ng-if="tagGroupName == 'custom'" class="config-tag tag-button">
+                                <md-tooltip i18n-content="button_edit" md-direction="top"></md-tooltip>
+                                <md-icon md-font-set="material-icons" ng-click="configDialog.configTag(tag);" class="tag-button-content">settings</md-icon>
+                            </span>
+
+                            <span ng-if="tagGroupName == 'custom'" class="delete-tag tag-button">
+                                <md-tooltip i18n-content="button_delete" md-direction="top"></md-tooltip>
+                                <md-icon md-font-set="material-icons" ng-click="askDeleteTag(tag);">delete_forever</md-icon>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="add-tag" ng-if="tagGroupName == 'custom'">
+                        <md-button i18n-content="tags_add_new" class="md-button md-raised md-primary" aria-label="New Tag Button" ng-click="configDialog.newTag()"></md-button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="tag-config" ng-if="configDialog.showDialog">
+        <div class="customModal">
+            <div class="tag-config-container" ng-style="{'background-color': configDialog.model.backgroundColor, 'color': configDialog.model.color}">
+                <div class="inner-box">
+                    <span class="title" i18n-content="tag_config_new" ng-if="configDialog.type=='new'"></span>
+                    <span class="title" i18n-content="tag_config_edit" ng-if="configDialog.type=='edit'"></span>
+                    <label class="name">
+                        <span class="property" i18n-content="tag_config_name"></span>
+                        <input type="text" name="name" ng-model="configDialog.model.name"/>
+                    </label>
+                    <label class="pattern">
+                        <span class="property" i18n-content="tag_config_pattern"></span>
+                        <input type="text" name="pattern" ng-model="configDialog.model.pattern"/>
+                    </label>
+                    <label class="background">
+                        <span class="property" i18n-content="tag_config_background"></span>
+                        <span class="config-color-sample"
+                            ng-style="{'background-color': configDialog.model.backgroundColor}"
+                            ng-click="configDialog.showPicker('#tag-config .background .config-color-sample', 'backgroundColor')"></span>
+                    </label>
+                    <label class="color">
+                        <span class="property" i18n-content="tag_config_color"></span>
+                        <span class="config-color-sample"
+                            ng-style="{'background-color': configDialog.model.color}"
+                            ng-click="configDialog.showPicker('#tag-config .color .config-color-sample', 'color')"></span>
+                    </label>
+                    <label class="visible">
+                        <span class="property" i18n-content="tag_config_visible"></span>
+                        <input type="checkbox" name="visible" ng-model="configDialog.model.visible"/>
+                    </label>
+                    <div class="preview">
+                        <div class="preview-row" ng-repeat="row in ['tag-_recent', 'tag-_today', 'tag-_yesterday', 'tag-_longAgo']" ng-class="row">
+                            <span class="name">...log</span>
+                            <span class="tag-container">
+                                <span class="tag" ng-style="{'background-color': configDialog.model.backgroundColor, 'color': configDialog.model.color}">{{configDialog.model.name}}</span>
+                            </span>
+                            <span class="size">20 kb</span>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <md-button i18n-content="tag_config_save" class="md-raised md-primary" aria-label="Changelog" ng-click="configDialog.saveConfig()"></md-button>
+
+                        <md-button class="md-icon-button action-btn close" aria-label="Close" ng-click="configDialog.closeModal()">
+                            <md-icon md-font-set="material-icons">close</md-icon>
+                        </md-button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

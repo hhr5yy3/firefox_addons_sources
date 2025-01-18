@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+<script src="../js/jquery-3.3.1.js"></script>
+<script src="../js/main.js"></script>
+</head>
+<body>
+<div id="main">
+	<div class="header">
+		<h4 class="title">Custom Site JavaScript</h4>
+		<p class="slogan">Make sites <b>work</b> for you!</p>
+	</div>
+	<div class="showHelp" title="Click for Help">?</div>
+	<div class="views loading">
+		<div class="view loading bold">Loading scripts from storage ...</div>
+		<div class="view help">
+			<p><b>Custom Site JavaScript</b> is a chrome extension that lets you define javascript which will automatically be executed on a site as it appears in your browser.</p>
+			<p>You can Add, Edit, or Delete CSJ items.  In the edit you can also mark a CSJ item to be skipped so that you can disable it without deleting it.</p>
+			<div>Add/Edit:</div>
+			<ul>
+				<li>Name is the CSJ item in your list (limit 30 chars).</li>
+				<li>Skip, when checked, disables the item without needing to delete it.</li>
+				<li>URL is the string the site url is tested with.  This url string can be created using * to indicate a zero or more char wild card, or ** for a one or more char wild card.  Note: Chrome tacks a / on the end of a url that only has the domain name.</li>
+				<li>Regex, when checked, allows URL to be a full regex test string.  Example: <b>.*google\.com\/search.+</b> If you need to use flags, you can format it like this: /MATCH/FLAGS.  Example: <b>/.*google\.com\/search.+/i</b></li>
+				<li>Script is the javascript code you want to have run.  The total size that can be stored is about 5 megabytes.</li>
+			</ul>
+			<div class="small muted justify padBottom">This extension was created for personal use and convenience. It is free for anyone to use, but use at your own risk. The creator/maintainer of this extension will not be liable for any loss or damages incurred in conjunction with using it.</div>
+			<div class="buttons"><button class="cancel">Done</button></div>
+		</div>
+		<div class="view list">
+			<p>Your CSJ List:</p>
+			<div><select><option value="">---- select one ----</option></select></div>
+			<div class="buttons">
+				<button class="add">Add</button>
+				<button class="edit disabled">Edit</button>
+				<button class="delete disabled">Delete</button>
+			</div>
+		</div>
+		<div class="view form">
+			<h4>
+				<span class="addSpecific">New</span>
+				<span class="editSpecific">Edit</span>
+				<span class="deleteSpecific">Delete</span>
+				<span> CSJ:</span>
+			</h4>
+			<div class="errorMessage"></div>
+			<div class="editRow clearfix">
+				<div class="label">Name:</div>
+				<div>
+					<input class="name" type="text" maxlength="30"/>
+					<input class="skip" type="checkbox"/>
+					<span class="small">Skip <img src="../image/info16.png" title="When this box is checked, this script will not be used."></span>
+				</div>
+			</div>
+			<div class="editRow clearfix">
+				<div class="label">URL:</div>
+				<div>
+					<input class="url" type="text"/>
+					<input class="regex" type="checkbox"/>
+					<span class="small">Regex <img src="../image/info16.png" title="When this box is checked, you may format the test url using regular expressions. Otherwise you may use an * as a wild card (zero or more chars), or ** as a wild card (one or more chars)."></span>
+				</div>
+			</div>
+			<div class="editRow">
+				<p>Script:</p>
+				<textarea class="code"></textarea>
+			</div>
+			<div class="buttons">
+				<button class="add addSpecific">Add</button>
+				<button class="save editSpecific">Save</button>
+				<button class="delete deleteSpecific">Delete</button>
+				<button class="cancel">Cancel</button>
+			</div>
+		</div>
+		<div class="usage"><span>20</span> of 5,242,800 Bytes Used</div>
+	</div>
+	<div class="footer">
+		<div class="author">Author: David Hicken</div>
+		<div class="donate">Support via PayPal: <a href="https://www.paypal.com/us/webapps/mpp/send-money-online" target="_blank">donate@darklaser.com</a></div>
+	</div>
+</div>
+</body>
+</html>

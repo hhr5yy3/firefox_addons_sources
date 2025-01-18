@@ -1,0 +1,26 @@
+<span data-href="{{ href }}"
+    class="{{ itemClass }} icon dwe-tree-view__element__link is-from-tree d-block position-relative"
+    data-file="{{ stringifiedContent }}" data-element-name="{{ name }}"
+    data-children-loaded="{{#hasChildren}}true{{/hasChildren}}" data-is-open="{{^collapsed}}true{{/collapsed}}">
+    <span class="dwe-tree-view__element__link--name d-flex">
+        <span class="dwe-tree-view__element__link--icon icon-code-icons-dark {{ iconName }} {{#collapsed}} icon-folder {{/collapsed}}"></span>
+        <span class="dwe-tree-view__element__link--name--inner">
+            {{name}}
+        </span>
+
+        <span class="dwe-tree-view__element--progress-container dot-flashing"></span>
+    </span>
+
+    <div class="dwe-tree-view__element__actions">
+        {{ #actions }}
+            <span
+                class="dwe-tree-view__element__actions__action icon-code-icons-light icon-{{ iconName }} is-action"
+                data-action-name="{{ name }}"
+                title="{{ title }}"></span>
+        {{ /actions }}
+    </div>
+
+    <div class="dwe-tree-view__element__children{{#collapsed}} d-none{{/collapsed}}">
+        childrenPlaceholder
+    </div>
+</span>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oneClipper: web clipper for oneNote</title>
+    <link rel="stylesheet" href="./popup.css">
+</head>
+
+<body>
+    <h2 class="one-clipper"><img src="/icon-24.png" alt="" height="20">oneClipper</h2>
+
+    <section style="margin-bottom: 0.5em; text-align: center;">
+        <span>🧰 Accounts: </span>
+        <account-switch></account-switch>
+    </section>
+
+    <section class="notebooks">
+        <label>
+            <span>&nbsp;Notebooks</span>
+            <svg class="refresh" viewBox="0 0 24 24" id="refreshNotebooks">
+                <title>Refresh notebooks</title>
+                <path />
+            </svg>
+            <select id="notebook" style="display: block;"></select>
+        </label>
+        <label>
+            <span>&nbsp;Sections</span>
+            <svg class="refresh" viewBox="0 0 24 24" id="refreshSections">
+                <title>Refresh sections</title>
+                <path />
+            </svg>
+            <select id="sections" style="display: block;"></select>
+        </label>
+    </section>
+
+    <main>
+        <select name="pages" style="margin-bottom: -1.8em">
+            <option value="new_page">Create new page</option>
+        </select>
+        <button style="--hue:210" id="bookmark">
+            <svg class="bookmark" viewBox="0 0 24 24">
+                <path />
+            </svg>
+            <div>
+                <div id="bookmark_tab">Bookmark Tab</div>
+            </div>
+        </button>
+
+        <button style="--hue:33" id="screenshot">
+            <svg class="screenshot" viewBox="0 0 24 24">
+                <path />
+            </svg>
+            <div>
+                <div id="capture_screenshot">Capture screenshot</div>
+                <kbd>Alt+S</kbd>
+            </div>
+        </button>
+
+        <button style="--hue:120" id="clipArticle">
+            <svg class="article" viewBox="0 0 24 24">
+                <path />
+            </svg>
+            <div>
+                <div id="clip_article">Clip Article</div>
+                <kbd>Alt+A</kbd>
+            </div>
+        </button>
+
+        <button style="--hue:280" id="multiSelect">
+            <svg class="select" viewBox="0 0 24 24">
+                <path />
+            </svg>
+            <div>
+                <div id="multi_select_text">Multi Select Text</div>
+                <kbd>Alt+M</kbd>
+            </div>
+        </button>
+
+        <select name="note-list" style="margin-bottom: -1.8em" id="pdf_note_list" hidden>
+            <option value="new_page">Create new page</option>
+        </select>
+        <button style="--btn-clr:red" id="save_pdf_btn">
+            <svg class="pdf" viewBox="0 0 1024 1024">
+                <path />
+            </svg>
+            <div id="save_pdf_file">Save PDF file</div>
+        </button>
+
+        <select name="note-list" style="margin-bottom: -1.8em" id="video_note_list" hidden>
+            <option value="new_page">Create new page</option>
+        </select>
+        <button style="--btn-clr:red" id="embed_video_btn">
+            <svg class="youtube" viewBox="0 0 24 24">
+                <path />
+            </svg>
+            <div id="embed_video">Embed video</div>
+        </button>
+    </main>
+    <div id="open_panel_btn"><span id="open_side_panel">Open Panel</span> (<kbd>Alt+T</kbd>) </div>
+    <output id="snackbar" hidden></output>
+    <script type="module" src="./popup.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Demandware With Ease | Options</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../css/options.css">
+</head>
+
+<body ng-app="dweOptions" ng-controller="OptionsController" md-theme="{{theme}}" ng-keyup="hideModal($event)"
+    ng-mousedown="hideModal($event)" ng-csp ng-cloak>
+    <div class="banner-large">
+        <ng-include src="'banners/alert-banner.html'"></ng-include>
+    </div>
+
+    <ng-include src="'./vaultloginmodal.html'"></ng-include>
+    <ng-include src="'./confirmationmodal.html'"></ng-include>
+
+    <md-sidenav md-component-id="left" md-is-open="true" md-disable-backdrop md-disable-close-events class="sidenav">
+        <div class="extension-name">DWithEase</div>
+        <ul class="sidebar-navigation">
+            <li ng-class="{selected: $route.current.activetab == 'sandboxes'}">
+                <a i18n-content="categories_sandboxes" href="#!/sandboxes"
+                    ng-click="navigationClicked('sandboxes')"></a>
+            </li>
+            <li ng-class="{selected: $route.current.activetab == 'permissions'}">
+                <a i18n-content="categories_permissions" href="#!/permissions"
+                    ng-click="navigationClicked('permissions')"></a>
+                <md-button href="#!/permissions" class="md-warn md-hue-2 permissions-required"
+                    ng-if="$root.missingRequiredPermissions">
+                    <md-tooltip i18n-content="categories_permissions_not_whitelisted" md-direction="top">
+                    </md-tooltip>
+                    <md-icon md-font-set="material-icons">warning</md-icon>
+                </md-button>
+            </li>
+            <li ng-class="{selected: $route.current.activetab == 'settings'}">
+                <a i18n-content="categories_settings" href="#!/settings" ng-click="navigationClicked('settings')"></a>
+            </li>
+            <li ng-class="{selected: $route.current.activetab == 'accounts'}">
+                <a i18n-content="categories_accounts" href="#!/accounts" ng-click="navigationClicked('accounts')"></a>
+            </li>
+            <li ng-class="{selected: $route.current.activetab == 'onepass'}">
+                <a href="#!/onepass" ng-click="navigationClicked('onepass')">OnePass</a>
+            </li>
+            <li ng-if="isFirefox" ng-class="{selected: $route.current.activetab == 'privacy'}">
+                <a href="#!/privacy" ng-click="navigationClicked('privacy')">Privacy</a>
+            </li>
+            <li ng-class="{selected: $route.current.activetab == 'menu'}">
+                <a i18n-content="categories_context_menu" href="#!/menu"
+                    ng-click="navigationClicked('contextMenu')"></a>
+            </li>
+            <li ng-class="{selected: $route.current.activetab == 'redirects'}">
+                <a i18n-content="categories_redirects" href="#!/redirects"
+                    ng-click="navigationClicked('redirects')"></a>
+            </li>
+            <li ng-class="{selected: $route.current.activetab == 'tags'}">
+                <a i18n-content="categories_tags" href="#!/tags" ng-click="navigationClicked('tags')"></a>
+            </li>
+            <li ng-class="{selected: $route.current.activetab == 'newsfeed'}">
+                <a i18n-content="categories_news" href="#!/newsfeed" ng-click="navigationClicked('newsfeed')"></a>
+                <span class="unreadMessagesCount"></span>
+            </li>
+            <li ng-class="{selected: $route.current.activetab == 'about'}">
+                <a i18n-content="categories_about" href="#!/about" ng-click="navigationClicked('about')"></a>
+            </li>
+        </ul>
+    </md-sidenav>
+
+    <div ng-class="!user.registered ? 'hidden' : ''" class="secured-with-masterpass">
+        <div class="secured-text">
+            <md-icon id="lockIcon" md-font-set="material-icons">lock_outline</md-icon>
+            <a><span i18n-content="onepass_text">Secured</span>
+                <md-tooltip class="tooltip-multiline" i18n-content="onepass_system_tooltip" md-direction="top">
+                    Powered by OnePass</md-tooltip>
+            </a>
+        </div>
+    </div>
+
+    <md-content class="main-content ng-view"></md-content>
+
+    <button id="goTop" class="md-fab md-fab-bottom-right docs-scroll-fab md-button md-ink-ripple scrolling"
+        type="button" aria-label="Back to Top">
+        <md-icon class="ng-scope" role="img" aria-hidden="true">
+            <svg height="100%" viewBox="0 0 24 24" width="100%" xmlns="http://www.w3.org/2000/svg" fit=""
+                preserveAspectRatio="xMidYMid meet" focusable="false">
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+            </svg>
+        </md-icon>
+        <div class="md-ripple-container">
+        </div>
+    </button>
+    <script src="../js/options.js"></script>
+</body>
+
+</html>

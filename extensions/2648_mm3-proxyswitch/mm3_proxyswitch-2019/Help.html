@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang='en'><head><meta charset='utf-8'/>
+<title>MM3-ProxySwitch - Firefox &amp; Chrome WebExtension (Add-ons)</title>
+<meta name='viewport' content='width=device-width,initial-scale=1'/>
+<link rel='stylesheet' type='text/css' href='img/MM3-ProxySwitch.css'/>
+<link rel='shortcut icon' href='MM3-ProxySwitch.png'/></head><body>
+
+<h1><a href='https://Proxy-Offline-Browser.com/ProxySwitch/'>ProxySwitch</a></h1>
+
+<div class='WebAssistant'><h3>You would like to save web pages and use these offline?</h3><div>
+The <dfn>ProxySwitch</dfn> completes ideally the <a href='https://Proxy-Offline-Browser.com' title='Go to Download: MM3-WebAssistant - Proxy Offline Browser'><dfn>WebAssistant</dfn> - Proxy Offline Browser</a>.</div></div>
+
+<nav><ul>
+<li><a href='#Use'>Use</a></li>
+<li><a href='#Structure'>Structure of the proxy configuration</a></li>
+<li><a href='#ProxyConfiguration'>Proxy configuration</a></li>
+<li><a href='#SystemAuto'>Predefined proxy configurations</a></li>
+<li><a href='#Homepage'>Homepage</a></li>
+<li><a href='#ClearCache'>Delete browser cache</a></li>
+<li><a href='#Shortcut'>Shortcut</a></li>
+<li><a href='#Activation'>Activation of a proxy configuration</a></li>
+<li><a href='#Symbol'>Change symbol</a></li>
+<li><a href='#Comment'>Comment</a></li>
+
+<li><a href='#DNSLookups'>DNS lookups</a></li>
+<li><a href='#AutomaticSwitching'>Automatic switching</a></li>
+</ul></nav>
+
+<main>
+
+<h3 id='Use'>Use</h3><div><ul>
+<li>With a click on the symbol <dfn>ProxySwitch</dfn> you can change between the direct connection to the internet and a proxy configuration.<br/><br/>
+
+You recognize the used connection by the symbol:<ul>
+<li class='off'>direct Internet connection</li>
+<li class='on'>a proxy configuration</li></ul>
+
+<h5>Tool Tipp</h5><div>
+The name of the used configuration is displayed.</div><br/></li>
+
+<li>You can select a proxy configuration from the popup menu.</li>
+<li>You can edit the proxy configurations with the menu <strong>Settings</strong>.</li></ul></div>
+
+<h3 id='Structure'>Structure of the proxy configuration</h3><div><p>
+Every configuration has a definite name and starts with the opening bracket <b>[</b> and ends with the closing bracket <b>]</b>.<br/>
+This name of the proxy configuration is displayed in the popup menu.<br/>
+The both bracket <b>[</b> and <b>]</b> as well as every <b>keyword</b> must be in a new line.<br/>
+According to the structure in the following example.</p>
+
+<h5>Example</h5><div><code>
+[<span class='n'>Name</span>
+  <span class='k'>http</span>=...
+]</code></div>
+</div>
+
+<h3 id='ProxyConfiguration'>Proxy configuration</h3><div><p>
+You can use the following keywords for the configuration:</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>http  </span>=<span class='i'>IP address</span>:[<span class='p'><b>  80</b>|port</span>]
+<span class='k'>https </span>=<span class='i'>IP address</span>:[<span class='p'><b> 443</b>|port</span>]
+<span class='k'>ftp   </span>=<span class='i'>IP address</span>:[<span class='p'><b>  21</b>|port</span>]
+<span class='k'>all   </span>=<span class='i'>IP address</span>:[<span class='p'><b>  80</b>|port</span>]
+<span class='k'>socks </span>=<span class='i'>IP address</span>:[<span class='p'><b>1080</b>|port</span>]
+<span class='k'>socks4</span>=<span class='i'>IP address</span>:[<span class='p'><b>1080</b>|port</span>]
+<span class='k'>noProxy</span>=...
+<span class='k'>url</span>=...</code>
+
+<dl>
+  <dt>http<s>,</s> https<s>,</s> ftp<s>,</s> socks <s>or</s> socks4</dt>
+  <dd>Enter the proxy for any required protocol.</dd>
+
+  <dt>all</dt>
+  <dd>The same proxy is used for the protocols http, https and ftp.</dd>
+
+  <dt>noProxy</dt>
+  <dd>For the given domains the proxy shall not be used.<br/>
+
+  Several domains are separated by a comma. This corresponds to the <a href='https://developer.mozilla.org/en-US/docs/No_Proxy_For_configuration' target='_blank'>syntax of Firefox</a>.</dd>
+
+  <dt>url</dt>
+  <dd>URL to the script for the automatic proxy configuration.</dd>
+</dl></div>
+
+<h5>Example</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>   =<span class='i'>127.0.0.1</span>:<span class='p'>8080</span>
+  <span class='k'>https</span>  =<span class='i'>127.0.0.1</span>:<span class='p'>8080</span>
+  <span class='k'>ftp</span>    =<span class='i'>127.0.0.1</span>:<span class='p'>8080</span>
+  <span class='k'>noProxy</span>=<span class='i'>127.0.0.1</span>
+]
+[<span class='n'>localProxy</span>
+  <span class='k'>all</span>=<span class='i'>192.168.0.1</span>:<span class='p'>8080</span>
+]
+[<span class='n'>provider</span>
+  <span class='k'>http</span>=HTTP-Proxy of you provider
+]
+[<span class='n'>script</span>
+  <span class='k'>url</span>=http://www.example.com/proxy.pac
+]</code></div>
+</div>
+
+<h3 id='SystemAuto'>Predefined proxy configurations</h3><div>
+<p>The following two proxy configurations are predefined.
+  These can be extended with additional settings.</p>
+
+<h5>Syntax</h5><div><code>
+[<span class='n'>System</span>
+  ...
+]
+[<span class='n'>Auto</span>
+]</code>
+
+<dl>
+  <dt>System</dt>
+  <dd>Use system proxy settings.</dd>
+
+  <dt>Auto</dt>
+  <dd>Auto-detect proxy settings for this network.</dd>
+</dl></div>
+</div>
+
+<h3 id='Homepage'>Homepage</h3><div>
+<p>When switching over the proxy configuration a other homepage can be displayed.
+To this you indicate the homepage at the respective proxy configuration with the keyword <b>homepage</b>.</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>homepage</span>=URL</code>
+</div>
+
+<h5>Example</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+
+  <span class='k'>homepage</span>=https://Proxy-Offline-Browser.com
+]</code></div>
+</div>
+
+<h3 id='ClearCache'>Delete browser cache</h3><div>
+<p>Before you use the Offline Browser <a href='https://Proxy-Offline-Browser.com' target='_blank'><dfn>WebAssistant - Proxy Offline Browser</dfn></a>, the cache of your browser should be deleted.
+With the keyword  <b>clear</b> this is carried out automatically.</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>clear</span>=cache</code>
+</div>
+
+<h5>Example</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+
+  <span class='k'>clear</span>=cache
+]</code></div>
+</div>
+
+<h3 id='Shortcut'>Shortcut</h3><div>
+<p>To switch between different proxy configurations, you can use the following four keyboard shortcuts:<br/><br/>
+
+<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>1</kbd><br/>
+...<br/>
+<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd><br/><br/>
+
+The first four proxy configurations are activated or switched over.</p>
+
+<h6>Note</h6><div>An individual assignment of shortcuts by users does not provide WebExtension.
+  If another extension already uses the same shortcuts, you have to decide which extension should use these shortcuts.
+  In that case, delete both extensions and install the extension first, which should use the hotkeys.</div>
+</div>
+
+<h3 id='Activation'>Activation of a proxy configuration</h3><div>
+<p>If you select a proxy configuration, then this is immediately used per default.
+With <b>active=no</b> the select configuration is entered. The direct connection to the internet is used, however.</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>active</span>=[<b>yes</b>|no]</code>
+</div>
+
+<h5>Example</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+
+  <span class='k'>active</span>=no
+]</code></div>
+
+<h6>Note</h6><div>
+This is obvious if you use the <a href='#AutomaticSwitching'>automation of the proxy configuration</a> and you don't need a proxy at every location.</div>
+</div>
+
+<h3 id='Symbol'>Change symbol</h3><div>
+<p>The keyword <b>symbol</b> can be used to change the representation for a proxy configuration.
+This allows each active proxy configuration or a direct Internet connection to be displayed differently.</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>symbol</span>=[<span class='k2'>color</span>:<span class='v2'>color value</span>;] [<span class='k2'>colorActive</span>:<span class='v2'>color value</span>;] [<span class='k2'>shape</span>[:<span class='v2'>square</span>]]</code>
+
+  <dl>
+    <dt>color<s>:color value</s></dt>
+    <dd>For a direct Internet connection<br/>
+        Default color value is #808080 for gray</dd>
+
+    <dt>colorActive<s>:color value</s></dt>
+    <dd>For an active proxy configuration<br/>
+        Default color value is #900 for red</dd>
+  </dl>
+
+  <p>Color value must be specified according to HTML or CSS syntax.<br/><br/></p>
+
+  <dl>
+    <dt>shape</dt>
+    <dd>By default, the symbol <span class='on'> is displayed</span></dd>
+
+    <dt>shape<s>:square</s></dt>
+    <dd>Symbol is displayed as a square</dd>
+  </dl>
+</div>
+
+<p>The keywords can be defined inside and outside a proxy configuration;
+  within, the keywords apply only to this proxy configuration.</p>
+
+<h5>Example</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+  <span class='k'>symbol</span>=<span class='k2'>colorActive</span>:<span class='v2'>green</span>
+]
+[<span class='n'>Company</span>
+  <span class='k'>http</span>=...
+  <span class='k'>symbol</span>=<span class='k2'>colorActive</span>:<span class='v2'>blue</span>;<span class='k2'>shape</span>:<span class='v2'>square</span>
+]
+...
+<span class='k'>symbol</span>=<span class='k2'>color</span>:<span class='v2'>#000</span></code>
+
+<p>For a direct Internet connection, the symbol is always displayed in "black" (#000).
+If the proxy configuration "MM3-WebAssistant" is activated, the symbol "MM3" is displayed "green".
+If the proxy configuration "Company" is selected, the symbol is displayed as a square.
+If "Company" is then activated, the color changes from "black" to "blue".</p>
+</div>
+</div>
+
+<h3 id='Comment'>Comment</h3><div>
+
+  <p>Lines can be marked as comment lines.
+    These lines can only contain comments.</p>
+
+  <h5>Syntax</h5><div><p><br/>
+    Comment lines start with the character: <span class='c'>#</span></p>
+  </div>
+
+  <h5>Example</h5><div>
+<code><span class='c'># These are three comment lines:
+# Proxy configuration to use the
+# MM3-WebAssistant - Proxy Offline Browser</span>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+]</code></div>
+</div>
+
+<h3 id='DNSLookups'>DNS lookups</h3><div>
+<p>The keyword <b>proxyDNS</b> controls whether DNS lookups for socks version 5 clients happen on the client or on the proxy server.
+With the value true the proxy server perform DNS lookups.</p>
+
+<h5>Syntax</h5><div><code>
+<span class='k'>proxyDNS</span>=[<b>false</b>|true]</code>
+</div>
+
+<h5>Example</h5><div><code>
+[<span class='n'>Company</span>
+  <span class='k'>socks</span>=...
+  <span class='k'>proxyDNS</span>=true
+]</code></div>
+</div>
+
+<h3 id='AutomaticSwitching'>Automatic switching</h3><div>
+<p>If you use different networks with your laptop computer,
+then the required configuration can be determined automatically.</p>
+
+<p>Starting the Firefox it is checked whether an URL is available.
+Into dependence of this test the direct connection to the Internet or the proxy is used.</p>
+
+  <h5>Syntax</h5><div><code>
+<span class='k'>testUrl</span>=<span class='d'>URL</span> [direct|proxy|<b>both</b>]</code>
+
+    <dl>
+      <dt>URL</dt>
+      <dd>URL to be checked.</dd>
+
+      <dt>Mode</dt>
+      <dd><dl>
+        <dt>direct</dt>
+        <dd>Check is executed if you activate in the Firefox: Direct connection to the Internet.</dd>
+
+        <dt>proxy</dt>
+        <dd>Check is only executed if a proxy configuration is activated.</dd>
+
+        <dt>both</dt>
+        <dd>Check is always executed</dd>
+      </dl></dd>
+    </dl>
+  </div>
+
+  <p>If in the test the URL is available, the proxy configuration is used.</p>
+
+  <p>The testURL can be noted inside and outside a proxy configuration;
+    for inside, the testURL only applies to this proxy configuration.</p>
+
+  <h5>Example</h5><div><code>
+[<span class='n'>MM3-WebAssistant</span>
+  <span class='k'>http</span>=...
+
+  <span class='k'>testUrl</span>=<span class='d'>http://127.0.0.1:8080</span> both
+]</code>
+
+    <p>The availability of the <a href='https://Proxy-Offline-Browser.com' target='_blank'><dfn>WebAssistant - Proxy Offline Browser</dfn></a> is checked here.<br/>
+      If this proxy has started, then this is used.</p>
+  </div>
+</div>
+
+<h3>Product Homepage</h3><div>
+<a href='https://Proxy-Offline-Browser.com/ProxySwitch/'>Proxy-Offline-Browser.com/ProxySwitch</a></div>
+
+<h3>Note of thanks and development history</h3><div>
+<a href='https://Proxy-Offline-Browser.com/ProxySwitch/News.html'>Proxy-Offline-Browser.com/ProxySwitch/News</a></div>
+
+<h3>Get Involved</h3><div>
+<a href='https://Proxy-Offline-Browser.com/ProxySwitch/Benefit.html'>Proxy-Offline-Browser.com/ProxySwitch/Benefit</a></div>
+
+<h3 id='license'>License</h3><div>
+<a href='https://creativecommons.org/licenses/by-sa/4.0/deed.en' title='This content is under one     Creative Commons License
+Attribution - Share Alike        4.0 International licensed.'>
+<img src='CreativeCommons.org-by-sa-4.0.png' alt='Creative Commons'/>Creative Commons</a>
+
+<a href='http://www.gnu.org/licenses/gpl-3.0.html' title='GNU General Public License'>
+<img src='GNU-General-Public-License-3.png' alt='GNU GPL'/>GNU GPL</a></div>
+
+</main>
+
+<div class='WebAssistant'><h3>You would like to save web pages and use these offline?</h3><div>
+With the <dfn>WebAssistant</dfn> - Proxy Offline Browser you click a link and the page is shown as normal,
+also adds the page to an archive on your hard disk enabling offline access, bookmarking and searching.<br/><br/>
+
+Go to Download <a href='https://Proxy-Offline-Browser.com' title='Go to Download: MM3-WebAssistant - Proxy Offline Browser'><dfn>WebAssistant</dfn> - Proxy Offline Browser</a></div></div>
+
+<footer>
+<a id='imprint' href='https://Proxy-Offline-Browser.com/ProxySwitch/Imprint.html'>Imprint</a>
+<a id='privacy' href='https://Proxy-Offline-Browser.com/ProxySwitch/PrivacyPolicy.html'>Privacy</a>
+<a id='legal' href='https://Proxy-Offline-Browser.com/ProxySwitch/LegalNotice.html'>Legal</a>
+<a id='mail' href='mailto:WebAssistant@MM3Tools.com?subject=Questions%20to%20the%20MM3-ProxySwitch'>WebAssistant@MM3Tools.com</a>
+<a rel='copyright' href='https://Proxy-Offline-Browser.com/ProxySwitch/'>&copy; MM3Tools, 2019</a>
+</footer></body></html>

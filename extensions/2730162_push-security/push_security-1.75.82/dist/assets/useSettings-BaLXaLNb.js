@@ -1,0 +1,1 @@
+import{b as s}from"./browser-polyfill-BfqLb55p.js";import{R as o,r as t}from"./FontAwesome-CCo8GKtM.js";const e=o((()=>{const o=t();return void 0===o.value&&s.storage.local.get("settings").then((s=>o.value=s.settings)).catch((s=>console.log(s))),{settings:o}}));export{e as u};

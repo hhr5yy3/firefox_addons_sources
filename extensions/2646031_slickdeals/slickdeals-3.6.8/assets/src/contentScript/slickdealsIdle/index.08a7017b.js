@@ -1,0 +1,1 @@
+import{aI as a,aJ as t}from"../../../popupInitializer.bb4281b7.js";import{d as e}from"../../../pageInteraction.2f84ddce.js";import"../../../index.0a1d9bc1.js";(async()=>(await e(),await a.create().init(),await t.create().init()))();

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" />
+
+<head>
+  <link rel="stylesheet" href="./loaderPage.css" />
+  <link rel="stylesheet" href="./popup.css" />
+  <link rel="stylesheet" href="./button-loader.css" />
+  <link rel="stylesheet" href="./md3-switch.css" />
+</head>
+
+<body>
+  <!-- LOADER PAGE -->
+  <div id="loader_page">
+    <div style="display: flex; flex-direction: row; justify-content: center">
+      <span id="loader"></span>
+    </div>
+  </div>
+  <div id="popup" style="display: none">
+    <!-- APP CONNECTION SETUP PAGE -->
+    <div id="app_connection_setup_page" style="display: none">
+      <h1 id="app_connection_setup_title">App connection setup</h1>
+      <p id="app_connection_setup_details">
+        This extension needs to communicate with the UpSignOn app.
+      </p>
+
+      <h2 id="app_connection_setup_step1" style="display: none">Step 1</h2>
+      <a id="app_connection_setup_download_link" style="display: none" href="https://upsignon.eu/download" target="_blank" class="btn-as-link">Download the app if you don't already have it.</a>
+
+      <h2 id="app_connection_setup_step2">Step 2</h2>
+      <button id="app_connection_setup_button" type="button" class="btn">
+        Setup app connection
+      </button>
+      <div>(<span id="app_connection_setup_step2_alt">if this does not work</span> <span id="app_connection_setup_step2_alt_method">alternative method</span>)</div>
+
+
+      <h2 id="app_connection_setup_step3">Step 3</h2>
+      <form id="app_connection_setup_form">
+        <p id="app_connection_setup_copy_code">
+          Copy the code provided by the app.
+        </p>
+        <input id="app_connection_setup_code_input" type="text" placeholder="XXXXXXXX" autocomplete="off" required />
+        <div id="app_connection_setup_code_input_error" style="display: none">
+          Bad code
+        </div>
+        <button id="app_connection_setup_code_submit_btn" type="submit" class="btn">
+          Finish setup
+        </button>
+      </form>
+    </div>
+
+    <div id="app_connection_alternative_method_page" style="display:none">
+      <button id="app_connection_alternative_method_cancel" type="button" class="btn-as-link">
+        Cancel
+      </button>
+      <h1 id="app_connection_alternative_method_title">Alternative app connection setup</h1>
+      <ul>
+        <li id="app_connection_alternative_method_1">Ouvrez l'application UpSignOn.</li>
+        <li id="app_connection_alternative_method_2">Naviguez vers la page paramètres (roue crantée) > Remplissage dans les navigateurs</li>
+        <li id="app_connection_alternative_method_3">Cliquez sur le bouton "Autoriser une extension de navigateur".</li>
+        <li id="app_connection_alternative_method_4">Copiez ici le texte affiché dans l'application.</li>
+      </ul>
+      <textarea id="app_connection_alternative_method_input" placeholder="Valeur provenant de l'application"></textarea>
+      <div id="app_connection_alternative_method_input_error" style="display: none">
+        Bad value
+      </div>
+      <button id="app_connection_alternative_setup_submit_btn" type="submit" class="btn">
+        Finish setup
+      </button>
+    </div>
+
+    <!-- APP CONNECTION ERROR PAGE -->
+    <div id="app_connection_error_page" style="display: none">
+      <h1 id="app_connection_error_title">App connection error</h1>
+      <p id="app_connection_error_details">
+        Are you sure the app is running ?
+      </p>
+      <button id="app_connection_error_start_app_button" type="button" class="btn">
+        Launch app
+      </button>
+
+      <button id="app_connection_error_refresh" type="button" class="btn-as-link">
+        Refresh
+      </button>
+      <p id="app_connection_error_resetup" class="hidden">
+        <span id="app_connection_error_resetup_part_1"></span>
+        <span id="app_connection_error_resetup_part_2"></span>
+        <span id="app_connection_error_resetup_part_3"></span>
+      </p>
+    </div>
+
+    <!-- VAULT_LIST PAGE -->
+    <div id="vault_list_page" style="display: none">
+      <div id="app_report_issue">contact@upsignon.eu</div>
+      <div id="autosave_pref">
+        <label class="md3-switch">
+          <input type="checkbox" id="autosave_pref_checkbox" checked>
+          <span class="md3-slider">
+            <span class="md3-done-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
+              </svg>
+            </span>
+          </span>
+        </label>
+        <div id="autosave_pref_title">Deactivate autosave?</div>
+      </div>
+      <div id="passwords_not_saved">
+        <div id="passwords_not_saved_title_row">
+          <svg id="password_not_saved_folding_icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+            <path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z" />
+          </svg>
+          <h3 id="passwords_not_saved_title">Passwords not saved</h3>
+        </div>
+        <div id="passwords_not_saved_foldable_content">
+          <p id="passwords_not_saved_explanation">Passwords not saved details</p>
+          <div id="passwords_not_saved_list"></div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: row; align-items: center">
+        <input type="text" placeholder="Rechercher" id="vault_list_page_search_input" autocomplete="off" />
+        <span id="vault_list_page_search_clear_btn" style="padding: 10px; cursor: pointer">X</span>
+      </div>
+
+      <em id="vault_list_page_empty" style="display: none">No vault configured</em>
+      <div id="vault_list_page_list"></div>
+    </div>
+  </div>
+  <footer style="text-align: center; margin-top: 10px; color: grey"></footer>
+</body>
+
+<script src="../../dist/popupScript.js"></script>
+
+</html>

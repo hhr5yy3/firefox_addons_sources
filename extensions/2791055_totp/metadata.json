@@ -1,0 +1,332 @@
+{
+    "id": 2791055,
+    "authors": [
+        {
+            "id": 17823018,
+            "name": "Turistu",
+            "url": "https://addons.mozilla.org/en-US/firefox/user/17823018/",
+            "username": "anonymous-1aff557ffe0c24687e5af263b522dc8e"
+        }
+    ],
+    "average_daily_users": 615,
+    "categories": [
+        "privacy-security"
+    ],
+    "contributions_url": "",
+    "created": "2023-03-16T20:11:06Z",
+    "current_version": {
+        "id": 5654112,
+        "compatibility": {
+            "firefox": {
+                "min": "67.0",
+                "max": "*"
+            }
+        },
+        "edit_url": "https://addons.mozilla.org/en-US/developers/addon/totp/versions/5654112",
+        "file": {
+            "id": 4198433,
+            "created": "2023-11-22T06:40:46Z",
+            "hash": "sha256:4754bc0a32b3a208eeb1edd71b7bd579e95494307ec2b8e99445ee8688539629",
+            "is_mozilla_signed_extension": false,
+            "size": 13297,
+            "status": "public",
+            "url": "https://addons.mozilla.org/firefox/downloads/file/4198433/totp-1.2.8.xpi",
+            "permissions": [],
+            "optional_permissions": [],
+            "host_permissions": []
+        },
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 6,
+            "is_custom": false,
+            "name": {
+                "en-US": "GNU General Public License v3.0 only"
+            },
+            "slug": "GPL-3.0-only",
+            "url": "https://spdx.org/licenses/GPL-3.0-only.html"
+        },
+        "release_notes": {
+            "en-US": "since the half-fix was back ported to ESR and thunderbird, assume that selectAllChildren() doesn't set the primary selection on *any* version of firefox anymore."
+        },
+        "reviewed": "2023-11-22T06:45:26Z",
+        "version": "1.2.8"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This is a javascript implementation of a TOTP authenticator, using the browser's crypto API. It should do the exactly same thing as google's authenticator, the \"oathtool --totp -b ...\" command, or any other TOTP generating app.\n\nThe <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/bc8714dbed7c693863e7ca05c7a3c3c4010c8f612d14ae1d64b791f272dbfc01/https%3A//github.com/turistu/totp-in-javascript/blob/main/totp.js\" rel=\"nofollow\">javascript code</a> does not send to or fetch any data from anywhere remotely, and it should work the same when served over https, saved locally or used inside a browser extension.\n\nInstead of implementing its own secret saving mechanism (with cookies or local storage), this extension is using the browser's password manager to save the TOTP keys, just like any other passwords.\n\nSince the saved keys are attached to the extension's own \"moz-extension://UUID\" url, <b>not</b> to the website where they are used, it's not possible for hijacked websites to retrieve them by exploiting the form and passwords autofill mechanism.\n\nThis extension is also not using any content script which could be tricked into generating and filling in TOTP codes without user intervention.\n\n<b>Note for Linux/X11 users:</b> Since their half-fix to the <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/a61f9c5f1148f8682272d6320d218997738eb6d4b08d4de9cb69e8241aea328b/https%3A//github.com/turistu/odds-n-ends/blob/main/firefox/pastejack.md\" rel=\"nofollow\">exploitable pastejack bug</a> that I have reported, it's no longer possible to copy the totp code to the primary selection automatically upon it being generated. If you still want to paste it with a simple middle-button click, just click once more on the totp code when you see the \"copied (for ctrl-V)\" message. Sorry for that."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.mozilla.org/en-US/developers/addon/totp/edit",
+    "guid": "totp@ohzd.od",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.mozilla.org/user-media/addon_icons/2791/2791055-64.png?modified=6be4dd80",
+    "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/2791/2791055-32.png?modified=6be4dd80",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/2791/2791055-64.png?modified=6be4dd80",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/2791/2791055-128.png?modified=6be4dd80"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "last_updated": "2023-11-22T06:45:26Z",
+    "name": {
+        "en-US": "TOTP"
+    },
+    "previews": [
+        {
+            "id": 287137,
+            "caption": {
+                "en-US": "Example login with 2FA on github"
+            },
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287137.png?modified=1693838557",
+            "position": 0,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287137.jpg?modified=1693838557"
+        },
+        {
+            "id": 287138,
+            "caption": null,
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287138.png?modified=1693838557",
+            "position": 1,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287138.jpg?modified=1693838557"
+        },
+        {
+            "id": 287139,
+            "caption": {
+                "en-US": "Selecting a saved key should automatically generate an OTP code and copy it to the clipboard.\r\n<br>\r\nOn X11, it will copy it to both the primary and the clipboard selection."
+            },
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287139.png?modified=1693838557",
+            "position": 2,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287139.jpg?modified=1693838557"
+        },
+        {
+            "id": 287140,
+            "caption": {
+                "en-US": "On X11, you can paste the code with a middle button click.\r\n<br>\r\nOtherwise, use Control-V or Right Click + Paste."
+            },
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287140.png?modified=1693838557",
+            "position": 3,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287140.jpg?modified=1693838557"
+        },
+        {
+            "id": 287149,
+            "caption": {
+                "en-US": "If copying to clipboard failed, just click on the generated code to copy it.\r\n\r\nCopying to clipboard fails if you linger too much while selecting the key, or if the key was automatically filled in by the browser upon opening the popup."
+            },
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287149.png?modified=1693838557",
+            "position": 4,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287149.jpg?modified=1693838557"
+        },
+        {
+            "id": 287150,
+            "caption": null,
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287150.png?modified=1693838557",
+            "position": 5,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287150.jpg?modified=1693838557"
+        },
+        {
+            "id": 287141,
+            "caption": {
+                "en-US": "\"Add key\" opens a new tab to an extension page from where you can save a key with the browser's password manager."
+            },
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287141.png?modified=1693838557",
+            "position": 6,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287141.jpg?modified=1693838557"
+        },
+        {
+            "id": 287142,
+            "caption": null,
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287142.png?modified=1693838557",
+            "position": 7,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287142.jpg?modified=1693838557"
+        },
+        {
+            "id": 287143,
+            "caption": null,
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287143.png?modified=1693838558",
+            "position": 8,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287143.jpg?modified=1693838558"
+        },
+        {
+            "id": 287144,
+            "caption": null,
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287144.png?modified=1693838558",
+            "position": 9,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287144.jpg?modified=1693838558"
+        },
+        {
+            "id": 287145,
+            "caption": null,
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287145.png?modified=1693838558",
+            "position": 10,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287145.jpg?modified=1693838558"
+        },
+        {
+            "id": 287146,
+            "caption": {
+                "en-US": "If the \"save\" button doesn't work, open the password manager directly by clicking on the key-like icon in the address bar"
+            },
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287146.png?modified=1693838558",
+            "position": 11,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287146.jpg?modified=1693838558"
+        },
+        {
+            "id": 287147,
+            "caption": null,
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287147.png?modified=1693838558",
+            "position": 12,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287147.jpg?modified=1693838558"
+        },
+        {
+            "id": 287148,
+            "caption": {
+                "en-US": "Since this extension is simply piggybacking on the browser's password manager (instead of implementing its own password wallet), you can manage the TOTP keys just like any other passwords."
+            },
+            "image_size": [
+                800,
+                600
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287148.png?modified=1693838558",
+            "position": 13,
+            "thumbnail_size": [
+                533,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287148.jpg?modified=1693838558"
+        }
+    ],
+    "promoted": null,
+    "ratings": {
+        "average": 4.2857,
+        "bayesian_average": 3.6019488094342513,
+        "count": 7,
+        "text_count": 3
+    },
+    "ratings_url": "https://addons.mozilla.org/en-US/firefox/addon/totp/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.mozilla.org/en-US/reviewers/review/2791055",
+    "slug": "totp",
+    "status": "public",
+    "summary": {
+        "en-US": "A TOTP generator that could be used with gmail, github and other sites which require 2FA."
+    },
+    "support_email": null,
+    "support_url": {
+        "url": {
+            "en-US": "https://github.com/turistu/totp-in-javascript"
+        },
+        "outgoing": {
+            "en-US": "https://prod.outgoing.prod.webservices.mozgcp.net/v1/4e357231503887e260fb417fc3c9514d80194c2ce5f585d6c097bdac9e51d7cf/https%3A//github.com/turistu/totp-in-javascript"
+        }
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.mozilla.org/en-US/firefox/addon/totp/",
+    "versions_url": "https://addons.mozilla.org/en-US/firefox/addon/totp/versions/",
+    "weekly_downloads": 129,
+    "_score": null
+}

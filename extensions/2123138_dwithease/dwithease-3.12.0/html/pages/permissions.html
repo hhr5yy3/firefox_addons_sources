@@ -1,0 +1,37 @@
+<div id="permissions">
+    <div class="content">
+        <h1 i18n-content="permissions_title"></h1>
+
+        <div i18n-content="permissions_description" class="description"></div>
+
+        <div class="permissions-content">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 flex md-truncate i18n-content="permissions_urls_title"></h2>
+                    <md-button class="reset-whitelist-btn md-raised" ng-if="missingRequiredPermissions">
+                        <span i18n-content="permissions_urls_reset"></span>
+                    </md-button>
+                    <md-button class="whitelist-sandboxes-btn md-raised" ng-show="!missingRequiredPermissions && missingOptionalPermissions">
+                        <span i18n-content="permissions_urls_sandboxes"></span>
+                    </md-button>
+                </div>
+            </md-toolbar>
+
+            <md-subheader class="md-primary md-hue-2 md-warn hint-sub-header" ng-if="missingRequiredPermissions" i18n-content="permissions_urls_reset_explanation" i18n-container=".md-subheader-inner .md-subheader-content"></md-subheader>
+
+            <md-list class="whitelisted-urls">
+                <md-list-item ng-repeat="whitelistedUrl in whitelistedUrls track by $index" class="whitelisted-url">
+                    <p>{{whitelistedUrl.url}}/</p>
+                    <md-button class="url-icon md-icon-button" ng-if="!whitelistedUrl.custom">
+                        <md-tooltip md-direction="top" i18n-content="forms_messages_required"></md-tooltip>
+                        <md-icon>lock</md-icon>
+                    </md-button>
+                    <md-button class="url-action md-icon-button" ng-click="deauthroizeUrl(whitelistedUrl.url)" ng-if="whitelistedUrl.custom">
+                        <md-tooltip md-direction="top" i18n-content="permissions_urls_remove_title"></md-tooltip>
+                        <md-icon>delete</md-icon>
+                    </md-button>
+                </md-list-item>
+            </md-list>
+        </div>
+    </div>
+</div>

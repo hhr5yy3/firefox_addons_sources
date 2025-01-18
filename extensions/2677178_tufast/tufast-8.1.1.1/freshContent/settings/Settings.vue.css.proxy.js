@@ -1,0 +1,10 @@
+// [snowpack] add styles to the page (skip if no document exists)
+if (typeof document !== 'undefined') {
+  const code = "body {\n  background-image: url(/assets/settings/background_dark.svg);\n  scrollbar-color: hsl(var(--clr-primary));\n  scrollbar-width: thin;\n}\n.light body {\n  background-image: url(/assets/settings/background_light.svg);\n}\n*,\n*::before,\n*::after {\n  scrollbar-color: inherit;\n  scrollbar-width: inherit;\n}\n::-webkit-scrollbar {\n  width: 0.4rem;\n  height: 0.4rem;\n}\n::-webkit-scrollbar-track {\n  background-color: none;\n}\n::-webkit-scrollbar-thumb {\n  background-color: hsl(var(--clr-primary));\n  border-radius: 0.4rem;\n}\n::-webkit-scrollbar-thumb:hover {\n  background-color: hsl(var(--clr-primary), 0.8);\n  cursor: pointer;\n}.main-grid[data-v-6e79b138] {\n  display: grid;\n  grid-template-columns: 40% 20% 40%;\n  grid-template-rows: max-content 1fr;\n  max-height: 100vh;\n  margin: 20px;\n}\n.main-grid__subtitle[data-v-6e79b138] {\n  max-width: 45ch;\n}\n.main-grid__menues[data-v-6e79b138] {\n  justify-self: end;\n  display: flex;\n  justify-content: space-between;\n  width: 80%;\n}\n.main-grid__settings[data-v-6e79b138] {\n  grid-column: span 3;\n  display: grid;\n  grid-template-columns: repeat(4, 1fr);\n  grid-template-rows: repeat(2, 1fr);\n  column-gap: clamp(0.4rem, 4vw, 8rem);\n  row-gap: clamp(0.6rem, 4vw, 4rem);\n  align-self: stretch;\n  justify-items: center;\n  align-items: start;\n  overflow: auto;\n  padding: 4rem 2rem 4rem;\n  scrollbar-gutter: stable;\n}\n.main-grid__settings--no-overflow[data-v-6e79b138] {\n  overflow: hidden;\n}\n@media screen and (max-width: 600px) {\n.main-grid__settings[data-v-6e79b138] {\n    grid-template-columns: repeat(2, 1fr);\n    grid-template-rows: repeat(4, 1fr);\n}\n}\n.light .main-grid__header[data-v-6e79b138], .light .main-grid__menues[data-v-6e79b138], .light .main-grid__color-select[data-v-6e79b138] {\n  color: hsl(var(--clr-black));\n}";
+
+  const styleEl = document.createElement("style");
+  const codeEl = document.createTextNode(code);
+  styleEl.type = 'text/css';
+  styleEl.appendChild(codeEl);
+  document.head.appendChild(styleEl);
+}

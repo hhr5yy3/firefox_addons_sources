@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+
+  <link rel="stylesheet" href="options.css" />
+  <script type="text/javascript" src="../lib/getAll-shim.js"></script>
+  <script src="../lib/jquery.min.js"></script>
+  <script src="../src/mvInterface.js"></script>
+  <script src="../src/shared.js"></script>
+  <script src="../src/shared-extension.js"></script>
+  <script src="../src/options_ui.js"></script>
+</head>
+
+<body>
+<div class="tabs">
+  <image id="logo" src="/../img/logoBlue.svg"></image>
+  <ul class="tab-links">
+    <li><a id="servermode" href="#tab_database_profiles"></a></li>
+    <li><a id="url-blocks" href="#tab_url_blocks"></a></li>
+    <li><a id="options" href="#tab_extended_options"></a></li>
+
+    <button id="button_help" class="float-right"></button>
+  </ul>
+
+  <div class="tab-content">
+    <div id="tab_extended_options" class="tab">
+      <div id="server_mode_settings">
+        <p>
+          <input type="checkbox" id="npws_cross_client_auth"></input>
+          <label id="label_cross_client_auth" for="npws_cross_client_auth"></label>
+        </p>
+        
+        <p>
+          <input type="checkbox" id="psr_logging"></input>
+          <label id="label_logging" for="psr_logging"></label>
+        </p>
+      </div>
+
+      <button id="button_reset_options"></button>
+    </div>
+
+    <div id="tab_database_profiles" class="tab">
+      <div id="profile_tutorial">
+        <div id="profile_tutorial_one"></div>
+        <div></div>
+        <div>
+          <span id="profile_tutorial_two"></span>
+          <span id="profile_tutorial_three"></span>
+        </div>
+        <div id="profile_tutorial_four"></div>
+        <div id="profile_tutorial_five"></div>
+        <div id="profile_tutorial_six"></div>
+        <div></div>
+        <div id="profile_tutorial_seven"></div>
+      </div>
+
+      <table id="table_profiles"></table>
+      <button id="button_add_profile"></button>
+    </div>
+
+    <div id="tab_url_blocks" class="tab">
+      <p>
+        <input type="checkbox" id="psr_add_password"></input>
+        <label id="label_add_password" for="psr_add_password"></label>
+      </p>
+
+      <div id="table_url_blocks_help"></div>
+      <table id="table_url_blocks"></table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal overlay for creating database profiles -->
+<div id="profile_overlay" class="modal">
+  <div class="modal-content">
+    <span class="close">X</span>
+
+    <div id="login_panel">
+      <input id="server_profile_id" type="hidden" class="login_input">
+
+      <label id="label_profilename" class="login_label"></label>
+      <input id="server_profile" type="text" class="login_input"><br /><br />
+
+      <div class="webclient-url-and-endpoint">
+        <div>
+          <label id="label_webclienturl" class="login_label"></label>
+          <input id="webclient_url" type="text" class="login_input">
+        </div>
+
+        <div style="margin-left: 4px;">
+          <label id="label_endpoint" class="login_label"></label>
+          <input id="endpoint" type="text" class="login_input">
+        </div>
+      </div>
+
+      <br />
+
+      <label id="label_databasename" class="login_label"></label>
+      <input id="server_databasename" type="text" class="login_input"><br /><br />
+
+      <label id="label_profilecolor" class="login_label"></label>
+      <input id="profilecolor" type="color" class="login_input"><br />
+    </div>
+
+    <br />
+    <button id="close_overlay" class="modal-button"></button>
+    <button id="save_overlay" class="modal-button"></button><br />
+  </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+body {
+  margin: 0;
+  width: 350px;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #F1F1F1;
+  padding: 0;
+}
+
+
+#header {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+}
+
+#logo {
+  height: 32px;
+}
+
+.btn {
+  cursor: pointer;
+  filter: grayscale(1);
+}
+
+.btn:hover {
+  filter: none;
+}
+
+.btn-settings {
+  height: 18px;
+  margin-left: auto;
+}
+
+.btn-close {
+  height: 14px;
+}
+
+#content {
+  padding: 22px 16px;
+}
+
+#settings {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.setting-box {
+  display: flex;
+  background: white;
+  border-radius: 8px;
+  padding: 8px;
+  height: 24px;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
+  box-shadow: 0px 1px 4px 0px #19191A1F;
+  user-select: none;
+}
+
+.setting-box-action {
+  cursor: pointer;
+}
+.setting-box-action:hover {
+  background-color: #EFEDFF;
+}
+
+.setting-icon {
+  width: 18px;
+}
+
+.setting-box p {
+  font-size: 14px;
+}
+
+.orbit-setting-switch {
+  position: relative;
+  display: inline-block;
+  width: 29px;
+  height: 16px;
+  margin-left: auto;
+}
+
+.orbit-setting-checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.orbit-setting-checkbox:checked + .orbit-setting-slider {
+  background-color: #7371C0;
+}
+
+.orbit-setting-checkbox:focus + .orbit-setting-slider {
+  box-shadow: 0 0 1px #7371C0;
+}
+
+.orbit-setting-checkbox:checked + .orbit-setting-slider:before {
+  -webkit-transform: translateX(12px);
+  -ms-transform: translateX(12px);
+  transform: translateX(12px);
+}
+
+.orbit-setting-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 15px;
+  width: 29px;
+}
+
+.orbit-setting-slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.tail-icon {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+#privacy-policy {
+  display: none;
+  background: white;
+  padding: 10px 20px;
+}
+#privacy-policy a {
+  font-size: 14px;
+  color: #7371C0;
+  text-decoration: none;
+}

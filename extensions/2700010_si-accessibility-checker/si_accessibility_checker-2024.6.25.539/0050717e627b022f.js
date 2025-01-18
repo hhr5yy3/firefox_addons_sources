@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_siteimprove_alfa_web_extension=self.webpackChunk_siteimprove_alfa_web_extension||[]).push([[165],{165:e=>{e.exports=JSON.parse('{"$schema":"../schema/rule.json","requirements":["https://www.w3.org/TR/wai-aria/"],"responsibility":"development","difficulty":3,"affects":["vision"],"category":"layout"}')}}]);

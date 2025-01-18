@@ -1,0 +1,1 @@
+﻿"use strict";(self.webpackChunkvk_classic_feed=self.webpackChunkvk_classic_feed||[]).push([[887],{606:()=>{const e=document.getElementById("donateText");e&&(e.innerText=chrome.i18n.getMessage("popup_donate"));const t=document.getElementById("feedbackText");t&&(t.innerText=chrome.i18n.getMessage("popup_feedback"))}},e=>{e(e.s=606)}]);

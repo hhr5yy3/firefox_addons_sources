@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Text reflow on zoom (text wrap)",
+  "version": "1.0.7",
+  "description": "Fits all text to screen width after a pinch gesture on phone. Recreates text wrap feature from Opera Mobile.",
+  "author": "emvaized",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "text_reflow_on_zoom@emvaized.dev"
+    },
+    "gecko_android": {
+      "id": "text_reflow_on_zoom@emvaized.dev"
+    }
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "text_reflow_on_pinch_zoom.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}

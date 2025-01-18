@@ -1,0 +1,1 @@
+"undefined"==typeof _idaptivePopOverGlobal&&(_idaptivePopOverGlobal={}),function(){var e=this;void 0===e.brand&&(e.brand={}),e.brand.helpDocURL="https://docs.cyberark.com/Product-Doc/OnlineHelp/Idaptive/Latest/en/Content/UserPortal/BrowserExtension-using.htm"}.call(_idaptivePopOverGlobal);

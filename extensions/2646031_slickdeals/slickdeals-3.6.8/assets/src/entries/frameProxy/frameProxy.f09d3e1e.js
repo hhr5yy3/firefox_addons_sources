@@ -1,0 +1,1 @@
+const e=new URL(window.location.href).searchParams.get("url");if(e){const o=new URL(e),n="slickdeals.net".replace(/\./g,"\\."),r=new RegExp(`^(?:.+\\.)?${n}$`);if(o.protocol==="https:"&&r.test(o.hostname)){const t=document.createElement("iframe");t.src=e,document.body.appendChild(t)}}

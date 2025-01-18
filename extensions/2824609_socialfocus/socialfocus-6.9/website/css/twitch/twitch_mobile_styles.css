@@ -1,0 +1,142 @@
+/* ------------------------------------ Essentials ------------------------------------ */
+
+/* Hide elements based on global settings for Twitch */
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_block_twitch="true"][socialFocus_site_is="twitch"]:not(
+    [socialFocus_twitch_master_toggle="true"]
+  ) {
+  display: none !important;
+}
+
+/* ------------------ Display Timer On Site ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_master_toggle="true"][socialFocus_site_is="twitch"]
+  #timeModal {
+  display: none !important;
+}
+
+/* ------------------ Gray Mode ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_gray_mode="true"][socialFocus_site_is="twitch"]:not(
+    [socialFocus_twitch_master_toggle="true"]
+  ) {
+  filter: grayscale(1) !important;
+}
+
+/* ------------------------------------ Others ------------------------------------ */
+
+/* ------------------ Hide Open In App Banner ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_open_in_app_banner="true"][socialFocus_site_is="twitch"]:not(
+    [socialFocus_twitch_master_toggle="true"]
+  )
+  div#root
+  > div
+  > div
+  > div {
+  display: none !important;
+}
+
+/* ------------------ Layout Fix - Hide Open In App Banner ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_open_in_app_banner="true"][socialFocus_site_is="twitch"]
+  div#root
+  > main {
+  padding-top: 50px !important;
+}
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_open_in_app_banner="false"][socialFocus_site_is="twitch"]
+  div#root
+  > main {
+  padding-top: 111px !important;
+}
+
+/* ------------------ Hide Front Page ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_front_page="true"][socialFocus_site_is="twitch"]
+  a[href="/"] {
+  display: none !important;
+}
+
+/* ------------------ Hide Recommended Channels ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_recommended_channels="true"][socialFocus_site_is="twitch"]
+  .ineUKZ:has(h2.tw-title a[href*="/directory/category/"]) {
+  display: none !important;
+}
+
+/* ------------------ Hide Watch Page Suggestions ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_watch_page_suggestions="true"][socialFocus_site_is="twitch"]
+  div[class*="secondaryContent"]
+  div
+  > a[href*="/videos/"] {
+  display: none !important;
+}
+
+/* ------------------ Hide Chat Elements ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_chat="true"][socialFocus_site_is="twitch"]
+  .chat-room__content
+  .channel-leaderboard,
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_chat="true"][socialFocus_site_is="twitch"]
+  .chat-room__content
+  > .chat-list--default,
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_chat="true"][socialFocus_site_is="twitch"]
+  .ScMessageList-sc-154gfwc-0,
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_chat="true"][socialFocus_site_is="twitch"]
+  .video-chat__message-list-wrapper,
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_chat="true"][socialFocus_site_is="twitch"]
+  .video-chat__message-list-wrapper
+  ~ button,
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_chat="true"][socialFocus_site_is="twitch"]
+  a[tabname="chat"] {
+  display: none !important;
+}
+
+/* ------------------ Hide End Suggestions ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_end_suggestions="true"][socialFocus_site_is="twitch"]
+  .other-vods__container,
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_end_suggestions="true"][socialFocus_site_is="twitch"]
+  .ScPlayerOverlay-rtqgp5-0 {
+  display: none !important;
+}
+
+/* ------------------ Hide Channel Panels ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_channel_panels="true"][socialFocus_site_is="twitch"]
+  div:has(> div.tw-grid) {
+  visibility: hidden !important;
+  min-height: 0 !important;
+}
+
+/* ------------------ Hide Following List ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_following="true"][socialFocus_site_is="twitch"]
+  a[href="/directory/following"] {
+  display: none !important;
+}
+
+/* ------------------ Hide Browse ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_browse="true"][socialFocus_site_is="twitch"]
+  a[href="/directory"] {
+  display: none !important;
+}
+
+/* ------------------ Hide Subscribe Button ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_subscribe_button="true"][socialFocus_site_is="twitch"]
+  div[class*="streamInfoContainer"]
+  button:not([data-a-target="follow-button"]):has(
+    div[data-a-target="tw-core-button-label-text"]
+  ) {
+  display: none !important;
+}
+
+/* ------------------ Hide Search Recommended ------------------ */
+
+html[socialFocus_global_enable="true"][socialFocus_device_type="mobile"][socialFocus_twitch_hide_search_recommended="true"][socialFocus_site_is="twitch"]
+  section:has(div[class*="shelfItems"]) {
+  display: none !important;
+}

@@ -1,0 +1,1 @@
+import{b as s,r as i}from"./config.eBkZtza0.js";async function e(){return await s.permissions.contains({origins:i})}async function n(){return await s.permissions.request({origins:i})}export{e as c,n as r};

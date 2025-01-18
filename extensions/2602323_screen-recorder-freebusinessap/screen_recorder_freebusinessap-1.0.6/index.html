@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title >Screen Recorder</title>
+    <link async rel="stylesheet" href="/css/fontawessome.css" />
+    <link async rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link async rel="stylesheet" href="/css/sweetalert.min.css" />
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/styles.css">
+   
+    
+    <!-- Force polyfills for testing -->
+    <!-- 
+    <script>
+      window.ShadyDOM = {
+        force: true
+      };
+      if (window.customElements) customElements.forcePolyfill = true;
+    </script>
+    -->
+  <script src='index.js'></script>
+</head>
+<body>
+  <div class="container">
+
+    <img src="icons/Logo-for-light-bg.svg" height="32">
+    <p>Screen Recorder is an application allows capture your screen right in your browser!</p>
+
+    <hr />
+
+    <p class="text-info">Please click "Capture Screen" button below to start capture your screen, when you done click "Stop Capturing"</p>
+
+    <div class="form-group row">
+        <button class="btn btn-primary" id="start-recording-btn" data-click="onStartCapturingButtonClick">
+            <img src="/icons/cam.png" id="icon-cam" width="24" border="0">
+            <span >Capture Screen</span>
+        </button>
+        &nbsp;&nbsp;
+        <button class="btn btn-primary" id="stop-recording-btn" require-drive data-click="onStopCapturingButtonClick">
+            <i class="fas fa-video-slash"></i>
+            <span >Stop Capture</span>
+        </button>
+    </div>
+    <div class="form-group">
+        <div class="board-step-container" id="ui-epub-container">
+            <screen-sharing></screen-sharing>
+        </div>
+   </div>
+
+    <hr />
+
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label text-info" for="cbo-output">
+            Save your Recording
+        </label>
+        <div class="col-lg-9">
+            <button class="btn btn-primary btn-lg btn-download" data-click="onSaveToPCButtonClick">
+                <i class="fa fa-download"></i>
+                <span >Download to your Computer</span>
+            </button>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div id="pnl-actions" class="col-lg-9">
+            <p>
+                <a href="https://recorder.freebusinessapps.net/recorder">
+                    <span >We support saving result file to Google Drive on our website.</span>
+                </a>
+            </p>
+
+
+        </div>
+    </div>
+</div>
+
+
+  <script src="webcomponents-loader.js"></script>
+  <script src="/js/jquery-3.4.1.min.js"></script>
+  <script src="/js/sweetalert.min.js"></script>
+  <script defer src="/js/common.js"></script>
+  <script defer src="/js/app.js"></script>
+  </body>
+</html>

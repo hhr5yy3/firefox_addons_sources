@@ -1,0 +1,292 @@
+body {
+}
+
+html {
+    font-family: Arial, Verdana, sans-serif;
+    font-style: normal;
+}
+
+fieldset.sub-fieldset {
+    background-color: #ffffff;
+}
+
+fieldset.sub-fieldset> legend {
+    font-size: 125%;
+    border: 0;
+    background-color: transparent;
+}
+
+legend {
+    font-size: 250%;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    padding: 10px 5px;
+}
+
+a:link {
+    text-decoration-line: none;
+}
+
+a:link:hover {
+    text-decoration-line: underline;
+}
+
+.list-select {
+    width: 100%;
+    margin-top: 2px;
+    background-color: var(--field-disabled-bg-color);
+}
+
+.list-input {
+    width: 99%;
+    margin-top: 2px;
+}
+
+#btnCleanupNow {
+    margin-top: 15px;
+}
+
+#buttonClose {
+    display: none;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: auto minmax(min-content, 1fr);
+    grid-template-rows: auto minmax(min-content, 1fr) auto;
+}
+
+.sidebar {
+    width: 120px;
+    text-align: right;
+    font-size: 14px;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#expertmode-container {
+    text-align: right;
+    width: 100%;
+    margin-top: -20px;
+    font-size: 11px;
+}
+
+.content {
+    max-width: 450px;
+    margin: 8px;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#buttons {
+    max-width: 450px;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 10px;
+}
+
+.rightalign{
+    float: right;
+}
+
+.titleSidebar {
+    display: flex;
+    flex-direction: row;
+}
+
+.titleContainer {
+    height: 80px;
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.logo {
+    height: 64px;
+    width: 64px;
+}
+
+.logotitle {
+    text-align: left;
+    font-size: 13px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+.optionLink {
+    color: #919191;
+}
+
+.selected {
+    color: #1c336d;
+}
+
+.selected::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 10px;
+    border-color: transparent transparent transparent var(--fieldset-border-color);
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 3px;
+    clear: both;
+}
+
+.divider {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.34);
+    margin: 8px -20px 8px 0;
+}
+
+.optionsSubTitle {
+    font-weight: bold;
+    color: var(--legend-text-color);
+    font-size: 13px;
+}
+
+/* checkbox+radio styling */
+input[type="Checkbox"],
+input[type="Radio"] {
+    display: none;
+}
+label {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-right: 6px;
+}
+label span {
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 2px;
+    margin-right: 6px;
+    border-radius: 4px;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.5), 2px 2px 0px rgba(188, 188, 188, 0.4);
+}
+#expertmode-container label span {
+    width: 14px;
+    height: 14px;
+}
+label div {
+    display: inline-block;
+}
+label.disabled {
+    color: var(--field-disabled-text-color);
+}
+input[type="Checkbox"]:checked+label span:before,
+input[type="Radio"]:checked+label span:before{
+    content: '';
+    position: absolute;
+
+}
+input[type="Radio"]:checked+label span:before{
+    top: 3px;
+    left: 3px;
+    right: 2px;
+    bottom: 2px;
+    background: #4b4b4b;
+}
+input[type="Checkbox"]:checked+label span:before {
+    top: 4px;
+    left: 2px;
+    right: 1px;
+    bottom: 2px;
+    border: 4px solid #4b4b4b;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg) translateX(1px) translateY(-2px) scaleY(0.8);
+}
+input[type="Radio"]+label span,
+input[type="Radio"]:checked+label span:before{
+    border-radius: 50%;
+}
+
+#shortcut_pane {
+    position: relative;
+    height: 140px;
+    border: 1px;
+    overflow-y: auto;
+}
+
+#shortcut_pane > div {
+    margin: 5px 3px 0 3px;
+    border-radius: 4px;
+    background-color: #f3f3f3;
+    border: 2px inset var(--field-border-color);
+}
+
+.shortcutkey-label {
+    font-weight: bold;
+    color: var(--legend-text-color);
+    margin: 2px 0 2px 3px;
+}
+
+.shortcutkey-keys-label {
+    text-align: right;
+    float: right;
+    margin-right: 3px;
+}
+
+.shortcutkey-selects {
+    text-align: right;
+    margin: 3px 6px;
+}
+
+.shortcutkey-enable {
+    display: inline;
+}
+
+.disabled-shortcut-command {
+    text-decoration: line-through;
+    color: var(--field-disabled-text-color);
+}
+
+#shortcut_update_unsupported {
+    margin: 2px 4px;
+    padding: 3px;
+    font-style: italic;
+    font-weight: bold;
+    border-radius: 6px;
+}
+#shortcut_update_unsupported:hover {
+    color: #292929;
+    background-color: #fff3af;
+    margin-bottom: 0;
+    cursor: help;
+    border: 1px #292929 solid;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.51);
+    transition: color .4s ease-in-out, background-color .4s ease-in-out;
+}
+
+#shortcut_update_unsupported:before {
+    content: "";
+    display: block;
+    background: url('/theme/icons/dialog/information16.png') no-repeat;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-right: 5px;
+    filter: drop-shadow(2px 2px 2px rgba(90, 90, 90, 0.7));
+}
+
+.inline-button {
+    height: 20px;
+    font-size: 11px;
+    padding: 0 8px;
+    min-width: unset;
+    float: right;
+}

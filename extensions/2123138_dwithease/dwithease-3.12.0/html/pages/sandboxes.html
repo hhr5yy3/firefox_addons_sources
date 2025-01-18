@@ -1,0 +1,345 @@
+<div id="sandboxes">
+    <div class="content">
+        <h1 i18n-content="sandbox_title"></h1>
+
+        <div sv-root class="sandboxes-content">
+            <div class="sandboxes-top-bar">
+                <md-button id="newSandboxBtn" i18n-content="sandbox_buttons_newsandbox" class="md-button md-raised md-primary new-sandbox-btn" ng-click="newSandboxModal()" aria-label="New Sandbox Button"></md-button>
+
+                <md-button i18n-content="sandbox_buttons_add_group" class="md-button md-raised" ng-click="sbGrouping.createNewGroup()" aria-label="Add New Group Button"></md-button>
+
+                <md-button id="importOptsBtn" i18n-content="sandbox_buttons_import" class="md-button md-raised" ng-click="importClick()" aria-label="Import Button"></md-button>
+
+                <a href="#!/" id="exportOptsBtn" i18n-content="sandbox_buttons_export" class="md-button md-raised" ng-show="showExportBtn" ng-click="exportClick()" aria-label="Export Button"></a>
+            </div>
+
+            <ul sv-root="groups" sv-part="groupedSandboxes" class="sandbox-groups highlightable dragable">
+
+                <li ng-repeat="group in groupedSandboxes track by group.id" class="group" sv-element>
+                    <div ng-class="{ 'drag-placeholder': !group.editing }" class="group-placeholder" sv-placeholder></div>
+                    <div class="toolbar group_toolbar">
+                        <md-button class="md-icon-button action-btn delete" aria-label="Ungroup Button"
+                            ng-click="displayGroupDeleteModal(group)" ng-if="!group.static">
+                            <md-tooltip i18n-content="sandbox_buttons_ungroup_delete" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons">delete_forever</md-icon>
+                        </md-button>
+
+                        <md-button class="md-icon-button action-btn add-custom-link" aria-label="Add Custom link Button"
+                            ng-click="openAddCustomLinkModal(group)">
+                            <md-tooltip i18n-content="sandbox_buttons_add_custom_link" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons">add_link</md-icon>
+                        </md-button>
+
+                        <md-button class="md-icon-button action-btn add-sandbox" aria-label="Add new Sandbox to this group Button"
+                            ng-click="addNewSandboxToGroup(group)">
+                            <md-tooltip i18n-content="sandbox_buttons_add_new_sandbox_to_group" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons">add_box</md-icon>
+                        </md-button>
+
+                        <md-button class="md-icon-button action-btn toggle" aria-label="Toggle Group Button"
+                            ng-click="toggleGroupVisibility(group)">
+                            <md-tooltip i18n-content="sandbox_buttons_visible" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons"
+                                ng-if="(groupSettings && groupSettings[group.text] && groupSettings[group.text].visible)">
+                                visibility</md-icon>
+                            <md-icon md-font-set="material-icons"
+                                ng-if="!(groupSettings && groupSettings[group.text] && groupSettings[group.text].visible)">
+                                visibility_off</md-icon>
+                        </md-button>
+
+                        <div ng-show="group.editing" class="group-name-input-holder">
+                            <input ng-blur="sbGrouping.onBlur(group)" class="group_name name-input" ng-model="sbGrouping.inputValue" ng-keyup="sbGrouping.onKeyUp($event)" id="{{'group-' + group.id}}">
+                            <span sv-handle></span> <!-- Empty handle, so it can't be moved while editing -->
+                        </div>
+
+                        <dl ng-show="!group.editing" sv-handle>
+                            <dt class="group_name">
+                                <span ng-click="sbGrouping.setEditing(true, group)">{{group.text}}</span>
+                            </dt>
+                        </dl>
+                    </div>
+
+                    <ul sv-root="sandboxes-$index" class="group_sandboxes" sv-part="group.sandboxes">
+                        <!-- show custom links starts -->
+                          <md-chips ng-model="group.customLinks" ng-if="group.customLinks.length > 0" readonly="true"
+                                md-removable="true" md-enable-chip-edit="true"
+                                input-aria-label="Saved link"
+                                delete-button-label="Remove link">
+                                <md-chip-template>
+                                    <strong class="chip-text">{{$chip.title}}</strong>
+                                    <md-icon md-font-set="material-icons" class="chip-edit-icon" ng-click="openModifyCustomLinkModal(group, $chip)">edit</md-icon>
+                                </md-chip-template>
+                            </md-chips>
+                        <!-- Show custom links ends -->
+
+                        <li class="sandbox" ng-repeat="sandbox in group.sandboxes track by sandbox.id" sv-element>
+                            <div class="drag-placeholder" sv-placeholder></div>
+                            <md-button class="md-icon-button action-btn delete" aria-label="Delete Button"
+                                ng-click="selectSandbox(sandbox)">
+                                <md-tooltip i18n-content="sandbox_buttons_delete" md-direction="top"></md-tooltip>
+                                <md-icon md-font-set="material-icons">delete_forever</md-icon>
+                            </md-button>
+
+                            <md-button class="md-icon-button action-btn edit" aria-label="Edit Button" md-tooltip="Edit"
+                                ng-click="editSandbox(sandbox)">
+                                <md-tooltip i18n-content="sandbox_buttons_edit" md-direction="top"></md-tooltip>
+                                <md-icon md-font-set="material-icons">edit</md-icon>
+                            </md-button>
+
+                            <md-button class="md-icon-button action-btn copy" aria-label="Copy Button" md-tooltip="Copy"
+                                ng-click="copySandbox(sandbox)">
+                                <md-tooltip i18n-content="sandbox_buttons_copy" md-direction="top"></md-tooltip>
+                                <md-icon md-font-set="material-icons">supervisor_account</md-icon>
+                            </md-button>
+
+                            <md-button class="md-icon-button action-btn open" aria-label="Open In New Tab Button"
+                                ng-click="openSandbox(sandbox.url)">
+                                <md-tooltip i18n-content="sandbox_buttons_open" md-direction="top"></md-tooltip>
+                                <md-icon md-font-set="material-icons">open_in_new</md-icon>
+                            </md-button>
+
+                            <div class="sandbox-drag-section" sv-handle>
+                                <div>
+                                    <span>{{sandbox.name}}</span>
+                                    <span> @ {{sandbox.url}}</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div id="deleteGroup" ng-class="(deleteGroupModal === true) ? 'deleteModal customModal' : 'hidden'">
+            <div>
+                <div class="delete-confirm-text" i18n-content="sandbox_buttons_ungroup_dialog_line1">
+                    <!--directive: i18n-substitute $1: <b>{{ selectedGroup.text }}</b> -->
+                </div>
+                <div class="delete-confirm-secondary-text">
+                    <div i18n-content="sandbox_buttons_ungroup_dialog_line2"></div>
+                    <div i18n-content="sandbox_buttons_ungroup_dialog_line3">
+                        <!--directive: i18n-substitute $1: <b class="group-name">{{ selectedGroup.text }}</b> -->
+                    </div>
+                </div>
+                <md-input-container class="md-block">
+                    <input class="pref-value md-primary" name="group-name"
+                        type="text" ng-model="deleteSbGroupText" ng-attr-placeholder="{{ getGroupDeletePlaceholder(selectedGroup.text) }}"
+                        aria-label="Group name" />
+                </md-input-container>
+
+                <div class="form-group ungroup-delete-buttons">
+                    <md-button class="md-icon-button action-btn close" aria-label="Close Button" ng-click="closeModal()">
+                        <md-icon md-font-set="material-icons">close</md-icon>
+                    </md-button>
+                    <md-button i18n-content="sandbox_buttons_ungroup"
+                        class="md-button md-raised md-primary" aria-label="Delete Button"
+                        ng-click="deleteGroup(selectedGroup)">
+                    </md-button>
+
+                    <md-button i18n-content="sandbox_buttons_delete"
+                        ng-disabled="deleteSbGroupText !== selectedGroup.text"
+                        class="md-button md-raised md-primary" aria-label="Delete Button"
+                        ng-click="deleteSbGroupAndChildSandboxes(selectedGroup)">
+                    </md-button>
+                </div>
+            </div>
+        </div>
+
+        <div id="add-custom-link" ng-class="(addCustomLinkModal === true) ? 'addCustomLinkModal customModal' : 'hidden'">
+            <div>
+                <div class="custom-link-heading" i18n-content="sandbox_buttons_group_custom_link_dialog_line1">
+                    <!--directive: i18n-substitute $1: <b>{{ selectedGroup.text }}</b> -->
+                </div>
+
+                <form name="customLinkForm" id="custom-link-form" #f="form" validate-submit="addEditCustomLink(group)">
+                    <md-input-container class="md-block">
+                        <label class="pref-name md-no-float md-container-ignore" for="title"
+                            i18n-content="group_link_title"></label>
+                        <input class="pref-value md-primary link-title" name="title"
+                            type="text" id="link-title" ng-model="selectedGroup.customLink.title"
+                            aria-label="Title for the link" required />
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label class="pref-name md-no-float md-container-ignore" for="url"
+                            i18n-content="group_link_url"></label>
+                        <input class="pref-value md-primary link-url" name="url"
+                            type="text" id="link-title" ng-model="selectedGroup.customLink.url"
+                            aria-label="URL for the link" required />
+                    </md-input-container>
+                    <md-button class="md-icon-button action-btn close" aria-label="Close Button" ng-click="closeModal()">
+                        <md-icon md-font-set="material-icons">close</md-icon>
+                    </md-button>
+
+                    <md-button i18n-content="sandbox_buttons_delete_confirm"
+                        class="md-button md-raised md-primary delete-confirm-btn" aria-label="Delete Button"
+                        ng-click="addEditCustomLink(selectedGroup)">
+                    </md-button>
+                </form>
+
+            </div>
+        </div>
+
+        <div id="deleteSandbox" ng-class="(deletesandboxModal === true) ? 'deleteModal customModal' : 'hidden'">
+            <div>
+                <div class="delete-confirm-text" i18n-content="sandbox_buttons_delete_dialog">
+                    <!--directive: i18n-substitute $1:<b>{{ selectedSandbox.name }}</b>-->
+                </div>
+
+                <md-button class="md-icon-button action-btn close" aria-label="Close" ng-click="closeModal()">
+                    <md-icon md-font-set="material-icons">close</md-icon>
+                </md-button>
+
+                <md-button i18n-content="sandbox_buttons_delete_confirm"
+                    class="md-button md-raised md-primary delete-confirm-btn" aria-label="Delete Button"
+                    ng-click="deleteSandbox(selectedSandbox)">
+                </md-button>
+            </div>
+        </div>
+
+        <div id="importSandbox" ng-class="importSandboxesModal ? 'importModal customModal' : 'hidden'">
+            <div>
+                <h2 i18n-content="sandbox_importsandboxes"></h2>
+                <input type="file" id="settingsFile" />
+
+                <md-button class="md-icon-button action-btn close" aria-label="Close" ng-click="closeModal()">
+                    <md-icon md-font-set="material-icons">close</md-icon>
+                </md-button>
+
+                <md-button id="importSandboxes" i18n-content="sandbox_buttons_import"
+                    class="md-button md-raised md-primary" aria-label="Import Button">
+                </md-button>
+
+            </div>
+        </div>
+
+        <div id="new-sandbox" ng-class="(sandboxModal === true) ? 'newSandboxModal customModal' : 'hidden'">
+            <div>
+                <h2 i18n-content="sandbox_form_sbinfo" class="mat-h1"></h2>
+
+                <form name="sandboxForm" validate-submit="save()">
+
+                    <div class="form-group" ng-class="{'has-error': validate.sandboxForm.needsAttention(sandboxForm.group)}">
+                        <ui-select ng-model="sbInfo.group" name="group" class="group-select">
+                            <ui-select-match
+                                placeholder="Type a new group name here to create it, or assign to group from the list.">
+                                In Group: <b>{{$select.selected.text || sbInfo.group}}</b> - Click here to change.
+                            </ui-select-match>
+                            <ui-select-choices repeat="group in sandboxGroups" refresh="handleGroupFieldInput($select.search)" refresh-delay="100">
+                                <div ng-bind-html="group.text | highlight: $select.search"></div>
+                            </ui-select-choices>
+                        </ui-select>
+
+                        <span i18n-content="forms_messages_optional" class="help-block" ng-show="sandboxForm.group.$error.required"></span>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': validate.sandboxForm.needsAttention(sandboxForm.name)}">
+                        <md-input-container class="md-block">
+                            <label>Sandbox Name (e.g. dev01)</label>
+                            <input name="name" type="text" required ng-model="sbInfo.name" md-maxlength="60" />
+
+                            <div ng-messages="sandboxForm.name.$error" ng-show="sandboxForm.name.$dirty">
+                                <div ng-message="required" i18n-content="forms_messages_required"></div>
+                                <div ng-message="md-maxlength">That's too long!</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div class="form-group dropdown">
+                        <md-input-container class="md-block">
+                            <label>Automatic Login Account</label>
+                            <md-select name="useForLogin" ng-model="sbInfo.useForLogin" ng-disabled="!sbInfo.sbAccounts || sbInfo.sbAccounts.length == 1">
+                                <md-option ng-if="sbInfo.sbAccounts && sbInfo.sbAccounts.length" ng-value="account.value"
+                                    ng-selected="{{ account.value == sbInfo.useForLogin }}"
+                                    ng-repeat="account in sbInfo.sbAccounts">
+                                    {{account.displayName}}
+                                </md-option>
+                            </md-select>
+                            <div class="errors" ng-if="!sbInfo.sbAccounts || sbInfo.sbAccounts.length == 1">
+                                <div class="md-input-message-animation ng-scope" i18n-content="sandbox_no_accounts_found">
+                                    <!--directive: i18n-substitute $1: <a class="account-link" href="/html/options.html#!/accounts" i18n-content="categories_accounts"></a> -->
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div class="form-group">
+                        <md-input-container class="md-block" ng-if="!sbEditMode">
+                            <label>Storefront Password</label>
+                            <input name="storefrontpswd" type="password" ng-model="sbInfo.storefrontpswd" />
+                        </md-input-container>
+                        <md-input-container class="md-block" ng-if="sbEditMode">
+                            <label>Storefront Password</label>
+                            <input name="storefrontpswd" ng-if="sbEditMode" type="{{sbInfo.showPassword.storefrontpswd ? 'password': 'text'}}" ng-model="sbInfo.storefrontpswd" />
+                            <md-button class="md-icon-button action-btn input-inline-btn" aria-label="Reveal" ng-if="sbEditMode && sbInfo.storefrontpswd.length > 0 && user.registered"
+                                ng-click="revealSbPassword(sbInfo, 'storefrontpswd')" md-tooltip="Reveal">
+                                <md-tooltip md-direction="top" i18n-content="sandbox_buttons_reveal_password"></md-tooltip>
+                                <md-icon md-font-set="material-icons" ng-if="sbInfo.showPassword.storefrontpswd" class="material-icons"
+                                    role="img" aria-hidden="true">visibility</md-icon>
+                                <md-icon md-font-set="material-icons" ng-if="!sbInfo.showPassword.storefrontpswd" class="material-icons"
+                                    role="img" aria-hidden="true">visibility_off</md-icon>
+                            </md-button>
+                        </md-input-container>
+                    </div>
+
+                    <div class="form-group" ng-class="{'has-error': validate.sandboxForm.needsAttention(sandboxForm.url)}">
+                        <md-input-container class="md-block">
+                            <label>Domain (e.g. dev01-mycompany.demandware.net)</label>
+                            <input name="url" type="text" required ng-model="sbInfo.url"
+                                ng-pattern="/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/" />
+
+                            <div ng-messages="sandboxForm.url.$error" ng-show="sandboxForm.url.$dirty">
+                                <div ng-message="required" i18n-content="forms_messages_required"></div>
+                                <div ng-message="pattern">Please enter correct sandbox domain.</div>
+                                <div ng-message="hostnameExistsError">{{hostnameExists}}</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div class="form-group aliases-container">
+                        <div class="shorttip" data-tooltip="Aliases">
+                            <div class="alias" data-ng-repeat="alias in aliases">
+                                <md-input-container class="alias-input-field">
+                                    <label>Alias {{$index + 1}}</label>
+                                    <input name="alias{{$index}}" type="text" ng-model="alias.url"
+                                        ng-pattern="/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/" />
+
+                                    <div ng-messages="sandboxForm['alias' + $index].$error" ng-show="sandboxForm['alias' + $index].$dirty">
+                                        <div ng-message="required" i18n-content="forms_messages_required"></div>
+                                        <div ng-message="pattern">Please enter correct sandbox domain.</div>
+                                    </div>
+                                </md-input-container>
+                                <md-button class="md-icon-button remove" aria-label="Delete Button"
+                                    ng-click="removeAlias($index)">
+                                    <md-tooltip i18n-content="sandbox_buttons_delete" md-direction="top"></md-tooltip>
+                                    <md-icon md-font-set="material-icons">delete_forever</md-icon>
+                                </md-button>
+                            </div>
+                        </div>
+                        <md-button i18n-content="sandbox_buttons_add_alias" class="md-button md-raised add-alias"
+                            ng-click="addNewAlias()" aria-label="New Alias Button" value="New Alias" title="New Alias">
+                        </md-button>
+                    </div>
+
+                    <div class="checkboxes">
+                        <div ng-class="{'has-error': validate.sandboxForm.needsAttention(sandboxForm.keepSessionActive)}">
+                            <label class="md-checkbox">
+                                <input name="keepSessionActive" type="checkbox" ng-model="sbInfo.keepSessionActive" />
+                                <span i18n-content="sandbox_keepSession"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group save-button-group">
+                        <md-button i18n-content="sandbox_buttons_save" class="md-button md-raised md-primary save"
+                            aria-label="Save Button" type="submit" value="Save" title="Save">
+                        </md-button>
+
+                        <md-button class="md-icon-button action-btn close" aria-label="Delete" ng-click="closeModal()">
+                            <md-icon md-font-set="material-icons">close</md-icon>
+                        </md-button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

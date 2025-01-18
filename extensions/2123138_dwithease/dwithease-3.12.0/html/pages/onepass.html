@@ -1,0 +1,180 @@
+<div id="onepass" ng-if="user.contentLoaded">
+    <div class="content">
+        <div class="about-onepass" ng-if="!user.registered && !user.continueToRegistration">
+            <ng-include src="'./aboutonepass.html'"></ng-include>
+            <md-button class="md-button md-raised md-primary save" aria-label="Continue" type="submit" value="Register"
+                title="Continue" ng-click="user.continueToRegistration = true"> Cool, let's get started!
+            </md-button>
+        </div>
+
+        <div class="onepass-registration" class="show" ng-if="!user.registered && user.continueToRegistration">
+            <h1 i18n-content="onepass_title"></h1>
+
+            <form validate-submit="createProfile()">
+                <div layout="column">
+                    <div class="form-group">
+                        <div class="onepass-form-container">
+                            <md-card>
+                                <h1 i18n-content="vault_create_master_account"></h1>
+                                <md-input-container md-no-float class="md-block">
+                                    <label class="pref-name md-no-float md-container-ignore" for="password"
+                                    i18n-content="vault_password"></label>
+                                    <input class="pref-value md-primary xchange-credentials xchange-password onepass-pw-input"
+                                        name="password" type="password" id="onepass-register-password" ng-model="user.password"
+                                        aria-label="OnePass" ng-init="user.checkForCapsLock()" />
+                                    <div ng-messages="onePassForm.error">
+                                        <div class="onepass-form-error" ng-show="onePassForm.dirty && onePassForm.error.required">This field is required</div>
+                                        <div class="onepass-form-error" ng-show="onePassForm.dirty && onePassForm.error.minlength && !onePassForm.error.required">Password should be atleast 8 characters</div>
+                                        <div class="onepass-form-error caps-warning" ng-class="{'show-caps-enabled': user.hasCapsEnabled}" i18n-content="vault_warn_capslock"></div>
+                                    </div>
+                                    <md-icon tabindex="-1" ng-click="onePassForm.showPassword()" md-font-set="material-icons onepass-register-showpass" role="img" ng-class="{ hidden: onePassForm.empty }">visibility</md-icon>
+                                  </md-input-container>
+
+                                <md-input-container class="md-block">
+                                    <label class="pref-name md-no-float md-container-ignore" for="password-hint"
+                                        i18n-content="vault_password_hint"></label>
+                                    <input class="pref-value md-primary" name="passwordHint" type="input"
+                                        id="password-hint" ng-model="user.passwordHint" aria-label="OnePass Hint"
+                                        maxlength="35" />
+                                </md-input-container>
+
+                                <md-input-container class="md-block">
+                                    <label class="md-container-ignore" i18n-content="vault_life_span"></label>
+                                    <md-select name="vaultLifeSpan" aria-label="Vault Life Span"
+                                        ng-model="user.vaultLifeSpan" ng-change="user.updateVaultLifeSpan()">
+                                        <md-option ng-value="vaultLifeSpanOption.value"
+                                            ng-selected="{{user.vaultLifeSpan == vaultLifeSpanOption.value}}"
+                                            ng-repeat="vaultLifeSpanOption in vaultLifeSpanOptions">
+                                            {{vaultLifeSpanOption.displayName}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                                <div class="onepass-register-buttons">
+                                    <md-button class="md-button left" aria-label="MoreInfo"
+                                        title="More Info" ng-click="user.continueToRegistration = false">
+                                        <md-icon>arrow_back_ios</md-icon>
+                                        Back
+                                    </md-button>
+                                    <div class="center"></div>
+
+                                    <md-button class="md-button md-raised md-primary save" aria-label="Add Account"
+                                        type="submit" value="Register" title="Register"
+                                        i18n-content="vault_register_btn_text">
+                                    </md-button>
+                            </md-card>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </form>
+    </div>
+    <div class="show" ng-if="user.registered">
+        <h1 i18n-content="onepass_title"></h1>
+
+        <div class="class-login-container login-modal login-modal-onepass" ng-if="!user.loggedIn">
+
+            <form id="loginForm" name="loginForm" #f="form" validate-submit="login()" ng-init="onepassLogin.isEmpty = true">
+                <div layout="column">
+                    <div class="form-group">
+                        <div class="onepass-form-container">
+                            <md-card>
+                                <md-input-container class="md-block onepass-title onepass-loginpage-input-container">
+                                    <div>
+                                        <h2 class="pref-name md-no-float md-container-ignore" for="password"
+                                            i18n-content="vault_password"></h2>
+                                        <md-menu class="menu-dots">
+                                            <md-button class="md-icon-button" aria-label="Open menu with custom trigger"
+                                                ng-click="$mdMenu.open()">
+                                                <md-icon>more_horiz</md-icon>
+                                            </md-button>
+                                            <md-menu-content width="4">
+                                                <md-menu-item>
+                                                    <md-button class="md-button md-raised md-secondary reset"
+                                                        aria-label="Forgot password" type="button"
+                                                        value="Forgot password" title="Forgot password"
+                                                        ng-model="forgotpassword" ng-click="forgotPassword()">
+                                                        <md-icon>delete</md-icon><span
+                                                            i18n-content="forgot_password_btn_text"></span>
+                                                    </md-button>
+                                                </md-menu-item>
+                                            </md-menu-content>
+                                        </md-menu>
+                                    </div>
+                                    <input class="pref-value md-primary xchange-credentials xchange-password onepass-pw-input"
+                                        name="password" type="password" id="password" ng-model="user.password" ng-init="user.checkForCapsLock()"
+                                        ng-keyup="onepassLogin.onKeyUp($event)" aria-label="OnePass" minlength="8" required />
+                                    <md-icon tabindex="-1" class="onepass-login-reveal-icon" ng-show="!onepassLogin.isEmpty"
+                                        ng-click="onepassLogin.showLoginPassword()" md-font-set="material-icons onepass-register-showpass"
+                                        role="img">visibility</md-icon>
+                                    <p ng-if="user.passwordHint" class="master-password-hint hidden">
+                                        <span i18n-content="vault_password_hint"></span>: {{ user.passwordHint }}
+                                    </p>
+                                    <h3 class="caps-warning" ng-class="{'show-caps-enabled': user.hasCapsEnabled}" i18n-content="vault_warn_capslock"></h3>
+                                </md-input-container>
+                                <div class="form-group">
+                                    <md-button class="md-button md-raised md-primary save" aria-label="Add Account"
+                                        type="submit" value="Unlock vault" title="Unlock vault"
+                                        i18n-content="vault_login_btn_text">
+                                    </md-button>
+                                </div>
+                            </md-card>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="loggedin-form" ng-if="user.loggedIn">
+            <form name="onePassLoggedInForm" validate-submit="saveAccountChanges()">
+                <div layout="column">
+                    <div class="form-group">
+                        <div class="onepass-form-container">
+                            <md-card>
+                                <md-input-container class="md-block">
+                                    <div class="onepass-title">
+                                        <h2>Vault is Unlocked</h2>
+                                        <md-menu class="menu-dots">
+                                            <md-button class="md-icon-button" aria-label="Open menu with custom trigger"
+                                                ng-click="$mdMenu.open()">
+                                                <md-icon>more_horiz</md-icon>
+                                            </md-button>
+                                            <md-menu-content width="4">
+                                                <md-menu-item>
+                                                    <md-button class="md-button md-raised md-secondary reset"
+                                                        aria-label="Reset Account" type="button" value="Reset Account"
+                                                        title="Reset Account" ng-model="forgotpassword"
+                                                        ng-click="deleteOnePassAccount()">
+                                                        <md-icon>rotate_left</md-icon><span
+                                                            i18n-content="vault_delete_security_account"></span>
+                                                    </md-button>
+                                                </md-menu-item>
+                                            </md-menu-content>
+                                        </md-menu>
+                                    </div>
+                                    <div class="vault-lifespan-title">
+                                        <label class="md-container-ignore loggedIn"
+                                            i18n-content="vault_life_span"></label>
+                                    </div>
+                                    <md-select aria-label="vaultLifeSpan" name="vaultLifeSpan"
+                                        ng-model="user.vaultLifeSpan" ng-change="user.updateVaultLifeSpan()">
+                                        <md-option ng-value="vaultLifeSpanOption.value"
+                                            ng-selected="{{user.vaultLifeSpan == vaultLifeSpanOption.value}}"
+                                            ng-repeat="vaultLifeSpanOption in vaultLifeSpanOptions">
+                                            {{vaultLifeSpanOption.displayName}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+                                </md-input-container>
+                                <div class="form-group">
+                                    <md-button class="md-button md-primary md-raised logout" ng-click="user.logout()"
+                                        aria-label="Log Out" type="logout" value="LogOut" title="Log out"
+                                        i18n-content="vault_logout_btn_text">
+                                    </md-button>
+                                </div>
+                            </md-card>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

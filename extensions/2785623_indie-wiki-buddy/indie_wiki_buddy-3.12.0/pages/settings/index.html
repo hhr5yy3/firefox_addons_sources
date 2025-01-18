@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../../images/logo.png" />
+  <title data-msg="settingsTitle"></title>
+  <link rel="stylesheet" href="../../css/common.css" type="text/css">
+  <link rel="stylesheet" href="../../css/settings.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="header">
+      <span id="version"></span>
+      <h1 data-msg="extensionName"></h1>
+    </div>
+    <div id="links">
+      <a href="../guide/index.html" data-msg="settingsGuide"></a>
+      <a href="https://getindie.wiki" target="_blank" data-msg="settingsWebsite"></a>
+      <a href="https://getindie.wiki/changelog/" target="_blank" data-msg="settingsChangelog"></a>
+      <a href="https://getindie.wiki/#submit" target="_blank" data-msg="settingsSubmitWiki"></a>
+      <a href="https://github.com/KevinPayravi/indie-wiki-buddy" target="_blank" data-msg="settingsSourceCode"></a>
+    </div>
+    <div id="notificationBannerContainer">
+      <span id="notificationBannerOpera">
+        <span data-msg="settingsBannerOpera"></span>
+        <a id="operaPermsHideLink" href="#" data-msg="settingsBannerHide"></a>
+      </span>
+      <span id="notificationBannerReview">
+        <span data-msg="settingsBannerReview"></span>
+        <div id="notificationBannerReviewLinks">
+          <a id="reviewReminderChromeLink" target="_blank"
+            href="https://chrome.google.com/webstore/detail/indie-wiki-buddy/fkagelmloambgokoeokbpihmgpkbgbfm">Chrome</a>
+          <div>|</div>
+          <a id="reviewReminderFirefoxLink" target="_blank"
+            href="https://addons.mozilla.org/en-US/firefox/addon/indie-wiki-buddy/">Firefox</a>
+          <div>|</div>
+          <a id="reviewReminderHideLink" href="#" data-msg="settingsBannerHide"></a>
+        </div>
+        <br />
+        <span
+          data-msg="settingsBannerReviewContact"
+          data-msg-ph-1="<a target='_blank' href='https://getindie.wiki/#contact'>"
+          data-msg-ph-2="</a>"></span>
+      </span>
+    </div>
+    <div id="content">
+      <div id="firstInstallInfo">
+        <p data-msg="firstInstallInfo1"></p>
+        <p data-msg="firstInstallInfo2"></p>
+        <p
+          data-msg="firstInstallInfo3"
+          data-msg-ph-1="<a href='https://breezewiki.com/' target='_blank'>BreezeWiki</a>"></p>
+        <p
+          data-msg="firstInstallInfo4"
+          data-msg-ph-1="<img src='../../images/toggle-alert.png' width='12' alt='' />"
+          data-msg-ph-2="<img src='../../images/toggle-redirect.png' width='12' alt='' />"
+          data-msg-ph-3="<img src='../../images/toggle-replace.png' width='12' alt='' />"
+          data-msg-ph-4="<img src='../../images/toggle-hide.png' width='12' alt='' />"></p>
+        <p
+          data-msg="firstInstallInfo5"
+          data-msg-ph-1="<img src='../../images/logo-32.png' width='15' alt='' />"
+          data-msg-ph-2="<img src='../../images/jigsaw.png' width='15' alt='' />"></p>
+        <hr />
+      </div>
+      <form name="options" class="options">
+        <fieldset id="generalSettings">
+          <legend><span aria-hidden="true">⚙️</span>&nbsp;<span data-msg="settingsGeneral"></span></legend>
+          <div class="settingToggle">
+            <label>
+              <input id="powerCheckbox" type="checkbox" />
+              <span id="powerIcon" aria-hidden="true"></span>
+              <span id="powerText"></span>
+            </label>
+          </div>
+          <div class="settingToggle">
+            <label>
+              <input id="notificationsCheckbox" type="checkbox" />
+              <span id="notificationsIcon" aria-hidden="true"></span>
+              <span data-msg="settingsNotifications"></span>
+            </label>
+          </div>
+          <div class="settingToggle">
+            <label>
+              <input id="crossLanguageCheckbox" type="checkbox" />
+              <span id="crossLanguageIcon" aria-hidden="true"></span>
+              <span data-msg="settingsCrossLanguage"></span>
+            </label>
+          </div>
+          <div class="settingToggle">
+            <label>
+              <input id="openChangelogCheckbox" type="checkbox" />
+              <span id="openChangelogIcon" aria-hidden="true"></span>
+              <span data-msg="settingsOpenChangelog"></span>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset id="generalSettings">
+          <legend>
+            <span aria-hidden="true">🔍</span>&nbsp;<span data-msg="settingsSearchEngineFiltering"></span>
+          </legend>
+          <div class="settingToggle searchEngineToggles">
+            <label>
+              <input id="googleCheckbox" data-search-engine="google" type="checkbox" />
+              Google
+            </label>
+            <label>
+              <input id="bingCheckbox" data-search-engine="bing" type="checkbox" />
+              Bing
+            </label>
+            <label>
+              <input id="duckduckgoCheckbox" data-search-engine="duckduckgo" type="checkbox" />
+              DuckDuckGo
+            </label>
+            <label>
+              <input id="braveCheckbox" data-search-engine="brave" type="checkbox" />
+              Brave
+            </label>
+            <label>
+              <input id="ecosiaCheckbox" data-search-engine="ecosia" type="checkbox" />
+              Ecosia
+            </label>
+            <label>
+              <input id="kagiCheckbox" data-search-engine="kagi" type="checkbox" />
+              Kagi
+            </label>
+            <label>
+              <input id="qwantCheckbox" data-search-engine="qwant" type="checkbox" />
+              Qwant
+            </label>
+            <label>
+              <input id="startpageCheckbox" data-search-engine="startpage" type="checkbox" />
+              Startpage
+            </label>
+            <label>
+              <input id="yahooCheckbox" data-search-engine="yahoo" type="checkbox" />
+              Yahoo
+            </label>
+            <label>
+              <input id="yandexCheckbox" data-search-engine="yandex" type="checkbox" />
+              Yandex
+            </label>
+          </div>
+          <hr>
+          <div class="settingToggle">
+            <label>
+              <input id="hiddenResultsBannerCheckbox" type="checkbox" />
+              <img src="../../images/toggle-banner.png" height="12" alt="" />
+              <span data-msg="settingsHiddenResultsBanner"></span>
+            </label>
+          </div>
+          <div class="settingToggle">
+            <label>
+              <input id="reorderResultsCheckbox" type="checkbox" />
+              <img src="../../images/toggle-move-up.png" height="12" alt="" />
+              <span data-msg="settingsReorderResults"></span>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset id="breezewikiSettings">
+          <legend>
+            <span aria-hidden="true">🍃</span>&nbsp;<span
+              data-msg="settingsBreezeWiki"
+              data-msg-ph-1="<a id='breeezwikiLearnMore' href='https://breezewiki.com/' target='_blank'>"
+              data-msg-ph-2="</a>"></span>
+          </legend>
+          <div role="radiogroup">
+            <div class="radioGroup vertical">
+              <label>
+                <input id="breeezwikiSettingDisabledRadio" type="radio" name="breezewikiSetting" value="off" />
+                <img src="../../images/toggle-disabled.png" height="12" alt="" />
+                <span data-msg="settingsBreezeWikiDisabled"></span>
+              </label>
+              <label>
+                <input id="breezewikiSettingBannerRadio" type="radio" name="breezewikiSetting" value="banner" />
+                <img src="../../images/toggle-alert.png" height="12" alt="" />
+                <span data-msg="settingsBreezeWikiBanner"></span>
+              </label>
+              <label>
+                <input id="breezewikiSettingRedirectRadio" type="radio" name="breezewikiSetting" value="redirect" />
+                <img src="../../images/toggle-redirect.png" height="12" alt="" />
+                <span data-msg="settingsBreezeWikiRedirect"></span>
+              </label>
+            </div>
+          </div>
+          <div id="breezewikiHost" class="settingToggle">
+            <label>
+              <span data-msg="settingsBreezeWikiHost"></span>
+              <select name="breezewikiHost" id="breezewikiHostSelect"></select>
+            </label>
+            <label id="breezewikiCustomHost">
+              <span data-msg="settingsBreezeWikiCustomHost"></span>
+              <input type="text" id="customBreezewikiHost" name="customBreezewikiHost" placeholder="bw.example.com"
+                size="30" />
+              <button id="setCustomBreezewikiDomain" type="button" data-msg="settingsBreezeWikiCustomHostSet">
+              </button>
+              <span id="breezewikiCustomHostStatus"></span>
+            </label>
+          </div>
+        </fieldset>
+        <!--
+          Custom search engines are currently disabled
+          due to content scripts being unregistered on-update.
+        -->
+        <!-- <fieldset id="customSearchEngines">
+          <legend>
+            <span aria-hidden="true">🔍</span> Custom search engines
+          </legend>
+          <div id="customSearchEnginesContainer">
+            <div id="customSearchEnginesList"></div>
+            <div id="customSearchEnginesAdd">
+              <input type="text" id="newCustomSearchEngineDomain" placeholder="Search engine domain (e.g. search.example.org)" />
+              <select id="newCustomSearchEnginePreset">
+                <option value="searxng">SearXNG</option>
+                <option value="whoogle">Whoogle</option>
+              </select>
+              <button id="addCustomSearchEngine">Add</button>
+            </div>
+          </div>
+        </fieldset> -->
+        <h2 data-msg="settingsWiki"></h2>
+        <fieldset id="legend">
+          <legend>
+            <span aria-hidden="true">ℹ️</span>&nbsp;<span data-msg="settingsWikiLegend"></span>
+          </legend>
+          <span class="text-sm" data-msg="settingsWikiLegendWikiExp"></span>
+          <div>
+            <div>
+              <img src="../../images/toggle-disabled.png" width="16" height="16" alt="" />&nbsp;<span data-msg="settingsDisabled"></span>
+            </div>
+            <div>
+              <img src="../../images/toggle-alert.png" width="16" height="16" alt="" />&nbsp;<span data-msg="settingsAlert"></span>
+            </div>
+            <div>
+              <img src="../../images/toggle-redirect.png" width="16" height="16" alt="" />&nbsp;<span data-msg="settingsRedirect"></span>
+            </div>
+          </div>
+          <span class="text-sm" data-msg="settingsWikiLegendSearchExp"></span>
+          <div>
+            <div>
+              <img src="../../images/toggle-disabled.png" width="16" height="16" alt="" />&nbsp;<span data-msg="settingsDisabled"></span>
+            </div>
+            <div>
+              <img src="../../images/toggle-replace.png" width="16" height="16" alt="" />&nbsp;<span data-msg="settingsReplace"></span>
+            </div>
+            <div>
+              <img src="../../images/toggle-hide.png" width="16" height="16" alt="" />&nbsp;<span data-msg="settingsHide"></span>
+            </div>
+          </div>
+        </fieldset>
+        <div id="wikiFiltersContainer">
+          <div>
+            <div id="langSelectCaption" data-msg="settingsFilterByLanguage"></div>
+            <select name="lang" id="langSelect">
+              <option value="ALL" selected data-msg="settingsLangAll"></option>
+              <option value="DE" data-msg="settingsLangDE"></option>
+              <option value="EN" data-msg="settingsLangEN"></option>
+              <option value="ES" data-msg="settingsLangES"></option>
+              <option value="FI" data-msg="settingsLangFI"></option>
+              <option value="FR" data-msg="settingsLangFR"></option>
+              <option value="HU" data-msg="settingsLangHU"></option>
+              <option value="IT" data-msg="settingsLangIT"></option>
+              <option value="JA" data-msg="settingsLangJA"></option>
+              <option value="KO" data-msg="settingsLangKO"></option>
+              <option value="LZH" data-msg="settingsLangLZH"></option>
+              <option value="NL" data-msg="settingsLangNL"></option>
+              <option value="PL" data-msg="settingsLangPL"></option>
+              <option value="PT" data-msg="settingsLangPT"></option>
+              <option value="RU" data-msg="settingsLangRU"></option>
+              <option value="SV" data-msg="settingsLangSV"></option>
+              <option value="TH" data-msg="settingsLangTH"></option>
+              <option value="TOK" data-msg="settingsLangTOK"></option>
+              <option value="TR" data-msg="settingsLangTR"></option>
+              <option value="UK" data-msg="settingsLangUK"></option>
+              <option value="ZH" data-msg="settingsLangZH"></option>
+            </select>
+          </div>
+          <div>
+            <div id="filterInputCaption" data-msg="settingsFilterByName"></div>
+            <input id="filterInput" type="text" name="filterInput" data-msg-attr="placeholder=settingsNameFilterPlaceholder" />
+          </div>
+        </div>
+        <table id="toggles" class="toggles">
+          <colgroup>
+            <col id="icon-col" />
+            <col id="lang-col" />
+            <col />
+            <col class="button-col" />
+            <col class="button-col" />
+            <col class="button-col" />
+            <col class="button-col" />
+            <col class="button-col" />
+            <col class="button-col" />
+          </colgroup>
+          <thead id="togglesHeader" class="sticky">
+            <tr id="togglesColumnLabels">
+              <td colspan="3"></td>
+              <th colspan="3" scope="col" data-msg="settingsWikiExp"></th>
+              <th colspan="3" scope="col" data-msg="settingsSearchExp"></th>
+            </tr>
+            <tr id="togglesKeys" class="toggles togglesHeader">
+              <th colspan="3" scope="row" data-msg="settingsSetColumn"></th>
+              <td>
+                <button id="setAllWikiDisabled" type="button" 
+                data-msg-attr="data-title=settingsDisabled,aria-label=settingsDisabled"></button>
+              </td>
+              <td>
+                <button id="setAllWikiAlert" type="button" 
+                data-msg-attr="data-title=settingsAlert,aria-label=settingsAlert"></button>
+              </td>
+              <td>
+                <button id="setAllWikiRedirect" type="button" 
+                data-msg-attr="data-title=settingsRedirect,aria-label=settingsRedirect"></button>
+              </td>
+              <td>
+                <button id="setAllSearchEngineDisabled" type="button" 
+                data-msg-attr="data-title=settingsDisabled,aria-label=settingsDisabled"></button>
+              </td>
+              <td>
+                <button id="setAllSearchEngineReplace" type="button" 
+                data-msg-attr="data-title=settingsReplace,aria-label=settingsReplace"></button>
+              </td>
+              <td>
+                <button id="setAllSearchEngineHide" type="button" 
+                data-msg-attr="data-title=settingsHide,aria-label=settingsHide"></button>
+              </td>
+            </tr>
+          </thead>
+          <tbody id="togglesBody">
+            <tr id="togglesDefaults" class="toggles togglesHeader">
+              <th colspan="3" scope="row" data-msg="settingsNewWiki"></th>
+              <td>
+                <input id="defaultWikiActionDisabledRadio" type="radio" name="defaultWikiAction" value="disabled" 
+                data-msg-attr="data-title=settingsDisabled,aria-label=settingsDisabled" />
+              </td>
+              <td>
+                <input id="defaultWikiActionAlertRadio" type="radio" name="defaultWikiAction" value="alert" 
+                data-msg-attr="data-title=settingsAlert,aria-label=settingsAlert" />
+              </td>
+              <td>
+                <input id="defaultWikiActionRedirectRadio" type="radio" name="defaultWikiAction" value="redirect" 
+                data-msg-attr="data-title=settingsRedirect,aria-label=settingsRedirect" />
+              </td>
+              <td>
+                <input id="defaultSearchActionDisabledRadio" type="radio" name="defaultSearchAction" value="disabled" 
+                data-msg-attr="data-title=settingsDisabled,aria-label=settingsDisabled" />
+              </td>
+              <td>
+                <input id="defaultSearchActionReplaceRadio" type="radio" name="defaultSearchAction" value="replace" 
+                data-msg-attr="data-title=settingsReplace,aria-label=settingsReplace" />
+              </td>
+              <td>
+                <input id="defaultSearchActionHideRadio" type="radio" name="defaultSearchAction" value="hide" 
+                data-msg-attr="data-title=settingsHide,aria-label=settingsHide" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      <hr />
+      <div id="footer">
+        <h2 data-msg="settingsFunStats"></h2>
+          <div data-msg="settingsFunStatsAlerts" data-msg-ph-1="<span id='countAlerts'></span>"></div>
+          <div data-msg="settingsFunStatsRedirects" data-msg-ph-1="<span id='countRedirects'></span>"></div>
+          <div data-msg="settingsFunStatsBreezeWiki" data-msg-ph-1="<span id='countBreezeWiki'></span>"></div>
+          <div data-msg="settingsFunStatsSearchFilters" data-msg-ph-1="<span id='countSearchFilters'></span>"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="../../scripts/common-functions.js"></script>
+<script type="text/javascript" src="../common-page-functions.js"></script>
+<script type="text/javascript" src="settings.js"></script>
+
+</html>

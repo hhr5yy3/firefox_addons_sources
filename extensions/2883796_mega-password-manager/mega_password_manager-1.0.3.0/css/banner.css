@@ -1,0 +1,121 @@
+/* Banner rack */
+.rack.banner-rack {
+    place-content: center center;
+    align-items: center;
+    flex-flow: column-reverse nowrap;
+}
+
+/* Banner inner content */
+.mega-component.banner {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    place-content: center space-between;
+    box-sizing: border-box;
+    padding: 24px;
+    top: 0;
+    overflow: hidden;
+    transition: top 1s ease-in;
+    font: var(--font-caption-small-regular);
+    width: 100%;
+    color: var(--text-primary);
+}
+
+.mega-component.banner > *:not(:last-child) {
+    margin-inline-end: 8px;
+    -webkit-margin-end: 8px;
+}
+.mega-component.advertisement > *:not(:last-child) {
+    margin-inline-end: 16px;
+    -webkit-margin-end: 16px;
+}
+
+/* Banner overarching types */
+.mega-component.banner,
+.mega-component.banner.alert {
+    border-radius: 0;
+}
+.mega-component.banner.inline {
+    border-radius: var(--border-radius-medium);
+    overflow: initial;
+}
+
+.mega-component.banner .content-box {
+    -webkit-margin-end: auto;
+    margin-inline-end: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    order: 5;
+}
+.mega-component.banner .end-box {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    place-content: center center;
+    order: 10;
+}
+
+/* Custom button styles */
+.mega-component.banner .button.icon-only {
+    margin-left: auto;
+    padding: 0;
+    place-self: flex-start flex-end;
+    order: 1;
+}
+.mega-component.banner .button.action-link .primary-text,
+.mega-component.banner .message-text .clickurl {
+    font: var(--font-copy-semibold);
+    text-decoration: underline;
+    color: var(--link-primary);
+}
+
+/* Component attribute styles */
+.mega-component.banner .title-text {
+    font: var(--font-heading-h3);
+    color: var(--text-primary);
+}
+.mega-component.banner .message-text {
+    font: var(--font-copy-regular);
+    color: var(--text-primary);
+}
+.mega-component.banner .banner.left-icon.icon-size-24 {
+    --icon-size: 24px;
+}
+.mega-component.banner .banner.left-icon.icon-size-48 {
+    --icon-size: 48px;
+}
+.mega-component.banner .banner.left-icon {
+    --icon-size: 24px;
+    color: var(--icon-color);
+    order: 1;
+}
+.mega-component.banner .banner.right-icon {
+    --icon-size: 96px;
+    grid-area: right-icon;
+    place-self: center flex-end;
+    order: 10;
+}
+
+/* Component styles, default info */
+.mega-component.banner,
+.mega-component.banner.info {
+    background-color: var(--notification-info);
+    --icon-color: var(--support-info);
+}
+.mega-component.banner.success {
+    background-color: var(--notification-success);
+    --icon-color: var(--support-success);
+}
+.mega-component.banner.warning {
+    background-color: var(--notification-warning);
+    --icon-color: var(--support-warning);
+}
+.mega-component.banner.error {
+    background-color: var(--notification-error);
+    --icon-color: var(--support-error);
+}
+.mega-component.banner.advertisement {
+    background-color: var(--surface-2);
+    --icon-color: var(--support-info);
+}

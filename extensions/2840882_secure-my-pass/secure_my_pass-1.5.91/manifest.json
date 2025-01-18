@@ -1,0 +1,98 @@
+{
+  "manifest_version": 3,
+  "name": "Secure My Pass",
+  "version": "1.5.91",
+  "description": "Secure My Pass addon.",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage",
+    "cookies",
+    "clipboardWrite",
+    "management"
+  ],
+  "sidebar_action": {
+    "default_title": "Securemypass",
+    "default_panel": "sidePanel.html"
+  },
+  "action": {
+    "default_title": "Click to open",
+    "default_icon": {
+      "16": "icons/16x16.png",
+      "48": "icons/32x32.png",
+      "128": "icons/96x96.png"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "addon@securemypass"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/webContentScript.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    },
+    {
+      "resources": [
+        "assets/gsiClient.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.ticketmaster.com/*",
+        "*://*.ticketmaster.ca/*",
+        "*://*.ticketmaster.co.uk/*",
+        "*://*.ticketmaster.de/*",
+        "*://*.ticketmaster.fr/*",
+        "*://*.ticketmaster.es/*",
+        "*://*.ticketmaster.it/*",
+        "*://*.ticketmaster.com.au/*",
+        "*://*.ticketmaster.co.nz/*",
+        "*://*.ticketmaster.com.mx/*",
+        "*://*.ticketmaster.ae/*",
+        "*://*.ticketmaster.be/*",
+        "*://*.ticketmaster.dk/*",
+        "*://*.ticketmaster.ie/*",
+        "*://*.ticketmaster.fi/*",
+        "*://*.livenation.it/*",
+        "*://*.ticketmaster.com.mx/*",
+        "*://*.ticketmaster.co.za/*",
+        "*://*.ticketmaster.nl/*",
+        "*://*.ticketmaster.no/*",
+        "*://*.ticketmaster.se/*",
+        "*://my.livenation.com/order/*",
+        "*://*.livenation.com/*",
+        "*://*.livenation.ca/*",
+        "*://*.mlb.com/*",
+        "*://*.axs.com/*",
+        "*://*.seatgeek.com/*",
+        "*://pay.google.com/*",
+        "*://*.evenue.net/*",
+        "*://*.tickets.com/*",
+        "*://*.securemypass.com/*"
+      ],
+      "js": [
+        "assets/contentScript.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "assets/background.js"
+    ]
+  }
+}

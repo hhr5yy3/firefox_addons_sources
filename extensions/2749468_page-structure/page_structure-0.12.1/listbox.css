@@ -1,0 +1,43 @@
+/*
+*   listbox.css
+*/
+
+div {
+  --light-blue: #cad9ef;
+  --light-gray: #eee;
+}
+
+[role='listbox'] {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+
+  display: grid;
+  grid-auto-rows: min-content;
+  row-gap: 2px;
+}
+
+[role='option'] {
+  padding: 5px;
+}
+
+[role='option']:nth-child(even) {
+  background-color: var(--light-gray);
+}
+
+[role='option']:hover {
+  background: var(--light-blue);
+}
+
+[role='option'][aria-selected='true'],
+[role='option'][aria-selected='true']:hover {
+  outline-offset: -2px;
+  outline-style: solid;
+  outline-width: 2px;
+}
+
+.grid-message {
+  grid-column: 1 / span 7;
+  font-weight: bold;
+  padding: 1rem calc(4px + 0.25rem);
+}

@@ -1,0 +1,41 @@
+.header {
+  border-bottom: 1px solid var(--grey-white);
+
+  .theme-dark & {
+    border-bottom: 1px solid var(--dmd-4);
+  }
+
+  &__menu {
+    .menu-button {
+      margin-right: 14px;
+    }
+  }
+
+  &__search {
+    input {
+      height: 34px;
+      border-radius: 28px;
+      -webkit-background-clip: padding-box; /* for Safari */
+      background-clip: padding-box;
+      @apply text-grey-dark;
+
+      &::placeholder {
+        color: inherit;
+      }
+
+      &:focus {
+        border-color: rgba(var(--grey-dark), .5);
+
+        .theme-dark & {
+          border-color: var(--dmd-3);
+        }
+      }
+
+      &.typing {
+        & ~ div {
+          @apply text-grey-darkest;
+        }
+      }
+    }
+  }
+}

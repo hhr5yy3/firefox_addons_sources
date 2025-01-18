@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Slideout</title>
+	<style>
+		#slideout {
+			position: fixed;
+			top: 40px;
+			left: 0;
+			width: 35px;
+			padding: 12px 0;
+			text-align: center;
+			background: #6DAD53;
+			transition-duration: 0.2s;
+			border-radius: 0 5px 5px 0;
+			cursor: move;
+		}
+		#slideout.left {
+			border-radius: 0 5px 5px 0;
+		}
+		#slideout.right {
+			border-radius: 5px 0 0 5px;
+		}
+		#slideout.bottom {
+			border-radius: 5px 5px 0 0;
+			width: 200px;
+		}
+
+		#slideout_inner {
+			position: fixed;
+			top: 40px;
+			left: -250px;
+			background: #6DAD53;
+			width: 200px;
+			padding: 15px;
+			height: 130px;
+			transition-duration: 0.2s;
+			text-align: left;
+			border-radius: 0 0 5px 0;
+		}
+
+
+        #slideout.left #slideout_inner.open {
+            background-color: aqua;
+            left: 230px;
+		}
+
+        #slideout.right #slideout_inner {
+            background-color: aqua;
+            right:0
+		}
+
+        #slideout.right #slideout_inner.open {
+            background-color: aqua;
+            right:230px;
+		}
+
+
+
+
+		#feedback-text {
+			color: white;
+			font-weight: bold;
+		}
+		#feedback-text.rotated {
+			writing-mode: vertical-rl;
+			transform: rotate(180deg);
+		}
+
+        #settings {
+            background-color: white;
+            width: 100%;
+            height: 100%;
+        }
+	</style>
+</head>
+<body>
+	<div id="slideout" class="left">
+		<div id="feedback-text" class="rotated">Feedback</div>
+		<div id="slideout_inner">
+			<div id="settings">
+                Placeholder
+            </div>
+		</div>
+	</div>
+
+	<script>
+		let slideout = document.getElementById('slideout');
+		let feedbackText = document.getElementById('feedback-text');
+		let slideoutInner = document.getElementById('slideout_inner');
+		let isDragging = false;
+		let wasDragged = false;
+		let isOpen = false;
+		let offsetX, offsetY;
+
+		// Load position from localStorage
+		const savedPosition = localStorage.getItem('slideoutPosition');
+		if (savedPosition) {
+			const { x, y, className, textClass } = JSON.parse(savedPosition);
+			slideout.style.left = x + "px";
+			slideout.style.top = y + "px";
+			slideoutInner.style.top = y + "px";
+			slideout.className = className;
+			feedbackText.className = textClass;
+		}
+
+		slideout.addEventListener("mousedown", function (e) {
+			isDragging = true;
+			wasDragged = false;
+			offsetX = e.clientX - slideout.getBoundingClientRect().left;
+			offsetY = e.clientY - slideout.getBoundingClientRect().top;
+			slideout.style.cursor = 'move';
+		});
+
+		window.addEventListener("mousemove", function (e) {
+			if (isDragging) {
+				wasDragged = true;
+				let x = e.clientX - offsetX;
+				let y = e.clientY - offsetY;
+				const windowWidth = window.innerWidth;
+				const windowHeight = window.innerHeight;
+
+				// Snap to closest side or bottom
+				if (y > windowHeight - 100) {
+					y = windowHeight - 35;
+					x = e.clientX - offsetX;
+					slideout.className = "bottom";
+					feedbackText.className = "";
+					slideout.style.width = "200px";
+				} else if (x < windowWidth / 2) {
+					x = 0;
+					y = e.clientY - offsetY;
+					slideout.className = "left";
+					feedbackText.className = "rotated";
+					slideout.style.width = "35px";
+				} else {
+					x = windowWidth - 35;
+					y = e.clientY - offsetY;
+					slideout.className = "right";
+					feedbackText.className = "rotated";
+					slideout.style.width = "35px";
+				}
+
+				slideout.style.left = x + "px";
+				slideout.style.top = y + "px";
+                slideoutInner.style.top = y + "px";
+			}
+		});
+
+		window.addEventListener("mouseup", function () {
+			if (isDragging) {
+				isDragging = false;
+				slideout.style.cursor = 'default';
+				// Save position to localStorage
+				localStorage.setItem('slideoutPosition', JSON.stringify({
+					x: parseInt(slideout.style.left),
+					y: parseInt(slideout.style.top),
+					className: slideout.className,
+					textClass: feedbackText.className
+				}));
+			}
+		});
+
+		slideout.addEventListener("click", function (e) {
+			if (!wasDragged) {
+				if (!isOpen) {
+					slideout.style.left = '230px';
+					slideoutInner.style.left = '0';
+                    slideoutInner.className = 'open';
+				} else {
+					slideout.style.left = '0';
+					
+                    slideoutInner.className = '';
+				}
+				isOpen = !isOpen;
+			}
+			wasDragged = false;
+		});
+	</script>
+</body>
+</html>

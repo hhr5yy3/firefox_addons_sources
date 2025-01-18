@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<HTML>
+
+ <HEAD>
+  <TITLE>__MSG_lngExtTitle__</TITLE>
+  <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <META name="viewport" content="width=device-width, initial-scale=1">
+  <LINK rel="stylesheet" type="text/css" href="css/styles.css">
+  <LINK rel="shortcut icon" href="favicon.ico">
+  <SCRIPT src="scripts/audioprocessor.js"></SCRIPT>
+  <SCRIPT src="scripts/audiovisualization.js"></SCRIPT>
+  <SCRIPT src="scripts/dsp.js"></SCRIPT>
+  <SCRIPT src="scripts/gifshot.min.js"></SCRIPT>
+  <SCRIPT src="scripts/pitchshiftsmb.js"></SCRIPT>
+  <SCRIPT src="scripts/main.js"></SCRIPT>
+ </HEAD>
+ 
+ <BODY>
+  
+  <DIV id="intro"><SPAN id="intro_text">Loading, please wait ...</SPAN></DIV>
+  
+  <VIDEO autoplay muted></VIDEO>
+  <CANVAS></CANVAS>
+  
+  <DIV id="menu">
+   <DIV class="icon" id="icon_snap"></DIV>
+   <DIV class="icon" id="icon_settings"></DIV>
+  </DIV>
+ 
+  <DIV id="options">
+   
+   <DIV class="item" id="close_options">>></DIV>
+   
+   <DIV class="item align_center" id="torch_block"><INPUT type="button" value="&#128161;" id="torch_button"></DIV>
+   <DIV class="item">
+    __MSG_lngImage__
+	<SELECT id="image_size" autocomplete="off" class="disabled" disabled>
+	 <OPTION value="">__MSG_lngFullScreen__</OPTION>
+	 <OPTION value="fitonscreen">__MSG_lngFitOnScreen__</OPTION>
+	 <OPTION value="actualpixels">__MSG_lngActualPixels__</OPTION>
+	</SELECT>
+   </DIV>
+   <DIV class="item">
+    __MSG_lngCamera__
+	<SELECT id="camera" autocomplete="off" class="disabled" disabled>
+	</SELECT>
+   </DIV>
+   <DIV class="item" id="framing_grid_block"> __MSG_lngFramingGrid__ <INPUT type="checkbox" id="framing_grid_checkbox" autocomplete="off" disabled></DIV>
+   <DIV class="item" id="zoom_block">__MSG_lngZoom__ <INPUT type="range" id="zoom_input" autocomplete="off"> <SPAN id="zoom_value"></SPAN></DIV>
+   <DIV class="item">
+    __MSG_lngTimer__
+	<INPUT type="number" min="0" max="99" value="0" id="photo_delay" autocomplete="off" class="disabled" disabled>
+	__MSG_lngSec__
+   </DIV>
+   <DIV class="item" id="watermark_timestamp_block"> __MSG_lngTimestampWatermark__ <INPUT type="checkbox" id="watermark_timestamp_checkbox" autocomplete="off" disabled></DIV>
+   <DIV class="item">
+    __MSG_lngOutput__
+	<SELECT id="output" autocomplete="off" class="disabled" disabled>
+	 <OPTION value="snapshot">__MSG_lngSnapshot__</OPTION>
+	 <OPTION value="gif">__MSG_lngAnimatedGIF__</OPTION>
+	 <OPTION value="video">__MSG_lngVideo__</OPTION>
+	</SELECT>
+   </DIV>
+   <DIV id="gif_settings">
+    <DIV class="item">__MSG_lngWidth__ <INPUT type="number" value="200" min="1" id="gif_width" autocomplete="off">px</DIV>
+    <DIV class="item">__MSG_lngHeight__ <INPUT type="number" value="200" min="1" id="gif_height" autocomplete="off">px</DIV>
+	<DIV class="item">__MSG_lngKeepProportions__ <INPUT type="checkbox" checked id="gif_keep_proportions" autocomplete="off"></DIV>
+    <DIV class="item">__MSG_lngFramesInterval__ <INPUT type="number" value="0.1" min="0.1" step="0.1" id="gif_interval" autocomplete="off"> __MSG_lngSec__</DIV>
+    <DIV class="item">__MSG_lngFrames__ <INPUT type="number" value="10" min="2" id="gif_frames" autocomplete="off"></DIV>
+	<DIV class="item">__MSG_lngText__ <INPUT type="edit" size="15" id="gif_text" autocomplete="off"></DIV>
+   </DIV>
+   <DIV id="video_settings">
+	<DIV class="item">__MSG_lngMute__ <INPUT type="checkbox" id="mute" autocomplete="off"></DIV>
+    <DIV class="item" id="display_audio_frequency"></DIV>
+    <DIV class="item" id="display_audio_signal"></DIV>
+   </DIV>
+	
+   <DIV class="item align_center" id="block_button_advanced_settings"><INPUT type="button" value=". . ." id="button_advanced_settings"></DIV>
+	
+   <DIV id="advanced_settings_block">
+	
+	 <HR>
+	 
+	 <DIV class="item" id="advanced_settings_quality">__MSG_lngQuality__ <SELECT id="advanced_settings_quality_select" autocomplete="off"></SELECT></DIV>
+	 <DIV class="item" id="advanced_settings_aspectRatio">__MSG_lngAspectRatio__ <INPUT type="range" id="advanced_settings_aspectRatio_input" autocomplete="off"> <SPAN id="advanced_settings_aspectRatio_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_width">__MSG_lngWidth__ <INPUT type="range" id="advanced_settings_width_input" autocomplete="off"> <SPAN id="advanced_settings_width_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_height">__MSG_lngHeight__ <INPUT type="range" id="advanced_settings_height_input" autocomplete="off"> <SPAN id="advanced_settings_height_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_resizeMode">__MSG_lngResizeMode__ <SELECT class="capitalize" id="advanced_settings_resizeMode_select" autocomplete="off"></SELECT></DIV>
+
+	 <DIV class="item" id="advanced_settings_brightness">__MSG_lngBrightness__ <INPUT type="range" id="advanced_settings_brightness_input" autocomplete="off"> <SPAN id="advanced_settings_brightness_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_colorTemperature">__MSG_lngColorTemperature__ <INPUT type="range" id="advanced_settings_colorTemperature_input" autocomplete="off"> <SPAN id="advanced_settings_colorTemperature_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_contrast">__MSG_lngContrast__ <INPUT type="range" id="advanced_settings_contrast_input" autocomplete="off"> <SPAN id="advanced_settings_contrast_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_exposureCompensation">__MSG_lngExposureCompensation__ <INPUT type="range" id="advanced_settings_exposureCompensation_input" autocomplete="off"> <SPAN id="advanced_settings_exposureCompensation_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_exposureMode">__MSG_lngExposureMode__ <SELECT class="capitalize" id="advanced_settings_exposureMode_select" autocomplete="off"></SELECT></DIV>
+	 <DIV class="item" id="advanced_settings_exposureTime">__MSG_lngExposureTime__ <INPUT type="range" id="advanced_settings_exposureTime_input" autocomplete="off"> <SPAN id="advanced_settings_exposureTime_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_iso">ISO <INPUT type="range" id="advanced_settings_iso_input" autocomplete="off"> <SPAN id="advanced_settings_iso_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_saturation">__MSG_lngSaturation__ <INPUT type="range" id="advanced_settings_saturation_input" autocomplete="off"> <SPAN id="advanced_settings_saturation_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_sharpness">__MSG_lngSharpness__ <INPUT type="range" id="advanced_settings_sharpness_input" autocomplete="off"> <SPAN id="advanced_settings_sharpness_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_whiteBalanceMode">__MSG_lngWhiteBalanceMode__ <SELECT class="capitalize" id="advanced_settings_whiteBalanceMode_select" autocomplete="off"></SELECT></DIV>
+	 
+	 <DIV class="item" id="advanced_settings_facingMode">__MSG_lngFacingMode__ <SELECT class="capitalize" id="advanced_settings_facingMode_select" autocomplete="off"></SELECT></DIV>
+	 <DIV class="item" id="advanced_settings_focusMode">__MSG_lngFocusMode__ <SELECT class="capitalize" id="advanced_settings_focusMode_select" autocomplete="off"></SELECT></DIV>
+	 <DIV class="item" id="advanced_settings_focusDistance">__MSG_lngFocusDistance__ <INPUT type="range" id="advanced_settings_focusDistance_input" autocomplete="off"> <SPAN id="advanced_settings_focusDistance_value"></SPAN></DIV>
+
+	 <DIV class="item" id="advanced_settings_frameRate">__MSG_lngFrameRate__ <INPUT type="range" id="advanced_settings_frameRate_input" autocomplete="off"> <SPAN id="advanced_settings_frameRate_value"></SPAN></DIV>
+		
+	 <DIV class="item" id="advanced_settings_latency">__MSG_lngLatency__ <INPUT type="range" id="advanced_settings_latency_input" autocomplete="off"> <SPAN id="advanced_settings_latency_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_echoCancellation"><INPUT type="checkbox" id="advanced_settings_echoCancellation_checkbox" autocomplete="off"> __MSG_lngEchoCancellation__</DIV>
+	 <DIV class="item" id="advanced_settings_noiseSuppression"><INPUT type="checkbox" id="advanced_settings_noiseSuppression_checkbox" autocomplete="off"> __MSG_lngNoiseSuppression__</DIV>
+	 <DIV class="item" id="advanced_settings_sampleRate">__MSG_lngSampleRate__ <INPUT type="range" id="advanced_settings_sampleRate_input" autocomplete="off"> <SPAN id="advanced_settings_sampleRate_value"></SPAN></DIV>
+	 <DIV class="item" id="advanced_settings_sampleSize">__MSG_lngSampleSize__ <INPUT type="range" id="advanced_settings_sampleSize_input" autocomplete="off"> <SPAN id="advanced_settings_sampleSize_value"></SPAN></DIV>
+	 
+	 <DIV class="item" id="advanced_settings_default"><INPUT type="button" value="__MSG_lngDefault__" id="advanced_settings_default_button"></DIV>
+	 
+	 <HR>
+	
+   </DIV>
+   
+   <DIV class="item align_center"><INPUT type="button" value="__MSG_lngPhotoMirror__ &#129109;" id="photo_mirror"></DIV>
+   
+   <DIV class="item align_center"><INPUT type="button" value="&#x26F6;" id="fullscreen"></DIV>
+   
+   <DIV class="item align_center">
+    <A href="https://mara.photos/help/?id=60__MSG_lngURLParameterLngAnd__" target="_blank" id="icon_help">?</A>
+   </DIV>
+   
+  </DIV>
+  
+  <DIV id="photo_counter"></DIV>
+  
+  <CANVAS id="canvas_photo"></CANVAS>
+  <DIV id="save_msg">__MSG_lngSaveMsg__</DIV>
+  <IMG id="photo">
+  <VIDEO id="output_video" autoplay controls></VIDEO>
+  <DIV id="output_controls">
+  
+   <DIV id="back">__MSG_lngBack__</DIV>
+   
+   <DIV id="output_controls_edit">
+   
+    __MSG_lngEditPhoto__:
+   
+    <BR>
+	
+    <FORM method='post' action='https://mara.photos/crop/__MSG_lngURLParameterLng__'>
+     <INPUT type='hidden' name='transfer_image' class="transfer_image">
+     <INPUT type='submit' value='__MSG_lngCrop__'>
+    </FORM>
+	
+    <FORM method='post' action='https://mara.photos/type/__MSG_lngURLParameterLng__'>
+     <INPUT type='hidden' name='transfer_image' class="transfer_image">
+     <INPUT type='submit'value='__MSG_lngType__'>
+    </FORM>
+	
+    <FORM method='post' action='https://mara.photos/pop/__MSG_lngURLParameterLng__'>
+     <INPUT type='hidden' name='transfer_image' class="transfer_image">
+     <INPUT type='submit' value='__MSG_lngFilters__: Pop'>
+    </FORM>
+	
+    <FORM method='post' action='https://mara.photos/vintage/__MSG_lngURLParameterLng__'>
+     <INPUT type='hidden' name='transfer_image' class="transfer_image">
+     <INPUT type='submit' value='__MSG_lngFilters__: Vintage'>
+    </FORM>
+	
+    <FORM method='post' action='https://mara.photos/art/__MSG_lngURLParameterLng__'>
+     <INPUT type='hidden' name='transfer_image' class="transfer_image">
+     <INPUT type='submit'value='__MSG_lngFilters__: Art'>
+    </FORM>
+	
+    <FORM method='post' action='https://mara.photos/frame/__MSG_lngURLParameterLng__'>
+     <INPUT type='hidden' name='transfer_image' class="transfer_image">
+     <INPUT type='submit' value='__MSG_lngFrames1__'>
+    </FORM>
+	
+    <FORM method='post' action='https://mara.photos/stickers/__MSG_lngURLParameterLng__'>
+     <INPUT type='hidden' name='transfer_image' class="transfer_image">
+     <INPUT type='submit' value='__MSG_lngStickers__'>
+    </FORM>
+	
+    <FORM method='post' action='https://mara.photos/overlay/__MSG_lngURLParameterLng__'>
+     <INPUT type='hidden' name='transfer_image' class="transfer_image">
+     <INPUT type='submit'value='__MSG_lngOverlays__'>
+    </FORM>
+	
+    <FORM method='post' action='https://mara.photos/__MSG_lngURLParameterLng__'>
+     <INPUT type='hidden' name='transfer_image' class="transfer_image">
+     <INPUT type='submit' value='__MSG_lngMore__...'>
+    </FORM>
+   
+   </DIV>
+   
+  </DIV>
+  
+  <audio preload="auto" id="snap_sound">
+   <source src="audio/photo_click.ogg" type="audio/ogg; codecs=vorbis">
+   <source src="audio/photo_click.mp3" type="audio/mpeg">
+  </audio>
+  
+ </BODY>
+
+</HTML>

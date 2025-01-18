@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_siteimprove_alfa_web_extension=self.webpackChunk_siteimprove_alfa_web_extension||[]).push([[6894],{6894:e=>{e.exports=JSON.parse('{"$schema":"../schema/rule.json","requirements":["https://www.w3.org/TR/WCAG2/#non-text-content"],"responsibility":"development","difficulty":1,"affects":["vision"],"category":"images"}')}}]);

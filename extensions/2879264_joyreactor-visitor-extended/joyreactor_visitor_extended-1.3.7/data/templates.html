@@ -1,0 +1,452 @@
+<templates>
+	<template id="JV_tagPage">
+		<div id="tagArticle">
+			<img id="contentInnerHeader" src="//img10.reactor.cc/pics/avatar/tag/article/{{~item~.tag_id}}" style="display: none;">
+			<div id="blogHeader">
+				<div id="breadCrumb">
+					<div class="sideheader taginfo">
+						<span>{{~array~.breadcrumbs.JV_breadcrumbs}}</span>
+						<span class="fn">{{~item~.breadcrumbsCurrent}}</span>
+					</div>
+				</div>
+				<img itemprop="photo" src="//img10.reactor.cc/pics/avatar/tag/{{~item~.tag_id}}" alt="{{~item~.name}}" class="blog_avatar {{~check~.image.0.hide}}">
+				<div id="blogName">
+					<h1>{{~item~.name}}</h1>
+					<strong>{{~item~.synonyms}}</strong>
+					<span id="blogSubscribers">
+						Подписчиков:&nbsp;<span>{{~item~.subscribers}}</span>
+						&nbsp;&nbsp;&nbsp;
+						Сообщений:&nbsp;<span>{{~item~.count}}</span>
+						&nbsp;&nbsp;&nbsp;
+						Рейтинг постов:&nbsp;<span>{{~item~.rating}}</span>
+					</span>
+				</div>
+				<div id="blogFavroiteLinks">
+					<p class="{{~item~.favorite.class}}">
+						<a data-tag_id="{{~item~.tag_id}}" title="добавить в любимые - посты с этим тегом всегда будут появляться в вашей персональной ленте">
+						{{~item~.favorite.text}}</a>
+					</p>
+					<p class="{{~item~.block.class}}">
+						<a data-tag_id="{{~item~.tag_id}}" title="добавить в нелюбимые - посты с этим тегом никогда не будут появляться в вашей персональной ленте">
+						{{~item~.block.text}}</a>
+					</p>
+				</div>
+			</div>
+			{{~item~.description}}
+			{{~item~.description_expand}}
+		</div>
+	</template>
+	<template id="JV_breadcrumbs">
+		<span><a href="{{~item~.url}}">{{~item~.name}}</a></span>
+		&nbsp;<span class="delimiter">&gt;</span>&nbsp;
+	</template>
+	<template id="JV_pagination">
+		<div id="Pagination" class="pagination">
+			<div class="pagination_main">
+				<a class="prev {{~item~.pagination.prev.class}}" href="{{~item~.pagination.prev.href}}"></a>
+
+				<div class="pagination_toggler">...</div>
+				<div class="pagination_expanded" style="display: none;">{{~array~.pagination.expanded.JV_page}}</div>
+
+				<a class="next {{~item~.pagination.next.class}}" href="{{~item~.pagination.next.href}}"></a>
+			</div>
+		</div>
+	</template>
+	<template id="JV_page">{{~item~}}</template>
+	<template id="JV_post">
+		<div id="postContainer{{~item~.post_id}}" class="postContainer">
+			<div class="article post-normal">
+				<div class="post_top">
+					<div class="uhead">
+						<div class="uhead_share">
+							<span class="share_buttons">
+								<span class="favorite_link" post_id="{{~item~.post_id}}"></span>
+								<a class="share_vk" rel="nofollow" href="http://vkontakte.ru/share.php?url=https%3A%2F%2Fjoyreactor.cc%2Fpost%2F{{~item~.post_id}}%3Fsocial%3D1" target="_blank"></a>
+								<a class="share_fb" rel="nofollow" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fjoyreactor.cc%2Fpost%2F{{~item~.post_id}}%3Fsocial%3D1" target="_blank"></a>
+								<a class="share_twitter" rel="nofollow" href="http://twitter.com/home?status=https%3A%2F%2Fjoyreactor.cc%2Fpost%2F{{~item~.post_id}}%3Fsocial%3D1" target="_blank"></a>
+							</span>
+						</div>
+						<div class="uhead_nick">
+							<img src="//img2.reactor.cc/pics/avatar/user/{{~item~.user.id}}" class="avatar" alt="{{~item~.user.username}}">
+							<a class="offline_username" href="/user/{{~item~.user.username}}">{{~item~.user.username}}</a>
+						</div>
+					</div>
+					<h2 class="taglist">{{~array~.tagsList.JV_tag}}</h2>
+					<img alt="Copywrite" src="/images/censorship/copywrite.jpg">
+				</div>
+				<div class="ufoot">
+					<div class="ufoot_first">
+						<span class="comments">
+							<a href="/post/{{~item~.post_id}}" class="commentnum JV_toggleComments" title="количество комментариев">Комментарии {{~item~.commentsCount}}</a>
+							<span class="commentnumDelta" title="количество комментариев"></span>
+						</span>
+						<span class="date">
+							<span class="" data-time="">
+								<span class="date">{{~item~.date}}</span>
+								<span class="time">{{~item~.time}}</span>
+							</span>
+						</span>
+						<span class="link_wr">
+							<a title="ссылка на пост" class="link" href="/post/{{~item~.post_id}}">ссылка</a>
+						</span>
+						<span class="hidden_link">
+							<a title="скрыть содержимое поста" href="/hidden/create/{{~item~.post_id}}">скрыть</a>
+						</span>
+						<span class="post_rating"></span>
+						<div class="manage_post_wr">
+							<span style="display:none;" class="post_set_header">
+								<form action=""><label><input type="text" name="post_header" class="post_header" size="74" value=""></label><input type="submit" name="commit" value="Сохранить"></form>
+							</span>
+							<span style="display:none;" class="post_add_tag">
+								<form action=""><label><input type="text" name="tag" size="74" value="" class="tag_autocomplete ui-autocomplete-input" autocomplete="off"></label><input type="submit" name="commit" value="Сохранить"></form>
+							</span>
+							<span class="manage">
+								<span class="delete adminOnly" userid="{{~item~.user.id}}" timestamp="{{~item~.timestamp}}">
+									<a href="/manage/post/edit/{{~item~.post_id}}" title="редактировать пост">редактировать</a>
+								</span>
+								<span class="delete adminOnly" userid="{{~item~.user.id}}" timestamp="{{~item~.timestamp}}">
+									<a href="/post/delete/{{~item~.post_id}}?" title="удалить пост" class="csrfLink" data-confirm="Действительно удалить пост?">удалить</a>
+								</span>
+								<span class="spam moderatorOnly">
+									<a href="/post/spam/{{~item~.post_id}}" class="csrfLink" data-confirm="Действительно забанить пост?">бан</a>
+								</span>
+								<span class="banTag">
+									<a href="/post/tagBan/{{~item~.post_id}}" class="csrfLink" data-confirm="Действительно забанить пост?">бан</a>
+								</span>
+								<span class="moderatorOnly setTag" userid="{{~item~.user.id}}" style="display: inline;">
+									<a href="javascript:" title="добавить теги" class="link setTagLink">добавить теги</a>
+								</span>
+								<span class="adminOnly wrongTag" userid="{{~item~.user.id}}">
+									<a href="/abuse-tag/{{~item~.post_id}}" title="неправильные теги!" class="link wrongTagLink">неправильные теги!</a>
+								</span>
+								<span class="moderatorOnly">
+									<a href="javascript:" title="редактировать заголовок H1" class="link setHeaderLink">заголовок</a>
+								</span>
+								<span class="adminOnly">
+									<a href="/post/penalty/{{~item~.post_id}}?" class="csrfLink" data-confirm="Действительно снять рейтинг пользователю?">штраф</a>
+								</span>
+							</span>
+						</div>
+					</div>
+					<div class="post_comment_list" style="display: none;"></div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<template id="JV_tag">
+		<b><a title="{{~item~.name}}" data-ids="{{~item~.ids}}" href="/tag/{{~item~.link}}">{{~item~.name}}</a>&nbsp;</b>
+	</template>
+	<template id="JV_rating">
+		<span class="post_rating" data-vote="{{~item~.vote}}">
+			<span>
+				{{~item~.rating}}
+				<div class="vote-plus {{~check~.vote.minus.vote-change}}"></div>
+				<div class="vote-minus {{~check~.vote.plus.vote-change}}"></div>
+			</span>
+		</span>
+	</template>
+	<template id="JV_rating_NE">
+		<div class="post-rating flex items-center" data-vote="{{~item~.vote}}">
+			<span class="mr-1 opacity-30 hidden sm:inline-block"></span>
+			<button type="button" aria-label="Upvote" class="vote-button restored-post-button">
+				<span role="img" class="anticon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" viewBox="0 0 66 66" fill="currentColor" class="post-upvote"><circle cx="33" cy="33" r="31" stroke="currentColor" stroke-width="3"></circle><circle cx="24" cy="25" r="3" fill="currentColor"></circle><circle cx="42" cy="25" r="3" fill="currentColor"></circle><path d="M50.9371 38.2816C46.5411 43.017 40.134 46 33 46C25.866 46 19.4589 43.017 15.0629 38.2816C17.6565 45.6881 24.7079 51 33 51C41.292 51 48.3434 45.6882 50.9371 38.2816Z" fill="currentColor"></path></svg>
+				</span>
+			</button>
+			<span class="mx-1.5 opacity-30">{{~item~.rating}}</span>
+			<button type="button" aria-label="Downvote" class="vote-button restored-post-button">
+				<span role="img" class="anticon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" viewBox="0 0 66 66" fill="currentColor" class="post-downvote"><circle cx="33" cy="33" r="31" stroke="currentColor" stroke-width="3"></circle><circle cx="24" cy="25" r="3" fill="currentColor"></circle><circle cx="42" cy="25" r="3" fill="currentColor"></circle><path d="M50.9371 51C46.5411 46.2645 40.134 43.2815 33 43.2815C25.866 43.2815 19.4589 46.2645 15.0629 51C17.6565 43.5934 24.7079 38.2816 33 38.2816C41.292 38.2816 48.3434 43.5934 50.9371 51Z" fill="currentColor"></path></svg>
+				</span>
+			</button>
+		</div>
+	</template>
+	<template id="JV_comments">
+		<div class="comment_list_post" id="comment_list_post_{{~item~.post_id}}" creatorid="{{~item~.user.id}}"></div>
+		<div id="add_comment" class="add-comment-link" data-post-id="{{~item~.post_id}}" data-user_id="{{~item~.user_id}}">
+			<a href="/post/{{~item~.post_id}}#add_comment" style="display: none;"></a>
+			<a class="response" href="javascript:">Написать комментарий</a>
+		</div>
+		<div id="addcomment_post_{{~item~.post_id}}" class="addcomment" style="display: block;" data-user_id="{{~item~.user_id}}">
+			<form action="/post_comment/create" method="post" enctype="multipart/form-data" class="post_comment_form">
+				<div class="add_comment_flash" style="display:none"></div>
+				<input type="hidden" class="parent_id" value="0" name="parent_id">
+				<input type="hidden" class="post_id" value="{{~item~.post_id}}" name="post_id">
+				<input type="hidden" class="token" value="" name="token">
+				<textarea name="comment_text" class="comment_text" rows="5" cols="75"></textarea>
+				<br>
+				<input type="button" name="commit" value="Написать" class="JV_submit">
+				Картинка:
+				<span>
+					<a href="javascript:" class="more_file">из файла</a>
+					<input type="file" accept="image/*" name="comment_picture" class="comment_picture" value="" style="display:none">
+					&nbsp;
+					<a href="javascript:" class="more_url">из URL</a>
+					<input type="text" name="comment_picture_url" class="comment_picture_url" value="" style="display:none">
+				</span>
+			</form>
+		</div>
+	</template>
+	<template id="JV_comments_NE">
+		<div class="mt-1 mb-2 mt-4 px-1.5 sm:px-0">
+			<button type="button" class="ant-btn css-il4ovg ant-btn-primary restored-post-comment-button">
+				<span class="ant-btn-icon">
+					<span role="img" aria-label="plus" class="anticon anticon-plus">
+						<svg viewBox="64 64 896 896" focusable="false" data-icon="plus" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+							<defs><style></style></defs>
+							<path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path>
+							<path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path>
+						</svg>
+					</span>
+				</span>
+				<span>Написать коммент</span>
+			</button>
+		</div>
+	</template>
+	<template id="JV_comment_child">
+		<div id="comment_list_comment_{{~item~.parent.id}}" class="comment_list" creatorid="{{~item~.user.id}}"></div>
+	</template>
+	<template id="JV_comment_child_NE">
+		<div id="comment_list_comment_{{~item~.parent.id}}" class="comment-with-indentation relative"></div>
+	</template>
+	<template id="JV_comment">
+		<div id="comment{{~item~.id}}" class="comment hightlighted {{~item~.class}}" parent="{{~item~.parent.id}}" timestamp="{{~item~.timestamp}}" userid="{{~item~.user.id}}">
+			<div class="txt" id="comment_txt_{{~item~.post_id}}_{{~item~.id}}">
+				<div>{{~item~.text}}</div>
+				<div class="comments_bottom">
+					<img src="//img2.reactor.cc/pics/avatar/user/{{~item~.user.id}}" class="avatar" alt="{{~item~.user.username}}">
+					<span class="reply-link">
+						<a href="/user/{{~item~.user.username}}" class="comment_username">{{~item~.user.username}}</a>
+						<span class="comment_date">
+							<span class="" data-time="{{~item~.timestamp}}">
+								<span class="date">{{~item~.date}}</span>
+								<span class="time">{{~item~.time}}</span>
+							</span>
+						</span>
+						<a href="javascript:" class="response">ответить</a>
+						<a href="/post/{{~item~.post_id}}#comment{{~item~.id}}" class="comment_link">ссылка</a>
+					</span>
+					<span class="comment_rating" comment_id="{{~item~.id}}" data-vote="{{~item~.vote}}">
+						<span>
+							{{~item~.rating}}
+							<div class="vote-plus" title="голосовать за"></div>
+							<div class="vote-minus" title="голосовать против"></div>
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</template>
+	<template id="JV_comment_NE">
+		<div>
+			<div class="comment
+					" id="comment{{~item~.id}}">
+				<div class="comment-ellipsis-button pr-2 md:pr-1.5 h-8">
+					<button type="button" class="ant-btn css-il4ovg ant-btn-link ant-btn-icon-only ant-dropdown-trigger flex justify-end">
+						<span class="ant-btn-icon">
+							<span role="img" aria-label="ellipsis" class="anticon anticon-ellipsis">
+								<svg viewBox="64 64 896 896" focusable="false" data-icon="ellipsis" width="1em" height="1em" fill="currentColor" aria-hidden="true" style="transform: rotate(90deg);"><path d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"></path></svg>
+							</span>
+						</span>
+					</button>
+				</div>
+				<div class="comment-content">
+					<span class="root-span">{{~item~.text}}</span>
+				</div>
+				<div class="comment-footer">
+					<div class="comment-username">
+						<a class="flex-shrink-0" href="/user/{{~item~.user.username}}">
+							<div class="w-5 max-h-5 sm:w-8 sm:max-h-8 sm:h-8">
+								<img title="{{~item~.user.username}}" alt="{{~item~.user.username}}" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" src="https://img2.joyreactor.cc/pics/avatar/user/{{~item~.user.id}}" style="color: transparent;" />
+							</div>
+						</a>
+						<a class="truncate font-semibold underline hover:underline pr-4 pl-1 sm:pl-2" href="/user/{{~item~.user.username}}">{{~item~.user.username}}</a>
+						<div class="hidden sm:inline flex-none font-normal">
+							<span>{{~item~.date}}, {{~item~.time}}</span>
+						</div>
+					</div>
+					<button type="button" class="ant-btn css-il4ovg ant-btn-round ant-btn-default ant-btn-sm ml-4 hidden md:inline-block restored-post-comment">
+						<span class="text-sm">ответить</span>
+					</button>
+					<button type="button" class="ant-btn css-il4ovg ant-btn-circle ant-btn-default ant-btn-sm ant-btn-background-ghost mx-6 content:ml-4 md:hidden">
+						<span role="img" class="anticon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 673 673" fill="currentColor" aria-hidden="true" focusable="false" class=""><path data-name="Polygon 3" class="arrow-reply_svg__cls-1" d="M277.084 504.752.01 269.049 276.765 32.528Z"></path><path data-name="Polygon 2" class="arrow-reply_svg__cls-1" d="M616.467 651.388C592.3 504.969 549.71 431.8 476.872 394.709c-67.61-36.3-166.006-38.719-238.974-45.544l26.377-172.313c79.361 14.4 193.09 33.313 279 93.017 87.4 62.527 150.2 173.777 73.19 381.519"></path></svg>
+						</span>
+					</button>
+					<a class="comment-link" href="/post/{{~item~.post_id}}#comment{{~item~.id}}">ссылка</a>
+					<div class="md:ml-auto w-10 md:w-20 justify-end flex">
+						<div class="comment-rating lg:hidden">
+							<div class="hover:text-primary-hovered cursor-pointer underline restored-post-comment" data-vote="{{~item~.vote}}">{{~item~.rating}}</div>
+						</div>
+						<div class="comment-rating hidden lg:flex gap-1">
+							<button type="button" aria-label="Upvote" class="vote-button vote-plus"></button>
+							{{~item~.rating}}
+							<button type="button" aria-label="Downvote" class="vote-button vote-minus"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<template id="JV_visited">
+		<div class="JV_visited">
+			<span>Вы видели этот пост</span>
+			<span>{{~item~}}</span>
+		</div>
+	</template>
+	<template id="JV_attribute_image_post">
+		<div class="image">
+			<a href="//img10.reactor.cc/pics/post/full/{{~item~.filename}}-{{~item~.id}}.jpg" rel="prettyPhoto">
+				<img src="//img10.reactor.cc/pics/post/{{~item~.filename}}-{{~item~.id}}.jpg" />
+			</a>
+		</div>
+	</template>
+	<template id="JV_attribute_image_post_NE">
+		<div class="single">
+			<div class="image zoomed-image">
+				<a href="https://img10.joyreactor.cc/pics/post/full/{{~item~.filename}}-{{~item~.id}}.png" rel="prettyPhoto">
+					<div>
+						<div role="presentation" class="image-zoom-unzoomed">
+							<img loading="lazy" decoding="async" data-nimg="1" class="responsive" src="https://img10.joyreactor.cc/pics/post/{{~item~.filename}}-{{~item~.id}}.png" style="color: transparent;" />
+							<div class="w-0 h-0">
+								<div class="ant-image css-il4ovg">
+									<img alt="" class="ant-image-img css-il4ovg" src="https://img10.joyreactor.cc/pics/post/{{~item~.filename}}-{{~item~.id}}.png" style="display: none; margin: 0px;" />
+									<div class="ant-image-mask" style="display: none;">
+										<div class="ant-image-mask-info">
+											<span role="img" aria-label="eye" class="anticon anticon-eye">
+												<svg viewBox="64 64 896 896" focusable="false" data-icon="eye" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 000 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z"></path></svg>
+											</span>
+											Preview
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</template>
+	<template id="JV_attribute_image_comment">
+		<div class="image">
+			<img src="//img2.reactor.cc/pics/comment/{{~item~.filename}}-{{~item~.id}}.jpg" />
+		</div>
+	</template>
+	<template id="JV_attribute_image_comment_NE">
+		<div class="image">
+			<img loading="lazy" decoding="async" data-nimg="1" class="responsive" src="https://img2.joyreactor.cc/pics/comment/{{~item~.filename}}-{{~item~.id}}.jpeg" style="color: transparent;" />
+		</div>
+	</template>
+	<template id="JV_attribute_gif">
+		<div class="image">
+			<span class="video_gif_holder">
+				<a href="//img2.joyreactor.cc/pics/post/{{~item~.filename}}-{{~item~.id}}.gif" class="video_gif_source">ссылка на гифку</a>
+				<img src="//img2.joyreactor.cc/pics/post/{{~item~.filename}}-{{~item~.id}}.gif" />
+			</span>
+		</div>
+	</template>
+	<template id="JV_attribute_gif_NE">
+		<div class="image">
+			<img loading="lazy" decoding="async" data-nimg="1" class="responsive" src="https://img2.joyreactor.cc/pics/comment/{{~item~.filename}}-{{~item~.id}}.gif" style="color: transparent;" />
+		</div>
+	</template>
+	<template id="JV_attribute_video">
+		<div class="image">
+			<span class="video_holder">
+				<video class="video_gif" width="406" height="720" autoplay playsinline loop muted poster="//img2.reactor.cc/pics/post/static/{{~item~.filename}}-{{~item~.id}}.jpeg">
+					<source src="//img2.reactor.cc/pics/post/webm/{{~item~.filename}}-{{~item~.id}}.webm" type="video/webm"/>
+					<source src="//img2.reactor.cc/pics/post/mp4/{{~item~.filename}}-{{~item~.id}}-8004811.mp4" type="video/mp4"/>
+					<img src="//img2.reactor.cc/pics/post/static/{{~item~.filename}}-{{~item~.id}}.jpeg"/>
+				</video>
+			</span>
+		</div>
+	</template>
+	<template id="JV_attribute_video_NE">
+		<div class="video zoomed-image">
+			<div class="ant-spin-nested-loading max-w-full sm:max-w-max css-il4ovg">
+				<div class="ant-spin-container">
+					<video class="w-full sm:w-fit" autoplay loop playsinline width="406" height="720" title="гиф анимация,гифки - ПРИКОЛЬНЫЕ gif анимашки,дроны,FPV,заброшенные места" poster="https://img2.joyreactor.cc/pics/post/static/{{~item~.filename}}-{{~item~.id}}.jpeg" preload="none">
+						<source src="https://img2.joyreactor.cc/pics/post/webm/{{~item~.filename}}-{{~item~.id}}.webm" type="video/webm" />
+						<source src="https://img2.joyreactor.cc/pics/post/mp4/{{~item~.filename}}-{{~item~.id}}.mp4" type="video/mp4" />
+					</video>
+					<div class="gifbuttons h-7">
+						<a href="https://img2.joyreactor.cc/pics/post/webm/{{~item~.filename}}-{{~item~.id}}.webm" class="ant-btn css-il4ovg ant-btn-link text-sm" tabindex="0">
+							<span class="ant-btn-icon">
+								<span role="img" aria-label="download" class="anticon anticon-download">
+									<svg viewBox="64 64 896 896" focusable="false" data-icon="download" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M505.7 661a8 8 0 0012.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path></svg>
+								</span>
+							</span>
+							webm
+						</a>
+						<a href="https://img2.joyreactor.cc/pics/post/mp4/{{~item~.filename}}-{{~item~.id}}.mp4" class="ant-btn css-il4ovg ant-btn-link text-sm" tabindex="0">
+							<span class="ant-btn-icon">
+								<span role="img" aria-label="download" class="anticon anticon-download">
+									<svg viewBox="64 64 896 896" focusable="false" data-icon="download" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M505.7 661a8 8 0 0012.6 0l112-141.7c4.1-5.2.4-12.9-6.3-12.9h-74.1V168c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v338.3H400c-6.7 0-10.4 7.7-6.3 12.9l112 141.8zM878 626h-60c-4.4 0-8 3.6-8 8v154H214V634c0-4.4-3.6-8-8-8h-60c-4.4 0-8 3.6-8 8v198c0 17.7 14.3 32 32 32h684c17.7 0 32-14.3 32-32V634c0-4.4-3.6-8-8-8z"></path></svg>
+								</span>
+							</span>
+							mp4
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+	<template id="JV_attribute_youtube">
+		<div class="image">
+			<iframe class="youtube-player" type="text/html" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen" src="https://www.youtube.com/embed/{{~item~.value}}?wmode=transparent&rel=0"></iframe>
+		</div>
+	</template>
+	<template id="JV_attribute_youtube_NE">
+		<div>
+			<div class="attribute-embed">
+				<iframe role="img" class="youtube-player" src="https://www.youtube.com/embed/{{~item~.value}}?wmode=transparent&rel=0" allowfullscreen></iframe>
+			</div>
+		</div>
+	</template>
+	<template id="JV_attribute_coub">
+		<div class="image">
+			<iframe width="640" height="360" frameborder="0" allowfullscreen="true" src="https://coub.com/embed/{{~item~.value}}?muted=false&autostart=false&originalSize=false&startWithHD=false&wmode=opaque"></iframe>
+		</div>
+	</template>
+	<template id="JV_attribute_coub_NE">
+		<div class="single">
+			<div class="attribute-embed">
+				<iframe role="img" src="https://coub.com/embed/{{~item~.value}}?muted=false&autostart=false&originalSize=false&startWithHD=true&noSiteButtons=true&noHDControl=true" allowfullscreen></iframe>
+			</div>
+		</div>
+	</template>
+	<template id="JV_attribute_soundcloud">
+		<div class="image">
+			<iframe width="100%" height="{{~item~.value.height}}" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url={{~item~.value.url}}&color=#ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+		</div>
+	</template>
+	<template id="JV_attribute_soundcloud_NE">
+		<div class="attribute-embed">
+			<iframe role="img" src="https://w.soundcloud.com/player/?url={{~item~.value.url}}&amp;color=#ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true" height="600" allowfullscreen
+			></iframe>
+		</div>
+	</template>
+	<template id="JV_popover">
+		<div>
+			<div class="JV-popover ant-popover css-il4ovg css-il4ovg ant-popover-placement-bottomRight" style="inset: {{~item~}}px 107px auto auto; box-sizing: border-box;">
+				<div class="ant-popover-arrow" style="position: absolute;"></div>
+				<div class="ant-popover-content">
+					<div class="ant-popover-inner" role="tooltip">
+						<div class="ant-popover-inner-content">
+							<div class="comment-rating flex justify-between gap-2">
+								<div class="flex justify-end">
+									<button type="button" class="ant-btn css-il4ovg ant-btn-link" style="height: 30px;">
+										<div aria-label="upvote" class="vote-button vote-plus mr-2"></div>
+									</button>
+									<button type="button" class="ant-btn css-il4ovg ant-btn-link" style="height: 30px;">
+										<div aria-label="downvote" class="vote-button vote-minus"></div>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+</templates>

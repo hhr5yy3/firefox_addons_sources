@@ -1,0 +1,1 @@
+function getKey(e){chrome.storage.sync.get({licenceKey:""},(function(c){e({type:c.licenceKey?"licenced":"unlicnced",key:c.licenceKey})}))}

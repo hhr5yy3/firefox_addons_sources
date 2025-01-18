@@ -1,0 +1,1 @@
+(()=>{"use strict";var e,s;(s={}).ObjectUrlMessageKind=void 0,(e=s.ObjectUrlMessageKind||(s.ObjectUrlMessageKind={})).Create="Create",e.Revoke="Revoke"})();

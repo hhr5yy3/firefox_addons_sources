@@ -1,0 +1,1 @@
+module.exports={rules:{"no-restricted-imports":["error",{patterns:["@common/utils/platform","@common/utils/initDesktopSentry","~/renderer/*","~/main/*","~/communicationService/electron/*","~/communicationService/web/*","~/communicationService/extension/*"]}]}};

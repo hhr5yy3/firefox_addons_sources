@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Interceptor</title>
+    <link rel="icon" href="icon-on.png" type="image/png">
+    <link rel="stylesheet" href="default.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="highlight.min.js"></script>
+    <script src="json.min.js"></script>
+    <script src="xml.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>Request Interceptor</h1>
+    </div>
+    <div class="tab-nav">
+        <button id="interceptorTab" class="active">Interceptor</button>
+        <button id="repeaterTab">Repeater</button>
+        <button id="rulesTab">Rules</button>
+        <button id="encodingTab">Encoding/Decoding Tools</button>
+        <button id="aboutTab">About</button>
+    </div>
+    <div id="interceptorContent" class="tab-content active">
+        <div class="controls">
+            <button id="toggleButton">Enable Interception</button>
+            <button id="clearButton">Clear Requests</button>
+            <input type="text" id="inverseFilterInput" placeholder="Exclude requests...example: .js,.jpg">
+        </div>
+        <div class="container">
+            <div class="request-list">
+                <div class="filter-sort-container">
+                    <input type="text" id="filterInput" placeholder="Filter requests...">
+                    <select id="sortSelect">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                </div>
+                <div id="requestList"></div>
+                <div class="pagination">
+                    <button id="prevPage">Previous</button>
+                    <span id="pageInfo">Page 1 of 1</span>
+                    <button id="nextPage">Next</button>
+                </div>
+            </div>
+            <div id="interceptorResizer" class="resizer"></div>
+            <div class="details-container">
+                <div class="request-details">
+                    <div class="details-header">
+                        <h4>Request Details</h4>
+                        <button id="sendToRepeaterButton" class="send-to-repeater-btn">Send to Repeater</button>
+                    </div>
+                    <textarea id="detailsContainer" placeholder="Request details..."></textarea>
+                </div>
+                <div id="detailsResizer" class="resizerv"></div>
+                <div class="response-details">
+                    <div class="details-header">
+                        <h4>Response Details</h4>
+                    </div>
+                    <textarea id="responseContainer" placeholder="Response details..."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="repeaterContent" class="tab-content">
+        <div class="repeater-container">
+            <div class="repeater-tabs">
+                <div id="repeaterTabList" class="tab-list"></div>
+                <button id="newRepeaterTabButton" class="new-tab-button">+</button>
+            </div>
+            <div id="repeaterPanels"></div>
+        </div>
+    </div>
+    <div id="rulesContent" class="tab-content">
+        <div class="rules-container">
+            <div class="rules-header">
+                <h2>Request Rules</h2>
+                <button id="addRuleButton" class="action-button">Add Rule</button>
+            </div>
+            <div id="rulesList" class="rules-list"></div>
+            <form id="ruleForm" class="rule-form" style="display: none;">
+                <div class="form-group">
+                    <label for="urlPattern">URL Pattern:</label>
+                    <input type="text" id="urlPattern" required placeholder="e.g., *://*.example.com/*">
+                    <small>Use * as wildcard</small>
+                </div>
+                <div class="form-group">
+                    <label for="method">Method:</label>
+                    <select id="method">
+                        <option value="*">Any</option>
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                        <option value="PUT">PUT</option>
+                        <option value="DELETE">DELETE</option>
+                        <option value="PATCH">PATCH</option>
+                        <option value="HEAD">HEAD</option>
+                        <option value="OPTIONS">OPTIONS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="action">Action:</label>
+                    <select id="action">
+                        <option value="redirect">Redirect</option>
+                        <option value="modify">Modify Headers</option>
+                        <option value="modifyGetParams">Modify GET Parameters</option>
+                        <option value="block">Block</option>
+                    </select>
+                </div>
+                <div id="actionOptions"></div>
+                <div class="form-actions">
+                    <button type="submit">Save Rule</button>
+                    <button type="button" class="cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="encodingContent" class="tab-content">
+        <div class="encoding-tools">
+            <h2>Encoding/Decoding Tools</h2>
+            <div class="encoding-tabs">
+                <button class="tab-button active" data-target="#base64Tab">Base64</button>
+                <button class="tab-button" data-target="#urlTab">URL Encoding</button>
+                <button class="tab-button" data-target="#urlDoubleTab">URL Double Encoding</button>
+                <button class="tab-button" data-target="#htmlTab">HTML Entities</button>
+                <button class="tab-button" data-target="#hexTab">Hex</button>
+                <button class="tab-button" data-target="#unicodeTab">Unicode</button>
+                <button class="tab-button" data-target="#jwtTab">JWT</button>
+				<button class="tab-button" data-target="#jsonTab">JSON</button>
+				<button class="tab-button" data-target="#percentTab">Percent Encoding</button>
+            </div>
+
+            <div id="base64Tab" class="tool-card active">
+                <h4>Base64 Encode/Decode</h4>
+                <div class="encode-decode-container">
+                    <div class="input-section">
+                        <h5>Input</h5>
+                        <textarea id="base64Input" placeholder="Enter text to encode/decode"></textarea>
+                    </div>
+                    <div class="controls-section">
+                        <button id="base64EncodeButton" class="action-button">→ Encode →</button>
+                        <button id="base64DecodeButton" class="action-button">← Decode ←</button>
+                    </div>
+                    <div class="output-section">
+                        <h5>Output</h5>
+                        <textarea id="base64Output" placeholder="Result" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="urlTab" class="tool-card">
+                <h4>URL Encode/Decode</h4>
+                <div class="encode-decode-container">
+                    <div class="input-section">
+                        <h5>Input</h5>
+                        <textarea id="urlInput" placeholder="Enter text to encode/decode"></textarea>
+                    </div>
+                    <div class="controls-section">
+                        <button id="urlEncodeButton" class="action-button">→ Encode →</button>
+                        <button id="urlDecodeButton" class="action-button">← Decode ←</button>
+                    </div>
+                    <div class="output-section">
+                        <h5>Output</h5>
+                        <textarea id="urlOutput" placeholder="Result" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="urlDoubleTab" class="tool-card">
+                <h4>URL Double Encode/Decode</h4>
+                <div class="encode-decode-container">
+                    <div class="input-section">
+                        <h5>Input</h5>
+                        <textarea id="urlDoubleInput" placeholder="Enter text to encode/decode"></textarea>
+                    </div>
+                    <div class="controls-section">
+                        <button id="urlDoubleEncodeButton" class="action-button">→ Encode →</button>
+                        <button id="urlDoubleDecodeButton" class="action-button">← Decode ←</button>
+                    </div>
+                    <div class="output-section">
+                        <h5>Output</h5>
+                        <textarea id="urlDoubleOutput" placeholder="Result" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="htmlTab" class="tool-card">
+                <h4>HTML Entities Encode/Decode</h4>
+                <div class="encode-decode-container">
+                    <div class="input-section">
+                        <h5>Input</h5>
+                        <textarea id="htmlInput" placeholder="Enter text to encode/decode"></textarea>
+                    </div>
+                    <div class="controls-section">
+                        <button id="htmlEncodeButton" class="action-button">→ Encode →</button>
+                        <button id="htmlDecodeButton" class="action-button">← Decode ←</button>
+                    </div>
+                    <div class="output-section">
+                        <h5>Output</h5>
+                        <textarea id="htmlOutput" placeholder="Result" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="hexTab" class="tool-card">
+                <h4>Hex Encode/Decode</h4>
+                <div class="encode-decode-container">
+                    <div class="input-section">
+                        <h5>Input</h5>
+                        <textarea id="hexInput" placeholder="Enter text to encode/decode"></textarea>
+                    </div>
+                    <div class="controls-section">
+                        <button id="hexEncodeButton" class="action-button">→ Encode →</button>
+                        <button id="hexDecodeButton" class="action-button">← Decode ←</button>
+                    </div>
+                    <div class="output-section">
+                        <h5>Output</h5>
+                        <textarea id="hexOutput" placeholder="Result" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="unicodeTab" class="tool-card">
+                <h4>Unicode Encode/Decode</h4>
+                <div class="encode-decode-container">
+                    <div class="input-section">
+                        <h5>Input</h5>
+                        <textarea id="unicodeInput" placeholder="Enter text to encode/decode"></textarea>
+                    </div>
+                    <div class="controls-section">
+                        <button id="unicodeEncodeButton" class="action-button">→ Encode →</button>
+                        <button id="unicodeDecodeButton" class="action-button">← Decode ←</button>
+                    </div>
+                    <div class="output-section">
+                        <h5>Output</h5>
+                        <textarea id="unicodeOutput" placeholder="Result" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="jwtTab" class="tool-card">
+                <h4>JWT Encode/Decode</h4>
+                <div class="encode-decode-container">
+                    <div class="input-section">
+                        <h5>Input</h5>
+                        <textarea id="jwtInput" placeholder="Enter JWT token to decode or JSON to encode"></textarea>
+                    </div>
+                    <div class="controls-section">
+                        <button id="jwtEncodeButton" class="action-button">→ Encode →</button>
+                        <button id="jwtDecodeButton" class="action-button">← Decode ←</button>
+                    </div>
+                    <div class="output-section">
+                        <h5>Output</h5>
+                        <textarea id="jwtOutput" placeholder="Result" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+			<div id="jsonTab" class="tool-card">
+                <h4>JSON Beautifier</h4>
+                <div class="encode-decode-container">
+                    <div class="input-section">
+                        <h5>Input</h5>
+                        <textarea id="jsonInput" placeholder="Enter JSON to beautify/minify"></textarea>
+                    </div>
+                    <div class="controls-section">
+                        <button id="jsonBeautifyButton" class="action-button">→ Beautify →</button>
+                        <button id="jsonMinifyButton" class="action-button">→ Minify →</button>
+                    </div>
+                    <div class="output-section">
+                        <h5>Output</h5>
+                        <textarea id="jsonOutput" placeholder="Result" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+			
+			            <div id="percentTab" class="tool-card">
+                <h4>Percent Encode/Decode</h4>
+                <div class="encode-decode-container">
+                    <div class="input-section">
+                        <h5>Input</h5>
+                        <textarea id="percentInput" placeholder="Enter text to encode/decode"></textarea>
+                    </div>
+                    <div class="controls-section">
+                        <button id="percentEncodeButton" class="action-button">→ Encode →</button>
+                        <button id="percentDecodeButton" class="action-button">← Decode ←</button>
+                    </div>
+                    <div class="output-section">
+                        <h5>Output</h5>
+                        <textarea id="percentOutput" placeholder="Result" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+			
+        </div>
+    </div>
+    
+	<div id="aboutContent" class="tab-content">
+        <div class="about-container">
+            <h2>About Request Interceptor</h2>
+            <p>Request Interceptor is a powerful browser extension designed for web developers, security researchers, and API testers. It allows you to intercept, analyze, and modify HTTP requests and responses in real-time.</p>
+
+            <h3>Features:</h3>
+            <ul>
+                <li>Intercept and view HTTP/HTTPS requests</li>
+                <li>Analyze responses from servers</li>
+                <li>Repeater functionality for modifying and testing requests</li>
+                <li>Encoding/Decoding tools for various formats</li>
+            </ul>
+
+            <div class="bmc-button-container">
+                If you like my work, please consider donating or buying me a coffee:<br><br>
+                <a href="https://www.buymeacoffee.com/susurrus" target="_blank">
+                    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="donating." class="bmc-button">
+                </a>
+            </div>
+
+            <h3>About the Author</h3>
+            <div class="author-info">
+                <img src="me.JPG" alt="Author" class="author-photo">
+                <div class="author-text">
+                    <p>My name is Vahe Demirkhanyan, and I'm a passionate penetration tester with a keen interest in web security, coding and hacking. I created Request Interceptor to address the need for a lightweight, yet handy tool for HTTP traffic analysis.</p>
+                    <p>My website blog: <a href="https://hacking.cool">hacking.cool</a><br>
+                    Github: <a href="https://github.com/5u5urrus/">https://github.com/5u5urrus/</a><br>
+                    Linkedin: <a href="https://www.linkedin.com/in/vahearamian/">https://www.linkedin.com/in/vahearamian/</a></p>
+                </div>
+            </div>
+
+            <h3>Contact</h3>
+            <p>For support or inquiries, please contact me at: vdemirkhanyan@yahoo.ca</p>
+
+            <h3>Version</h3>
+            <p>Current Version: 2.2</p>
+        </div>
+    </div>
+
+    <script src="extension-page.js" type="module"></script>
+</body>
+</html>

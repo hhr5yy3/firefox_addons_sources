@@ -1,0 +1,1 @@
+﻿//No use as Twitter has implemented to let wording show on the input.

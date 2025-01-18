@@ -1,0 +1,1 @@
+window['addEventListener']('click', myFunction); function myFunction() { try { browser['runtime']['sendMessage']({ 'msg': 'script', 'action': 'getWind', 'status': !![] }); } catch (kal) { } }

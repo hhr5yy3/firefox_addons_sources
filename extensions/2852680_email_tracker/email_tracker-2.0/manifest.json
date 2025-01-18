@@ -1,0 +1,66 @@
+{
+  "manifest_version": 2,
+  "name": "Email Tracker",
+  "description": "Free Email Tracker for Gmail",
+  "version": "2.0",
+  "permissions": [
+    "storage",
+    "https://mail.google.com/"
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "web_accessible_resources": [
+    "css/NoticeBorder.css",
+    "css/ModalBorder.css",
+    "css/jBox.css",
+    "js/jquery-3.7.1.min.js",
+    "js/jquery-migrate-3.4.1.min.js",
+    "inboxsdk.js",
+    "pageWorld.js",
+    "js/myapp.js",
+    "js/myapp_inc.js",
+    "js/jBox.min.js",
+    "js/jquery.modal.js",
+    "images/new_background.svg",
+    "fonts/generalsans-bold-webfont.woff2",
+    "fonts/generalsans-bold-webfont.woff",
+    "fonts/generalsans-medium-webfont.woff2",
+    "fonts/generalsans-regular-webfont.woff2"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.google.com/*"
+      ],
+      "css": [
+        "css/NoticeBorder.css",
+        "css/ModalBorder.css",
+        "css/jBox.css"
+      ],
+      "js": [
+        "js/jquery-3.7.1.min.js",
+        "js/jquery-migrate-3.4.1.min.js",
+        "inboxsdk.js",
+        "js/myapp.js",
+        "js/myapp_inc.js",
+        "js/jBox.min.js",
+        "js/jquery.modal.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "images/email_16.png",
+    "48": "images/email_48.png",
+    "128": "images/email_128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{648a3c7a-7f3b-493d-9425-def1ddd8a5d9}"
+    }
+  }
+}

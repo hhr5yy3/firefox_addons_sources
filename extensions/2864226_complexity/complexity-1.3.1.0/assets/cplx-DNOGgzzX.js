@@ -1,0 +1,1 @@
+import{u as n}from"./cplx-wwbq-DDb.js";import{c as t,a as i}from"./cplx-B814hFp-.js";var a=n("window"),s=t("window",e=>a.postMessage(e));a.onMessage(e=>{"type"in e&&"transactionID"in e?s.endTransaction(e.transactionID):s.handleMessage(e)});function c(e){a.setNamespace(e),a.enable()}var{sendMessage:p,onMessage:d}=s;i(s);export{c as a,d as o,p as s};

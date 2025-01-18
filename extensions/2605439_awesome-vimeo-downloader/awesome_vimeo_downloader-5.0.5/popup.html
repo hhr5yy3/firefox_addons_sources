@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Download Naver videos</title>
+	<link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="visit_pbion" class="openurl" data-url="">
+				<img src="img/logo.svg" style="width: 36px;cursor: pointer;">
+			</div>
+			<div style="width: 240px">
+				<div class="fit _text_extName" data-size="18">
+				</div>
+				<div class="copyright">©
+					<span class="_text_by">
+					</span>
+					<span id="domain_copyright">
+					</span>
+				</div>
+			</div>
+			<div class="openmodal" data-for="languages" title="Change language">
+				<img src="img/language.svg" style="width: 24px;cursor: pointer;">
+			</div>
+			<div class="openmodal" data-for="settings" title="settings">
+				<img src="img/settings.svg" style="width: 24px;cursor: pointer;">
+			</div>
+			<div class="openmodal" data-for="info" title="how to use">
+				<img src="img/info.svg" style="width: 24px;cursor: pointer;">
+			</div>
+		</div>
+		<div>
+			<textarea id="template_video" style="display: none;">
+				<div>
+					<div class="fullsize" style="display: none;">
+					</div>
+					<div data-url="{link}" class="video" style="background-image: url('{background}');background-size: contain;background-repeat: no-repeat;background-color: #333;background-position: center;">
+						<div class="expand" data-img="{background}">
+							<img src="img/expand.svg">
+						</div>
+						<div class="focus" style="display: none;">
+							<img src="img/focus.svg">
+						</div>
+						<div class="title">
+							<a target="_blank" href="{link}#pbion" title="{link}">{title}</a>
+						</div>
+						<div class="links">{links}</div>
+						<div class="thumbnail">
+							<a target="_blank" href="https://{domain}/{lang}/get-youtube-thumbnail.html#data={thumbnail_data}" title="Download Thumbnail">
+								<img src="img/thumbnail.svg">
+							</a>
+						</div>
+					</div>
+				</div>
+			</textarea>
+			<textarea id="template_link" style="display: none;">
+				<div class="icon">
+					<a target="_blank" href="http://{domain}/{lang}/{slug}.html#data={json}" title="Download video {quality}">{icon}</a>
+				</div>
+			</textarea>
+		</div>
+		<div>
+			<div id="loading" style="position: fixed;top: 0;left:0;width: 100%;text-align: center;z-index: 9999;background: rgba(0,0,0,0.8);padding: 1px;">
+				<div class="loading">
+					<div>
+					</div>
+					<div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="scroll">
+			<div>
+				<div class="vertical searchbox">
+					<div id="clearkeyword" title="Clear keyword">
+						<img src="img/replay.svg" style="width:16px;cursor: pointer;">
+					</div>
+					<div>
+						<input type="text" id="keyword" placeholder="🤔 Enter keyword" style="width: 250px" title="Would you like a suggestion? Please click here">
+					</div>
+					<div id="search" class="btn" title="Quick search" style="position: absolute;top:3px;right: 2px;">
+						<img src="img/loupe.svg" style="width:24px;height: 24px;position: absolute;top:2px;left: 2px;">
+						<span style="margin-left: 20px;" class="_text_search">
+						</span>
+					</div>
+					<div id="suggestqueries">
+					</div>
+					<div id="closesuggest">
+						<img src="img/remove.svg">
+					</div>
+				</div>
+			</div>
+			<div>
+				<p>
+					<span style="color: blue">❝</span>
+					<span class="_text_pin">
+					</span>
+					<span style="color: blue">❞</span>
+				</p>
+				<div id="permissions" style="margin: 1em 0;display: none;">
+					<p class="notice">❓⚠️
+						<span class="_text_permissions">
+						</span>
+					</p>
+					<div data-action="permissions" class="iconbuttons btn" title="Reset permissions" style="position: relative;display: inline-block;">
+						<img src="img/permissions.svg" style="width:22px;height: 22px;position: absolute;top:2px;left: 2px;">
+						<span style="margin-left: 20px;color: blue" class="_text_allow">
+						</span>
+					</div>
+				</div>
+				<div id="only" style="margin: 1em 0;display: none;">
+					<p class="notice">
+						<span class="_text_only">
+						</span>
+					</p>
+					<div class="openurl btn visit_site" data-url="" title="Visit" style="position: relative;display: inline-block;">
+						<img src="img/hand-click.svg" style="width:22px;height: 22px;position: absolute;top:2px;left: 2px;">
+						<span style="margin-left: 20px;" class="_text_open">
+						</span>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div id="videos">
+					<div style="text-align: right;">
+						<div data-action="eraser" title="Eraser" class="iconbuttons">
+							<img src="img/eraser.svg">
+						</div>
+					</div>
+					<div id="videos1">
+					</div>
+					<div id="videos2">
+					</div>
+					<div id="pages" style="display: none;">
+						<div id="prev" data-action="getData" data-page="1" title="Previous page" class="pagebutton">
+							<img src="img/next.svg" style="transform: rotate(180deg);">
+						</div>
+						<div id="next" data-action="getData" data-page="2" title="Next page" class="pagebutton">
+							<img src="img/next.svg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="bn">
+			</div>
+			<div>
+				<img src="img/logo_pbion.png" style="width: 50%;">
+			</div>
+			<div>
+				<div class="vertical" style="margin-top: 10px;display: none;">
+					<div>
+						<img src="img/vote.svg" style="height: 24px;">
+					</div>
+					<div>Rate me 5 stars</div>
+					<div class="shorturl" data-shorturl="ncdor" style="color: gold;font-size: 24px;margin: 0 10px 0 10px">
+						<span class="star" data-star="1">★</span>
+						<span class="star" data-star="2">★</span>
+						<span class="star" data-star="3">★</span>
+						<span class="star" data-star="4">★</span>
+						<span class="star" data-star="5">★</span>
+					</div>
+				</div>
+			</div>
+			<div id="screen">
+			</div>
+		</div>
+		<div id="menu">
+			<div class="btn button-primary downloadswindow" style="position: relative;display: none;" title="Downloads window">
+				<img src="img/download-tap.svg" style="width:24px;position: absolute;top:2px;left: 2px;">
+				<span style="margin-left: 18px;">Downloads</span>
+			</div>
+			<div class="btn button-primary openmodal" data-for="info" style="position: relative;width: 140px;" title="How to use">
+				<img src="img/application.svg" style="width:24px;position: absolute;top:2px;left: 2px;">
+				<span style="padding-left: 25px;" data-size="12" class="fit _text_howtouse">
+				</span>
+			</div>
+			<div class="openurl btn visit_site" data-url="" title="Visit" style="position: relative;width: 125px;">
+				<img src="img/hand-click.svg" style="width:26px;height: 26px;position: absolute;top:2px;left: 2px;">
+				<span style="padding-left: 25px;" data-size="12" class="fit _text_open">
+				</span>
+			</div>
+			<div id="contact_us" class="btn openurl" data-url="" title="feedback" style="position: relative;width: 120px;">
+				<img src="img/conversation.svg" style="width:24px;height: 24px;position: absolute;top:2px;left: 2px;">
+				<span style="padding-left: 25px;" data-size="12" class="fit _text_feedback">
+				</span>
+			</div>
+		</div>
+		<div>
+			<div class="modal autoclose" id="modal_info">
+				<div class="modal_content radius">
+					<p style="font-size: 24px;font-weight: bold;line-height: 1.2em" class="_text_howtouse"></p>
+					<div style="text-align: left;font-size: 18px;">
+						<ol>
+							<li class="_text_open">
+							</li>
+							<li class="_text_how2">
+							</li>
+							<li class="_text_how3">
+							</li>
+							<li class="_text_how4">
+							</li>
+							<li class="_text_how5">
+							</li>
+							<li class="_text_how6">
+							</li>
+						</ol>
+					</div>
+					<div class="vertical">
+						<div class="btn close">
+							<span class="_text_close">
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="modal" id="modal_settings">
+				<div class="modal_content radius">
+					<p style="font-size: 18px;font-weight: bold;line-height: 1.2em" class="_text_settings"></p>
+					<div class="settings">
+						<div class="settingonoff">
+							<span class="_text_autorun">
+							</span>
+						</div>
+						<div class="settingonoff" style="text-align: right;">
+							<div class="setting_value vertical" data-setting="autorun" data-value="on">
+								<div class="_text_yes">
+								</div>
+								<div class="checkbox">
+									<img src="img/checked.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="autorun" data-value="off">
+								<div class="_text_no">
+								</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+						</div>
+						<div class="settingonoff">
+							<span class="_text_oneclick">
+							</span>
+						</div>
+						<div class="settingonoff" style="text-align: right;">
+							<div class="setting_value vertical" data-setting="download1click" data-value="on">
+								<div class="_text_yes">
+								</div>
+								<div class="checkbox">
+									<img src="img/checked.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="download1click" data-value="off">
+								<div class="_text_no">
+								</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+						</div>
+						<div class="settingonoff">
+							<span class="_text_autoselect">
+							</span>
+						</div>
+						<div class="settingonoff" style="text-align: right;">
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="max">
+								<div class="_text_max">
+								</div>
+								<div class="checkbox">
+									<img src="img/checked.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="1440p">
+								<div>1440p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="1080p">
+								<div>1080p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="960p">
+								<div>960p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="840p">
+								<div>840p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="720p">
+								<div>720p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="640p">
+								<div>640p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="540p">
+								<div>540p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="480p">
+								<div>480p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="360p">
+								<div>360p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="240p">
+								<div>240p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="144p">
+								<div>144p</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+							<div class="setting_value vertical" data-setting="automaticselection" data-value="gif">
+								<div>GIF</div>
+								<div class="checkbox">
+									<img src="img/close.svg">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="vertical">
+						<div class="btn button-primary close">
+							<span class="_text_apply">
+							</span>
+						</div>
+						<div class="btn close">
+							<span class="_text_close">
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="modal autoclose" id="modal_languages">
+				<div class="modal_content radius">
+					<p style="font-size: 18px;font-weight: bold;line-height: 1.2em" class="_text_changelanguage"></p>
+					<div id="language_list" style="height: 300px;overflow: auto;">
+					</div>
+					<div class="vertical">
+						<div class="btn close">
+							<span class="_text_close">
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="_text_expire" class="_text_expire" style="display: none;">
+			</div>
+		</div>
+		<div id="log" style="display:none;position:fixed;bottom:0;left:0;width:100%;">
+			<textarea id="console">
+			</textarea>
+		</div>
+	</div>
+	<script type="text/javascript" src="popup.js"></script>
+</body>
+
+</html>

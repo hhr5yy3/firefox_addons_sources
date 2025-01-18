@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+	--main-font-color: rgb(53, 53, 53);
+	--bg-color: white;
+	
+	--input-bg-color: white;
+	--input-font-color: ;
+
+	--toogle-btn-color: white;
+	--toogle-cursor: pointer;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--main-font-color: #efefef;
+		--bg-color: #2b2a33;
+		
+		--input-bg-color: #42414d;
+		--input-ph-font-color: white;
+	}
+}
+
+::placeholder {
+	color: initial;
+	color: var(--input-ph-font-color);
+}
+
+body {
+	width: 550px;
+
+	font-family: 'Montserrat', sans-serif;
+	background-color: var(--bg-color);
+
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	display: flex;
+	align-items: center;
+}
+
+.h1 {
+	font-size: 1.5rem;
+	font-weight: 800;
+
+	background: -webkit-linear-gradient(#EF4765, #FF9A5A);
+
+	background-clip: text;
+	-webkit-background-clip: text;
+
+	-webkit-text-fill-color: transparent;
+}
+
+.toggle {
+	display: flex;
+
+	align-items: center;
+	justify-content: end;
+	margin-left: auto;
+}
+
+.toggle > p {
+	margin-right: 0.5rem;
+	color: var(--main-font-color);
+}
+
+
+/* #region Toggle */
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: var(--toogle-cursor);
+	inset: 0; /* top: 0; left: 0; right: 0; bottom: 0; */
+	background: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.slider::after {
+	opacity: 0;
+	position: absolute;
+	content: "";
+	cursor: var(--toogle-cursor);
+	inset: 0;
+	background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+	transition: .4s;
+	-webkit-transition: .4s;
+}
+
+input:checked + .slider::after {
+	opacity: 1;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: var(--toogle-btn-color);
+	transition: .4s;
+	-webkit-transition: .4s;
+	z-index: 1;
+}
+
+input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider::after,
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
+}
+
+/* #endregion */
+
+.indications {
+	font-size: 0.875rem;
+	color: var(--main-font-color);
+	text-justify: inter-word;
+}
+
+kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+    color: #333;
+    display: inline-block;
+    font-size: .85em;
+    font-weight: 700;
+    line-height: 1;
+    padding: 2px 4px;
+    white-space: nowrap;
+}
+
+textarea {
+	width: calc(100% - 15px);
+	padding: 4px;
+	
+	border: 3px solid rgba(239, 71, 101, 0.5);
+	border-radius: 10px;
+	background-color: var(--input-bg-color);
+
+	color: var(--main-font-color);
+	font-family: 'Montserrat', sans-serif;
+
+	transition: box-shadow .2s ease-in-out;
+}
+
+textarea:focus {
+	box-shadow: 
+		0 0 .25rem rgba(0, 0, 0, 0.5), 
+		-.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), 
+		.125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+	outline: 3px solid transparent;
+}
+
+#open-btn {
+	width: 100px;
+	
+	margin-left: auto;
+	margin-top: 0.75rem;
+	margin-bottom: 0.25rem;
+	padding: 0 1rem;
+	
+	cursor: pointer;
+	
+	background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+
+	color: #FFFFFF;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 2.5;
+	font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	
+	border: 0;
+	border-radius: 12px;
+	
+	outline: transparent;
+	transition: box-shadow .2s ease-in-out;
+}
+
+#open-btn:hover {
+	box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}

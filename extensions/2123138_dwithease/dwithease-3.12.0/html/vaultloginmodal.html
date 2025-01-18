@@ -1,0 +1,28 @@
+<div class="login-modal dwe-login-modal customModal hidden" ng-class="theme == 'darkmode' ? 'md-darkmode-theme' : ''" tabindex="-1" role="dialog">
+    <div class="login-modal-dialog" role="document">
+        <div class="login-modal-content">
+            <div class="login-modal-header">
+                <h2 class="login-modal-title">Login to open vault</span></h2>
+            </div>
+            <div class="login-modal-body">
+                <form id="vault-login-form" class="dwe-login-form" validate-submit="login()">
+                    <div class="form-group">
+                        <md-input-container floatPlaceholder="never" class="md-block login-modal-container">
+                            <label i18n-content="vault_password" class="md-container-ignore" for="password"></label>
+                            <input mdInput type="password" aria-label="password" name="password" id="password" minlength="8" ng-keyup="onepassModalLogin.onKeyUp($event)" />
+                            <h3 class="caps-warning" i18n-content="vault_warn_capslock"></h3>
+                            <md-icon tabindex="-1" id="loginmodal-show-password" md-font-set="material-icons"
+                                ng-show="!onepassModalLogin.isEmpty" ng-click="onepassModalLogin.showPassword($event)"
+                                role="img">visibility</md-icon>
+                            <p ng-if="user.passwordHint" class="master-password-hint hidden"><span i18n-content="vault_password_hint"></span>: {{ user.passwordHint }}</p>
+                        </md-input-container>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="md-button md-raised close-modal-btn">Close</button>
+                        <button type="submit" class="md-button md-raised md-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

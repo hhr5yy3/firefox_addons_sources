@@ -1,0 +1,1 @@
+!function(){const s=new BroadcastChannel("jokoPrestaShopJavascriptObjectChannel");window.prestashop?s.postMessage(window.prestashop.cart):s.postMessage(void 0)}();

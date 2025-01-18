@@ -1,0 +1,1 @@
+import{c as e}from"./gift-DYdWkef2.js";import{b as s,o as r,c as a,i as p}from"./storeTypes-CGrbvTi_.js";const m=s({__name:"OpenSettingsButton",setup(c){const t=e(),o=()=>{t.push("/action-popup/SharedOptions")};return(n,i)=>(r(),a("button",{class:"btn btn-secondary rounded-2xl w-full mt-auto",onClick:o},p(n.$t("openSharedSettings")),1))}});export{m as _};

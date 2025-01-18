@@ -1,0 +1,359 @@
+/**
+    * Please read wiki article 'CSS Variables and Themes' before editing this file.
+    *
+    * All variable names are based on the design system and serve the purpose of bridging between the design and
+    * development teams. Other variables should be put elsewhere.
+    *
+    * Variable format: --type-purpose-color-importance-state, e.g. --text-body1-black-high-hover. Not all parts need
+    * to be added for all variables, and some parts may have multiple words (e.g. `line-height`).
+    *
+    * When styling, always use the most specific variable, e.g. if you are styling an element which should have
+    * body (1) text, use `--text-color-high` rather than `--text-color-white-high` so that it changes with
+    * the theme.
+    *
+    * The variables at the bottom will update their value when switching theme, and the attributes can be assigned
+    * to the body, or any element within it to give that element and its children a different theme, e.g. to demo
+    * themes, or for sections which are inverted compared to the rest of the theme (accents, etc.).
+    *
+    * Themes can be forced so that they are always on using the `-forced` suffix, for example the nav bar is always
+    * dark mode.
+    *
+    * Color must be in RGBA format. e.g. rgba(0, 0, 0, 1)
+    *
+    * Custom Alpha Level can be added to override the alpha level when required.
+    * (ONLY for Label, icon, avatar, navbar, secondary, surface, stroke)
+    * Custom alpha var name must be starts with color var {type}. e.g. --label-black: rgba(0, 0, 0, var(--label-alpha, 1))
+    */
+
+/*** Section 1: constants that will not vary by theme, but may only be used by one theme at the moment ***/
+
+body.mega-pm-body,
+.mega-pm-content,
+.mega.pm-content * {
+
+    /* font family */
+    --font-family-main: "Inter", sans-serif;
+    --font-family-heading: "Poppins", sans-serif;
+    --font-family-password: "Work Sans", sans-serif;
+
+    /* font weight */
+    --font-weight-bold: 700;
+    --font-weight-semibold: 600;
+    --font-weight-medium: 500;
+    --font-weight-regular: 400;
+
+    /* line height */
+    --font-line-height-heading: 1.2;
+    --font-line-height-text: 1.5;
+
+    /* letter-spacing */
+    --font-letter-spacing-body: 0%;
+    --font-letter-spacing-caption: 2%;
+
+    /* font size */
+    --font-size-1: 10px;
+    --font-size-2: 12px;
+    --font-size-3: 14px;
+    --font-size-4: 16px;
+    --font-size-5: 18px;
+    --font-size-6: 20px;
+    --font-size-7: 24px;
+    --font-size-8: 32px;
+    --font-size-9: 40px;
+    --font-size-10: 48px;
+    --font-size-11: 60px;
+
+    /* font */
+    --font-heading-h1: var(--font-weight-bold) var(--font-size-6)/var(--font-line-height-heading) var(--font-family-heading);
+    --font-heading-h2: var(--font-weight-bold) var(--font-size-5)/var(--font-line-height-heading) var(--font-family-main);
+    --font-heading-h3: var(--font-weight-semibold) var(--font-size-5)/var(--font-line-height-heading) var(--font-family-main);
+
+    --font-copy-regular: var(--font-weight-regular) var(--font-size-4)/var(--font-line-height-text) var(--font-family-main);
+    --font-copy-semibold: var(--font-weight-semibold) var(--font-size-4)/var(--font-line-height-text) var(--font-family-main);
+    --font-copy-bold: var(--font-weight-bold) var(--font-size-4)/var(--font-line-height-text) var(--font-family-main);
+
+    --font-caption-large-regular: var(--font-weight-regular) var(--font-size-3)/var(--font-line-height-text) var(--font-family-main);
+    --font-caption-large-semibold: var(--font-weight-semibold) var(--font-size-3)/var(--font-line-height-text) var(--font-family-main);
+    --font-caption-large-bold: var(--font-weight-bold) var(--font-size-3)/var(--font-line-height-text) var(--font-family-main);
+
+    --font-caption-small-regular: var(--font-weight-regular) var(--font-size-2)/var(--font-line-height-heading) var(--font-family-main);
+    --font-caption-small-semibold: var(--font-weight-semibold) var(--font-size-2)/var(--font-line-height-heading) var(--font-family-main);
+    --font-caption-small-bold: var(--font-weight-bold) var(--font-size-2)/var(--font-line-height-heading) var(--font-family-main);
+
+    --font-link-large-regular: var(--font-weight-regular) var(--font-size-4)/var(--font-line-height-text) var(--font-family-main);
+    --font-link-large-semibold: var(--font-weight-semibold) var(--font-size-4)/var(--font-line-height-text) var(--font-family-main);
+    --font-link-large-bold: var(--font-weight-bold) var(--font-size-4)/var(--font-line-height-text) var(--font-family-main);
+
+    --font-link-small-regular: var(--font-weight-regular) var(--font-size-3)/var(--font-line-height-text) var(--font-family-main);
+    --font-link-small-semibold: var(--font-weight-semibold) var(--font-size-3)/var(--font-line-height-text) var(--font-family-main);
+    --font-link-small-bold: var(--font-weight-bold) var(--font-size-3)/var(--font-line-height-text) var(--font-family-main);
+
+    --font-label-bold: var(--font-weight-semibold) var(--font-size-4)/var(--font-line-height-heading) var(--font-family-main);
+    --font-label-underline: var(--font-weight-semibold) var(--font-size-4)/var(--font-line-height-heading) var(--font-family-main);
+    --font-label-semibold: var(--font-weight-semibold) var(--font-size-3)/var(--font-line-height-heading) var(--font-family-main);
+
+    --font-input-regular: var(--font-weight-regular) var(--font-size-4)/var(--font-line-height-heading) var(--font-family-main);
+    --font-button-label: var(--font-weight-semibold) var(--font-size-4)/var(--font-line-height-heading) var(--font-family-main);
+    --font-password-preview: var(--font-weight-bold) var(--font-size-6)/var(--font-line-height-text) var(--font-family-password);
+    --font-input-password: var(--font-weight-medium) var(--font-size-4)/var(--font-line-height-text) var(--font-family-password);
+
+    /* radius */
+    --border-radius-circle: 50%;
+    --border-radius-extra-large: 24px;
+    --border-radius-large: 16px;
+    --border-radius-medium: 8px;
+    --border-radius-small: 4px;
+    --border-radius-extra-small: 2px;
+
+    /* blur backgrounds */
+
+    /* color */
+    --background-blur: rgba(0, 0, 0, 0.2);
+    --color-indicator-yellow: rgb(247, 163, 8);
+    --color-indicator-green: rgb(9, 191, 91);
+    --color-indicator-blue: rgb(5, 186, 241);
+
+    /* effects */
+    --background-blur-subtle: blur(2px);
+    --background-blur-medium: blur(4px);
+    --background-blur-strong: blur(8px);
+
+    --icon-size-24: 24px;
+    --icon-size-32: 32px;
+    --icon-size-80: 80px;
+
+    --max-width: 382px;
+    --notification-alpha: 1;
+    --support-alpha: 1;
+    --control-alpha: 1;
+    --link-alpha: 1;
+    --outline: 4px solid var(--field-outline);
+
+    /* Scrollbar */
+    --transition-bg-color: background-color 200ms ease-in-out;
+    --transition-opacity: opacity 200ms ease-in-out;
+
+    /* favicons(site icons) */
+    --favicon-text-color: rgba(48, 50, 51, 1);
+
+    /* Initial loading screen bars fill */
+    --progress-bar-fill4: rgba(29, 29, 29, 1);
+}
+
+body.mega-pm-body.theme-light,
+.mega-pm-content.theme-light,
+.mega-pm-content.theme-light * {
+    /* background */
+    --page-background: rgba(255, 255, 255, 1);
+
+    /* borders */
+    --border-interactive: rgba(221, 20, 5, 1);
+    --border-strong: rgba(216, 217, 219, 1);
+    --border-strong-selected: rgba(4, 16, 30, 1);
+    --border-subtle: rgba(243, 244, 244, 1);
+    --border-subtle-selected: rgba(4, 6, 30, 1);
+    --border-disabled: rgba(216, 217, 219, 1);
+
+    /* colors */
+    --color-indicator-magenta: rgba(226, 72, 194);
+    --color-indicator-indigo: rgba(71, 126, 247);
+
+    /* texts */
+    --text-primary: rgba(48, 50, 51, 1);
+    --text-secondary: rgba(97, 99, 102, 1);
+    --text-accent: rgba(4, 16, 30, 1);
+    --text-placeholder: rgba(97, 99, 102, 1);
+    --text-inverse-accent: rgba(250, 250, 251, 1);
+    --text-on-color: rgba(250, 250, 250, 1);
+    --text-on-color-disabled: rgba(169, 171, 173, 1);
+    --text-error: rgba(227, 27, 87, 1);
+    --text-success: rgba(0, 124, 62, 1);
+    --text-info: rgba(0, 120, 164, 1);
+    --text-warning: rgba(181, 84, 7, 1);
+    --text-inverse: rgba(250, 250, 250, 1);
+    --text-disabled: rgba(193, 194, 196, 1);
+
+    /* links */
+    --link-primary: rgba(44, 91, 235, 1);
+    --link-inverse: rgba(105, 163, 251, 1);
+    --link-visited: rgba(35, 55, 131, 1);
+
+    /* buttons */
+    --button-primary: rgba(4, 16, 30, 1);
+    --button-primary-pressed: rgba(83, 91, 101, 1);
+    --button-primary-hover: rgba(57, 66, 78, 1);
+
+    --button-brand: rgba(221, 20, 5, 1);
+    --button-brand-pressed: rgba(147, 23, 21, 1);
+
+    --button-secondary: rgba(243, 244, 244, 1);
+    --button-secondary-pressed: rgba(193, 194, 196, 1);
+    --button-secondary-hover: rgba(216, 217, 219, 1);
+
+    --button-outline: rgba(4, 16, 30, 1);
+    --button-outline-pressed: rgba(83, 91, 101, 1);
+
+    --button-error: rgba(227, 27, 87, 1);
+    --button-error-pressed: rgba(161, 16, 69, 1);
+
+    --button-disabled: rgba(0, 0, 0, 0.1);
+
+    /* toasts */
+    --toast-background: rgba(73, 74, 77, var(--surface-alpha, 1));
+
+    /* shadows */
+    --shadow-medium: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    --shadow-strong: 0 8px 16 rgba(0, 0, 0, 0.15);
+
+    /* surfaces */
+
+    --surface-1: rgba(250, 250, 250, var(--surface-alpha, 1));
+    --surface-2: rgba(243, 244, 244, var(--surface-alpha, 1));
+    --surface-3: rgba(216, 217, 219, var(--surface-alpha, 1));
+
+    /* notifications */
+    --notification-success: rgba(207, 252, 219, var(--notification-alpha, 1));
+    --notification-warning: rgba(251, 242, 201, var(--notification-alpha, 1));
+    --notification-error: rgba(255, 228, 232, var(--notification-alpha, 1));
+    --notification-info: rgba(223, 244, 254, var(--notification-alpha, 1));
+
+    /* supports */
+    --support-success: rgba(0, 155, 72, var(--support-alpha, 1));
+    --support-warning: rgba(235, 159, 20, var(--support-alpha, 1));
+    --support-error: rgba(227, 27, 87, var(--support-alpha, 1));
+    --support-info: rgba(5, 186, 241, var(--support-alpha, 1));
+
+    /* icons */
+    --icon-primary: rgba(48, 50, 51, 1);
+    --icon-secondary: rgba(97, 99, 102, 1);
+    --icon-accent: rgba(4, 16, 30, 1);
+    --icon-inverse-accent: rgba(250, 250, 251, 1);
+    --icon-on-color: rgba(250, 250, 250, 1);
+    --icon-on-color-disabled: rgba(169, 171, 173, 1);
+    --icon-inverse: rgba(250, 250, 250, 1);
+    --icon-disabled: rgba(193, 194, 196, 1);
+    --icon-rest: rgba(51, 51, 51, var(--icon-alpha, 0.7));
+    --icon-inactive: rgba(51, 51, 51, var(--icon-alpha, 0.3));
+    --icon-active: rgba(51, 51, 51, var(--icon-alpha, 1));
+
+    /* controls */
+    --selection-control: rgba(4, 16, 30, var(--control-alpha, 1));
+
+    /* Outline */
+    --field-outline: rgba(189, 217, 255, 1);
+
+    /* scroll bar */
+    --scroll-bar-background: rgba(0, 0, 0, 0.1);
+    --scroll-bar-handle: rgba(0, 0, 0, 1);
+
+    /* Settings */
+    --settings-page-background: var(--surface-2);
+    --settings-list-background: var(--page-background);
+}
+
+body.mega-pm-body.theme-dark,
+.mega-pm-content.theme-dark,
+.mega-pm-content.theme-dark * {
+    --page-background: rgba(24, 25, 26, 1);
+
+    /* borders */
+
+    --border-interactive: rgba(251, 99, 97, 1);
+    --border-strong: rgba(97, 99, 102, 1);
+    --border-strong-selected: rgba(244, 244, 245, 1);
+    --border-subtle: rgba(48, 50, 51, 1);
+    --border-subtle-selected: rgba(244, 244, 245, 1);
+    --border-disabled: rgba(73, 74, 77, 1);
+
+    /* colors */
+    --color-indicator-magenta: rgba(244, 168, 227, 1);
+    --color-indicator-indigo: rgba(105, 163, 251, 1);
+
+    /* texts */
+    --text-primary: rgba(243, 244, 244, 1);
+    --text-secondary: rgba(169, 171, 173, 1);
+    --text-accent: rgba(250, 250, 251, 1);
+    --text-placeholder: rgba(193, 194, 196, 1);
+    --text-inverse-accent: rgba(4, 16, 30, 1);
+    --text-on-color: rgba(250, 250, 250, 1);
+    --text-on-color-disabled: rgba(145, 147, 151, 1);
+    --text-error: rgba(253, 111, 144, 1);
+    --text-success: rgba(9, 191, 91, 1);
+    --text-info: rgba(5, 186, 241, 1);
+    --text-warning: rgba(220, 121, 2, 1);
+    --text-inverse: rgba(48, 50, 51, 1);
+    --text-disabled: rgba(121, 124, 128, 1);
+
+    /* link */
+    --link-primary: rgba(105, 163, 251, 1);
+    --link-inverse: rgba(44, 91, 235, 1);
+    --link-visited: rgba(217, 232, 255, 1);
+
+    /* buttons */
+    --button-primary: rgba(244, 244, 245, 1);
+    --button-primary-pressed: rgba(189, 192, 196, 1);
+    --button-primary-hover: rgba(163, 166, 173, 1);
+
+    --button-brand: rgba(242, 52, 51, 1);
+    --button-brand-pressed: rgba(253, 153, 151, 1);
+
+    --button-secondary: rgba(73, 74, 77, 1);
+    --button-secondary-pressed: rgba(121, 124, 128, 1);
+    --button-secondary-hover: rgba(97, 99, 102, 1);
+
+    --button-outline: rgba(244, 244, 245, 1);
+    --button-outline-pressed: rgba(189, 192, 196, 1);
+
+    --button-error: rgba(246, 61, 107, 1);
+    --button-error-pressed: rgba(254, 163, 181, 1);
+
+    --button-disabled: rgba(255, 255, 255, 0.1);
+
+    /* toasts */
+    --toast-background: rgba(193, 194, 196, var(--surface-alpha, 1));
+
+    /* shadows */
+    --shadow-medium: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    --shadow-strong: 0 8px 16 rgba(0, 0, 0, 0.15);
+
+    /* surfaces */
+    --surface-1: rgb(48, 50, 51, var(--surface-alpha, 1));
+    --surface-2: rgb(73, 74, 77, var(--surface-alpha, 1));
+    --surface-3: rgb(97, 99, 102, var(--surface-alpha, 1));
+
+    /* icons */
+    --icon-primary: rgba(243, 244, 244, 1);
+    --icon-secondary: rgba(169, 171, 173, 1);
+    --icon-accent: rgba(250, 250, 251, 1);
+    --icon-inverse-accent: rgba(4, 16, 30, 1);
+    --icon-on-color: rgba(250, 250, 250, 1);
+    --icon-on-color-disabled: rgba(193, 194, 196, 1);
+    --icon-inverse: rgba(48, 50, 51, 1);
+    --icon-disabled: rgba(121, 124, 128, 1);
+
+    /* notifications */
+    --notification-success: rgba(1, 83, 43, var(--notification-alpha, 1));
+    --notification-warning: rgba(251, 242, 201, var(--notification-alpha, 1));
+    --notification-error: rgba(137, 18, 64, var(--notification-alpha, 1));
+    --notification-info: rgba(8, 83, 113, var(--notification-alpha, 1));
+
+    /* supports */
+    --support-success: rgba(9, 191, 91, var(--support-alpha, 1));
+    --support-warning: rgba(235, 159, 20, var(--support-alpha, 1));
+    --support-error: rgba(253, 111, 144, var(--support-alpha, 1));
+    --support-info: rgba(0, 150, 201, var(--support-alpha, 1));
+
+    /* controls */
+    --selection-control: rgba(244, 244, 245, var(--control-alpha, 1));
+
+    /* Outline */
+    --field-outline: rgb(38, 71, 208);
+
+    /* scroll bar */
+    --scroll-bar-background: rgba(0, 0, 0, 0.2);
+    --scroll-bar-handle: rgba(255, 255, 255, 1);
+
+    /* Settings */
+    --settings-page-background: var(--page-background);
+    --settings-list-background: var(--surface-1);
+}

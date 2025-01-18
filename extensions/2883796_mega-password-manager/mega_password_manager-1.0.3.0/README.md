@@ -1,0 +1,3 @@
+MEGA Password Manager Extension
+MEGA provides robust cloud storage with convenient and powerful always-on privacy. MEGA believes in your right to privacy and provides you with the technology tools to protect it. We call it User Controlled Encryption (UCE), and it happens automatically.
+MEGA Password Manager extension is an addition to the MEGA ecosystem. It encrypts the Login credentials and securely store using the same mechanism followed in MEGA webclient. It also provides password auto generation. Once the extension is installed and if it contains the login credentials stored for a website then the details are autofilled in the login form.

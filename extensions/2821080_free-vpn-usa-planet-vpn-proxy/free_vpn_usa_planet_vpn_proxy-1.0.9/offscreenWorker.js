@@ -1,0 +1,1 @@
+onmessage=function(c){console.log("worker created by offscreen document received: ".concat(c.data)),fetch(c.data).then((function(){console.log("url fetched successfully")})).catch((function(e){console.log("during fetching: ".concat(c.data,", error occurred: ").concat(e))}))};

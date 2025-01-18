@@ -1,0 +1,53 @@
+{
+  "manifest_version": 2,
+  "name": "Eye Dropper",
+  "description": "Pick colors from any website.",
+  "version": "4.10.3.10",
+  "icons": {
+    "19": "icon/19.png",
+    "38": "icon/38.png",
+    "48": "icon/48.png",
+    "128": "icon/128.png"
+  },
+  "browser_action": {
+    "theme_icons": [
+      {
+        "light": "icon/light.svg",
+        "dark": "icon/dark.svg",
+        "size": 16
+      }
+    ],
+    "default_title": "Popup",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "web_accessible_resources": [
+    "edropper.js"
+  ],
+  "commands": {
+    "pick-from-webpage": {
+      "suggested_key": {
+        "default": "Alt+P"
+      },
+      "description": "Pick color from web page"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "prod@eyedropper.org"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "options.html"
+  }
+}

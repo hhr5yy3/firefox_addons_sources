@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Google Meet Balcão Virtual</title>
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css">
+		<style>
+			body {
+				font-family: "NunitoSans Regular", "Arial", sans-serif;
+				font-size: 0.8em;
+				color: #333;
+				font-weight: normal;
+				padding-left: 10px;
+				line-height:1.5;
+				background: #fff;
+			}
+			
+			.titulo{
+				font-weight: bold;				
+				font-size: 14px;
+				color: #333;
+			}
+			
+			#config {
+				color: gray;
+				font-size: 30px;
+				font-weight: bold;
+				position: absolute;
+				top: 10px;
+				right: 20px;
+			}
+			
+			.categorias{
+				display: flex;
+				align-items: center;
+				justify-content: left;
+				position: absolute;
+				top: 10px;
+				left: 30px;
+			}
+			
+			input {
+				background: #ebf0f3;
+				margin-left:15px;
+			}
+			
+			a {
+			  text-decoration: none;
+			  color: black;
+			}
+			
+			a.tip div {
+				background-color: #ddd;
+				border: 1px solid #aaa;
+				max-width: 200px;
+				text-align: center;
+				padding: 3px 5px;
+				margin: 0;
+				font-style: normal;
+				text-indent: 0;
+				color: #000;
+				display: inline-block;
+			}
+			
+			a.tip span {
+				display: none;
+				background-color: #fffff3;
+				opacity: 1;
+			}
+			
+			a.tip:hover span {				
+				display: inherit;
+				position: absolute;
+				z-index: 100;
+				pointer-events: none;
+				padding: 8px 10px;
+				line-height: 2;
+				text-indent: 0;
+				font-style: normal;
+				text-align:justify;		
+				max-width: 450px;				
+				overflow: visible;
+				font-size: .9em;
+				font-weight: normal;
+				color: #333;
+				border-left: 6px solid #3f92b7;
+				-webkit-border-radius: 5px;
+				border-radius: 5px;
+				-webkit-box-shadow: 1px 2px 6px rgba(0,0,0,0.3);
+				box-shadow: 1px 2px 6px rgba(0,0,0,0.3);
+			}			
+			
+			@keyframes pulse {
+				0% {
+					box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+				}
+				100% {
+					box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+				} 
+			}
+			
+			#novidade {
+				animation: pulse 2s infinite;
+				border-radius: 15px;
+				color: red;
+			}
+			
+		</style>		
+	</head>
+
+	<body>		
+		<form>
+			<span id="config">v.</span>
+			<nav class="categorias">
+				<div>
+					<span><img src="icons/google_logo.png"></img></span>
+				</div>
+			</nav>
+			<br>
+			<br>
+			<br>
+			<br>
+			<fieldset>
+				<div>
+					Nome da Unidade Judiciária:<input type="text" id="nm_orgao" placeholder="Ex: VT de Palhoça" size="60">
+				</div>
+			</fieldset>			
+			<fieldset>
+				<legend class="titulo"><span id="titulo_sala_1">Sala 1</span></legend>
+				<div>
+					Nome:<input type="text" id="nm_sala_1" placeholder="Sala 1">
+					<input type="checkbox" id="ck_sala_1_lock">Abrir sala
+					<a href="#" class="tip">
+						<i id="novidade" class="fas fa-question-circle"></i>
+						<span>Se marcado, autoriza automaticamente a entrada de qualquer pessoa na sala.</span>
+					</a>
+					
+				</div>
+				<br>
+				<div>
+					Link:&nbsp;&nbsp;<input type="text" id="lk_sala_1" placeholder="nenhum">					
+					<input type="checkbox" id="ck_sala_1_ring">Ligar Campainha
+					<a href="#" class="tip">
+						<i id="novidade" class="fas fa-question-circle"></i>
+						<span>Se marcado, quando uma pessoa entrar na sala uma campainha será acionada (como em uma ligação de telefone).</span>
+					</a>
+				</div>
+			</fieldset>
+			<br>
+			<fieldset>
+				<legend class="titulo"><span id="titulo_sala_2">Sala 2</span></legend>
+				<div>
+					Nome:<input type="text" id="nm_sala_2" placeholder="Sala 2">
+					<input type="checkbox" id="ck_sala_2_lock">Abrir sala
+				</div>
+				<br>
+				<div>
+					Link:&nbsp;&nbsp;<input type="text" id="lk_sala_2" placeholder="nenhum">
+					<input type="checkbox" id="ck_sala_2_ring">Ligar Campainha
+				</div>
+			</fieldset>
+			<br>
+			<fieldset>
+				<legend class="titulo"><span id="titulo_sala_3">Sala 3</span></legend>
+				<div>
+					Nome:<input type="text" id="nm_sala_3" placeholder="Sala 3">
+					<input type="checkbox" id="ck_sala_3_lock">Abrir sala
+				</div>
+				<br>
+				<div>
+					Link:&nbsp;&nbsp;<input type="text" id="lk_sala_3" placeholder="nenhum">
+					<input type="checkbox" id="ck_sala_3_ring">Ligar Campainha
+				</div>
+			</fieldset>
+			<br>
+			<fieldset>
+				<legend class="titulo"><span id="titulo_sala_4">Sala 4</span></legend>
+				<div>
+					Nome:<input type="text" id="nm_sala_4" placeholder="Sala 4">
+					<input type="checkbox" id="ck_sala_4_lock">Abrir sala
+				</div>
+				<br>
+				<div>
+					Link:&nbsp;&nbsp;<input type="text" id="lk_sala_4" placeholder="nenhum">
+					<input type="checkbox" id="ck_sala_4_ring">Ligar Campainha
+				</div>
+			</fieldset>
+			<br>
+			<fieldset>
+				<legend class="titulo"><span id="titulo_sala_5">Sala 5</span></legend>
+				<div>
+					Nome:<input type="text" id="nm_sala_5" placeholder="Sala 5">
+					<input type="checkbox" id="ck_sala_5_lock">Abrir sala
+				</div>
+				<br>
+				<div>
+					Link:&nbsp;&nbsp;<input type="text" id="lk_sala_5" placeholder="nenhum">
+					<input type="checkbox" id="ck_sala_5_ring">Ligar Campainha
+				</div>
+			</fieldset>	
+		</form>
+		<script src="options.js"></script>
+	</body>
+</html>

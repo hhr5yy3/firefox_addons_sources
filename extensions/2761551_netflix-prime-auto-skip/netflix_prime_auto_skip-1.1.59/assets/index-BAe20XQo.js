@@ -1,0 +1,1 @@
+import{c as e}from"./gift-DYdWkef2.js";import{b as t}from"./storeTypes-CGrbvTi_.js";const p=t({__name:"index",setup(o){return e().push("/options-page/SharedSettings"),(n,s)=>"You found my easter egg! 🐣"}});export{p as default};

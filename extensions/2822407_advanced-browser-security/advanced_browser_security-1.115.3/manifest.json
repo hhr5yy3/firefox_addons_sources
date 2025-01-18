@@ -1,0 +1,66 @@
+{
+  "manifest_version": 2,
+  "name": "Perception Point Advanced Browser Security",
+  "description": "Protect your browser against web threats, including malicious websites and downloads.",
+  "version": "1.115.3",
+  "permissions": [
+    "tabs",
+    "storage",
+    "webNavigation",
+    "nativeMessaging",
+    "downloads",
+    "notifications",
+    "activeTab",
+    "management",
+    "clipboardWrite",
+    "clipboardRead",
+    "identity",
+    "unlimitedStorage",
+    "proxy",
+    "webRequest",
+    "webRequestBlocking",
+    "scripting",
+    "cookies",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "env.js",
+      "scripts/background.js"
+    ]
+  },
+  "web_accessible_resources": [
+    "assets/*",
+    "react-pages/index.html"
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "96": "assets/icon96.png",
+    "128": "assets/icon128.png",
+    "256": "assets/icon256.png",
+    "512": "assets/icon512.png"
+  },
+  "devtools_page": "devtools.html",
+  "browser_action": {
+    "default_title": "Advanced Browser Security",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "19": "assets/icon19.png",
+      "32": "assets/icon32.png",
+      "38": "assets/icon38.png",
+      "48": "assets/icon48.png",
+      "72": "assets/icon72.png",
+      "128": "assets/icon128.png"
+    },
+    "default_popup": "react-pages/index.html?page=popup"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "advancedbrowsersecurityaddon@perception-point.io",
+      "strict_min_version": "91.1.0"
+    }
+  },
+  "content_scripts": []
+}

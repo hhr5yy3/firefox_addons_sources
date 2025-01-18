@@ -1,0 +1,62 @@
+body {font: normal 10pt Helvetica,Arial}
+body, div, ul, li {margin: 0; padding: 0; list-style: none}
+
+section {
+  padding: 5%;
+  line-height: 1.5em;
+  min-width: 18em;
+  min-height: 12em;
+}
+
+#q {
+  width: 98%;
+  display: block;
+}
+
+#search {
+  display: none;
+  line-height: 2.5em;
+}
+
+#filters {
+  margin:0.5em 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-item: baseline;
+}
+
+.filter-cn, .filter-nc,
+.filter-bw, .filter-nb,
+.filter-ew, .filter-ne {
+  margin: 0 0.3em 0.3em 0;
+  padding: 0.1em 0.8em;
+  background: #ccf;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.filter-nc,
+.filter-nb,
+.filter-ne {
+  background: #fcc;
+}
+
+.filter-cn::before,
+.filter-ew::before,
+.filter-ne::before {
+  content: "..."
+}
+.filter-nc::after,
+.filter-cn::after,
+.filter-bw::after,
+.filter-nb::after {
+  content: "..."
+}
+.filter-nc::before,
+.filter-ne::before {
+  content: "\d7\20..."
+}
+.filter-nb::before {
+  content: "\d7\20"
+}

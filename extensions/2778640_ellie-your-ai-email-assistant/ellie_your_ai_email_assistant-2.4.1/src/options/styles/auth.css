@@ -1,0 +1,26 @@
+/* default all stateful classes to hide */
+.show-when-no-licence-key,
+.show-when-has-licence-key,
+.show-when-has-free-licence-key,
+.show-when-free-user,
+.show-when-paid-user {
+  display: none;
+}
+
+.has-no-licence-key .show-when-no-licence-key,
+.has-licence-key .show-when-has-licence-key,
+.is-free-user .show-when-free-user,
+.is-paid-user .show-when-paid-user {
+  display: inherit;
+}
+
+.has-licence-key.is-free-user .show-when-has-free-licence-key {
+  display: inherit;
+}
+
+.is-free-user .hide-when-paid-user {
+  display: inherit;
+}
+.is-paid-user .hide-when-paid-user {
+  display: none;
+}

@@ -1,0 +1,75 @@
+body.lichessTools .lichessTools-chapterControls div[role="footer"] {
+  display: flex;
+  justify-content: space-around;
+  background: #f8f8f8;
+  height: 2.5em;
+  align-items: stretch;
+}
+
+body.lichessTools h3.lichessTools-chapterNavigation-perc {
+  display: flex;
+  justify-content: space-between;
+}
+
+body.lichessTools h3.lichessTools-chapterNavigation-perc span {
+  pointer-events: none;
+}
+
+
+body.lichessTools h3.lichessTools-chapterNavigation-perc .perc {
+  display: none;
+  opacity: 0.9;
+  padding-right: 2em;
+}
+
+body.lichessTools .lichessTools-chapterControls:has(div[role="footer"]:hover) .perc {
+  display: inline;
+}
+
+
+@media not print and (prefers-color-scheme: dark) {
+  html:not(.dark, .darkBoard, .light) body.lichessTools .lichessTools-chapterControls div[role="footer"] {
+    background: #2D2B29;
+  }
+}
+
+html.dark body.lichessTools .lichessTools-chapterControls div[role="footer"],
+html.darkBoard body.lichessTools .lichessTools-chapterControls div[role="footer"] {
+  background: #2D2B29;
+}
+
+html.transp body.lichessTools .lichessTools-chapterControls div[role="footer"] {
+  background: transparent;
+}
+
+
+body.lichessTools .lichessTools-chapterControls:not(:has(div.study__chapters, div.relay-games)) div[role="footer"] {
+  display: none;
+}
+
+body.lichessTools .lichessTools-chapterControls div[role="footer"] button {
+  flex-grow: 1;
+}
+
+body.lichessTools div.study__side.lichessTools-chapterControls,
+body.lichessTools aside.relay-tour__side.lichessTools-chapterControls {
+  flex-grow: 1;
+}
+
+body.lichessTools div.study__side.lichessTools-chapterControls div.study__chapters,
+body.lichessTools aside.relay-tour__side.lichessTools-chapterControls div.relay_games {
+  flex-grow: 1;
+}
+
+body.lichessTools:has(.lichessTools-chapterControls) div.analyse__moves button.next {
+  display: none;
+}
+
+/* Prettier */
+body.lichessTools.lichessTools-prettier .lichessTools-chapterControls div[role="footer"] {
+  background: var(--backgroundColor);
+}
+
+body.lichessTools.lichessTools-prettier section.mchat {
+  margin-top: 2px !important;
+}

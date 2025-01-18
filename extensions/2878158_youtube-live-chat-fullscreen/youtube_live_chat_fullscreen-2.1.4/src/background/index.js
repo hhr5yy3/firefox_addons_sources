@@ -1,0 +1,1 @@
+const i=(e,s)=>{var a;(a=e[0])!=null&&a.id&&chrome.tabs.sendMessage(e[0].id,s)};chrome.runtime.onMessage.addListener(e=>{["ytdLiveChat","language"].includes(e.message)&&chrome.tabs.query({active:!0,currentWindow:!0},s=>i(s,e))});

@@ -1,0 +1,54 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_manifest_name__",
+  "short_name": "FetchV",
+  "version": "2.5",
+  "description": "__MSG_manifest_description__",
+  "icons": {
+    "16": "img/icon-16.png",
+    "48": "img/icon-48.png",
+    "128": "img/icon-128.png"
+  },
+  "background": {
+    "scripts": [
+      "js/options.js",
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_title": "__MSG_manifest_browser_action__",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://fetchv.net/m3u8downloader*",
+        "*://fetchv.net/*/m3u8downloader*",
+        "*://fetchv.net/videodownloader*",
+        "*://fetchv.net/*/videodownloader*",
+        "*://fetchv.net/bufferrecorder*",
+        "*://fetchv.net/*/bufferrecorder*"
+      ],
+      "js": [
+        "js/bridge.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "homepage_url": "https://fetchv.net/",
+  "default_locale": "en",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{acd924bf-9607-48c6-818a-03bd4345ee06}"
+    }
+  }
+}

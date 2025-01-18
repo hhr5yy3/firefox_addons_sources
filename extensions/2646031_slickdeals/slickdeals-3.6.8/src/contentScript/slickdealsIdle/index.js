@@ -1,0 +1,1 @@
+(async()=>{await import(chrome.runtime.getURL("assets/src/contentScript/slickdealsIdle/index.08a7017b.js"))})();

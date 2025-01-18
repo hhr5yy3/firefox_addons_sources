@@ -1,0 +1,1 @@
+import{b as n}from"./gift-DYdWkef2.js";import{c as o,a as r,o as t}from"./storeTypes-CGrbvTi_.js";const a={};function c(s,e){return t(),o("div",null,e[0]||(e[0]=[r("h1",null,"Content Script UI Playround",-1)]))}const f=n(a,[["render",c]]);export{f as default};

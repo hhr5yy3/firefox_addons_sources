@@ -1,0 +1,1595 @@
+const eyeAbleAudit_fr = {
+    "0ComplexityTxt": {
+        "message": "Principes de base"
+    },
+    "0Txt": {
+        "message": "Réalisé"
+    },
+    "1ComplexityTxt": {
+        "message": "Avancé"
+    },
+    "1Txt": {
+        "message": "Plutôt satisfaits"
+    },
+    "2ComplexityTxt": {
+        "message": "expert"
+    },
+    "2Txt": {
+        "message": "Partiellement remplie"
+    },
+    "3Txt": {
+        "message": "Plutôt pas remplie"
+    },
+    "4Txt": {
+        "message": "Non rempli"
+    },
+    "HeaderTxt": {
+        "message": "Eye-Able® - Audit WCAG"
+    },
+    "IntroTxt": {
+        "message": "Questions soulevées"
+    },
+    "IssuesAnnounce2": {
+        "message": "consistant en"
+    },
+    "LinksWarnings": {
+        "message": "Textes du chaînon manquant"
+    },
+    "abbrWarnings": {
+        "message": "Abréviations manquantes"
+    },
+    "altWarnings": {
+        "message": "Textes alternatifs manquants"
+    },
+    "altforLinks": {
+        "message": "Lien vers la sous-page"
+    },
+    "appDesc": {
+        "message": "Vérifiez que votre site web ne contient pas les erreurs WCAG/ADA les plus courantes."
+    },
+    "appName": {
+        "message": "Audit Eye-Able® pour WCAG"
+    },
+    "ariaHiddenElementContent": {
+        "message": "L'élément Aria-hidden a un contenu focalisable"
+    },
+    "ariaHiddenElementExplanation": {
+        "message": "En ajoutant aria-hidden=\"true\" à un élément, l'élément lui-même et tous ses descendants sont cachés aux technologies d'assistance. L'exposition de l'élément à la navigation séquentielle peut être source de confusion pour les utilisateurs de technologies d'assistance, car l'élément est accessible alors qu'il devrait être caché."
+    },
+    "ariaHiddenElementTip": {
+        "message": "Vérifiez si l'élément doit être caché aux technologies d'assistance et, le cas échéant, supprimez-le de la navigation séquentielle."
+    },
+    "audioDetectedContent": {
+        "message": "Audio détecté"
+    },
+    "audioDetectedExplanation": {
+        "message": "Vérifiez si l'information est transmise dans l'audio (par exemple, par une voix de commentaire). Si c'est le cas, une transcription est nécessaire."
+    },
+    "audioDetectedTip": {
+        "message": "Vérifiez si une transcription est nécessaire pour le fichier audio. Si c'est le cas, proposez une alternative, par exemple une transcription textuelle."
+    },
+    "autoAuditSetting": {
+        "message": "Exécuter l'audit automatiquement après le chargement de la page"
+    },
+    "autoAuditText": {
+        "message": "L'exécution d'un test peut nécessiter beaucoup de performances. Si vous désactivez ce paramètre, les tests ne seront exécutés que lorsque vous accéderez au tableau de bord du site."
+    },
+    "autoplayContent": {
+        "message": "L'élément <audio> ou <video> joue automatiquement le son."
+    },
+    "autoplayExplanation": {
+        "message": "Les séquences audio ou vidéo diffusées automatiquement ne peuvent pas durer plus de 3 secondes ou nécessiter un mécanisme de contrôle audio pour les arrêter ou les mettre en sourdine."
+    },
+    "autoplayTip": {
+        "message": "Ne jouez pas automatiquement le son ou assurez-vous qu'il existe un mécanisme de contrôle pour l'arrêter ou le mettre en sourdine."
+    },
+    "bestPracticeInputTxt": {
+        "message": "Règles de bonnes pratiques"
+    },
+    "bestPracticeTxt": {
+        "message": "Meilleures pratiques"
+    },
+    "best_practice": {
+        "message": "Meilleures pratiques"
+    },
+    "best_practice_desc": {
+        "message": "Inclut des lignes directrices qui ne sont pas obligatoires en vertu des WCAG, mais qui sont utiles pour un site web accessible."
+    },
+    "bodyAriaHiddenContent": {
+        "message": "Le corps est caché dans l'aria"
+    },
+    "bodyAriaHiddenExplanation": {
+        "message": "L'élément body contient l'attribut aria-hidden : \"true\" et la page n'est donc pas accessible aux lecteurs d'écran."
+    },
+    "bodyAriaHiddenTip": {
+        "message": "Supprime l'attribut aria-hidden de l'élément body."
+    },
+    "categorySetting": {
+        "message": "Présenter des tests uniquement dans les catégories suivantes"
+    },
+    "categoryText": {
+        "message": "Dans certains cas, vous n'avez aucun contrôle sur certains types d'erreurs, par exemple dans le code de la page. Si, par conséquent, seules les règles d'une certaine catégorie doivent être affichées, des filtres correspondants peuvent être activés ici."
+    },
+    "chaptersSection": {
+        "message": "Questions classées par catégories"
+    },
+    "closeWindowAlt": {
+        "message": "Fermer la fenêtre"
+    },
+    "codeSetting": {
+        "message": "Règles du code"
+    },
+    "contentSetting": {
+        "message": "Règles de contenu"
+    },
+    "contextMenuText": {
+        "message": "Exécuter un audit accessible à l'œil nu"
+    },
+    "contrastEnhancedContent": {
+        "message": "Contraste du texte insuffisant (Enhanced)"
+    },
+    "contrastEnhancedExplanation": {
+        "message": "Veillez à ce que tous les éléments textuels présentent un contraste de couleur suffisant entre le texte au premier plan et la couleur d'arrière-plan. Le contraste minimum dépend de la taille du texte et est de 7:1 ou de 4,5:1 pour les textes à grande échelle."
+    },
+    "contrastEnhancedTip": {
+        "message": "Augmentez le contraste, par exemple en utilisant une police de caractères ou une couleur de fond plus foncée/plus claire."
+    },
+    "contrastWarnings": {
+        "message": "Contraste"
+    },
+    "crawlFinishedAnnounce": {
+        "message": "Audit terminé avec succès"
+    },
+    "crawlMaxAnnounce1": {
+        "message": "Nombre maximum atteint. Il reste"
+    },
+    "crawlMaxAnnounce2": {
+        "message": " pages dans la file d'attente"
+    },
+    "crawlPausedAnnounce": {
+        "message": "Audit interrompu"
+    },
+    "crawlerExportRegion": {
+        "message": "Exporter les résultats"
+    },
+    "crawlerRegion": {
+        "message": "Entrée d'url et balayage des sous-pages"
+    },
+    "crawlerResultRegion": {
+        "message": "Aperçu des résultats de l'audit"
+    },
+    "crawlErrorSkipBtn": {
+        "message": "Sauter la page"
+    },
+    "crawlErrorExp": {
+        "message": "La page la plus récente n'a pas pu être chargée. Vous pouvez attendre le délai d'attente ou sauter la page manuellement."
+    },
+    "csvHeadLong": {
+        "message": "Rapport détaillé de toutes les URL trouvées :"
+    },
+    "csvHeadShort": {
+        "message": "Vue d'ensemble :"
+    },
+    "csvTopRow": {
+        "message": "Critère ; WCAG Ref ; Résultat ; Nombre d'erreurs ;"
+    },
+    "csvTopRowLong": {
+        "message": "Critères ; Référence WCAG ; Résultat ; Contenu ; Conseil ; Élément HTML ; Contenu textuel"
+    },
+    "csvUrls": {
+        "message": "Toutes les url trouvées :"
+    },
+    "decorativeElementFocusContent": {
+        "message": "L'élément décoratif est exposé aux technologies d'assistance"
+    },
+    "decorativeElementFocusExplanation": {
+        "message": "Cette règle vérifie que les éléments marqués comme décoratifs ne sont pas inclus dans l'arbre d'accessibilité ou qu'ils ont un rôle de présentation. Le fait de marquer un élément comme décoratif le cache aux technologies d'assistance, mais le fait de le rendre focalisable l'expose. Ce conflit doit être évité."
+    },
+    "decorativeElementFocusTip": {
+        "message": "Vérifier si l'élément doit être marqué comme décoratif ou le cacher aux technologies d'assistance, par exemple en utilisant aria-hidden=\"true\" ou role=\"presentation\"."
+    },
+    "decorativeImageExposedContent": {
+        "message": "L'image décorative est exposée aux technologies d'assistance"
+    },
+    "decorativeImageExposedExplanation": {
+        "message": "Cette règle vérifie que les images marquées comme décoratives ne sont pas incluses dans l'arbre d'accessibilité ou qu'elles ont un rôle de présentation. Le fait de marquer un élément comme décoratif le cache aux technologies d'assistance, mais le fait de le rendre focalisable l'expose. Ce conflit doit être évité."
+    },
+    "decorativeImageExposedTip": {
+        "message": "Vérifier si l'image doit être marquée comme décorative ou la cacher aux technologies d'assistance, par exemple en utilisant aria-hidden=\"true\" ou role=\"presentation\"."
+    },
+    "designSetting": {
+        "message": "Règles de conception"
+    },
+    "docuLink": {
+        "message": "Accéder à la documentation"
+    },
+    "docuLinkLocal": {
+        "message": "public/Documentation_Eye_Able_Audit.pdf"
+    },
+    "elementInvalidLangContent": {
+        "message": "Détection d'un élément dont l'attribut lang n'est pas valide"
+    },
+    "elementInvalidLangExplanation": {
+        "message": "Les parties d'un site web peuvent être marquées comme étant dans une langue différente de celle du reste du site à l'aide de l'attribut lang. L'attribut lang de ces éléments doit également être un code de langue valide et conforme à la norme BCP 47, par exemple \"de\" ou \"en-us\"."
+    },
+    "elementInvalidLangTip": {
+        "message": "Assurez-vous qu'un code de langue valide est défini dans l'attribut lang de l'élément."
+    },
+    "elementInvalidRoleContent": {
+        "message": "Le rôle de l'élément n'est pas valide"
+    },
+    "elementInvalidRoleExplanation": {
+        "message": "Cette règle vérifie que chaque attribut de rôle a une valeur valide conformément aux <a target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles\">spécificationsWAI-ARIA</a>."
+    },
+    "elementInvalidRoleTip": {
+        "message": "Vérifiez que l'attribut du rôle ne comporte pas de fautes d'orthographe et que le rôle existe dans la spécification."
+    },
+    "emptyLinkContent": {
+        "message": "Lien vide"
+    },
+    "emptyLinkExplanation": {
+        "message": "Ce lien n'a pas de contenu ni de cible (href-attribute)."
+    },
+    "emptyLinkTip": {
+        "message": "Supprimer les liens vides."
+    },
+    "errorContrast": {
+        "message": "Contraste insuffisant"
+    },
+    "errorContrastManual": {
+        "message": "Veuillez vérifier manuellement."
+    },
+    "errorContrastNeccesary": {
+        "message": "- Le contraste nécessaire est le suivant :"
+    },
+    "errorContrastSVG": {
+        "message": "Contraste insuffisant dans le SVG"
+    },
+    "errorContrastVeryLow": {
+        "message": "Très faible contraste de"
+    },
+    "errorHeading1": {
+        "message": "Après H"
+    },
+    "errorHeading2": {
+        "message": "H"
+    },
+    "errorHeading3": {
+        "message": "a été utilisé. La valeur correcte serait H"
+    },
+    "errorLang1": {
+        "message": "Langage HTML :"
+    },
+    "errorLang2": {
+        "message": "Langue détectée :"
+    },
+    "errorMaxNumberCrawled": {
+        "message": "Le nombre maximal de sous-pages est déjà atteint !"
+    },
+    "errorMissingAbbrev": {
+        "message": "Abréviation manquante pour"
+    },
+    "errorMultipleUrls": {
+        "message": "Veuillez saisir une seule url pour l'exploration !"
+    },
+    "errorTableCat": {
+        "message": "Catégorie"
+    },
+    "errorTableErr": {
+        "message": "Questions critiques"
+    },
+    "errorTableHint": {
+        "message": "Conseils"
+    },
+    "errorTableNum": {
+        "message": "Total"
+    },
+    "errorTableWarn": {
+        "message": "Avertissements"
+    },
+    "errorWarningsNotFound": {
+        "message": "Aucun avertissement trouvé"
+    },
+    "excellongHead": {
+        "message": "Avertissements les plus reconnus de tous les sites :"
+    },
+    "excel1": {
+        "message": "URL"
+    },
+    "excel10": {
+        "message": "Nombre d'erreurs"
+    },
+    "excel2": {
+        "message": "Critères"
+    },
+    "excel3": {
+        "message": "Référence WCAG"
+    },
+    "excel4": {
+        "message": "Résultat"
+    },
+    "excel5": {
+        "message": "Contenu"
+    },
+    "excel6": {
+        "message": "Conseil"
+    },
+    "excel7": {
+        "message": "Contenu du texte"
+    },
+    "excel8": {
+        "message": "Élément HTML"
+    },
+    "excel9": {
+        "message": "La plus grosse erreur"
+    },
+    "expandButton": {
+        "message": "Tout développer"
+    },
+    "exportCSV": {
+        "message": "Exporter CSV :"
+    },
+    "exportCSVLong": {
+        "message": "Rapport détaillé CSV"
+    },
+    "exportCSVShort": {
+        "message": "Rapport abrégé CSV"
+    },
+    "exportExcel": {
+        "message": "Exporter vers Excel :"
+    },
+    "exportExcelLong": {
+        "message": "Rapport détaillé Excel"
+    },
+    "exportExcelShort": {
+        "message": "Rapport succinct Excel"
+    },
+    "exportJSON": {
+        "message": "Exporter JSON :"
+    },
+    "exportJSONLong": {
+        "message": "Rapport détaillé JSON"
+    },
+    "exportJSONShort": {
+        "message": "Rapport succinct JSON"
+    },
+    "exportPDF": {
+        "message": "Exporter le PDF :"
+    },
+    "exportPDFButton": {
+        "message": "Rapport PDF (aperçu avant impression)"
+    },
+    "exportPDFButtonApi": {
+        "message": "Rapport PDF"
+    },
+    "extAllErrorsTxt": {
+        "message": "Nombre d'erreurs"
+    },
+    "extContinueButton": {
+        "message": "Continuer l'audit"
+    },
+    "extCrawlerCntTxt": {
+        "message": "URL restants :"
+    },
+    "extCrawlerDepthTxt": {
+        "message": "Profondeur de balayage à partir de l'url de départ"
+    },
+    "extCrawlerMaxSubDomain": {
+        "message": "Nombre maximum de pages :"
+    },
+    "extCrawlerTxt": {
+        "message": "Analyser les sous-pages"
+    },
+    "extCrawlerWaitTime": {
+        "message": "Période d'attente :"
+    },
+    "extHeading1": {
+        "message": "Vérifier plusieurs pages web"
+    },
+    "extHeading2": {
+        "message": "Urls to audit :"
+    },
+    "extMenuTxt": {
+        "message": "Scannez l'ensemble de votre domaine"
+    },
+    "extPauseButton": {
+        "message": "Pause Audit"
+    },
+    "extSearchButton": {
+        "message": "Début de l'audit"
+    },
+    "extSearchError": {
+        "message": "Aucune url reconnue"
+    },
+    "extSearchHint": {
+        "message": "Veuillez saisir les URL en les séparant par des virgules."
+    },
+    "extSearchTxt": {
+        "message": "Saisissez ci-dessous les URL des pages que vous souhaitez vérifier :"
+    },
+    "extSubErrorsNum": {
+        "message": "Total"
+    },
+    "extSubErrorsTxt": {
+        "message": "Classe d'erreur"
+    },
+    "extSubpagesAllTxt": {
+        "message": "Tous les sites"
+    },
+    "extSubpagesTxt": {
+        "message": "Afficher les avertissements pour :"
+    },
+    "extTitle": {
+        "message": "Réglages de l'Eye Able"
+    },
+    "extTitle2": {
+        "message": "Pages à vérifier :"
+    },
+    "extendedContrast1": {
+        "message": "Détecté"
+    },
+    "extendedContrast2": {
+        "message": "Nécessaire"
+    },
+    "extendedHeading1": {
+        "message": "Sauter de"
+    },
+    "extendedHeading2": {
+        "message": "à"
+    },
+    "extendedHeading3": {
+        "message": "La bonne réponse serait"
+    },
+    "extendedInfoCategories": {
+        "message": "Catégories :"
+    },
+    "extendedInfoDesc": {
+        "message": "Description :"
+    },
+    "extendedInfoSource": {
+        "message": "Source :"
+    },
+    "extendedInfoTip": {
+        "message": "Comment résoudre ce problème..."
+    },
+    "extendedInfoVisualization": {
+        "message": "Visualisation :"
+    },
+    "extendedInfoVisualizationImgAlt": {
+        "message": "Image de prévisualisation des erreurs"
+    },
+    "externalHtmlCheckTxt": {
+        "message": "W3C HTML Check [External]"
+    },
+    "falseLangContent": {
+        "message": "Langue de la page incorrecte"
+    },
+    "falseLangExplanation": {
+        "message": "Pour que la synthèse vocale des lecteurs d'écran ou du navigateur fonctionne correctement, la langue de la page doit être spécifiée correctement. Dans le cas contraire, la prononciation d'une sortie vocale est par exemple incorrecte."
+    },
+    "falseLangTip": {
+        "message": "Vérifiez que la langue de l'élément HTML correspond à la langue de la page."
+    },
+    "filterBoxSr": {
+        "message": "Filtres disponibles: :"
+    },
+    "headingJumpContent": {
+        "message": "Sauter dans l'ordre de l'intitulé"
+    },
+    "headingJumpExplanation": {
+        "message": "La structure des titres de la page doit être organisée de manière logique et les niveaux de titres ne doivent augmenter que d'une unité. Évitez les sauts, par exemple de H2 à H4."
+    },
+    "headingJumpTip": {
+        "message": "Essayez de ne pas sauter dans l'ordre des rubriques."
+    },
+    "headingWarnings": {
+        "message": "Structure des rubriques"
+    },
+    "hideLogoSetting": {
+        "message": "Cacher le logo sur le site web"
+    },
+    "hideLogoText": {
+        "message": "Le tableau de bord de la page peut également être ouvert via ALT + F5 ou dans le menu contextuel et \"Exécuter l'audit Eye-Able\"."
+    },
+    "hideWarningsHeading": {
+        "message": "Cacher les avertissements"
+    },
+    "hideWarningsToolTxt": {
+        "message": "Afficher uniquement les erreurs. Les avertissements et les notes sont masqués."
+    },
+    "hideWarningsTxt": {
+        "message": "Seulement les erreurs critiques"
+    },
+    "highlightElmTip": {
+        "message": "Élément de mise en évidence"
+    },
+    "highlightElmTipActive": {
+        "message": "Élément de mise en évidence - Actif"
+    },
+    "highlightElmTipSrMode": {
+        "message": "Focus lecteur d'écran - retour à la barre d'outils avec ALT + F7"
+    },
+    "htmlWarnings": {
+        "message": "Erreurs HTML"
+    },
+    "identicalIFrameContent": {
+        "message": "Éléments <Iframe> avec des noms accessibles identiques"
+    },
+    "identicalIFrameExplanation": {
+        "message": "Les éléments <iframe> ayant des noms accessibles identiques doivent intégrer la même ressource ou des ressources équivalentes. L'utilisation du même nom accessible peut induire en erreur les utilisateurs de lecteurs d'écran."
+    },
+    "identicalIFrameTip": {
+        "message": "Assurez-vous que les éléments <iframe> ayant des noms accessibles identiques conduisent à la même ressource."
+    },
+    "iframeNegativeTabindexContent": {
+        "message": "<iframe> a un tabindex négatif"
+    },
+    "iframeNegativeTabindexExplanation": {
+        "message": "Les éléments <iframe> dont l'attribut tabindex est négatif ne doivent pas contenir d'éléments interactifs. En fixant la valeur de l'attribut tabindex d'un élément iframe à -1 ou à un autre nombre négatif, il devient impossible de déplacer le focus dans le contexte de navigation de l'élément iframe."
+    },
+    "iframeNegativeTabindexTip": {
+        "message": "Supprime l'indice de tabulation négatif si la <iframe> contient des éléments focalisables."
+    },
+    "imgLinkNoAltContent": {
+        "message": "Texte alternatif manquant dans l'image liée"
+    },
+    "imgLinkNoAltExplanation": {
+        "message": "Étant donné que le lien lui-même ne contient pas de texte, l'image doit être accompagnée d'un texte alternatif afin que les lecteurs d'écran puissent identifier le contenu et l'objectif du lien. Un attribut title n'est pas suffisant pour tous les lecteurs d'écran."
+    },
+    "imgLinkNoAltTip": {
+        "message": "Ajoutez un texte alternatif significatif pour le lien ou l'image liée."
+    },
+    "imgLinkRedundantAltContent": {
+        "message": "Texte alternatif redondant dans le lien qui l'entoure"
+    },
+    "imgLinkRedundantAltExplanation": {
+        "message": "L'image a le même texte alternatif que le lien qui la contient."
+    },
+    "imgLinkRedundantAltTip": {
+        "message": "Supprimez le texte alt de l'image car il ne contient aucune information supplémentaire. Utilisez plutôt un attribut alt vide, alt=\"\", pour l'image."
+    },
+    "imgLongAltContent": {
+        "message": "Le texte alternatif de l'image est un peu long (>80 caractères)"
+    },
+    "imgLongAltExplanation": {
+        "message": "Le texte alternatif est un peu long (>80 caractères) et peut éventuellement être résumé. De nombreux aveugles lisent des textes à l'aide d'un afficheur braille. Un afficheur braille peut produire au moins 40 caractères, mais seulement un maximum de 80 caractères."
+    },
+    "imgLongAltTip": {
+        "message": "Résumez la description à l'essentiel."
+    },
+    "imgNoAltContent": {
+        "message": "Les images doivent être accompagnées d'un texte alternatif"
+    },
+    "imgNoAltExplanation": {
+        "message": "Les images doivent être accompagnées d'un texte alternatif afin que les utilisateurs de lecteurs d'écran puissent comprendre le contenu et l'objectif de l'image. L'attribut title n'est pas reconnu de manière fiable."
+    },
+    "imgNoAltTip": {
+        "message": "Ajoutez un texte alternatif significatif à l'aide des attributs alt-, aria-label- ou aria-labelledby-. Un attribut alt vide peut être utilisé pour les images décoratives."
+    },
+    "imgShortAltContent": {
+        "message": "Le texte alternatif de l'image est très court (<5 caractères)"
+    },
+    "imgShortAltExplanation": {
+        "message": "Le texte alternatif d'une image doit décrire son contenu de manière significative."
+    },
+    "imgShortAltTip": {
+        "message": "Vérifiez que le texte alternatif décrit correctement l'image."
+    },
+    "imgVeryLongAltContent": {
+        "message": "Le texte alternatif de l'image est très long (>150 caractères)"
+    },
+    "imgVeryLongAltExplanation": {
+        "message": "Le texte alternatif de cette image est très long (>150 caractères) et peut éventuellement être résumé. De nombreuses personnes aveugles lisent des textes à l'aide d'un afficheur braille. Un afficheur braille peut produire au moins 40 caractères, mais seulement un maximum de 80 caractères."
+    },
+    "imgVeryLongAltTip": {
+        "message": "Résumez la description à l'essentiel."
+    },
+    "importantLetterSpacingContent": {
+        "message": "!important espacement des lettres dans l'attribut de style"
+    },
+    "importantLetterSpacingExplanation": {
+        "message": "Cette règle vérifie que l'attribut de style n'est pas utilisé pour empêcher l'ajustement de l'espacement des lettres en utilisant !important, sauf s'il est au moins 0,12 fois supérieur à la taille de la police. L'utilisation de !important dans les attributs de style empêche l'écrasement de ce style."
+    },
+    "importantLetterSpacingTip": {
+        "message": "Si possible, n'utilisez pas !important dans l'attribut de style ou veillez à ce que l'espacement des lettres soit au moins égal à 0,12 fois la taille de la police."
+    },
+    "importantLineSpacingContent": {
+        "message": "!important hauteur de ligne dans l'attribut de style"
+    },
+    "importantLineSpacingExplanation": {
+        "message": "Cette règle vérifie que l'attribut de style n'est pas utilisé pour empêcher l'ajustement de la hauteur des lignes en utilisant !important, sauf s'il est au moins 1,5 fois supérieur à la taille de la police. L'utilisation de !important dans les attributs de style empêche l'écrasement de ce style."
+    },
+    "importantLineSpacingTip": {
+        "message": "Si possible, n'utilisez pas !important dans l'attribut de style ou veillez à ce que l'épaisseur des lignes soit au moins égale à 1,5 fois la taille de la police."
+    },
+    "importantWordSpacingContent": {
+        "message": "!important espacement des mots dans l'attribut de style"
+    },
+    "importantWordSpacingExplanation": {
+        "message": "Cette règle vérifie que l'attribut de style n'est pas utilisé pour empêcher l'ajustement de l'espacement des mots en utilisant !important, sauf s'il est au moins 0,16 fois supérieur à la taille de la police. L'utilisation de !important dans les attributs de style empêche l'écrasement de ce style."
+    },
+    "importantWordSpacingTip": {
+        "message": "Si possible, n'utilisez pas !important dans l'attribut de style ou veillez à ce que l'espacement des mots soit au moins égal à 0,16 fois la taille de la police."
+    },
+    "inputImageNoAltContent": {
+        "message": "Le nom accessible du bouton de l'image manque"
+    },
+    "inputImageNoAltExplanation": {
+        "message": "Une entrée graphique nécessite (<input type=\"image\">) un texte alternatif afin que les lecteurs d'écran puissent refléter son objectif."
+    },
+    "inputImageNoAltTip": {
+        "message": "Ajoutez un attribut alt ou aria significatif qui décrit le contenu et l'objectif de cette image."
+    },
+    "inputNoLabelContent": {
+        "message": "Nom accessible manquant dans un champ de formulaire"
+    },
+    "inputNoLabelExplanation": {
+        "message": "Un champ de formulaire doit avoir un nom accessible pour que les lecteurs d'écran puissent refléter sa fonction. Il s'agit par exemple des éléments <input> et <select> ou des éléments ayant un rôle de \"checkbox\" ou de \"textbox\"."
+    },
+    "inputNoLabelTip": {
+        "message": "Créez un élément <label> approprié ou des attributs aria qui décrivent l'objectif de ce champ de formulaire. Si vous utilisez un label, utilisez un attribut for- qui correspond à l'identifiant de l'entrée."
+    },
+    "inspectElmErr": {
+        "message": "Erreur : Veuillez redémarrer le panneau d'éléments"
+    },
+    "inspectElmTip": {
+        "message": "Révéler dans le panneau Elements (Ouvrir avec F12)"
+    },
+    "insufficientLineHeightContent": {
+        "message": "Le paragraphe a une hauteur de ligne insuffisante"
+    },
+    "insufficientLineHeightExplanation": {
+        "message": "La hauteur de ligne du paragraphe (<p>) est inférieure à 1,5. Cela peut nuire à la lisibilité du texte."
+    },
+    "insufficientLineHeightTip": {
+        "message": "Augmenter la hauteur de ligne du paragraphe à au moins 1,5"
+    },
+    "invalidAriaContent": {
+        "message": "Attribut aria non défini"
+    },
+    "invalidAriaExplanation": {
+        "message": "Cette règle vérifie que chaque attribut aria-* spécifié est défini dans <a target=\"_blank\" href=\"https://www.w3.org/TR/wai-aria/\">ARIA 1.1</a>. Les attributs aria non valides ne sont pas reconnus par les lecteurs d'écran."
+    },
+    "invalidAriaTip": {
+        "message": "Vérifiez si l'attribut aria est mal orthographié. Veillez à utiliser des attributs aria valides."
+    },
+    "invalidAutocompleteContent": {
+        "message": "L'attribut de l'autocomplétion n'est pas valide"
+    },
+    "invalidAutocompleteExplanation": {
+        "message": "Cette règle s'applique à tout élément HTML <input>, <select> et <textarea> avec une valeur d'attribut autocomplete. L'attribut autocomplete doit avoir une valeur correcte pour être reconnu par le navigateur."
+    },
+    "invalidAutocompleteTip": {
+        "message": "Assurez-vous que <a target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete\">la valeur de l'autocomplétion</a> est prise en charge."
+    },
+    "invalidLangContent": {
+        "message": "Attribut lang non valide détecté"
+    },
+    "invalidLangExplanation": {
+        "message": "L'attribut lang de l'élément <html> doit être un code de langue valide et conforme à la norme BCP 47, par exemple \"de\" ou \"en-us\"."
+    },
+    "invalidLangTip": {
+        "message": "Assurez-vous qu'un code de langue valide est défini dans l'attribut lang de l'élément <html>."
+    },
+    "invalidValueAriaContent": {
+        "message": "Valeur d'état ou de propriété ARIA non prise en charge"
+    },
+    "invalidValueAriaExplanation": {
+        "message": "Cette règle vérifie que la valeur des <a target=\"_blank\" href=\"https://www.w3.org/TR/wai-aria/\">états ARIA</a> ou des propriétés est autorisée pour l'élément sur lequel elle est spécifiée. Les états ou propriétés ARIA doivent être conformes à la spécification officielle."
+    },
+    "invalidValueAriaTip": {
+        "message": "Supprimer les valeurs ARIA non spécifiées des états ou des propriétés ou les remplacer par la valeur correcte."
+    },
+    "issuesIntro": {
+        "message": "Questions par catégorie :"
+    },
+    "issuesSection": {
+        "message": "Aperçu des questions et paramétrage des filtres"
+    },
+    "labelsWarnings": {
+        "message": "Nom, rôle, valeur"
+    },
+    "langSetting": {
+        "message": "Sélection de la langue"
+    },
+    "langSettingText": {
+        "message": "Changer la langue de l'audit Eye-Able®."
+    },
+    "licenseErrorAPI": {
+        "message": "Erreur dans l'API. Veuillez contacter le service d'assistance à l'adresse suivante : support@eye-able.com"
+    },
+    "licenseErrorNoUser": {
+        "message": "Aucun utilisateur n'a été trouvé pour cette clé !"
+    },
+    "licenseHeading": {
+        "message": "Licences et paramètres"
+    },
+    "licenseKey": {
+        "message": "Votre clé d'accès"
+    },
+    "licenseKeyButton": {
+        "message": "Interroger vos licences"
+    },
+    "licenseKeyError": {
+        "message": "Aucun utilisateur n'a été trouvé pour cette clé"
+    },
+    "licenseMenuTxt": {
+        "message": "Ouvrir le menu des paramètres et des licences"
+    },
+    "licenseRegion": {
+        "message": "Entrée en vigueur de la licence"
+    },
+    "licenseSuccess": {
+        "message": "Licences récupérées avec succès !"
+    },
+    "licenseTable1": {
+        "message": "Domaines"
+    },
+    "licenseTable2": {
+        "message": "Date d'expiration"
+    },
+    "licenseTableHeading": {
+        "message": "Vos licences disponibles"
+    },
+    "licenseTableNo": {
+        "message": "Aucune licence disponible."
+    },
+    "licenseTableNonFound": {
+        "message": "Aucune licence n'a été trouvée pour cette clé !"
+    },
+    "licenseTableRegion": {
+        "message": "Aperçu de la licence"
+    },
+    "licenseTitle": {
+        "message": "Licence et paramètres d'Eye-Able® Audit"
+    },
+    "licenseWrongKey": {
+        "message": "Mauvais format ! La clé comporte 16 caractères, par exemple 1TV83962a119flF6"
+    },
+    "licensingHeading": {
+        "message": "Licence d'audit Eye-Able"
+    },
+    "linkHiddenInTextContent": {
+        "message": "Le lien ne se distingue pas du texte environnant"
+    },
+    "linkHiddenInTextExplanation": {
+        "message": "Cette règle vérifie que les liens en ligne se distinguent du texte environnant par une différence qui ne repose pas uniquement sur la couleur. Les liens peuvent être mis en évidence, par exemple en soulignant le texte ou en utilisant une bordure. Les états de survol et de focalisation sont également vérifiés."
+    },
+    "linkHiddenInTextTip": {
+        "message": "Veillez à ce que le lien se distingue du texte environnant, y compris lorsque le lien est survolé ou mis en évidence."
+    },
+    "linkTextIsUrlContent": {
+        "message": "Le texte accessible par un lien est une URL"
+    },
+    "linkTextIsUrlExplanation": {
+        "message": "Les textes des liens doivent être significatifs et décrire l'objet et la cible du lien. Les utilisateurs de lecteurs d'écran doivent pouvoir décider facilement s'ils veulent suivre un lien."
+    },
+    "linkTextIsUrlTip": {
+        "message": "Veillez à utiliser des descriptions qui décrivent l'objectif et la cible du lien. Le texte du lien ne doit pas non plus être caché aux lecteurs d'écran (par exemple avec display : none ou aria-hidden=\"true\")."
+    },
+    "longLinkTextContent": {
+        "message": "Le texte du lien est très long (>150 caractères)"
+    },
+    "longLinkTextExplanation": {
+        "message": "Le texte accessible de ce lien est très long (>150 caractères) et peut potentiellement être résumé. De nombreuses personnes aveugles lisent des textes à l'aide d'un afficheur braille. Un afficheur braille peut produire au moins 40 caractères, mais seulement 80 caractères au maximum."
+    },
+    "longLinkTextTip": {
+        "message": "Veillez à utiliser des textes significatifs et compacts."
+    },
+    "lowContrastContent": {
+        "message": "Contraste insuffisant du texte"
+    },
+    "lowContrastExplanation": {
+        "message": "Veillez à ce que tous les éléments textuels présentent un contraste de couleur suffisant entre le texte au premier plan et la couleur d'arrière-plan. Le contraste minimum dépend de la taille du texte et est de 3:1 ou de 4,5:1 pour les textes à grande échelle."
+    },
+    "lowContrastSVGContent": {
+        "message": "Contraste SVG insuffisant"
+    },
+    "lowContrastSVGExplanation": {
+        "message": "La représentation visuelle des SVG doit maintenir un rapport de contraste minimum de 3:1 pour qu'ils soient bien perçus."
+    },
+    "lowContrastSVGTip": {
+        "message": "Augmenter le contraste du SVG."
+    },
+    "lowContrastTip": {
+        "message": "Augmentez le contraste, par exemple en utilisant une police ou une couleur de fond plus foncée/plus claire."
+    },
+    "manualCheck": {
+        "message": "Contrôle manuel nécessaire"
+    },
+    "markupSetting": {
+        "message": "Afficher les balises d'erreur sur la page"
+    },
+    "markupText": {
+        "message": "Si cette option est désactivée, le marquage d'erreur sur la page web ne sera plus affiché lorsque vous ouvrirez le tableau de bord."
+    },
+    "menusSection": {
+        "message": "Menus et outils"
+    },
+    "metaRefreshDelayAAAContent": {
+        "message": "L'élément <meta> a un délai de rafraîchissement (AAA)"
+    },
+    "metaRefreshDelayAAAExplanation": {
+        "message": "Cette règle vérifie que l'élément <meta> n'est pas utilisé pour une redirection ou un rafraîchissement différé. Si un rafraîchissement ou une redirection est utilisé, la valeur de l'attribut content de l'élément <meta> doit être 0 sans exception."
+    },
+    "metaRefreshDelayAAATip": {
+        "message": "N'utilisez pas de rafraîchissement différé ou de redirection et fixez le délai à 0."
+    },
+    "metaRefreshDelayContent": {
+        "message": "L'élément <meta> a un délai de rafraîchissement"
+    },
+    "metaRefreshDelayExplanation": {
+        "message": "Cette règle vérifie que l'élément <meta> n'est pas utilisé pour une redirection ou un rafraîchissement différé. Si un rafraîchissement ou une redirection est utilisé, la valeur de l'attribut content de l'élément <meta> doit être soit 0, soit supérieure à 72000 (20 heures)."
+    },
+    "metaRefreshDelayTip": {
+        "message": "N'utilisez pas d'actualisation différée, ne redirigez pas l'utilisateur et ne lui donnez pas la possibilité de régler le délai."
+    },
+    "missingGroupNameContent": {
+        "message": "Le groupe n'a pas de nom accessible"
+    },
+    "missingGroupNameExplanation": {
+        "message": "Le regroupement de contrôles de formulaires apparentés rend les formulaires plus compréhensibles pour tous les utilisateurs, car les contrôles apparentés sont plus faciles à identifier. Pour que les technologies d'assistance puissent identifier correctement l'objectif d'un groupe, il faut lui donner un nom accessible, par exemple en utilisant un <legend> pour un <fieldset> ou des attributs aria pour les éléments avec role=\"group\"."
+    },
+    "missingGroupNameTip": {
+        "message": "Veillez à ce que chaque groupe ait un nom accessible en utilisant les attributs aria ou un <legend> pour un <fieldset>."
+    },
+    "missingMenuitemNameContent": {
+        "message": "Nom accessible manquant pour l'élément de menu"
+    },
+    "missingMenuitemNameExplanation": {
+        "message": "Cette règle vérifie que chaque élément ayant le rôle de menuitem a un nom accessible non vide. Le rôle menuitem indique que l'élément est une option dans un ensemble de choix contenus dans un menu ou une barre de menus."
+    },
+    "missingMenuitemNameTip": {
+        "message": "Ajouter un nom accessible en utilisant le contenu de l'élément ou en utilisant les attributs aria."
+    },
+    "missingReferencedHeaderContent": {
+        "message": "L'attribut Headers des références de la cellule est manquant"
+    },
+    "missingReferencedHeaderExplanation": {
+        "message": "L'attribut <a target=\"_blank\" href=\"https://www.w3.org/TR/2014/NOTE-WCAG20-TECHS-20140311/H43\">headers </a> spécifie une ou plusieurs cellules d'en-tête auxquelles une cellule de tableau est liée. Il n'est utilisé que par les lecteurs d'écran. Cette règle vérifie que l'attribut headers d'une cellule fait référence à une cellule correspondante dans le même élément de tableau."
+    },
+    "missingReferencedHeaderTip": {
+        "message": "Vérifier s'il existe une autre cellule ayant l'identifiant de la valeur de l'attribut headers dans la même table. Dans le cas contraire, supprimer l'attribut headers ou créer une cellule correspondante avec cet identifiant."
+    },
+    "moreInfoLinkTip": {
+        "message": "Plus d'informations sur cette question"
+    },
+    "multipleH1Content": {
+        "message": "Plusieurs titres H1 détectés"
+    },
+    "multipleH1Explanation": {
+        "message": "La structure des titres de la page doit être logique et, si possible, commencer par le titre H1. Le titre H1 identifie les parties les plus importantes de la page."
+    },
+    "multipleH1Tip": {
+        "message": "Si possible, n'utilisez qu'un seul titre H1. Structurez les autres rubriques avec des titres H2, H3, etc."
+    },
+    "nextElmTip": {
+        "message": "Prochaine édition"
+    },
+    "firstElmTip": {
+        "message": "Première édition"
+    },
+    "lastElmTip": {
+        "message": "Dernier numéro"
+    },
+    "noAbbrevContent": {
+        "message": "Abréviation détecté"
+    },
+    "noAbbrevExplanation": {
+        "message": "Les abréviations ne sont pas toujours compréhensibles pour tout le monde et doivent être expliquées dans le texte ou au moyen d'éléments HTML tels que <abbr>."
+    },
+    "noAbbrevTip": {
+        "message": "Vérifiez si l'abréviation est déjà étiquetée. Si ce n'est pas le cas, ajoutez le texte complet ou utilisez des éléments HTML spéciaux tels que <abbr>."
+    },
+    "noAreaAltContent": {
+        "message": "<area> texte alternatif manquant"
+    },
+    "noAreaAltExplanation": {
+        "message": "Les éléments de zone identifient les zones d'une carte-image qui peuvent être utilisées pour définir des zones cliquables. Ils ont donc besoin d'un nom accessible pour que les lecteurs d'écran puissent refléter leur objectif."
+    },
+    "noAreaAltTip": {
+        "message": "Ajouter un texte alternatif à l'élément area, par exemple via l'attribut alt ou aira-labels."
+    },
+    "noButtonInfoContent": {
+        "message": "<button> nom accessible manquant"
+    },
+    "noButtonInfoExplanation": {
+        "message": "Un <button> a besoin d'un nom accessible pour que les lecteurs d'écran puissent refléter sa fonction."
+    },
+    "noButtonInfoTip": {
+        "message": "Insérez un texte dans le contenu de l'élément <button> ou utilisez les attributs aria pour décrire sa fonction."
+    },
+    "noDisplayHeaderContent": {
+        "message": "Nom accessible manquant dans l'en-tête"
+    },
+    "noDisplayHeaderExplanation": {
+        "message": "Cette règle vérifie que chaque titre a un nom accessible non vide et qu'il est visible pour les lecteurs d'écran."
+    },
+    "noDisplayHeaderTip": {
+        "message": "Vérifiez si le titre contient du contenu ou s'il doit être masqué pour les lecteurs d'écran. Vous pouvez également masquer l'ensemble de l'intitulé, mais cela n'est pas recommandé."
+    },
+    "noHeadingsContent": {
+        "message": "La page n'a pas de titre"
+    },
+    "noHeadingsExplanation": {
+        "message": "Le document ne contient aucun élément de titre. Les titres ajoutent une structure à un site web et aident les utilisateurs de lecteurs d'écran à naviguer et à comprendre son contenu."
+    },
+    "noHeadingsTip": {
+        "message": "Vérifiez s'il est possible d'ajouter des titres pour structurer le site web. Veillez à marquer correctement tous les textes d'en-tête en utilisant les balises <h1>-<h6> ou avec role=\"heading\"."
+    },
+    "noLangContent": {
+        "message": "Langue du site web manquante"
+    },
+    "noLangExplanation": {
+        "message": "Pour que la synthèse vocale des lecteurs d'écran ou du navigateur fonctionne correctement, la langue de la page doit être spécifiée."
+    },
+    "noLangTip": {
+        "message": "Ajoutez l'attribut lang-attribute à l'élément HTML de votre page."
+    },
+    "noLinkTextContent": {
+        "message": "Les liens doivent avoir un texte accessible"
+    },
+    "noLinkTextExplanation": {
+        "message": "Les liens nécessitent un texte compréhensible et correctement restitué par les lecteurs d'écran."
+    },
+    "noLinkTextTip": {
+        "message": "Ajoutez un texte de lien significatif qui décrit l'objectif et la cible du lien. Le texte du lien ne doit pas non plus être caché aux lecteurs d'écran (par exemple avec display : none ou aria-hidden=\"true\")."
+    },
+    "noTableHeadTextContent": {
+        "message": "Élément <th> vide"
+    },
+    "noTableHeadTextExplanation": {
+        "message": "L'élément d'en-tête d'un tableau décrit la signification de la colonne correspondante."
+    },
+    "noTableHeadTextTip": {
+        "message": "Insérer un texte décrivant les données de cette colonne."
+    },
+    "noTextInHeaderContent": {
+        "message": "Les titres ne doivent pas être vides"
+    },
+    "noTextInHeaderExplanation": {
+        "message": "Cette rubrique ne contient pas de texte mais peut être consultée par les lecteurs d'écran."
+    },
+    "noTextInHeaderTip": {
+        "message": "Ajoutez un texte à l'en-tête ou supprimez-le."
+    },
+    "noTitleContent": {
+        "message": "La page n'a pas de titre"
+    },
+    "noTitleExplanation": {
+        "message": "Le titre de la page est important pour décrire le sujet ou l'objectif de la page. Il permet aux visiteurs de votre site web de classer ou de trouver rapidement votre contenu."
+    },
+    "noTitleIFrameContent": {
+        "message": "<iframe> n'a pas de nom accessible"
+    },
+    "noTitleIFrameExplanation": {
+        "message": "Le nom accessible d'une <iframe> est important pour décrire son sujet ou son objectif."
+    },
+    "noTitleIFrameTip": {
+        "message": "Ajoutez un titre descriptif ou un attribut aria à la <iframe>."
+    },
+    "noTitleTip": {
+        "message": "Ajoutez un élément <title> descriptif à la page."
+    },
+    "noUniqueAccKeContent": {
+        "message": "Duplication de l'attribut accesskey"
+    },
+    "noUniqueAccKeExplanation": {
+        "message": "L'attribut accesskey peut être utilisé pour spécifier un caractère du clavier sur lequel l'utilisateur peut appuyer pour accéder directement aux éléments. Une affectation en double n'est pas autorisée ici."
+    },
+    "noUniqueAccKeTip": {
+        "message": "Modifiez l'attribut de la clé d'accès de manière à ce qu'il soit unique pour la page."
+    },
+    "noUniqueIdContent": {
+        "message": "La valeur de l'attribut ID doit être unique"
+    },
+    "noUniqueIdExplanation": {
+        "message": "Un identifiant est un identifiant unique pour les éléments de la page web et ne doit donc pas être dupliqué. La duplication des identifiants peut conduire les lecteurs d'écran à ignorer certains éléments."
+    },
+    "noUniqueIdTip": {
+        "message": "Renommez l'identifiant pour qu'il ne soit utilisé qu'une seule fois sur la page."
+    },
+    "noVisibleH1Content": {
+        "message": "Titre H1 manquant"
+    },
+    "noVisibleH1Explanation": {
+        "message": "Soit il n'y a pas de titre H1, soit il est caché aux lecteurs d'écran. Vérifiez que le titre H1 existe et qu'il est visible, car il constitue le premier et le plus important élément de la structure des titres."
+    },
+    "noVisibleH1Tip": {
+        "message": "Si possible, créez toujours un titre H1 visible qui décrit le contenu de la page."
+    },
+    "nonMatchingLangContent": {
+        "message": "Les attributs Lang et xml:lang ne correspondent pas"
+    },
+    "nonMatchingLangExplanation": {
+        "message": "Les attributs lang et xml:lang de l'élément <html> d'une page HTML non incorporée doivent avoir la même sous-étiquette de langue primaire."
+    },
+    "nonMatchingLangTip": {
+        "message": "Assurez-vous que les attributs lang et xml:lang de l'élément <html> correspondent."
+    },
+    "openExtendedMenuHeading": {
+        "message": "Menu avancé"
+    },
+    "openExtendedMenuTxt": {
+        "message": "Trouvez des problèmes à l'échelle du site et exportez-les au format PDF/Excel/CSV."
+    },
+    "openIssuesTip": {
+        "message": ""
+    },
+    "openLicenseMenuHeading": {
+        "message": "Menu licence"
+    },
+    "openLicenseMenuTxt": {
+        "message": "Activez votre licence et voyez vos domaines actifs."
+    },
+    "operableTxt": {
+        "message": "Opérationnel"
+    },
+    "optionalTestsTxt": {
+        "message": "Objectif de conformité"
+    },
+    "pdfColumn1": {
+        "message": "Détails de l'erreur"
+    },
+    "pdfColumn2": {
+        "message": "Exemple d'article"
+    },
+    "pdfColumn3": {
+        "message": "Nombre total"
+    },
+    "pdfColumn4": {
+        "message": "Avant-première"
+    },
+    "pdfCrawlColumn1": {
+        "message": "URL trouvés"
+    },
+    "pdfCrawlColumn2": {
+        "message": "Avertissements trouvés"
+    },
+    "pdfEnd": {
+        "message": "Pour toute question, contactez-nous à l'adresse suivante"
+    },
+    "pdfErrorDescription": {
+        "message": "Description de l'erreur :"
+    },
+    "pdfErrorExplanation": {
+        "message": "Explication de l'erreur :"
+    },
+    "pdfErrorHelp": {
+        "message": "Conseil :"
+    },
+    "pdfExplanation": {
+        "message": "Ce rapport PDF présente les résultats de l'analyse. Le site web a été évalué en fonction de divers critères WCAG afin d'en évaluer la convivialité et l'accessibilité. Au début, des informations générales sont données et les erreurs les plus courantes sont indiquées. Le rapport est organisé selon les chapitres WCAG suivants : Remarquable, Utilisable, Compréhensible, Robuste et Meilleure pratique. Chaque chapitre donne des informations détaillées sur les résultats de l'analyse, ainsi que des recommandations d'amélioration. Les résultats sont également divisés en sous-chapitres WCAG et en étapes de test oculaires individuelles."
+    },
+    "pdfH1": {
+        "message": "Rapport WCAG PDP"
+    },
+    "pdfMainResults": {
+        "message": "Rapport détaillé"
+    },
+    "pdfMetaDataContent": {
+        "message": "le contenu de la règle :"
+    },
+    "pdfMetaDataDescription": {
+        "message": "Description générale :"
+    },
+    "pdfMetaDataExplanation": {
+        "message": "Explication :"
+    },
+    "pdfMetaDataFoundErrors": {
+        "message": "Catégories d'erreurs Eye-Able détectées :"
+    },
+    "pdfMetaDataLink": {
+        "message": "Plus d'informations :"
+    },
+    "pdfMetaDataRule": {
+        "message": "Règle :"
+    },
+    "pdfMetaDataTip": {
+        "message": "Aide :"
+    },
+    "pdfMetaDataTotalErrors": {
+        "message": "Nombre d'erreurs :"
+    },
+    "pdfMetaDataVerdict": {
+        "message": "Résultat :"
+    },
+    "pdfNoWarningForLevel": {
+        "message": "Aucun avertissement pour ce niveau d'erreur."
+    },
+    "pdfPages": {
+        "message": "Les pages suivantes ont été examinées :"
+    },
+    "pdfReport1": {
+        "message": "Rapport : Il y a eu"
+    },
+    "pdfReport2": {
+        "message": "erreurs et au total"
+    },
+    "pdfReport3": {
+        "message": "avertissements trouvés."
+    },
+    "pdfResultDatePart": {
+        "message": " à la"
+    },
+    "pdfResultEndPart": {
+        "message": " a donné les résultats suivants :"
+    },
+    "pdfResultPartOne": {
+        "message": "Il y avait"
+    },
+    "pdfResultPartPlural": {
+        "message": " et leurs sous-pages trouvées avec la profondeur"
+    },
+    "pdfResultPartThree": {
+        "message": " dans la catégorie \"Non rempli\"."
+    },
+    "pdfResultPartTwo": {
+        "message": " erreurs constatées. Il y a"
+    },
+    "pdfResultStartPart": {
+        "message": "Examen du site"
+    },
+    "pdfResults": {
+        "message": "Résultats"
+    },
+    "pdfSevColumn1": {
+        "message": "Description :"
+    },
+    "pdfSevColumn1Example": {
+        "message": "Description de l'échantillon"
+    },
+    "pdfSevColumn1Head": {
+        "message": "Détails de l'erreur"
+    },
+    "pdfSevColumn2": {
+        "message": "Conseil :"
+    },
+    "pdfSevColumn2Head": {
+        "message": "Élément concerné"
+    },
+    "pdfSevColumn3": {
+        "message": "Pour référence :"
+    },
+    "pdfSevColumn3Head": {
+        "message": "Avant-première"
+    },
+    "pdfSevColumn4": {
+        "message": "Erreurs trouvées :"
+    },
+    "pdfShortResults": {
+        "message": "Résumé"
+    },
+    "pdfTableHeadCode": {
+        "message": "Codesource"
+    },
+    "pdfTableHeadCount": {
+        "message": "Nombre d'erreurs"
+    },
+    "pdfTableHeadErrorContent": {
+        "message": "Description de l'erreur"
+    },
+    "pdfTableHeadUrl": {
+        "message": "Origine de la page"
+    },
+    "pdfTableHeadVisual": {
+        "message": "Visualisation"
+    },
+    "pdfTop1": {
+        "message": "Haut de page"
+    },
+    "pdfTop2": {
+        "message": "Avertissements trouvés :"
+    },
+    "perceivableTxt": {
+        "message": "Perceptible"
+    },
+    "prevElmTip": {
+        "message": "Numéro précédent"
+    },
+    "ptextNotInLandmarkTip": {
+        "message": "Ajoutez n'importe quel contenu textuel aux régions de page existantes ou créez de nouvelles régions."
+    },
+    "referenceLinkTip": {
+        "message": "Plus d'informations"
+    },
+    "retractButton": {
+        "message": "Tout rétracter"
+    },
+    "robustTxt": {
+        "message": "Robuste"
+    },
+    "ruleOpenImgAlt": {
+        "message": "Afficher les erreurs"
+    },
+    "rulesOverviewHeading": {
+        "message": "Aperçu de toutes les règles de l'audit Eye-Able"
+    },
+    "rulesOverviewRegion": {
+        "message": "Règles"
+    },
+    "rulesOverviewTxt": {
+        "message": "Affiche toutes les règles disponibles. Seule la référence principale est affichée en tant que chapitre des WCAG, ce qui signifie que davantage de chapitres des WCAG sont pris en compte qu'affichés."
+    },
+    "scanAgain": {
+        "message": "Scanner à nouveau"
+    },
+    "settingsHeading": {
+        "message": "Paramètres"
+    },
+    "settingsRegion": {
+        "message": "Paramètres"
+    },
+    "shortTitleContent": {
+        "message": "Le titre de la page est très court"
+    },
+    "shortTitleExplanation": {
+        "message": "Le titre de la page est important pour décrire le sujet ou l'objectif de la page. Il permet aux visiteurs de votre site web de classer ou de trouver rapidement votre contenu."
+    },
+    "shortTitleTip": {
+        "message": "Vérifiez que le titre décrit correctement la page."
+    },
+    "skipSelectorSetting": {
+        "message": "Exclure des éléments des tests"
+    },
+    "skipSelectorText": {
+        "message": "Spécifiez des sélecteurs CSS séparés par des virgules pour exclure les éléments et leurs enfants de la vérification. La syntaxe est la même que celle utilisée dans les règles CSS."
+    },
+    "sliderTxt": {
+        "message": "Enjeu"
+    },
+    "slideSeperator": {
+        "message": "de"
+    },
+    "srAuditStart": {
+        "message": "Début de l'audit"
+    },
+    "srIssues": {
+        "message": "questions"
+    },
+    "startButtonHeading": {
+        "message": "Audit WCAG"
+    },
+    "startButtonTxt": {
+        "message": "Ouvrez le tableau de bord et lancez l'audit WCAG."
+    },
+    "tableResult1": {
+        "message": "Étape du test :"
+    },
+    "tableResult2": {
+        "message": "WCAG Ref :"
+    },
+    "tableResult3": {
+        "message": "Résultat"
+    },
+    "tableResult4": {
+        "message": "Nombre d'erreurs"
+    },
+    "tableResult5": {
+        "message": "Niveau WCAG"
+    },
+    "tableResultNoResults": {
+        "message": "Aucun test n'a encore été effectué."
+    },
+    "tooltippTip": {
+        "message": "Conseil"
+    },
+    "understandableTxt": {
+        "message": "Compréhensible"
+    },
+    "w3cCheckHeading": {
+        "message": "Contrôle de la syntaxe HTML"
+    },
+    "w3cCheckTxt": {
+        "message": "Vérifiez le code HTML de cette page avec le vérificateur de syntaxe du W3C."
+    },
+    "warningTxt": {
+        "message": "Test"
+    },
+    "windowButtonTxt": {
+        "message": "Démarrer l'audit WCAG (s'ouvre également en utilisant ALT + F5)"
+    },
+    "wrongWrappedLiContent": {
+        "message": "Un élément de liste <li> ne fait pas partie d'une liste"
+    },
+    "wrongWrappedLiExplanation": {
+        "message": "Une liste valide doit toujours être encadrée par un élément <ul> ou <ol>. Dans le cas contraire, les éléments de la liste ne seront pas correctement détectés comme une liste par le lecteur d'écran."
+    },
+    "wrongWrappedLiTip": {
+        "message": "Construire une liste correcte avec un élément parent <ul> ou <ol>."
+    },
+    "activateLicenseTxt": {
+        "message": "Veuillez activer votre licence dans le menu des paramètres."
+    },
+    "saveSettingsButtonTxt": {
+        "message": "Sauvegarder les paramètres"
+    },
+    "conformanceTargetHintTxt": {
+        "message": "Objectif de conformité :"
+    },
+    "settingsHeadingExtraTxt": {
+        "message": "Les modifications sont enregistrées automatiquement."
+    },
+    "newWindowTitle": {
+        "message": "Nouvelle fenêtre"
+    },
+    "tipClickHint": {
+        "message": "Afficher dans l'audit"
+    },
+    "missingAttributeTxt": {
+        "message": "Attribut manquant :"
+    },
+    "missingElementsTxt": {
+        "message": "Manquant :"
+    },
+    "missingChildrenTxt": {
+        "message": "Éléments manquants de l'enfant :"
+    },
+    "missingParentTxt": {
+        "message": "Élément parent manquant :"
+    },
+    "invalidElementsTxt": {
+        "message": "Éléments non valides :"
+    },
+    "designResponsibilityTxt": {
+        "message": "Responsabilité de la conception"
+    },
+    "codeResponsibilityTxt": {
+        "message": "Responsabilité du code"
+    },
+    "contentResponsibilityTxt": {
+        "message": "Responsabilité du contenu"
+    },
+    "codeSymbolAlt": {
+        "message": "Symbole de code avec un processeur"
+    },
+    "designSymbolAlt": {
+        "message": "Symbole de conception avec un pinceau"
+    },
+    "contentSymbolAlt": {
+        "message": "Symbole de contenu avec une lettre minuscule et une lettre majuscule"
+    },
+    "filterSettingsHeading": {
+        "message": "Ajuster les filtres"
+    },
+    "filterSettingsHeadingExtraTxt": {
+        "message": "Afficher uniquement certaines catégories de règles ou exclure des éléments de l'audit."
+    },
+    "variousSettingsHeading": {
+        "message": "Personnaliser l'apparence et le comportement"
+    },
+    "variousSettingsHeadingExtraTxt": {
+        "message": "Masquer le logo et le marquage de la page ou influencer le comportement de l'audit."
+    },
+    "srHighlightAuditSetting": {
+        "message": "Activer le mode de focalisation du lecteur d'écran"
+    },
+    "srHighlightAuditText": {
+        "message": "Lorsque le mode de mise au point du lecteur d'écran est activé, lorsque vous cliquez sur le bouton de mise en évidence, la mise au point se fait directement sur l'élément de la page. Cela permet d'examiner l'erreur de plus près avec le lecteur d'écran. Pour revenir à la barre d'outils de l'audit Eye-Able, appuyez sur ALT + F7."
+    },
+    "alfaDisableAuditSetting": {
+        "message": "Désactiver Alfa"
+    },
+    "alfaDisableAuditText": {
+        "message": "N'activez cette fonction qu'après avoir reçu un conseil du service d'assistance d'Eye-Able. Dans de très rares cas, le module de test Alfa peut échouer et peut alors être désactivé. L'influence sur le résultat du test est minime."
+    },
+    "toolsButton": {
+        "message": "Outils et tests guidés"
+    },
+    "toolSectionIntro": {
+        "message": "Plus d'outils et de liens :"
+    },
+    "guidedImageTxt": {
+        "message": "Vérifier tous les textes alternatifs des images"
+    },
+    "extendedLabel1": {
+        "message": "Étiquette visible"
+    },
+    "extendedLabel2": {
+        "message": "Label accessible"
+    },
+    "extendedSize1": {
+        "message": "Taille détectée"
+    },
+    "extendedSize2": {
+        "message": "Largeur trop faible"
+    },
+    "extendedSize3": {
+        "message": "Taille trop petite"
+    },
+    "extendedSize4": {
+        "message": "Largeur et hauteur trop faibles"
+    },
+    "detectedDistance": {
+        "message": "Distance détectée"
+    },
+    "ariaLabelMoreInformationTip": {
+        "message": "En savoir plus sur les méthodes de description longue"
+    },
+    "guidedTestDecorativeImageHint": {
+        "message": "Indice : Attribut alt vide ! Vérifiez s'il s'agit d'une image ou d'un élément décoratif. Dans ce cas, aucun texte alt n'est nécessaire."
+    },
+    "guidedTestImgPopupTxt": {
+        "message": "Test guidé : texte alternatif"
+    },
+    "guidedTestInfoTextHeading": {
+        "message": "Informations sur le test de texte alternatif guidé :"
+    },
+    "guidedTestInfoText": {
+        "message": "Ce test guidé vous aide à vérifier les textes alternatifs pour les images. Pour des raisons d'accessibilité, vous devez vérifier manuellement les textes alternatifs afin de vous assurer de leur signification et de leur importance. Le tableau suivant répertorie toutes les images de la page avec leur texte alternatif et l'attribut HTML correspondant. Il répertorie également les erreurs d'audit précédemment examinées et les conseils pour les corriger, ainsi que le nom du fichier de l'image."
+    },
+    "guidedTestRecommendationsHeaderTxt": {
+        "message": "Recommandations pour des alternatives textuelles appropriées :"
+    },
+    "guidedTestTip1": {
+        "message": "Utilisez l'attribut alt pour les éléments avec l'étiquette HTML &lt;img&gt ;"
+    },
+    "guidedTestTip2": {
+        "message": "Pour les autres éléments ayant le rôle \"img\", utilisez aria-labelledby ou aria-label."
+    },
+    "guidedTestTip3": {
+        "message": "Notez la valeur informative de l'élément/image. S'il n'y a pas de valeur informative, l'élément/image peut être traité comme un élément décoratif et ne nécessite pas de texte alt."
+    },
+    "guidedTestTip4": {
+        "message": "Essayez de vous concentrer sur les informations les plus importantes"
+    },
+    "guidedTestTip5": {
+        "message": "Veillez à la concision. Si une description plus longue est nécessaire pour expliquer l'objectif de l'image, utilisez également les méthodes de description longue"
+    },
+    "guidedTestTip5MoreInfo": {
+        "message": "Plus d'informations"
+    },
+    "guidedTestTip6": {
+        "message": "Utiliser les signes de ponctuation pour faciliter la compréhension du texte"
+    },
+    "guidedTestTip7": {
+        "message": "Évitez les informations superflues telles que les mots &quot;image&quot ; ou &quot;symbole&quot ;. Ces informations sont déjà transmises par les lecteurs d'écran"
+    },
+    "moreInfoLinkTipAriaLabel": {
+        "message": "En savoir plus sur cette question"
+    },
+    "tableEntryAccessNameTxt": {
+        "message": "Texte alternatif (Source)"
+    },
+    "tableEntryAttributeTooltip": {
+        "message": "Attribut du texte alternatif trouvé"
+    },
+    "tableEntryFileNameTxt": {
+        "message": "Nom de fichier"
+    },
+    "tableEntryThumbnailTxt": {
+        "message": "Vignette"
+    },
+    "tableEntryWarningTxt": {
+        "message": "Erreur et conseil pour la corriger"
+    },
+    "updateLinkTxt": {
+        "message": "Toutes les informations sur la mise à jour 3.0"
+    },
+    "updateLink": {
+        "message": "https://eye-able.com/eye-able-audit-update-3-0/"
+    },
+    "startAuditAnnouncement": {
+        "message": "L'audit a commencé. Veuillez patienter."
+    },
+    "endAuditAnnouncement": {
+        "message": "Audit terminé."
+    },
+    "windowOpenAndAuditAnnouncement": {
+        "message": "La fenêtre d'audit s'est ouverte et l'audit a commencé. Veuillez patienter."
+    },
+    "windowOpenAnnouncement": {
+        "message": "La fenêtre d'audit s'est ouverte."
+    },
+    "startCrawlAnnouncement": {
+        "message": "L'audit a commencé. Veuillez patienter. Le temps d'attente restant et les URL sont annoncés."
+    },
+    "aiAssistantHeader": {
+        "message": "Eye-Able® Ally - Votre assistant IA"
+    },
+    "aiIntroText": {
+        "message": "Notre assistant AI Ally explique les erreurs et fait des suggestions de correction personnalisées. Vos données ne sont ni enregistrées, ni analysées, ni utilisées d'une autre manière. La réponse peut encore contenir des erreurs et n'est qu'un indice de solution. Vous pouvez également discuter directement avec Ally et lui poser des questions !"
+    },
+    "aiAssistantTip": {
+        "message": "Obtenir des explications et des suggestions de correction personnalisées"
+    },
+    "aiAssistantButton": {
+        "message": "Laissez Ally vous expliquer cette erreur !"
+    },
+    "aiAssistantChatPlaceholder": {
+        "message": "Vous n'êtes toujours pas sûr ? Demandez à Ally de vous répondre..."
+    },
+    "aiAssistantChatSendButton": {
+        "message": "Envoyer"
+    },
+    "closeInfoAI": {
+        "message": "Masquer l'information"
+    },
+    "showInfoAI": {
+        "message": "Voir l'info"
+    },
+    "srInfoAI": {
+        "message": "Indications sur l'assistant AI Ally"
+    },
+    "srChatAnswerAreaAI": {
+        "message": "Espace de discussion"
+    },
+    "srChatAnswerAI": {
+        "message": "Zone de saisie du chat"
+    },
+    "srAllyAnserAI": {
+        "message": "Répondre Ally"
+    },
+    "srUserAnserAI": {
+        "message": "Votre question"
+    },
+    "srAIGotReply": {
+        "message": "Réponse reçue d'Ally"
+    },
+    "srAIGotError": {
+        "message": "Erreur dans la réponse."
+    },
+    "srAIGotErrorTokenLimit": {
+        "message": "Erreur dans la réponse. Limite de la demande atteinte."
+    },
+    "srAIWaitForReply": {
+        "message": "Demande envoyée à ALly. Veuillez attendre la réponse."
+    },
+    "aiAssistantYou": {
+        "message": "Vous"
+    },
+    "aiAssistantFirstMessage": {
+        "message": "Veuillez expliquer le problème"
+    },
+    "aiAssistantThinking": {
+        "message": "Créer une réponse..."
+    },
+    "aiAssistantChatSend": {
+        "message": "Envoyer un message"
+    },
+    "copyToClipboard": {
+        "message": "Copier le code"
+    },
+    "copyToClipboardDone": {
+        "message": "Code copié !"
+    },
+    "newBadge": {
+        "message": "Nouveau"
+    },
+    "allyAIError": {
+        "message": "### Erreur dans la demande d'Ally\nVeuillez réessayer plus tard ou contacter le service d'assistance à l'adresse support@eye-able.com pour obtenir de l'aide."
+    },
+    "allyTokenLimit": {
+        "message": "### Limite de demande atteinte\nEn fonction du forfait réservé, seul un nombre limité de demandes est disponible. Ce nombre est particulièrement limité en l'absence d'un forfait supplémentaire. Cette limite a été atteinte et sera automatiquement réinitialisée dans le courant de la semaine. Vous pouvez continuer à utiliser Ally directement en augmentant le nombre de demandes disponibles. Pour plus d'informations, veuillez contacter l'équipe de support à l'adresse suivante : support@eye-able.com"
+    },
+    "allyWaiting1": {
+        "message": "En feuilletant les chapitres de la connaissance numérique..."
+    },
+    "allyWaiting2": {
+        "message": "Les réponses sont en train de se former..."
+    },
+    "allyWaiting3": {
+        "message": "L'accessibilité consiste à mettre l'information à la disposition de tous..."
+    },
+    "allyWaiting4": {
+        "message": "J'y suis presque..."
+    },
+    "allyWaiting5": {
+        "message": "Juste un moment, en tissant des mots ensemble..."
+    },
+    "emailLogin": {
+        "message": "Votre courriel"
+    },
+    "passwordLogin": {
+        "message": "Votre mot de passe (le même que dans le tableau de bord Eye-Able)"
+    },
+    "licenseErrorNoCredentials": {
+        "message": "Veuillez saisir votre adresse électronique et votre mot de passe."
+    },
+    "loginErrorText": {
+        "message": "L'email ou le mot de passe est incorrect. Veuillez réessayer."
+    },
+    "fullLicenseText": {
+        "message": "Licence complète"
+    }
+};

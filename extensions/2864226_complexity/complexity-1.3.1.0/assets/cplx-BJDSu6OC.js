@@ -1,0 +1,1 @@
+const a={header:"Sesija istekla",description:"Vaša sesija je istekla (vjerojatno zbog Cloudflare-a).",buttons:{reload:"Ponovno učitaj",dismiss:"Zatvori"}},o={dialog:a};export{o as default,a as dialog};

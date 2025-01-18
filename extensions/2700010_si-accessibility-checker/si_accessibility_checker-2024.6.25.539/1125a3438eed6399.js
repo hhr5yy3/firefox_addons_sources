@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_siteimprove_alfa_web_extension=self.webpackChunk_siteimprove_alfa_web_extension||[]).push([[707],{80707:e=>{e.exports=JSON.parse('{"$schema":"../schema/rule.json","requirements":["https://www.w3.org/TR/wai-aria-practices/"],"responsibility":"ux","difficulty":3,"affects":["vision"],"category":"forms"}')}}]);

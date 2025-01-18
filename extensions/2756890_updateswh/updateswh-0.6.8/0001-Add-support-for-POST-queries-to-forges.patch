@@ -1,0 +1,35 @@
+From 82394db79f9712f1b6a6585c85ffe50809583fff Mon Sep 17 00:00:00 2001
+From: Francesco Gazzetta <fgaz@fgaz.me>
+Date: Wed, 22 Mar 2023 17:59:16 +0100
+Subject: [PATCH] Add support for POST queries to forges
+
+---
+ extension/updateswh.js | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/extension/updateswh.js b/extension/updateswh.js
+index f5ae714..de8a21a 100644
+--- a/extension/updateswh.js
++++ b/extension/updateswh.js
+@@ -53,6 +53,7 @@ function testupdateforge(url, forgespecs) {
+ 	var projecturl = forgespecs.projecturl;
+ 	var userproject = forgespecs.userproject;
+ 	var forgeapiurl = forgespecs.forgeapiurl;
++	var forgeapidata = forgespecs.forgeapidata;
+ 	var forgename = forgespecs.forgename;
+ 	var lastupdate = forgespecs.lastupdate;
+ 
+@@ -73,7 +74,9 @@ function testupdateforge(url, forgespecs) {
+ 	$.ajax({ // get repository information from the forge
+             url: forgeapiurl,
+             dataType: "json",
+-            type: 'GET',
++            type: forgeapidata ? 'POST' : 'GET',
++            contentType: forgeapidata ? 'application/json' : null,
++            data: forgeapidata,
+             beforeSend: function (xhr) { // add GitHub token if possible
+ 		if (settings.ghtoken && forgename == "GitHub") {
+                     xhr.setRequestHeader('Authorization', 'Bearer ' + settings.ghtoken);
+-- 
+2.30.2
+

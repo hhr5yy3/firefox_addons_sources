@@ -1,0 +1,1 @@
+(async()=>{await import(chrome.runtime.getURL("assets/src/serp/index.serp-f7f582d1.js"))})();

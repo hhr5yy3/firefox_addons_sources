@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title data-fhc-i18n="operationWindowTile">Formfield</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/theme/formhistorycontrol-generic.css"/>
+    <link rel="stylesheet" href="/theme/navigation.css"/>
+    <link rel="stylesheet" href="theme/entryview.css"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/formhistorycontrol-generic-dark.css" data-title="Dark"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/formhistorycontrol-generic-orange.css" data-title="Orange"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/formhistorycontrol-generic-blue.css" data-title="Blue"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/navigation-dark.css" data-title="Dark"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/navigation-orange.css" data-title="Orange"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="/theme/navigation-blue.css" data-title="Blue"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/entryview-dark.css" data-title="Dark"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/entryview-orange.css" data-title="Orange"/>
+    <link rel="stylesheet" class="alternate_stylesheet" href="theme/entryview-blue.css" data-title="Blue"/>
+</head>
+<body>
+<div class="content">
+    <div id="operationInfo"></div>
+    <table>
+        <tbody>
+            <tr>
+                <th><label for="name" data-fhc-i18n="fieldName">Fieldname</label></th>
+                <td><input id="name" type="text" disabled/></td>
+            </tr>
+            <tr>
+                <th><label data-fhc-i18n="fieldValue">Value</label></th>
+                <td><input id="value" type="text" disabled/><textarea id="multiline-value" cols="30" rows="6" disabled></textarea></td>
+            </tr>
+            <tr>
+                <th><label for="typeSelect" data-fhc-i18n="fieldType">Type</label></th>
+                <td>
+                    <select id="typeSelect" disabled>
+                        <option value="input">input</option>
+                        <option value="textarea">textarea</option>
+                        <option value="div">div</option>
+                        <option value="html">html</option>
+                        <option value="iframe">iframe</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="used" data-fhc-i18n="fieldCount">Used count</label></th>
+                <td><input id="used" type="text" disabled pattern="^(\d{1,9})$"/></td>
+            </tr>
+            <tr>
+                <th><label for="first" data-fhc-i18n="fieldFirstUsed">First used</label></th>
+                <td><input id="first" type="text" disabled/></td>
+            </tr>
+            <tr>
+                <th><label for="last" data-fhc-i18n="fieldLastUsed">Last used</label></th>
+                <td><input id="last" type="text" disabled/></td>
+            </tr>
+            <tr id="hostRow">
+                <th><label for="host" data-fhc-i18n="fieldHost">Host</label></th>
+                <td><input id="host" type="text" disabled/></td>
+            </tr>
+            <tr id="urlRow">
+                <th><label for="url">URL</label></th>
+                <td><input id="url" type="text" disabled/></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="htmlViewOverlay" class="viewOverlay" style="display: none"></div><div id="htmlViewOverlayLabel" class="viewOverlayLabel" style="display: none">HTML</div>
+    <div id="textViewOverlay" class="viewOverlay" style="display: none"></div><div id="textViewOverlayLabel" class="viewOverlayLabel" style="display: none">Text</div><div id="textWrapOverlayLabel" class="viewOverlayLabel" title="Wrap" style="display: none">&#x2BA8;</div>
+    <div id="mdViewOverlay"   class="viewOverlay" style="display: none"></div><div id="mdViewOverlayLabel" class="viewOverlayLabel" style="display: none">Markdown</div>
+    <div id="wikiViewOverlay" class="viewOverlay" style="display: none"></div><div id="wikiViewOverlayLabel" class="viewOverlayLabel" style="display: none">Wiki</div>
+</div>
+<div id="buttons">
+    <button id="buttonOkay" data-fhc-i18n="buttonOkay" class="button-right" style="display: none">Okay</button>
+    <button id="buttonCancel" data-fhc-i18n="buttonCancel" class="button-right" style="display: none">Cancel</button>
+    <button id="buttonClose" data-fhc-i18n="buttonClose" class="button-right">Close</button>
+</div>
+<table id="togglePreview"><tbody><tr>
+    <td><span data-fhc-i18n="labelPreview">View</span>:&nbsp;</td>
+    <td><input id="html-view" type="checkbox"/></td>
+    <td><label for="html-view">HTML</label></td>
+    <td><input id="md-view" type="checkbox"/></td>
+    <td><label for="md-view">Markdown</label></td>
+    <td><input id="wiki-view" type="checkbox"/></td>
+    <td><label for="wiki-view">Wiki</label></td>
+    <td><input id="text-view" type="checkbox"/></td>
+    <td><label for="text-view">Text</label></td>
+</tr></tbody></table>
+
+<div id="context-menu-container">
+    <div id="context-menu-wrapper">
+        <ul class="context-menu">
+            <li class="menu-title"><div data-fhc-i18n="menuItemTitleClipboard" class="">Clipboard:</div></li>
+            <li class="context-separator"></li>
+            <li><span id="copy2clipboardText-ctx" data-fhc-i18n="menuItemText2Clipboard" class="context-menu-item icon-item icon-copy">Copy clean text only</span></li>
+            <li><span id="copy2clipboardAll-ctx" data-fhc-i18n="menuItemHtml2Clipboard" class="context-menu-item icon-item icon-copy">Copy complete HTML</span></li>
+        </ul>
+    </div>
+</div>
+
+<div id="datetimeOverlay" class="datetime-modal" style="display: none">
+    <div id="datetimeContent" class="modal-content">
+        <div class="modal-header"><div id="modalTitle" class="modal-title">Titel</div><span id="buttonTimeClose" class="modal-close modal-button"></span></div>
+        <table border="0">
+            <tbody>
+                <tr>
+                    <th><label for="year" data-fhc-i18n="labelYear">Year</label></th>
+                    <th><label for="month" data-fhc-i18n="labelMonth">Month</label></th>
+                    <th><label for="day" data-fhc-i18n="labelDay">Day</label></th>
+                </tr>
+                <tr>
+                    <td><input id="year" type="text" pattern="^(\d{4})$" placeholder="yyyy"/></td>
+                    <td><select id="month"></select></td>
+                    <td><select id="day"></select></td>
+                </tr>
+                <tr class="datetime-separator"><td colspan="3"></td></tr>
+                <tr>
+                    <th colspan="3"><label data-fhc-i18n="labelTime">Time</label></th>
+                </tr>
+                <tr>
+                    <td colspan="3"><input id="hour" type="text" pattern="^(\d{2})$" placeholder="hh"/><div class="timeseparator">:</div>
+                        <input id="minute" type="text" pattern="^(\d{2})$" placeholder="mm"/><div class="timeseparator">:</div>
+                        <input id="second" type="text" pattern="^(\d{2})$" placeholder="ss"/>
+                        <div class="datetime-controls">
+                            <div id="btnNowdate" data-fhc-i18n-title="tooltipNowDatetimeButton" title="Set the current date and time"></div>
+                            <div id="btnErase" data-fhc-i18n-title="tooltipEraseDatetimeButton" title="Erase the date and time"></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="modal-buttons">
+            <button id="buttonTimeCancel" data-fhc-i18n="buttonCancel" class="button-right">Cancel</button>
+            <button id="buttonTimeOkay" data-fhc-i18n="buttonOkay" class="button-right">Okay</button>
+        </div>
+    </div>
+</div>
+
+<script src="/common/OptionsUtil.js"></script>
+<script src="/common/ThemeUtil.js"></script>
+<script src="/common/DateUtil.js"></script>
+<script src="/common/WindowUtil.js"></script>
+<script src="/common/MiscUtil.js"></script>
+<script src="/common/translation.js"></script>
+<script src="/common/purify.js"></script>
+<script src="renderjs/marked.js"></script>
+<script src="renderjs/wiky.js"></script>
+<script src="entryview.js"></script>
+</body>
+</html>

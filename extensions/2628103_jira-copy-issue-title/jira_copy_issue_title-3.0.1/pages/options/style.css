@@ -1,0 +1,146 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  min-height: 100vh;
+  overflow: auto;
+  gap: 1rem;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  position: relative;
+}
+
+h2 {
+  font-size: 2.2rem;
+  line-height: 1.1;
+}
+
+header {
+  overflow: hidden;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, max-content));
+  grid-gap: 1rem;
+  justify-content: center;
+  width: 90vw;
+  align-content: center;
+}
+
+.card > .close {
+  font-size: 2.2rem;
+  font-weight: 600;
+  position: absolute;
+  top: -3%;
+  right: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 0.5em;
+  cursor: pointer;
+}
+
+.container > * {
+  user-select: none;
+}
+
+.card > .close:hover {
+  color: #888;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  gap: 1.5em;
+  border: 3px dashed #888;
+  padding: 1rem;
+  position: relative;
+}
+
+#card-add {
+  cursor: pointer;
+}
+
+#card-add:hover {
+  background-color: #383838;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #888;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  font-size: 1.1em;
+  letter-spacing: 0.15em;
+}
+
+input:focus {
+  border-color: #ccc;
+}
+
+label {
+  font-size: 1.2em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed #888;
+  color: #888;
+}
+
+.info-header {
+  text-transform: uppercase;
+}
+
+.info-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.info-col-key {
+  flex-basis: 20%;
+  font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.info-col-key:hover {
+  color: #ccc;
+}
+
+@media (width <= 768px) {
+  body {
+    justify-content: start;
+  }
+}

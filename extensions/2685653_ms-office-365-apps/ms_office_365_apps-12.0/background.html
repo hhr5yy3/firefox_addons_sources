@@ -1,0 +1,91 @@
+<html>
+<head>
+    <meta charset='UTF-8'>
+</head>
+<body>
+<!--button onclick='prelozitStranku()'>Translate this page</button-->
+
+
+<style>
+
+@media (prefers-color-scheme: dark) {
+	html {
+		background:#000;
+	}
+	.ms_list .link {
+		color:#ffffff;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	html {
+		background:#ffffff;
+	}
+
+	.ms_list .link {
+		color:#000;
+	}
+}
+
+    body {
+        width:700px;
+    }
+
+    button, a, .link, input[type=radio], label {cursor:pointer;}
+
+    div.ms_list, div.ms_settings {
+        width: 100%;
+        box-sizing: border-box;
+        width:100%;
+        text-align: center;
+    }
+
+    .ms_list .link img {
+        height: 55px;
+        margin-bottom: 5px;
+    }
+
+    .ms_list .link {
+        display: inline-block;
+        box-sizing: border-box;
+
+        font: 400 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
+        transition: background-color .2s ease, color .2s ease;
+        white-space: nowrap;
+        cursor: pointer;
+
+        margin-bottom: 20px;
+        margin-left: 8px;
+        margin-right: 8px;
+
+        text-align: center;
+        text-decoration: none;
+
+
+    }
+
+    .ms_list .link img:hover {
+        scale: 1.08;
+        -webkit-filter: drop-shadow(2px 2px 2px rgb(95, 95, 95));
+        filter: drop-shadow(2px 2px 2px rgb(95, 95, 95));
+        
+    }
+
+    .ms_settings{
+        font: 400 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+
+</style>
+
+<div class='ms_list' id='ms_list'></div>
+<div class='ms_settings' id='ms_settings'>
+    <label><input type="radio" id="ms_type_business" name="ms_type" /> Business</label> | <label><input type="radio" id="ms_type_personal" name="ms_type" /> Personal</label>
+</div>
+
+
+<script src='funkce.js'></script>
+</body>
+</html>

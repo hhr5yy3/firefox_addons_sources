@@ -1,0 +1,1 @@
+const t={action:"Exportálás",copied:"Másolva",options:{default:"Alapértelmezett",withoutCitations:"Hivatkozások nélkül",download:"Letöltés szövegfájlként"}},o={exportButton:t};export{o as default,t as exportButton};

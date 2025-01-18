@@ -1,0 +1,60 @@
+{
+  "manifest_version": 2,
+  "name": "Orbit",
+  "short_name": "Orbit",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6003eac6-4b07-4aaf-960b-92fa006cd444}"
+    }
+  },
+  "version": "1.2.2",
+  "description": "Save time with Orbit while juggling emails, diving into lengthy docs, skimming articles, or watching videos.",
+  "content_security_policy": "script-src 'self'; img-src *; media-src *;",
+  "permissions": [
+    "tabs",
+    "identity",
+    "tabHide",
+    "storage",
+    "*://localhost/*",
+    "contextMenus",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "icons": {
+    "48": "icons/orbit-icon-48.svg"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "web_accessible_resources": [
+    "assets/*.gif",
+    "assets/*.svg",
+    "assets/*.css",
+    "welcome.html",
+    "welcome.js",
+    "fonts/*.otf"
+  ],
+  "browser_action": {
+    "default_icon": "icons/orbit-icon-48.svg",
+    "default_title": "Orbit",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://mail.google.com/*",
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "assets/orbitStyles.css"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}

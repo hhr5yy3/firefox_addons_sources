@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSS -->
+    <link rel="stylesheet" href="main.css">
+    <!-- JQuery -->
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="logo"></div>
+            <div class="close" id="close"></div>
+        </div>
+        <div class="left-menu">
+            <div id="home" class="focus_gradient">
+                <div id="bg_1" class="arrow">
+                 <span>
+                     <img id="homeImg" src="Resources/home0.png" style="padding-top:5px;">
+                     <h5 id="home_lb" style="padding-top:10px;">Home</h5>
+                 </span>
+                </div>
+             </div>
+             <div id="statistics" class="normal_gradient">
+                 <div id="bg_2">
+                     <span>
+                         <img id="statisticsImg" src="Resources/icon_statistics.png" style="padding-top:5px;">
+                         <h5 id="blocking_stats" style="padding-top:10px;">Blocking Statistics</h5>
+                     </span>
+                 </div>
+             </div>
+             <div id="adblock" class="normal_gradient">
+                <div id="bg_5">
+                    <span>
+                        <img id="adblockImg" src="Resources/icon_block.png" style="padding-top:5px;">
+                        <h5 id="ad_blocker" style="padding-top:10px;">Ad Blocker</h5>
+                    </span>
+                </div>
+            </div> 
+             <!-- <div id="feedback" class="normal_gradient">
+                 <div id="bg_3">
+                     <span>
+                         <img id="feedbackImg" src="Resources/icon_feedback.png" style="padding-top:5px;">
+                         <h5 style="padding-top:10px;">Feedback</h5>
+                     </span>
+                 </div>
+             </div> -->
+             <div id="rate" class="normal_gradient" style="display: none;">
+                 <div id="bg_4">
+                     <span>
+                         <img id="rateImg" src="Resources/icon_rate.png" style="padding-top:5px;">
+                         <h5 id="rate_us" style="padding-top:10px;">Rate Us</h5>
+                     </span>
+                 </div>
+             </div> 
+            
+        </div>
+        <div class="content">
+            <!-- Home screen -->
+            <section id="section_home">
+                <div class="content-child tracking-attempt-div">
+                    <h1 id="tracking_attempts" style="text-align: center; margin-bottom:15px;">Tracking Attempts</h1>
+                    <div class="circle-left">
+                        <div class="circle center circle-red">
+                            <h2 id="cur_session" style="color:#B72024; padding-top:17px; font-size:x-large">0</h2>
+                        </div>
+                        <h1 id="current_sess" class="center" style="padding-left: 13px;">Current Session</h1>
+                    </div>
+                    <img id="middle-line" src="Resources/middle-line.png">
+                    <div class="circle-right">
+                        <div class="circle center circle-blue">
+                            <h2 id="today_session" style="color:#319BD6; padding-top:17px; font-size:x-large">0</h2>
+                        </div>
+                        <h1 id="today_lb" class="center">Today</h1>
+                    </div>
+                </div>
+                <div class="content-child">
+                    <div style="float:left; display:inherit;">
+                        <h1 id="exc_site">Block tracking attempts<br>for this site</h1>
+                        <h3 id="tracking_will_not_be_blocked"></h3>
+                        <!--h3>Change settings for</h3-->
+                        <h3 id="domain" class="blue"></h3>
+                    </div>
+
+                    <img id="whitelist" src="Resources/whitelist_enabled.png">
+                    <div id="trackingWhiteListSwitch" style="float:right;"><b id="no">NO  </b><img id="whitelist_switch" src="Resources/switchYES.png"><b id="yes"> YES</b></div>
+                        
+                </div>
+
+                <div class="content-child">
+                    <div id="text_status" class="tracking_blocker_box">
+                        <h1 id="tracking_blocker">Tracking Blocker</h1>
+                        <h3 class="blue" id="status_text">Inactive</h3>
+                    </div>
+                    <img id="fingerprint" src="Resources/tracking_bad.png">
+                    <div id= "tackingSwitch" style="float:right;"><b id="no2">NO  </b><img id="tracking_switch" src="Resources/switchNO.png"><b id="yes2"> YES</b></div>
+                </div>
+            </section>
+            <!-- Statistics screen -->
+            <section id="section_statistics">
+                <div class="center" style="padding-top: 20px;">
+                    <h1></h1>
+                    <h1 id="top_tracking_att">Top Tracking Attempts Sources</h1>
+                </div>
+                <div class="content-child">
+                    <table>
+                        <tr>
+                            <td class="cell_pad">
+                                <h1 id="top_1_domain" class="no_margins">Name</h1>
+                                <p id="top_1_counter" class="red">0</p>
+                                <progress id="top_1_progress" max="100" value="0">
+                                    <div class="progress-bar"></div>
+                                </progress>
+                            </td>
+                            <td class="cell_pad">
+                                <h1 id="top_2_domain" class="no_margins">Name</h1>
+                                <p id="top_2_counter" class="red">0</p>
+                                <progress id="top_2_progress" max="100" value="0">
+                                    <div class="progress-bar"></div>
+                                </progress>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="cell_pad">
+                                <h1 id="top_3_domain" class="no_margins">Name</h1>
+                                <p id="top_3_counter" class="red">0</p>
+                                <progress id="top_3_progress" max="100" value="0">
+                                    <div class="progress-bar"></div>
+                                </progress>
+                            </td>
+                            <td class="cell_pad">
+                                <h1 id="top_4_domain" class="no_margins">Name</h1>
+                                <p id="top_4_counter" class="red">0</p>
+                                <progress id="top_4_progress" max="100" value="0">
+                                    <div class="progress-bar"></div>
+                                </progress>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="center" style="display:inline-block; width:100%;padding-top: 10px;padding-bottom:29px;">
+                    <h2 id="blocked_attempts" style="padding:10px;">Blocked Attempts</h2>
+                    <div class="row">
+                        <div style="float:left">
+                            <h2 id="all_time_lb">All Time</h2>
+                        </div>
+                        <div id="all_time" style="float:right" class="red">
+                            <h2>0</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="float:left">
+                            <h2 id="this_year_lb">This Year</h2>
+                        </div>
+                        <div id="this_year" style="float:right" class="red">
+                            <h2>0</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="float:left">
+                            <h2 id="this_month_lb">This Month</h2>
+                        </div>
+                        <div id="this_month" style="float:right" class="red">
+                            <h2>0</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style="float:left">
+                            <h2 id="this_week_lb">This Week</h2>
+                        </div>
+                        <div id="this_week" style="float:right" class="red">
+                            <h2>0</h2>
+                        </div>
+                    </div>
+                    <div class="row" style="border-bottom:0px;">
+                        <div style="float:left">
+                            <h2 id="today_lb2">Today</h2>
+                        </div>
+                        <div id="today" style="float:right" class="red">
+                            <h2>0</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Feedback screen -->
+            <!-- <section id="section_feedback" class="center">
+                <img src="Resources/contact_us.png" style="margin-top: 13px; padding-left: 125px;">
+                <h1 style="margin-bottom:10px;">Contact Us</h1>
+                <h3 style="margin-bottom:15px;">Your feedback will help us!</h3>
+                <textarea rows="1" placeholder="Name..." id="txtAreaNameLabel" style="height: 14px;"></textarea>
+                <textarea rows="1" placeholder="Email..." id="txtAreaEmailLabel" style="height: 14px;"></textarea>
+                <textarea rows="1" placeholder="Subject..." id="txtAreaSubjectLabel" style="height: 14px;"></textarea>
+                <textarea rows="8" cols="50" id="txtAreaTextLabel" placeholder="Tell us what is on your mind..." style="height: 124px;"></textarea>
+                <h2 id="thanks" style="padding-top:7px;"></h2>
+                <button style="margin-left:60px; margin-top:15px; color:#cbd7e0;margin-bottom: 23px;" id="button_feedback"><p style="padding-top: 0px; color:#ffffff;">Send Feedback</p></button>
+            </section> -->
+
+            <section id="section_adblock">
+
+                <div class="content-child tracking-attempt-div">
+                    <h1 id="num_of_ads" style="text-align: center; margin-bottom:15px;">Number of Ads Blocked</h1>
+                    <div class="circle-left">
+                        <div class="circle center circle-red">
+                            <h2 id="ads_counter" style="color:#B72024; padding-top:17px; font-size:x-large">0</h2>
+                        </div>
+                        <h1 id="current_sess2" class="center" style="padding-left: 13px;">Current Session</h1>
+                    </div>
+                    <img id="adsmiddle-line" src="Resources/middle-line.png">
+                    <div class="circle-right">
+                        <div class="circle center circle-blue">
+                            <h2 id="adstoday_session" style="color:#319BD6; padding-top:17px; font-size:x-large">0</h2>
+                        </div>
+                        <h1 id="today_lb3" class="center">Today</h1>
+                    </div>
+                </div>
+                <div class="content-child">
+                    <div style="float:left; display:inherit;">
+                        <h2 id="exc_site2">Exclude this Site<br>(Ads will not be blocked)</h2>
+                        <h5 id="ads_will_not_be_blocked" style="padding: 0px"></h5>
+                        <h5 id="adsdomain" class="blue"></h5>
+                    </div>
+
+                    <img id="adswhitelist" src="Resources/whitelist_enabled.png">
+                    <div id="adblockerWhiteListSwithc" style="float:right;"><b id="no3">NO  </b><img id="adswhitelist_switch" src="Resources/switchYES.png"><b id="yes3"> YES</b></div>
+                </div>
+
+                <div class="content-child">
+                    <div id="adstext_status" class="tracking_blocker_box">
+                        <h1 id="ad_blocker2">Ad Blocker</h1>
+                        <h3 class="blue" id="adsstatus_text">Inactive</h3>
+                    </div>
+                    <img id="adblocker_button" src="Resources/tracking_bad2.png">
+                    <div id="adblockerSwitch" style="float:right;"><b id="no4">NO  </b><img id="adblock_switch" src="Resources/switchNO.png"><b id="yes4"> YES</b></div>
+                </div>
+            </section>
+        </div>
+        
+    <p id="version_number" style="font-size:10px;position: absolute;bottom: 0px;right: 0px;">v0.0.1</p>
+    </div>
+    <!-- scripts begin -->
+    <script type="text/javascript" src="src/popupUI.js"></script>
+    <!-- Custom controls for GUI -->
+    <script type="text/javascript" src="src/popup.js"></script>
+    <script type="text/javascript" src="src/language.js"></script>
+    <!-- end scripts -->
+</body>
+
+</html>

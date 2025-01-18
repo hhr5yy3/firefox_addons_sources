@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
+body {
+  padding: 0.5em;
+  padding-top: 0;
+  font-family: 'Red Hat Text', sans-serif;
+  background-color: #D4CBC4;
+  color: black;
+  font-size: 1rem;
+  width: 26rem;
+  overflow-x: hidden;
+}
+
+h2 {
+  margin-bottom: 0.5em;
+}
+
+h2 a {
+  float: right;
+  margin-top: -1.33em;
+  shape-outside: circle(50%);
+}
+
+div.content {
+  margin: 5px;
+}
+
+.link {
+  display: flex;
+  justify-content: space-around;
+}
+
+.link .update {
+  display: none;
+  color: red;
+}
+
+.link .update.needsIt {
+  display: initial;
+  animation: fire 1.5s ease-in-out infinite alternate;
+}
+
+div.gift {
+  font-size: 0.7rem;
+  display: flex;
+  margin-top: 1em;
+  justify-content: flex-end;
+}
+
+div.gift a,
+div.gift a:visited {
+  color: gray;
+}
+
+div.gift a:visited {
+  opacity: 0.5;
+}
+
+@media not print and (prefers-color-scheme: dark) {
+  body {
+    color: white;
+    background-color: #2b343b;
+  }
+
+  a,
+  a:visited {
+    color: #ec760c;
+  }
+}
+
+
+
+@keyframes fire {
+  0% {
+    text-shadow: 0 .008em .127em #fefcc9, .055em -0.066em .2em #feec85, -0.111em -0.127em .272em #ffae34, .111em -0.272em .411em #ec760c, -0.111em -0.456em .416em #cd4606, 0 -0.533em .577em #973716, .055em -0.55em .533em #451b0e
+  }
+
+  100% {
+    text-shadow: 0 0 .111em #fefcc9, .055em -0.055em .166em #fefcc9, -0.111em -0.111em .222em #feec85, .122em -0.233em .333em #ffae34, -0.122em -0.322em .277em #ec760c, 0 -0.456em .444em #cd4606, .055em -0.5em .444em #973716
+  }
+}

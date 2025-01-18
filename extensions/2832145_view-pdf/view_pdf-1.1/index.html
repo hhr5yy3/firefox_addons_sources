@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="./assets/image/icon_1.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./assets/css/privacy.css?version=55">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css?version=55">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/axios.min.js"></script>
+
+    <title>New Tab</title>
+</head>
+
+<body>
+    <div class="fist">
+        <div class="d-flex align-items-center justify-content-end px-4 main-div">
+            <!-- <div class="search-icon">&#xF002;
+                <input class="form-controls top-input" type="text" placeholder=" Search or type a URL" />
+            </div> -->
+            <div id="openpop" class="openpop" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                <img src="./assets/image/logo_1.png" class="input-imgs" alt="/">
+                <img src="./assets/image/Asset 1.png" class="input-img" title="convert-file" alt="convert-file">
+            </div>
+        </div>
+    </div>
+    <!--==================================== new-end ========================================-->
+
+    <div class="secend">
+        <div class="setting" id="footer_ff">
+            <div class="title-section">Settings
+                <a class="close-pop close-pop-bottom" id="footerClose">
+                    X
+                </a>
+            </div>
+            <div class="row bottom-section">
+                <div id="bottom-right" class="col-4 p-0">
+                    <ul class="text-left list-unstyled left-menu">
+                        <li>
+                            <button id="convert" data-bs-toggle="modal" class="openpop" data-bs-target="#exampleModal1">
+                                View PDF
+                            </button>
+                        </li>
+                        <li>
+                            <button id="info" class="active">
+                                Info
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-8 pr-0" id="menu-right">
+                    <div class="info">
+                        <div class="text-center mb-2">INFO</div>
+                        <hr class="hr-2" style='width: "75%"; margin: "auto"; ' />
+                        <div class="row" style='margin-top: "20px"; '>
+                            <a rel="noreferrer" class="" target="_blank" href="https://viewpdf.org/app/privacy.html">
+                                <button>Privacy Policy</button>
+                            </a>
+                            <a rel="noreferrer" class="" target="_blank" href="https://viewpdf.org/app/eula.html">
+                                <button>EULA</button>
+                            </a>
+                            <a rel="noreferrer" class="" target="_blank" href="https://viewpdf.org/app/uninstall.html">
+                                <button>Uninstall</button>
+                            </a>
+                            <a rel="noreferrer" class="" target="_blank" href="https://viewpdf.org/app/contact.html">
+                                <button>Contact Us</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bg-light w-100 bottom-0 px-4 py-2 bottom-bar">
+            <img id="footer" class="float-end input-img" src="./assets/image/7216128.png" alt="/">
+        </div>
+        <form id="conversionForm">
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div id="popup">
+                            <div class="modal-header">
+                                <h1 class="modal-title convert-file-txt" id="exampleModalLabel">View PDF</h1>
+                                <button type="button" class="btn-close position-absolute close_button"
+                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-10 mx-auto">
+                                    <div class="row getList"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="popup_2">
+                            <div class="modal-header">
+                                <button class="btn" id="backToPopup1">
+                                    <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path
+                                            d="M177.5 414c-8.8 3.8-19 2-26-4.6l-144-136C2.7 268.9 0 262.6 0 256s2.7-12.9 7.5-17.4l144-136c7-6.6 17.2-8.4 26-4.6s14.5 12.5 14.5 22l0 72 288 0c17.7 0 32 14.3 32 32l0 64c0 17.7-14.3 32-32 32l-288 0 0 72c0 9.6-5.7 18.2-14.5 22z" />
+                                    </svg></button>
+                                <div class="mainHeading">
+                                    <h1 class="modal-title convertFileName text-center" id="exampleModalLabel">Encrypt
+                                        PDF</h1>
+                                    <span class="convertFileTitle">Encrypt and protect PDF document securing with a
+                                        password</span>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-11 mx-auto">
+                                    <div class="listCard">
+                                        <div class="title convertFileDesc">
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut distinctio
+                                                quae quo sequi numquam adipisci ipsam maiores consequatur iure, sit
+                                                excepturi culpa illum? Iure officia fugiat expedita voluptatum natus.
+                                                Nulla, odio molestias a nam, quisquam natus consectetur necessitatibus
+                                                quidem soluta dignissimos ea impedit</p>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="button-section text-center">
+                                                <div id="fileUpload1" class="btn fileBtn">
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <svg width="12" class="me-1" xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 384 512">
+                                                            <path
+                                                                d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM96 48c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16zm0 64c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16zm0 64c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16zm-6.3 71.8c3.7-14 16.4-23.8 30.9-23.8h14.8c14.5 0 27.2 9.7 30.9 23.8l23.5 88.2c1.4 5.4 2.1 10.9 2.1 16.4c0 35.2-28.8 63.7-64 63.7s-64-28.5-64-63.7c0-5.5 .7-11.1 2.1-16.4l23.5-88.2zM112 336c-8.8 0-16 7.2-16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H112z" />
+                                                        </svg>
+                                                        <input type="file" id="file1" style="display: none;" />
+                                                        <div class="text text-uppercase">choose File</div>
+                                                        <div id="fileName"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <form type="submit">
+                                                <div class="loader4"></div>
+                                                <div class="col-8 mx-auto">
+                                                    <div id="alert">
+                                                        <div class="alert alert-danger fade show d-flex justify-content-between align-items-center"
+                                                            role="alert">
+                                                            <span><strong>Require</strong> Please enter value in
+                                                                field...!</span>
+                                                            <svg width="16" id="closeAlert"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 384 512">
+                                                                <path
+                                                                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div id="alert2">
+                                                        <div class="alert alert-danger fade show d-flex justify-content-between align-items-center"
+                                                            role="alert">
+                                                            <span id="alertAdd"></span>
+                                                            <svg width="16" id="closeAlert2"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 384 512">
+                                                                <path
+                                                                    d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul id="passWord">
+                                                    <div class="col-8 mx-auto">
+                                                        <div id="decrypt">
+                                                            <li class="row">
+                                                                <div class="col-md-2 col-sm-3 pb-2">
+                                                                    <label id="dynamicLabel1">Decrypt Password</label>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 pb-2">
+                                                                    <input id="getLetter" type="text" />
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-3 pb-2">
+                                                                    <span class="badge bg-secondary">String</span>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <p>Enter user password to remove User protection.
+                                                                        Leave the parameter empty to remove Owner
+                                                                        protection.</p>
+                                                            </li>
+                                                        </div>
+                                                        <div id="encrypt">
+                                                            <li class="row">
+                                                                <div class="col-md-2 col-sm-3 pb-2">
+                                                                    <label id="dynamicLabel2">User Password</label>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 pb-2">
+                                                                    <input id="getLetter1" type="text" />
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-3 pb-2">
+                                                                    <span class="badge bg-secondary">String</span>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <p>Sets the user password (also known as a document
+                                                                        open password) in the output PDF document. Users
+                                                                        will be asked to enter this password before
+                                                                        Acrobat Reader allows them to view the PDF
+                                                                        document.</p>
+                                                            </li>
+                                                            <li class="row">
+                                                                <div class="col-md-2 col-sm-3 pb-2">
+                                                                    <label id="dynamicLabel2">Owner Password</label>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 pb-2">
+                                                                    <input id="getLetter2" type="text" />
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-3 pb-2">
+                                                                    <span class="badge bg-secondary">String</span>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <p>Sets owner password (also known as a permissions
+                                                                        password). Using a owner password, you can
+                                                                        restrict printing, editing, and copying content
+                                                                        in the PDF. Recipients don’t need a password to
+                                                                        open the document. They do need a password to
+                                                                        change the restrictions the owner set.</p>
+                                                            </li>
+                                                        </div>
+                                                        <div id="comprass">
+                                                            <li class="row">
+                                                                <div class="col-md-2 col-sm-3 pb-2">
+                                                                    <label id="dynamicLabel2">Compression
+                                                                        Presets</label>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 pb-2">
+                                                                    <select class="form-select form-select-sm"
+                                                                        aria-label=".form-select-sm example"
+                                                                        id="selectValue">
+                                                                        <option value="none" selected="">none : Not set
+                                                                            -
+                                                                            advanced properties used</option>
+                                                                        <option value="text">text : Text - 20 image DPI,
+                                                                            lowest quality, highest compression</option>
+                                                                        <option value="archive">archive : Archive - 40
+                                                                            image
+                                                                            DPI, low quality, high compression</option>
+                                                                        <option value="web">web : Web - 75 image DPI,
+                                                                            medium
+                                                                            quality, high compression</option>
+                                                                        <option value="ebook">ebook : Ebook - 150 image
+                                                                            DPI,
+                                                                            high quality, medium compression</option>
+                                                                        <option value="printer">printer : Printer - 300
+                                                                            image DPI, high quality, low compression
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-3 pb-2">
+                                                                    <span class="badge bg-secondary">String</span>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <p style="margin: 0;">Choose compression level from
+                                                                        presets. If preset
+                                                                        is selected all other compression options are
+                                                                        ignored. <br />
+                                                                    <div class="py-1"></div>
+                                                                    Default : <span
+                                                                        class="badge bg-secondary">none</span>
+                                                                    <br />
+                                                                    <div class="py-1"></div>
+                                                                    Values : <span
+                                                                        class="badge bg-secondary">none</span>
+                                                                    <span class="badge bg-secondary">Text</span>
+                                                                    <span class="badge bg-secondary">Archive</span>
+                                                                    <span class="badge bg-secondary">Web</span>
+                                                                    <span class="badge bg-secondary">Ebook</span>
+                                                                    <span class="badge bg-secondary">Printer</span>
+                                                                    </p>
+                                                            </li>
+                                                        </div>
+                                                        <div id="excel">
+                                                            <li class="row">
+                                                                <div class="col-md-2 col-sm-3 pb-2">
+                                                                    <label id="dynamicLabel1">Fields separator</label>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-6 pb-2">
+                                                                    <input id="getLetter4" type="text" />
+                                                                </div>
+                                                                <div class="col-md-2 col-sm-3 pb-2">
+                                                                    <span class="badge bg-secondary">String</span>
+                                                                </div>
+                                                                <div class="col-md-5">
+                                                                    <p style="margin: 0;">Set fields separator.</p>
+                                                                    <div class="py-1"></div>
+                                                                    Default : <span class="badge bg-secondary">,</span>
+                                                            </li>
+                                                        </div>
+                                                    </div>
+                                                </ul>
+                                                <div class="d-flex justify-content-center align-items-center pb-5">
+                                                    <button type="submit" class="btn fileBtn text-uppercase"
+                                                        id="ConvertFiles">
+                                                        convert
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- add popup  -->
+        <div class="keep" id="keep">
+            <div class="arrow">
+                <img class="vert-move" src="assets/image/blue-arrow.png" height="140" width="75" />
+            </div>
+            <div class="keepbox" id="keepbox">
+                <img src="assets/image/check.png" width="40" alt="">
+                <h2 class="m-0">Click View PDF to Search For View PDF</h2>
+            </div>
+        </div>
+    </div>
+    <div class="prompt-container third_privacy">
+        <div class="prompt-overlay-content">
+            <!-- <div class="prompt-header">
+                <h1>Privacy Notice</h1>
+            </div>
+            <div class="content-container">
+                <p class="text-left head-pt">
+                    <strong>Read more about our privacy
+                        practices
+                        <a href="https://viewpdf.org/app/privacy.html" target="_blank"
+                            class="txt-hightlight">here</a>
+                    </strong>
+                </p>
+                <div class="prompt-content">
+                    <div class="txt-area">
+                        <div class="privacy_ul">
+                            <div class="pt-item privacy_li">
+                                <div class="pt-wrap">
+                                    <div class="pt-txt">
+                                        <div class="pt-c">
+                                            1. Permission to collect and process the following Technical information:
+                                            <div class="sub-item">
+                                                <p>
+                                                    Install Date and User Agent details.
+                                                </p>
+                                                <p>
+                                                    This data is collected to make improvements to our product, and help
+                                                    us in fraud detection, troubleshooting issues and tracking outages
+                                                    and cannot be used to personally identify a user.
+                                                </p>
+                                                <p>
+                                                    If you decline this data collection, we may not be able to debug
+                                                    certain versions of Firefox against our Extension.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons-area">
+                <button id="savebtn" type="button" class="prompt-btn tracker enable-confirm">
+                    Yes, you can collect anonymous data
+                </button>
+                <button id="savebtn2" type="button" class="prompt-btn tracker enable-confirm BorderBtn">
+                    No, do not collect anonymous data
+                </button>
+            </div> -->
+            <div class="privacy_box">
+                <div class="privacy_svg">
+                    <img src="assets/image/purchase-order-xxl.png" alt="">
+                </div>
+        
+                <div class="privacy_heading">
+                    <h1>Privacy Notice</h1>
+                </div>
+        
+                <div class="privacy_prectice_page">
+                    <p>Read more about our privacy practices
+                        <a href="https://viewpdf.org/app/privacy.html" target="_blank" class="txt_privacy_prectice">here</a>
+                    </p>
+                </div>
+        
+                <div class="permission_collect">
+                    <h4 class="permission_collect_heading">Permission to collect and process the following Technical information
+                        : </h4>
+                    <div class="permission_list">
+                        <div class="sub_item">
+                            <p>
+                                Install Date and User Agent details.
+                            </p>
+                            <p>
+                                This data is collected to make improvements to our product, and help
+                                us in fraud detection, troubleshooting issues and tracking outages
+                                and cannot be used to personally identify a user.
+                            </p>
+                            <p>
+                                If you decline this data collection, we may not be able to debug
+                                certain versions of Firefox against our Extension.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="anonymous_data_btn">
+                    <button class="data_btn_1" id="savebtn">Yes, you can collect anonymous data</button>
+                    <button class="data_btn_2" id="savebtn2">No, do not collect anonymous data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/axios.min.js"></script>
+    <script type="text/javascript" src="./script.js?version=1"></script>
+</body>
+
+</html>

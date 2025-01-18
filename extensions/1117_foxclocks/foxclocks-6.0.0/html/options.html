@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<!-- Copyright (c) 2020 Andy McDonald. All rights reserved. -->
+
+<html id="options">
+  <head>
+    <meta charset="utf-8" />
+
+    <title data-i18n-content="o_foxclocks_options"></title>
+
+    <link href="/3rdparty/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <link
+      href="/3rdparty/jstree/themes/default/style.min.css"
+      rel="stylesheet"
+    />
+
+    <link href="/css/content.css" rel="stylesheet" />
+    <link href="/css/options.css" rel="stylesheet" />
+
+    <script src="/3rdparty/jquery.min.js"></script>
+    <script src="/3rdparty/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/3rdparty/moment-with-locales.min.js"></script>
+    <script src="/3rdparty/jstree/jstree.min.js"></script>
+
+    <script src="/lib/utils.js"></script>
+    <script src="/lib/info.js"></script>
+    <script src="/lib/content.js"></script>
+    <script src="/lib/options.js" type="module"></script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="zonepicker" class="widget">
+        <div class="widget_head">
+          <span class="title" data-i18n-content="o_zonepicker"></span>
+          <button class="add">
+            <img src="/images/arrow_right.png" alt="add" />
+            <span data-i18n-content="o_zonepicker_add_button"></span>
+          </button>
+        </div>
+        <div class="widget_body"></div>
+      </div>
+
+      <div id="search" class="widget">
+        <div class="widget_head">
+          <span class="title" data-i18n-content="o_search"></span>
+          <span class="powered_by">
+            <span data-i18n-content="o_search_powered_by"></span>
+            <a class="quiet" target="geonames" href="https://www.geonames.org/"
+              >geonames.org</a
+            >
+          </span>
+        </div>
+
+        <div class="widget_body">
+          <input data-i18n-placeholder="o_search_box_placeholder" />
+          <div class="error">
+            <span data-i18n-content="misc_error_try_later"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="watchlist" class="widget">
+        <div class="widget_head">
+          <span class="title" data-i18n-content="o_watchlist"></span>
+          <span class="right">
+            <a class="foxclocks_help quiet" target="_blank" href="#"
+              ><img src="/images/help.png" alt="help" /><span
+                data-i18n-content="misc_help"
+              ></span
+            ></a>
+            &nbsp;&nbsp;
+            <a
+              href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4YYTJ8H6FW2MY"
+            >
+              <input
+                type="image"
+                src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"
+                alt="Donate"
+              />
+            </a>
+          </span>
+        </div>
+        <div class="widget_body">
+          <div id="watchlist_table_wrapper">
+            <table id="watchlist_table">
+              <thead>
+                <tr>
+                  <th class="flag">&nbsp;</th>
+                  <th class="name" data-i18n-content="o_watchlist_name"></th>
+                  <th class="time" data-i18n-content="o_watchlist_time"></th>
+                  <th
+                    class="time_format"
+                    data-i18n-content="o_watchlist_time_format"
+                  ></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="tools" class="widget">
+        <div class="widget_head">
+          <span class="title" data-i18n-content="o_tools"></span>
+          <span class="right">
+            FoxClocks&nbsp;
+            <span class="foxclocks_version_number"></span>
+          </span>
+        </div>
+
+        <div class="widget_body">
+          <div id="statusbar" class="tool">
+            <span class="label" data-i18n-content="o_statusbar"></span>
+            <div>
+              <input type="checkbox" id="enabled" />
+              <label for="enabled"
+                ><span data-i18n-content="misc_enabled"></span
+              ></label>
+            </div>
+
+            <table class="statusbar_options">
+              <tr class="vertical_position">
+                <td>
+                  <input
+                    type="radio"
+                    name="vertical_position"
+                    id="vertical_position_top"
+                    value="top"
+                  />
+                  <label for="vertical_position_top"
+                    ><span data-i18n-content="misc_top"></span
+                  ></label>
+                </td>
+                <td>
+                  <input
+                    type="radio"
+                    name="vertical_position"
+                    id="vertical_position_bottom"
+                    value="bottom"
+                  />
+                  <label for="vertical_position_bottom"
+                    ><span data-i18n-content="misc_bottom"></span
+                  ></label>
+                </td>
+              </tr>
+
+              <tr class="text_alignment">
+                <td>
+                  <input
+                    type="radio"
+                    name="text_alignment"
+                    id="text_alignment_left"
+                    value="left"
+                  />
+                  <label for="text_alignment_left"
+                    ><span data-i18n-content="misc_left"></span
+                  ></label>
+                </td>
+                <td>
+                  <input
+                    type="radio"
+                    name="text_alignment"
+                    id="text_alignment_right"
+                    value="right"
+                  />
+                  <label for="text_alignment_right"
+                    ><span data-i18n-content="misc_right"></span
+                  ></label>
+                </td>
+              </tr>
+            </table>
+
+            <table class="statusbar_options">
+              <tr>
+                <td>
+                  <label for="priority"
+                    ><span data-i18n-content="misc_priority"></span
+                  ></label>
+                </td>
+                <td>
+                  <select id="priority">
+                    <option value="low" data-i18n-content="misc_low"></option>
+                    <option
+                      value="normal"
+                      data-i18n-content="misc_normal"
+                    ></option>
+                    <option value="high" data-i18n-content="misc_high"></option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label for="font_size"
+                    ><span data-i18n-content="misc_font_size"></span
+                  ></label>
+                </td>
+                <td>
+                  <input id="font_size" type="text" />
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div id="time_format" class="tool">
+            <span class="label" data-i18n-content="o_time_format"></span>
+            <div>
+              <select></select>
+            </div>
+            <div>
+              <input
+                type="text"
+                id="custom_format"
+                data-i18n-placeholder="o_custom_format_placeholder"
+              />
+              <img class="time_format_help" src="/images/help.png" alt="help" />
+            </div>
+          </div>
+
+          <div id="tz_db" class="tool">
+            <span class="label" data-i18n-content="o_tz_db"></span>
+            <div>
+              <span data-i18n-content="misc_version"></span>
+              <span class="version"></span>&nbsp;
+              <span class="date"></span>
+            </div>
+            <div class="update">
+              <button>
+                <img src="/images/database_refresh.png" alt="refresh" />
+                <span data-i18n-content="o_tz_db_update_button"></span>
+              </button>
+              <div>
+                <span class="message right">&nbsp;</span>
+              </div>
+            </div>
+          </div>
+
+          <!--- Not referenced by css. No i18n -->
+          <div id="config_override" class="tool" style="display: none;">
+            <span class="label">Config override</span>
+            <div>
+              <input style="width: 100%;" />
+            </div>
+            <div>
+              <button>Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="time_format_help">
+      <table>
+        <tr>
+          <td data-i18n-content="time_format_token_YY_upper"></td>
+          <td>YY</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_do_lower"></td>
+          <td>do</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_YYYY_upper"></td>
+          <td>YYYY</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_ddd_lower"></td>
+          <td>ddd</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_M_upper"></td>
+          <td>M</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_dddd_lower"></td>
+          <td>dddd</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_Mo_upper"></td>
+          <td>Mo</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_A_upper"></td>
+          <td>A</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_MM_upper"></td>
+          <td>MM</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_a_lower"></td>
+          <td>a</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_MMM_upper"></td>
+          <td>MMM</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_H_upper"></td>
+          <td>H</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_MMMM_upper"></td>
+          <td>MMMM</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_HH_upper"></td>
+          <td>HH</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_w_lower"></td>
+          <td>w</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_h_lower"></td>
+          <td>h</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_wo_lower"></td>
+          <td>wo</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_hh_lower"></td>
+          <td>hh</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_ww_lower"></td>
+          <td>ww</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_m_lower"></td>
+          <td>m</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_D_upper"></td>
+          <td>D</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_mm_lower"></td>
+          <td>mm</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_Do_upper"></td>
+          <td>Do</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_s_lower"></td>
+          <td>s</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_DD_upper"></td>
+          <td>DD</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_ss_lower"></td>
+          <td>ss</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_DDD_upper"></td>
+          <td>DDD</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_z_upper"></td>
+          <td>Z</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_DDDo_upper"></td>
+          <td>DDDo</td>
+          <td></td>
+          <td data-i18n-content="time_format_token_zz_upper"></td>
+          <td>ZZ</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_DDDD_upper"></td>
+          <td>DDDD</td>
+          <td></td>
+          <td data-i18n-content="time_format_literal_A_upper"></td>
+          <td>\A</td>
+        </tr>
+        <tr>
+          <td data-i18n-content="time_format_token_d_lower"></td>
+          <td>d</td>
+          <td></td>
+          <td data-i18n-content="time_format_literal_word_label"></td>
+          <td data-i18n-content="time_format_literal_word_value"></td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="watchlist_menu">
+      <table>
+        <tr class="information">
+          <td>
+            <a href="#information"
+              ><img src="/images/information.png" /><span
+                data-i18n-content="misc_information"
+              ></span
+            ></a>
+          </td>
+        </tr>
+        <tr class="delete">
+          <td>
+            <a href="#delete"
+              ><img src="/images/cross.png" /><span
+                data-i18n-content="misc_delete"
+              ></span
+            ></a>
+          </td>
+        </tr>
+        <tr>
+          <td><hr /></td>
+        </tr>
+        <tr class="flag">
+          <td>
+            <a href="#flag"
+              ><img src="/images/flag_blue.png" /><span
+                data-i18n-content="misc_show_flag"
+              ></span
+            ></a>
+          </td>
+        </tr>
+        <tr class="bold">
+          <td>
+            <a href="#bold"
+              ><img src="/images/text_bold.png" /><span
+                data-i18n-content="misc_bold"
+              ></span
+            ></a>
+          </td>
+        </tr>
+        <tr class="italic">
+          <td>
+            <a href="#italic"
+              ><img src="/images/text_italic.png" /><span
+                data-i18n-content="misc_italic"
+              ></span
+            ></a>
+          </td>
+        </tr>
+        <tr class="underline">
+          <td>
+            <a href="#underline"
+              ><img src="/images/text_underline.png" /><span
+                data-i18n-content="misc_underline"
+              ></span
+            ></a>
+          </td>
+        </tr>
+        <tr class="colour">
+          <td>
+            <a href="#colour"
+              ><img src="/images/color_wheel.png" /><span
+                data-i18n-content="misc_colour"
+              ></span></a
+            ><input type="text" />
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

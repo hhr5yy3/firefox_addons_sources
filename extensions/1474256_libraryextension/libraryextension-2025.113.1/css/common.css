@@ -1,0 +1,537 @@
+@charset "UTF-8";
+/*
+ * Copyright 2019-2022 Quotidian LLC
+ * All Rights Reserved.
+ */
+div.libraryExtension {
+  text-transform: none;
+  border-spacing: 0;
+  border: solid 1px #ddd;
+  border-radius: 3px;
+  width: 100%;
+  margin: 0 0 10px 0;
+  padding: 0 8px 0 8px;
+  font-family: Arial;
+  font-size: 14px;
+  text-align: left;
+  text-transform: none;
+  background-color: #fcfcfc;
+  color: #040404;
+  /* For google books */
+}
+div.libraryExtension .libTitle {
+  font: 9pt Arial;
+}
+div.libraryExtension .libTitleTop {
+  border-radius: 8px;
+}
+div.libraryExtension a {
+  text-transform: none;
+  color: #007272;
+}
+div.libraryExtension a .libTitle:link {
+  font: bold 9pt Arial;
+  text-decoration: none;
+}
+div.libraryExtension a .link {
+  text-transform: none;
+  cursor: pointer;
+  font: normal 9pt Arial;
+  color: blue;
+  text-decoration: underline;
+}
+div.libraryExtension .lib {
+  height: 50px;
+  margin: 5px 0 5px 0;
+}
+div.libraryExtension .libName {
+  font-weight: bold;
+  font-family: Arial;
+  vertical-align: top;
+}
+div.libraryExtension .libText {
+  font-weight: normal;
+  vertical-align: top;
+}
+div.libraryExtension select {
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+}
+div.libraryExtension .ondemand {
+  padding: 7px 0 7px 0;
+  text-align: center;
+}
+div.libraryExtension .libSearch {
+  right: 0;
+  width: 100px;
+  cursor: pointer;
+  margin: 0;
+  padding: 5px 8px 5px 8px;
+  font: normal 9pt Arial;
+  text-align: center;
+  position: relative;
+  background: -webkit-linear-gradient(top, #f4f4e1 0%, #c8c8ab 100%);
+  border: solid 1px #97976b;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+div.libraryExtension .libHold {
+  right: 0;
+  width: 100px;
+  cursor: pointer;
+  margin: 6px 3px 6px 3px;
+  padding: 5px 8px 5px 8px;
+  font: bold 9pt Arial;
+  text-align: center;
+  position: relative;
+  background: -webkit-linear-gradient(top, #f4f4e1 0%, #c8c8ab 100%);
+  border: solid 1px #97976b;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+div.libraryExtension .libHold:link {
+  text-decoration: none !important;
+  font-family: Arial;
+}
+div.libraryExtension .libHold:hover {
+  background: -webkit-linear-gradient(top, #c8c8ab 0%, #f4f4e1 100%);
+}
+div.libraryExtension .libMoreResults {
+  margin: 0 auto;
+  cursor: pointer;
+  margin: 6px 3px 6px 3px;
+  padding: 5px 8px 5px 8px;
+  font: 9pt Arial;
+  text-align: center;
+  position: relative;
+  background: -webkit-linear-gradient(top, #f4f4e1 0%, #c8c8ab 100%);
+  border: solid 1px #97976b;
+  border-radius: 3px;
+}
+div.libraryExtension .libMoreResults:link {
+  text-decoration: none !important;
+  font-family: Arial;
+}
+div.libraryExtension .libMoreResults:hover {
+  background: -webkit-linear-gradient(top, #c8c8ab 0%, #f4f4e1 100%);
+}
+div.libraryExtension .libextTitle {
+  text-align: center;
+  font-size: x-small;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  text-transform: uppercase;
+  position: relative;
+}
+div.libraryExtension .bn {
+  margin: 5px 0 0 5px;
+}
+div.libraryExtension .expander {
+  float: right;
+  width: 10px;
+  height: 10px;
+  cursor: select;
+}
+div.libraryExtension #libraryUserMessage {
+  padding: 6px;
+  margin-bottom: 4px;
+  background-color: #fcf9e8;
+  color: #0a0a0a;
+  border: 1px solid #c8cdd6;
+  border-radius: 3px;
+  position: relative;
+}
+div.libraryExtension #libraryUserMessage:first-of-type {
+  margin-top: 10px;
+}
+div.libraryExtension .dismissUserMessage {
+  height: 12px;
+  width: 12px;
+  float: right;
+  position: relative;
+  top: 0px;
+  right: 4px;
+}
+div.libraryExtension .dismissUserMessage:before {
+  color: #c8cdd6;
+  content: "✖";
+}
+div.libraryExtension .dismissUserMessage:hover::before {
+  color: #282d26;
+  cursor: pointer;
+}
+div.libraryExtension .libraryExtInfo {
+  font-size: 12px;
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  top: 1px;
+  cursor: pointer;
+}
+div.libraryExtension .le-collapsable-right {
+  right: 4px;
+}
+div.libraryExtension .le-collapsable {
+  margin-top: 0px;
+  font-size: 14pt;
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 0;
+}
+div.libraryExtension .le-collapsable::before {
+  color: #b8bdc6;
+  border-width: thin;
+  border-color: #fff;
+}
+div.libraryExtension .le-collapsable:hover::before {
+  color: #282d26;
+  cursor: pointer;
+  border-color: #333;
+}
+div.libraryExtension .le-collapse:before {
+  position: absolute;
+  margin-top: 0x;
+  top: 0px;
+  content: "⊟";
+}
+div.libraryExtension .le-uncollapse:before {
+  position: absolute;
+  margin-top: 0x;
+  top: 0px;
+  content: "⊞";
+}
+div.libraryExtension .Status {
+  font-size: 12px;
+}
+div.libraryExtension .Status .hiddenItems {
+  display: none;
+}
+div.libraryExtension .pauseable {
+  font-size: 12pt;
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: 3px;
+  right: 20px;
+  color: #b8bdc6;
+  border-width: thin;
+  border-color: #b8bdc6;
+  opacity: 0.6;
+}
+div.libraryExtension .pauseable:hover {
+  color: #282d26;
+  cursor: pointer;
+  border-color: #282d26;
+  opacity: 1;
+}
+div.libraryExtension .pause {
+  background: url(chrome-extension://__MSG_@@extension_id__/images/pause.png);
+}
+div.libraryExtension .unpause {
+  background: url(chrome-extension://__MSG_@@extension_id__/images/play.png);
+}
+div.libraryExtension div.listing {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: dotted;
+  border-color: lightgray;
+  margin-bottom: 4px;
+  border-width: 0;
+  border-bottom-width: 1px;
+}
+div.libraryExtension div.quickstatus {
+  grid-column: 1/span 2;
+}
+div.libraryExtension .Library {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 6px !important;
+}
+div.libraryExtension .LibraryResults {
+  min-height: 82px;
+}
+div.libraryExtension a.style_a {
+  text-decoration: underline;
+}
+div.libraryExtension a.style_b {
+  font-weight: bold;
+}
+div.libraryExtension .libraryAction {
+  float: right;
+  text-align: right;
+  margin: 6px 0 15px 0;
+  padding-top: 0;
+  height: 21px;
+}
+div.libraryExtension .ninetywidth {
+  width: 90% !important;
+}
+div.libraryExtension .clickable {
+  cursor: pointer;
+}
+div.libraryExtension .libIcon {
+  margin: 0 5px 0 5px;
+  height: 14px;
+  width: 14px;
+  font-size: 12px;
+  margin-top: 3px;
+  float: left;
+  text-align: center;
+}
+div.libraryExtension .libConfirm {
+  background: radial-gradient(#20b71b, #1dd21f);
+  border-radius: 50%;
+  line-height: 13px;
+}
+div.libraryExtension .libConfirm span::before {
+  color: white;
+  content: "✓";
+}
+div.libraryExtension .libAlert {
+  background: radial-gradient(#ff794e, #f75f2e);
+  border-radius: 50%;
+  line-height: 11px;
+}
+div.libraryExtension .libAlert span::before {
+  color: white;
+  content: "✘";
+}
+div.libraryExtension .libWarn {
+  border-radius: 50%;
+  line-height: 11px;
+}
+div.libraryExtension .libWarn span::before {
+  color: black;
+  content: "⚠";
+}
+div.libraryExtension .icon {
+  padding-right: 3px;
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: auto;
+  margin: auto;
+}
+div.libraryExtension .icon-headphones:before {
+  content: "🎧";
+}
+div.libraryExtension .icon-phone:before {
+  content: "📱";
+}
+div.libraryExtension .icon-book:before {
+  content: "📖";
+}
+div.libraryExtension .icon-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  border-top-color: #cecece;
+  margin-right: 6px;
+}
+@keyframes library_extension_rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+div.libraryExtension .rotate {
+  animation: library_extension_rotation 1s ease-in-out infinite;
+}
+div.libraryExtension .le-header {
+  position: sticky;
+  top: 0;
+}
+div.libraryExtension .t-title {
+  font-size-adjust: 0.75;
+}
+div.libraryExtension .le-title-observed {
+  margin-left: 16px;
+}
+div.libraryExtension .t-author {
+  font-size-adjust: 0.75;
+}
+div.libraryExtension .le-author-observed {
+  margin-left: 16px;
+}
+div.libraryExtension .rej-author {
+  font-size-adjust: 0.75;
+}
+div.libraryExtension .le-item {
+  margin-top: 6px;
+  display: flex;
+}
+div.libraryExtension .le-description {
+  margin-left: 20px;
+  padding-top: 4px;
+}
+div.libraryExtension .le-item-listing {
+  padding-left: 12px;
+}
+div.libraryExtension .le-catalogs {
+  flex: 1;
+  overflow: hidden;
+}
+div.libraryExtension .le-catalog {
+  padding: 5px 5px 5px 5px;
+  text-transform: uppercase;
+  background-color: #e3e3e3;
+}
+div.libraryExtension .le-collapsable-heading {
+  background-color: #efefef;
+}
+div.libraryExtension .rej-item {
+  margin-top: 8px;
+}
+div.libraryExtension .rej-reasons {
+  margin-left: 16px;
+  font-size: 10px;
+}
+div.libraryExtension .rej-reason {
+  font-size: 10px;
+}
+div.libraryExtension .le-collapsable-heading {
+  position: relative;
+}
+
+div.libraryextension_debug {
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  padding: 10px 10px 10px 10px;
+  background-color: rgb(102, 102, 102);
+  color: #ffffff;
+  font-size: 12pt;
+  font-family: Arial;
+  overflow-y: scroll;
+}
+
+div.libraryextension_debug:hover {
+  height: 120px;
+}
+
+div.LibraryExtensionSearchWidgetDialog {
+  z-index: 100;
+  background-color: lightgrey;
+  color: black;
+  border: solid 1px lightgrey;
+  border-radius: 4px;
+  margin: 6px 6px 6px 6px;
+  padding: 3px 3px 3px 3px;
+  display: none;
+  position: absolute;
+  left: 100px;
+  width: 90%;
+  height: 400px;
+  top: 100px;
+}
+div.LibraryExtensionSearchWidgetDialog .LibraryExtensionSearchWidget {
+  height: 75%;
+}
+div.LibraryExtensionSearchWidgetDialog .libraryExtensionFlash {
+  position: absolute;
+  margin: 6px 6px 6px 6px;
+  padding: 6px 6px 6px 6px;
+  background-color: lightyellow;
+  border: solid 1px lightgrey;
+  border-radius: 4px;
+  bottom: 6px;
+  width: 90%;
+}
+div.LibraryExtensionSearchWidgetDialog button.close {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+div.LibraryExtensionSearchWidgetDialog div.searchCaption {
+  font-size: 10px;
+  text-decoration: bold;
+}
+div.LibraryExtensionSearchWidgetDialog input {
+  font-size: 20px;
+  padding: 8px 8px 8px 8px;
+  margin-bottom: 1px;
+}
+div.LibraryExtensionSearchWidgetDialog div.results {
+  color: black;
+  padding-left: 1px;
+  overflow-y: auto;
+  height: 100%;
+}
+div.LibraryExtensionSearchWidgetDialog div.libraryResult {
+  background-color: #fcfcfc;
+  padding: 8px 8px 8px 8px;
+}
+div.LibraryExtensionSearchWidgetDialog div.libraryResult:nth-child(even) {
+  background-color: #cecece;
+}
+
+dialog.libraryExtInfoDialog {
+  padding: 2px 2px 2px 2px;
+  font-family: sans-serif;
+  width: 80%;
+  height: 80%;
+  overflow: hidden;
+}
+
+dialog.libraryExtInfoDialog::backdrop {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+button.le-close {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
+.libraryExtensionFlex {
+  display: flex;
+  flex: 1;
+  align-items: start;
+  position: absolute;
+  top: 0px;
+  bottom: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+@keyframes library_extension_expand {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+.le-coverimage {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-right: 12px;
+}
+.le-coverimage img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+div.le-goodreads-main-detail-item-beta {
+  position: absolute;
+  top: 10rem;
+  width: 350px;
+  right: 10px;
+}
+@media screen and (max-width: 80em) {
+  div.le-goodreads-main-detail-item-beta {
+    top: 15rem;
+  }
+}

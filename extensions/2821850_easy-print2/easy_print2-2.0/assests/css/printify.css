@@ -1,0 +1,246 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto
+}
+
+@media (min-width:576px) {
+
+    .container,
+    .container-sm {
+        max-width: 540px
+    }
+}
+
+@media (min-width:768px) {
+
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: 720px
+    }
+}
+
+@media (min-width:992px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm {
+        max-width: 960px
+    }
+}
+
+@media (min-width:1200px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1140px
+    }
+}
+
+@media (min-width:1400px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1320px
+    }
+}
+
+@media print {
+    @page {
+        margin: 0 auto !important;
+        zoom: 100%;
+    }
+}
+
+.loadingcard {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+.loadingcard h2 {
+    text-align: center;
+    font-size: 32px;
+}
+
+.loadingcard p {
+    text-align: center;
+    font-size: 18px;
+}
+
+.loader {
+    animation: spin 1.5s linear infinite;
+    margin: auto;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+}
+
+.loader div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    margin: 8px;
+    border: 4px solid #121212;
+    border-radius: 50%;
+    animation: loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #121212 transparent transparent transparent;
+}
+
+.loader div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.loader div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 220px;
+}
+
+.print {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    position: relative;
+    padding: 10px 20px 10px 40px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+}
+
+.print::before {
+    content: "\f02f";
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 16px;
+    font-weight: 900;
+    font-family: "Font Awesome 6 Free";
+}
+
+.backToFirst {
+    cursor: pointer;
+}
+
+.backToFirst::before {
+    content: "\f30a";
+    font-size: 20px;
+    font-weight: 900;
+    font-family: "Font Awesome 6 Free";
+}
+
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#pf-body {
+    padding: 0 200px;
+}
+
+.errorCard {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 50px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.errorCard .errortxt {
+    color: red;
+}
+
+@media (max-width : 1200px) {
+    #pf-body {
+        padding: 0 100px;
+    }
+
+    .nav {
+        padding: 20px 120px;
+    }
+}
+
+@media (max-width : 991PX) {
+    #pf-body {
+        padding: 0 50px;
+    }
+
+    .nav {
+        padding: 20px 70px;
+    }
+}
+
+@media (max-width : 768PX) {
+    #pf-body {
+        padding: 0;
+    }
+
+    .nav {
+        padding: 20px 20px;
+    }
+}
+
+@media(max-width : 524px) {
+    .loadingcard h2 {
+        font-size: 26px;
+    }
+
+    .loadingcard p {
+        font-size: 14px;
+    }
+
+    .errorCard .errortxt {
+        font-size: 20px;
+    }
+}
+
+.goPfBody {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 23px 0px;
+  }

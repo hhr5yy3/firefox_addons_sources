@@ -1,0 +1,1 @@
+"undefined"==typeof _idaptiveUniqueGlobal&&(_idaptiveUniqueGlobal={}),function(){void 0===this.brand&&(this.brand={})}.call(_idaptiveUniqueGlobal);

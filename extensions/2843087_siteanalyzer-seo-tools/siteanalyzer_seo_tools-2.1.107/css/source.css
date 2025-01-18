@@ -1,0 +1,269 @@
+
+body {
+/*    margin: 5px 1%;*/
+    margin:0;
+    font-family: helvetica;
+    font-size: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+body.err #srcview {
+    background: #fdd;
+}
+body.err #showerr {
+    display: block;
+}
+body.wait {
+/*    background: #ddd;*/
+    cursor: wait !important;
+}
+body.wait2 #srcview {
+    cursor: wait !important;
+    opacity: 0.7 !important;
+}
+
+body.rezizing {
+    user-select: none;
+}
+
+#wrapper {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+#listinner {
+    position: sticky;
+    top: 0;
+}
+
+#fname {
+    color: #fff;
+    flex-grow: 1;
+}
+
+#fname a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#fname a:hover {
+    text-decoration: none;
+}
+
+#copy2clip, #beautify {
+    all: unset;
+    color: #fff;
+    cursor: pointer;
+    transition: .25s;
+    box-sizing: border-box;
+    background-color: transparent;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#beautify:not(.sel) {
+    background-color: transparent;
+    color: #fff;
+    opacity: 0.7;
+}
+
+#copy2clip:hover, #beautify:hover {
+    background: #eee;
+    color: #404040;
+}
+
+#copy2clip svg, #beautify svg {
+    width: 24px;
+    height: 24px;
+}
+
+h1 {
+    margin: 5px 0;
+}
+h2 {
+    margin: 0;
+    font-size: 130%;
+    padding: 2px;
+    margin-bottom: 2px;
+}
+#list {
+    font-size: 14px;
+    background: #fff;
+    width: 30%;
+    position: relative;
+}
+
+#drag {
+    width: 12px;
+    height: 50px;
+    background-color: #9cce60;
+    position: absolute;
+    right: -6px;
+    top: 50vh;
+    transform: translateY(-50%);
+    cursor: col-resize;
+    z-index: 10;
+    border-radius: 15px;
+}
+
+#drag::before, #drag::after {
+    content: "";
+    width: 1px;
+    height: 30px;
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#drag::before {
+    left: 4px
+}
+
+#drag::after {
+    right: 4px
+}
+
+#srcview {
+    min-height: 60px;
+    background: #9CCE60;
+    flex-grow: 1;
+    width: 70%;
+}
+
+#srchead {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px;
+    position: sticky;
+    top: 0;
+    background-color: #9CCE60;
+}
+
+ol {
+    margin:0;
+    margin-bottom:10px;
+/*    max-height: 40%;*/
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#list ol {
+    padding-left: 32px;
+}
+
+a {
+    color: #00e;
+    text-decoration: none;
+}
+pre#src {
+    overflow-x: auto;
+    padding-bottom: 10px;
+    white-space: pre-wrap;
+/*    border: 1px solid #aaf;*/
+    border: 0;
+    min-height: 20px;
+    margin: 0;
+    width: 99%;
+    display: flex;
+}
+pre#src code {
+    background: #fff;
+    font-family: menlo,lucida console,monospace;
+    font-size: 12px;
+    flex-grow: 1;
+}
+#src ol {
+    width: 0%;
+    color: #fff;
+    margin-top: 3px;
+    font-size: 12px;
+    padding-left: 44px;
+    overflow: hidden;
+}
+
+body.nolinenum #src ol {
+    display: none;
+}
+body.nolinenum pre#src code {
+    margin-left: 0;
+}
+
+ol > li > a {
+    padding: 1px 0;
+    display: block;
+}
+li.sel > a:first-child {
+    background: #9CCE60;
+    color: #fff;
+}
+li.hi > a {
+    background: #ffa;
+}
+li>p {
+    margin:0;
+    color: #777;
+}
+li.inline > a {
+    white-space: nowrap;
+    color: #000;
+}
+li.inline > a > span {
+    color: #777;
+    font-size: 80%;
+}
+
+#list a:hover {
+    background: #DDFFB4 !important;
+    color: #000;
+}
+li>p>span.cache {
+    color: #808;
+}
+
+#showerr {
+    display: none;
+    color: red;
+
+}
+
+#tips {
+    margin-top: 30px;
+    color: #773;
+}
+#tips div {
+    display: none;
+    color: #773;
+    padding-bottom: 10px;
+}
+
+#tips:hover {
+    margin-bottom: 10px;
+    background: #ffc;
+}
+
+#tips:hover div {
+    display: block;
+}
+
+#htmllist li>a {
+    font-weight: bold;
+}
+
+h2 >i {
+/*    display: none;*/
+    color: #777;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.dynamic {
+    color: green;
+}
+

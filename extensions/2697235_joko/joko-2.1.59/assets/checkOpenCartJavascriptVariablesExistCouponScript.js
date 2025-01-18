@@ -1,0 +1,1 @@
+new BroadcastChannel("jokoAreOpenCartJavascriptVariablesDefinedChannel").postMessage(!(!window.cart||!window.voucher));

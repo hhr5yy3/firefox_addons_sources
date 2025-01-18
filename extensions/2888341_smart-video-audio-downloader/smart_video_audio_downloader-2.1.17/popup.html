@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style/popup.css">
+</head>
+<body>
+    <main>
+        <!-- Logo at the top -->
+        <div id="logo">
+            <img src="../icon.png" alt="Logo" />
+        </div>
+        
+        <!-- URL text -->
+        <span id="url-text"></span>
+
+        <!-- Spinner that replaces buttons during video detection -->
+        <div id="spinner">
+            <img src="../img/search.gif" alt="Loading..." />
+        </div>
+
+         <!-- Media info -->
+        <div id="media-info" class="hidden">
+            <img id="video-thumbnail" src="" alt="Thumbnail" />
+            <p id="video-title"></p>
+        </div>
+
+        <!-- Buttons container, hidden while spinner is shown -->
+        <div id="button-container" class="hidden">
+            <button class="download-button" id="download-video">
+                <span data-i18n="popup_download_video">Download Video</span>
+            </button>
+            <button class="download-button" id="download-audio">
+                <span data-i18n="popup_download_audio">Download Audio</span>
+            </button>
+        </div>
+        
+        <!-- Message when no video is found -->
+        <div id="no-video-message" class="hidden">
+            <p data-i18n="popup_no_media_found">No media Found!</p>
+        </div>
+    </main>
+    
+    <!-- Footer with three links: Settings, History, Info -->
+    <footer id="footer-links">
+        <div class="footer-link" id="info-link">
+            <img src="../img/info.png" alt="Info Icon" />
+            <span data-i18n="popup_info">ABOUT</span>
+        </div>
+        <div class="footer-link" id="history-link">
+            <img src="../img/history.png" alt="History Icon" />
+            <span data-i18n="popup_history">HISTORY</span>
+        </div>
+        <div class="footer-link" id="settings-link">
+            <img src="../img/settings.png" alt="Settings Icon" />
+            <span data-i18n="popup_settings">SETTINGS</span>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="js/i18n.js"></script>
+    <script type="text/javascript" src="js/popup-ui.js"></script>
+    <script type="text/javascript" src="js/search.js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+</body>
+</html>

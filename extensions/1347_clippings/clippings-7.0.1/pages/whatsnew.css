@@ -1,0 +1,213 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@import url("../style/laf.css");
+
+
+:root {
+    --url-bkgd-img: url("../img/bkgrd.png");
+    --page-width: 750px;
+    --color-bkgd: none;
+    --color-secondary-text: #737373;
+    --color-main-border: #ddd;
+    --color-main-bkgd: #fefefe;
+    --color-main-border-shadow: #e0e0e0;
+    --color-card-bkgd: #fff;
+    --color-card-border: #eee;
+    --color-card-border-shadow: #EBEDEA;
+    --url-amo-img: url("../img/amo.png");
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+	--url-bkgd-img: none;
+	--color-bkgd: #1a1a1e;
+	--color-secondary-text: #f9f9fa;
+	--color-main-border: #0c0c0d;
+	--color-main-bkgd: #2a2a2e;
+	--color-main-border-shadow: #0c0c0d;
+	--color-card-bkgd: transparent;
+	--color-card-border: #4a4a4f;
+	--color-card-border-shadow: #0c0c0d;
+	--url-amo-img: url("../img/addons-logo-blue.svg");
+    }
+}
+
+
+body {
+    background-image: var(--url-bkgd-img);
+    background-repeat: repeat;
+    background-color: var(--color-bkgd);
+    color: var(--color-default-text);
+    font-size: 15px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -0.25px;
+    margin-bottom: 2px;
+}
+
+h2 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+h3 {
+    margin-left: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-secondary-text);
+}
+
+main {
+    width: var(--page-width);
+    margin: 24px auto 24px auto;
+    padding: 10px 24px 24px 24px;
+    border: 1px solid var(--color-main-border);
+    border-radius: 4px;
+    box-shadow: 0 0 8px 2px var(--color-main-border-shadow);
+    background-color: var(--color-main-bkgd);
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+button {
+    min-width: 132px;
+    height: 32px;
+    margin-bottom: 0;
+    margin-left: 10px;
+    padding: 0 24px 0;
+    font-size: 15px;
+}
+
+.keyb {
+    font-weight: bold;
+}
+
+#dlg-hdr {
+    margin-bottom: 32px;
+}
+
+#ext-icon {
+    float: left;
+    margin-right: 14px;
+    width: 64px;
+    height: 64px;
+}
+
+#ext-desc {
+    margin-top: 0px;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: -0.25px;
+}
+
+#whats-new-hdg {
+    display: inline;
+}
+
+#ver-subhead {
+    display: inline;
+    margin-left: 12px;
+    font-weight: bold;
+}
+
+#whatsnew-jumbo {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: left;
+    margin-left: 24px;
+}
+
+.whatsnew-card {
+    width: 316px;
+    margin-top: 18px;
+    padding: 4px 20px 4px 20px;
+
+    border: 1px solid var(--color-card-border);
+    border-radius: 4px;
+    box-shadow: 0px 0px 6px 0px var(--color-card-border-shadow);
+    background-color: var(--color-card-bkgd);
+    background-position: top;
+    background-size: 356px 155px;
+    background-repeat: no-repeat;
+}
+
+.whatsnew-card > p {
+    margin-top: 164px;  /* Make room for thumbnail image on tile. */
+    line-height: 1.23;
+}
+
+#whatsnew-card1 {
+    order: 1;
+    margin-right: 16px;
+    background-image: url("../img/welc-whats-new.png");
+}
+
+#whatsnew-card2 {
+    order: 2;
+    margin-left: 16px;
+    background-image: url("../img/whatsnew2.png");
+}
+
+#dlg-content {
+    margin-bottom: 24px;
+}
+
+#dlg-content > p {
+    margin-left: 24px;
+    line-height: 1.23;
+}
+
+#dlg-content li {
+    line-height: 1.23;
+}
+
+#aecreations-links > ul {
+    padding-left: 0;
+    padding-top: 8px;
+    text-align: center;
+}
+
+#aecreations-links > ul > li {
+    display: inline-block;
+    margin: 8px 12px 0 0;
+    font-size: 13px;
+}
+
+#aecreations-links > ul > li::before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    content: " ";   
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: -3px;
+}
+
+#link-website::before {
+    background-image: url("../img/website-link-ico.svg");
+}
+
+#link-amo::before {
+    background-image: var(--url-amo-img);
+}
+
+#link-forum::before {
+    background-image: url("../img/forum.png");
+}
+
+#link-blog::before {
+    background-image: url("../img/blogger.png");
+}
+
+#dlg-btns {
+    margin-top: 32px;
+    text-align: center;
+}

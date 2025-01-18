@@ -1,0 +1,49 @@
+<div class="feed-container">
+  <div class="feed-title">
+  
+    <div class="flex-title user-title" ng-if="currentSource.user">
+      <img ng-if="!currentSource.user.monogram" ng-src="{{::currentSource.user.photo}}" alt="{{::currentSource.user.displayName}}" use-monogram="currentSource.user">
+      <span ng-if="currentSource.user.monogram">{{currentSource.user.monogram}}</span>
+      <h2>Work by {{currentSource.user.displayName}}</h2>
+    </div>
+  
+    <div class="flex-title" ng-if="!currentSource.user">
+      <h2 ng-cloak ng-if="currentSource.name">
+          
+        <span title="{{currentSource.description}}">{{currentSource.title}}</span>
+    
+        <a ng-if="['vlogs'].indexOf(currentSource.name) === -1" href="{{muzliShareEndpoint}}go?link=http://{{currentSource.url}}" class="titleLink">
+          <i class="icon-link" title="Go to {{currentSource.title}}'s website"></i>
+        </a>
+    
+      </h2>
+      <p ng-if="currentSource.description">{{currentSource.description}}</p>
+    </div>
+  
+    <div class="feedSorters" ng-if="['search', 'favorites'].indexOf(currentSource) === -1 && ['vlogs', 'dribbble', 'producthunt', 'colors', 'user'].indexOf(currentSource.name) === -1" ng-cloak>
+      <a ng-click="::sortFeed()"ng-class="{ active: currentFeedSort !== 'virality' }" href="" title="Sort by date">Recent</a>
+      <a ng-click="::sortFeed('virality')" ng-class="{ active: currentFeedSort === 'virality' }" href="" title="Sort by popularity">Popular</a>
+    </div>
+  
+    <div class="colors-cta" ng-if="currentSource.name === 'colors'">
+      <a href="https://search.muz.li/color-palette-generator"><i class="icon-plus"></i> Create a color Palette</a>
+    </div>
+  
+    <div class="shortcuts-toggle" ng-if="currentSource && !currentSource.user">
+  
+      <p>Pin to Sidebar</p>
+  
+      <label class="switch" ng-click="checkAnonymousSources($event)">
+          <input class="preventBlur" type="checkbox" ng-model="currentSource.isShortcut" ng-change="onToggleSource(currentSource)" ng-disabled="user.anonymous && !flags.useAnonymousSources">
+          <span class="slider"></span>
+      </label>
+    </div>
+  
+  </div>
+  
+  <scrollable-feed items="items" ng-hide="errors.length" sponsored="sponsored" load-on-sort show-favorite show-virality>
+    <scrollable-feed-no-data>
+      <div id="oops">No items yet today <a href="" ng-click="::reload()">Try again</a></div>
+    </scrollable-feed-no-data>
+  </scrollable-feed>
+</div>

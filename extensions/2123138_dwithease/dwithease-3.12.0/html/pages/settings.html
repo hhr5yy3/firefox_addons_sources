@@ -1,0 +1,184 @@
+<div id="settings">
+    <div class="content settings-content">
+        <h1 i18n-content="settings_title"></h1>
+        <div layout="column">
+            <div layout="column">
+                <md-toolbar class="md-primary">
+                    <div class="md-toolbar-tools">
+                        <h2 class="md-flex" i18n-content="settings_general_header"></h2>
+                    </div>
+                </md-toolbar>
+
+                <!-- General -->
+                <div class="group general-settings">
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_general_notifications"></label>
+                        <md-switch class="pref-value md-primary" ng-model="settingsContainer.showNotifications" aria-label="Show Notifications"></md-switch>
+                    </md-input-container>
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_general_theme"></label>
+                        <md-select class="pref-value" ng-model="settingsContainer.theme" ng-change="updateTheme()" aria-label="Options / Popup theme">
+                            <md-option ng-value="theme" ng-selected="{{theme==settingsContainer.theme}}" ng-repeat="theme in themes">{{theme}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Popup -->
+            <div layout="column">
+                <md-toolbar class="md-primary">
+                    <div class="md-toolbar-tools">
+                        <h2 class="md-flex" i18n-content="settings_popup_header"></h2>
+                    </div>
+                </md-toolbar>
+
+                <div class="group popup-settings">
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_popup_switch_grouping"></label>
+                        <md-select class="pref-value" ng-model="settingsContainer.switchSandboxGrouping" aria-label="Options / Popup groups">
+                            <md-option ng-value="option" ng-selected="{{option==settingsContainer.switchSandboxGrouping}}" ng-repeat="option in switchSandboxGrouping" i18n-content={{option}}>{{option}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Business Manager -->
+            <div layout="column">
+                <md-toolbar class="md-primary">
+                    <div class="md-toolbar-tools">
+                        <h2 class="md-flex" i18n-content="settings_business_manager"></h2>
+                    </div>
+                </md-toolbar>
+
+                <div class="group bm-settings">
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_general_show_bm_toolbar"></label>
+                        <md-select class="pref-value" ng-model="settingsContainer.toolbarOptions" aria-label="Business Manager Toolbar Options">
+                            <md-option ng-value="option" ng-selected="{{option==settingsContainer.toolbarOptions}}" ng-repeat="option in toolbarOptions" i18n-content={{option}}>{{option}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_business_manager_search_with_ease_autofocus"></label>
+                            <md-switch class="pref-value md-primary" ng-model="settingsContainer.enableSearchWithEaseAutofocus" aria-label="Enable Search With Ease Autofocus"></md-switch>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- WebDav -->
+            <div layout="column">
+                <md-toolbar class="md-primary">
+                    <div class="md-toolbar-tools">
+                        <h2 class="md-flex" i18n-content="settings_webdav_header"></h2>
+                    </div>
+                </md-toolbar>
+
+                <div class="group">
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_webdav_show_file_manager"></label>
+                        <md-switch class="pref-value md-primary" ng-model="settingsContainer.enableFileManager" aria-label="Enable tree view"></md-switch>
+                    </md-input-container>
+   
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_business_manager_logs_force_lightmode"></label>
+                            <md-switch class="pref-value md-primary" ng-model="settingsContainer.forceLightModeInLogs" aria-label="Force light mode"></md-switch>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_webdav_scrolllogtobottom"></label>
+                        <md-switch class="pref-value md-primary" ng-model="settingsContainer.scrollLogToBottom" aria-label="Scroll Log To Bottom"></md-switch>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_webdav_trimlogs"></label>
+                        <md-switch class="pref-value md-primary" ng-model="settingsContainer.trimLogs" aria-label="Trim Logs"></md-switch>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_webdav_trimlogslineslimit"></label>
+                        <md-select class="pref-value" ng-model="settingsContainer.trimLogErrors" aria-label="WebDav Logs Trim Limit">
+                        <md-option ng-value="numberOfErrors" ng-selected="{{numberOfErrors==settingsContainer.trimLogErrors}}" ng-repeat="numberOfErrors in trimLogErrors">{{numberOfErrors}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_webdav_logPreviewEntries"></label>
+                        <md-select class="pref-value" ng-model="settingsContainer.logPreviewEntries" aria-label="WebDav Logs Trim Limit">
+                        <md-option ng-value="logPreviewEntry" ng-selected="{{logPreviewEntry==settingsContainer.logPreviewEntries}}" ng-repeat="logPreviewEntry in logPreviewEntries">{{logPreviewEntry}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_webdav_recent_files_period"></label>
+                        <span class="seconds-unit" i18n-content="settings_webdav_units_second"></span>
+                        <input class="pref-value seconds-input" type="number" ng-model="settingsContainer.recentFilesPeriod" min="1" max="3600" aria-label="WebDav Recent Files Period"/>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_webdav_show_timer"></label>
+                        <md-select class="pref-value" ng-model="settingsContainer.showTimer" aria-label="WebDav Logs Show Timer">
+                            <md-option ng-value="option" ng-selected="{{option==settingsContainer.showTimer}}" ng-repeat="option in showTimerOptions" i18n-content={{option}}>{{option}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" ng-disabled="(settingsContainer.showTimer === 'timer_show_timer') || (settingsContainer.showTimer === 'timer_hide')"  i18n-content="settings_webdav_auto_refresh_log_period"></label>
+                        <span class="seconds-unit" i18n-content="settings_webdav_units_second" ng-disabled="(settingsContainer.showTimer === 'timer_show_timer') || (settingsContainer.showTimer === 'timer_hide')" ></span>
+                        <input class="pref-value seconds-input" type="number" ng-disabled="(settingsContainer.showTimer === 'timer_show_timer') || (settingsContainer.showTimer === 'timer_hide')" ng-model="settingsContainer.autoRefreshLogsPeriod" min="1" max="3600" aria-label="WebDav Auto Refresh Logs Period" />
+                    </md-input-container>
+
+                    <md-input-container>
+                        <a class="shortcut-link" href="#!/tags">
+                            <div class="shortcut-name"><span i18n-content="settings_webdav_customize_tags"></span></div>
+                            <i class="material-icons shortcut-arrow">keyboard_arrow_right</i>
+                        </a>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Redirects -->
+            <div layout="column">
+                <md-toolbar class="md-primary">
+                    <div class="md-toolbar-tools">
+                        <h2 class="md-flex" i18n-content="settings_redirects_header"></h2>
+                    </div>
+                </md-toolbar>
+
+                <div class="group">
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_redirects_auto_redirect_on_site_change"></label>
+                        <md-switch class="pref-value md-primary" ng-model="settingsContainer.autoRedirectOnSiteChange" aria-label="Auto Redirect On Site Change"></md-switch>
+                    </md-input-container>
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_redirects_auto_redirect_ask_before_redirect"></label>
+                        <md-switch class="pref-value md-primary" ng-model="settingsContainer.autoRedirectAskBeforeRedirect" aria-label="Auto Redirect Ask Before Redirect"></md-switch>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <!-- Developer Console -->
+            <div layout="column" ng-if="experimentalFeaturesEnabled">
+                <md-toolbar class="md-primary">
+                    <div class="md-toolbar-tools">
+                        <h2 class="md-flex" i18n-content="settings_developer_console"></h2>
+                    </div>
+                </md-toolbar>
+
+                <div class="group">
+                    <md-input-container>
+                        <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_enable_developer_console_switch"></label>
+                        <md-switch class="pref-value md-primary" ng-model="settingsContainer.enableDeveloperConsole" aria-label="Enable Developer Console"></md-switch>
+                    </md-input-container>
+
+                    <div ng-if="settingsContainer.enableDeveloperConsole">
+                        <md-input-container>
+                            <label class="pref-name md-no-float md-container-ignore" i18n-content="settings_enable_developer_console_DEV_STG"></label>
+                            <md-switch class="pref-value md-primary" ng-model="settingsContainer.enableDeveloperConsoleOnDevStg" aria-label="Allow Developer Console on DEV/STG"></md-switch>
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

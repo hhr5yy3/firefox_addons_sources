@@ -1,0 +1,1 @@
+const e={header:"Munkamenet lejárt",description:"A munkamenete lejárt (valószínűleg a Cloudflare miatt).",buttons:{reload:"Újratöltés",dismiss:"Bezárás"}},t={dialog:e};export{t as default,e as dialog};

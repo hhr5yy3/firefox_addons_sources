@@ -1,0 +1,58 @@
+{
+  "manifest_version": 2,
+  "name": "Tools for Autodarts",
+  "description": "Tools for Autodarts enhances the gaming experience on autodarts.io",
+  "version": "1.5.2",
+  "icons": {
+    "16": "icon/16.png",
+    "32": "icon/32.png",
+    "48": "icon/48.png",
+    "96": "icon/96.png",
+    "128": "icon/128.png"
+  },
+  "permissions": [
+    "storage",
+    "*://discord.com/api/webhooks/*",
+    "*://play.autodarts.io/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://play.autodarts.io/*"
+      ],
+      "js": [
+        "dart-zoom.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://play.autodarts.io/*"
+      ],
+      "js": [
+        "content-scripts/boards.js",
+        "content-scripts/content.js",
+        "content-scripts/lobby.js",
+        "content-scripts/lobbynew.js",
+        "content-scripts/match.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "dart-zoom.js",
+    "content-scripts/boards.css",
+    "content-scripts/content.css",
+    "content-scripts/lobby.css",
+    "content-scripts/lobbynew.css",
+    "content-scripts/match.css"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{4d96d300-1064-44b0-95f0-eb5b0b0230b4}"
+    }
+  }
+}

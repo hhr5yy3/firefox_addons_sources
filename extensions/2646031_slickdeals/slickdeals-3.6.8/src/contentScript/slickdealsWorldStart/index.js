@@ -1,0 +1,1 @@
+window.sdExtensionPresent = 'Yes';

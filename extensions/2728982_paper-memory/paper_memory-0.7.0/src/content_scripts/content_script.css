@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Mukta:700");
+
+.leftcolumn {
+    width: calc(100% - 25em) !important;
+}
+
+.extra-services {
+    width: 25em !important;
+}
+
+.pm-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.pm-sub-header {
+    /* margin-bottom: 1em; */
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pm-codify {
+    white-space: pre-wrap;
+    color: grey;
+    font-family: "Fira Code", monospace;
+    background: #f6f6f6;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+    word-break: break-all !important;
+    margin-top: 0.5rem;
+}
+
+#bibtexDiv {
+    padding: 0rem;
+}
+
+#feedback-notif {
+    padding: 1em;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    text-align: center;
+    color: white;
+    background: #b31b1b;
+    border-radius: 4px;
+    position: fixed;
+    font-size: 14px;
+    bottom: 64px;
+    right: -200px;
+    opacity: 0;
+    padding: 1rem;
+    -webkit-box-shadow: 14px 30px 122px -30px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 14px 30px 122px -30px rgba(0, 0, 0, 0.75);
+    box-shadow: 14px 30px 122px -30px rgba(0, 0, 0, 0.75);
+    font-family: Mukta, Arial, sans-serif, Helvetica;
+}
+
+#feedback-pwc {
+    padding-top: 4px;
+    font-size: 13px;
+    font-style: italic;
+}
+
+.pm-tabler-icon {
+    height: 40px;
+    width: 40px;
+    color: rgb(0, 119, 255);
+    stroke-width: 1px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 50%;
+    margin-right: 13px;
+}
+
+.pm-tabler-icon:hover {
+    transform: scale(1.2);
+    /* background: rgba(34, 50, 84, 0.05); */
+}
+
+#markdown-link,
+#pm-bibtex-textarea {
+    padding: 8px;
+    word-break: break-word;
+    overflow: hidden;
+    font-size: 0.75rem;
+}
+
+#notif-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 16px;
+    min-height: 60px;
+}
+
+#notif-cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+    padding: 0px 16px;
+    cursor: pointer;
+    border-left: 1px solid #7f2828;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+#notif-cancel:hover {
+    background: #7f2828;
+}
+
+/*
+-----------------------------------
+-----  Arxiv Download Button  -----
+-----------------------------------
+*/
+#arxiv-button {
+    cursor: pointer;
+    display: block;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.2s ease;
+    margin-top: -3px;
+}
+
+#arxiv-button:hover {
+    /* background: rgba(34, 50, 84, 0.03); */
+    transform: scale(1.2);
+}
+
+#arxiv-button svg {
+    margin: 16px 0 0 16px;
+    fill: none;
+    transform: translate3d(0, 0, 0);
+}
+
+#arxiv-button svg polyline,
+#arxiv-button svg path {
+    stroke: #0077ff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: all 0.3s ease;
+    transition-delay: 0.3s;
+}
+
+#arxiv-button svg path#check {
+    stroke-dasharray: 38;
+    stroke-dashoffset: 114;
+    transition: all 0.4s ease;
+}
+
+#arxiv-button.downloaded svg .svg-out {
+    opacity: 0;
+    animation: drop 0.3s linear;
+    transition-delay: 0.4s;
+}
+
+#arxiv-button.downloaded svg path#check {
+    stroke: #20cca5;
+    stroke-dashoffset: 174;
+    transition-delay: 0.4s;
+}
+
+#pm-col-title {
+    margin-top: 1rem;
+    margin-bottom: -12px;
+}
+
+#pm-publication-venue {
+    display: flex;
+    width: fit-content;
+    font-size: 0.8rem;
+    background: white;
+    padding: 0px;
+    margin-top: 1rem;
+}
+
+#pm-venue-name {
+    align-items: center;
+    background: linear-gradient(180deg, rgb(91, 91, 91), rgb(110, 110, 110));
+    border-radius: 4px 0px 0px 4px;
+    color: white;
+    display: flex;
+    padding: 5px 5px 5px 10px;
+    text-shadow: 0px 0.05em 0px rgba(0, 0, 0, 0.5);
+}
+
+#pm-venue-year {
+    align-items: center;
+    background: #cd1212;
+    border-radius: 0px 4px 4px 0px;
+    color: white;
+    display: flex;
+    padding: 5px 10px 5px 5px;
+}
+
+#pm-extras {
+    margin-bottom: 0.8rem;
+}
+#pm-download-wrapper {
+    align-items: end;
+}
+
+#pm-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#pm-code-link {
+    word-break: break-all;
+}
+#pm-hf-label {
+    margin: auto;
+    margin-left: 8px;
+    color: grey;
+}

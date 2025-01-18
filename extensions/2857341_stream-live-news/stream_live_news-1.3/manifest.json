@@ -1,0 +1,71 @@
+{
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "name": "Stream Live News",
+  "short_name": "Stream Live News",
+  "icons": {
+    "32": "icons/asset.png",
+    "64": "icons/asset_white.png"
+  },
+  "description": "Stream Live News replaces your new tab with quick access to live news streams & sponsored web search.",
+  "manifest_version": 2,
+  "version": "1.3",
+  "browser_action": {
+    "browser_style": false,
+    "default_icon": {
+      "32": "icons/asset.png",
+      "64": "icons/asset_white.png"
+    },
+    "default_title": "Stream Live News",
+    "theme_icons": [
+      {
+        "light": "icons/asset.png",
+        "dark": "icons/asset.png",
+        "size": 32
+      },
+      {
+        "light": "icons/asset_white.png",
+        "dark": "icons/asset_white.png",
+        "size": 64
+      }
+    ]
+  },
+  "permissions": [
+    "*://streamlivenews.com/*",
+    "tabs",
+    "search",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://streamlivenews.com/*"
+      ],
+      "js": [
+        "content.js",
+        "purify.min.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    "*.json"
+  ],
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "web search by Yahoo",
+      "keyword": "Stream Live News",
+      "favicon_url": "icons/magnify.png",
+      "search_url": "https://search.yahoo.com/yhs/search?hsimp=yhs-089&hspart=infospace&p={searchTerms}&grd=1",
+      "suggest_url": "https://search.yahoo.com/sugg/ie?output=fxjson&command={searchTerms}&nResults=10",
+      "is_default": true
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "streamlivesnews@streamlivenews.com"
+    }
+  }
+}

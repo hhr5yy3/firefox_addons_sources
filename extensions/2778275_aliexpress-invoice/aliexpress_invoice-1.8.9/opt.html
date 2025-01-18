@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AliExpress Invoice</title>
+    <link rel="stylesheet" href="./src/bulma/bulma.css">
+
+    <style>
+        .label {
+            color: #e5e5e5;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+        .active-tab {
+            display: block !important;
+        }
+
+        .tab-container {
+            display: none;
+        }
+        
+        .checkbox {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .checkbox:hover {
+            color: white;
+        }
+
+        .save-invoice-settings {
+            margin-top: 30px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="notification is-primary" style="margin-top: 200px;">
+                <button class="delete close-modal"></button>
+                <strong><span class="modal-message"></span></strong>
+            </div>
+        </div>
+      </div>
+
+
+    <div class="container" style="margin-top: 30px;">
+        <div class="notification is-primary" style="background-color: #2d4059;color: #e5e5e5;">
+            <div class="columns is-centered" style="margin-top: 30px;">
+                <img src="./logo/icon128.png">
+            </div>
+
+            <div class="tabs is-centered">
+                <ul>
+                  <li class="is-active" data-link="seller-options"><a>Seller options</a></li>
+                  <li data-link="company-info"><a>Your Company info</a></li>
+                  <li data-link="single-invoice-options"><a>Single order invoice options</a></li>
+                  <li data-link="multiple-order-invoice"><a>Multiple order invoice options</a></li>
+                  <!-- <li data-link="multiple-refund"><a>Multiple refund statement options</a></li> -->
+                  <li data-link="storage-options"><a>Storage options</a></li>
+                </ul>
+            </div>
+
+            <div class="tab-list">
+                <div class="tab-container active-tab" data-name="seller-options">
+                    <div class="field">
+                        <label class="label">Seller Name</label>
+                        <div class="control">
+                        <input class="input seller-name" type="text" value="Alibaba" >
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Logo</label>
+                        <div class="select">
+                        <select class="seller-logo">
+                            <option value="0">AliExpress Logo</option>
+                            <option value="1">AliBaba Logo</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Logo url (If you leave it blank, it will use logo from above field (AliExpres or Alibaba))</label>
+                        <div class="control">
+                        <input class="input seller-logo-url" type="text" value="https://google.com/logo.png">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Address</label>
+                        <div class="control">
+                        <input class="input seller-address" type="text" value="969 West Wen Yi Road">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">State, City, Country</label>
+                        <div class="control">
+                        <input class="input seller-full-address" type="text" value="Hangzhou 311121, Yu Hang District, China">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">VAT</label>
+                        <div class="control">
+                        <input class="input seller-vat" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-container" data-name="company-info">
+                    <div class="notification is-danger">
+                        If you don't want a field(for example "Reg.Number") to appear in your invoice, leave it blank.
+                      </div>
+                    <div class="field">
+                        <label class="label">Company Name</label>
+                        <div class="control">
+                        <input class="input company-name" type="text" placeholder="Google Ireland Limited" >
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Address</label>
+                        <div class="control">
+                        <input class="input company-address" type="text" placeholder="Barrow Street" >
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">State, City, Country</label>
+                        <div class="control">
+                        <input class="input company-full-address" type="text" placeholder="Dublin 4, Ireland">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">VAT</label>
+                        <div class="control">
+                        <input class="input company-vat" type="text" placeholder="IE 6388047V">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Reg. number</label>
+                        <div class="control">
+                        <input class="input company-reg-number" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-container" data-name="single-invoice-options">
+                    <div>
+                    <label class="checkbox">
+                        <input type="checkbox" class="contact-checkbox">
+                        Recipient Contact table
+                      </label>
+                      <label class="checkbox" style="display: none">
+                        <input type="checkbox" class="total-amount-checkbox">
+                        Total Amount table
+                      </label>
+                      <label class="checkbox" style="display: none">
+                        <input type="checkbox" class="payment-checkbox">
+                        Payment details table
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" class="logistics-checkbox">
+                        Logistics information table
+                      </label>
+                    </div>
+                </div>
+                <div class="tab-container" data-name="multiple-order-invoice">
+                    <label class="checkbox">
+                        <input type="checkbox" class="product-image">
+                        Product images
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="order-datetime">
+                        Order date
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="store-name">
+                        Store name 
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="store-number">
+                        Store number
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="tracking-number">
+                        Tracking number
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="customer-info">
+                        Customer info
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="payment-info">
+                        Payment info
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="order-status">
+                        Order status
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="tax-info">
+                        Tax info
+                    </label>
+                </div>
+                <!-- <div class="tab-container" data-name="multiple-refund">
+                    <div>
+                    <label class="checkbox">
+                        <input type="checkbox" class="refund-order-date">
+                        Order date and time
+                      </label>
+                      <label class="checkbox">
+                        <input type="checkbox" class="refund-dispute-date">
+                        Refund Dispute date
+                      </label>
+                    </div>
+                </div> -->
+                <div class="tab-container" data-name="storage-options">
+                    <div class="is-flex is-align-items-center">
+                        <label class="checkbox">
+                            <input type="checkbox" class="hide-personal-info">
+                            Hide personal info on export orders?
+                        </label>
+                        <button class="button is-info ml-2 export-orders">Export orders</button>
+                        <button class="button is-info ml-2 import-orders">Import orders</button>
+                        <button class="button is-danger ml-2 update-orders">Update orders</button>
+                    </div>
+                </div>
+            </div>
+            <button class="button is-warning save-settings" style="margin-top: 10px;">Save</button>
+        </div>
+    </div>
+
+    <script src="./src/lib/jquery.min.js"></script>
+    <script src="./src/content/dataStorage.js"></script>
+    <script src="./opt.js"></script>
+</body>
+
+</html>

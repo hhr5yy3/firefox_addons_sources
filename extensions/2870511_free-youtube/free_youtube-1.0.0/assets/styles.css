@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, sans-serif;
+    width:300px;
+    overflow: hidden;
+}
+
+.header{
+    height: 40px;
+    background: #FF0000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 10px;
+}
+
+.header__title{
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: normal;
+    padding: 0 10px;
+    color: white;
+}
+
+.header__icon{
+    mask: url("../icons/img-enabled.svg") no-repeat center;
+    mask-size: contain;
+    background-color: white;
+    width: 22px;
+    height: 22px;
+}
+
+.wrap{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transition: transform 0.2s;
+}
+
+.wrap--disabled{
+
+}
+
+.wrap--enabled{
+    transform: translateX(-100vw);
+}
+
+.wrap__in{
+    width: 100vw;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrap__h{
+    text-align: center;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+.wrap__description{
+    font-size: 10px;
+    color: gray;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.wrap__icon{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    mask: url("../icons/img-enabled.svg") no-repeat center;
+    mask-size: contain;
+    background-color: #FF0000;
+    margin-top: 10px;
+}
+
+.wrap__icon--disabled{
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+.wrap__button{
+    font-size: 15px;
+    width: 80vw;
+    padding: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.wrap__button--on{
+    background: #FF0000;
+    color: white;
+}
+
+.wrap__button--on:hover{
+    background: #bb1010;
+}
+
+.wrap__button--buy{
+    background: #0e63d3;
+    color: white
+}
+
+.wrap__button--buy:hover{
+    background: #0b58bd;
+}
+
+.wrap__button--off{
+    background: gray;
+    color: white;
+}
+
+.wrap__button--off:hover{
+    background: #565656;
+}
+
+.trial{
+    padding: 10px 0;
+    text-align: center;
+    background: #0e63d3;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.trial__button{
+    font-size: 12px;
+    background: white;
+    color: #0e63d3;
+    padding: 7px 50px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.trial__button:hover{
+    opacity: 0.8;
+}
+
+.error{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(70, 4, 4, 0.9);
+    color: white;
+    padding: 100px 20px;
+}
+
+.error__h{
+    font-size: 25px;
+}
+
+.error__description{
+    margin-top: 50px;
+    font-size: 15px;
+}

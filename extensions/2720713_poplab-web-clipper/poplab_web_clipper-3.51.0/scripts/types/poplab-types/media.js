@@ -1,0 +1,1 @@
+(()=>{"use strict";var E;!function(E){E.ELEMENT="ELEMENT",E.DOCUMENT="DOCUMENT"}(E||(E={}))})();

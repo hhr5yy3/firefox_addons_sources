@@ -1,0 +1,138 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #f7df1e;
+	font-family: neutra text, neutra text bold, reem kufi, sans-serif;
+	font-weight: 900;
+	min-width: 80ex;
+	margin: -1px;
+	overflow: hidden;
+}
+
+textarea, .CodeMirror {
+	border: none;
+   width: 100%;
+	min-width: 80ex;
+	background: #f7df1e;
+	font-weight: normal;
+	border: 2px dotted black;
+	padding: .5em;
+	font-size: 16px;
+	font-family: "IBM Plex Mono", "Operator Mono", "Office Code Pro D", "Fira Code", "Fira Mono", monospace;
+}
+
+#letters-js {
+	float: right;
+	margin: 2px;
+	background: #f7df1e;
+	border: none;
+	cursor: pointer;
+}
+
+#rerun {
+	background: #f7df1e;
+	margin-left: 1ch;
+
+	border: 1px solid black;
+	cursor: pointer;
+}
+
+#rerun:hover {
+	background: white;
+}
+
+@font-face {
+	font-family: "Reem Kufi";
+	font-style: normal;
+	font-display: swap;
+	font-weight: 400;
+	src: url('./reem-kufi.woff2') format('woff2');
+}
+
+
+/* The lint marker gutter */
+.CodeMirror-lint-markers {
+	width: 16px;
+}
+
+.CodeMirror-lint-tooltip {
+	background-color: #fff;
+	border: 4px dotted #ff2a60;
+	border-radius: 10px;
+	color: black;
+	font-family: reem kufi;
+	font-size: 1em;
+	overflow: hidden;
+	padding: 10px 20px;
+	position: fixed;
+	white-space: pre;
+	white-space: pre-wrap;
+	z-index: 100;
+	max-width: 600px;
+	opacity: 0;
+	transition: opacity .4s;
+}
+
+.CodeMirror-lint-mark-error, .CodeMirror-lint-mark-warning {
+	border-bottom: 1px dotted #ff2a50;
+}
+
+.CodeMirror-lint-mark-error {
+}
+
+.CodeMirror-lint-mark-warning {
+	border-bottom-color: #f7df1e;
+}
+
+.CodeMirror-lint-marker-error,
+.CodeMirror-lint-marker-warning {
+	background-position: center center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	vertical-align: middle;
+	position: relative;
+}
+
+.CodeMirror-lint-message-error:before,
+.CodeMirror-lint-message-warning:before {
+	content: "";
+	display: inline-block;
+	height: 1em;
+	width: 1em;
+	border-radius: 1em;
+	margin-right: .5em;
+	vertical-align: middle;
+	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.2)
+}
+
+.CodeMirror-lint-message-error,
+.CodeMirror-lint-message-warning {
+	padding-left: 0;
+}
+
+.CodeMirror-lint-marker-error,
+.CodeMirror-lint-message-error {
+	background: none;
+}
+
+.CodeMirror-lint-message-error:before {
+	background: #ff2a50;
+}
+
+.CodeMirror-lint-message-warning:before {
+	background: #f7df1e;
+}
+
+.CodeMirror-lint-marker-warning,
+.CodeMirror-lint-message-warning {
+	background: none;
+}
+
+.CodeMirror-lint-marker-multiple:before {
+
+}

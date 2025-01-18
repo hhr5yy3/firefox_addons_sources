@@ -1,0 +1,84 @@
+/*
+	  This will hide the focus indicator if the element receives focus via the mouse,
+	  but it will still show up on keyboard focus.
+	  More information at: https://github.com/WICG/focus-visible
+	*/
+html .toast_toast-inner__2IShi:focus:not(:focus-visible) {
+  outline: none; }
+
+html .toast_toast-inner__2IShi::-moz-focus-inner {
+  border: 0; }
+
+@keyframes toast_slidein__32KvM {
+  from {
+    transform: translateY(-1rem);
+    opacity: 0; }
+  to {
+    transform: translateY(0px);
+    opacity: 1; } }
+
+@keyframes toast_fadeout__YYprH {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+.toast_toast-outer__6U6b4 {
+  box-shadow: 0 0.5rem 0.75rem 0 rgba(31, 43, 63, 0.16), 0 0.25rem 0.375rem 0 rgba(31, 43, 63, 0.04);
+  border-radius: 0.3125rem;
+  width: max-content;
+  min-width: 18.75rem;
+  max-width: 50rem;
+  margin: 0.5rem 0.75rem 0 0.75rem;
+  animation: toast_slidein__32KvM 0.2s ease-out; }
+  .toast_toast-outer__6U6b4.toast_fade-out__38XZt {
+    animation: toast_fadeout__YYprH 0.1s ease-in; }
+
+.toast_toast-inner__2IShi {
+  display: flex;
+  align-items: stretch;
+  border-radius: 0.3125rem;
+  background-color: #ffffff;
+  pointer-events: auto;
+  /* override toast-container disabling events */
+  /* Styles to override the default user agent styles */
+  position: relative;
+  padding: 0;
+  border: none;
+  margin: 0;
+  width: auto; }
+  .toast_toast-inner__2IShi:focus-visible {
+    box-shadow: 0 0 0 0.125rem #ffffff, 0 0 0 0.25rem #2666f1;
+    outline: none; }
+
+.toast_icon__3OQTj {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 0.3125rem 0 0 0.3125rem;
+  color: #ffffff; }
+  .toast_icon__3OQTj > svg {
+    width: 1.25rem;
+    height: 1.25rem; }
+  .toast_icon__3OQTj.toast_success__2M5uk {
+    background: #38773f; }
+  .toast_icon__3OQTj.toast_info__1Q2k2 {
+    background: #2666f1; }
+  .toast_icon__3OQTj.toast_warning__2QPAV {
+    background: #f3b549; }
+  .toast_icon__3OQTj.toast_error__2xjR5 {
+    background: #d04257; }
+
+.toast_content__2g5hC {
+  align-self: center;
+  padding: 0.75rem;
+  margin-right: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #1f2b3f;
+  cursor: default; }
+
+.toast_close__1hBhz {
+  margin: 0.75rem 0.75rem 0.75rem auto;
+  color: #2c384b;
+  flex-shrink: 0; }

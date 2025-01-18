@@ -1,0 +1,200 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>download</title><link rel="stylesheet" href="css/sidepanel.css"><style>body {
+            font-family: Microsoft YaHei;
+            margin: 20px;
+            min-width: 320px;
+        }
+        h3 {
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .title{
+            display: flex;
+            align-items: center;
+
+            button{
+                margin: 0 0 0 auto;
+                border: none;
+                color: red;
+                padding: 5px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+        }
+
+        .download-config,.downloading-container,.downloaded-container{
+            margin-bottom: 30px;
+        }
+		
+		.download-config .toggle{
+			display: inline-block;
+		}
+
+        .download-config .toggle .tip{
+			position: absolute;
+			margin-left: 10px;
+		}
+		
+		/* 容器 */
+	    .switch {
+	        position: relative;
+	        display: inline-block;
+	        width: 100px;
+	        height: 30px;
+	    }
+	    	
+	    /* 隐藏默认的复选框 */
+	    .switch input {
+	        opacity: 0;
+	        width: 0;
+	        height: 0;
+	    }
+	    	
+	    /* 滑块 */
+	    .slider {
+	        position: absolute;
+	        cursor: pointer;
+	        top: 0;
+	        left: 0;
+	        right: 0;
+	        bottom: 0;
+	        background-color: #ccc;
+	        transition: .4s;
+	        border-radius: 34px;
+	        display: flex;
+	        align-items: center;
+	        justify-content: space-around;
+	        font-size: 14px;
+	        color: white;
+	        font-weight: bold;
+	    }
+	    	
+	    .slider:before {
+	        position: absolute;
+	        content: "";
+	        height: 22px;
+	        width: 22px;
+	        left: 4px;
+	        bottom: 4px;
+	        background-color: white;
+	        transition: .4s;
+	        border-radius: 50%;
+	    }
+	    	
+	    /* 如果选中状态，滑块背景变色 */
+	    input:checked + .slider {
+	        background-color: #1E90FF;
+	    }
+	    	
+	    /* 如果选中状态，滑块的位置变化 */
+	    input:checked + .slider:before {
+	        transform: translateX(70px);
+	    }
+	    	
+	    /* 文本 */
+	    .slider .text-on {
+	        display: none;
+	    }
+	    	
+	    input:checked + .slider .text-on {
+	        display: block;
+	    }
+	    	
+	    input:checked + .slider .text-off {
+	        display: none;
+	    }
+        
+        .progress-container {
+			margin-bottom: 15px;
+        }
+        .progress-label {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        .progress-bar-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        .progress-bar {
+            flex: 1;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 15px;
+            position: relative;
+        }
+        .progress-bar div {
+            height: 100%;
+        }
+        .blue {
+            background-color: #007bff;
+            width: 0%;
+        }
+        .red {
+            background-color: #ff0000;
+            width: 90%;
+        }
+        .green {
+            background-color: #28a745;
+            width: 100%;
+        }
+        .progress-percentage {
+            font-size: 12px;
+            margin-left: 10px;
+            white-space: nowrap;
+        	width: 30px;
+        }
+        .tipmsg{
+            font-size: 12px;
+        }
+
+        .downloaded-item {
+            font-size: 14px;
+            margin-bottom: 15px;
+
+            p{
+                margin: 5px 0;
+            }
+
+            .secondp{
+                font-size: 12px;
+                display: flex;
+
+                .status-success {
+                    color: green;
+                    font-weight: bold;
+                    margin: 0 0 0 auto;
+                }
+                .status-fail {
+                    color: red;
+                    font-weight: bold;
+                    margin: 0 0 0 auto;
+                }
+            }
+
+            .errormsg{
+                font-size: 12px;
+                color: red;
+            }
+
+            .tipmsg{
+                font-size: 12px;
+                color: #2d8cf0;
+            }
+
+            .titlea{
+                cursor: pointer;
+                color: #2d8cf0;
+                font-size: 14px;
+                text-decoration: none;
+            }
+        }
+
+        .nodata{
+			display: flex;
+			padding: 10px 10px 15px;
+			align-items: center;
+			justify-content: center;
+            font-size: 12px;
+		}</style></head><body><div class="downloading-container"><div class="title"><h3>Downloading</h3><button id="clearDownloading">clear all</button></div><div id="downloadingDiv"><span class="nodata">No data being downloaded</span></div></div><div class="downloaded-container"><div class="title"><h3>Downloaded</h3><button id="clearDownloaded">clear all</button></div><div id="downloadedDiv"><span class="nodata">No downloaded data</span></div></div><script src="js/sidepanel.js"></script></body></html>

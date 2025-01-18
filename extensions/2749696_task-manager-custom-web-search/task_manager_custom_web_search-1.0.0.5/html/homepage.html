@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Task Manager Tab & Custom Web Search</title>
+        <link rel="icon" href="./images/icons/icon128.png" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="css/homepage.css" />
+    </head>
+    <body class="preload">
+        <div class="page-wrapper page-wrapper flex direction-column newtab_v1_pii">
+            <div class="firefox_cust_overlay firefox_cust_overlay_yes" style="display: none;">
+                <style>
+                    ul {
+                    list-style: none
+                    }
+                    .firefox_cust_overlay {
+                    font-family: 'Roboto', sans-serif;
+                    position: fixed;
+                    /* display: none; */
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: rgba(0, 0, 0, 0.9);
+                    z-index: 999999;
+                    }
+                    .firefox_cust_overlay_yes .firefox_sqrw {
+                    position: absolute;
+                    top: 225px;
+                    left: 250px;
+                    }
+                    .svg-checked svg {
+                    display: block;
+                    }
+                    .arrow-title {
+                    color: #000000;
+                    font-size: 18px;
+                    font-weight: 400;
+                    text-align: center;
+                    }
+                    .firefox_sqrw2 {
+                    width: 320px;
+                    padding: 0;
+                    position: absolute;
+                    top: 260px;
+                    right: 90px;
+                    border-radius: 4px;
+                    }
+                    .mh100 {
+                    max-height: 100%;
+                    }
+                    .ff-arrow-content {
+                    height: 172px;
+                    border-radius: 4px;
+                    position: relative;
+                    color: #ffffff;
+                    font-size: 14px;
+                    line-height: 1.5;
+                    padding: 0 0 8px;
+                    }
+                    .ff-arrow-content b {
+                    font-weight: 600 !important
+                    }
+                    .arrow-text {
+                    background: #ffffff;
+                    border-radius: 4px;
+                    color: #000000;
+                    text-align: center;
+                    border: solid 1px #4ab3f3;
+                    font-family: Arial;
+                    }
+                    .arrow-title {
+                    padding: 10px;
+                    border-bottom: 1px solid #ccc;
+                    }
+                    .arrow-title span {
+                    vertical-align: middle;
+                    display: inline-block
+                    }
+                    .final-step {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: #0aa06e;
+                    margin-left: 5px;
+                    }
+                    .overlay-arrow {
+                    animation: spring2 1s infinite linear;
+                    -webkit-animation: spring2 1s infinite linear;
+                    -moz-animation: spring2 1s infinite linear;
+                    height: 85px;
+                    text-align: right;
+                    padding-right: 30px;
+                    }
+                    .kc-text {
+                    padding: 20px;
+                    }
+                    p.click-kc {
+                    margin: 0;
+                    font-size: 18px;
+                    font-weight: normal;
+                    line-height: 1.17;
+                    }
+                    p.click-kc span {
+                    font-weight: bold;
+                    }
+                    p.instruct {
+                    width: 175px;
+                    font-size: 12px;
+                    line-height: 1.25;
+                    color: #5c5858;
+                    margin: 10px auto 0 auto;
+                    }
+                    @keyframes spring2 {
+                    0%,
+                    100% {
+                    transform: translateY(20px);
+                    }
+                    50% {
+                    transform: translateY(0px);
+                    }
+                    }
+                    @-webkit-keyframes spring2 {
+                    0%,
+                    100% {
+                    -webkit-transform: translateY(20px);
+                    }
+                    50% {
+                    -webkit-transform: translateY(0px);
+                    }
+                    }
+                    @-moz-keyframes spring2 {
+                    0%,
+                    100% {
+                    -moz-transform: translateY(20px);
+                    }
+                    50% {
+                    -moz-transform: translateY(0px);
+                    }
+                    }
+                    .close-ff-arrow svg {
+                    fill: #808080;
+                    width: 12px;
+                    }
+                    .close-ff-arrow {
+                    position: absolute;
+                    right: 10px;
+                    top: 8px;
+                    cursor: pointer;
+                    }
+                    /* new */
+                    .macffbrowser .firefox_sqrw2 {
+                    right: 55px;
+                    }
+                    .macchromebrowser .firefox_sqrw2 {
+                    right: 240px;
+                    }
+                    .macchromebrowser.macbrowsercenter .firefox_sqrw2 {
+                    left: 46%;
+                    transform: translateX(-50%);
+                    right: 0;
+                    }
+                    .winbrowsercenter .firefox_sqrw2 {
+                    left: 56%;
+                    transform: translateX(-50%);
+                    right: 0;
+                    }
+                    .ffbrowser .firefox_sqrw2 {
+                    right: 260px;
+                    }
+                    @media screen and (max-height: 660px) {
+                    .firefox_sqrw2 {
+                    top: 210px;
+                    }
+                    }
+                    /* new */
+                </style>
+                <div id="keepChangesArrowPointerMain" class="overlay-arrow-main-content firefox_sqrw2">
+                    <div class="overlay-arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="78"
+                            height="91" viewBox="0 0 78 91">
+                            <defs>
+                                <linearGradient id="b_bb1" x1="50%" x2="50%" y1="0%" y2="99.337%">
+                                    <stop offset="0%" stop-color="#4EDB9B" />
+                                    <stop offset="99.926%" stop-color="#1FA467" />
+                                </linearGradient>
+                                <path id="a_aa1"
+                                    d="M58.715 88h-39.43V42.205h-17a1 1 0 0 1-.734-1.68L38.996 0l37.453 40.526a1 1 0 0 1-.735 1.679H58.715V88z" />
+                            </defs>
+                            <use fill="url(#b_bb1)" fill-rule="nonzero" stroke="#0AA06E" stroke-width="2"
+                                transform="translate(0 2)" xlink:href="#a_aa1" />
+                        </svg>
+                    </div>
+                    <div class="ff-arrow-content">
+                        <span class="close-ff-arrow" id="keepChangesCloseButton">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 47.971 47.971"
+                                style="enable-background:new 0 0 47.971 47.971;" xml:space="preserve">
+                                <g>
+                                    <path d="M28.228,23.986L47.092,5.122c1.172-1.171,1.172-3.071,0-4.242c-1.172-1.172-3.07-1.172-4.242,0L23.986,19.744L5.121,0.88
+                                        c-1.172-1.172-3.07-1.172-4.242,0c-1.172,1.171-1.172,3.071,0,4.242l18.865,18.864L0.879,42.85c-1.172,1.171-1.172,3.071,0,4.242
+                                        C1.465,47.677,2.233,47.97,3,47.97s1.535-0.293,2.121-0.879l18.865-18.864L42.85,47.091c0.586,0.586,1.354,0.879,2.121,0.879
+                                        s1.535-0.293,2.121-0.879c1.172-1.171,1.172-3.071,0-4.242L28.228,23.986z" />
+                                </g>
+                            </svg>
+                        </span>
+                        <div class="arrow-text">
+                            <div class="arrow-title">
+                                <span class="svg-checked">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35">
+                                        <g fill="none" fill-rule="nonzero">
+                                            <circle cx="17.472" cy="17.472" r="17.472" fill="#32BA7C" />
+                                            <path fill="#0AA06E"
+                                                d="M13.008 25.354l8.984 8.985c7.441-1.985 12.953-8.764 12.953-16.867v-.496l-7.055-6.504-14.882 14.882z" />
+                                            <g fill="#FFF">
+                                                <path
+                                                    d="M17.913 21.386c.772.771.772 2.094 0 2.866l-1.598 1.598c-.772.772-2.095.772-2.866 0l-7-7.055c-.772-.771-.772-2.094 0-2.866l1.598-1.598c.772-.772 2.095-.772 2.866 0l7 7.055z" />
+                                                <path
+                                                    d="M24.031 9.205c.772-.772 2.095-.772 2.867 0l1.598 1.598c.772.772.772 2.095 0 2.866L16.37 25.74c-.772.772-2.094.772-2.866 0l-1.598-1.598c-.772-.772-.772-2.095 0-2.866L24.03 9.205z" />
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </span>
+                                <span class="final-step">Final Step!</span>
+                            </div>
+                            <div class="v68hide kc-text">
+                                <p class="click-kc">Click <span class="hide-chrome">‘KEEP CHANGES’</span><span
+                                    class="new-chrome" style="display:none">‘KEEP IT’</span></p>
+                                <p class="instruct">to use this new tab extension with custom web search</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <audio>
+                <source src="./images/notif.ogg" type="audio/ogg">
+                <source src="./images/notif.mp3" type="audio/mp3">
+            </audio>
+            <header class="header flex align-center shrink_0 ">
+                <div class="search-content header-search">
+                    <div class="searchformwrap ui-widget">
+                        <form id="searchform" class="search-form" method="GET" action="https://search.yahoo.com/yhs/search">
+                            <input type="hidden" name="hspart" value="mnet" />
+                            <input type="hidden" name="hsimp" value="yhs-001" />
+                            <input type="hidden" name="param1"
+                                value="dGFnQTEzMDAxMjctc2FmZXBsZXhzZWFyY2gsc2FmZXBsZXhzZWFyY2gsdjJfOGE3MjQ5YTAtNmFhZi0xMWVhLTgyNTgtODVhNWRjMmRiMTZmOnNhZmVwbGV4c2VhcmNoLFVTLG1hLGhvbHlva2U" />
+                            <input type="hidden" name="param2" value="eyJkb21haW4iOiJ0YXNrbWFuYWdlcnRhYi5jb20ifQ" />
+                            <input type="hidden" name="type"
+                                value="type9090276-spa-dGFnQTEzMDAxMjctc2FmZXBsZXhzZWFyY2g-bde5eb3afa0a8b973ac7d6a2aa617d68" />
+                            <input type="text" class="search-text" data-placeholder="Search" name="p" id="search-text"
+                                autocomplete="off" placeholder="Search" value="">
+                            <button class="searchicon submit-btn hover-pulse" id="submit-btn" aria-label="Search">
+                                <svg width="18px" height="18px" viewBox="0 0 16 16" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="sch1" transform="translate(-275.000000, -265.000000)">
+                                            <rect fill="none" x="0" y="0" width="1024" height="650"></rect>
+                                            <g id="Group-18" class="bgColor" transform="translate(260.000000, 252.000000)"
+                                                fill="#CCCCCC" fill-rule="nonzero">
+                                                <g id="Group-6">
+                                                    <g id="Group-5">
+                                                        <g id="Group-21" transform="translate(15.000000, 13.000000)">
+                                                            <g id="Search">
+                                                                <path
+                                                                    d="M15.8040816,14.8636735 L11.957551,11.0171429 C12.9110204,9.85469388 13.4857143,8.36571429 13.4857143,6.74285714 C13.4857143,3.02040816 10.4653061,0 6.74285714,0 C3.01714286,0 0,3.02040816 0,6.74285714 C0,10.4653061 3.01714286,13.4857143 6.74285714,13.4857143 C8.36571429,13.4857143 9.85142857,12.9142857 11.0138776,11.9608163 L14.8604082,15.8040816 C15.1216327,16.0653061 15.5428571,16.0653061 15.8040816,15.8040816 C16.0653061,15.5461224 16.0653061,15.1216327 15.8040816,14.8636735 Z M6.74285714,12.1436735 C3.76163265,12.1436735 1.33877551,9.72081633 1.33877551,6.74285714 C1.33877551,3.76489796 3.76163265,1.33877551 6.74285714,1.33877551 C9.72081633,1.33877551 12.1469388,3.76489796 12.1469388,6.74285714 C12.1469388,9.72081633 9.72081633,12.1436735 6.74285714,12.1436735 Z"
+                                                                    id="Shapesch"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                            <div class="auto-complete-wrap" id="auto-complete-wrap">
+                                <button type="button" class="submit-btn submit below-suggestion">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="header-linkouts flex_1 flex align-center">
+                    <ul class='linkouts-list flex'>
+                        <li class="taskManager">
+                            <div class="flex link-out triggerWIdget tracker" data-for="get_directions"
+                                data-event_name="UserClick" data-event_action="WidgetClick">
+                                <span class="link-out-icon flex justify-center align-center">
+                                    <svg width="14" height="18" viewBox="0 0 14 19">
+                                        <g fill="#F5A623" fill-rule="nonzero">
+                                            <path
+                                                d="M9.708 1.142h-1.24a1.715 1.715 0 0 0-3.231 0h-1.24a.571.571 0 0 0-.57.571v2.285c0 .315.255.57.57.57h5.711a.571.571 0 0 0 .571-.57V1.713a.571.571 0 0 0-.57-.57z" />
+                                            <path
+                                                d="M12.564 2.284h-1.142v1.714c0 .944-.77 1.713-1.714 1.713h-5.71a1.715 1.715 0 0 1-1.714-1.713V2.284H1.142C.512 2.284 0 2.797 0 3.426v13.706c0 .641.501 1.142 1.142 1.142h11.422a1.13 1.13 0 0 0 1.142-1.142V3.426a1.13 1.13 0 0 0-1.142-1.142zM6.686 12.397L4.402 14.68a.574.574 0 0 1-.809 0L2.451 13.54a.571.571 0 0 1 .808-.807l.739.737 1.88-1.88a.571.571 0 0 1 .808.808zm0-4.569l-2.284 2.285a.574.574 0 0 1-.809 0L2.451 8.97a.571.571 0 0 1 .808-.807l.739.738 1.88-1.88a.571.571 0 0 1 .808.807zm4.164 5.878H8.566a.571.571 0 0 1 0-1.142h2.284a.571.571 0 0 1 0 1.142zm0-4.569H8.566a.571.571 0 0 1 0-1.142h2.284a.571.571 0 0 1 0 1.142z" />
+                                        </g>
+                                    </svg>
+                                </span>
+                                <span class="link-out-text">
+                                Task Manager
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="weatherdata weather-pill">
+                        <div class="weather-icon"></div>
+                        <p class="citytemf"></p>
+                        <p class="currentlocation"></p>
+                    </div>
+                    <div class="logo tracker" data-event_name="UserClick" data-event_action="LogoClick">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="494"
+                            height="40" viewBox="0 0 494 40">
+                            <defs>
+                                <filter id="up81ub2lya" width="137.5%" height="137.5%" x="-18.8%" y="-18.8%"
+                                    filterUnits="objectBoundingBox">
+                                    <feOffset in="SourceAlpha" result="shadowOffsetOuter1" />
+                                    <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2" />
+                                    <feColorMatrix in="shadowBlurOuter1"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.118280157 0" />
+                                </filter>
+                                <rect id="6t1g4ous2b" width="32" height="32" x="0" y="0" rx="4" />
+                            </defs>
+                            <g fill="none" fill-rule="evenodd">
+                                <g>
+                                    <g>
+                                        <g>
+                                            <path fill="#0D1C55" fill-rule="nonzero"
+                                                d="M62.137 9.125c.294.279.452.668.436 1.072.018.4-.141.787-.436 1.06-.31.27-.712.412-1.124.395h-4.01v13.373c.008.423-.167.827-.48 1.11-.327.3-.757.46-1.2.448-.436.016-.86-.146-1.174-.448-.303-.288-.47-.691-.46-1.11V11.653h-4.006c-.414.017-.818-.13-1.124-.408-.292-.278-.45-.669-.435-1.072-.012-.397.151-.78.447-1.046.303-.277.701-.425 1.112-.414h11.325c.416-.017.823.132 1.13.414v-.002zm11.435 3.982c.293.298.45.704.436 1.122v10.796c.01.414-.147.814-.436 1.11-.286.297-.685.46-1.097.448-.408.014-.802-.144-1.086-.436-.284-.295-.444-.688-.446-1.098-1.032 1.124-2.483 1.771-4.008 1.787-1.13.013-2.24-.302-3.194-.907-.966-.618-1.747-1.486-2.26-2.513-.566-1.132-.85-2.384-.829-3.65-.02-1.268.26-2.523.817-3.662.5-1.03 1.272-1.904 2.234-2.527.931-.6 2.018-.916 3.126-.906.787-.006 1.568.146 2.296.448.668.266 1.283.653 1.816 1.136v-.027c-.01-.413.147-.813.435-1.108.287-.297.685-.46 1.099-.447.409-.013.806.144 1.097.434zm-3.55 9.71c.7-.806 1.049-1.824 1.049-3.049-.002-1.225-.351-2.247-1.048-3.063-.679-.778-1.66-1.224-2.693-1.224-1.032 0-2.014.446-2.693 1.224-.696.818-1.045 1.839-1.045 3.063 0 1.225.345 2.24 1.035 3.05.662.797 1.655 1.245 2.692 1.213 1.039.03 2.035-.418 2.704-1.214zm5.258.882c0-.443.223-.818.664-1.124.22-.147.477-.227.741-.23.358 0 .696.163 1.016.486.455.486.998.885 1.598 1.173.632.273 1.316.407 2.005.39 1.327-.053 1.99-.554 1.992-1.507.01-.474-.253-.91-.677-1.122-.452-.256-1.154-.51-2.107-.765-.822-.216-1.628-.49-2.412-.817-.627-.277-1.179-.702-1.607-1.238-.453-.553-.677-1.298-.677-2.234-.015-.77.233-1.522.704-2.131.483-.616 1.115-1.1 1.836-1.404.76-.333 1.582-.502 2.412-.497.89.004 1.771.169 2.603.485.8.276 1.507.77 2.041 1.428.217.257.335.583.333.92.004.382-.176.743-.485.97-.231.184-.52.284-.816.28-.343.014-.676-.116-.92-.357-.321-.385-.728-.69-1.187-.893-.518-.228-1.079-.341-1.645-.332-1.293 0-1.94.468-1.94 1.404-.013.339.116.668.357.907.26.241.57.424.907.536.365.126.88.284 1.543.47.786.207 1.556.47 2.305.787.617.275 1.153.707 1.556 1.25.427.562.639 1.302.639 2.22.014.79-.248 1.56-.74 2.178-.503.627-1.156 1.115-1.902 1.417-.755.319-1.566.483-2.386.484-1.075.013-2.142-.175-3.147-.553-.95-.36-1.776-.99-2.373-1.812-.16-.224-.24-.495-.23-.77h-.001zm24.147 1.352c.004.413-.18.809-.499 1.073-.288.27-.667.427-1.06.435-.432.005-.843-.182-1.123-.511L92.151 21.2l-1.25 1.148v2.68c.011.413-.146.813-.436 1.11-.61.597-1.584.597-2.194 0-.29-.295-.447-.695-.436-1.109V9.253c-.011-.413.146-.813.436-1.11.61-.596 1.584-.596 2.194 0 .29.296.447.697.436 1.11v9.438l5.46-5.283c.294-.31.699-.485 1.124-.485.388.005.755.177 1.008.472.299.314.447.633.447.956 0 .409-.204.793-.613 1.149l-3.854 3.548 4.467 4.848c.31.307.484.72.485 1.155h.002zm40.349-11.944c.293.298.45.704.435 1.122v10.796c.012.414-.147.814-.435 1.11-.286.298-.686.46-1.099.448-.406.014-.8-.144-1.084-.436-.283-.296-.443-.688-.448-1.098-1.03 1.124-2.48 1.77-4.005 1.787-1.13.013-2.24-.302-3.195-.907-.966-.618-1.746-1.486-2.257-2.513-.567-1.132-.852-2.384-.83-3.65-.021-1.268.259-2.523.817-3.662.5-1.03 1.272-1.904 2.233-2.527.931-.6 2.017-.915 3.125-.906.788-.006 1.57.146 2.298.448.669.266 1.285.652 1.82 1.136v-.027c-.011-.413.146-.813.434-1.108.287-.297.686-.46 1.099-.447.408-.012.803.146 1.092.434zm-3.547 9.71c.696-.806 1.044-1.824 1.044-3.049 0-1.225-.348-2.247-1.045-3.063-.679-.778-1.66-1.224-2.693-1.224-1.032 0-2.014.446-2.692 1.224-.698.818-1.047 1.839-1.047 3.063 0 1.225.344 2.24 1.033 3.05.663.796 1.655 1.244 2.691 1.213 1.04.03 2.038-.417 2.708-1.214h.001zm17.175-8.6c.663 1.031.995 2.455.996 4.275v6.533c.01.414-.147.814-.436 1.11-.61.596-1.586.596-2.196 0-.29-.296-.446-.696-.435-1.11v-6.533c0-.935-.193-1.67-.581-2.208-.387-.537-1.059-.805-2.016-.803-.987 0-1.76.284-2.324.855-.563.574-.867 1.353-.841 2.156v6.533c.01.414-.147.814-.436 1.11-.61.596-1.586.596-2.196 0-.29-.296-.446-.696-.435-1.11v-10.54c-.01-.413.147-.813.435-1.109.61-.597 1.585-.597 2.196 0 .289.295.445.695.436 1.11v.434c.489-.64 1.101-1.177 1.798-1.583.737-.44 1.58-.67 2.438-.662 1.734-.002 2.933.513 3.597 1.542zm15.441-1.11c.294.298.451.704.435 1.122v10.796c.012.414-.147.814-.435 1.11-.286.297-.685.46-1.098.448-.407.014-.8-.144-1.084-.436-.284-.295-.444-.688-.447-1.098-1.032 1.124-2.482 1.771-4.008 1.787-1.13.014-2.24-.301-3.195-.907-.966-.618-1.746-1.486-2.257-2.513-.567-1.132-.852-2.384-.83-3.65-.018-1.268.265-2.523.826-3.66.5-1.031 1.272-1.905 2.233-2.527.931-.6 2.018-.916 3.126-.907.788-.005 1.569.147 2.297.448.667.267 1.28.653 1.812 1.135v-.027c-.01-.413.147-.813.436-1.108.287-.297.684-.46 1.097-.447.408-.01.803.147 1.092.434zm-3.549 9.71c.699-.806 1.047-1.824 1.047-3.049 0-1.225-.348-2.247-1.047-3.063-.679-.778-1.66-1.224-2.693-1.224-1.032 0-2.014.446-2.692 1.224-.696.818-1.046 1.839-1.046 3.063 0 1.225.346 2.24 1.035 3.05.663.797 1.656 1.245 2.692 1.213 1.04.03 2.035-.418 2.704-1.214zm18.683-9.71c.293.298.45.704.436 1.122v11.359c0 2.075-.643 3.61-1.927 4.605-1.285.995-2.913 1.494-4.888 1.494-.708-.023-1.413-.108-2.107-.255-.893-.17-1.526-.337-1.898-.505-.834-.358-1.251-.851-1.251-1.48.003-.14.03-.277.076-.408.077-.334.261-.634.524-.855.226-.187.51-.29.803-.29.165 0 .328.023.485.075.068.018.49.174 1.263.474.669.274 1.384.426 2.106.445 1.259 0 2.199-.25 2.82-.752.622-.501.931-1.217.93-2.147v-1.218c-.374.526-.94 1.002-1.698 1.428-.742.422-1.583.643-2.437.64-1.148.011-2.276-.303-3.253-.907-.986-.611-1.785-1.481-2.311-2.515-.575-1.129-.865-2.382-.843-3.649-.02-1.27.264-2.526.83-3.663.511-1.034 1.297-1.908 2.272-2.526.958-.604 2.07-.919 3.202-.907.84-.005 1.668.18 2.426.541.684.312 1.3.756 1.812 1.307v-.29c-.011-.414.146-.814.436-1.11.287-.297.686-.46 1.1-.447.408-.012.802.146 1.093.434h-.001zm-3.587 9.71c.724-.806 1.085-1.824 1.087-3.049 0-1.225-.36-2.247-1.087-3.063-.7-.806-1.726-1.255-2.793-1.224-1.142 0-2.068.408-2.782 1.224-.713.816-1.073 1.836-1.077 3.063 0 1.227.357 2.243 1.072 3.05.716.807 1.643 1.211 2.783 1.213 1.142 0 2.074-.406 2.797-1.214zm17.573-2.385c-.298.253-.68.39-1.072.383h-8.421c.205 1.004.673 1.79 1.404 2.36.701.559 1.573.86 2.47.854.55.019 1.1-.045 1.633-.19.325-.098.637-.235.93-.408.231-.147.387-.243.474-.291.268-.144.566-.221.87-.23.347-.005.68.134.92.383.246.232.385.556.383.894 0 .458-.24.87-.715 1.25-.573.443-1.222.78-1.914.996-.78.268-1.6.406-2.426.408-1.428 0-2.674-.298-3.738-.893-1.041-.57-1.898-1.427-2.468-2.468-.59-1.083-.89-2.3-.871-3.533 0-1.466.307-2.75.919-3.855.56-1.053 1.398-1.931 2.424-2.54.973-.58 2.085-.883 3.217-.88 1.124 0 2.225.319 3.176.919.992.607 1.813 1.456 2.387 2.468.592 1.024.9 2.186.893 3.368 0 .389-.175.757-.475 1.005zm-9.468-2.17h6.687v-.178c-.07-.716-.419-1.33-1.048-1.839-.601-.5-1.36-.77-2.143-.764-1.973 0-3.14.927-3.496 2.782zm19.868-5.155c.323.239.516.614.523 1.016 0 .528-.136.924-.408 1.186-.256.258-.605.4-.97.396-.298-.008-.592-.068-.87-.178-.114-.036-.229-.07-.344-.102-.189-.053-.385-.08-.581-.077-.458.005-.902.147-1.276.408-.443.314-.791.743-1.008 1.24-.278.62-.414 1.296-.395 1.977v6.048c.01.414-.147.814-.436 1.11-.61.596-1.584.596-2.195 0-.29-.296-.447-.696-.436-1.11V14.48c-.01-.413.147-.813.436-1.11.61-.595 1.585-.595 2.195 0 .29.297.447.697.436 1.11v.333c.384-.693.972-1.25 1.684-1.597.728-.365 1.532-.554 2.347-.55.473-.013.933.142 1.298.44z"
+                                                transform="translate(-5 -5) translate(9 8)" />
+                                            <g>
+                                                <g transform="translate(-5 -5) translate(9 8) translate(0 1)">
+                                                    <use fill="#000" filter="url(#up81ub2lya)" xlink:href="#6t1g4ous2b" />
+                                                    <use fill="#FFF" xlink:href="#6t1g4ous2b" />
+                                                </g>
+                                                <g fill-rule="nonzero">
+                                                    <path fill="#0D1C55"
+                                                        d="M1.271 21.188c-.7 0-1.268-.569-1.268-1.27V8.049c0-.7.568-1.269 1.27-1.269.7 0 1.269.569 1.269 1.27v11.868c0 .701-.569 1.27-1.27 1.27zm11.126 0c-.701 0-1.27-.568-1.27-1.27V4.548c0-.701.569-1.27 1.27-1.27.7 0 1.269.569 1.269 1.27v15.37c0 .337-.133.66-.371.899-.239.238-.562.372-.898.372z"
+                                                        transform="translate(-5 -5) translate(9 8) translate(0 1) translate(8 5)" />
+                                                    <path fill="#37B34A"
+                                                        d="M5.578 13.308c-.32 0-.629-.122-.864-.339L.388 8.948C-.11 8.468-.132 7.677.34 7.17c.47-.507 1.26-.543 1.776-.081l3.362 3.125L13.891.44c.458-.53 1.26-.59 1.79-.132.531.458.59 1.26.132 1.79L6.54 12.868c-.224.261-.548.419-.891.437l-.07.003v.001z"
+                                                        transform="translate(-5 -5) translate(9 8) translate(0 1) translate(8 5)" />
+                                                </g>
+                                                <g
+                                                    transform="translate(-5 -5) translate(9 8) translate(0 1) translate(25 17)">
+                                                    <circle cx="7.092" cy="7.092" r="7.092" fill="#37B34A" />
+                                                    <g fill="#FFF" fill-rule="nonzero">
+                                                        <path
+                                                            d="M7.581 6.846l-1.59-1.59c.387-.538.6-1.18.6-1.857 0-.852-.333-1.653-.936-2.255C5.053.54 4.252.209 3.4.209c-.852 0-1.653.332-2.256.935C.541 1.746.21 2.547.21 3.399c0 .852.332 1.653.934 2.256.603.602 1.404.935 2.256.935.676 0 1.318-.212 1.856-.6l1.59 1.591c.103.102.235.153.369.153.133 0 .266-.051.367-.153.203-.203.203-.532 0-.735zM1.88 4.919c-.406-.406-.63-.946-.63-1.52 0-.574.224-1.114.63-1.52.406-.406.946-.63 1.52-.63.575 0 1.115.224 1.52.63.407.406.63.946.63 1.52 0 .574-.223 1.114-.63 1.52-.406.407-.945.63-1.52.63-.574 0-1.114-.224-1.52-.63z"
+                                                            transform="translate(2.986 2.986)" />
+                                                    </g>
+                                                </g>
+                                            </g>
+                                            <path fill="#37B34A" fill-rule="nonzero"
+                                                d="M228.835 8.92c.145.14.223.335.216.536.01.199-.07.391-.216.525-.153.13-.35.199-.55.191h-5.284v15.645c.006.208-.077.408-.229.55-.15.143-.352.22-.56.216-.215.011-.426-.067-.581-.216-.145-.146-.223-.345-.216-.55V10.172h-5.278c-.203.007-.4-.066-.549-.204-.146-.14-.225-.335-.216-.536-.005-.193.074-.38.216-.51.148-.14.346-.215.55-.21h12.146c.204-.005.401.07.55.21V8.92zm10.666 4.85c.145.151.223.353.219.562v11.485c0 .424-.343.767-.767.767-.423 0-.766-.343-.766-.767v-1.714c-.46.8-1.119 1.47-1.914 1.94-.833.522-1.798.796-2.781.79-1.09.014-2.161-.297-3.075-.893-.922-.61-1.663-1.456-2.145-2.45-.53-1.089-.797-2.286-.779-3.497-.019-1.208.253-2.403.792-3.484.487-.984 1.232-1.819 2.156-2.413 1.774-1.109 4.012-1.157 5.832-.127.81.452 1.474 1.125 1.915 1.94v-1.582c-.005-.21.073-.412.217-.563.145-.147.342-.23.548-.23.206 0 .404.083.548.23v.007zm-3.473 10.937c.72-.483 1.293-1.155 1.659-1.94.409-.865.614-1.813.6-2.77.011-.935-.194-1.86-.6-2.704-.368-.78-.942-1.446-1.659-1.926-.707-.47-1.538-.715-2.387-.704-.846-.011-1.676.229-2.385.69-.717.47-1.29 1.127-1.66 1.9-.41.856-.616 1.796-.6 2.744-.016.955.183 1.902.581 2.77.363.788.937 1.46 1.66 1.94 1.46.933 3.331.933 4.791 0zM251.969 14.1c.928.59 1.675 1.425 2.156 2.414.534 1.082.8 2.277.78 3.484.016 1.206-.25 2.4-.78 3.485-.477 1.002-1.217 1.855-2.142 2.468-.906.594-1.967.905-3.05.893-.946.007-1.877-.244-2.692-.726-.812-.473-1.5-1.133-2.004-1.927v1.685c.005.315-.183.601-.474.722s-.627.053-.847-.172c-.144-.152-.222-.354-.217-.563V8.487c-.012-.282.131-.547.373-.69.242-.145.543-.145.785 0 .242.143.385.408.374.69v7.529c.457-.831 1.127-1.527 1.94-2.016.82-.506 1.766-.771 2.73-.765 1.085-.013 2.15.288 3.068.866zm-.804 10.592c.719-.49 1.292-1.163 1.66-1.95.407-.858.612-1.797.6-2.746.016-.948-.19-1.888-.6-2.744-.37-.772-.943-1.43-1.66-1.9-.71-.461-1.54-.702-2.386-.69-1.754-.032-3.36.981-4.084 2.578-.787 1.76-.782 3.77.013 5.526.365.786.94 1.457 1.66 1.94.715.471 1.556.716 2.412.702.85.01 1.682-.239 2.385-.716z"
+                                                transform="translate(-5 -5) translate(9 8)" />
+                                            <path fill="#0D1C55" fill-rule="nonzero"
+                                                d="M109.63 26.588c-.876 0-1.586-.71-1.586-1.587V10.164c0-.876.71-1.587 1.587-1.587.876 0 1.586.71 1.586 1.587V25c0 .876-.71 1.587-1.586 1.587l-.002.001zm13.906 0c-.876 0-1.587-.71-1.587-1.587V5.787c0-.877.71-1.587 1.587-1.587.876 0 1.587.71 1.587 1.587V25c0 .421-.167.825-.465 1.123-.297.298-.701.465-1.122.465z"
+                                                transform="translate(-5 -5) translate(9 8)" />
+                                            <path fill="#37B34A" fill-rule="nonzero"
+                                                d="M115.013 16.739c-.4-.002-.786-.154-1.08-.424l-5.408-5.027c-.622-.6-.65-1.589-.06-2.222.588-.634 1.576-.679 2.22-.102l4.203 3.907L125.404.653c.573-.663 1.575-.737 2.238-.164.663.572.737 1.574.165 2.238l-11.592 13.46c-.28.326-.684.524-1.114.546l-.088.004v.002z"
+                                                transform="translate(-5 -5) translate(9 8)" />
+                                            <path fill="#37B34A" fill-rule="nonzero"
+                                                d="M108.837 11.575c-.139-.127-.339-.16-.51-.083-.172.076-.282.247-.282.435v-1.704s.35.24.356.242c.008.003.508.915.508.915l-.072.195zm15.494-4.814c.139-.126.34-.159.511-.082.172.077.282.248.28.436V5.409l-.355.243c-.008.004-.508.915-.508.915l.072.194z"
+                                                transform="translate(-5 -5) translate(9 8)" />
+                                            <path fill="#37B34A" fill-rule="nonzero"
+                                                d="M125.32 5.615c-.128.145-.198.333-.197.526h-.334v-.458l.35-.244.182.176h-.001z"
+                                                transform="translate(-5 -5) translate(9 8)" />
+                                        </g>
+                                        <text fill="#5A5A5A" font-family="RoundedMplus1c-Regular, Rounded Mplus 1c"
+                                            font-size="24" letter-spacing="-.5" transform="translate(-5 -5) translate(9 8)">
+                                            <tspan x="261.346" y="26">&amp; Custom Web Search</tspan>
+                                        </text>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </header>
+            <span class="closesidemenu tracker" data-event_name="FunctionalClick" data-event_action="WidgetToggleClick">
+                <svg width="7" height="11" viewBox="0 0 7 11">
+                    <g fill="none" fill-rule="evenodd">
+                        <path fill="#000" d="M.787 9.151L4.431 5.5.787 1.849 1.91.727 6.682 5.5l-4.773 4.773z"></path>
+                        <path d="M-6.045-4.045h19.09v19.09h-19.09z"></path>
+                    </g>
+                </svg>
+            </span> 
+            <aside class="sidemenuwrap">
+                <div id="" class="accept-prompt">
+                    <style>
+                        * {
+                        padding: 0;
+                        margin: 0;
+                        box-sizing: border-box;
+                        }
+                        .accept-prompt {
+                        display: none;
+                        } 
+                        /* popupcss starts */
+                        .accept-prompt {
+                        list-style: none;
+                        }
+                        .pop-up-wrap {
+                        width: auto;
+                        border-radius: 4px;
+                        overflow: hidden;
+                        width: 320px;
+                        /* margin: 10px; */
+                        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+                        background-color: #ffffff;
+                        font-family: 'Roboto', Arial, Helvetica, sans-serif;
+                        min-height: 230px
+                        }
+                        .pop-up-body {
+                        /* padding: 25px 15px; */
+                        padding: 30px 23px 6px;
+                        text-align: center
+                        }
+                        .pop-up-header {
+                        /* background: url("../images/install_bg1.png") no-repeat center;
+                        background-size: cover; */
+                        background: #648cff;
+                        border-radius: 4px 4px 0 0;
+                        }
+                        .pp-heading {
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-size: 14px;
+                        font-size: 14px;
+                        font-weight: bold;
+                        text-align: center;
+                        letter-spacing: -0.4px;
+                        color: #ffffff;
+                        }
+                        .pp-heading span {
+                        display: inline-block;
+                        vertical-align: middle;
+                        }
+                        .title-txt {
+                        padding: 10px 0;
+                        }
+                        .imgwrap {
+                        padding-right: 6px;
+                        padding-top: 7px;
+                        }
+                        .imgwrap img {
+                        height: 28px;
+                        }
+                        .head-bold {
+                        font-weight: bold;
+                        }
+                        .pp-para2 {
+                        font-size: 10px;
+                        color: #afafaf;
+                        /* margin-top: 25px; */
+                        }
+                        .pp-para2 a {
+                        color: #5089ff;
+                        text-decoration: underline;
+                        }
+                        .pp-para2 a:hover {
+                        text-decoration: none;
+                        }
+                        .pp-para1 {
+                        font-size: 12px;
+                        line-height: 1.5;
+                        color: #777777;
+                        max-width: 273px;
+                        margin: 0 auto;
+                        font-family: Arial, Helvetica, sans-serif;
+                        }
+                        .button-wrap {
+                        margin-top: 15px;
+                        }
+                        /* .firefox-hide{
+                        visibility: hidden;
+                        } */
+                        .accept {
+                        font-weight: bold;
+                        color: #ffffff;
+                        border: solid 1px #13ab11;
+                        background-color: #1e831e;
+                        font-family: Arial;
+                        font-size: 14px;
+                        text-align: center;
+                        text-decoration: none;
+                        padding: 9px 10px;
+                        display: inline-block;
+                        border-radius: 4px;
+                        max-width: 150px;
+                        width: 100%;
+                        }
+                        .accept:hover {
+                        background-color: #02c326;
+                        }
+                        .know-more {
+                        font-size: 12px;
+                        text-align: center;
+                        color: #aeaeae;
+                        text-decoration: underline;
+                        margin: 5.4px 0 14px 0;
+                        display: inline-block;
+                        font-family: Arial, Helvetica, sans-serif;
+                        }
+                        .know-more:hover {
+                        text-decoration: none;
+                        }
+                        /* popupcss ends */
+                    </style>
+                    <div class="pop-up-wrap">
+                        <div class="pop-up-header">
+                            <h3 class="pp-heading">
+                                <span class="title-txt">
+                                Welcome to Taskmanagertab.com
+                                </span>
+                            </h3>
+                        </div>
+                        <div class="pop-up-body">
+                            <p class="pp-para1">
+                                This feature requires your opt in to work. Please grant permission for the same.
+                            </p>
+                            <div class="button-wrap">
+                                <a id="acceptTerms" class="btn acceptTerms accept tracker" data-event_name="UserClick"
+                                    data-event_action="AcceptTerms">View
+                                Permission
+                                </a>
+                            </div>
+                            <a id="denytTerms" class="know-more denytTerms tracker" data-event_name="UserClick"
+                                data-event_action="NotEnableSafety">
+                            Cancel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="allow-widget">
+                    <div class="loadingstate">
+                        <div class="dum-1">
+                            <div class="dum-1_img dum-grey"></div>
+                            <div class="dum-1_rect">
+                                <div class="dum-1_rect_1 dum-grey"></div>
+                                <div class="dum-1_rect_2 dum-grey"></div>
+                            </div>
+                        </div>
+                        <div class="dum-2">
+                            <div class="dum-2_rect_wrap">
+                                <div class="dum-2_rect dum-grey"></div>
+                            </div>
+                            <div class="dum-2_rect_wrap">
+                                <div class="dum-2_rect dum-grey"></div>
+                            </div>
+                            <div class="dum-2_rect_wrap">
+                                <div class="dum-2_rect dum-grey"></div>
+                            </div>
+                            <div class="dum-2_rect_wrap">
+                                <div class="dum-2_rect dum-grey"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="topmenuwrap">
+                        <div class="currentlocationwrap maincitywrap">
+                            <div class="currlocimg">
+                                <img src="./images/imgdefault.jpg" alt="location">
+                                <p class="currloctemp"></p>
+                                <p class="currloctempfarenhite"></p>
+                            </div>
+                            <div class="currlocdetails">
+                                <h1 class="currloctitle"></h1>
+                                <p class="currlocdate"></p>
+                                <p class="currloctime currlocaltime12"><span class="hrmin"></span> <span class="ampm"></span>
+                                </p>
+                                <p class="currloctime currlocaltime24"><span class="hrmin24"></span><span class="ampm24"></span>
+                                    hrs
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="midmenuwrap">
+                        <div class="chngecitywrap worldclocktabswrap">
+                            <div class="menutabtitlewrap">
+                                <h1 class="menutabtitle text-blue tracker" rel="tab6" data-event_name="FunctionalClick"
+                                    data-event_action="WorldClockToggleClick">World Clock</h1>
+                            </div>
+                            <div class="chngecitiescontent menutabscontent" id="tab6">
+                                <div class="citywrap citywrapone">
+                                    <div class="cityformwrap cityformwrapone">
+                                        <form id="searchform-cities">
+                                            <input type="search" id="search-primary-cities"
+                                                class="search-text2 ui-autocomplete-input" data-name="one"
+                                                placeholder="+ Add Location" autocomplete="off">
+                                            <span class="removeTxt" data-contentOf="primary">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+                                                    <path fill="#000" fill-rule="evenodd"
+                                                        d="M5.127 4.11a.176.176 0 0 1 0-.255l2.728-2.728a.393.393 0 0 0 .109-.254.393.393 0 0 0-.11-.255L7.346.11A.393.393 0 0 0 7.091 0a.33.33 0 0 0-.255.11L4.11 2.835a.176.176 0 0 1-.254 0L1.127.11A.393.393 0 0 0 .873 0a.393.393 0 0 0-.255.11L.11.617A.393.393 0 0 0 0 .873c0 .072.036.182.11.254l2.726 2.728a.176.176 0 0 1 0 .254L.11 6.836A.393.393 0 0 0 0 7.091c0 .073.036.182.11.254l.508.51c.073.072.182.109.255.109a.393.393 0 0 0 .254-.11l2.728-2.727a.176.176 0 0 1 .254 0l2.727 2.728c.073.072.182.109.255.109a.393.393 0 0 0 .254-.11l.51-.509a.393.393 0 0 0 .109-.254.393.393 0 0 0-.11-.255L5.128 4.11z"
+                                                        opacity=".3"></path>
+                                                </svg>
+                                            </span>
+                                        </form>
+                                        <div class="cityData cityPrimaryData">
+                                            <p class="othercity primarycity"><span class="pcity">San Francisco</span><span
+                                                class="hrmin2" style="display: inline-block;">9:33</span> <span
+                                                class="ampm2" style="display: inline-block;">AM</span><span class="hrmin224"
+                                                style="display: none;">09:</span><span class="ampm224"
+                                                style="display: none;">33</span>
+                                                <span class="hrstxt" style="display: none;">hrs</span><strong
+                                                    class="currloctemp">17ºC</strong><strong
+                                                    class="currloctempfarenhite">63ºF</strong><span
+                                                    class="editCity editCity1"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="citywrap citywraptwo">
+                                    <div class="cityformwrap cityformwraptwo">
+                                        <form id="searchform-cities-secondary">
+                                            <input type="search" id="search-secondary-cities"
+                                                class="search-text2 ui-autocomplete-input" data-name="two"
+                                                placeholder="+ Add Location" autocomplete="off">
+                                            <span class="removeTxt" data-contentOf="secondary">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+                                                    <path fill="#000" fill-rule="evenodd"
+                                                        d="M5.127 4.11a.176.176 0 0 1 0-.255l2.728-2.728a.393.393 0 0 0 .109-.254.393.393 0 0 0-.11-.255L7.346.11A.393.393 0 0 0 7.091 0a.33.33 0 0 0-.255.11L4.11 2.835a.176.176 0 0 1-.254 0L1.127.11A.393.393 0 0 0 .873 0a.393.393 0 0 0-.255.11L.11.617A.393.393 0 0 0 0 .873c0 .072.036.182.11.254l2.726 2.728a.176.176 0 0 1 0 .254L.11 6.836A.393.393 0 0 0 0 7.091c0 .073.036.182.11.254l.508.51c.073.072.182.109.255.109a.393.393 0 0 0 .254-.11l2.728-2.727a.176.176 0 0 1 .254 0l2.727 2.728c.073.072.182.109.255.109a.393.393 0 0 0 .254-.11l.51-.509a.393.393 0 0 0 .109-.254.393.393 0 0 0-.11-.255L5.128 4.11z"
+                                                        opacity=".3"></path>
+                                                </svg>
+                                            </span>
+                                        </form>
+                                        <div class="cityData citySecondaryData">
+                                            <p class="othercity secondarycity"><span class="pcity">New York</span><span
+                                                class="hrmin3" style="display: inline-block;">12:32</span> <span
+                                                class="ampm3" style="display: inline-block;">PM</span><span class="hrmin324"
+                                                style="display: none;">12:</span><span class="ampm324"
+                                                style="display: none;">32</span>
+                                                <span class="hrstxt" style="display: none;">hrs</span><strong
+                                                    class="currloctemp">26ºC</strong><strong
+                                                    class="currloctempfarenhite">78ºF</strong><span
+                                                    class="editCity editCity2"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menutabswrap calculatormenutabswrap">
+                            <div class="menutabtitlewrap tracker" rel="calculatorBody" data-event_name="FunctionalClick"
+                                data-event_action="CalculatorToggleClick">
+                                <h1 class="menutabtitle text-blue">Calculator</h1>
+                            </div>
+                            <div id="calculatorBody" class="menutabscontent calculator-wrap" style="display:block">
+                                <div class="calculator">
+                                    <div class="top-btn">
+                                        <a data-event_name="UserClick" data-event_action="HsitoryBtn"
+                                            class="tracker hitory-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="14" viewBox="0 0 17 14">
+                                                <path fill="#A5B1BE"
+                                                    d="M9.333 0c-3.866 0-7 3.134-7 7H0l3.026 3.026.054.108L6.222 7H3.89c0-3.01 2.434-5.444 5.444-5.444S14.778 3.99 14.778 7s-2.435 5.444-5.445 5.444c-1.5 0-2.862-.614-3.842-1.602l-1.104 1.105c1.309 1.316 3.09 2.055 4.946 2.053 3.866 0 7-3.134 7-7s-3.134-7-7-7zm-.777 3.889v3.889l3.328 1.975.56-.94-2.722-1.619V3.89H8.556z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="cal-body">
+                                        <div class="result-display">
+                                            <p class="operand-operator"></p>
+                                            <input type="text" value="0" id="display" class="displayText operation-result" />
+                                        </div>
+                                        <div class="calc-btn-wrap">
+                                            <div class="calc-btn-row">
+                                                <p btn-attr="clear" data-event_name="UserClick" data-event_action="CalcBtnAC"
+                                                    class="tracker calc-btn clear-btn op-btn btnAc">
+                                                    AC
+                                                </p>
+                                                <p btn-attr="delete" data-event_name="UserClick" data-event_action="CalcBtnDel"
+                                                    class="tracker calc-btn delete-btn op-btn">
+                                                    ⇐
+                                                </p>
+                                                <p btn-attr="op-divide" data-event_name="UserClick"
+                                                    data-event_action="CalcBtnDivision" class="tracker calc-btn op-btn bluebtn">
+                                                    &#247
+                                                </p>
+                                            </div>
+                                            <div class="calc-btn-row">
+                                                <p btn-attr="num-7" data-event_name="UserClick" data-event_action="CalcBtnSeven"
+                                                    class="tracker calc-btn num-btn">
+                                                    7
+                                                </p>
+                                                <p btn-attr="num-8" data-event_name="UserClick" data-event_action="CalcBtnEight"
+                                                    class="tracker calc-btn num-btn">
+                                                    8
+                                                </p>
+                                                <p btn-attr="num-9" data-event_name="UserClick" data-event_action="CalcBtnNine"
+                                                    class="tracker calc-btn num-btn">
+                                                    9
+                                                </p>
+                                                <p btn-attr="op-multiply" data-event_name="UserClick"
+                                                    data-event_action="CalcBtnMultiply" class="tracker calc-btn op-btn bluebtn">
+                                                    *
+                                                </p>
+                                            </div>
+                                            <div class="calc-btn-row">
+                                                <p btn-attr="num-4" data-event_name="UserClick" data-event_action="CalcBtnFour"
+                                                    class="tracker calc-btn num-btn">
+                                                    4
+                                                </p>
+                                                <p btn-attr="num-5" data-event_name="UserClick" data-event_action="CalcBtnFive"
+                                                    class="tracker calc-btn num-btn">
+                                                    5
+                                                </p>
+                                                <p btn-attr="num-6" data-event_name="UserClick" data-event_action="CalcBtnSix"
+                                                    class="tracker calc-btn num-btn">
+                                                    6
+                                                </p>
+                                                <p btn-attr="op-subtract" data-event_name="UserClick"
+                                                    data-event_action="CalcBtnMinus" class="tracker calc-btn op-btn bluebtn">
+                                                    -
+                                                </p>
+                                            </div>
+                                            <div class="calc-btn-row">
+                                                <p btn-attr="num-1" data-event_name="UserClick" data-event_action="CalcBtnOne"
+                                                    class="tracker calc-btn num-btn">
+                                                    1
+                                                </p>
+                                                <p btn-attr="num-2" data-event_name="UserClick" data-event_action="CalcBtnTwo"
+                                                    class="tracker calc-btn num-btn">
+                                                    2
+                                                </p>
+                                                <p btn-attr="num-3" data-event_name="UserClick" data-event_action="CalcBtnThree"
+                                                    class="tracker calc-btn num-btn">
+                                                    3
+                                                </p>
+                                                <p btn-attr="op-add" data-event_name="UserClick" data-event_action="CalcBtnPlus"
+                                                    class="tracker calc-btn op-btn bluebtn">
+                                                    +
+                                                </p>
+                                            </div>
+                                            <div class="calc-btn-row">
+                                                <p btn-attr="num-0" data-event_name="UserClick" data-event_action="CalcBtnZero"
+                                                    class="tracker calc-btn zero-btn num-btn">
+                                                    0
+                                                </p>
+                                                <p btn-attr="point" data-event_name="UserClick"
+                                                    data-event_action="CalcBtnDecimalPoint" class="tracker calc-btn num-btn">
+                                                    .
+                                                </p>
+                                                <p btn-attr="equals" data-event_name="UserClick"
+                                                    data-event_action="CalcBtnEqual" class="tracker calc-btn equal-btn bluebtn">
+                                                    =
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div> 
+                        </div>
+                        <div class="menutabswrap calendarmenutabswrap">
+                            <div class="menutabtitlewrap tracker" rel="tab4" data-event_name="FunctionalClick" data-event_action="CalendarToggleClick">
+                                <h1 class="menutabtitle text-blue">Calendar</h1>
+                            </div>
+                            <div class="menutabscontent" id="tab4" style="display:block">
+                                <div class="calendarwrapper">
+                                    <div id="caleandar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menutabswrap todomenutabswrap">
+                            <div class="menutabtitlewrap tracker" rel="tab2" data-event_name="FunctionalClick"
+                                data-event_action="TodoToggleClick">
+                                <h1 class="menutabtitle text-blue">My To-Do's</h1>
+                            </div>
+                            <div class="menutabscontent" id="tab2">
+                                <div class="addtodowrap">
+                                    <textarea spellcheck="false" name="todoinput" id="todoinput" class="todoinput"
+                                        placeholder="+ Add a to-do here..." required></textarea>
+                                    <ul class="todoslist mCustomScrollbar">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menutabswrap remindermenutabswrap">
+                            <div class="menutabtitlewrap tracker" rel="tab5" data-event_name="FunctionalClick"
+                                data-event_action="RemindersToggleClick">
+                                <h1 class="menutabtitle text-blue">Reminders</h1>
+                            </div>
+                            <div class="menutabscontent fixes-menutabscontent" id="tab5" style="display:block">
+                                <div class="reminderwrap fixes-reminders">
+                                    <div class="reminderlistwrap ">
+                                    </div>
+                                    <div class="reminders addReminders tracker fixes-addReminders" data-event_name="FunctionalClick"
+                                        data-event_action="RemindersPlusBtnClick"> + Add a Reminder
+                                    </div>
+                                    <div class="reminders addingReminders fixes-addingReminders">
+                                        <form class="addreminderform">
+                                            <div class="reminderinputwrap">
+                                                <textarea spellcheck="false" placeholder="Add Reminder" required></textarea>
+                                            </div>
+                                            <span class="dividerline2"></span>
+                                            <div class="reminderinputwrap">
+                                                <div class="dateinputwraper">
+                                                    <input type="text" placeholder="mm/dd/yyyy" name="dateinput"
+                                                        class="dateinput" id="dateinput" required autocomplete="off"
+                                                        readonly='true'>
+                                                </div>
+                                                <div class="remindertyminwrap">
+                                                    <div class="iwrap">
+                                                        <div class="reminder-droparw">
+                                                            <select name="hh" id="hh" required>
+                                                                <option value="">HH</option>
+                                                                <option value="">01</option>
+                                                                <option value="">02</option>
+                                                                <option value="">03</option>
+                                                                <option value="">04</option>
+                                                                <option value="">05</option>
+                                                                <option value="">06</option>
+                                                                <option value="">07</option>
+                                                                <option value="">08</option>
+                                                                <option value="">09</option>
+                                                                <option value="">10</option>
+                                                                <option value="">11</option>
+                                                                <option value="">12</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="reminder-droparw">
+                                                            <select name="mm" id="mm" required>
+                                                                <option value="">MM</option>
+                                                                <option value="">00</option>
+                                                                <option value="">01</option>
+                                                                <option value="">02</option>
+                                                                <option value="">03</option>
+                                                                <option value="">04</option>
+                                                                <option value="">05</option>
+                                                                <option value="">06</option>
+                                                                <option value="">07</option>
+                                                                <option value="">08</option>
+                                                                <option value="">09</option>
+                                                                <option value="">10</option>
+                                                                <option value="">11</option>
+                                                                <option value="">12</option>
+                                                                <option value="">13</option>
+                                                                <option value="">14</option>
+                                                                <option value="">15</option>
+                                                                <option value="">16</option>
+                                                                <option value="">17</option>
+                                                                <option value="">18</option>
+                                                                <option value="">19</option>
+                                                                <option value="">20</option>
+                                                                <option value="">21</option>
+                                                                <option value="">22</option>
+                                                                <option value="">23</option>
+                                                                <option value="">24</option>
+                                                                <option value="">25</option>
+                                                                <option value="">26</option>
+                                                                <option value="">27</option>
+                                                                <option value="">28</option>
+                                                                <option value="">29</option>
+                                                                <option value="">30</option>
+                                                                <option value="">31</option>
+                                                                <option value="">32</option>
+                                                                <option value="">33</option>
+                                                                <option value="">34</option>
+                                                                <option value="">35</option>
+                                                                <option value="">36</option>
+                                                                <option value="">37</option>
+                                                                <option value="">38</option>
+                                                                <option value="">39</option>
+                                                                <option value="">40</option>
+                                                                <option value="">41</option>
+                                                                <option value="">42</option>
+                                                                <option value="">43</option>
+                                                                <option value="">44</option>
+                                                                <option value="">45</option>
+                                                                <option value="">46</option>
+                                                                <option value="">47</option>
+                                                                <option value="">48</option>
+                                                                <option value="">49</option>
+                                                                <option value="">50</option>
+                                                                <option value="">51</option>
+                                                                <option value="">52</option>
+                                                                <option value="">53</option>
+                                                                <option value="">54</option>
+                                                                <option value="">55</option>
+                                                                <option value="">56</option>
+                                                                <option value="">57</option>
+                                                                <option value="">58</option>
+                                                                <option value="">59</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="reminder-droparw">
+                                                        <select name="format" id="format">
+                                                            <option value="am" selected>AM</option>
+                                                            <option value="pm">PM</option>
+                                                        </select>
+                                                    </div>
+                                                    <span class="errorlabel">Enter valid time format (eg: 07:20)</span>
+                                                </div>
+                                            </div>
+                                            <div class="actionbtns">
+                                                <button class="cancel tracker" type="button" data-event_name="FunctionalClick"
+                                                    data-event_action="CancelReminderClick" data-event_str_value=""
+                                                    data-event_label="CancelReminder">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24">
+                                                        <g fill="none" fill-rule="evenodd">
+                                                            <circle cx="12" cy="12" r="11.5" fill="#FFF" fill-rule="nonzero"
+                                                                stroke="#4285F5" />
+                                                            <path fill="#4285F5"
+                                                                d="M17.306 15.397l-1.909 1.907s-3.02-3.24-3.245-3.24c-.222 0-3.242 3.24-3.242 3.24L7 15.397s3.243-2.976 3.243-3.24C10.243 11.887 7 8.91 7 8.91L8.91 7s3.045 3.242 3.242 3.242c.2 0 3.245-3.242 3.245-3.242l1.91 1.91s-3.245 3.02-3.245 3.247c0 .215 3.244 3.24 3.244 3.24z" />
+                                                        </g>
+                                                    </svg>
+                                                </button>
+                                                <button class="addrem" type="submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24">
+                                                        <path fill="#4285F5" fill-rule="nonzero"
+                                                            d="M20.445 20.445c4.678-4.678 4.678-12.259 0-16.937-4.678-4.677-12.259-4.677-16.937 0-4.677 4.678-4.677 12.26 0 16.937 4.678 4.678 12.264 4.678 16.937 0zM7.683 10.146l2.693 2.694 5.9-5.895 2.087 2.087-5.895 5.895-2.092 2.087-2.087-2.087-2.693-2.694 2.087-2.087z" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="options-divider"></div>
+                    </div>
+                    <div class="bottommenuwrap">
+                        <div class="menuiconwrap tracker" data-event_name="FunctionalClick" data-event_action="SettingsClick">
+                            <svg width="17px" height="16px" viewBox="0 0 17 16" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="New-Tab-Page---Side-Panel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"
+                                    opacity="0.5">
+                                    <g id="505.-NT-Side-Panel-1.1" transform="translate(-1204.000000, -737.000000)"
+                                        fill="#474747">
+                                        <g id="Group-10" transform="translate(1073.000000, 38.000000)">
+                                            <g id="Settings-button" transform="translate(111.000000, 692.000000)">
+                                                <path
+                                                    d="M34.0954408,13.1649814 L33.6819821,12.1857371 C33.6819821,12.1857371 34.64325,10.0200461 34.5580983,9.93489445 L33.2864999,8.69641062 C33.1975637,8.61220507 31.0318727,9.59807226 31.0318727,9.59807226 L30.0337059,9.19596712 C30.0337059,9.19596712 29.1509668,7 29.0289161,7 L27.2360002,7 C27.1111111,7 26.293655,9.19975164 26.293655,9.19975164 L25.2964343,9.6056413 C25.2964343,9.6056413 23.0862752,8.66329608 23.0011235,8.74844776 L21.7333097,9.9907161 C21.6443735,10.0749216 22.6538939,12.1970907 22.6538939,12.1970907 L22.2432736,13.1763349 C22.2432736,13.1763349 20,14.0410975 20,14.1555792 L20,15.9144344 C20,16.0364851 22.2470581,16.8388031 22.2470581,16.8388031 L22.6605168,17.8142629 C22.6605168,17.8142629 21.7001951,19.9799539 21.7853468,20.061321 L23.0531607,21.3064278 C23.1411507,21.3877949 25.3068417,20.4009816 25.3068417,20.4009816 L26.3087931,20.8040329 C26.3087931,20.8040329 27.1886937,23 27.3107445,23 L29.1064987,23 C29.2285495,23 30.0450594,20.8002484 30.0450594,20.8002484 L31.0470108,20.3943587 C31.0470108,20.3943587 33.2533854,21.3367039 33.338537,21.2515522 L34.6091893,20.0092839 C34.6981255,19.9250784 33.6857667,17.8029093 33.6857667,17.8029093 L34.0992254,16.8236651 C34.0992254,16.8236651 36.3396633,15.9589025 36.3396633,15.8406363 L36.3396633,14.0855656 C36.342499,13.9635149 34.0954408,13.1649814 34.0954408,13.1649814 Z M30.7915558,14.9985808 C30.7915558,16.4139909 29.6164627,17.5625924 28.1717225,17.5625924 C26.7260363,17.5625924 25.5509432,16.4139909 25.5509432,14.9985808 C25.5509432,13.5860091 26.7260363,12.4364615 28.1717225,12.4364615 C29.6164627,12.4364615 30.7915558,13.5860091 30.7915558,14.9985808 Z"
+                                                    id="gear"></path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span>Settings</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <aside class="settingsmenuwrap mCustomScrollbar">
+                <h1 class="mnutle">Settings</h1>
+                <h2 class="settingstitle small-text">Customize the display as per your preferences</h2>
+                <div class="chngeviewwrap">
+                    <h1 class="settingstitle">Set Layout</h1>
+                    <div class="chngeviewcontent">
+                        <div class="chngeviews" rel="left">
+                            <div class="layout leftlayout">
+                                <span></span>
+                            </div>
+                            <p class="layouttxt">Left Aligned</p>
+                        </div>
+                        <div class="chngeviews selected" rel="right">
+                            <div class="layout rightlayout">
+                                <span></span>
+                            </div>
+                            <p class="layouttxt">Right Aligned</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="changetemunitwrap">
+                    <h1 class="settingstitle">Set Temperature unit</h1>
+                    <div class="tempunitlist">
+                        <span class="tempunit mr10" data-unit='celsius'>Celsius</span>
+                        <span class="tempunit selected" data-unit='fahrenheit'>Fahrenheit</span>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="changetemunitwrap">
+                    <h1 class="settingstitle">Set Hour Format</h1>
+                    <div class="hoursunitlist">
+                        <span class="tempunit mr10 selected" data-unit='hours12'>12 hours</span>
+                        <span class="tempunit" data-unit='hours24'>24 hours</span>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="addremovwwrap">
+                    <h1 class="settingstitle">Hide / Show Apps</h1>
+                    <div class="addremovcontent">
+                        <div class="appswrap">
+                            <svg width="16" height="16" viewBox="0 0 16 16">
+                                <g fill="#CACACA">
+                                    <path
+                                        d="M8 2.813C5.14 2.813 2.812 5.14 2.812 8c0 2.86 2.328 5.188 5.188 5.188S13.188 10.86 13.188 8 10.86 2.812 8 2.812zm-.469.937h.938v.938H7.53V3.75zM4.688 8.469H3.75V7.53h.938v.938zm3.78 3.781h-.937v-.938h.938v.938zm.195-2.924L8 8.663l-.663.663-.663-.663L7.337 8 4.674 5.337l.663-.663L8 7.337l2.674-2.674.663.663L8.663 8l.663.663-.663.663zm2.65-.857V7.53h.937v.938h-.938z" />
+                                    <path
+                                        d="M8 0C3.582 0 0 3.582 0 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zm0 14.125c-3.377 0-6.125-2.748-6.125-6.125S4.623 1.875 8 1.875 14.125 4.623 14.125 8 11.377 14.125 8 14.125z" />
+                                </g>
+                            </svg>
+                            <p class="appname">World Clock</p>
+                            <label class="switch">
+                            <input type="checkbox" class="worldclockswitch" checked="checked">
+                            <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="appswrap">
+                            <svg width="15" height="16" viewBox="0 0 15 16">
+                                <path fill="#CACACA"
+                                    d="M2.537 0C1.314 0 .324.99.324 2.213v11.565c0 1.222.99 2.213 2.213 2.213h9.555c1.222 0 2.213-.99 2.213-2.213V2.213C14.305.99 13.315 0 12.092 0H2.537zm2.65 13.173c0 .3-.244.544-.544.544H2.85c-.3 0-.544-.243-.544-.544V11.46c0-.3.243-.544.544-.544h1.793c.3 0 .544.244.544.544v1.714zm0-3.488c0 .3-.244.543-.544.543H2.85c-.3 0-.544-.243-.544-.543v-1.74c0-.301.243-.544.544-.544h1.793c.3 0 .544.243.544.543v1.74zm3.568 3.488c0 .3-.243.544-.544.544H6.418c-.3 0-.544-.243-.544-.544V11.46c0-.3.243-.544.544-.544H8.21c.3 0 .544.244.544.544v1.714zm0-3.488c0 .3-.243.543-.544.543H6.418c-.3 0-.544-.243-.544-.543v-1.74c0-.301.243-.544.544-.544H8.21c.3 0 .544.243.544.543v1.74zm3.568 3.488c0 .3-.243.544-.544.544H9.985c-.3 0-.544-.243-.544-.544V11.46c0-.3.244-.544.544-.544h1.794c.3 0 .544.244.544.544v1.714zm0-3.488c0 .3-.243.543-.544.543H9.985c-.3 0-.544-.243-.544-.543v-1.74c0-.301.244-.544.544-.544h1.794c.3 0 .544.243.544.543v1.74zm0-5.154c0 .3-.243.544-.544.544H2.85c-.3 0-.544-.244-.544-.544V2.817c0-.3.243-.544.544-.544h8.93c.3 0 .543.243.543.544V4.53z" />
+                            </svg>
+                            <p class="appname">Calculator</p>
+                            <label class="switch">
+                            <input type="checkbox" class="calculcatorswitch" checked="checked">
+                            <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="appswrap">
+                            <svg width="16" height="17" viewBox="0 0 16 17">
+                                <g fill="#CACACA">
+                                    <path
+                                        d="M14.594 1.906c-.776 0-1.406.631-1.406 1.407v.468H16v-.469c0-.775-.63-1.406-1.406-1.406zM14.594 15.063c.202 0 .38-.13.444-.32l.83-2.524h-2.55l.831 2.523c.064.191.243.32.445.32zM13.188 4.719L16 4.719 16 11.281 13.188 11.281zM6.125 0c-.259 0-.469.21-.469.469v1.406H8.47V.469C8.469.209 8.259 0 8 0H6.125zM.938 16h8.009c-.29-.394-.478-.881-.478-1.406 0-.263-.206-.469-.469-.469H.469c-.263 0-.469.206-.469.469v.469c0 .515.422.937.938.937z" />
+                                    <path
+                                        d="M10.908 15.997c.76-.05 1.342-.697 1.342-1.458V1.406c0-.259-.21-.468-.469-.468H9.406v1.406c0 .259-.21.469-.469.469h-3.75c-.258 0-.468-.21-.468-.47V.939H2.344c-.26 0-.469.21-.469.468v11.781H8c.777 0 1.406.63 1.406 1.407 0 .808.682 1.457 1.502 1.403zM7.063 5.187h2.799c.252 0 .47.195.481.447.013.27-.202.491-.468.491h-2.8c-.252 0-.47-.194-.48-.447-.013-.269.201-.49.468-.49zm3.28 3.304c-.011.252-.229.447-.481.447H7.076c-.253 0-.47-.195-.482-.447-.012-.27.202-.491.468-.491h2.813c.266 0 .48.222.468.49zM3.935 4.37c.186-.17.477-.153.656.026l.596.596.597-.596c.179-.179.47-.195.656-.025.2.181.205.49.016.678l-.937.938c-.092.091-.212.137-.331.137-.12 0-.24-.046-.332-.137L3.92 5.05c-.189-.188-.183-.497.016-.678zm0 2.813c.186-.17.477-.153.656.025l.596.597.597-.597c.179-.178.47-.195.656-.025.2.182.205.49.016.679L5.52 8.8c-.092.092-.212.137-.331.137-.12 0-.24-.045-.332-.137l-.937-.937c-.189-.189-.183-.497.016-.679zm1.584 4.429c-.092.091-.212.137-.332.137-.12 0-.24-.046-.33-.137l-.93-.929c-.178-.178-.194-.469-.024-.655.182-.2.49-.205.678-.017l.606.606.597-.596c.179-.179.47-.195.656-.025.2.181.205.49.016.678l-.937.938zm1.543.137c-.266 0-.48-.222-.468-.49.012-.253.229-.447.482-.447h2.786c.252 0 .47.194.481.446.013.27-.202.491-.468.491H7.062z" />
+                                </g>
+                            </svg>
+                            <p class="appname">to-do’s</p>
+                            <label class="switch">
+                            <input type="checkbox" class="todoswitch" checked="checked">
+                            <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="appswrap">
+                            <svg width="14" height="16" viewBox="0 0 14 16">
+                                <g fill="#CACACA">
+                                    <path
+                                        d="M13.307 13.495l-1.145-1.908c-.529-.88-.808-1.889-.808-2.916V7c0-2.11-1.408-3.895-3.333-4.47V1.333C8.02.598 7.423 0 6.687 0c-.735 0-1.333.598-1.333 1.333V2.53C3.429 3.105 2.02 4.89 2.02 7v1.671c0 1.027-.28 2.035-.808 2.916L.07 13.495c-.062.103-.064.231-.004.336.059.104.169.169.289.169h12.667c.12 0 .23-.065.29-.169.059-.104.057-.233-.004-.336zM4.588 14.667C4.964 15.452 5.76 16 6.688 16c.927 0 1.723-.548 2.099-1.333H4.588z" />
+                                </g>
+                            </svg>
+                            <p class="appname">reminders</p>
+                            <label class="switch">
+                            <input type="checkbox" class="reminderswitch" checked="checked">
+                            <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="settingactionwrap">
+                    <span class="savemenu">
+                    Save
+                    </span>
+                    <span class="cancelmenu tracker" data-event_name="FunctionalClick"
+                        data-event_action="CancelSettingsClick">
+                    Cancel
+                    </span>
+                </div>
+            </aside>
+            <section class="main-content flex justify-center shrink_1">
+                <div class="searchContent">
+                    <div class="timer-widget flex flex_1 justify-center">
+                        <div class="currenttime flex align-center">
+                            <div class="date nv5 fw-300" id="cust_date"></div>
+                            <div class="time fw-300" id="cust_time"></div>
+                        </div>
+                    </div>
+                    <div class="searchformwrap ui-widget">
+                        <form id="searchform" class="search-form" method="GET" action="https://search.yahoo.com/yhs/search">
+                            <input type="hidden" name="hspart" value="mnet" />
+                            <input type="hidden" name="hsimp" value="yhs-001" />
+                            <input type="hidden" name="param1"
+                                value="dGFnQTEzMDAxMjctc2FmZXBsZXhzZWFyY2gsc2FmZXBsZXhzZWFyY2gsdjJfOGE3MjQ5YTAtNmFhZi0xMWVhLTgyNTgtODVhNWRjMmRiMTZmOnNhZmVwbGV4c2VhcmNoLFVTLG1hLGhvbHlva2U" />
+                            <input type="hidden" name="param2" value="eyJkb21haW4iOiJ0YXNrbWFuYWdlcnRhYi5jb20ifQ" />
+                            <input type="hidden" name="type"
+                                value="type9090276-spa-dGFnQTEzMDAxMjctc2FmZXBsZXhzZWFyY2g-bde5eb3afa0a8b973ac7d6a2aa617d68" />
+                            <input type="text" autofocus class="search-text" data-placeholder="Search the web" name="p"
+                                id="search-text" autocomplete="off" placeholder="Search the web" value="">
+                            <button class="searchicon submit-btn hover-pulse" id="submit-btn" aria-label="Search">
+                                <svg width="18px" height="18px" viewBox="0 0 16 16" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="sch1" transform="translate(-275.000000, -265.000000)">
+                                            <rect fill="none" x="0" y="0" width="1024" height="650"></rect>
+                                            <g id="Group-18" class="bgColor" transform="translate(260.000000, 252.000000)"
+                                                fill="#CCCCCC" fill-rule="nonzero">
+                                                <g id="Group-6">
+                                                    <g id="Group-5">
+                                                        <g id="Group-21" transform="translate(15.000000, 13.000000)">
+                                                            <g id="Search">
+                                                                <path
+                                                                    d="M15.8040816,14.8636735 L11.957551,11.0171429 C12.9110204,9.85469388 13.4857143,8.36571429 13.4857143,6.74285714 C13.4857143,3.02040816 10.4653061,0 6.74285714,0 C3.01714286,0 0,3.02040816 0,6.74285714 C0,10.4653061 3.01714286,13.4857143 6.74285714,13.4857143 C8.36571429,13.4857143 9.85142857,12.9142857 11.0138776,11.9608163 L14.8604082,15.8040816 C15.1216327,16.0653061 15.5428571,16.0653061 15.8040816,15.8040816 C16.0653061,15.5461224 16.0653061,15.1216327 15.8040816,14.8636735 Z M6.74285714,12.1436735 C3.76163265,12.1436735 1.33877551,9.72081633 1.33877551,6.74285714 C1.33877551,3.76489796 3.76163265,1.33877551 6.74285714,1.33877551 C9.72081633,1.33877551 12.1469388,3.76489796 12.1469388,6.74285714 C12.1469388,9.72081633 9.72081633,12.1436735 6.74285714,12.1436735 Z"
+                                                                    id="Shapesch"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                            <div class="auto-complete-wrap" id="auto-complete-wrap">
+                                <button type="button" class="submit-btn submit below-suggestion">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="topsites-linkouts flex justify-center">
+                        <div class="dialog-overlay"></div>
+                        <div class="dialog-overlay2"></div>
+                        <style>
+                            .historyList li a {
+                            justify-content: center;
+                            align-items: center;
+                            }
+                            .historyList .favIco {
+                            margin-right: 0;
+                            }
+                        </style>
+                        <ul class="historyList history_v2">
+                            <style>
+                                .topsite-update-notif.notice-logic-active {
+                                margin: 0;
+                                display: none;
+                                padding: 0;
+                                }
+                                .un_topsite {
+                                position: relative;
+                                cursor: pointer;
+                                }
+                                .un_topsite .favIco svg {
+                                width: 47px;
+                                height: 47px;
+                                }
+                                .un_topsite .siteName {
+                                font-size: 12px;
+                                font-weight: 400;
+                                color: #242526;
+                                white-space: break-spaces;
+                                text-align: center;
+                                }
+                                .red_cirle {
+                                background-color: #f33232;
+                                font-family: 'Roboto', Arial, sans-serif;
+                                font-size: 12px;
+                                font-weight: bold;
+                                color: #FFF;
+                                position: absolute;
+                                left: 58%;
+                                top: 0;
+                                border-radius: 50%;
+                                width: 20px;
+                                height: 20px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                }
+                            </style>
+                            <li class="topsite-update-notif notice-logic-active notif-button-element notif-interactor"
+                                data-event_name="userClick" data-event_action="topsites" interactive-element="topsites">
+                                <a class="cachedLinks un_topsite">
+                                    <div class="historyDesc">
+                                        <span class="favIco">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="47" height="47"
+                                                viewBox="0 0 47 47">
+                                                <g fill="none" fill-rule="evenodd">
+                                                    <circle cx="23.5" cy="23.5" r="23.5" fill="#0085EC" />
+                                                    <g fill="#FFF" fill-rule="nonzero">
+                                                        <path
+                                                            d="M4.591 16.187c.418.945 1.363 1.606 2.46 1.606 1.098 0 2.043-.661 2.46-1.606h-4.92zM7.051 1.7c.724 0 1.42.128 2.065.362v-.08C9.116.89 8.226 0 7.134 0h-.165C5.876 0 4.987.89 4.987 1.982v.079c.645-.234 1.34-.361 2.064-.361zM13.567 15.143H.537c-.247 0-.473-.166-.524-.407-.051-.239.058-.475.279-.577.052-.034.446-.31.841-1.143.725-1.532.877-3.69.877-5.23 0-2.78 2.262-5.042 5.041-5.042 2.773 0 5.03 2.25 5.041 5.021v.02c0 1.54.153 3.699.878 5.23.395.835.789 1.11.841 1.144.221.102.33.338.28.577-.052.241-.278.407-.524.407z"
+                                                            transform="translate(16 15)" />
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        <p class="siteName">Recommended Update</p>
+                                        <div class="red_cirle">1</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <footer class="footer flex align-center justify-center shrink_0">
+                <ul class="clearfix">
+                    <li><a class="tracker" l-policy="privacypolicy" data-event_name="UserClick"
+                        data-event_action="PrivacyClick" href=https://taskmanagertab.com/utility/privacypolicy_ff.html
+                        target="_blank">Privacy Policy</a></li>
+                    <li><a href=https://taskmanagertab.com/utility/termsofservice_ff.html l-policy="termsofservice"
+                        class="tracker" target="_blank" data-event_name="UserClick" data-event_action="TermsClick">Terms
+                        of Service</a>
+                    </li>
+                    <li><a href=https://taskmanagertab.com/utility/contactus_ff.html class="tracker"
+                        data-event_name="UserClick" data-event_action="ContactusClick" target="_blank">Contact Us</a>
+                    </li>
+                    <li><a href=https://taskmanagertab.com/utility/uninstall_lander_ff.html target="_blank" class="tracker"
+                        data-event_name="UserClick" data-event_action="UninstallInstruction">Uninstall</a></li>
+                    <li><a href=https://taskmanagertab.com/utility/cppa_form.html target="_blank" class="tracker"
+                           data-event_name="UserClick" data-event_action="DoNotSellInfoClick">Do not Sell My Personal
+                        Information</a>
+                    </li>
+                </ul>
+            </footer>
+            <div class="instruction_overlay tutorial_overlay">
+                <div class="ins-content flex justify-center align-end">
+                    <div class="ins-inner-content flex justify-center align-end">
+                        <div class="ins-icon-logo flex justify-center align-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="48" viewBox="0 0 42 48">
+                                <defs>
+                                    <linearGradient id="ins-icon-logoa" x1="-.855%" x2="99.145%" y1="49.263%" y2="49.263%">
+                                        <stop offset="0%" stop-color="#F48A6E" />
+                                        <stop offset="100%" stop-color="#FBBF85" />
+                                    </linearGradient>
+                                </defs>
+                                <path fill="url(#ins-icon-logoa)" fill-rule="nonzero"
+                                    d="M37.354 21.104h3.545c.608 0 1.101-.499 1.101-1.114v-6.203a3.561 3.561 0 0 0-1.761-3.08l-1.474-.862-.086-.068L22.769.484A3.495 3.495 0 0 0 21.011 0a3.523 3.523 0 0 0-1.761.484L3.321 9.777a.594.594 0 0 0-.086.068l-1.479.862A3.566 3.566 0 0 0 0 13.787v20.445c0 1.273.671 2.45 1.761 3.085l1.024.586a.71.71 0 0 0 .172.14l16.27 9.482a3.538 3.538 0 0 0 3.541 0l16.27-9.482a.844.844 0 0 0 .177-.14l1.024-.596A3.568 3.568 0 0 0 42 34.223v-6.194c0-.615-.493-1.114-1.1-1.114h-3.546c-.608 0-1.101.499-1.101 1.114v3.094c0 1.13-.594 2.175-1.56 2.741L22.548 40.94a3.064 3.064 0 0 1-3.1 0l-12.15-7.094a3.179 3.179 0 0 1-1.556-2.722V16.915a3.165 3.165 0 0 1 1.555-2.74l.599-.354h.043l3.952-2.32 7.547-4.407a3.064 3.064 0 0 1 3.1 0l7.552 4.407 3.952 2.32h.038l.603.353a3.16 3.16 0 0 1 1.56 2.736v3.075a1.12 1.12 0 0 0 .324.794c.209.21.492.328.787.325zM17.873 24.01a3.168 3.168 0 0 0 1.93 2.93c1.17.49 2.517.22 3.412-.686a3.195 3.195 0 0 0 .678-3.454 3.13 3.13 0 0 0-2.895-1.953c-.83 0-1.624.333-2.21.926a3.182 3.182 0 0 0-.915 2.237z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/constants.js"></script>
+        <script src="js/jquery-3.4.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/jquery.mousewheel-3.0.6.js"></script>
+        <script src="js/jquery.mousewheel.js"></script>
+        <script src="js/jquery.mCustomScrollbar.js"></script>
+        <script src="js/storageReplacer.js"></script>
+        <script src="js/homepage.js"></script>
+        <script src="js/pii.js"></script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<div id="newsfeed">
+    <div class="content">
+        <div ng-if="userMessages.length">
+            <h1 i18n-content="newsfeed_page_title"></h1>
+        </div>
+        <div ng-if="!userMessages.length">
+            <h1 i18n-content="no_newsfeed_page_title"></h1>
+        </div>
+    </div>
+    <div>
+        <div class="markAsRead" ng-if="userMessages.length">
+            <button ng-click="markAllMessagesAsRead()" ng-disabled="unreadMessagesCount == 0 ? 'disabled' : ''" type="button" i18n-content="button_mark_all_as_read" class="button_mark_all_as_read md-button md-raised md-primary"></button>
+        </div>
+        <div class="message-container">
+            <md-content class="md-padding" layout-xs="column" layout="row">
+                <div flex-xs="" flex-gt-sm="50" flex-gt-md="33.3" flex-gt-lg="25" layout="column" ng-repeat="i in messages.forLoop">
+                    <md-card ng-if="key % messages.newsColumns == i" ng-repeat="(key, message) in userMessages" class="newsfeed-message-container" ng-class="{isRead: message.isRead == true, allMessagesRead: unreadMessagesCount == 0}" data-title="{{message.title}}" data-link="{{message.link}}" data-index="{{key}}">
+                        <md-card-title>
+                                <img class="md-user-avatar" ng-src="{{ message.icon }}">
+                            <md-card-title-text>
+                                <span class="md-headline">{{message.title}}</span>
+                            </md-card-title-text>
+                        </md-card-title>
+
+                        <md-card-content>
+                            <p>{{message.body}}</p>
+                        </md-card-content>
+
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button class="actionButton" ng-href="{{ message.link }}">{{ message.buttonText || message.actionButton }}</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+            </md-content>
+        </div>
+    </div>
+</div>

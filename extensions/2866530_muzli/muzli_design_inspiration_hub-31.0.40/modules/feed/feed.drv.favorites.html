@@ -1,0 +1,214 @@
+<section id="feed" class="palettes"><!-- Feed posts -->
+
+<ul
+	infinite-scroll='::loadMore()'
+	infinite-scroll-distance='::infiniteScrollDistance'
+	infinite-scroll-immediate-check='false'
+	infinite-scroll-disabled='!feed.length'>
+
+	<li ng-repeat="item in feed track by (item.id || item.link)"
+	ng-class="::{
+		article: item.source.article && !item.video,
+		visited: item.visited,
+		viral: !!item.viralTimes,
+		hasStats: item.hasStats, pick: item.pick,
+		animated: item.animated || item.webm,
+		'inline-video': !!item.htmlVideo,
+		video: !!item.video,
+		playing: item.playing,
+		vlog: !!item.sub_source,
+		nsfw: !!item.nsfw || !!item.userNSFW,
+		feedSuggest: !!item.promotion,
+		fallbackImage: item.fallbackImage,
+		showSharePromo: item.displaySharePromo,
+		outside: item.isOutside,
+		showMenu: item.showMenu,
+		}"
+	class="angular-animate"
+	data-muzli-id="{{::item.id}}">
+
+		<!-- Color items -->
+		<div class="tile" ng-if="::item.source.name === 'colors'">
+
+			<div class="feedLink">
+
+				<span class="icon-image" ng-if="item.image" ng-click="item.showPhoto = !item.showPhoto"></span>
+
+				<div class="postPhoto">
+					<div class="palette" style="background: {{item.palette[item.palette.length - 1]}}" ng-class="{hidden: item.showPhoto}">
+						<span ng-repeat="color in item.palette track by $index"
+							style="background: {{color}}"
+							title-top="true"
+							click-copy-color="{{::color}}"
+							brightness="{{::color}}"
+							prevent-click>
+							{{color}}
+						</span>
+					</div>
+					<a class="wrapper" ng-mousedown="::postClick(item, $event)" target="_blank" ng-href="{{::item.link_out}}">
+						<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRFAAAAAAAApWe5zwAAAAF0Uk5TAEDm2GYAAAAMSURBVHjaYmAACDAAAAIAAU9tWeEAAAAASUVORK5CYII=" muzli-lazy="{{::item.image}}" muzli-gif="{{::item.gif}}" muzli-is-gif="{{::item.isGif}}" src="" alt="" />
+					</a>
+				</div>
+
+				<div class="postInfo">
+					<div class="download" title="Download palette (SVG)" ng-click="downloadSVG(item, $event)">Download</div>
+				</div>
+
+			</div>
+
+			<div class="postMeta">
+
+				<div class="details angular-animate">
+
+					<span class="remove" ng-click="::removeFavorite($event, $index, item)" title="Remove" title-top="true"></span>
+
+					<div class="stats pull-right">
+
+						<span class="action" ng-click="::openDNlink($event, item.link_out_direct)" ng-if="item.source.name == 'designer_news' && item.external_url" title="Open discussion" title-top="true">
+							<span class="icon-chat"></span>
+						</span>
+
+						<span title="Votes" title-top="true" ng-if="::item.source.name === 'producthunt'">
+							<span class="icon-ph"></span>
+							<span>{{::item.stats.likes || 0 | thousandSuffix:1}}</span>
+						</span>
+
+						<span title="Views" title-top="true" ng-if="::item.clicks > 0">
+							<span class="icon-view"></span>
+							<span>{{::item.clicks || 0 | thousandSuffix:1}}</span>
+						</span>
+						<span title="Shares" title-top="true">
+							<span class="icon-share"></span>
+							<span>{{::item.virality || 0 | thousandSuffix:1}}</span>
+						</span>
+	                </div>
+
+	            </div>
+
+			</div>
+		</div>
+
+		<!-- Simple items -->
+		<div class="tile" ng-if="::item.source.name !== 'colors'">
+
+			<a target="_blank" ng-href="{{::item.link_out}}" class="feedLink" ng-mousedown="::postClick(item, $event)">
+
+				<div class="postPhoto" >
+
+					<i ng-if="item.nsfw || item.userNSFW">NSFW</i>
+
+					<img ng-if="::!item.video" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRFAAAAAAAApWe5zwAAAAF0Uk5TAEDm2GYAAAAMSURBVHjaYmAACDAAAAIAAU9tWeEAAAAASUVORK5CYII=" muzli-lazy="{{::item.image}}" muzli-gif="{{::item.gif}}" muzli-is-gif="{{::item.isGif}}" src="" alt="" />
+
+					<video ng-if="::item.htmlVideo" ng-src="{{::item.htmlVideo}}" video-loader playsinline loop autoplay muted></video>
+
+					<div class="share">
+						<span class="facebook icon-facebook" ng-click="::openSharer($event, 'facebook', item)" title="Share on Facebook" title-top="true"></span>
+						<span class="twitter icon-twitter" ng-click="::openSharer($event, 'twitter', item)" title="Share on Twitter" title-top="true"></span>
+						<span class="linkedin icon-linkedin" ng-click="::openSharer($event, 'linkedin', item)" title="Share on LinkedIn" title-top="true"></span>
+						<span class="slack icon-slack" ng-click="::sendSlack($event, item)" title="Share on Slack" title-bottom="true"></span>
+					</div>
+
+					<muzli-video ng-if="::item.video" ng-click="::videoClick(item, $event)"></muzli-video>
+
+					<div class="share-promo" ng-if="item.displaySharePromo">
+						<div class="sharers">
+							<h4>Nice! Maybe your friends will also enjoy this?</h4>
+							<span class="facebook icon-facebook" ng-click="::openSharer($event, 'facebook', item)" title="Share on Facebook"></span>
+							<span class="twitter icon-twitter" ng-click="::openSharer($event, 'twitter', item)" title="Share on Twitter"></span>
+							<span class="linkedin icon-linkedin" ng-click="::openSharer($event, 'linkedin', item)" title="Share on LinkedIn"></span>
+							<span class="slack icon-slack" ng-click="::sendSlack($event, item)" title="Share on Slack"></span>
+						</div>
+					</div>
+
+					<span class="badge"></span>
+				</div>
+
+				<div class="postInfo">
+					
+					<div class="source-wrapper">
+						<span class="source" title="{{::item.tooltip}}"
+							ui-sref="feed(::{ name: item.source.name })"
+							ng-click="::sourceClick($event, item.source.name)">
+								<img ng-src="{{::item.source.icon}}" alt="{{::item.source.title}}">
+						</span>
+
+						<span class="source" title="All work by {{::item.user.displayName}}" ng-if="item.user"
+							ui-sref="feed(::{ name: 'user', user: item.user, skipSponsored: true})"
+							ng-click="::sourceClick($event, item.user.id)">
+								<img ng-if="!item.user.monogram" ng-src="{{::item.user.photo}}" alt="{{::item.user.displayName}}" use-monogram="item.user">
+								<span ng-if="item.user.monogram">{{item.user.monogram}}</span>
+						</span>
+					</div>
+
+					<div class="palette" ng-if="::item.palette && !item.source.article && enablePalettes">
+
+						<div ng-click="downloadSVG(item, $event)" class="icon-download"></div>
+
+						<span ng-repeat="color in item.palette track by $index"
+							style="background: {{color}}; border-color: {{color}}"
+							title="{{copySuccess ? 'Copied' : color}}"
+							title-top="true"
+							click-copy-color="{{::color}}"
+							prevent-click>
+						</span>
+					</div>
+
+					<h3 ng-bind="::item.title"></h3>
+					<span class="created">{{item.created | timeAgo}}</span>
+				</div>
+			</a>
+
+			<div class="postMeta">
+
+				<div class="details angular-animate">
+
+					<span class="remove" ng-click="::removeFavorite($event, $index, item)" title="Remove" title-top="true"></span>
+
+					<div class="stats pull-right">
+
+						<span class="action" ng-click="::openDNlink($event, item.link_out_direct)" ng-if="item.source.name == 'designer_news' && item.external_url" title="Open discussion" title-top="true">
+							<span class="icon-chat"></span>
+						</span>
+
+						<span title="Votes" title-top="true" ng-if="::item.source.name === 'producthunt'">
+							<span class="icon-ph"></span>
+							<span>{{::item.stats.likes || 0 | thousandSuffix:1}}</span>
+						</span>
+
+						<span title="Views" title-top="true" ng-if="::item.clicks > 0">
+							<span class="icon-view"></span>
+							<span>{{::item.clicks || 0 | thousandSuffix:1}}</span>
+						</span>
+						<span title="Shares" title-top="true">
+							<span class="icon-share"></span>
+							<span>{{::item.virality || 0 | thousandSuffix:1}}</span>
+						</span>
+	                </div>
+
+	            </div>
+
+			</div>
+		</div>
+
+	</li>
+</ul>
+
+<div ng-show="feed && !feed.length && !blockEmpty && !isRendering" ng-transclude="no-data">
+</div>
+
+<ul class="ghost" ng-hide="hideGhost" >
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+</section>

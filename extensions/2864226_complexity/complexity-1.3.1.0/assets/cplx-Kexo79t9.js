@@ -1,0 +1,1 @@
+const e={header:"Session expirée",description:"Votre session a expiré (probablement en raison de Cloudflare).",buttons:{reload:"Actualiser",dismiss:"Fermer"}},o={dialog:e};export{o as default,e as dialog};

@@ -1,0 +1,87 @@
+# LLM Filter List
+
+version = "0.1.1"
+last_updated = "2023-09-07T12:00:00Z"
+
+# List of all possible categories
+categories = ["assistant", "summary", "chatbot"]
+
+# Metadata about the filter list
+[metadata]
+maintainer = "aiBlock"
+website = "None Yet"
+license = "N/A"
+
+[[filters]]
+id = "google-search-overview"
+version = "1.0.0"
+enabled = true
+name = "Google Search Overview"
+domains = ["*.google.com"]
+selectors = [".hdzaWe"]
+description = """
+Removes the LLM search overview section from Google search results pages.
+"""
+category = "summary"
+
+[[filters]]
+id = "linkedin-rewrite-ai-button"
+version = "1.0.0"
+enabled = true
+name = "LinkedIn Rewrite with AI Button"
+domains = ["*.linkedin.com"]
+selectors = [".share-creation-state__writing-assistant-container--premium"]
+description = """
+Removes the "Rewrite with AI" button from LinkedIn post creation.
+"""
+category = "assistant"
+
+[[filters]]
+id = "bing-copilot-button"
+version = "1.0.0"
+enabled = true
+name = "Bing Copilot Button"
+domains = ["*.bing.com"]
+selectors = [".cdxCopilotIconBg"]
+description = """
+Removes the Copilot button from the Bing homepage.
+"""
+category = "assistant"
+
+[[filters]]
+id = "bing-quick-answer"
+version = "1.0.0"
+enabled = true
+name = "Bing Quick Answer Box"
+domains = ["*.bing.com"]
+selectors = [".b_sydtiger"]
+description = """
+Removes the "quick answer" box from Bing search results.
+"""
+category = "summary"
+
+[[filters]]
+id = "bing-chatbot-link"
+version = "1.0.0"
+enabled = true
+name = "Bing Chatbot Link"
+domains = ["*.bing.com"]
+selectors = [".b_phead_chat_link"]
+description = """
+Hides the chatbot link on Bing search pages.
+"""
+category = "chatbot"
+
+# Unfortunately non-functional at the moment, likely due to shadow dom
+[[filters]]
+id = "youtube-live-chat-ai-summary"
+version = "1.0.0"
+enabled = true
+name = "YouTube Live Chat AI Summary"
+domains = ["*.youtube.com"]
+selectors = [".yt-live-chat-banner-chat-summary-renderer"]
+description = """
+Removes AI summary banners from YouTube live stream chat.
+"""
+category = "summary"
+

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../styles/popup.css" />
+	</head>
+
+	<body class="popup-body">
+		<div id="loading">
+			<div id="loader-wrap">
+				<div id="loader"></div>
+			</div>
+		</div>
+		
+		<div id="error">
+			<div id="error-icon">
+				<svg width="40" height="40" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"><path d="M 500 0C 224 0 0 224 0 500C 0 776 224 1000 500 1000C 776 1000 1000 776 1000 500C 1000 224 776 0 500 0C 500 0 500 0 500 0M 500 25C 762 25 975 238 975 500C 975 762 762 975 500 975C 238 975 25 762 25 500C 25 238 238 25 500 25C 500 25 500 25 500 25 M 526 150C 576 150 602 175 601 224C 600 300 600 350 575 525C 570 560 560 575 525 575C 525 575 475 575 475 575C 440 575 430 560 425 525C 400 355 400 300 400 226C 400 175 425 150 475 150M 500 650C 527 650 552 661 571 679C 589 698 600 723 600 750C 600 805 555 850 500 850C 445 850 400 805 400 750C 400 723 411 698 429 679C 448 661 473 650 500 650C 500 650 500 650 500 650"/></svg>
+			</div><br>
+			<div id="error-text">Oops Something went wrong.
+				<div class="helper-text">Try clicking the extension icon again.</div>
+			</div>	
+		</div>		
+		<div id="registration-page1" class="popup-container">
+			<div class="pixm-head">
+				<div class="plan-info-text"></div>
+				<div>
+					<img
+						width="92px"
+						height="32px"
+						src="../images/pixm_blue_on_white_logo.png"
+					/>
+				</div>
+			</div>
+
+			<div id="user-registration">
+				<div>
+					<svg
+						width="11"
+						height="11"
+						style="position: relative; top: 0.2px"
+						viewBox="0 0 12 13"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M6.21191 6.29688C7.73633 6.29688 8.91895 4.99121 8.91895 3.35742C8.91895 1.79883 7.72266 0.458984 6.21191 0.458984C4.70117 0.458984 3.49805 1.80566 3.50488 3.35742C3.51172 4.99121 4.6875 6.29688 6.21191 6.29688ZM2.30859 12.4287H10.1152C11.373 12.4287 11.7695 11.9775 11.7695 11.2598C11.7695 9.62598 9.56152 7.39746 6.21191 7.39746C2.8623 7.39746 0.647461 9.62598 0.647461 11.2598C0.647461 11.9775 1.05078 12.4287 2.30859 12.4287Z"
+							fill="white"
+						/>
+					</svg>
+				</div>
+				<div id="register-text">Activate</div>
+				<div id="register">
+					<svg
+						style="position: relative; top: 2.5px"
+						width="11"
+						height="11"
+						viewBox="0 0 13 11"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M12.7334 5.33105C12.7334 5.15332 12.665 4.98926 12.5283 4.85938L8.25586 0.59375C8.10547 0.450195 7.95508 0.388672 7.79102 0.388672C7.44238 0.388672 7.17578 0.641602 7.17578 0.990234C7.17578 1.16113 7.2373 1.31836 7.35352 1.42773L8.80273 2.9043L10.874 4.79785L9.33594 4.70215H1.26953C0.907227 4.70215 0.647461 4.96191 0.647461 5.33105C0.647461 5.69336 0.907227 5.95312 1.26953 5.95312H9.33594L10.8809 5.85742L8.80273 7.75098L7.35352 9.22754C7.24414 9.33691 7.17578 9.49414 7.17578 9.66504C7.17578 10.0137 7.44238 10.2666 7.79102 10.2666C7.95508 10.2666 8.09863 10.2051 8.24219 10.0752L12.5283 5.7959C12.665 5.66602 12.7334 5.50195 12.7334 5.33105Z"
+							fill="#fff"
+						/>
+					</svg>
+				</div>
+			</div>
+
+			<div id="separator"></div>
+
+			<div id="page-status-container">
+				<div id="page-status"></div>
+				<div id="page-domain"></div>
+			</div>
+
+			<div id="pixm-incident-strip"></div>
+
+			<div id="page-reporting-info">
+				<span id="page-reporting-info-text"
+					>Pixm did not find any fraudulent elements on this page</span><br>
+				<div id="request_permissions_container" class="hide">
+					<span id="permissions-text">Access data on all websites</span><br>
+					<button id="allow-btn">Allow</button>
+				</div>
+				<span id="page-reporting-info-domain"></span>
+			</div>
+			
+			<div
+				style="
+					font-weight: 500;
+					display: flex;
+					align-items: center;
+					cursor: pointer;
+					padding: 0px 18px;
+				"
+			>
+				<div id="pixm-reporting-container"style="color: #ea2b2b; font-size: 11px">
+					<a
+						id="pixm-reporting"
+						target="_blank"
+						>Report this site as Phishing site</a
+					>
+				</div>
+				
+				<div style="margin-left: 2px" id="pixm-reporting-arrow">
+					<svg
+						id="pixm-reporting-arrow"
+						width="13"
+						height="8"
+						viewBox="0 0 13 11"
+						fill="#b34c43"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M12.7334 5.33105C12.7334 5.15332 12.665 4.98926 12.5283 4.85938L8.25586 0.59375C8.10547 0.450195 7.95508 0.388672 7.79102 0.388672C7.44238 0.388672 7.17578 0.641602 7.17578 0.990234C7.17578 1.16113 7.2373 1.31836 7.35352 1.42773L8.80273 2.9043L10.874 4.79785L9.33594 4.70215H1.26953C0.907227 4.70215 0.647461 4.96191 0.647461 5.33105C0.647461 5.69336 0.907227 5.95312 1.26953 5.95312H9.33594L10.8809 5.85742L8.80273 7.75098L7.35352 9.22754C7.24414 9.33691 7.17578 9.49414 7.17578 9.66504C7.17578 10.0137 7.44238 10.2666 7.79102 10.2666C7.95508 10.2666 8.09863 10.2051 8.24219 10.0752L12.5283 5.7959C12.665 5.66602 12.7334 5.50195 12.7334 5.33105Z"
+						/>
+					</svg>
+				</div>
+			</div>
+
+			<div id="pixm-reporting-response" class="hide" 
+				style=" font-weight: 500;
+						display: flex;
+						align-items: center;
+						padding: 0px 18px;
+					"
+				></div>
+			
+			<div id="gray-hr"></div>
+
+			<div id="feedback">
+				<div>Encountered an issue or have feedback?</div>
+				<div style="color: #008ce0; padding-bottom: 3px;">
+					<a href="https://pixm.net/extension-feedback" target="_blank"
+						>Send feedback</a
+					>
+				</div>
+				<div class="hide clink" id="clear-cache">
+					<a href="#" 
+						>Clear Cache</a>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+
+		<div id="registration-page2" class="popup-container">
+			<div class="pixm-head">
+				<div class="plan-info-text"></div>
+				<div>
+					<img
+						width="92px"
+						height="32px"
+						src="../images/pixm_blue_on_white_logo.png"
+					/>
+				</div>
+				<div class="steps-section">
+					<div>
+						<div class="steps">
+							<div>Step 1</div>
+							<div></div>
+						</div>
+						<div class="steps-hr">
+							<div class="step-active"></div>
+							<div class="step-inactive"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="email-label">
+				<span>Enter Email</span>
+			</div>
+
+			<div class="email-input">
+				<input
+					type="email"
+					name="email"
+					placeholder="your@email.com"
+					id="email-input"
+				/>
+			</div>
+
+			<div class="helper-text">
+				<span>We will email you a one time password to register</span>
+			</div>
+
+			<div class="btn">
+				<button
+					style="width: 114px"
+					class="sub-button"
+					type="submit"
+					for="email-input"
+					id="register-email"
+				>
+					Submit
+				</button>
+			</div>
+
+			<div class="horizontal-line"><span></span></div>
+
+			<div class="helper-text" id="org-not-registered">
+				<span>Organization not registered?</span>
+			</div>
+
+			<div class="signup-for-enterprise" id="signup-for-enterprise">
+				<a href="https://pixm.net/demo" target="_blank">
+					<span>Sign up for enterprise account</span>
+					<svg
+						style="margin-left: 5px"
+						width="10"
+						height="9"
+						viewBox="0 0 13 11"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M12.7334 5.33105C12.7334 5.15332 12.665 4.98926 12.5283 4.85938L8.25586 0.59375C8.10547 0.450195 7.95508 0.388672 7.79102 0.388672C7.44238 0.388672 7.17578 0.641602 7.17578 0.990234C7.17578 1.16113 7.2373 1.31836 7.35352 1.42773L8.80273 2.9043L10.874 4.79785L9.33594 4.70215H1.26953C0.907227 4.70215 0.647461 4.96191 0.647461 5.33105C0.647461 5.69336 0.907227 5.95312 1.26953 5.95312H9.33594L10.8809 5.85742L8.80273 7.75098L7.35352 9.22754C7.24414 9.33691 7.17578 9.49414 7.17578 9.66504C7.17578 10.0137 7.44238 10.2666 7.79102 10.2666C7.95508 10.2666 8.09863 10.2051 8.24219 10.0752L12.5283 5.7959C12.665 5.66602 12.7334 5.50195 12.7334 5.33105Z"
+							fill="#008ce0"
+						/>
+					</svg>
+				</a>
+			</div>
+
+			<div class="back-to-overview">
+				<span>Back to Overview</span>
+			</div>
+		</div>
+
+		<div id="registration-page3" class="popup-container">
+			<div class="pixm-head">
+				<div class="plan-info-text"></div>
+				<div>
+					<img
+						width="92px"
+						height="32px"
+						src="../images/pixm_blue_on_white_logo.png"
+					/>
+				</div>
+				<div class="steps-section">
+					<div>
+						<div class="steps">
+							<div></div>
+							<div>Step 2</div>
+						</div>
+						<div class="steps-hr">
+							<div class="step-inactive"></div>
+							<div class="step-active"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="email-label">
+				<span>Enter One Time Password</span>
+			</div>
+
+			<div class="email-input">
+				<input
+					type="password"
+					name="otp"
+					placeholder="Your Password"
+					id="otp-input"
+				/>
+			</div>
+
+			<div id="incorrect-password" style="display: none;" class="helper-text error-color">
+				<span>Password incorrect</span>
+			</div>
+
+			<div class="btn" style="flex-grow: 1;">
+				<button
+					style="width: 114px"
+					class="sub-button"
+					type="submit"
+					for="otp-input"
+					id="verify-otp"
+				>
+					Submit
+				</button>
+			</div>
+			<div class="back-to-overview" >
+				<span>Back to Overview</span>
+			</div>
+		</div>
+
+		<div id="registration-page4" class="popup-container">
+			<div class="pixm-head">
+				<div class="plan-info-text"></div>
+				<div>
+					<img
+						width="92px"
+						height="32px"
+						src="../images/pixm_blue_on_white_logo.png"
+					/>
+				</div>
+				<div class="steps-section">
+					<div>
+						<div class="steps">
+							<div>Step 1</div>
+							<div></div>
+						</div>
+						<div class="steps-hr">
+							<div class="step-active"></div>
+							<div class="step-inactive"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="register-fail">
+				<span>The address you provided is not registered with PIXM</span>
+			</div>
+
+			<div class="btn" style="flex-grow: 1;" id="signup-for-enterprise-manual-registration-fail">
+				<a
+					href="https://pixm.net/demo"
+					target="_blank"
+					style="width: 220px"
+					class="pixm-gradient-btn"
+					type="submit"
+					id="back-to-enterprise-registration"
+				>
+					Sign up for enterprise account
+				</a>
+			</div>
+			<div class="back-to-overview">
+				<span>Back to Overview</span>
+			</div>
+		</div>
+
+		<div id="registration-page5" class="popup-container">
+			<div class="pixm-head">
+				<div class="plan-info-text"></div>
+				<div>
+					<img
+						width="92px"
+						height="32px"
+						src="../images/pixm_blue_on_white_logo.png"
+					/>
+				</div>
+				<div class="steps-section">
+					<div>
+						<div class="steps">
+							<div></div>
+							<div>Step 2</div>
+						</div>
+						<div class="steps-hr">
+							<div class="step-inactive"></div>
+							<div class="step-active"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="register-success">
+				<span>Registration Success!</span>
+			</div>
+
+			<div class="btn back-to-overview" style="flex-grow: 1;">
+				<button
+					style="width: 114px"
+					class="sub-button"
+					type="submit"
+					for="email-input"
+				>
+					Back
+				</button>
+			</div>
+		</div>
+
+		<div id="registration-page6" class="popup-container">
+			<div class="pixm-head">
+				<div class="plan-info-text"></div>
+				<div>
+					<img
+						width="92px"
+						height="32px"
+						src="../images/pixm_blue_on_white_logo.png"
+					/>
+				</div>
+				<div class="steps-section">
+					<div>
+						<div class="steps">
+							<div></div>
+							<div>Step 2</div>
+						</div>
+						<div class="steps-hr">
+							<div class="step-inactive"></div>
+							<div class="step-active"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="register-fail">
+				<div>OTP Expired.</div>
+				<div>Please re-submit email</div>
+			</div>
+
+			<div id="re-submit" class="btn" style="flex-grow: 1;">
+				<button
+					style="width: 170px"
+					class="sub-button"
+					type="submit"
+					for="email-input"
+				>
+					Re-submit Email
+				</button>
+			</div>
+		</div>
+
+		<div id="registration-page7" class="popup-container">
+			<div class="pixm-head">
+				<div class="plan-info-text"></div>
+				<div>
+					<img
+						width="92px"
+						height="32px"
+						src="../images/pixm_blue_on_white_logo.png"
+					/>
+				</div>
+				<div class="steps-section">
+					<div>
+						<div class="steps">
+							<div></div>
+							<div>Step 2</div>
+						</div>
+						<div class="steps-hr">
+							<div class="step-inactive"></div>
+							<div class="step-active"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="register-fail">
+				<div>Oops!</div>
+				<div>Something went wrong.</div>
+				<div class="helper-text" style="margin-top: 15px; padding: 0px;">Please try again, and if the issue persists, contact support@pixm.net</div>
+			</div>
+
+			<div class="btn back-to-overview" style="flex-grow: 1;">
+				<button
+					style="width: 170px"
+					class="sub-button"
+					type="submit"
+					for="email-input"
+				>
+					Back
+				</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="../scripts/popup.js"></script>
+	</body>
+</html>

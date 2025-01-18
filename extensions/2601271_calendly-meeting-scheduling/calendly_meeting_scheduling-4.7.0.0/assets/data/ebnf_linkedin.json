@@ -1,0 +1,605 @@
+{
+  "basic_legacy": [
+    {
+      "context": "document",
+      "action": "querySelectorAll",
+      "params": [".msg-form__left-actions"],
+      "each": [
+        {
+          "action": "querySelector",
+          "params": [".calendly-button"],
+          "conditions": [
+            {
+              "operator": "!==",
+              "value": null,
+              "then": "break"
+            }
+          ]
+        },
+        {
+          "action": "classList.contains",
+          "params": ["calendly-handled"],
+          "conditions": [
+            {
+              "operator": "===",
+              "value": true,
+              "then": "break"
+            }
+          ]
+        },
+        {
+          "action": "classList.add",
+          "params": ["calendly-handled"]
+        },
+        {
+          "action": "querySelector",
+          "params": [".msg-form__footer-action.emoji-hoverable-trigger"],
+          "async": true,
+          "do": [
+            {
+              "property": "offsetWidth",
+              "unit": "px",
+              "ref": "@widthRef",
+              "conditions": [
+                {
+                  "operator": ">",
+                  "value": 32,
+                  "ref": "@sizeRef"
+                }
+              ]
+            },
+            {
+              "property": "offsetHeight",
+              "unit": "px",
+              "ref": "@heightRef"
+            },
+            {
+              "action": "closest",
+              "params": ["div"],
+              "ref": "@elementRef",
+              "do": [
+                {
+                  "context": "document",
+                  "action": "createElement",
+                  "params": ["td"],
+                  "ref": "@buttonRef",
+                  "do": [
+                    {
+                      "action": "setAttribute",
+                      "params": ["class", "calendly-button"]
+                    }
+                  ]
+                },
+                {
+                  "context": "browser",
+                  "action": "runtime.getURL",
+                  "params": ["/iframe_linkedInButton.html"],
+                  "ref": "@srcRef"
+                },
+                {
+                  "context": "@srcRef",
+                  "action": "concat",
+                  "params": ["?large=", "@sizeRef"],
+                  "ref": "@srcRef"
+                },
+                {
+                  "context": "document",
+                  "action": "createElement",
+                  "params": ["iframe"],
+                  "ref": "@frameRef",
+                  "props": {
+                    "frameBorder": "0",
+                    "src": "@srcRef",
+                    "style": {
+                      "display": "inline-block",
+                      "overflow": "hidden",
+                      "width": "@widthRef",
+                      "height": "@heightRef"
+                    }
+                  },
+                  "do": [
+                    {
+                      "action": "classList.add",
+                      "params": ["linkedIn-integration-frame"]
+                    }
+                  ]
+                },
+                {
+                  "action": "insertAdjacentElement",
+                  "params": ["afterend", "@buttonRef"]
+                },
+                {
+                  "context": "@buttonRef",
+                  "action": "appendChild",
+                  "params": ["@frameRef"]
+                },
+                {
+                  "context": "@elementRef",
+                  "action": "closest",
+                  "params": [".msg-convo-wrapper"],
+                  "ref": "@wrapperRef"
+                },
+                {
+                  "context": "@wrapperRef",
+                  "action": "querySelector",
+                  "params": [".msg-form__contenteditable"],
+                  "ref": "@insertElement"
+                },
+                {
+                  "action": "callback"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "basic": [
+    {
+      "context": "document",
+      "action": "querySelectorAll",
+      "params": [".msg-form__right-actions"],
+      "each": [
+        {
+          "action": "querySelector",
+          "params": [".calendly-button"],
+          "conditions": [
+            {
+              "operator": "!==",
+              "value": null,
+              "then": "break"
+            }
+          ]
+        },
+        {
+          "action": "classList.contains",
+          "params": ["calendly-handled"],
+          "conditions": [
+            {
+              "operator": "===",
+              "value": true,
+              "then": "break"
+            }
+          ]
+        },
+        {
+          "action": "classList.add",
+          "params": ["calendly-handled"]
+        },
+        {
+          "action": "querySelector",
+          "params": [".msg-form__footer-action.emoji-hoverable-trigger"],
+          "async": true,
+          "do": [
+            {
+              "property": "offsetWidth",
+              "unit": "px",
+              "ref": "@widthRef",
+              "conditions": [
+                {
+                  "operator": ">",
+                  "value": 32,
+                  "ref": "@sizeRef"
+                }
+              ]
+            },
+            {
+              "property": "offsetHeight",
+              "unit": "px",
+              "ref": "@heightRef"
+            },
+            {
+              "action": "closest",
+              "params": ["div"],
+              "ref": "@elementRef",
+              "do": [
+                {
+                  "context": "document",
+                  "action": "createElement",
+                  "params": ["div"],
+                  "ref": "@buttonRef",
+                  "do": [
+                    {
+                      "action": "setAttribute",
+                      "params": ["class", "calendly-button"]
+                    }
+                  ]
+                },
+                {
+                  "context": "browser",
+                  "action": "runtime.getURL",
+                  "params": ["/iframe_linkedInButton.html"],
+                  "ref": "@srcRef"
+                },
+                {
+                  "context": "@srcRef",
+                  "action": "concat",
+                  "params": ["?large=", "@sizeRef"],
+                  "ref": "@srcRef"
+                },
+                {
+                  "context": "document",
+                  "action": "createElement",
+                  "params": ["iframe"],
+                  "ref": "@frameRef",
+                  "props": {
+                    "frameBorder": "0",
+                    "src": "@srcRef",
+                    "style": {
+                      "display": "block",
+                      "boxSizing": "border-box",
+                      "overflow": "hidden",
+                      "width": "@widthRef",
+                      "height": "@heightRef",
+                      "verticalAlign": "baseline"
+                    }
+                  },
+                  "do": [
+                    {
+                      "action": "classList.add",
+                      "params": ["linkedIn-integration-frame"]
+                    }
+                  ]
+                },
+                {
+                  "action": "insertAdjacentElement",
+                  "params": ["afterend", "@buttonRef"]
+                },
+                {
+                  "context": "@buttonRef",
+                  "action": "appendChild",
+                  "params": ["@frameRef"]
+                },
+                {
+                  "context": "@elementRef",
+                  "action": "closest",
+                  "params": [".msg-convo-wrapper"],
+                  "ref": "@wrapperRef"
+                },
+                {
+                  "context": "@wrapperRef",
+                  "action": "querySelector",
+                  "params": [".msg-form__contenteditable"],
+                  "ref": "@insertElement"
+                },
+                {
+                  "action": "callback"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "recruiter": [
+    {
+      "context": "document",
+      "action": "querySelectorAll",
+      "params": [".compose-action-bar"],
+      "each": [
+        {
+          "action": "classList.contains",
+          "params": ["calendly-handled"],
+          "conditions": [
+            {
+              "operator": "===",
+              "value": true,
+              "then": "break"
+            }
+          ]
+        },
+        {
+          "action": "classList.add",
+          "params": ["calendly-handled"]
+        },
+        {
+          "ref": "@elementRef"
+        },
+        {
+          "context": "document",
+          "action": "createElement",
+          "params": ["div"],
+          "ref": "@buttonRef",
+          "props": {
+            "style": {
+              "display": "inline-block",
+              "boxSizing": "border-box",
+              "height": "24px",
+              "width": "24px",
+              "verticalAlign": "bottom",
+              "marginRight": "8px"
+            }
+          }
+        },
+        {
+          "context": "browser",
+          "action": "runtime.getURL",
+          "params": ["/iframe_linkedInButton.html?large=false"],
+          "ref": "@srcRef"
+        },
+        {
+          "context": "document",
+          "action": "createElement",
+          "params": ["iframe"],
+          "ref": "@frameRef",
+          "props": {
+            "frameBorder": "0",
+            "src": "@srcRef",
+            "style": {
+              "display": "inline-block",
+              "overflow": "hidden",
+              "width": "24px",
+              "height": "24px"
+            }
+          },
+          "do": [
+            {
+              "action": "classList.add",
+              "params": ["linkedIn-integration-frame"]
+            }
+          ]
+        },
+        {
+          "context": "@elementRef",
+          "action": "insertAdjacentElement",
+          "params": ["afterbegin", "@buttonRef"]
+        },
+        {
+          "context": "@buttonRef",
+          "action": "appendChild",
+          "params": ["@frameRef"]
+        },
+        {
+          "context": "@elementRef",
+          "action": "closest",
+          "params": [".base-composer"],
+          "ref": "@wrapperRef",
+          "conditions": [
+            {
+              "operator": "===",
+              "value": null,
+              "then": [
+                {
+                  "context": "@elementRef",
+                  "action": "closest",
+                  "params": [".multi-message-composer"],
+                  "ref": "@wrapperRef"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "context": "@wrapperRef",
+          "action": "querySelector",
+          "params": ["textarea[name='compose-textarea']"],
+          "ref": "@insertElement"
+        },
+        {
+          "action": "callback"
+        }
+      ]
+    }
+  ],
+  "recruiterPopout": [
+    {
+      "context": "document",
+      "action": "querySelectorAll",
+      "params": [".compose-toolbar__left-options"],
+      "each": [
+        {
+          "action": "classList.contains",
+          "params": ["calendly-handled"],
+          "conditions": [
+            {
+              "operator": "===",
+              "value": true,
+              "then": "break"
+            }
+          ]
+        },
+        {
+          "action": "classList.add",
+          "params": ["calendly-handled"]
+        },
+        {
+          "ref": "@elementRef"
+        },
+        {
+          "action": "querySelector",
+          "params": [".file-picker"],
+          "async": true,
+          "do": [
+            {
+              "property": "offsetWidth",
+              "unit": "px",
+              "ref": "@widthRef",
+              "conditions": [
+                {
+                  "operator": ">",
+                  "value": 32,
+                  "ref": "@sizeRef"
+                }
+              ]
+            },
+            {
+              "property": "offsetHeight",
+              "unit": "px",
+              "ref": "@heightRef"
+            }
+          ]
+        },
+        {
+          "context": "document",
+          "action": "createElement",
+          "params": ["div"],
+          "ref": "@buttonRef"
+        },
+        {
+          "context": "browser",
+          "action": "runtime.getURL",
+          "params": ["/iframe_linkedInButton.html"],
+          "ref": "@srcRef"
+        },
+        {
+          "context": "@srcRef",
+          "action": "concat",
+          "params": ["?large=", "@sizeRef"],
+          "ref": "@srcRef"
+        },
+        {
+          "context": "document",
+          "action": "createElement",
+          "params": ["iframe"],
+          "ref": "@frameRef",
+          "props": {
+            "frameBorder": "0",
+            "src": "@srcRef",
+            "style": {
+              "display": "inline-block",
+              "overflow": "hidden",
+              "width": "@heightRef",
+              "height": "@heightRef",
+              "marginTop": "4px"
+            }
+          },
+          "do": [
+            {
+              "action": "classList.add",
+              "params": ["linkedIn-integration-frame"]
+            }
+          ]
+        },
+        {
+          "context": "@elementRef",
+          "action": "insertAdjacentElement",
+          "params": ["beforeend", "@buttonRef"]
+        },
+        {
+          "context": "@buttonRef",
+          "action": "appendChild",
+          "params": ["@frameRef"]
+        },
+        {
+          "context": "@elementRef",
+          "action": "closest",
+          "params": [".base-composer"],
+          "ref": "@wrapperRef"
+        },
+        {
+          "context": "@wrapperRef",
+          "action": "querySelector",
+          "params": ["textarea[name='compose-textarea']"],
+          "ref": "@insertElement"
+        },
+        {
+          "action": "callback"
+        }
+      ]
+    }
+  ],
+  "salesNav": [
+    {
+      "context": "document",
+      "action": "querySelectorAll",
+      "params": ["fieldset > section"],
+      "each": [
+        {
+          "action": "classList.contains",
+          "params": ["calendly-handled"],
+          "conditions": [
+            {
+              "operator": "===",
+              "value": true,
+              "then": "break"
+            }
+          ]
+        },
+        {
+          "action": "classList.add",
+          "params": ["calendly-handled"]
+        },
+        {
+          "ref": "@elementRef"
+        },
+        {
+          "context": "document",
+          "action": "createElement",
+          "params": ["div"],
+          "ref": "@buttonRef",
+          "props": {
+            "style": {
+              "display": "inline-block",
+              "boxSizing": "border-box",
+              "marginTop": "3px",
+              "height": "24px",
+              "width": "24px",
+              "verticalAlign": "bottom"
+            }
+          }
+        },
+        {
+          "context": "browser",
+          "action": "runtime.getURL",
+          "params": ["/iframe_linkedInButton.html?large=false"],
+          "ref": "@srcRef"
+        },
+        {
+          "context": "document",
+          "action": "createElement",
+          "params": ["iframe"],
+          "ref": "@frameRef",
+          "props": {
+            "frameBorder": "0",
+            "src": "@srcRef",
+            "style": {
+              "display": "inline-block",
+              "overflow": "hidden",
+              "width": "24px",
+              "height": "24px"
+            }
+          },
+          "do": [
+            {
+              "action": "classList.add",
+              "params": ["linkedIn-integration-frame"]
+            }
+          ]
+        },
+        {
+          "context": "@buttonRef",
+          "action": "appendChild",
+          "params": ["@frameRef"]
+        },
+        {
+          "context": "@elementRef",
+          "action": "querySelector",
+          "params": [":scope > button"],
+          "ref": "@firstButton"
+        },
+        {
+          "context": "@firstButton",
+          "action": "insertAdjacentElement",
+          "params": ["beforebegin", "@buttonRef"]
+        },
+        {
+          "context": "@elementRef",
+          "action": "closest",
+          "params": ["form"],
+          "ref": "@wrapperRef"
+        },
+        {
+          "context": "@wrapperRef",
+          "action": "querySelector",
+          "params": ["textarea[name='message']"],
+          "ref": "@insertElement"
+        },
+        {
+          "action": "callback"
+        }
+      ]
+    }
+  ]
+}

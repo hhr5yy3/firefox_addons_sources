@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  background-color: #f2f2f2;
+  font-size: 13px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  overflow: hidden;
+  display: grid;
+}
+body[data-mode="window"] {
+  margin: auto;
+  height: 100vh;
+  width: 100vw;
+}
+body[data-paused="true"]::before {
+  content: 'Press "P" to resume. Press "R" to restart';
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 120%;
+}
+body[data-speed="3"]::after,
+body[data-speed="2"]::after {
+  content: attr(data-speed);
+  position: absolute;
+  background-color: #505050;
+  color: #fff;
+  padding: 2px 20px;
+  right: 0;
+  top: 0;
+}
+html[context="webapp"] body {
+  width: unset;
+  height: 100vh;
+  margin: auto;
+}
+canvas {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+input[type="button"] {
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border: none;
+  z-index: 1;
+}
+input[type="button"]:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#expand {
+  background-image: url("expand.svg");
+}
+#reset {
+  background-image: url("reset.svg");
+}
+body[data-mode="window"] #tools {
+  display: none;
+}
+body > div,
+body > canvas {
+  grid-area: 1 / 1;
+}
+#tools {
+  display: flex;
+}

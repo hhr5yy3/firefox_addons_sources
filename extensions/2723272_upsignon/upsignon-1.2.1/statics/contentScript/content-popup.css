@@ -1,0 +1,288 @@
+#upsignon-content-popup {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  position: fixed;
+  max-width: 400px;
+  background-color: white;
+  border: 2px solid #2c5384;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px 2px rgba(44, 83, 132, 0.5);
+  color: #2c5384;
+  margin-top: 2px;
+  overflow-y: auto;
+  word-wrap: anywhere;
+  word-break: break-word;
+}
+/* Draggable content */
+#upsignon-content-popup-dragging-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+}
+#upsignon-content-popup-dragging-header:hover {
+  background-color: lightgrey;
+}
+#upsignon-content-popup-dragging-header button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+/* SHOW / HIDE */
+#upsignon-content-popup:not(.show-autosave):not(.show-autofill),
+#upsignon-content-popup.force-hide {
+  display: none;
+}
+
+/* Tab header */
+#upsignon-content-popup .tab-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  margin-bottom: 10px;
+}
+#upsignon-content-popup:not(.show-autosave) .tab-header {
+  display: none;
+}
+
+#upsignon-content-popup .autofill-tab-header,
+#upsignon-content-popup .autosave-tab-header {
+  padding: 10px;
+  flex-grow: 1;
+}
+#upsignon-content-popup[data-active-tab="autofill"] .autosave-tab-header:hover,
+#upsignon-content-popup[data-active-tab="autosave"] .autofill-tab-header:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+}
+
+#upsignon-content-popup[data-active-tab="autofill"] .autofill-tab-header {
+  border-top: 2px solid #2c5384;
+  border-right: 1px solid #2c5384;
+}
+#upsignon-content-popup[data-active-tab="autofill"] .autosave-tab-header {
+  border-bottom: 2px solid #2c5384;
+  border-left: 1px solid #2c5384;
+  background-color: #eee;
+}
+#upsignon-content-popup[data-active-tab="autosave"] .autofill-tab-header {
+  border-bottom: 2px solid #2c5384;
+  border-right: 1px solid #2c5384;
+  background-color: #eee;
+}
+#upsignon-content-popup[data-active-tab="autosave"] .autosave-tab-header {
+  border-top: 2px solid #2c5384;
+  border-left: 1px solid #2c5384;
+}
+
+#upsignon-content-popup[data-active-tab="autofill"] #upsignon-autosave-content {
+  display: none;
+}
+#upsignon-content-popup[data-active-tab="autosave"] #upsignon-autofill-content {
+  display: none;
+}
+#upsignon-autosave-content .autosave-subtitle {
+  font-weight: bold;
+  margin: 10px 0;
+}
+.upsignon-vault-to-save-to {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Views */
+.upsignon-account-view,
+.upsignon-account-to-update-view {
+  margin-bottom: 10px;
+  font-size: 14px;
+  overflow: hidden;
+}
+.upsignon-account-to-update-view {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.upsignon-account-view:not(:last-of-type) {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #2c5384;
+}
+.upsignon-account-view-name {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #2c5384;
+  color: white;
+  padding: 2px 5px;
+}
+.upsignon-account-view-credential {
+  margin: 3px 0;
+}
+.upsignon-account-view-vault-name {
+  font-weight: bold;
+}
+
+/* DO NOT SAVE SWITCH */
+.upsignon-should-save-container {
+  display: flex;
+  justify-content: center;
+}
+.upsignon-should-save {
+  user-select: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.upsignon-should-save .upsignon-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 0 0 0 10px;
+}
+.upsignon-should-save .upsignon-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.upsignon-should-save .upsignon-slider {
+  position: absolute;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+.upsignon-should-save .upsignon-slider:before {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.upsignon-should-save input:checked + .upsignon-slider {
+  background-color: rgb(0, 171, 169);
+}
+
+.upsignon-should-save input:focus + .upsignon-slider {
+  box-shadow: 0 0 1px rgb(0, 171, 169);
+}
+
+.upsignon-should-save input:checked + .upsignon-slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.upsignon-should-save-by-default-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.upsignon-should-save-by-default-container span {
+  font-size: 10px;
+  margin-left: 5px;
+}
+.upsignon-should-save-by-default-container input[type="checkbox"] {
+  width: initial;
+  font-style: initial;
+  color: fieldtext;
+  line-height: normal;
+  display: inline-block;
+  appearance: auto;
+  -webkit-rtl-ordering: logical;
+  cursor: default;
+  background-color: initial;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+  padding-block: 1px;
+  padding-inline: 2px;
+  box-sizing: border-box;
+  margin: 0 3px;
+  padding: initial;
+  border: initial;
+}
+
+/* Item to update */
+.upsignon-item-to-update {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.upsignon-item-to-update input,
+.upsignon-vault-to-save-to input {
+  height: auto;
+  margin: 0 10px 0 0;
+}
+
+input[type="radio"].upsignon-radio {
+  width: initial;
+  font-style: initial;
+  color: fieldtext;
+  line-height: normal;
+  display: inline-block;
+  appearance: auto;
+  -webkit-rtl-ordering: logical;
+  cursor: default;
+  background-color: initial;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+  padding-block: 1px;
+  padding-inline: 2px;
+  box-sizing: border-box;
+  margin: 0 3px;
+  padding: initial;
+  border: initial;
+}
+
+.matching-not-owned-account-warning {
+  margin-top: 20px;
+  font-style: italic;
+  color: #f6a400;
+}
+
+/* Password generator actions */
+.upsignon-password-generator-action {
+  cursor: pointer;
+  text-decoration-line: underline;
+}
+.upsignon-password-generator-action:hover {
+  font-style: italic;
+}
+
+.upsignon-hidden {
+  display: none;
+}
+
+/* untrustedExplanation */
+.untrustedExplanation {
+  cursor: pointer;
+  max-width: 200px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+.untrustedExplanation summary {
+  font-weight: bold;
+}

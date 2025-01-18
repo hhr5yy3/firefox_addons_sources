@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Settings</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="options.css" />
+</head>
+
+<body>
+    <div id="main">
+        <section class="clear-options">
+            <span class="title">Time range to forget:</span>
+            <select id="since">
+              <option value="hour" selected>Last hour</option>
+              <option value="day">Last day</option>
+              <option value="week">Last week</option>
+              <option value="month">Last month</option>
+              <option value="forever">Everything</option>
+            </select>
+        </section>
+
+        <section class="clear-options data-types">
+            <div class="title">Type of data to forget:</div>
+            <label>Downloads<input type="checkbox" checked="true" data-type="downloads"/></label>
+            <label>Cache<input type="checkbox" checked="true" data-type="cache"/></label>
+            <label>Passwords<input type="checkbox" data-type="passwords"/></label>
+            <label>History<input type="checkbox" checked="true" data-type="history"/></label>
+            <label>Indexed DB<input type="checkbox" checked="true" data-type="indexedDB"/></label>
+            <label>Plugin data<input type="checkbox" data-type="pluginData"/></label>
+            <label>Form data<input type="checkbox" data-type="formData"/></label>
+            <label>Cookies<input type="checkbox" data-type="cookies"/></label>
+            <label>Local Storage<input type="checkbox" checked="true" data-type="localStorage"/></label>
+            <label>Service workers<input type="checkbox" data-type="serviceWorkers"/></label>
+        </section>
+        <div id="footer">
+            <input type="button" value="Save preferences" id="save-button" />
+            <p id="txtmessage"></p>
+            <hr/>
+            <span id="releasenotes"></span>
+        </div>
+    </div>
+    <script src="options.js"></script>
+</body>
+
+</html>

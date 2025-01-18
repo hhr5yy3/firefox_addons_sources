@@ -1,0 +1,428 @@
+/* Copyright (c) 2020 Andy McDonald. All rights reserved. */
+
+html.autocomplete-open {
+  min-height: 15em;
+  min-width: 15em;
+}
+
+body {
+  background-color: #c4cee7;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif !important;
+  font-size: smaller;
+  min-width: 10em;
+}
+
+th {
+  font-weight: 600;
+}
+button {
+  font-family: inherit;
+  border-width: 1px;
+  border-radius: 3px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-top: -1px;
+  vertical-align: middle;
+}
+
+img {
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
+img.item_control,
+img.time_format_help {
+  cursor: pointer;
+}
+button img,
+.foxclocks_help img {
+  margin-right: 0.2em;
+}
+
+.foxclocks_help span {
+  text-transform: capitalize;
+}
+
+input[type="text"],
+input.ui-autocomplete-input,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+a.quiet {
+  color: inherit;
+  text-decoration: none;
+}
+a.quiet:hover,
+a.quiet:focus {
+  text-decoration: underline;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+#zonepicker {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+#search {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+#watchlist {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+}
+
+#tools {
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+}
+
+div.widget {
+  padding: 0.3em;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  margin: 0.2em;
+  background-color: #eeeeee;
+}
+
+div.widget_head {
+  font-weight: 600;
+  margin-left: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+div.widget_head span.title {
+  font-size: medium;
+}
+div.widget_body {
+  background-color: #fcfcfc !important;
+}
+
+span.right {
+  display: inline-flex;
+  align-items: center;
+  float: right;
+  margin-right: 0.4em;
+}
+
+#zonepicker div.widget_body {
+  height: 23.5em;
+  overflow-x: auto;
+}
+
+#zonepicker div.widget_body a {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+#zonepicker div.widget_body a:hover {
+  background-color: rgba(195, 205, 245, 0.73) !important;
+}
+#zonepicker div.widget_body a.selected {
+  background-color: rgba(195, 205, 245, 1) !important;
+}
+#zonepicker button.add {
+  float: right;
+}
+#zonepicker_drag ul {
+  margin: 0;
+  padding: 2px;
+}
+
+#search .powered_by {
+  font-weight: normal;
+  font-size: smaller;
+  float: right;
+}
+#search input {
+  width: calc(100% - 4px);
+  box-sizing: border-box;
+  margin-top: 2px;
+  margin-left: 2px;
+  margin-right: 4px;
+}
+#search input.ui-autocomplete-loading {
+  background: white url("/3rdparty/jstree/themes/default/throbber.gif") right
+    center no-repeat;
+}
+#search .error {
+  visibility: hidden;
+}
+#search.error .error {
+  visibility: visible;
+}
+#search.error input {
+  background: white url("/images/bullet_error.png") right center no-repeat;
+}
+
+.ui-autocomplete.ui-widget {
+  font-family: inherit;
+  font-size: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-width: 15em;
+  max-height: 15em;
+} /* jQuery UI explicitly sets font-family and font-size */
+
+#watchlist div.widget_body.drop_hover {
+  cursor: pointer;
+}
+
+#watchlist_table {
+  width: 100%;
+  border-spacing: 0;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums !important;
+}
+
+.ui-sortable-helper {
+  display: table;
+}
+
+#watchlist_table tbody tr.sortable_placeholder {
+  background-color: MistyRose !important;
+  opacity: 0.8;
+}
+#watchlist_table tbody tr:not(.sortable_even):nth-of-type(odd),
+#watchlist_table tbody tr.sortable_odd {
+  background-color: rgba(195, 205, 245, 0.3);
+}
+
+#watchlist_table tr.ui-sortable-helper,
+#zonepicker_drag {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+html#options #watchlist div.widget_body {
+  background: url("/images/icon468_trans.png") no-repeat 1em 1em;
+}
+
+html#options #watchlist div.widget_body {
+  overflow-x: auto;
+}
+
+#watchlist_table tr input {
+  border: 0;
+  background-color: transparent;
+}
+#watchlist_table tr input[type="text"] {
+  width: 80%;
+  margin-right: 2px;
+}
+#watchlist_table tr img.item_control {
+  visibility: hidden;
+}
+#watchlist_table img.delete {
+  height: 11px;
+  padding-left: 3px;
+  padding-right: 2px;
+  display: none;
+} /* to take up same space as flag images */
+#watchlist_table tr td:first-child {
+  padding-left: 3px;
+}
+#watchlist_table tr td:last-child {
+  padding-right: 3px;
+}
+#watchlist_table tr:hover input,
+#watchlist_table tr input:focus {
+  background-color: white;
+}
+#watchlist_table tr:hover img.item_control {
+  visibility: visible;
+}
+#watchlist_table tbody tr:hover,
+#watchlist_table tr.ui-sortable-helper,
+#zonepicker_drag {
+  background-color: rgba(195, 205, 245, 0.73) !important;
+}
+#watchlist_table tbody tr:hover td.flag img.flag {
+  display: none;
+}
+#watchlist_table tbody tr:hover td.flag img.delete {
+  display: inline;
+}
+#watchlist_table th {
+  text-align: left;
+}
+#watchlist_table th.flag,
+#watchlist_table td.flag {
+  text-align: center;
+  width: 17px;
+}
+
+#watchlist_table_wrapper {
+  height: 30em;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#watchlist_table tr th {
+  position: sticky;
+  top: 0;
+  background-color: #fcfcfc !important;
+}
+
+html#popup body {
+  margin: 2px;
+}
+
+html#popup #watchlist,
+#popup_extras {
+  margin: 2px 2px 0 2px;
+}
+html#popup #watchlist {
+  padding: 0;
+}
+html#popup #watchlist div.widget_body {
+  max-height: 550px;
+  overflow-x: auto;
+} /* popup is 600px by 800px on at least Firefox */
+html#popup #watchlist_table {
+  margin-top: 3px;
+  margin-bottom: 3px;
+} /* gives drag-and-drop space to drop at top and bottom reliably */
+html#popup #watchlist_table td.name span {
+  margin-left: 2px;
+  margin-right: 1em;
+}
+
+/* a bit inconsistent - we apply statusbar options to the popup */
+html#popup #watchlist_table tr:not(.show_flag) img.flag {
+  display: none;
+}
+html#popup #watchlist_table tr.bold td.name,
+html#popup #watchlist_table tr.bold td.time {
+  font-weight: bold;
+}
+html#popup #watchlist_table tr.italic td.name,
+html#popup #watchlist_table tr.italic td.time {
+  font-style: italic;
+}
+html#popup #watchlist_table tr.underline td.name,
+html#popup #watchlist_table tr.underline td.time {
+  text-decoration: underline;
+}
+html#popup button#open_options {
+  margin-bottom: 2px;
+  float: right;
+}
+
+#tools .widget_body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#statusbar {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+#time_format {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+#tz_db {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+div.tool {
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+div.tool div {
+  margin: 0.5em;
+}
+
+div.tool span.label {
+  font-size: medium;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+}
+
+#time_format option.custom {
+  background-color: #f8f8f8;
+}
+#tz_db [data-i18n-content="misc_version"] {
+  text-transform: capitalize;
+}
+
+#time_format_help {
+  display: none;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  padding: 0.5em;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  background-color: LightYellow;
+
+  position: fixed;
+  top: 2em;
+  right: 3em;
+}
+
+#time_format_help table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#time_format_help table td {
+  white-space: nowrap;
+  border-top: 1px solid #bbbbbb;
+  border-bottom: 1px solid #bbbbbb;
+  padding: 3px;
+}
+
+#watchlist_menu {
+  display: none;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  position: absolute;
+}
+
+#watchlist_menu img {
+  margin-right: 3px;
+}
+#watchlist_menu a {
+  color: inherit;
+  text-decoration: none;
+}
+#watchlist_menu hr {
+  background-color: #bbbbbb;
+  height: 1px;
+  border: 0;
+}
+
+#watchlist_menu.show_flag.has_flag .flag,
+#watchlist_menu.is_bold .bold,
+#watchlist_menu.is_italic .italic,
+#watchlist_menu.is_underline .underline,
+#watchlist_menu.has_colour .colour {
+  font-weight: bold;
+}
+
+#watchlist_menu:not(.has_flag) .flag {
+  color: grey;
+}
+
+#watchlist_menu .colour input {
+  width: 3em;
+  margin-left: 3px;
+  border: 1px solid #bbbbbb;
+  padding: 0;
+}

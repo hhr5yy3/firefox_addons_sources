@@ -1,0 +1,1 @@
+import{$ as n}from"./cplx-BbAh7E-i.js";function r(t){return this.length>1?this.each(function(){n(this).internalComponentAttr(t)}):t===void 0?this.attr("data-cplx-component"):t===null?this.removeAttr("data-cplx-component"):this.attr("data-cplx-component",t)}n.fn.internalComponentAttr=r;

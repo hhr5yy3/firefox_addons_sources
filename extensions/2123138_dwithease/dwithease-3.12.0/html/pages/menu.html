@@ -1,0 +1,109 @@
+<div id="menu">
+    <div class="content">
+        <h1 i18n-content="page_context_menu_title"></h1>
+
+        <div i18n-content="page_context_menu_description" class="description"></div>
+
+        <div class="contextMenuSettings">
+            <span class="menuList highlightable">
+                <!-- Use directive ng-sortable -->
+                <div class="active list-title">Active (Visible) Menu</div>
+
+                <ul class="list-group" ng-sortable="activeMenuConfig">
+                    <li class="list-group-item" ng-repeat="item in activeMenuList.items track by item.itemId">
+                        <dl>
+                            <dd>
+                                <span>{{item.menuName}}</span>
+                            </dd>
+                        </dl>
+
+                        <md-button ng-if="!item.default" class="md-icon-button action-btn edit" aria-label="Edit" ng-click="editMenuItem(item)">
+                            <md-tooltip i18n-content="sandbox_buttons_edit" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons" class="md-icon-size-16">edit</md-icon>
+                        </md-button>
+
+                        <md-button ng-if="!item.default" class="md-icon-button action-btn delete" aria-label="Delete" ng-click="removeMenuItemModal(item)">
+                            <md-tooltip i18n-content="sandbox_buttons_delete" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons" class="md-icon-size-16">delete_forever</md-icon>
+                        </md-button>
+                    </li>
+                </ul>
+            </span>
+            <span class="unasignedList highlightable">
+                <div class="inactive list-title">Inactive Menu</div>
+
+                <ul class="list-group" ng-sortable="inactiveMenuConfig">
+                    <li class="list-group-item" ng-repeat="item in inactiveMenuList.items track by item.itemId">
+                       <dl>
+                            <dd>
+                                <span>{{item.menuName}}</span>
+                            </dd>
+                        </dl>
+
+                        <md-button ng-if="!item.default" class="md-icon-button action-btn edit" aria-label="Edit" md-tooltip="Edit" ng-click="editMenuItem(item)">
+                            <md-tooltip i18n-content="sandbox_buttons_edit" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons">edit</md-icon>
+                        </md-button>
+
+                        <md-button ng-if="!item.default" class="md-icon-button action-btn delete" aria-label="Delete" md-tooltip="Test" ng-click="removeMenuItemModal(item)">
+                            <md-tooltip i18n-content="sandbox_buttons_delete" md-direction="top"></md-tooltip>
+                            <md-icon md-font-set="material-icons">delete_forever</md-icon>
+                        </md-button>
+                    </li>
+                </ul>
+                <md-button class="md-raised md-primary" aria-label="Add New Menu" ng-click="newContextMenuModal()">Add new</md-button>
+            </span>
+
+            <div id="deleteContextMenu" ng-class="(deleteContextMenuModal === true)?'deleteModal customModal':'hidden'">
+                <div>
+                    <div class="delete-confirm-text" i18n-content="menu_delete_item_confirmation_dialog"> 
+                    <!--directive: i18n-substitute $1:<b>{{ selectedMenu.menuName }}</b>-->
+                    </div>
+                    
+                    <md-button class="md-icon-button action-btn close" aria-label="Close" ng-click="closeModal()">
+                        <md-icon md-font-set="material-icons">close</md-icon>
+                    </md-button>
+
+                    <md-button i18n-content="sandbox_buttons_delete_confirm" class="md-button md-raised md-primary delete-confirm-btn" aria-label="Delete" ng-click="removeMenuItem(selectedMenu)">
+                    </md-button>
+                </div>
+            </div>
+            <div id="newContextMenu" ng-class="(contextMenuModal === true)?'newContextMenuModal customModal':'hidden'">
+                <div>
+                    <h2>Menu Item Info</h2>
+
+                    <form name="contextMenuForm" novalidate validate-submit="saveContextMenus()">
+
+                        <md-input-container class="md-block">
+                          <label>Name (e.g. Impex)</label>
+                          <input name="name" type="text" required ng-model="cmInfo.menuName" />
+
+                          <div ng-messages="contextMenuForm.name.$error" ng-show="contextMenuForm.name.$dirty">
+                              <div ng-message="required" i18n-content="forms_messages_required"></div>
+                          </div>
+                        </md-input-container>
+                     
+                         <md-input-container class="md-block">
+                          <label>Url (e.g. /on/demandware.servlet/webdav/Sites/Impex/)</label>
+                          <input name="url" type="text" required ng-model="cmInfo.menuUrl" />
+
+                          <div ng-messages="contextMenuForm.url.$error" ng-show="contextMenuForm.url.$dirty">
+                              <div ng-message="required" i18n-content="forms_messages_required"></div>
+                          </div>
+                        </md-input-container>
+
+                        <div class="form-group">
+                            <md-button i18n-content="sandbox_buttons_save" class="md-button md-raised md-primary save" aria-label="Save Button" type="submit" value="Save" title="Save">
+                            </md-button>
+
+                            <md-button class="md-icon-button action-btn close" aria-label="Close" ng-click="closeModal()">
+                                <md-icon md-font-set="material-icons">close</md-icon>
+                            </md-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>

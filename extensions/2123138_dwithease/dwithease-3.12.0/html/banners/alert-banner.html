@@ -1,0 +1,34 @@
+
+<div md-theme="{{theme}}" ng-controller="AlertBannerController as vm" class="md-{{theme}}-theme">
+    <alert-banner></alert-banner>
+
+    <script type="text/ng-template" id="alert-banner.template.html">
+        <div class="alert-message" id="banner" data-link="{{message.data.link}}" data-index="{{message.index}}" data-title="{{message.data.title}}" data-icon="{{message.data.icon}}" data-body="{{message.data.body}}">
+            <span ng-if="message.data">
+                <div class="banner-content">
+                    <div class="left-content">
+                        <div class="banner-image">
+                            <img ng-if="message.data.icon" ng-src="{{ message.data.icon }}">
+                            <svg ng-if="!message.data.icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="40px" height="40px"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                        </div>
+                        <div  class="banner-text">
+                            <h2>{{message.data.title}}</h2>
+                            <h3 ng-bind-html="message.data.body"></h3>
+                        </div>
+                    </div>
+                    <div class="banner-button-holder right-content">
+                        <div class="banner-button">
+                            <md-button aria-label="Dismiss" ng-if="message.data.dismissButton" id="banner-dismiss-button" data-index="{{ message.index }}" ng-click="close()">{{ message.data.dismissButton }}</md-button>
+                            <md-button aria-label="Dismiss" ng-if="!message.data.dismissButton" i18n-content="banner_button_dismiss" id="banner-dismiss-button" data-index="{{ message.index }}" ng-click="close()"></md-button>
+                        </div>
+                        <div class="banner-button">
+                            <md-button aria-label="Action" ng-if="message.data.buttonText || message.data.actionButton" data-link="{{ message.data.link }}" data-index="{{ message.index }}" id="banner-action-button">{{ message.data.buttonText || message.data.actionButton }}</md-button>
+                            <md-button aria-label="Action" ng-if="!(message.data.buttonText || message.data.actionButton)" i18n-content="banner_button_action" data-link="{{ message.data.link }}" data-index="{{ message.index }}" id="banner-action-button"></md-button>
+                        </div>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </script>
+</div>
+

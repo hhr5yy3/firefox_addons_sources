@@ -1,0 +1,1 @@
+const o={action:"Exportovat",copied:"Zkopírováno",options:{default:"Výchozí",withoutCitations:"Bez citací",download:"Stáhnout jako textový soubor"}},t={exportButton:o};export{t as default,o as exportButton};

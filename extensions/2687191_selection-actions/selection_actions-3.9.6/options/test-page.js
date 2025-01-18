@@ -1,0 +1,1 @@
+document.getElementById("text-input").oninput=function(t){document.getElementById("text-input-result").innerHTML=t.target.value};

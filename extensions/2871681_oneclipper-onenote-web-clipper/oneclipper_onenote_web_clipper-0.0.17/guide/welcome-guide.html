@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oneClipper welcome guide</title>
+</head>
+
+<body>
+    <style>
+        :root {
+            color-scheme: light dark;
+            interpolate-size: allow-keywords;
+        }
+
+        body {
+            font-size: 100%;
+            background-color: light-dark(whitesmoke, black);
+        }
+
+        article {
+            box-sizing: border-box;
+            width: 70%;
+            margin-left: 15%;
+            padding: 0.4em;
+            line-height: 1.4;
+            border-radius: 0.4em;
+            background-color: light-dark(white, hsl(0, 0%, 15%));
+            box-shadow: rgba(219, 219, 219, 0.19) 0px 10px 20px, rgba(163, 163, 163, 0.23) 0px 6px 6px;
+        }
+
+        li {
+            margin-bottom: 0.4em;
+
+            &>div {
+                font-weight: bold;
+            }
+        }
+
+        kbd {
+            font-weight: 500;
+            background-color: light-dark(hsl(0, 0%, 92%), rgb(60, 60, 60));
+            padding-inline: 1px;
+        }
+
+        video {
+            display: block;
+            max-width: 80%;
+            margin-inline: auto;
+            margin-top: 0.2em;
+            border-radius: 0.4em;
+        }
+
+        figcaption {
+            text-align: center;
+            font-size: 90%;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-inline: auto;
+
+            & th,
+            & td {
+                border: 1px solid rgb(160 160 160);
+            }
+        }
+    </style>
+    <h1 style="text-align: center;">Thanks for installing <strong>oneClipper</strong></h1>
+    <article>
+        <h1>How to use oneClipper</h1>
+
+        <p> Pin oneClipper after install extension <br>
+            Click on oneClipper or (<kbd>Alt + O</kbd> ) to open oneClipper popup Window <br>
+        </p>
+        <div> <span>Extension pinned status:</span> <var style="color: red;" id="pin_ext">Not pinned</var> </div>
+        <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_pin_extension.webm"
+            controls></video>
+
+        <ol>
+            <b>Action buttons</b>
+            <li>Bookmark: Bookmark current tab in OneNote</li>
+            <li>Screenshot: Capture screenshot and insert into OneNote (full screenshot coming soon)</li>
+            <li>Clip Article: oneClipper auto clipped current page
+            </li>
+            <li>Multi Select text:click on paragraph which you want to clip then click on "<b>Clip to OneNote</b>"
+                button on
+                right corner</li>
+        </ol>
+
+        <table id="global-keyboard-shortcuts">
+            <caption>Global Keyboard shortcuts</caption>
+            <thead>
+                <tr>
+                    <th> Format Action</th>
+                    <th>Keyboard Shortcut</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Open popup window</td>
+                    <td id="_execute_action"><kbd>Alt + O</kbd></td>
+                    <td><button>Change</button></td>
+                </tr>
+
+                <tr>
+                    <td>Clip Article</td>
+                    <td id="clip_article"> <kbd>Alt + A</kbd> </td>
+                    <td><button>Change</button></td>
+                </tr>
+
+                <tr>
+                    <td>Multi select text</td>
+                    <td id="multi_select_text"> <kbd>Alt + M</kbd> </td>
+                    <td><button>Change</button></td>
+                </tr>
+
+                <tr>
+                    <td>Capture Screenshot</td>
+                    <td id="screenshot"> <kbd>Alt + S</kbd> </td>
+                    <td><button>Change</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_update-trigger-key-shortcuts.webm"
+            controls></video>
+        <p><a href="https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox" target="_blank"
+                rel="noopener noreferrer">Change keyboard shortcuts</a> guide</p>
+
+        <h3>Take screenshot</h3>
+
+        <p> Click on screenshot button for capture and save screenshot<br>
+            Use Keyboard shortcut (<kbd>Alt + S</kbd>)
+            <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_capture_screenshot.webm"
+                controls></video>
+        </p>
+
+        <h2>Clip Article</h2>
+        <p>
+            If you want summarize current webpage or create mindmap then change clip content type.
+            Click on <strong>oneClipper</strong> icon to open extension's popup window.<br>
+            Keyboard shortcut: <code>Alt+A</code>(when popup window open)<br>
+            <code>Clip Article</code> button to clip article.<br>
+            Clipped article preview dialog popup<br>
+            Select notebook's section where you want to save this article <br>
+            Click on <strong>Clip article</strong> button to save article.
+            oneClipper save clipped article in selected database with url,tags
+        <figure>
+            <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_clip_article.webm"
+                controls></video>
+            <figcaption>Auto clip article</figcaption>
+        </figure>
+
+        <figure>
+            <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_article_ai_summary.webm"
+                controls></video>
+            <figcaption>Article AI summary</figcaption>
+        </figure>
+
+        <figure>
+            <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_youtube_ai_summary.webm"
+                controls></video>
+            <figcaption>Youtube AI summary</figcaption>
+        </figure>
+        </p>
+
+        <h2>Append selected text</h2>
+        <h4> You can append text in 3 ways</h4>
+        <ol>
+            <li>
+                <div>Mutli select text</div>
+                Click on <code>Mutli Select text</code> from popup window<br>
+                Keyboard shortcut: <code>Alt+M</code>(when popup window open)<br>
+                Click on paragraph which you want to clip.<br>
+                When you done, click on <b>Clip selected</b> button on right bottom corner
+                <video src="https://crxextstatic.blob.core.windows.net/note-rail/OneNote-multi_select_text.webm"
+                    controls>
+                </video>
+            </li>
+            <li>
+                <div>Right click menu</div>
+                Select text which you want to clip then <br>
+                hover <b>Clip to OneNote</b> option from right click menu <br>
+                then select page where you want to save text <br>
+                Selected text will highlighted and insert into selected pages <br>
+                <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_multi_select_text.webm"
+                    controls>
+                </video>
+            </li>
+            <li>
+                <div>Side panel <code>Ctrl+C</code> copy action</div>
+                Click on <code>open side panel</code> to open <strong>oneClipper</strong> sidePanel<br>
+                Open page where you want to save text <br>
+                Select text from any webpage then press <code>Ctrl+C</code><br>
+                copied text will auto-inserted into selected page
+                <div><kbd>Ctrl+Z</kbd> for undo</div>
+                <div><kbd>Ctrl+Y</kbd> for redo</div>
+                <figure>
+                    <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_auto-copy-paste.webm"
+                        controls></video>
+                    <figcaption>Auto paste when ctrl+c pressed</figcaption>
+                </figure>
+            </li>
+            <li>
+                <div>Drag-n-drop</div>
+                Click on <code>Select text</code> to open <strong>oneClipper</strong> sidePanel<br>
+                Click on <code>Open pages</code> to open existing page.<br>
+                Drag-n-drop selected text or images.<br>
+                Click on <strong>Insert</strong> button to append text in local page file.
+                <div><kbd>Ctrl+Z</kbd> for undo</div>
+                <div><kbd>Ctrl+Y</kbd> for redo</div>
+                <div><kbd>Shift+Space</kbd> for extend selection</div>
+                <div><kbd>Alt+H</kbd> for highlight text</div>
+
+                <figure>
+                    <video
+                        src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_multi-note-side-panel.webm"
+                        controls></video>
+                    <figcaption>Drag-n-Drop or copy-paste</figcaption>
+                </figure>
+            </li>
+        </ol>
+
+        <h3>Highlight text</h3>
+
+        <p> When you clip selected text, selected text will highlighted automatically<br>
+            Click on Save Higlight button on right bottom corner to save highlight<br>
+            For disable highlight, Go to options page
+            <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_text_highlighter.webm"
+                controls></video>
+        </p>
+
+        <h2>Insert image</h2>
+        <ol>
+            <li>
+                <div>Right click menu</div>
+                Right click over image which you want to save <br>
+                Hover <b>Clip to OneNote</b> option from right click menu <br>
+                then select page where you want to save image <br>
+                Selected image will saved in current vault and add image path in selected page file <br>
+            </li>
+            <li>
+                <div>Drag-n-drop</div>
+                Click on <code>Select text</code> to open <strong>oneClipper</strong> sidePanel<br>
+                Click on <code>Open pages</code> to open existing page.<br>
+                Drag-n-drop images.<br>
+                Drop images will uploaded to OneNote
+            </li>
+        </ol>
+
+        <h2>Embed youtube video</h2>
+        <p>
+            Open extension's popup window on youtube tab then click on <code>Embed video</code> button to embed video in
+            selected note's page.
+            <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_embed_youtube_video.webm"
+                controls></video>
+        </p>
+
+        <h2>Insert inline PDF file</h2>
+        <p>
+            Open extension's popup window on .pdf tab then click on <code>Save PDF</code> button to insert inline PDF in
+            selected note's page.
+            <video src="https://crxextstatic.blob.core.windows.net/note-rail/oneClipper_insert_pdf_file.webm"
+                controls></video>
+        </p>
+
+        <h3>Clip text,urls and images by right click menu</h3>
+
+        <p>Right click on selected content then hover over "clip to OneNote" option<br>
+            Select page from sub-menu list and selected content will insert into OneNote
+        </p>
+
+        <h3>Sync pages list</h3>
+        <p>
+            When you create or delete note's page, oneClipper unable to sync pages list. oneNote doesn't provide any
+            API.<br>
+            oneClipper provide two methods to sync pages list. <br>
+            1. Auto: When you restart chrome, oneClipper auto sync pages list.<br>
+            2. Manual: Right click on extension's icon and select <b>sync pages list</b> option on popup menu.
+        </p>
+    </article>
+    <script type="module" src="./guide.js"></script>
+</body>
+
+</html>

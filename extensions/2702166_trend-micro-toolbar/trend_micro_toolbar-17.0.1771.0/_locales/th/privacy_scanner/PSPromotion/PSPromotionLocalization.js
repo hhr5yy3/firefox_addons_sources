@@ -1,0 +1,36 @@
+var g_oPrivacyScannerString = {
+    ScanButtonText: "ตรวจสอบความเป็นส่วนตัวของฉัน",
+    WelcomeString: {
+        Head : {
+            FACEBOOK:    "กังวลว่าใครจะเห็นสิ่งที่คุณแบ่งปันบน Facebook หรือไม่",
+            TWITTER:     "กังวลว่าใครจะเห็นสิ่งที่คุณแบ่งปันบน X หรือไม่",
+            GOOGLEPLUS:  "กังวลว่าใครจะเห็นสิ่งที่คุณแบ่งปันบน Google+ หรือไม่",
+            LINKEDIN:    "กังวลว่าใครจะเห็นสิ่งที่คุณแบ่งปันบน LinkedIn หรือไม่"
+        },
+        Content:         "เรียกใช้ตรวจสอบความเป็นส่วนตัวของ Trend Micro เพื่อให้แน่ใจว่าคุณแบ่งปันสิ่งที่คุณต้องการกับคนที่คุณต้องการเท่านั้น",
+        LearnMore:       "ศึกษาเพิ่มเติม",
+        AskLater:        "ไม่ต้องแสดงสิ่งนี้อีก"
+    }
+};
+
+/*
+    We will use another promotion dialog when enable auto-scan.
+    Currently Facebook/X/LinkedIn will enable this feature.
+*/
+var g_oPrivacyScannerString_autoScan = {
+    ScanButtonText: "ดูผลลัพธ์การสแกน",
+    WelcomeString: {
+        Head : {
+            SeveralConcern: "%d ข้อกังวลด้านความเป็นส่วนตัวที่พบ",
+            OneConcern: "%d ข้อกังวลด้านความเป็นส่วนตัวที่พบ"
+        },
+        Content: {
+            FACEBOOK : "คลิกที่ปุ่มด้านล่างเพื่อเริ่มต้นการปรับปรุงการตั้งค่าความเป็นส่วนตัวใน Facebook",
+            TWITTER : "คลิกที่ปุ่มด้านล่างเพื่อเริ่มต้นการปรับปรุงการตั้งค่าความเป็นส่วนตัวใน X",
+            GOOGLEPLUS : "คลิกที่ปุ่มด้านล่างเพื่อเริ่มต้นการปรับปรุงการตั้งค่าความเป็นส่วนตัวใน Google+",
+            LINKEDIN : "คลิกที่ปุ่มด้านล่างเพื่อเริ่มต้นการปรับปรุงการตั้งค่าความเป็นส่วนตัวใน LinkedIn"
+        },
+        LearnMore: "ศึกษาเพิ่มเติม",
+        AskLater: "ไม่ต้องแสดงสิ่งนี้อีก"
+    }
+};

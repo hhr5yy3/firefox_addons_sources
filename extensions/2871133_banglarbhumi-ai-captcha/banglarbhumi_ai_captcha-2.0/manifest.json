@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "name": "BanglarBhumi AI Captcha",
+  "version": "2.0",
+  "description": "This is Banglar Bhumi Auto Captcha Extensions, Make By - ALL ABOUT BANGLARBHUMI",
+  "icons": {
+    "16": "16.png",
+    "48": "48.png",
+    "128": "128.png"
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Banglar Bhumi Captcha Automation",
+    "default_icon": "123.png"
+  },
+  "background": {
+    "scripts": [
+      "eventPage.js",
+      "popup.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://banglarbhumi.gov.in/*",
+        "https://www.banglarbhumi.gov.in/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "https://banglarbhumi.gov.in/*",
+    "https://www.banglarbhumi.gov.in/*"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{431b6743-8983-46f3-829c-11757c4d6d0c}"
+    }
+  }
+}

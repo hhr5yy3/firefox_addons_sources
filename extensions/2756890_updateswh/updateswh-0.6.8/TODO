@@ -1,0 +1,113 @@
+# -*- mode: org; -*-
+
+* Add button in options menu that allows to add the current url to the list of GitLab/Gitea instances...
+** Get the url of the current window 
+
+   In a browser, you can use the window.location object to get information about the current URL visited in the page. The window.location object has several properties that can be used to get the different parts of the URL, such as the href, protocol, hostname, pathname, search, and hash.
+
+   Here's an example of how you can get the current URL in the page using the href property of the window.location object:
+
+
+var currentUrl = window.location.href;
+var domain = window.location.domain;
+
+You can also use this to check if the current URL matches a specific pattern using RegExp.
+
+
+var currentUrl = window.location.href;
+var gitlabUrl = new RegExp("^https?:\/\/[^\/]+\/[^\/]+");
+if(gitlabUrl.test(currentUrl)) {
+  console.log("This is a GitLab URL");
+} else {
+  console.log("This is not a GitLab URL");
+}
+
+The window.location object will work only on the current tab and will not be able to access the URLs visited in other tabs of the browser.
+
+In order to access the window.location object from the javascript program associated to the options panel of an extension, you need to have the "activeTab" permissions in your extension manifest file.
+
+** Test we are looking at a GitLab/Gitea instance:
+
+The following works if we are not logged in, but fails otherwise
+   
+function test(url,cookie) {
+fetch(url)
+  .then(response => {
+    let setCookieHeader = response.headers.get('set-cookie');
+    if (setCookieHeader && setCookieHeader.includes(cookie)) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+  .catch(error => {
+    console.log('Error:', error);
+  });
+}
+
+   
+const checkGitLabSession = async (url) => {
+    try {
+        const response = await fetch(url);
+        let setCookieHeader = response.headers.get('set-cookie');
+        if (setCookieHeader && setCookieHeader.includes('_gitlab_session')) {
+          return true;
+        } 
+    } catch (error) {
+        console.log('Error:', error);
+    }
+    return false;
+}
+   
+function test(url) {
+fetch(url)
+  .then(response => {
+    let setCookieHeader = response.headers.get('set-cookie');
+    if (setCookieHeader && setCookieHeader.includes('_gitlab_session')) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+  .catch(error => {
+    console.log('Error:', error);
+  });
+}
+
+And this is an heuristic for Gitea
+
+fetch(url)
+  .then(response => {
+    if (response.headers.get('set-cookie').includes('i_like_gitea')) {
+      console.log('Gitea session present');
+    } else {
+      console.log('Gitea session not present');
+    }
+  })
+  .catch(error => {
+    console.log('Error:', error);
+  });
+
+  // get just the domain
+  
+** Add GitLab/Gitea url to options
+   
+ function addgitlab(url){
+   browser.storage.local.get({
+        gitlabs: null
+    }, function (items) {
+        browser.storage.local.set({
+        gitlabs: items.gitlabs + url // FIXME
+	})
+	})
+ }
+
+ function addgitea(url){
+   browser.storage.local.get({
+        giteas: null
+    }, function (items) {
+        browser.storage.local.set({
+        giteas: items.giteas + url // FIXME
+	})
+	})
+  }

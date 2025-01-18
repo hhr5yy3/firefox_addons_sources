@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Auction Dec - Auction Monitoring extension</title>
+      <!-- Latest compiled and minified JavaScript -->
+      <!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">-->
+      <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="popup.css" />
+   </head>
+
+   <body>
+      <div class="popup-container text-center" id="popup-container">
+         <!-- class="hidden" style="display: none;" -->
+         <div id="site-selection" class="hidden" style="display: none">
+            <img id="ownerLogo" src="images/logos/logo.svg" alt="AuctionDec Logo" style="width: 160px; height: auto" />
+            <div class="header mb-3">
+               <h5>Account ID: <span id="account-id"></span></h5>
+               <h5>Account Name: <span id="account-name"></span></h5>
+            </div>
+            <p class="message"></p>
+            <p class="notification"></p>
+            <p class="upgrade-link hidden"><a href="https://addons.mozilla.org/en-US/firefox/addon/auction-dec/">Upgrade from here</a></p>
+            <div class="border-bottom pb-3 iaai-section">
+               <div id="status-iaa-us" class="status-label pb-2 pt-2"></div>
+               <img src="images/ca_iaai.png" alt="IAA US" class="me-2 mb-2 img-fluid" style="max-width: 100px" />
+               <div class="site-option d-flex align-items-center pt-0">
+                  <button id="login-iaa-us" class="mb-0 btn btn-info">Login to IAA</button>
+                  <button id="logout-iaa-us" class="btn btn-warning" style="display: none">Relogin</button>
+               </div>
+            </div>
+            <div class="border-bottom pb-3">
+               <div id="status-iaa-canada" class="status-label pb-2 pt-2"></div>
+               <div class="site-option d-flex align-items-center pt-0 hidden">
+                  <img src="images/ca_iaai.png" alt="IAA Canada" class="me-2" />
+                  <button id="login-iaa-canada" class="mb-0 btn btn-info">Login to IAA Canada</button>
+                  <button id="logout-iaa-canada" class="btn btn-danger" style="display: none">Logout</button>
+               </div>
+            </div>
+            <div class="border-bottom pb-3">
+               <div id="status-us-copart" class="status-label pb-2 pt-2"></div>
+               <div class="site-option d-flex align-items-center">
+                  <img src="images/copart.png" alt="Copart" class="me-2" />
+                  <button id="login-us-copart" class="mb-0 btn btn-info">Login to Copart US</button>
+                  <button id="logout-us-copart" class="btn btn-warning" style="display: none">Relogin Copart USA</button>
+               </div>
+            </div>
+            <div class="border-bottom pb-3">
+               <div id="status-ca-copart" class="status-label pb-2 pt-2"></div>
+               <div class="site-option d-flex align-items-center">
+                  <img src="images/copart.png" alt="Copart_CA" class="me-2" />
+                  <button id="login-ca-copart" class="mb-0 btn btn-info">Login to Copart CA</button>
+                  <button id="logout-ca-copart" class="btn btn-warning" style="display: none">Relogin Copart Canada</button>
+               </div>
+            </div>
+
+            <div class="border-bottom pb-3">
+               <div id="status-ca-icbc" class="status-label pb-2 pt-2"></div>
+               <div class="site-option d-flex align-items-center">
+                  <img src="images/icbc.svg" alt="ICBC" class="me-2" />
+                  <button id="login-ca-icbc" class="mb-0 btn btn-info">Login to ICBC</button>
+                  <button id="logout-ca-icbc" class="btn btn-danger" style="display: none">Logout</button>
+               </div>
+            </div>
+            <div class="border-bottom pb-3">
+               <div id="status-ca-progi" class="status-label pb-2 pt-2"></div>
+               <div class="site-option d-flex align-items-center">
+                  <img src="images/progi.jpg" alt="ProgiPix" class="me-2" />
+                  <button id="login-ca-progi" class="mb-0 btn btn-info">Login to ProgiPix</button>
+                  <button id="logout-ca-progi" class="btn btn-warning" style="display: none">Relogin</button>
+               </div>
+            </div>
+            <div class="footer mt-3">
+               <button id="logout-button" class="form-control btn btn-danger">Logout</button>
+            </div>
+         </div>
+         <div id="loginForm">
+            <img id="logo" src="images/logos/logo.svg" alt="AuctionDec Logo" style="width: 180px; height: auto" />
+            <p class="message"></p>
+            <p class="upgrade-link hidden"><a href="https://addons.mozilla.org/en-US/firefox/addon/auction-dec/">Upgrade from here</a></p>
+            <!-- Placeholder for logo -->
+            <h2 id="site-title">AuctionDec</h2>
+            <!-- Placeholder for site title -->
+            <!-- Your popup content -->
+            <div id="alertPlaceholder" style="display: none; color: red"></div>
+            <h1 class="text-start mb-3">Login</h1>
+            <div class="form-group mb-3">
+               <!-- <label for="username"></label> -->
+               <input type="text" class="form-control" id="username" placeholder="Username" required />
+            </div>
+            <div class="form-group position-relative">
+               <input type="password" class="form-control" id="password" placeholder="Password" required />
+               <div class="position-absolute eye-password" id="eye-password"></div>
+               <input type="hidden" id="site-type" value="" />
+            </div>
+            <div class="d-flex mt-4 mb-4">
+               <div class="me-2">
+                  <input type="checkbox" name="remember_me" id="rememberMe" value="on" />
+               </div>
+               <label for="rememberMe">Remember me?</label>
+               <div class="ms-auto"><a class="password-forgot" href="https://dec.autosrealm.com/forgot-password" target="_blank">Forgot password?</a></div>
+            </div>
+            <div class="w-100 mt-3">
+               <button id="submit" class="btn btn-primary w-100">Login</button>
+            </div>
+         </div>
+         <div class="w-100 mt-3">
+            <small id="ext-version"></small>
+         </div>
+      </div>
+      <script src="assets/js/bootstrap.min.js"></script>
+      <script src="popup.js"></script>
+      <script src="background.js"></script>
+   </body>
+</html>

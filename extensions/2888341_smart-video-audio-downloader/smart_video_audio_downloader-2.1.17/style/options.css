@@ -1,0 +1,654 @@
+/* Options Stylesheet */
+
+/* General reset and body styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #6D7683;
+  color: #fff;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../img/bg-options.jpg');
+  background-position: top center;
+  background-repeat: repeat;
+  background-size: auto;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Styling for <h2> elements with fade-in and top-appear animation */
+h2 {
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #e2e2e2;
+  text-align: center;
+  letter-spacing: 0px; /* Initial letter spacing */
+  opacity: 0;
+  transform: translateY(-40px); /* Start slightly above */
+  animation: fadeInAndAppear 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; /* Smooth animation */
+}
+
+/* Keyframes for fade-in and appear from top */
+@keyframes fadeInAndAppear {
+  0% {
+      opacity: 0;
+      letter-spacing: 0px;
+      transform: translateY(-40px); /* Start off-screen */
+  }
+  70% {
+      opacity: 0.8;
+      letter-spacing: 8px;
+      transform: translateY(10px); /* Slight overshoot */
+  }
+  100% {
+      opacity: 1;
+      letter-spacing: 4px;
+      transform: translateY(0); /* Settle into position */
+  }
+}
+
+/* Keyframes for hover re-expansion */
+@keyframes hoverExpand {
+  0% {
+      letter-spacing: 2px; /* Default spacing */
+  }
+  50% {
+      letter-spacing: 6px; /* Slight expansion */
+  }
+  100% {
+      letter-spacing: 2px; /* Return to default */
+  }
+}
+
+/* Centered container for main content */
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+}
+
+/* Logo styling */
+.logo {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 100px;
+}
+
+/* Tab menu navigation */
+.tab-menu {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+
+.tab-icon {
+  width: 40px;
+  height: 40px;
+  margin: 5px auto 0 auto;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.tab-button.active .tab-icon {
+  transform: scale(1.1); 
+}
+
+.tab-button {
+  flex: 1;
+  font-family: 'Courier New', Courier, monospace !important;
+  background-color: #e2e2e2;
+  color: #6D7683;
+  opacity: 0.8;
+  padding: 20px 0;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+  margin-right: 6px;
+  box-sizing: border-box;
+}
+
+.tab-button:last-child {
+  margin-right: 0;
+}
+
+.tab-button.active {
+  background-color: #525c6b;
+  color: #fff;
+  opacity: 1;
+}
+
+.tab-button:hover {
+  opacity: 1;
+}
+
+/* Tab content sections */
+.section-container {
+  background-color: #525c6b;
+  border-radius: 0 0 12px 12px;
+  padding: 40px;
+  width: 100%;
+  width: 600px;
+  margin-bottom: 20px;
+  text-align: left;
+  line-height: 1.5rem;
+  box-sizing: border-box;
+}
+
+.section-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+#info-section h2:first-of-type {
+  padding-bottom: 20px;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.section-container p:not(:last-child) {
+  padding-bottom: 10px !important;
+}
+
+/* Settings input and label styling */
+.setting {
+  display: flex;
+  align-items: start;
+  text-align: left;
+  padding: 15px 0;
+}
+
+.setting input {
+  display: inline-flex;
+}
+
+label {
+  font-size: 14px;
+}
+
+label[for="searchRetries"],
+label[for="failRetries"] {
+  margin-left: 10px;
+}
+
+label b {
+  display: inline-flex;
+  padding-right: 5px;
+}
+
+/* Input field styling */
+input[type="number"] {
+  background-color: #6D7683;
+  color: #e2e2e2;
+  border: 2px solid #525c6b;
+  border-radius: 6px;
+  padding: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Input focus and placeholder styling */
+input[type="number"]:focus {
+  border-color: #e2e2e2;
+}
+
+input[type="number"]::placeholder {
+  color: #8D939C;
+}
+
+/* Disable spinner buttons in number input fields */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: auto;
+}
+
+/* Button container layout */
+.button-container {
+  display: flex;
+  justify-content: space-evenly; /* Distributes buttons evenly with equal spacing */
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  margin: 30px auto;
+}
+
+/* General button style */
+.button-container button {
+  flex-grow: 1; /* All buttons stretch equally */
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  background-color: #e2e2e2;
+  color: #525c6b;
+}
+
+/* Hover effects for buttons */
+.button-container button:hover {
+  background-color: #6D7683;
+  color: #fff;
+}
+
+/* Hide non-edit buttons during edit mode */
+.edit-buttons-container .download,
+.edit-buttons-container .import,
+.edit-buttons-container .edit,
+.edit-buttons-container .clear {
+  display: block;
+}
+
+.edit-buttons-container .delete,
+.edit-buttons-container .cancel {
+  display: none;
+}
+
+.edit-buttons-container.edit-mode .download,
+.edit-buttons-container.edit-mode .import,
+.edit-buttons-container.edit-mode .edit,
+.edit-buttons-container.edit-mode .clear {
+  display: none;
+}
+
+.edit-buttons-container.edit-mode .delete,
+.edit-buttons-container.edit-mode .cancel {
+  display: block;
+}
+
+.edit-buttons-container .edit,
+.edit-buttons-container .clear,
+.edit-buttons-container .delete {
+  background-color: #db5743; 
+  color: #ffffff;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: start;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 30px;
+  height: 20px;
+  background-color: #e2e2e2;
+  border-radius: 4px;
+  border: 2px solid #525c6b;
+  position: relative;
+  margin-right: 15px;
+  margin-top: 3px;
+}
+
+input[type="checkbox"]:checked + .checkbox {
+  background-color: #6D7683;
+  border-color: #6D7683;
+}
+
+.checkbox:after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  width: 5px;
+  height: 10px;
+  border: solid #e2e2e2;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+input[type="checkbox"]:checked + .checkbox:after {
+  opacity: 1;
+}
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #525c6b;
+  margin: 25% auto;
+  padding: 20px;
+  border: 1px solid #6D7683;
+  width: 30%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#modal-confirm, #modal-cancel {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Critical Modal Styling */
+.modal.critical-modal .modal-content {
+  background-color: #db5743; 
+  color: #ffffff;
+  border: 1px solid #a94442;
+}
+
+/* Optional: Style the buttons for critical modals */
+.modal.critical-modal #modal-confirm,
+.modal.critical-modal #modal-cancel {
+  background-color: #6D7683;
+  color: #fff;
+  border: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.modal.critical-modal #modal-confirm:hover,
+.modal.critical-modal #modal-cancel:hover {
+  background-color: #ffffff;
+  color: #db5743;
+}
+
+
+/* History table styles */
+#history-table {
+  border-collapse: collapse !important;
+  width: 100%; /* Full width */
+  max-width: 600px; /* Match filters-container max-width */
+  margin: 0 auto;
+  border-spacing: 0;
+  font-size: 12px !important;
+  line-height: 1.2em !important;
+  margin-bottom: 20px;
+}
+
+#history-table th, #history-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center !important;
+}
+
+#history-table td:first-of-type {
+  padding: 0px;
+}
+#history-table td:last-of-type {
+  padding: 10px 5px;
+}
+
+/* Remove borders for the checkbox column */
+#history-table .select-column {
+  border: none !important;
+  padding: 0;
+}
+
+#history-table td > a {
+  padding: 0;
+}
+
+#history-table th:first-child,
+#history-table th:last-child,
+#history-table td:first-child,
+#history-table td:last-child {
+  text-align: center;
+}
+
+#history-table td {
+  text-align: center;
+  vertical-align: middle;
+}  
+
+/* General styling for checkboxes */
+/* General styling for checkboxes */
+#history-table .select-column {
+  width: 50px; /* Adjust width for uniformity */
+  text-align: center;
+}
+
+/* General styling for table checkboxes */
+.select-row,
+#select-all-rows {
+  appearance: none; /* Remove default browser styles */
+  width: 20px; /* Ensure consistent size */
+  height: 20px;
+  border: 2px solid #525c6b; /* Match theme */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #e2e2e2; /* Light background */
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  display: inline-block !important;
+}
+
+/* Hover effect for table checkboxes */
+.select-row:hover,
+#select-all-rows:hover {
+  background-color: #6D7683; /* Match hover color */
+  border-color: #e2e2e2;
+}
+
+/* Checked state for table checkboxes */
+.select-row:checked,
+#select-all-rows:checked {
+  background-color: #6D7683;
+  border-color: #6D7683;
+}
+
+/* Custom checkmark for checked state */
+.select-row:checked::after,
+#select-all-rows:checked::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid #e2e2e2;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Pagination styling */
+#pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e2e2e2;
+  font-family: Arial, sans-serif;
+}
+
+/* Pagination button styling */
+button#next-page,
+button#prev-page {
+  background-color: #e2e2e2;
+  color: #525c6b;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 14px;
+}
+
+/* Hover effects for buttons */
+button#next-page:hover,
+button#prev-page:hover {
+  background-color: #6D7683;
+  color: #fff;
+}
+
+/* Disabled button styling */
+button#next-page:disabled,
+button#prev-page:disabled {
+  background-color: #f3f3f3;
+  color: #b0b0b0;
+  cursor: not-allowed;
+}
+
+/* Pagination info styling */
+#pagination .pagination-info {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: #e2e2e2;
+}
+
+/* Filters */
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 50px); /* Subtract the width of the select column */
+  max-width: 600px;
+  margin: 50px auto 10px auto;
+  transition: width 0.3s ease; /* Smooth transition for width changes */
+}
+
+.filters-container:not(.edit-mode) {
+  width: 100%; /* Full width when not in edit mode */
+}
+
+.filters-container.edit-mode {
+  margin-left: 50px;
+}
+
+#filter-buttons {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+#filter-buttons .btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  background-color: #fff;
+  color: #6D7683;
+  transition: background-color 0.2s ease;
+}
+
+#filter-buttons .btn:hover {
+  opacity: 0.8;
+}
+
+#filter-buttons .btn.active {
+  opacity: 1;
+}
+#filter-buttons .btn:not(.active) {
+  background-color: #e2e2e2;
+  color: #525c6b;
+  opacity: 0.6;
+}
+
+/* Search input styling */
+#search {
+  width: 100%; /* Match container width */
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e2e2e2;
+  font-size: 14px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: padding 0.3s ease, margin-left 0.3s ease; /* Smooth transition */
+}
+
+/* Focus state */
+#search:focus {
+  background-color: #ffffff;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.filters-container.edit-mode #search {
+  margin-left: 0;
+}
+
+/* No downloads message styling */
+#no-downloads-message {
+  padding: 40px 0;
+}
+
+/* Thumbnail container styling */
+.thumbnail-container {
+  position: relative;
+  max-width: 40vw;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.thumbnail-container img.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Fills container, crops excess */
+  display: block;
+}
+
+/* Overlay image styling (hidden by default) */
+.thumbnail-container .overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px !important; /* Adjust size for overlay icon */
+  height: 32px !important;
+  display: none; /* Hidden by default */
+  z-index: 2;
+}
+
+/* Hover effect: display overlay and dim thumbnail */
+.thumbnail-container:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* Gray background on hover */
+}
+
+.thumbnail-container:hover .overlay {
+  display: block; /* Show the overlay icon on hover */
+}
+
+.thumbnail-container:hover img.thumbnail {
+  opacity: 0.2; /* Dim the thumbnail on hover */
+}

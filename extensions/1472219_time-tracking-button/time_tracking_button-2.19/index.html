@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+	
+	<head>
+	
+		<title>TrackingTime</title>
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		
+		<!-- /// -->
+
+		<!-- iconos -->
+		<link rel="stylesheet" type="text/css" href="font-icons/style.css" />
+		<link rel="stylesheet" type="text/css" href="font-awesome/css/all.min.css" />
+
+		<!-- general -->
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/tt-root-settings.css" />
+		<link rel="stylesheet" type="text/css" href="css/tt-root-logo.css" />
+		<link rel="stylesheet" type="text/css" href="css/tt-logo.css" />
+		<link rel="stylesheet" type="text/css" href="css/tt-forms.css" />
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+
+		<!-- /// -->
+		
+		<script src="environment.js"></script>
+		<script src="js/lib/jquery-3.3.1.min.js"></script>
+		<script src="js/lib/moment-with-locales.min.js"></script>
+		<script src="js/extension-helpers.js"></script>
+		<script src="js/device_api.js"></script>
+		<script src="js/translate.js"></script>
+		<script src="js/options.js"></script>
+		<script src="settings.js"></script>
+		<script src="js/app.js"></script>
+	
+	</head>
+
+	<body class="loading_window_">
+	
+		<div id="loginView" data-comp="loginScroll">
+			<div class="flex_">
+				<div class="flex_box_">
+				
+					<div class="logo_">
+						<div class="tt-tracking-time-logo"></div>
+					</div>
+					
+					<div class="form_container_">
+						
+						<div class="form_" id="login" data-comp="LOGIN">
+							<a href="#login" class="button_login_" target="_blank">Login</a>
+						</div>
+						
+						<div class="form_">
+							<p class="button_signup_">Don’t have an account? <a href="#signup" target="_blank">SIGN UP</a></p>
+						</div>
+						
+					</div>
+				
+				</div>
+			</div>
+		</div>
+		
+		<div id="app">
+			
+			<header class="full_box">
+				<div class="center_box">
+					
+					<div class="block left">
+					
+						<!--user-->
+						<div class="user multi">
+							<div class="table">
+								
+								<!--cell-->
+								<div class="cell middle">
+									
+									<!--avatar-->
+									<div class="avatar">
+										<div class="image"></div>
+										<div class="initials"></div>
+									</div>
+									<!--/avatar-->
+								
+								</div>
+								<!--/cell-->
+								
+								<!--cell-->
+								<div class="cell middle">
+									
+									<!--information-->
+									<div class="information">
+										<div class="account">
+											<h2 class="name"></h2>
+											<p class="email"></p>
+										</div>
+										<a href="#" class="multiaccount" data-pop="switchAccount">
+											<p>Company</p>
+											<h2 class="team"></h2>
+											<div class="ico">
+												<i class="icon-icontt_nav-bottom"></i>
+											</div>
+										</a>
+									</div>
+									<!--/information-->
+								
+								</div>
+								<!--/cell-->
+								
+							</div>
+						</div>
+						<!--/user-->
+					
+					</div>
+					
+					<div class="block right">
+						
+						<a href="#" data-link="#/dashboard" target="_blank" class="logo">
+							<div class="tt-tracking-time-logo"></div>
+						</a>
+					
+					</div>
+					
+					<div class="clear"></div>
+					
+				</div>
+			</header>
+			
+			<div class="views_container full_box">
+				
+				<div class="view always_on home_view_" id="homeView">
+					
+					<div id="AssistantMessage">
+						<div class="form_text_ no_margin" data-comp="text"></div>
+					</div>
+
+					<div id="recentEvents">
+						
+						<div class="title_">
+							<h2>My recent activity</h2>
+							<a href="#" data-link="#/dashboard" target="_blank" title="Dashboard"><i class="icon-bar-chart-2"></i></a>
+						</div>
+
+						<div class="loading_">
+							<p class="loading"></p>
+							<p class="message"></p>
+						</div>
+						
+						<div class="list_">
+							<ul></ul>
+							<div class="load_">
+								<a href="#load-more-events" class="button_ small_ border_ gray_">Load more</a>
+							</div>
+						</div>
+	
+					</div>
+
+				</div>
+				
+				<div class="view switch_account pop_up" id="switchAccount">
+								
+					<div class="form_text_">
+						<h2>Accounts you belong to</h2>
+						<p>Switch between account using the buttons bellow</p>
+					</div>
+					
+					<div class="list_">
+						<ul></ul>
+					</div>
+
+				</div>
+				
+			</div>
+			
+			<footer class="full_box">
+
+				<div id="track_control" class="tracking_player">
+
+					<a href="#" class="playButton" data-comp="playerTrackButton">
+						<span class="play play_ic"><i class="icon-icontt_play"></i></span>
+						<span class="stop stop_ic"><i class="icon-icontt_stop"></i></span>
+					</a>
+
+					<div class="duration_ task_duration">
+						<!-- <u class="task_end"></u> -->
+					</div>
+					
+					<a href="#" target="_blank" class="name_" data-comp="taskLink">
+						<div class="text_ project_name"></div>
+						<div class="text_ task_name"></div>
+					</a>
+
+				</div>
+				
+				<a href="#" class="setting_button_" data-comp="settingButton"><i class="icon-icontt_cog"></i></a>
+				
+				<!-- <div class="combo_">
+					<span class="ico"><i class="icon-icontt_dots"></i></span>
+					<div class="list">
+						<ul>
+							<li><a href="https://pro.trackingtime.co/" target="_blank">Dashboard</a></li>
+							<li><a href="#" class="open-settings">Settings</a></li>
+							<li><a href="http://help.trackingtime.co/article/169-button-help"  target="_blank">Help</a></li>
+							<li><a href="#logout" class="logout">Logout</a></li>
+							<li class="chrome"><a href="https://chrome.google.com/webstore/detail/trackingtime-button/fglmkdhomaklnckgbjfnfmbfmlkjippg/reviews" target="_blank">Rate us!</a></li>
+							<li class="firefox"><a href="https://addons.mozilla.org/es/firefox/addon/time-tracking-button/" target="_blank">Rate us!</a></li>
+							<li class="edge"><a href="https://microsoftedge.microsoft.com/addons/detail/tracking-time-button/hjahmhljhangdopcgjapldmcaiafpkhm" target="_blank">Rate us!</a></li>
+						</ul>
+					</div>
+				</div> -->
+				
+				</div>
+			</footer>
+			
+		</div>
+		
+		<!-- /// -->
+		
+		<div class="error_message_">
+			<div class="content">
+				Error message
+			</div>
+		</div>
+		
+		<div class="error_log_" style="display: none;">
+			<p><b>ERROR LOG</b>(<a href="#" class="clear_error">Clear</a>)</p>
+			<textarea></textarea>
+		</div>
+		
+	</body>
+	
+</html>

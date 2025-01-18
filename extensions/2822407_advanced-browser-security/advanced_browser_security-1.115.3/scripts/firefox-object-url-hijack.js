@@ -1,0 +1,1 @@
+(()=>{"use strict";function e(e){return e.wrappedJSObject}const t=e(URL.revokeObjectURL);Reflect.defineProperty(e(URL),"revokeObjectURL",{writable:!1,value:exportFunction(setTimeout.bind(void 0,t,15e3),window)})})();

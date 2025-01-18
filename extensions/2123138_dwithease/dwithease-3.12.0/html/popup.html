@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html ng-csp lang="en">
+    <head>
+        <title>Demandware With Ease | Popup</title>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="../css/popup.css">
+    </head>
+
+    <body ng-app="popupOptions" class="dwe-popup dwithease" ng-controller="PopupController" md-theme="{{theme}}">
+        <md-content class="content">
+            <div>
+                <md-toolbar>
+                    <div class="md-toolbar-tools toolbar-tools-container">
+                        <section layout="row" layout-align="left center">
+                            <md-button class="dwe-popup-forkpoint-logo-button" aria-label="ForkPoint Logo" ng-click="logoClicked()">
+                                <md-tooltip>Visit our ForkPoint website</md-tooltip>
+                                <img class="logo" src="../images/logo/forkpoint-logo-negative.png" alt="ForkPoint"/>
+                            </md-button>
+                        </section>
+                        <span flex=""></span>
+                        <section layout="row" layout-align="right center">
+                            <md-button class="popup-documentation-search-button" aria-label="Docs">
+                                <md-tooltip>Direct Search in SFCC Documentation</md-tooltip>
+                                <md-icon>import_contacts</md-icon>
+                                <span>Docs</span>
+                            </md-button>
+
+                            <md-menu md-position-mode="target-right target">
+                                <md-button class="popup-title-button" aria-label="Shortcut Links Menu" ng-click="$mdMenu.open($event)">
+                                    <md-tooltip>List of handy shortcuts to popular pages</md-tooltip>
+                                    <md-icon>launch</md-icon>
+                                    <span>Links</span>
+                                </md-button>
+
+                                <md-menu-content>
+                                  <md-menu-item ng-repeat="item in shortcutLinks">
+                                    <md-button class="md-primary" ng-click="openShortcutLink(item)">
+                                        <div layout="row" flex>
+                                          <p flex>{{item.name}}</p>
+                                        </div>
+                                    </md-button>
+                                  </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+
+                            <md-button id="popupAddNewSandboxBtn" class="popup-title-button" ng-click="addSandbox()" aria-label="Add New Sandbox Button">
+                                <md-tooltip>Quickly add a new sandbox configuration</md-tooltip>
+                                <md-icon>control_point</md-icon>
+                                <span i18n-content="popup_buttons_add"></span>
+                            </md-button>
+
+                            <md-button ng-click="openOptions()" class="md-icon-button" aria-label="Config" target="_blank">
+                                <md-tooltip i18n-content="tooltip_settings_btn"></md-tooltip>
+                                <md-icon md-font-set="material-icons">settings</md-icon>
+                            </md-button>
+
+                            <div ng-if="user.registered">
+                                <md-button class="md-icon-button lock" aria-label="Lock" ng-if="user.vaultOpen" ng-click="logout()">
+                                    <md-tooltip>Click to Lock vault</md-tooltip>
+                                    <md-icon id="lockIcon" md-font-set="material-icons">lock_open</md-icon>
+                                </md-button>
+                                <md-button ng-if="!user.vaultOpen" class="md-icon-button lock" aria-label="Unlock" ng-click="openLoginModal()">
+                                    <md-tooltip>Click to Unlock vault</md-tooltip>
+                                    <md-icon id="lockIcon" md-font-set="material-icons">lock_outline</md-icon>
+                                </md-button>
+                            </div>
+                        </section>
+                    </div>
+                </md-toolbar>
+            </div>
+
+            <div class="popup-docs-search-container">
+                <div class="popup-docs-search-container-inner">
+                    <input class="dw-search" name="search" ng-keyup="documentation.search($event)" autocomplete="off" spellcheck="false" placeholder="Search the documentation for...">
+                    <div class="dropdown">
+                        <div ng-if="(!documentation.isTyping && documentation.userInput.length === 0) || documentation.isBuilding">
+                            <p ng-if="documentation.isBuilding">Building indexes. If you don't want to wait the first time you open the docs, you can make the building on browser startup.</p>
+
+                            <md-switch class="pref-value md-primary" ng-model="documentation.indexingOnBrowserStart"
+                                ng-change="documentation.setDocumentationPref('indexingOnBrowserStart', documentation.indexingOnBrowserStart)">
+                                <span>Build documentation indexes on browser startup</span>
+                            </md-switch>
+
+                            <md-switch class="pref-value md-primary" ng-model="documentation.enableUpcoming"
+                                ng-change="documentation.setDocumentationPref('enableUpcoming', documentation.enableUpcoming)">
+                                <span>Enable upcoming urls from index. If enabled results might look doubled after new reindex.</span>
+                            </md-switch>
+
+                            <md-button class="md-button md-primary md-raised" ng-click="documentation.forceReindex()">
+                                Force reindex
+                            </md-button>
+                        </div>
+
+                        <p ng-if="documentation.results.length === 0 && documentation.userInput && !documentation.isTyping && documentation.userInput.length >= 3">No results found.</p>
+                        <p ng-if="documentation.userInput && !documentation.isTyping && documentation.userInput.length < 3">Three or more characters to start searching..</p>
+
+                        <span ng-repeat="result in documentation.results">
+                            <a class="link" ng-click="documentation.openDocLink($event)" href="{{result.url}}"><span ng-bind-html="result.title"></span></a>
+                            <div class="description">
+                                <span ng-bind-html="result.content"></span>
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="banner-small">
+                <ng-include src="'banners/alert-banner.html'"></ng-include>
+            </div>
+
+            <ng-include src="'./vaultloginmodal.html'"></ng-include>
+
+            <div class="popup-main-content">
+                <div ng-if="switchSandboxGrouping=='settings_popup_show_tabs_grouping'">
+                    <div ng-include="'./popup/popupgroupsandboxes.html'"></div>
+                </div>
+                <div ng-if="switchSandboxGrouping=='settings_popup_show_list_grouping'">
+                    <div ng-include="'./popup/popuplistsandboxes.html'"></div>
+                </div>
+
+                <div ng-repeat="group in groupedSandboxes track by group.id" label="{{group.text}}" ng-if="groupSettings[group.text].visible && group.sandboxes.length">
+                    <md-sidenav ng-repeat-start="sandbox in group.sandboxes" class="md-sidenav-right md-whiteframe-4dp" md-component-id="{{sandbox.id}}">
+
+                        <md-toolbar class="md-theme-light">
+                            <div class="md-toolbar-tools">{{sandbox.name}}</div>
+                        </md-toolbar>
+
+                        <md-content>
+                            <md-list-item ng-repeat="menu in activeContextMenus">
+                                <md-button class="md-list-item-content dropdown-btn" ng-click="contextMenuClicked(menu.menuName, sandbox.url, menu.menuUrl, menu.dynamic)">
+                                    <md-icon md-font-set="material-icons">{{menu.icon || 'cloud'}}</md-icon>
+                                    <span class="md-inline-list-icon-label">{{menu.menuName}}</span>
+                                </md-button>
+                            </md-list-item>
+                        </md-content>
+
+                    </md-sidenav>
+                    <md-sidenav ng-repeat="alias in sandbox.aliases" ng-repeat-end class="md-sidenav-right md-whiteframe-4dp" md-component-id="{{alias.url}}">
+
+                        <md-toolbar class="md-theme-light">
+                            <div class="md-toolbar-tools">{{alias.url}}</div>
+                        </md-toolbar>
+
+                        <md-content>
+                            <md-list-item ng-repeat="menu in activeContextMenus">
+                                <md-button class="md-list-item-content dropdown-btn" ng-click="contextMenuClicked(menu.menuName, sandbox.url, menu.menuUrl, menu.dynamic)">
+                                    <md-icon md-font-set="material-icons">{{menu.icon || 'cloud'}}</md-icon>
+                                    <span class="md-inline-list-icon-label">{{menu.menuName}}</span>
+                                </md-button>
+                            </md-list-item>
+                        </md-content>
+                    </md-sidenav>
+                </div>
+            </div>
+        </md-content>
+
+        <script src="../js/popup.js"></script>
+    </body>
+</html>

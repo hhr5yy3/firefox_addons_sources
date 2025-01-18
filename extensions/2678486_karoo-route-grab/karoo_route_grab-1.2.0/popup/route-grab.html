@@ -1,0 +1,67 @@
+<!doctype html>
+<!--
+ Hammerhead Chrome Extension https://www.hammerhead.io
+ -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Hammerhead Route Grab</title>
+    <link rel="stylesheet" href="route-grab.css">
+    <script type="module" src="apiClient.js"></script>
+    <script type="module" src="route-grab.js"></script>
+  </head>
+  <body>
+    <a id="banner-link" target="_blank">
+      <div class="title-bar"></div>
+    </a>
+    <div class="popup-body">
+      
+      <p id="status" class="text-block"></p>
+      
+      <div id="login-signup" hidden>
+        <p class="text-block">
+          Use Route Grab to quickly send a route to your Karoo Dashboard account
+        </p>
+
+        <form class="LoginForm">
+          <input id="user-email" placeholder="Email" size="50" type="email" />
+          <input id="user-password" placeholder="Password" autocomplete="current-password" size="50" type="password" />
+          <button id="submit-button" type="submit">SIGN IN</button>
+        </form>
+        
+        <p class="text-block">
+          Please sign in to your account
+          <br>
+          Need to create an account? <a id="signup-link" target="_blank">Sign up</a>
+        </p>
+      </div>      
+      
+      <p id="cannot-import" class="text-block" hidden>
+        The list of websites that we can import from and other support resources are available
+        in our <a href="https://support.hammerhead.io/hc/en-us/articles/360006755614-Howto-Link-Accounts-and-Import-Routes" target="_blank">Help Center</a>
+      </p>
+
+      <div id="route-results" hidden>
+        <p id="route-title" class="text-block"></p> 
+
+        <div class="RouteCard">
+          <a id="route-link">
+            <img id="route-image" alt="route image"/>
+            <div class="details-panel">
+              <h3 id="route-name"></h3>
+              <div class="distance-elevation">
+                <p><img src="public/distance.svg" alt="distance"><span id="route-distance"></span></p>
+                <p><img src="public/ascent.svg" alt="gain"><span id="route-gain"></span></p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <p id="learn-more" class="text-block">
+        <a href="https://support.hammerhead.io/hc/en-us/articles/360007440133-Howto-Import-route-to-Dashboard-using-Karoo-route-grab-chrome-extension" target="_blank">Learn more about this extension...</a>
+      </p>
+      <img id="signout-button" src="public/sign-out-icon.png" alt="Sign Out" title="Sign Out" />
+    </div>
+  </body>
+</html>

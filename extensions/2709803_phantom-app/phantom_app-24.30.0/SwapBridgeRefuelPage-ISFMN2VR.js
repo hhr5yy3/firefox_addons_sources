@@ -1,0 +1,20 @@
+import{a as h,b as s,d as f,e as R}from"./chunk-ON463HRP.js";import{Ma as P,z as w}from"./chunk-YZCUSBGT.js";import"./chunk-KXI2KMWF.js";import"./chunk-FMREIR6A.js";import"./chunk-MENUYYDR.js";import"./chunk-FHJZZIAO.js";import"./chunk-2T5DYFEN.js";import"./chunk-JIDRUHKY.js";import"./chunk-YCBJ5FHL.js";import"./chunk-NONJMAAF.js";import"./chunk-Q7KEQOCZ.js";import"./chunk-ESIBJFWT.js";import"./chunk-U7XNP6KE.js";import"./chunk-PLEWWF6Z.js";import"./chunk-HYEZWSH6.js";import"./chunk-BZBOBPE4.js";import"./chunk-LGKOF6SU.js";import"./chunk-KJVVMFPV.js";import"./chunk-GDFURPOT.js";import"./chunk-6764LP7U.js";import"./chunk-QKMXDYYI.js";import"./chunk-2F7DB24L.js";import"./chunk-AHIMJGAR.js";import"./chunk-H7PQ2ZKL.js";import"./chunk-XXD2S4BV.js";import"./chunk-K2NEFY4Z.js";import"./chunk-HP7NJF3J.js";import"./chunk-C72BMBWH.js";import"./chunk-MP4HMVYC.js";import"./chunk-6ZZIWD2R.js";import"./chunk-J6OUJ52S.js";import"./chunk-WD5G2AXB.js";import"./chunk-MHZC233D.js";import"./chunk-3C7O5H7L.js";import"./chunk-R24F5SOK.js";import"./chunk-P3EQXKJ7.js";import{j as a}from"./chunk-YSJD33JQ.js";import{Aa as C,o as r,rb as u}from"./chunk-KWIQ74SK.js";import{wa as x}from"./chunk-7PJSEK45.js";import"./chunk-TYRC5IHT.js";import"./chunk-K6SPXOGF.js";import"./chunk-UKIEYEQ5.js";import"./chunk-RTLU3EDP.js";import"./chunk-XEZHZYHW.js";import"./chunk-D6DH2FN4.js";import"./chunk-WHWVEQ4K.js";import"./chunk-QLNQOJCN.js";import"./chunk-FQY2XTIJ.js";import"./chunk-XQSQGLPB.js";import"./chunk-XCHZAS53.js";import"./chunk-W3KE72YO.js";import"./chunk-VBZS3GR4.js";import"./chunk-T4L6EP5D.js";import"./chunk-QSQTX44W.js";import"./chunk-6E56T6PG.js";import"./chunk-R3RTTMHX.js";import"./chunk-APGMW4RI.js";import"./chunk-HAQ4DJZR.js";import"./chunk-QTEEUEUK.js";import"./chunk-SBICKOM7.js";import{m as c}from"./chunk-QLCKU4H4.js";import"./chunk-GHLG6R56.js";import"./chunk-KYG6C6PS.js";import"./chunk-OJ65X4PZ.js";import"./chunk-WJHU72V4.js";import{a as I}from"./chunk-335V6TFQ.js";import"./chunk-BVBFOJLU.js";import{f as v,h as b,n as B}from"./chunk-XJB76KNJ.js";b();B();var e=v(I());var V=r.div`
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+`,H=r.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+`,T=r(u).attrs({size:28,lineHeight:32,weight:600,color:"#fff"})`
+  margin: 12px 0 4px;
+`,k=r(u).attrs({size:16,lineHeight:18,weight:400,color:"#999"})`
+  padding: 0 20px;
+`,L=r.div`
+  margin-bottom: 10px;
+`,D=()=>{let{handleHideModalVisibility:i}=P(),{setRefuelEnabled:d,...n}=x(),t=(0,e.useCallback)(()=>{i("bridgeRefuel")},[i]),p=(0,e.useCallback)(l=>{d(l),t()},[t,d]);return{...n,enableRefuel:p,hideBridgeRefuel:t}},E=e.default.memo(({symbol:i,balance:d,refuelAmount:n,uiRefuelAmount:t,estimatedCost:p,refuelEnabled:l,enableRefuel:m,hideBridgeRefuel:y,isFetchingQuote:g})=>{let{t:o}=c();return e.default.createElement(V,null,e.default.createElement(L,null,e.default.createElement(H,null,e.default.createElement(w,{leftButton:{type:"close",onClick:y}},o("bridgeRefuelTitle")),e.default.createElement(C,null),e.default.createElement(T,null,o("bridgeRefuelEnable")),e.default.createElement(k,null,o("bridgeRefuelDescription"))),e.default.createElement(h,{roundedTop:!0,roundedBottom:!0},e.default.createElement(s,{label:o("bridgeRefuelLabelBalance",{symbol:i})},e.default.createElement(f,{color:"#EB3742"},d)),e.default.createElement(s,{label:o("bridgeRefuelLabelReceive"),isLoading:g},e.default.createElement(f,{color:l&&n?"#21E56F":void 0},l&&n?t:"-")),e.default.createElement(s,{label:o("bridgeRefuelLabelFee"),isLoading:g},e.default.createElement(f,null,l&&n?p:"")))),e.default.createElement("div",null,e.default.createElement(a,{theme:"default",onClick:()=>m(!1)},o("bridgeRefuelDismiss")),e.default.createElement(R,{gap:10}),e.default.createElement(a,{theme:"primary",onClick:()=>m(!0)},o("bridgeRefuelEnable"))))}),S=()=>{let i=D();return e.default.createElement(E,{...i})},U=S;export{S as SwapBridgeRefuelPage,U as default};
+//# sourceMappingURL=SwapBridgeRefuelPage-ISFMN2VR.js.map

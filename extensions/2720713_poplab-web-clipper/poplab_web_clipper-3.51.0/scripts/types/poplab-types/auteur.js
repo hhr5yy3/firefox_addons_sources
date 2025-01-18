@@ -1,0 +1,1 @@
+(()=>{"use strict";var i;!function(i){i.BELIN="© Belin Éducation / Humensis"}(i||(i={}))})();

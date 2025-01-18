@@ -1,0 +1,182 @@
+<!--
+ Ce document est la propriété intellectuelle de Druide informatique inc. Toute reproduction ou publication est interdite.
+ Copyright 2017 Druide informatique inc.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="css/racine.css">
+<link rel="stylesheet" type="text/css" href="css/boutons.css">
+<title>Antidote popup</title>
+<script language="javascript" type="text/javascript" src="../src/tierces_parties/browser-polyfill.min.js"></script>
+<script language="javascript" type="text/javascript" src="../src/dictionnaire.js"></script>
+<script language="javascript" type="text/javascript" src="../src/cstAntidote.js"></script>
+<script language="javascript" type="text/javascript" src="../src/gestion-t.js"></script>
+<script language="javascript" type="text/javascript" src="../src/outils.js"></script>
+<script language="javascript" type="text/javascript" src="popup.js"></script>
+</head>
+<body>
+
+	<div id="popup_antidote" style="display:block">
+
+		<div id="contenant_titre">
+			<div id="texte_titre">
+				<!-- <div id="t1" class="element_titre">Connecteur</div> -->
+				<div id="t2" class="element_titre"></div>
+			</div>
+			<div id="texte_beta"">
+				<div id="beta" class="etiquette-beta" style="display: none;">Bêta</div>
+			</div>
+			<div class="image_titre" id="R0">
+				<img id="reglages_popup">
+			</div>
+			<div class="image_titre" id="A0">
+				<img id="aide_popup">
+			</div>
+		</div>
+		<hr>
+		<div id="recharge" style="display: none;" class="etiquette-beta">recharger la page</div>
+		<div class="parent_popup">
+			<div class="div_popup_correcteur" style="display: block;">
+				<div class="sous_parent_popup bouton_popup bouton_popup_activay" id="C0">
+					<div class="div_sp_image" id="C0i"><img src="../images/correcteur22x22.svg" class="_svg"></div>
+					<div class="div_sp_etiquette" id="C0l">Correcteur</div>
+				</div>
+			</div>
+
+			<div class="div_popup_dictionnaires" style="display: block;">
+				<div class="sous_parent_popup bouton_popup bouton_popup_activay" id="D0">
+					<div class="div_sp_image" id="D0i"><img src="../images/dicos22x22.svg" class="_svg"></div>
+					<div class="div_sp_etiquette" id="D0l">Dictionnaires</div>
+					<div class="div_sp_chevron" id="D_Liste"><img src="../images/chevron-cercle-droite16x16.svg" id="D_chevron" class="_svg chevron img_chevron"></div>
+				</div>
+
+				<div id="DICT"  style="display:none">
+					<div class="liste_popup">
+						<div id="D1"  class="menu menuDict "> Définitions	</div>
+						<div id="D2"  class="menu menuDict "> Synonymes		</div>
+						<div id="D3"  class="menu menuDict "> Antonymes		</div>
+						<div id="D5"  class="menu menuDict "> Cooccurrences	</div>
+						<div id="D13" class="menu menuDict "> Champ lexical	</div>
+						<div id="D10" class="menu menuDict "> Conjugaison	</div>
+						<div id="D6"  class="menu menuDict "> Famille		</div>
+						<div id="D8"  class="menu menuDict "> Citations		</div>
+						<div id="D11" class="menu menuDict "> Historique		</div>
+						<div id="D14" class="menu menuDict "> Rimes			</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="div_popup_guides" style="display: block;">
+				<div class="sous_parent_popup bouton_popup bouton_popup_activay" id="G0">
+					<div class="div_sp_image" id="G0i"><img src="../images/guides22x22.svg" class="_svg"></div>
+					<div class="div_sp_etiquette" id="G0l">Guides</div>
+					<div class="div_sp_chevron" id="G_Liste"><img src="../images/chevron-cercle-droite16x16.svg" id="G_chevron" class="_svg chevron img_chevron"></div>
+				</div>
+
+				<div id="GUIDE"  style="display:none">
+					<div class="liste_popup">
+						<div id="G1"  class="menu menuGuide "> Orthographe			</div>
+						<div id="G2"  class="menu menuGuide "> Lexique				</div>
+						<div id="G3"  class="menu menuGuide "> Grammaire			</div>
+						<div id="G4"  class="menu menuGuide "> Syntaxe				</div>
+						<div id="G5"  class="menu menuGuide "> Ponctuation			</div>
+						<div id="G6"  class="menu menuGuide "> Style				</div>
+						<div id="G7"  class="menu menuGuide "> Rédaction				</div>
+						<div id="G8"  class="menu menuGuide "> Typographie			</div>
+						<div id="G13" class="menu menuGuide "> Phonétique	</div>
+						<div id="G11" class="menu menuGuide "> Historique			</div>
+						<div id="G9"  class="menu menuGuide "> Points de langue		</div>
+					</div>
+				</div> 
+
+
+			</div>
+			
+
+		</div>
+
+		<div id="aweb_connexion_section" style="display: none;" >
+			<button id="aweb_connexion" type="button" class="bouton-actions bouton-defaut">Se connecter</button>
+		</div>
+
+		<div id="antidote_activation_section" style="display: none;" >
+			<button id="antidote_activation" type="button" class="bouton-actions bouton-defaut">Activer Antidote</button>
+		</div>
+
+		<div id="section_detecteurweb" style="display: none;">
+			<hr id="dessus_dw">
+			<div class="contenant_element_dw" id="dw">
+				<div class="element_dw_gauche" id="label_activer_dw"><span>Activer la Correction Express</span></div>
+				<div class= "element_dw_droit" id="contenant_activer_dw">
+					<button id="activer_dw" class="bascule_reglages" value="2">
+						<div id="contenant_bascule_dw" class="contenant_bascule">
+							<div class="curseur_bascule" id="curseur_dw"></div>
+						</div>
+					</button>
+				</div>
+			</div>
+			<div class="contenant_element_dw" id="alertes">
+				<div class="element_dw_gauche" id="label_alerte">Niveau d’alerte</div>
+				<div class= "element_dw_droit" id="contenant_alerte">
+					<button class="bascule_reglages" id="reglages_alertes" value="2">
+						<div id="contenant_bascule_alerte" class="contenant_bascule">
+							<div class="curseur_bascule" id="curseur_alerte"></div>
+						</div>
+					</button>
+				</div>
+			</div>
+
+			<div class="contenant_element_dw" id="site">
+				<div class="element_dw_gauche" id="label_site">Activer pour ce site</div>
+				<div class= "element_dw_droit" id="contenant_site">
+					<button class="bascule_reglages" id="reglages_site" value="2">
+						<div id="contenant_bascule_site" class="contenant_bascule">
+							<div class="curseur_bascule" id="curseur_site"></div>
+						</div>
+					</button>
+				</div>
+			</div>
+
+			<div id="section_zone_ignoree" class="bouton_popup_menu bouton_popup bouton_popup_desactivay image_desactivee" style="display: block;">
+				<div id="ce_supprimer" style="display: block;">Désactiver pour ce champ</div>
+				<div id="ce_reactiver" style="display: none;">Réactiver pour ce champ</div>
+			</div>
+
+			<div id="section_billetix" style="display: none;">
+				<hr id="dessus_billetix">
+				<button id="soumettre_une_observation" type="button" class="bouton-actions bouton-defaut bouton-auto">Soumettre une observation</button>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="message_office365" style="display:none">
+		<table >
+			<tr>
+				<td>
+					<div id="block_office365">
+						<div id="avertissement">⚠</div>
+						<div id="message_office365_message">Office 365 online n'est pas supporté par Antidote.</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="message_incognito" style="display:none">
+		<table >
+			<tr>
+				<td>
+					<div id="block_incognito">
+						<div id="avertissement_incognito">⚠</div>
+						<div id="message_incognito_message"></div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

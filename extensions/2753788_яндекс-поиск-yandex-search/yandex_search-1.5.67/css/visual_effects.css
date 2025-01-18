@@ -1,0 +1,994 @@
+ul#search-result > li[goodly-ads-user-agent="linux"][data-fast-name*="ecommerce"],
+ul#search-result > li[goodly-ads-user-agent="linux"][data-fast-subtype*="products"],/* Colors
+https://www.w3schools.com/colors/colors_names.asp
+*/
+
+:root {
+  --column-width: 665px;  
+    
+  --top_bar-bg-color: #e6e6e6;
+  --search-bg-color: #fbbc05;
+    
+  --navigation_bar-bg-color: #cfcdcd;
+  --list-bg-color: #a0a0a0; /* Фон ленты из моей темы Linux Mint - цвет заголовка активного окна */
+  --result-main-bg-color: #ececec; /* Цвет карточки для com и ru сайтов = #ececec */
+  --result-dark-bg-color: #ccc; /* #ccc #d8d8d8 */
+  --result-org-bg-color: #F5DEB3; /* #F5DEB3 */
+  --result-net-bg-color: #b7d7e8; /* #b7d7e8 */
+  --result-edu-bg-color: #9ddfc6; /* #9ddfc6 */
+  --result-gov-bg-color: #c6bad4; /* #c6bad4 */
+  --result-info-bg-color: #b5e7a0; /* #b5e7a0 */
+  --result-biz-bg-color: #81d9de; /* #81d9de */
+  --result-site-bg-color: #81a3de; /* #81a3de */
+  --result-me-bg-color: #ffe59a; /* #ffe59a */
+  --result-io-bg-color: #e4a0ed; /* #e387ef */
+  --result-top-bg-color: #6aa465; /* #6aa465 */
+  --result-xyz-bg-color: #ffaba8; /* #ffaba8 */
+    
+    
+  --insert-main-bg-color: #fbbc0569; /* Фон вставок */
+  
+  --border-color: #b3c8e7;  
+
+  --right_flow-trans-bg-color: #e6e6e6ab;
+  --frame-color: #4185e9;
+  --shadow-color: #0009;
+    
+  --link-color: #1a0dab;  
+  --link_visited-color: #609;  
+  --domain-color: #444C3C;  
+  --result-text-color: #584600; /* Цвета из форума Минт */  
+  --result-em-bg-color: #ffffff70;   
+    
+
+}
+
+body * {
+    font-family: "Roboto", sans-serif !important;
+}
+
+body b {
+    font-weight: 500 !important;
+}
+
+#search-result * {
+    font-family: "Roboto Condensed", sans-serif !important;
+}
+
+/* from Global */
+textarea, input[type=text] {
+    /*-moz-appearance: none !important;*/
+    background-color: var(--result-main-bg-color) !important;
+    color: black !important;
+}
+
+
+
+/* Сылка-Логотип Яндекс вверху слева */
+.HeaderDesktopLogo {
+    padding-left: 10px;
+    padding-right: 10px;
+    background-position: top 3px left 10px;
+    font-size: 0px;
+}
+.HeaderDesktopLogo:hover {
+    outline: 1px solid var(--result-info-bg-color);
+    border-radius: 22px;
+    background-color: #ffd73e !important;        
+}
+
+/* Кнопка очистить "Х" */
+.HeaderDesktopForm-Input {
+    z-index: 2;
+}
+.HeaderDesktopForm-Clear {
+    outline: 10px solid var(--result-info-bg-color);  
+    transform: scale(2.8) !important;
+    z-index: 1;
+    background-color: #dfedf0 !important;      
+}
+.HeaderDesktopForm-Clear:hover * {
+    background-color: #ffd73e !important;        
+}
+
+
+/* Кнопка Найти */
+.HeaderDesktopForm-Submit:hover {
+    outline: 1px solid var(--result-info-bg-color);  
+    background-color: #ffd73e !important;        
+}
+.HeaderDesktopForm-Submit:hover * {
+    background-color: #ffd73e !important;        
+}
+
+/* Кнопка аккаунта */
+.HeaderDesktopUser:hover {
+    outline: 1px solid var(--result-info-bg-color);  
+}
+/* Кнопки действия */
+.HeaderDesktopActions-Button:hover {
+    outline: 1px solid var(--result-info-bg-color);  
+    background-color: var(--depot-color-control-secondary);
+}
+
+
+/** ПАНЕЛЬ НАВИГАЦИИ **/
+.HeaderNav-DynamicTabs {
+    width: unset !important;
+}
+a.HeaderNav-Tab {
+    padding-left: 15px !important;
+    padding-right: 10px !important;
+}
+a.HeaderNav-Tab:before {
+    position: relative;
+    left:  -5px;
+    bottom: -3px;
+    filter: saturate(30%);
+}
+a.HeaderNav-Tab:hover,
+a.HeaderNav-Tab_selected
+{
+    color: #252525 !important;
+    background: rgba(0, 0, 0, .1) !important;
+    font-weight: 700;
+}
+/*
+.HeaderNav-Tab_selected::after {
+    left: 2px !important;  
+    right: 2px !important;
+}
+*/
+a.HeaderNav-Tab:hover:before,
+a.HeaderNav-Tab_selected:before
+{
+    filter: none;  
+}
+
+span.HeaderNav-TabCover {
+    display:none;
+}
+
+a.HeaderNav-Tab[href^="//ya.ru?"]:before,
+a.HeaderNav-Tab[href^="/?"]:before,
+a.HeaderNav-Tab[href^="/search?"]:before,
+a.HeaderNav-Tab[href^="//ya.ru/search?"]:before,
+a.HeaderNav-Tab[href^="//yandex.by/search?"]:before,
+a.HeaderNav-Tab[href^="//yandex.com/search?"]:before,
+a.HeaderNav-Tab[href^="//yandex.com.tr/search?"]:before,
+a.HeaderNav-Tab[href^="//yandex.kz/search?"]:before,
+a.HeaderNav-Tab[href^="//yandex.ru/search?"]:before
+{
+    content: url(../icon/navigation-search.svg);
+    /*content: url(https://favicon.yandex.net/favicon/v2/https://yandex.ru/?size=16&stub=1);*/
+}
+a.HeaderNav-Tab[href*="/images/search?"]:before,
+a.HeaderNav-Tab[href*="/images?"]:before
+{
+    content: url(../icon/navigation-images.svg);
+}
+a.HeaderNav-Tab[href*="/video/search?"]:before,
+a.HeaderNav-Tab[href*="/video?"]:before
+{
+    content: url(../icon/navigation-video.svg);
+}
+a.HeaderNav-Tab[href*="/maps?"]:before {
+    content: url(../icon/navigation-maps.svg);
+}
+a.HeaderNav-Tab[href*="/products/search?"]:before {
+    content: url(../icon/navigation-products.svg);
+}
+a.HeaderNav-Tab[href^="//translate"]:before {
+    content: url(../icon/navigation-translate.svg);
+}
+a.HeaderNav-Tab[href*="/all?"]:before {
+    content: url(../icon/navigation-all.svg);
+}
+
+a.HeaderNav-Tab[href^="//disk"]:before {
+    content: url(../icon/navigation-disk.svg);
+}
+a.HeaderNav-Tab[href^="//mail"]:before {
+    content: url(../icon/navigation-mail.svg);
+}
+a.HeaderNav-Tab[href*="/search/direct?"]:before,
+body[uri*="/search/direct?"] a.HeaderNav-Tab_selected:before
+{
+    content: url(../icon/navigation-direct.svg);
+}
+
+
+
+
+/********************* Кнопки Advanced Search ************************/
+.AdvancedSearch-Control {
+    border-radius: 10px;
+}
+
+/* Кнопки с подсказками люди ищут */
+.Related-Button:hover {
+    background: rgba(0, 0, 0, .1) !important;
+}
+
+/*********** Карточка ответа ***********/
+ul#search-result > li {
+    border: 1px solid var(--border-color);
+    border-radius: 20px 20px 20px 20px !important;
+    background-color: var(--result-main-bg-color);  
+    /*background: linear-gradient(to bottom, 
+        var(--result-dark-bg-color), var(--result-dark-bg-color), var(--result-dark-bg-color),
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color)); */
+    /*margin-top: 0px !important;*/
+    box-shadow: 0 8px 6px -6px var(--shadow-color) !important;   
+}
+
+ul#search-result > li {
+    padding: 10px 14px;
+}
+ul#search-result > li:not(last-of-type) {
+    margin-bottom: 15px !important;
+}
+
+/* Изменение порядка */
+.Organic, /* 1 - обычные карточки */
+.SocialSnippetHeader-Link, /* 2 - соцсети */
+.Organic-Content /* Реклама */
+{
+  display: flex;
+  flex-flow: column;
+}
+.OrganicTitle { order: 2 }
+.Organic-Subtitle { 
+    order:1;
+    padding: 13px 0px 13px 50px;
+}
+.Organic-ContentWrapper { order: 3 }
+
+
+/* Вынос иконки группы соцсетей */
+/* 1 - .Organic */
+/* Пока отключил, т.к. съезжают превьюшки у блоков с каруселью
+.Organic  {
+    position: relative !important;
+}
+.Organic .Thumb {
+  position: absolute;
+  left: -130px;
+}
+*/
+/* 2 - .SocialSnippetHeader */
+.SocialSnippetHeader
+{
+  display: table !important;
+}
+/*
+.SocialSnippetHeader .SocialSnippetHeader-Avatar {
+    //position: absolute !important;  
+    
+    transform: scale(2) !important;
+    //top: 20px !important;
+    //left: -80px !important;    
+}
+*/
+
+
+
+
+/* Карусель */
+.Composite .OrganicTitle {
+  display: flex;
+  flex-flow: column;
+}
+.Composite .OrganicTitle .OrganicTitle-Link { order: 2 }
+.Composite .OrganicTitle .Organic-Subtitle { 
+    order:1;
+    padding: 13px 0px 13px 50px;
+}
+
+/* Карусель ЯНДЕКС_МАРКЕТА встроенная в карточку ответа 
++ блок из 6 реклам */
+ul#search-result > li article a.Link_theme_blackText,
+ul#search-result > li article a.Link_theme_black
+{
+    padding: 13px 0px 13px 50px;    
+}
+/* блок из 6 реклам - цена съехала, возвращаю опять */
+.ProductCardPrice a.Link_theme_blackText,
+.ProductCardPrice a.Link_theme_black
+{
+    padding: unset !important;   
+}
+.ProductCardTitle {
+    max-height: 1000px !important;   
+}
+.ProductCard {
+    outline: 3px solid var(--result-main-bg-color);
+
+    background: var(--result-main-bg-color);    
+}
+
+
+/* Комбо из блока картинок и реклам*/
+/*
+ul#search-result > li .ComboAnswer .ImagesColumn a.Link_theme_blackText {
+    padding: 13px 0px 13px 50px;    
+}
+*/
+
+
+
+
+
+
+/************************* ИКОНКА САЙТА *******************************/
+/*
+ul#search-result > li .Link {
+  position: relative !important;
+  background: pink;
+}
+*/
+ul#search-result > li .Favicon {
+    position: absolute !important;  
+    
+    transform: scale(2) !important;
+    top: -31px !important;
+    left: 10px !important;
+    
+    z-index: 5000 !important;
+    
+    border-radius: 2px !important;
+    
+    background-color: white;
+    /*padding: 1px;*/
+    border: 0.1px solid white !important; 
+    
+    box-shadow: 0 5px 6px -6px var(--shadow-color) !important;   
+    
+}
+
+/* Перевод Вики - иконку нужно смещать вниз, а не вверх, т.к. домен внизу */
+ul#search-result > li .TranslatedSnippet .Favicon {
+    top: calc(100% + 111px) !important;
+}
+/* Блок картинок | видео - иконку нужно смещать, бывает двух вариантов - таблица или карусель */
+ul#search-result > li .ImagesGrid .Favicon,
+ul#search-result > li .Video .Favicon
+{
+    top: 0px !important;
+    left: -55px !important;
+}
+ul#search-result > li .ImagesScroller .Favicon {
+    top: 0px !important;
+    left: -55px !important;
+}
+/* Блок реклам - иконку нужно смещать */
+ul#search-result > li article.Products .Favicon, /* Блок 6 реклам в карточке */
+ul#search-result > li article  .Favicon /* Карусель в карточке, класс Products у неё отсутствует */
+{
+    top: 15px !important;;
+}
+/* Соцсети - иконку нужно смещать */
+ul#search-result > li .SocialSnippet .Favicon {
+    top: 55px !important; 
+}
+/* Курсы - иконку нужно смещать */
+ul#search-result > li .UniSearchEducation .Favicon {
+    top: 15px !important; 
+    left: -55px !important;
+}
+/* Комбо из блока картинок и реклам*/
+ul#search-result > li .ComboAnswer .ImagesColumn .Favicon {
+    top: 5px !important;;
+    left: -70px !important;
+}
+
+
+
+ul#search-result > li .Favicon * {
+    border-radius: 0 !important;
+}
+
+ul#search-result > li .Organic-Subtitle {
+    z-index: 1 !important;
+}
+
+/* При нажатии появляется рамка, а т.к. раньше её не было, то
+иконка сдвигается на толщину рамки. Получается прикольный эффект нажатия */
+ul#search-result > li .Link:hover .Favicon {
+    /*background-image: none; */
+    background-color: #fbbc05 !important;
+    border: 2px solid #b3c8e7 !important;    
+    border-radius: 5px !important;    
+    box-shadow: none !important;
+}
+
+
+/************************* ДОПОЛНИТЕЛЬНАЯ БОЛЬШАЯ ИКОНКА САЙТА или ПРЕВЬЮ *******************************/
+/* сдвигаю влево */
+.Organic_thumbFloat_right .Organic-Thumb {
+  float: left !important;
+  margin-left: 0px !important;
+}
+
+
+/**********  Подробное описание карточки ********************/
+span.ExtendedText-Short {
+    display: none;
+}
+span.ExtendedText-Full {
+    position: unset !important;
+    width: unset !important;
+    height: unset !important;    
+}
+span.ExtendedText-Full .ExtendedText-Toggle {
+    display: none;
+}
+
+
+/* Ссылка */
+a.Link_theme_normal { 
+    display: inline-flex !important; /* Для svg просмотренных ссылок */  
+    color: #1a0dab;
+}
+/* возвращаю block */
+.ProductCardContent a.Link_theme_normal, /* В блоке с 6-ю рекламами */
+a.Link_theme_normal[href^="https://yabs.yandex.ru/"] /* В карточке с каруселью рекламы */
+{ 
+    display: block !important; 
+}
+
+
+
+.Scroller a.Link_theme_normal { 
+    display: unset !important; /* Иначе в блоке с каруселью, пропадают превью при inline-flex */
+}
+
+a.Link_theme_normal span.marking { 
+    color: #006598;
+}
+a.Link_theme_normal span.separator {
+    color: #d900e1;
+    font-weight: 700;
+}
+a.Link_theme_normal span.digit {
+    color: #00890a;
+    font-weight: 700;
+}
+
+
+a.Link_theme_normal:hover {
+    text-decoration: underline !important;
+    color: #1a0dab !important;
+}
+
+
+
+a.Link_theme_normal:visited { 
+    color: #609 !important;
+}
+a.Link_theme_normal:visited span.marking { 
+    color: hsl(18, 100%, 35%) !important;
+}
+a.Link_theme_normal:visited span.separator {
+    color: #00aab5 !important;
+}
+a.Link_theme_normal:visited span.digit {
+    color: #c30059 !important;
+}
+
+
+
+
+
+
+/* Ссылка-Адрес с доменом */
+a.Link_theme_outer
+{ 
+    font-size: 9px;
+    color: #444C3C;
+    font-family: "Roboto Condensed", sans-serif !important;
+}
+a.Link_theme_outer:hover
+{ 
+    color: #444C3C !important;
+    /*text-decoration: underline !important;*/
+}
+a.Link_theme_outer b { 
+    font-size: 16px;
+    padding-right: 25px !important;
+}
+/* Справка справа от адреса о рекламе и сколько времени назад опубликовано - пока скрываю */
+ul#search-result > li .Organic-Subtitle .LabelDirect {
+    display: none !important;
+}
+
+/*********************** Ответы - ссылка и иконка *****************************/
+.Fact-Subtitle {
+    display: inline-block !important;
+}
+.Fact-Subtitle span.Path-Item  {
+    display: inline !important;
+    position: relative !important;
+}
+.Fact-Subtitle b { 
+    padding: 10px 15px !important;  
+    display: inline-block !important;
+    
+    color: #444C3C;
+    font-family: "Roboto Condensed", sans-serif !important;    
+    font-size: 16px;    
+}
+.Fact-Subtitle b:hover
+{ 
+    color: #444C3C !important;
+    text-decoration: underline !important;
+}
+.Fact-Subtitle .Favicon {
+    display: inline-block !important;
+    position: inherit !important;
+    margin-left: 10px !important;
+    
+    transform: scale(2) !important;
+    top: 6px !important;
+    left: 0px !important;
+    border-radius: 2px !important;
+    
+    background: #fff !important;
+    padding: 1px !important;
+
+    box-shadow: none !important;   
+}
+.Fact-Subtitle .Favicon * {
+    border-radius: 0 !important;
+}
+
+
+
+/***************************** ВНИЗУ **************************************/
+/* Кнопки навигации внизу */
+.Pager {
+    margin: 26px 0 26px 0px !important;
+}
+.Pager-Content {
+    width: 100% !important;
+    display: flex !important;  
+}
+.Pager-ListItem {
+    background: var(--result-main-bg-color);
+    padding: 3px;
+    border-radius: 20px;
+}
+.Pager-ListItem:first-of-type {
+    margin-left: 0px;
+    width: 100% !important;
+    display: inline-grid !important;
+}
+.Pager-ListItem:last-of-type {
+    width: 100% !important;
+    display: inline-grid !important;
+}
+.Pager-ListItem:hover {
+    background: #80808059;
+}
+
+
+.Pager-ListItem_type_next a:after {
+    content: url(../icon/arrow-right.png);
+    position: relative;
+    right:  -10px;
+    bottom: -6px;
+    z-index: 1;
+}
+
+.Pager-ListItem_type_begin a {
+	padding: 0 14px 0 22px;
+}
+.Pager-ListItem_type_begin a:before {
+    content: url(../icon/arrow-left.png);
+    position: relative;
+    left:  -10px;
+    bottom: -6px;
+    z-index: 1;
+    
+    
+}
+
+
+
+/* Кнопки люди ищут внизу */
+body[page] .RelatedBottom {
+    display: none;
+}
+
+.RelatedBottom {
+    margin-top: 5px !important;
+    padding-top: 2px;
+    padding-bottom: 0px;
+    border-radius: 20px 20px 20px 20px !important;
+    background: var(--right_flow-trans-bg-color);  
+    background: linear-gradient(to bottom, 
+        var(--right_flow-trans-bg-color), 
+        #e6e6e600, #e6e6e600, #e6e6e600);
+    /*margin-top: 0px !important;*/
+   
+}
+.RelatedBottom-Column:not(:last-child) {
+  margin-right: 5px;
+}
+.RelatedBottom-Item a {
+    height: 40px !important;
+    display: grid !important;
+}
+.RelatedBottom-Item a .Thumb {
+    transform: scale(0.55) !important;
+    top: unset !important;
+    left: unset !important;
+}
+
+
+
+
+/*************************************************************************************/
+/*************************************************************************************/
+/*************************************************************************************/
+/*************************************************************************************/
+/*************************************************************************************/
+/*************************************************************************************/
+/*************************************************************************************/
+/* ФИЛЬТРЫ 
+*/
+
+
+
+/* ИКОНКИ ФЛАГОВ
+*/
+.goodly-favicon-zone {
+	position: absolute;
+	overflow: visible;    
+    
+    right: 8px;
+    top: 8px;  
+    border-radius: 10px !important;
+    
+    padding: 5px;
+
+    background-color: white !important; 
+    
+    z-index: 1000 !important;
+}
+
+
+/* ИКОНКИ ТИПА ДОМЕНА
+*/
+.goodly-favicon-zone-type {
+	position: absolute;
+	overflow: visible;    
+    
+    left: calc(100% + 20px); 
+    top: 8px;  
+    border-radius: 10px !important;
+    padding: 5px;
+
+    background-color: white !important;
+    
+}
+
+
+/* SVG visited */
+ul#search-result > li .OrganicTitle a.Link:link svg {   
+    position: absolute;
+    left: -60px;
+    bottom: -2px;    
+    background: transparent;
+}
+ul#search-result > li .OrganicTitle a.Link path { 
+    stroke: #a8ae98; 
+    fill: #a8ae98;
+    stroke-width: 1;
+}
+ul#search-result > li .OrganicTitle a.Link:visited path {
+    stroke:#950bff; 
+    fill:#60e04b; 
+}
+
+
+/********/
+ul#search-result > li[goodly-filter="ru"] {    
+    outline: 7px solid #fff !important;
+}
+ul#search-result > li[goodly-filter="be"]
+{    
+    border-color: #ff7d6a !important;   
+    outline: 7px solid #73af00 !important;
+}
+ul#search-result > li[host-full$=".kz"] {    
+    border-color: #dac04d !important;
+    outline: 7px solid #82c3d2 !important;
+}
+ul#search-result > li[host-full$=".kg"] {    
+    border-color: #ffe15a !important; 
+    outline: 7px solid #ff8188 !important;
+}
+ul#search-result > li[host-full$=".am"] {    
+    border-color: #ffb400 !important;
+    outline: 7px solid #41479b !important;
+}
+ul#search-result > li[host-full$=".tj"] {    
+    border-color: #73af00 !important; 
+    outline: 7px solid #ff4b55 !important;
+}
+ul#search-result > li[host-full$=".uz"] {    
+    border-color: #41b750 !important; 
+    outline: 7px solid  #389ab0 !important;
+}
+ul#search-result > li[host-full$=".az"] {    
+    border-color: #73af00 !important; 
+    outline: 7px solid  #82afff !important;
+}
+ul#search-result > li[host-full$=".ge"] {    
+    border-color: white !important; 
+    outline: 7px solid  #fa9fa4 !important;
+}
+ul#search-result > li[host-full$=".lv"] {    
+    border-color: white !important; 
+    outline: 7px solid  #c8414b !important;
+}
+ul#search-result > li[host-full$=".lt"] {    
+    border-color: #73af00 !important; 
+    outline: 7px solid  #ffe15a !important;
+}
+ul#search-result > li[host-full$=".ee"] {    
+    border-color: #464655 !important; 
+    outline: 7px solid  #4173cd !important;
+}
+ul#search-result > li[host-full$=".md"] {    
+    border-color: #e02112 !important; 
+    outline: 7px solid  #fd0 !important;
+}
+ul#search-result > li[host-full$=".tm"] {    
+    border-color: #e02d2a !important; 
+    outline: 7px solid  #00853d !important;
+}
+
+/* Turkey */
+ul#search-result > li[host-full$=".tr"] {    
+    border-color: white !important;
+    /* outline: 4px solid #ff4b55 !important; */
+    outline: 7px ridge #ff7980 ;
+}
+
+
+
+/* VIDEO */
+/* еще скопировать селекторы к иконке просмотренных ссылок, см. выше */
+ul#search-result > li[host-full="rutube.ru"],
+ul#search-result > li[goodly-href^="https://yandex.ru/video/"],
+ul#search-result > li[goodly-href^="https://vk.com/video"], /* ссылки ВК без слеша */
+ul#search-result > li[goodly-href^="https://ok.ru/video/"],
+ul#search-result > li[goodly-href^="https://dzen.ru/video/"],
+ul#search-result > li[host-full="my.mail.ru"][goodly-href*="/video/"],
+
+
+ul#search-result > li[host-full="youtube.com"],
+ul#search-result > li[host-full="tiktok.com"],
+ul#search-result > li[host-full="vimeo.com"],
+ul#search-result > li[host-full="dailymotion.com"],
+ul#search-result > li[host-full="playeur.com"], /* Utreon */
+ul#search-result > li[goodly-href^="https://archive.org/details/movies"],
+ul#search-result > li[host-full="crackle.com"],
+ul#search-result > li[host-full="twitch.tv"],
+ul#search-result > li[host-full="open-video.org"],
+ul#search-result > li[host-full="9gag.com"],
+ul#search-result > li[goodly-href^="https://www.ted.com/talks"],
+ul#search-result > li[host-full="d.tube"],
+
+ul#search-result > li[data-fast-name*="video"]
+{    
+    background-color: #f0cfcf !important;
+}
+
+/**/
+ul#search-result > li[goodly-filter="org"]
+{    
+    background: linear-gradient(to bottom, 
+        var(--result-org-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));    
+}
+ul#search-result > li[goodly-filter="net"]
+{    
+    background: linear-gradient(to bottom, 
+        var(--result-net-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="edu"]
+{    
+    background: linear-gradient(to bottom, 
+        var(--result-edu-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="gov"]
+{        
+    background: linear-gradient(to bottom, 
+        var(--result-gov-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="info"]
+{        
+    background: linear-gradient(to bottom, 
+        var(--result-info-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="biz"]
+{        
+    background: linear-gradient(to bottom, 
+        var(--result-biz-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="site"]
+{        
+    background: linear-gradient(to bottom, 
+        var(--result-site-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="me"]
+{        
+    background: linear-gradient(to bottom, 
+        var(--result-me-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="io"]
+{        
+    background: linear-gradient(to bottom, 
+        var(--result-io-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="top"]
+{        
+    background: linear-gradient(to bottom, 
+        var(--result-top-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="xyz"]
+{        
+    background: linear-gradient(to bottom, 
+        var(--result-xyz-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="freezone"]
+{    
+    border-color: #ff9696 !important;      
+    background: linear-gradient(to bottom, 
+        var(--result-dark-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color));
+}
+ul#search-result > li[goodly-filter="eu"]
+{    
+    outline: 7px solid var(--frame-color) !important;
+    background: linear-gradient(to bottom, 
+        var(--result-dark-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color)); 
+}
+ul#search-result > li[goodly-filter="uk"]
+{    
+    outline: 7px solid #a38a52 !important;
+    background: linear-gradient(to bottom, 
+        var(--result-dark-bg-color), 
+        var(--result-main-bg-color), var(--result-main-bg-color), var(--result-main-bg-color)); 
+}
+
+/* GRAYSCALE FILTER */
+ul#search-result > li[goodly-filter="ua"]
+{
+    border: solid !important;
+    border-width: 2px !important;    
+    color: var(--domain-color) !important;   
+    border-color: var(--navigation_bar-bg-color) !important;      
+    background: var(--list-bg-color);   
+}
+ul#search-result > li[goodly-filter="ua"] *:not(.Favicon-Icon)
+{
+    color: var(--domain-color) !important;   
+    border-color: var(--navigation_bar-bg-color) !important;      
+    background: var(--list-bg-color);   
+}
+ul#search-result > li[goodly-filter="ua"] .Favicon-Icon
+{
+    filter: grayscale(1);   
+}
+
+    
+
+/* ADS */
+ul#search-result > li.goodly-ads-target
+{
+    outline: 7px solid #f00 !important;
+}
+
+.goodly-ads-target:not(.card__narrow),
+body.goodly-ad-block div.entity-search__ecom-offers, /* Предложения в Комбо справа */
+body.goodly-ad-block a.mini-suggest__item-link /* Подсказки в поле ввода запроса */
+{
+    display: none;
+    /*display: block !important;*/
+    background-color: #f0dcb9 !important; 
+    background-image: url("../icon/background_ad.png") !important;
+    outline: 7px solid #f00 !important;
+}
+
+body.goodly-ad-block a.mini-suggest__item-link {
+    border: 3px solid red;
+    border-radius: 20px !important;
+}
+/* Справка справа от адреса - делаю рамку у рекламы */
+.goodly-ads-target .LabelDirect {
+    display: unset !important;
+    outline: 7px solid #f00 !important;   
+    border-radius: 150px !important;  
+}
+/* Отступ внизу главной рекламной карусели */ 
+.main__carousel .goodly-ads-target {
+    margin-bottom: 15px !important;   
+}
+
+
+/***** Плашка про роскомнадзор *****/
+.Warning_type_roskomnadzor {
+    display: none;
+}
+
+
+/* Плашка об отсутствии результатов и ссылки на закон */
+[data-fast-name="legal"]
+{
+    display: none;
+}
+
+/* Плашка: Кажется ли вам дизайн этой страницы современным? */
+ul#search-result > li[data-fast-name="multiusurveys"] {
+    display: none;
+}
+
+
+/* Кнопки внизу */
+.SerpFooter-Link:hover {
+    background: rgba(0, 0, 0, .1) !important;    
+    border-radius: 12px;
+}
+/* Кнопка внизу Сообщить об ошибке */
+.SerpFooter-LinksGroup_type_feedback {
+    display: none;
+}
+/* Кнопка внизу ya.ru */
+.SerpFooter-LinksGroup_type_morda {
+    display: none;
+}
+
+/* Алиса - YandexGPT */
+.AliceFabContainer,
+.VanillaReact[class*="Alice"],
+.AliceGuru,
+#alice-fab
+{
+    display: none;
+}
+
+/* НЕ найденное слово */
+.MissingWords {
+    background: linear-gradient(to right, 
+        #e16aff, 
+        #fff0); 
+    padding: 5px 10px;
+    border-radius: 100px;
+    color: white;
+}
+/* Предупреждение о нежелательных программах  */
+.infected__warning-link {
+    background: linear-gradient(to right, 
+        #a92c16, 
+        #ff4525) !important;  
+    padding: 5px 10px;
+    border-radius: 100px;
+    color: white !important; 
+}
+
+

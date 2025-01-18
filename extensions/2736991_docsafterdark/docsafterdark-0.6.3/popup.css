@@ -1,0 +1,174 @@
+:root {
+  --primary-background-color: #1b1b1b;
+  --secondary-background-color: #262626;
+  --menu-background: #1b1b1bf0;
+  --hover-background-color: #333333;
+  --input-background-color: #404040;
+
+  /* buttons */
+  --button-background-color: #4d4d4d;
+  --button-background-color-hover: #2196f3;
+  --button-background-color-focus: #2196f3;
+  --button-two-background-color: #262626;
+  --button-two-background-color-hover: #333333;
+
+  --enabled-background-color: #808080;
+  --selection-background-color: #999999;
+
+  --primary-border-color: #4d4d4d;
+  --secondary-border-color: #404040;
+
+  --primary-text-color: #f2f2f2;
+  --secondary-text-color: #cccccc;
+  --tertiary-text-color: #999999;
+  --disabled-text: #666666;
+  --accent-text: #64b5f6;
+}
+
+body {
+  background-color: var(--primary-background-color);
+}
+
+body {
+  color: var(--primary-text-color);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  width: 300px;
+  padding-bottom: 1em;
+}
+
+#main {
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.menu_bar_label {
+  color: #999999;
+  margin-bottom: 8px;
+}
+
+.menu_bar {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid var(--primary-border-color);
+  width: fit-content;
+  border-radius: 4px;
+}
+
+#on_off {
+  margin-bottom: 18px;
+}
+
+button {
+  background-color: transparent;
+  color: var(--primary-text-color);
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  /* transition: background-color 0.1s ease-out; */
+  /* border-radius: 4px; */
+}
+
+button:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+input {
+  background-color: var(--input-background-color);
+  border: 1px solid var(--primary-border-color);
+  border-radius: 4px;
+  margin: 8px 0;
+  padding: 4px 8px;
+  color: var(--primary-text-color);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+  width: fit-content;
+  margin: 0;
+  margin-right: 4px;
+}
+
+input[type="checkbox"]:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+input[type="checkbox"]:disabled+label {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+#invert_container {
+  margin: -6px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+#invert_container .input {
+  margin: 6px;
+}
+
+#document_border_container {
+  margin-bottom: 18px;
+}
+
+label {
+  font-family: inherit;
+}
+
+button:hover {
+  background-color: var(--hover-background-color);
+}
+
+button.selected {
+  background-color: var(--button-background-color-focus);
+  border-radius: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+#save_custom {
+  background-color: var(--hover-background-color);
+  border-radius: 4px;
+}
+
+#save_custom:hover {
+  background-color: var(--button-background-color-focus);
+}
+
+footer {
+  margin-top: 0.5em;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#version {
+  color: var(--tertiary-text-color);
+  margin: 0;
+}
+
+#donate {
+  text-align: right;
+  color: var(--accent-text);
+  /* button-like */
+  background-color: var(--hover-background-color);
+  box-sizing: border-box;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+#donate:hover {
+  background-color: var(--button-background-color-focus);
+  color: var(--primary-text-color);
+}

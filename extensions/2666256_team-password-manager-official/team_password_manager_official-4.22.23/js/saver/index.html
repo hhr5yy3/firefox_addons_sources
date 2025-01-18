@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>__MSG_savTitle__ | Team Password Manager</title> <!-- Save Password -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/saver.css">
+	<script src="../jquery-3.5.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="../tree/themes/default/style.min.css" />
+	<script src="../tree/jstree.js"></script>
+	<script src="saver.js"></script>
+	<style type="text/css">
+		.jstree-anchor {
+			color: #08c !important;
+		}
+		.jstree-disabled {
+			color: #666 !important;
+		}
+	</style>
+</head>
+<body>
+	<div id="tpm_saver_header">
+		<div id="tpm_popup_header">
+			<div id="tpm_logo"></div>
+			<h1>Team Password Manager</h1>
+			<div id="tpm_save_pwd">__MSG_savSubtitle__</div> <!-- SAVE PASSWORD -->
+		</div>
+
+		<p style="margin-top: 10px; margin-bottom: 0; font-weight: bold">__MSG_savEnterNameChoose__</p> <!-- Enter a name for the password and choose where to save the password in: -->
+	</div>
+
+	<div id="tpm_saver_body">
+		<form class="form-horizontal" style="margin-bottom: 0">
+			<div class="control-group" style="margin-bottom:8px" id="tpm_errors_group">
+	    		<label class="control-label" for="tpm_pwd_name"></label>
+	    		<div class="controls">
+					<div id="tpm_errors"></div>
+	    		</div>
+	  		</div>
+	  		<div class="control-group" style="margin-bottom:10px">
+	    		<label class="control-label" for="tpm_pwd_name">__MSG_savNameRequired__</label> <!-- Name (required) -->
+	    		<div class="controls">
+					<input type="text" id="tpm_pwd_name" class="span10" placeholder="" maxlength="200" autocomplete="off" autofocus>
+	    		</div>
+	  		</div>
+			<div class="control-group" style="margin-bottom:0">
+				<label class="control-label" for="tpm_select_where">__MSG_savWhereTo__</label> <!-- Where to -->
+				<div class="controls">
+		    		<select id="tpm_select_where" style="display:none">
+    					<option value="tpm_shared">__MSG_savSharedPwds__</option> <!-- Shared Passwords -->
+    					<option value="tpm_my">__MSG_savMyPwds__</option> <!-- My Passwords -->
+  					</select>
+  					<div id="tpm_shared_passwords_div" style="padding-top: 10px">
+  						<div id="tpm_saver_projects">__MSG_savSelectProject__</div> <!-- Select Project -->
+						<div style="height: 225px">
+	  						<div id="tree_container" style="overflow: auto; width: 100%; height: 90%"></div>
+	  					</div>
+	  				</div>
+  				</div>
+			</div>
+
+		</form>
+	</div> <!-- tpm_saver_body -->
+	
+	<div id="tpm_saver_footer">
+		<div id="tpm_saver_buttons">
+			<button id="tpm_saver_cancel" class="btn" >__MSG_generalCancelButton__</button>
+			<button style="margin-left: 10px" id="tpm_saver_submit" class="btn btn-primary">__MSG_savSavePwdButton__</button> <!-- Save Password -->
+		</div>
+	</div>
+
+</body>
+</html>

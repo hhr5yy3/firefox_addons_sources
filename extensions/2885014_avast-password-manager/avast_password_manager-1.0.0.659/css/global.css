@@ -1,0 +1,68 @@
+/* Important!!! */
+/* This file is only meant for defining global font-faces or very specific one-off initialization styles */
+@import url('./font.css');
+
+/* Initial dimensions */
+
+/* TODO: Generate html files with the theme specific background color and load as per current theme. REMOVE this hardcoded color. */
+html, body {
+  background-color: rgba(11, 45, 66, 1); /* Color code of Avast dark theme's surface color */
+}
+
+html#dashboard {
+  height: 100%;
+}
+
+html#dashboard body {
+  height: 100% !important;
+  min-height: 100% !important;
+  overflow: hidden !important;
+}
+
+html#popover body {
+  width: 400px !important;
+  height: 600px !important;
+  overflow: hidden !important;
+}
+
+html#popover #root {
+  overflow: hidden !important;
+}
+
+/* root element should be based on 100% height of the parent(body) */
+
+#root {
+  height: 100%;
+}
+
+/* global css for search boxes in dashboard and poup */
+div.search-box div.main-container label {
+  max-width: 85%;
+}
+
+/* main loader for dashboard */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.main-loader .spinner-blue {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 113px;
+  height: 113px;
+  border: 5px solid transparent;
+  border-radius: 50%;
+  border-top: 5px solid #0070f7;
+  border-left: 5px solid #0070f7;
+  border-right: 5px solid #0070f7;
+  animation: spin 0.7s linear infinite;
+}

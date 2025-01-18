@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Adobe Experience Cloud Bookmarks Options</title>
+<script src="jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="options.css" type="text/css">
+</head>
+<body>
+
+<div id="feedbackblock">
+    <div id="feedbackquestion" class="info">
+        <p>
+            <strong>Would you recommend this extension to your friends?</strong>
+            <br /><a id="feedbackyes" href="#">Yes</a> &nbsp;<a id="feedbackno" href="#">No</a>
+        </p>
+    </div>
+    <div id="feedbackanswerno" class="info">
+        <p>
+            <strong>Thank you for your feedback!</strong>
+            <br />I would appreciate if you could send me an advice about what should be improved — <a href="mailto:andrewo@yandex.ru">andrewo@yandex.ru</a>
+        </p>
+    </div>
+    <div id="feedbackansweryes" class="info">
+        <p>
+            <strong>Thank you for your feedback! I'm pleased you like the extension 😊</strong>
+            <br />I will appreciate if you <a id="feedbackextensionlink" href="https://addons.mozilla.org/en-GB/firefox/addon/adobe-experience-bookmarks/" target="_blank">rate this extension</a> and share it with your friends.
+        </p>
+    </div>
+</div>
+
+
+<div id="welcome" class="info">
+    <p>
+        <strong>Welcome to Adobe Experience Cloud Bookmarks configuration!</strong>
+        <br /><br />Add an Experience Cloud organization to activate the extension. You can add as many organizations as you want. Once an organization is added, click on the extension icon to open the bookmarks.
+    </p>
+</div>
+
+
+<div id="orgblock">
+    <h3>Organizations:</h3>
+    <div id="orglist"></div>
+</div>
+
+<div id="addneworg">
+<hr />
+    <h3>Add new organization</h3>
+    <p id="infoEnableOrgAutoImport" class="hide">Enable the "Automatically Import Organizations" setting to let the extension fill the list of organizations for you.</p>
+    <p id="infoUseOrgAutoImport" class="hide">If adding organizations manually looks intricate, just log in to <a href="https://experience.adobe.com/" target="_blank">Experience Cloud</a> and click on the extension icon. The organization(s) will be imported automatically.</p>
+
+    <div id="status" class="alert">
+    </div>
+
+    <input type="text" id="orgTenantId" name="orgTenantId" placeholder="Tenant ID" />
+    <div class="tooltip">❓
+        <span class="tooltiptext"><b>Where can I find Tenant ID?</b>
+        <br />Log in to Experience Cloud and examine the page URL in the address bar:<br />
+        https://experience.adobe.com/#/@<b>TenantID</b>/<br />
+        <!--<b>TenantID</b>.experiencecloud.adobe.com<br />
+        <b>TenantID</b>.marketingcloud.adobe.com<br />--><br />
+        Alternatively, enable the setting "Automatically Import Organizations" underneath, go to experience.adobe.com and click the Extension icon. The configuration will be set up automatically.</span>
+    </div>
+    <span class="tip"><!--https://<b>TenantID</b>.experiencecloud.adobe.com, -->https://experience.adobe.com/#/@<b>TenantID</b>/</span><br />
+
+    <input type="text" id="orgName" name="orgName" placeholder="Organization name" />
+    <div class="tooltip">❓
+        <span class="tooltiptext"><b>What should I enter here?</b>
+        <br />The organization name will appear in the Experience Cloud selector of the extension so that you can switch between organizations you have access to. You can enter any value as per your preference.<br /><br />
+        Alternatively, enable the setting "Automatically Import Organizations" underneath, go to experience.adobe.com and click the Extension icon. The configuration will be set up automatically.</span>
+    </div>
+    <span class="tip">displayed organization name</span><br />
+
+    <input type="text" id="orgId" name="orgId" placeholder="Organization ID (###@AdobeOrg)" />
+    <div class="tooltip">❓
+        <span class="tooltiptext"><b>Where can I find Organization ID?</b>
+        <br />Log in to Experience Cloud and examine the page bottom, look for ORG ID or Organization ID value that looks like <b>ABCDEFG0987654321@AdobeOrg</b><br /><br />
+        Alternatively, enable the setting "Automatically Import Organizations" underneath, go to experience.adobe.com and click the Extension icon. The configuration will be set up automatically.</span>
+    </div>
+    <span class="tip">###@AdobeOrg</span><br />
+
+    <!--<input type="text" id="orgDtmCompany" name="orgDtmCompany" placeholder="DTM company" />
+    <div class="tooltip">❓
+        <span class="tooltiptext"><b>Where can I find DTM Company?</b>
+        <br />This value is needed only if you have access to DTM.
+              Go to DTM, click on the Company, examine the page URL.
+              The DTM Company value is followed after "https://dtm.adobe.com/companies/"</span>
+    </div>
+    <span class="tip">(optional)</span><br />
+
+    <input type="text" id="orgLaunchCompany" name="orgLaunchCompany" placeholder="Launch company" />
+    <div class="tooltip">❓
+        <span class="tooltiptext"><b>Where can I find Launch Company?</b>
+        <br />This value is needed only if you have access to Launch.
+              Go to Launch, examine the page URL of the Properties page.
+              The Launch Company value is followed after "https://launch.adobe.com/companies/"</span>
+    </div>
+    <span class="tip">(optional)</span><br />-->
+
+    <button id="add">Add organization</button>
+    <br /><br />
+</div>
+
+
+
+<br /><br />
+<hr />
+
+
+
+
+<h3>Settings</h3>
+<div><input id="settingOpenLinksInNewTab" type="checkbox" checked /><label for="settingOpenLinksInNewTab">Open bookmarks in new tab</label></div>
+
+<div><input id="settingOrgAutoImport" type="checkbox" /><label for="settingOrgAutoImport">Automatically Import Organizations</label> (<a href="https://medium.com/@andrey.osadchuk/auto-import-oranizations-into-adobe-experience-cloud-bookmarks-2f9e00214528" target="_blank">learn more</a>)</div>
+<div class="info setting-info">
+    <p>
+        The extension checks what Adobe Organizations are available for you and adds them automatically.
+        Just click on the extension icon on any Adobe Experience Cloud page (experience.adobe.com, *.experiencecloud.adobe.com, *.marketing.adobe.com).
+        You will see a notification once an organization is added to Bookmarks.
+    </p>
+</div>
+
+<div><input id="settingIndicateAdobeStatus" type="checkbox" /><label for="settingIndicateAdobeStatus">Indicate Status of Adobe Services</label> (<a href="https://medium.com/@andrey.osadchuk/adobe-experience-cloud-bookmarks-1f8886a622b9" target="_blank">learn more</a>)</div>
+<div class="info setting-info">
+    <p>
+        The extension checks the status of Adobe Services every time you click on the extension icon.
+        The solutions experiencing maintenance or availability issues will be highlighted.
+        <span id="settingIndicateAdobeStatusPermission" class="hide"><br /><strong>Additional permissions are required</strong><br />
+        After ticking the box a dialog requesting additional permissions may appear.
+        Click Allow to make the status indication feature working.</span>
+    </p>
+</div>
+
+<div><input id="settingOptimizeUIAA" type="checkbox" /><label for="settingOptimizeUIAA">Optimize Adobe Analytics UI</label> (<a href="https://medium.com/@andrey.osadchuk/aec-bookmarks-chrome-extension-improves-adobe-analytics-launch-and-target-uis-751bd14a3cf0" target="_blank">learn more</a>)</div>
+<div class="info setting-info">
+    <p>
+        Adobe Analytics user interface gets improved and looks more convinient to use when this option is enabled.
+        The key improved areas include Data Warehouse, Classification Importer, Processing Rules, Bot Rules, Custom Conversion variables, Custom Traffic variables, Custom Success Events, Classifications, Data Sources, Classification Rule Builder and other.</span>
+        <span id="settingOptimizeUIAAPermission" class="hide"><br /><strong>Additional permissions are required</strong><br />
+        After ticking the box a dialog requesting additional permissions may appear.
+        Click Allow to make it working.</span>
+    </p>
+</div>
+
+<div><input id="settingOptimizeUILaunch" type="checkbox" /><label for="settingOptimizeUILaunch">Optimize Adobe Launch UI</label> (<a href="https://medium.com/@andrey.osadchuk/aec-bookmarks-chrome-extension-improves-adobe-analytics-launch-and-target-uis-751bd14a3cf0" target="_blank">learn more</a>)</div>
+<div class="info setting-info">
+    <p>
+        Adobe Launch user interface gets improved and looks more convinient to use when this option is enabled.
+        The key improved areas include Rules, Data Elements, Hosts, Environments, Publishing.</span>
+        <span id="settingOptimizeUILaunchPermission" class="hide"><br /><strong>Additional permissions are required</strong><br />
+        After ticking the box a dialog requesting additional permissions may appear.
+        Click Allow to make it working.</span>
+    </p>
+</div>
+
+<div><input id="settingOptimizeUIAT" type="checkbox" /><label for="settingOptimizeUIAT">Optimize Adobe Target UI</label> (<a href="https://medium.com/@andrey.osadchuk/aec-bookmarks-chrome-extension-improves-adobe-analytics-launch-and-target-uis-751bd14a3cf0" target="_blank">learn more</a>)</div>
+<div class="info setting-info">
+    <p>
+        Adobe Target user interface gets improved and looks more convinient to use when this option is enabled.
+        The key improved areas include Activity name.</span>
+        <span id="settingOptimizeUIATPermission" class="hide"><br /><strong>Additional permissions are required</strong><br />
+        After ticking the box a dialog requesting additional permissions may appear.
+        Click Allow to make it working.</span>
+    </p>
+</div>
+
+<div><input id="settingDisplayMarketoBookmarks" type="checkbox" /><label for="settingDisplayMarketoBookmarks">Display Marketo Engage Bookmarks</label></div>
+<div><input id="settingDisplayMagentoBookmarks" type="checkbox" /><label for="settingDisplayMagentoBookmarks">Display Magento Bookmarks</label></div>
+
+
+
+<br /><br />
+<h3>Google Sheets Add-ons</h3>
+<div>
+    <a href="https://go.osadchuka.com/f6702" target="_blank"><img id="aadc-img" src="" width="220" height="140" title="Google Sheets Data Connector for Adobe Analytics" /></a>
+    <a href="https://go.osadchuka.com/ow3" target="_blank"><img id="ali-img" src="" width="220" height="140" title="Adobe Experience Platform Launch Inspector" /></a>
+</div>
+
+<script src="options.js"></script>
+
+
+</body>
+</html>

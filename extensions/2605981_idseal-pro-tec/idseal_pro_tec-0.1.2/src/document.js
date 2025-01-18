@@ -1,0 +1,1 @@
+var headElement=document.head||document.documentElement,injectJs=function(e){var t=document.createElement("script");t.src=browser.extension.getURL(e),headElement.insertBefore(t,headElement.firstElementChild)};injectJs("src/common.js"),injectJs("src/inject.js");

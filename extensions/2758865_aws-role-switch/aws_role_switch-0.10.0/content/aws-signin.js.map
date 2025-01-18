@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/content/handlers/submitSigninForm.ts", "../../../src/content/aws-signin.ts"],
+  "sourcesContent": ["export const submitSigninForm = (form: HTMLFormElement, locationHref: string) => {\n  const url = new URL(locationHref);\n  const key: keyof SwitchRoleFormFromExtension = '_fromAWSRoleSwitchExtension';\n  const isExtension = url.searchParams.get(key) === 'true';\n\n  // automatically submit form when extension \n  // redirects to aws role signin form\n  if (isExtension && form) {\n    document.body.style.display = 'none';\n    setTimeout(() => form.submit(), 0);\n  }\n};\n", "import { submitSigninForm } from \"./handlers/submitSigninForm\";\n\nsubmitSigninForm(\n  document.getElementById('switchrole_form') as HTMLFormElement,\n  location.href\n);\n"],
+  "mappings": ";;;AAAO,IAAM,mBAAmB,CAAC,MAAuB,iBAAyB;AAC/E,QAAM,MAAM,IAAI,IAAI,YAAY;AAChC,QAAM,MAAyC;AAC/C,QAAM,cAAc,IAAI,aAAa,IAAI,GAAG,MAAM;AAIlD,MAAI,eAAe,MAAM;AACvB,aAAS,KAAK,MAAM,UAAU;AAC9B,eAAW,MAAM,KAAK,OAAO,GAAG,CAAC;AAAA,EACnC;AACF;;;ACTA;AAAA,EACE,SAAS,eAAe,iBAAiB;AAAA,EACzC,SAAS;AACX;",
+  "names": []
+}

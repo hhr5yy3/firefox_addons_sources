@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title data-i18n="google_translate_element_options">google translate element options</title>
+    <link rel="icon" href="lib/icons8-google-translate.png">
+    <script src="lib/jquery.min.js" defer></script>
+    <script src="lib/jquery-ui.min.js" defer></script>
+    <script src="options.js" defer></script>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <p id="update_info" class="highlight" style="font-size: larger"></p>
+
+    <p dir="ltr"><a title="Crowdin" target="_blank" href="https://crowdin.com/project/googletranslateelement"><img src="https://badges.crowdin.net/googletranslateelement/localized.svg" style="height: 32px; vertical-align: middle;"> <span style="font-weight: bold; font-size: x-large;">← You can help localize this add-on.</span></a></p>
+
+    <h1 data-i18n="google_translate_element">Google Translate Element</h1>
+    <div>
+      <p>
+	<label>
+	  <span data-i18n="code_to_insert_into_the_page">Code to insert into web pages:</span>
+	  <br>
+	  <textarea id="inject_code" cols="60" rows="6" placeholder="Copy the code here from the download page." data-i18n-placeholder="copy_code_here"></textarea>
+	</label>
+      </p>
+      <p>
+	<label>
+	  <span data-i18n="csp_to_add">Content Security Policy to add:</span>
+	  <br>
+	  <textarea id="csp_to_add" cols="60" rows="2" placeholder="Copy the Content Security Policy here from the download page." data-i18n-placeholder="copy_scp_here"></textarea>
+	</label>
+      </p>
+
+      <label>
+	<input type="checkbox" id="auto_insert" checked>
+	<span data-i18n="insert_element_automatically">Insert Google Translate Element automatically</span>
+      </label>
+      <br>
+      <label>
+	<input type="checkbox" id="auto_translate" checked>
+	<span data-i18n="translate_automatically">Translate immediately after inserting Google Translate Element</span>
+      </label>
+      <br>
+      <label>
+	<input type="checkbox" id="hide_toolbar">
+	<span data-i18n="hide_toolbar">Hide toolbar after inserting Google Translate Element</span>
+      </label>
+      <br>
+      <br>
+      <label>
+	<span data-i18n="ignore_languages">Languages ​​that do not automatically insert Google Translate Element</span>:
+	<input type="text" pattern="^\s*([a-z]{2,3}(-[A-Z]{2})?)(\s*,?\s*[a-z]{2,3}(-[A-Z]{2})?)*\s*$" id="ignore_languages">
+      </label>
+      <button data-i18n-title="default" title="Default" id="default_ignore_languages">
+	<img src="lib/reset.svg">
+      </button>
+      <div class="desc">
+	<span data-i18n="ignore_languages_desc">Automatically inserts <a href="https://www.w3schools.com/howto/howto_google_translate.asp">Google Translate Element</a> into the page if the language of the page is different from these languages. Even if the language of the page is the same to one of these languages it can be inserted manually from the context menu. When you click the default button, language information is acquired from <cite>about:preferences → Language</cite>.<br>Example: <code>en, de, zh</code>. Separated by commas.<br>Reference: <a href="https://cloud.google.com/translate/docs/languages">Language support Google Cloud</a> (different service from Google Translate Element), <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">List of ISO 639-1 codes - Wikipedia</a>.</span>
+      </div>
+      <br>
+      <label><span data-i18n="includedlanguages">Destination languages of Google Translate Element</span>:
+	<input type="text" pattern="^([a-z]{2,3}(-[A-Z]{2})?)(,[a-z]{2,3}(-[A-Z]{2})?)*$" id="includedlanguages" value=""></label>
+      <button data-i18n-title="default" title="Default" id="default_includedlanguages">
+	<img src="lib/reset.svg">
+      </button>
+      <div class="desc">
+	<span data-i18n="includedlanguages_desc">Separate with commas <strong>without spaces</strong>. Example: <code>en,de,zh-CN</code>.<br>Reference: <a href="https://cloud.google.com/translate/docs/languages">Language support Google Cloud</a> (different service from Google Translate Element), <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">List of ISO 639-1 codes - Wikipedia</a>, <a href="https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes">ISO 3166-1 - Wikipedia</a>.<br>If you empty the list, all languages are displayed in the translation destination language of Google Translate Element. The default value is obtained from <cite>about:preferences → Language</cite>, but it may not be useable as it is. Because some languages require region codes like zh-CN or zh-TW, and in other languages, if you add region codes like en-US it will not work and you need to delete them to make it like en.</span>
+      </div>
+      
+      <p>
+	<label>
+	  <input name="ignore_or_insert_urls" type="radio" value="ignore" checked>
+	  <span data-i18n="ignore_urls">URLs where Google Translate Element is NOT automatically inserted</span>
+	</label>
+	<br>
+	<label>
+	  <input name="ignore_or_insert_urls" type="radio" value="insert">
+	  <span data-i18n="auto_insert_urls">URLs where Google Translate Element is automatically inserted</span>
+	</label>
+	(<a href='https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_Expressions'><span data-i18n="regular_expression">Regular expression</span></a>)
+	<br>
+	<textarea id="ignore_urls" cols="60" rows="6" style="vertical-align: top;" placeholder="^https://www\.google\.com/search\?&#13;&#10;^https://.*\.wikipedia\.org/wiki/"></textarea>
+	</label>
+	<label class="nowrap">
+	  <span data-i18n="test_url">Test regular expressions</span>
+	  <input type="url" id="test_url" size="60" placeholder="https://en.wikipedia.org/wiki/Firefox" data-ignore="true">
+	  <span id="url_test_result"></span>
+	</label>
+      </p>
+      <details>
+	<summary data-i18n="example">Example</summary>
+	<pre>^https://www\.google\.com/search\?&#13;&#10;^https://.*\.wikipedia\.org/wiki/</pre>
+	<p data-i18n="ignore_urls_desc">Escape the regular expression special characters such as ".", "*", "?" with a backslash. Add "^" at the beginning of the pattern to match the beginning of URLs.</p>
+      </details>
+
+      <p>
+	<label>
+	  <span data-i18n="style_sheets">Stylesheets for Google Translate Element:</span>
+	  <br>
+	  <textarea id="style_sheets" cols="60" rows="6" style="vertical-align: top;" placeholder=""></textarea>
+	</label>
+      </p>
+      <details>
+	<summary data-i18n="example">Example</summary>
+	<pre>.goog-te-banner-frame {&#10;    width: 600px !important;&#10;    left: unset !important;&#10;    right: 0px !important;&#10;}</pre>
+      </details>
+
+      <p>
+	<label>
+	  <span data-i18n="tags_to_remove_from_page">HTML tags to remove from page:</span>
+	  <textarea id="tags_to_remove_from_page" cols="40" rows="4">a span font basefont i tt b u strike big small sub sup em strong code samp kbd var cite abbr acronym dfn q bdo s time mark</textarea>
+	</label>
+      </p>
+      <p data-i18n="tags_to_remove_from_page_desc" class="desc">To get better translation results, remove these tags from the web page and convert the content texts to simple texts. If HTML tags are included in the middle of a sentence, the sentence passed to the translation engine may be different from a simple sentence without tags in order to reflect those tags in the translated sentence, which sometimes results in strange translation results. Removing these HTML tags may give you more correct translation results. However, it becomes difficult to read because there are no links or decorations. To remove the tag, execute the process from the context menu, shortcut key, etc., before Google Translate Element translates the page (when the original text is displayed). If you want to restore the contents of the page, you need to reload the page. When <a href="https://developer.mozilla.org/docs/Web/HTML/Element">adding tags</a>, separate them with white spaces or line breaks.</p>
+
+      <div>
+	<div data-i18n="info1"><p>Google Translate Element may not work on some pages due to security restrictions on those pages. In this case, a message is displayed in the <a href="https://developer.mozilla.org/docs/Tools/Browser_Console">Browser Console</a>. If it does not work, you can translate that page in a new tab from the context menu as an alternative.</p><p>If you disable the add-on from the context menu, Google Translate Element will not be inserted automatically. Again, you can insert it manually from the context menu.</p>
+	</div>
+      </div>
+
+      <p>
+	<button class="save highlight" data-i18n="save" data-i18n-title="save_button_desc">Save options</button>
+	<span class="message highlight"></span>
+      </p>
+
+      <h1 data-i18n="another_translation_system">Another translation system</h1>
+      <h2 data-i18n="default_translation_sites">Default translation sites</h2>
+      <div>
+	<p>
+	  <label><span data-i18n="page_translator_url">Translator's URL when translating a page in a new tab:</span>
+	    <input type="url" id="page_translator_url" size="95" class="url" data-defaultvalue="https://translate.google.com/translate?sl=auto&tl=@lang@&u=@url@"></label>
+	  <br>
+	  <label>
+	    <span data-i18n="target_language">Default Target Language:</span>
+	    <input type="text" pattern="^\S+" id="page_translator_target_language" style="width:4em" data-defaultvalue="en">
+	  </label>
+	  <br>
+	  <button class="get_favicon_button" data-i18n="get_favicon" name="page_translator">Get Favicon</button>
+	  <span id="page_translator_favicon"></span>
+	  <br>
+	  <label><span data-i18n="target_language_regexp">Regular expression to extract the target language from the URL of the translation site</span>
+	    <input type="text" id="page_translator_target_regexp" size="95" class="url" data-defaultvalue="^https://translate\.google\.com/translate\?.*&tl=([a-zA-Z-]+)"></label>
+	  <label>
+	    <input type="checkbox" id="page_translator_display_in_iframe" data-defaultvalue="true">
+	    <span data-i18n="display_in_iframe">In the browser action panel and page action panel, the translation result is displayed in an <a href="https://developer.mozilla.org/docs/Web/HTML/Element/iframe">iframe</a></span>
+	  </label>
+	  <br>
+	  <button data-i18n-title="default" title="Default" id="default_page_translator_url" class="reset" data-target="page_translator_url page_translator_target_regexp page_translator_display_in_iframe">
+	    <img src="lib/reset.svg">
+	  </button>
+	  <br>
+	  <label>
+	    <input type="checkbox" id="page_translator_delete_history" checked>
+	    <span data-i18n="translator_delete_history">Delete translation result URL from browsing history</span>
+	  </label>
+	  <br>
+	  <span>
+	    <label><span data-i18n="browser_action_panel_size">Browser action panel size:</span>
+	      <input type="number" id="page_translator_baction_width" style="width:4em" value="800" max="800" min="1" required="required">
+	    </label>
+	    x
+	    <input type="number" id="page_translator_baction_height" style="width:4em" value="600" max="600" min="1" required="required">
+	    (<span data-i18n="pixel">pixels</span>)
+	  </span>
+	  <br>
+	  <span>
+	    <label><span data-i18n="page_action_panel_size">Page action panel size:</span>
+	      <input type="number" id="page_translator_paction_width" style="width:4em" value="800" max="800" min="1" required="required">
+	    </label>
+	    x
+	    <input type="number" id="page_translator_paction_height" style="width:4em" value="600" max="600" min="1" required="required">
+	    (<span data-i18n="pixel">pixels</span>)
+	  </span>
+	</p>
+	<p>
+	  <label><span data-i18n="text_translator_url">Translator's URL when translating selected texts in a new tab</span>
+	    <input type="url" id="text_translator_url" size="95" class="url" data-defaultvalue="https://translate.google.com/?sl=auto&tl=@lang@&text=@text@&op=translate"></label>
+	  <br>
+	  <label>
+	    <span data-i18n="target_language">Default Target Language:</span>
+	    <input type="text" pattern="^\S+" id="text_translator_target_language" style="width:4em" data-defaultvalue="en">
+	  </label>
+	  <br>
+	  <button class="get_favicon_button" data-i18n="get_favicon" name="text_translator">Get Favicon</button>
+	  <span id="text_translator_favicon"></span>
+	  <br>
+	  <label><span data-i18n="target_language_regexp">Regular expression to extract the target language from the URL of the translation site</span>
+	    <input type="text" id="text_translator_target_regexp" size="95" class="url" data-defaultvalue="^https://translate\.google\.com/.*&tl=([a-zA-Z-]+)"></label>
+	  <label>
+	    <input type="checkbox" id="text_translator_display_in_iframe" checked data-defaultvalue="true">
+	    <span data-i18n="display_in_iframe">In the browser action panel and page action panel, the translation result is displayed in an <a href="https://developer.mozilla.org/docs/Web/HTML/Element/iframe">iframe</a></span>
+	  </label>
+	  <br>
+	  <button data-i18n-title="default" title="Default" id="default_text_translator_url" class="reset" data-target="text_translator_url text_translator_target_regexp text_translator_display_in_iframe">
+	    <img src="lib/reset.svg">
+	  </button>
+	  <br>
+	  <label>
+	    <input type="checkbox" id="text_translator_delete_history" checked>
+	    <span data-i18n="translator_delete_history">Delete translation result URL from browsing history</span>
+	  </label>
+	  <br>
+	  <span>
+	    <label><span data-i18n="browser_action_panel_size">Browser action panel size:</span>
+	      <input type="number" id="text_translator_baction_width" style="width:4em" value="600" max="800" min="1" required="required">
+	    </label>
+	    x
+	    <input type="number" id="text_translator_baction_height" style="width:4em" value="600" max="600" min="1" required="required">
+	    (<span data-i18n="pixel">pixels</span>)
+	  </span>
+	  <br>
+	  <span>
+	    <label><span data-i18n="page_action_panel_size">Page action panel size:</span>
+	      <input type="number" id="text_translator_paction_width" style="width:4em" value="600" max="800" min="1" required="required">
+	    </label>
+	    x
+	    <input type="number" id="text_translator_paction_height" style="width:4em" value="600" max="600" min="1" required="required">
+	    (<span data-i18n="pixel">pixels</span>)
+	  </span>
+	</p>
+	<div class="desc">
+	  <p data-i18n="translator_url_desc">'@url@' is replaced with the URL of the page. '@text@' is replaced with the selected text. '@lang@' is replaced with "Default Target Language". The value of Default Target Language is obtained from <cite>about:preferences → Language</cite>. However, since it may be different from the format of the target language of each translation site, it may not be used as it is. Some languages may require region codes such as 'zh-CN' and 'zh-TW', and in other languages, it may not work if the region code is attached like 'en-US' or 'pt-BR', so it may need to be changed to 'en' or 'pt'. In that case, you must manually replace default target language with the appropriate language code. '@source_lang@' is replaced with the <a href="https://src.chromium.org/viewvc/chrome/trunk/src/third_party/cld/languages/internal/languages.cc#l23">language code</a> of the selected string or the language code of the page. However, this does not always match the expression of the language code used by each translation site.</p>
+	  <p>
+	    <span data-i18n="translator_url_desc2">The value of '@lang@' in this browser:</span> <strong><code><span id="lang_value"></span></code></strong>
+	  </p>
+	  <p data-i18n="target_language_regexp_desc">A character string that matches the last <a href="https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">capture group</a> in the pattern described in "<a href="https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_Expressions">Regular expression</a> for extracting target language" is extracted from the URL of the translation result page as the target language for translation. When the language of the translation destination is changed interactively on the translation result page, if the URL changes accordingly, the language is extracted and stored. In the next translation, '@lang@' will be replaced with this value instead of the default target language before translation. If you always want to translate to the default language, leave the regular expression empty. This function cannot be used on translation sites where the URL does not change even if the target language is changed interactively.</p>
+	</div>
+
+	<h2 data-i18n="second_translation_sites">Second translation sites</h2>
+	<p>
+	  <label>
+	    <input type="checkbox" id="use_2nd_translator" checked>
+	    <span data-i18n="use_2nd_translator">When the language of the page or the language of the selected text matches the "Languages not to be automatically inserted", translate it on the second translation site</span>
+	  </label>
+	</p>
+	<p>
+	  <label><span data-i18n="page_translator_2nd_url">URL of the second translation site when translating the page in a new tab</span>
+	    <input type="url" id="page_translator_2nd_url" size="95" class="url" data-defaultvalue="https://www.translatetheweb.com/?from=&to=@lang@&a=@url@"></label>
+	  <br>
+	  <label>
+	    <span data-i18n="target_language">Default Target Language:</span>
+	    <input type="text" pattern="^\S+" id="page_translator_2nd_target_language" style="width:4em" data-defaultvalue="en">
+	  </label>
+	  <br>
+	  <button class="get_favicon_button" data-i18n="get_favicon" name="page_translator_2nd">Get Favicon</button>
+	  <span id="page_translator_2nd_favicon"></span>
+	  <br>
+	  <label><span data-i18n="target_language_regexp">Regular expression to extract the target language from the URL of the translation site</span>
+	    <input type="text" id="page_translator_2nd_target_regexp" size="95" class="url" data-defaultvalue="https://www.translatetheweb.com/?.*&to=([a-zA-Z-]+)"></label>
+	  <label>
+	    <input type="checkbox" id="page_translator_2nd_display_in_iframe" data-defaultvalue="true">
+	    <span data-i18n="display_in_iframe">In the browser action panel and page action panel, the translation result is displayed in an <a href="https://developer.mozilla.org/docs/Web/HTML/Element/iframe">iframe</a></span>
+	  </label>
+	  <br>
+	  <button data-i18n-title="default" title="Default" id="default_page_translator_2nd_url" class="reset" data-target="page_translator_2nd_url page_translator_2nd_target_regexp page_translator_2nd_target_language page_translator_2nd_display_in_iframe">
+	    <img src="lib/reset.svg">
+	  </button>
+	  <br>
+	  <label>
+	    <input type="checkbox" id="page_translator_2nd_delete_history" checked>
+	    <span data-i18n="translator_delete_history">Delete translation result URL from browsing history</span>
+	  </label>
+	  <br>
+	  <span>
+	    <label><span data-i18n="browser_action_panel_size">Browser action panel size:</span>
+	      <input type="number" id="page_translator_2nd_baction_width" style="width:4em" value="800" max="800" min="1" required="required">
+	    </label>
+	    x
+	    <input type="number" id="page_translator_2nd_baction_height" style="width:4em" value="600" max="600" min="1" required="required">
+	    (<span data-i18n="pixel">pixels</span>)
+	  </span>
+	  <br>
+	  <span>
+	    <label><span data-i18n="page_action_panel_size">Page action panel size:</span>
+	      <input type="number" id="page_translator_2nd_paction_width" style="width:4em" value="800" max="800" min="1" required="required">
+	    </label>
+	    x
+	    <input type="number" id="page_translator_2nd_paction_height" style="width:4em" value="600" max="600" min="1" required="required">
+	    (<span data-i18n="pixel">pixels</span>)
+	  </span>
+	</p>
+	<p>
+	  <label><span data-i18n="text_translator_2nd_url">URL of the second translation site when the selected text is translated in a new tab</span>
+	    <input type="url" id="text_translator_2nd_url" size="95" class="url" data-defaultvalue="https://www.bing.com/translator?fromLang=auto-detect&to=@lang@&text=@text@"></label>
+	  <br>
+	  <label>
+	    <span data-i18n="target_language">Default Target Language:</span>
+	    <input type="text" pattern="^\S+" id="text_translator_2nd_target_language" style="width:4em" data-defaultvalue="en">
+	  </label>
+	  <br>
+	  <button class="get_favicon_button" data-i18n="get_favicon" name="text_translator_2nd">Get Favicon</button>
+	  <span id="text_translator_2nd_favicon"></span>
+	  <br>
+	  <label><span data-i18n="target_language_regexp">Regular expression to extract the target language from the URL of the translation site</span>
+	    <input type="text" id="text_translator_2nd_target_regexp" size="95" class="url" data-defaultvalue=""></label>
+	  <label>
+	    <input type="checkbox" id="text_translator_2nd_display_in_iframe" data-defaultvalue="true">
+	    <span data-i18n="display_in_iframe">In the browser action panel and page action panel, the translation result is displayed in an <a href="https://developer.mozilla.org/docs/Web/HTML/Element/iframe">iframe</a></span>
+	  </label>
+	  <br>
+	  <button data-i18n-title="default" title="Default" id="default_text_translator_2nd_url" class="reset" data-target="text_translator_2nd_url text_translator_2nd_target_regexp text_translator_2nd_target_language text_translator_2nd_display_in_iframe">
+	    <img src="lib/reset.svg">
+	  </button>
+	  <br>
+	  <label>
+	    <input type="checkbox" id="text_translator_2nd_delete_history" checked>
+	    <span data-i18n="translator_delete_history">Delete translation result URL from browsing history</span>
+	  </label>
+	  <br>
+	  <span>
+	    <label><span data-i18n="browser_action_panel_size">Browser action panel size:</span>
+	      <input type="number" id="text_translator_2nd_baction_width" style="width:4em" value="800" max="800" min="1" required="required">
+	    </label>
+	    x
+	    <input type="number" id="text_translator_2nd_baction_height" style="width:4em" value="600" max="600" min="1" required="required">
+	    (<span data-i18n="pixel">pixels</span>)
+	  </span>
+	  <br>
+	  <span>
+	    <label><span data-i18n="page_action_panel_size">Page action panel size:</span>
+	      <input type="number" id="text_translator_2nd_paction_width" style="width:4em" value="800" max="800" min="1" required="required">
+	    </label>
+	    x
+	    <input type="number" id="text_translator_2nd_paction_height" style="width:4em" value="600" max="600" min="1" required="required">
+	    (<span data-i18n="pixel">pixels</span>)
+	  </span>
+	</p>
+	<div class="desc">
+	  <span data-i18n="translator_2nd_url_desc">When the language of the page or the language of the selected text matches the "Languages not to be automatically inserted", translation is performed at the second translation site. This can be used, for example, to translate native language sentences into other languages. If you hold down a modifier key ("Alt", "Command", "Ctrl", "MacCtrl" or "Shift") and click on the context menu or use a shortcut key, you can use the second translation site to translate whatever language the page or selected text is. If you register another site in the second translation site, you can compare the two translation results.</span>
+	</div>
+      </div>
+
+      <p>
+	<button class="save highlight" data-i18n="save" data-i18n-title="save_button_desc">Save</button>
+	<span class="message highlight"></span>
+      </p>
+
+      <h1 data-i18n="user_interface">UI</h1>
+
+      <h2><span data-i18n="context_menu">Context menu</span><sup><a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/user_interface/Context_menu_items">?</a></sup></h2>
+      <div>
+	<span data-i18n="context_menu_order">Order to display in context menu:</span>
+	<ul id="context_menu_items" class="ui_sortable">
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_in_specific_tab" checked>
+	      <span data-i18n="translate_in_specific_tab">translate in specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_in_new_tab" checked>
+	      <span data-i18n="translate_in_new_tab">translate in new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_in_current_tab" checked>
+	      <span data-i18n="translate_in_current_tab">translate in current tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_in_window" checked>
+	      <span data-i18n="translate_in_window">translate in window</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_in_sidebar" checked>
+	      <span data-i18n="translate_in_sidebar">translate in sidebar</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_in_browser_action" checked>
+	      <span data-i18n="translate_in_browser_action">translate in browser action</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_in_page_action" checked>
+	      <span data-i18n="translate_in_page_action">translate in page action</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_on_2nd_in_specific_tab" checked>
+	      <span data-i18n="translate_on_2nd_in_specific_tab">translate on the second translation in specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_on_2nd_in_new_tab" checked>
+	      <span data-i18n="translate_on_2nd_in_new_tab">translate on the second translation in new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_on_2nd_in_current_tab" checked>
+	      <span data-i18n="translate_on_2nd_in_current_tab">translate on the second translation in current tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_on_2nd_in_window" checked>
+	      <span data-i18n="translate_on_2nd_in_window">translate on the second translation in window</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_on_2nd_in_sidebar" checked>
+	      <span data-i18n="translate_on_2nd_in_sidebar">translate on the second translation in sidebar</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_on_2nd_in_browser_action" checked>
+	      <span data-i18n="translate_on_2nd_in_browser_action">translate on the second translation in browser action</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_on_2nd_in_page_action" checked>
+	      <span data-i18n="translate_on_2nd_in_page_action">translate on the second translation in page action</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="insert_element" checked>
+	      <span data-i18n="insert_element">insert element in page</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="toggle_translate" checked>
+	      <span data-i18n="toggle_translate">Switch between translation and source text</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="toggle_toolbar" checked>
+	      <span data-i18n="toggle_toolbar">Show/hide toolbar of Google Translate Element</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="remove_decorative_tags" checked>
+	      <span data-i18n="remove_decorative_tags">Remove decoration tags from the page</span><sup><a href="#tags_to_remove_from_page">*</a></sup>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="insert_automatically" checked>
+	      <span data-i18n="insert_automatically">insert element in page</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="translate_automatically" checked>
+	      <span data-i18n="translate_automatically">translate automatically</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="hide_toolbar" checked>
+	      <span data-i18n="hide_toolbar">hide toolbar</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_option_page" checked>
+	      <span data-i18n="open_option_page">insert element in page</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_1_in_specific_tab" checked>
+	      <span data-i18n="open_1_in_specific_tab">open specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_1_in_new_tab" checked>
+	      <span data-i18n="open_1_in_new_tab">open new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_1_in_current_tab" checked>
+	      <span data-i18n="open_1_in_current_tab">open current in tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_1_in_window" checked>
+	      <span data-i18n="open_1_in_window">open window</span>
+	    </label>
+	  </li>
+
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_2_in_specific_tab" checked>
+	      <span data-i18n="open_2_in_specific_tab">open specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_2_in_new_tab" checked>
+	      <span data-i18n="open_2_in_new_tab">open new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_2_in_current_tab" checked>
+	      <span data-i18n="open_2_in_current_tab">open current in tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_2_in_window" checked>
+	      <span data-i18n="open_2_in_window">open window</span>
+	    </label>
+	  </li>
+
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_sidebar" checked>
+	      <span data-i18n="open_sidebar">open sidebar</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="display_sidebar_default_page" checked>
+	      <span data-i18n="display_sidebar_default_page">Display default page in sidebar</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_browseraction" checked>
+	      <span data-i18n="open_browseraction">open browser action panel</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="context_menu_action" value="open_pageaction" checked>
+	      <span data-i18n="open_pageaction">open page action panel</span>
+	    </label>
+	  </li>
+	</ul>
+	<p data-i18n="context_menu_order_desc">Only checked items are displayed in the context menu. Drag to change the display order.</p>
+      </div>
+
+      <p>
+	<button class="save highlight" data-i18n="save" data-i18n-title="save_button_desc">Save</button>
+	<span class="message highlight"></span>
+      </p>
+
+      <h2><span data-i18n="browser_action_button">Browser action button</span><sup><a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/user_interface/Browser_action">?</a></sup></h2>
+      <div>
+	<span data-i18n="browser_action_button_action">Action with browser action button:</span>
+	<ul id="browser_action_buttons" class="ui_sortable">
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_in_specific_tab">
+	      <span data-i18n="translate_in_specific_tab">translate in specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_in_new_tab">
+	      <span data-i18n="translate_in_new_tab">translate in new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_in_current_tab">
+	      <span data-i18n="translate_in_current_tab">translate in current tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_in_window">
+	      <span data-i18n="translate_in_window">translate in window</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_in_sidebar">
+	      <span data-i18n="translate_in_sidebar">translate in sidebar</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_in_browser_action">
+	      <span data-i18n="translate_in_browser_action">translate in browser action</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_in_page_action">
+	      <span data-i18n="translate_in_page_action">translate in page action</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_on_2nd_in_specific_tab">
+	      <span data-i18n="translate_on_2nd_in_specific_tab">translate on the second translation in specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_on_2nd_in_new_tab">
+	      <span data-i18n="translate_on_2nd_in_new_tab">translate on the second translation in new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_on_2nd_in_current_tab">
+	      <span data-i18n="translate_on_2nd_in_current_tab">translate on the second translation in current tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_on_2nd_in_window">
+	      <span data-i18n="translate_on_2nd_in_window">translate on the second translation in window</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_on_2nd_in_sidebar">
+	      <span data-i18n="translate_on_2nd_in_sidebar">translate on the second translation in sidebar</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_on_2nd_in_browser_action">
+	      <span data-i18n="translate_on_2nd_in_browser_action">translate on the second translation in browser action</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="translate_on_2nd_in_page_action">
+	      <span data-i18n="translate_on_2nd_in_page_action">translate on the second translation in page action</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="insert_element">
+	      <span data-i18n="insert_element">Insert element in page</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="toggle_translate">
+	      <span data-i18n="toggle_translate">Switch between translation and source text</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="toggle_toolbar">
+	      <span data-i18n="toggle_toolbar">Show/hide toolbar of Google Translate Element</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="remove_decorative_tags">
+	      <span data-i18n="remove_decorative_tags">Remove decoration tags from the page</span><sup><a href="#tags_to_remove_from_page">*</a></sup>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="open_1_in_specific_tab">
+	      <span data-i18n="open_1_in_specific_tab">open specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="open_1_in_new_tab">
+	      <span data-i18n="open_1_in_new_tab">open new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="open_1_in_current_tab">
+	      <span data-i18n="open_1_in_current_tab">open current in tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="open_1_in_window">
+	      <span data-i18n="open_1_in_window">open window</span>
+	    </label>
+	  </li>
+
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="open_2_in_specific_tab">
+	      <span data-i18n="open_2_in_specific_tab">open specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="open_2_in_new_tab">
+	      <span data-i18n="open_2_in_new_tab">open new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="open_2_in_current_tab">
+	      <span data-i18n="open_2_in_current_tab">open current in tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="browser_action_button_action" value="open_2_in_window">
+	      <span data-i18n="open_2_in_window">open window</span>
+	    </label>
+	  </li>
+	</ul>
+	<p data-i18n="browser_action_button_desc">If no item is selected, clicking the browser action button will display the default text translation site. If only one item is selected, clicking the browser action button will immediately execute the action for that item. If multiple items are selected, clicking the browser action button displays the buttons for the selected items. Drag to change the display order.</p>
+      </div>
+      <p>
+	<label>
+	  <span data-i18n="browser_action_stylesheet">Stylesheet for browser action</span>
+	  <br>
+	  <textarea id="browser_action_style" cols="60" rows="6" style="vertical-align: top;"></textarea>
+	</label>
+      </p>
+      <details>
+	<summary data-i18n="example">Example</summary>
+	<iframe src="stylesheet_example.css" class="example_iframe"></iframe>
+      </details>
+
+      <p>
+	<button class="save highlight" data-i18n="save" data-i18n-title="save_button_desc">Save</button>
+	<span class="message highlight"></span>
+      </p>
+
+      <h2><span data-i18n="page_action_button">Page action button</span><sup><a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/pageAction">?</a></sup></h2>
+      <div>
+	<span data-i18n="page_action_button_action">Action with page action button:</span>
+	<ul id="page_action_buttons" class="ui_sortable">
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_in_specific_tab" checked>
+	      <span data-i18n="translate_in_specific_tab">translate in specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_in_new_tab" checked>
+	      <span data-i18n="translate_in_new_tab">Translate in new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_in_current_tab" checked>
+	      <span data-i18n="translate_in_current_tab">Translate in current tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_in_window" checked>
+	      <span data-i18n="translate_in_window">Translate in window</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_in_sidebar" checked>
+	      <span data-i18n="translate_in_sidebar">Translate in sidebar</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_in_browser_action" checked>
+	      <span data-i18n="translate_in_browser_action">Translate in browser action panel</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_in_page_action" checked>
+	      <span data-i18n="translate_in_page_action">Translate in page action panel</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_on_2nd_in_specific_tab" checked>
+	      <span data-i18n="translate_on_2nd_in_specific_tab">Translate on the second translation in specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_on_2nd_in_new_tab" checked>
+	      <span data-i18n="translate_on_2nd_in_new_tab">Translate on the second translation in new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_on_2nd_in_current_tab" checked>
+	      <span data-i18n="translate_on_2nd_in_current_tab">Translate on the second translation in current tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_on_2nd_in_window" checked>
+	      <span data-i18n="translate_on_2nd_in_window">Translate on the second translation in window</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_on_2nd_in_sidebar" checked>
+	      <span data-i18n="translate_on_2nd_in_sidebar">Translate on the second translation in sidebar</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_on_2nd_in_browser_action" checked>
+	      <span data-i18n="translate_on_2nd_in_browser_action">Translate on the second translation in browser action</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="translate_on_2nd_in_page_action" checked>
+	      <span data-i18n="translate_on_2nd_in_page_action">Translate on the second translation in page action</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="insert_element" checked>
+	      <span data-i18n="insert_element">Insert element in page</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="toggle_translate" checked>
+	      <span data-i18n="toggle_translate">Switch between translation and source text</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="toggle_toolbar" checked>
+	      <span data-i18n="toggle_toolbar">Show/hide toolbar of Google Translate Element</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="remove_decorative_tags" checked>
+	      <span data-i18n="remove_decorative_tags">Remove decoration tags from the page</span><sup><a href="#tags_to_remove_from_page">*</a></sup>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="open_1_in_specific_tab" checked>
+	      <span data-i18n="open_1_in_specific_tab">open specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="open_1_in_new_tab" checked>
+	      <span data-i18n="open_1_in_new_tab">open new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="open_1_in_current_tab" checked>
+	      <span data-i18n="open_1_in_current_tab">open current in tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="open_1_in_window" checked>
+	      <span data-i18n="open_1_in_window">open window</span>
+	    </label>
+	  </li>
+
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="open_2_in_specific_tab" checked>
+	      <span data-i18n="open_2_in_specific_tab">open specific tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="open_2_in_new_tab" checked>
+	      <span data-i18n="open_2_in_new_tab">open new tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="open_2_in_current_tab" checked>
+	      <span data-i18n="open_2_in_current_tab">open current in tab</span>
+	    </label>
+	  </li>
+	  <li>
+	    <label>
+	      <input type="checkbox" name="page_action_button_action" value="open_2_in_window" checked>
+	      <span data-i18n="open_2_in_window">open window</span>
+	    </label>
+	  </li>
+	</ul>
+	<p data-i18n="page_action_button_desc">If no item is selected, clicking the page action button will display the default text translation site. If only one item is selected, clicking the page action button will immediately execute the action for that item. If multiple items are selected, clicking the page action button displays the buttons for the selected items. Drag to change the display order.</p>
+      </div>
+      <p>
+	<label>
+	  <span data-i18n="page_action_stylesheet">Stylesheet for page action</span>
+	  <br>
+	  <textarea id="page_action_style" cols="60" rows="6" style="vertical-align: top;"></textarea>
+	</label>
+      </p>
+      <details>
+	<summary data-i18n="example">Example</summary>
+	<iframe src="stylesheet_example.css" class="example_iframe"></iframe>
+      </details>
+
+      <p>
+	<button class="save highlight" data-i18n="save" data-i18n-title="save_button_desc">Save</button>
+	<span class="message highlight"></span>
+      </p>
+
+      <h2 data-i18n="omnibox">omnibox</h2>
+      <p data-i18n="omnibox_desc">Translate text by entering commands and text in <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/user_interface/Omnibox">omnibox</a> (address bar, location bar). It is convenient to use the <a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly#w_miscellaneous">keyboard shortcut</a> to move the focus to omnibox. F6, Alt + D or Ctrl + L on Windows.</p>
+      <p>
+	<label><span data-i18n="omnibox_default_action">Default display destination of omnibox translation results:</span>
+	  <select id="omnibox_default_action">
+	    <option value="translate_in_specific_tab" data-i18n="translate_in_specific_tab" selected="selected">Translate in specific tab</option>
+	    <option value="translate_in_new_tab" data-i18n="translate_in_new_tab">Translate in new tab</option>
+	    <option value="translate_in_current_tab" data-i18n="translate_in_current_tab">Translate in current tab</option>
+	    <option value="translate_in_window" data-i18n="translate_in_window">Translate in window</option>
+	    <option value="translate_in_sidebar" data-i18n="translate_in_sidebar">Translate in sidebar</option>
+	    <option value="translate_in_browser_action" data-i18n="translate_in_browser_action">Translate in browser action panel</option>
+	    <option value="translate_in_page_action" data-i18n="translate_in_page_action">Translate in page action panel</option>
+	    <option value="translate_on_2nd_in_specific_tab" data-i18n="translate_on_2nd_in_specific_tab">Translate on the second translation in specific tab</option>
+	    <option value="translate_on_2nd_in_new_tab" data-i18n="translate_on_2nd_in_new_tab">Translate on the second translation in new tab</option>
+	    <option value="translate_on_2nd_in_current_tab" data-i18n="translate_on_2nd_in_current_tab">Translate on the second translation in current tab</option>
+	    <option value="translate_on_2nd_in_window" data-i18n="translate_on_2nd_in_window">Translate on the second translation in window</option>
+	    <option value="translate_on_2nd_in_sidebar" data-i18n="translate_on_2nd_in_sidebar">Translate on the second translation in sidebar</option>
+	    <option value="translate_on_2nd_in_browser_action" data-i18n="translate_on_2nd_in_browser_action">Translate on the second translation in browser action</option>
+	    <option value="translate_on_2nd_in_page_action" data-i18n="translate_on_2nd_in_page_action">Translate on the second translation in page action</option>
+	  </select>
+	</label>
+      </p>
+      <p>
+	<span data-i18n="syntax">Syntax:</span> <code>tr [-t target_lang] [-1|-2] [-d {nt|st|ct|w|sb|ba}] text</code>
+      </p>
+      <ul>
+	<li><strong><code>tr</code></strong>
+	  <span data-i18n="omnibox_keyword">The trigger keyword to start translation with omnibox.</span>
+	</li>
+	<li><strong><code>-t</code></strong>
+	  <span data-i18n="omnibox_option_t">Specify the target language. If omitted, the default target language for the text translation site will be used. The target language format varies from translation site to translation site, so you need to know the appropriate language code for that site.</span>
+	</li>
+	<li><strong><code>-1</code></strong>
+	  <span data-i18n="omnibox_option_1">Translate using the default text translation site.</span>
+	</li>
+	<li><strong><code>-2</code></strong>
+	  <span data-i18n="omnibox_option_2">Translate using a second text translation site. If both -1 and -2 are omitted, the site used for translation is determined by the language of the entered text.</span>
+	</li>
+	<li><strong><code>-d</code></strong>
+	  <span data-i18n="omnibox_option_d">Specify the display destination of translation results.</span>
+	</li>
+	<ul>
+	  <li><strong><code>nt</code></strong>
+	    <span data-i18n="omnibox_option_new_tab">New tab.</span>
+	  </li>
+	  <li><strong><code>st</code></strong>
+	    <span data-i18n="omnibox_option_specific_tab">Specific tab.</span>
+	  </li>
+	  <li><strong><code>ct</code></strong>
+	    <span data-i18n="omnibox_option_current_tab">Current tab.</span>
+	  </li>
+	  <li><strong><code>w</code></strong>
+	    <span data-i18n="omnibox_option_window">Window.</span>
+	  </li>
+	  <li><strong><code>sb</code></strong>
+	    <span data-i18n="omnibox_option_sidebar">Sidebar. The add-on cannot automatically open the sidebar, so the user must open it manually.</span>
+	  </li>
+	  <li><strong><code>ba</code></strong>
+	    <span data-i18n="omnibox_option_browser_action">Browser action panel. The add-on cannot automatically open the browser action panel, so the user must open it manually.</span>
+	  </li>
+	  <li><strong><code>pa</code></strong>
+	    <span data-i18n="omnibox_option_page_action">Page action panel. The add-on cannot automatically open the page action panel, so the user must open it manually.</span>
+	  </li>
+	</ul>
+	<li><strong><code>text</code></strong>
+	  <span data-i18n="omnibox_option_text">The sentence to translate.</span>
+	</li>
+      </ul>
+      <p data-i18n="omnibox_examples">Examples: <code><strong>tr Hello, world.</strong></code> --- Use the default translation site to translate to your native language. <code><strong>tr -2 -t de -d sb みなさんこんにちは。</strong></code> --- Translate to German using a second translation site and display the result in the sidebar.</p>
+
+      <h2 data-i18n="specific_tab">Specific tab</h2>
+      <p data-i18n="specific_tab_desc">If the specific tab exists, reuse that tab and display the translation result on that tab without opening a new tab.</p>
+      <p>
+	<label for="specific_tab_esc_behavior"><span data-i18n="specific_tab_esc_behavior">Behavior when the Esc key is pressed:</span>
+	</label>
+	<select id="specific_tab_esc_behavior" required>
+	  <option value="hide" data-i18n="hide_tab" selected>Hide tab</option>
+	  <option value="activate" data-i18n="activate_opener_tab">Activate the source tab</option>
+	  <option value="none" data-i18n="do_nothing">Do nothing</option>
+	</select>
+	<br>
+	<label>
+	  <input type="checkbox" id="specific_tab_esc_textarea" checked>
+	  <span data-i18n="specific_tab_esc_textarea">Do the same even when typing in the text area</span>
+	</label>
+      </p>
+      <p>
+      	<label>
+	  <input type="checkbox" id="specific_tab_set_favicon" checked>
+	  <span data-i18n="specific_tab_set_favicon">Display add-on icon as favicon on the specific tab</span>
+	</label>
+      </p>
+      <p class="indent-1">
+	<label>
+	  <span data-i18n="tab_window_session">Session information for specific tabs and windows:</span>
+	</label>
+	<select id="tab_window_session" required>
+	  <option value="save" data-i18n="save_session" selected>Save</option>
+	  <option value="dont_save" data-i18n="dont_save_session">Do not save</option>
+	</select>
+	<br>
+	<span data-i18n="tab_window_session_desc">Memorize the information of the translation result display window and a specific tab across sessions, and reuse the same tab and window after restarting the browser.</span>
+      </p>
+
+      <h2 data-i18n="result_window">Translation result window</h2>
+      <p data-i18n="result_window_desc">The position and size of the window displaying the translation result are stored when the focus is transferred to another window of the browser. The first and second page translation sites and the text translation site are stored separately.</p>
+      <p>
+	<label for="result_window_esc_behavior"><span data-i18n="result_window_esc_behavior">Behavior when the Esc key is pressed:</span>
+	</label>
+	<select id="result_window_esc_behavior">
+	  <option value="minimize" data-i18n="minimize_window">Minimize the window</option>
+	  <option value="lower" data-i18n="lower_window" selected>Move the window to the back</option>
+	  <option value="none" data-i18n="do_nothing">Do nothing</option>
+	</select>
+	<br>
+	<label>
+	  <input type="checkbox" id="result_window_esc_textarea" checked>
+	  <span data-i18n="result_window_esc_textarea">Do the same even when typing in the text area</span>
+	</label>
+      </p>
+
+      <h2 data-i18n="sidebar">Sidebar</h2>
+      <p>
+	<label for="sidebar_default_page"><span data-i18n="sidebar_default_page">Default sidebar:</span>
+	</label>
+	<select id="sidebar_default_page">
+	  <option value="sidebar_input_page" data-i18n="sidebar_input_page" selected>Text input page</option>
+	  <option value="default_translator" data-i18n="default_translator">Default page translator</option>
+	  <option value="second_translator" data-i18n="second_translator">Second page translator</option>
+	</select>
+      </p>
+
+      <h2 data-i18n="clipboard">Clipboard</h2>
+      <p class="indent-1">
+	<label>
+	  <input type="checkbox" id="translate_clipboard_content">
+	  <span data-i18n="translate_clipboard_content">Translate clipboard content</span>
+	</label>
+	<br>
+	<span data-i18n="translate_clipboard_content_desc">The contents of the clipboard can be translated by using shortcut keys, clicking an item in the context menu with the second mouse button, or holding down the control key and clicking a button in the browser action panel or page action panel.</span>
+      </p>
+
+      <p>
+	<button class="save highlight" data-i18n="save" data-i18n-title="save_button_desc">Save</button>
+	<span class="message highlight"></span>
+      </p>
+
+      <h2 data-i18n="shortcut_keys">Shortcut keys</h2>
+      <p data-i18n="shortcut_keys_desc">To <a href="https://support.mozilla.org/kb/manage-extension-shortcuts-firefox">set shortcut keys</a>, go to about:addons -&gt; ⚙️ Gear icon -&gt; Manage Extension Shortcuts.</p>
+      <p>
+	<button id="reset_commands">
+	  <img src="lib/reset.svg">
+	  <span data-i18n="reset_commands">Reset all shortcut keys</span>
+	</button>
+      </p>
+    </div>
+  </body>
+</html>

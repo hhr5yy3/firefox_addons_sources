@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "short_name": "X Downloader",
+  "homepage_url": "https://xdownloader.com/",
+  "default_locale": "en",
+  "version": "1.0.0",
+  "author": "contact@xdownloader.com",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://x.com/*",
+        "https://*.x.com/*"
+      ],
+      "js": [
+        "content-script.js"
+      ],
+      "css": [
+        "css/content-script.css"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "browser_action": {
+    "default_title": "X Downloader",
+    "default_icon": "images/logo/128x128.png"
+  },
+  "icons": {
+    "16": "images/logo/16x16.png",
+    "32": "images/logo/32x32.png",
+    "48": "images/logo/48x48.png",
+    "128": "images/logo/128x128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "extension@xdownloader.com"
+    }
+  }
+}

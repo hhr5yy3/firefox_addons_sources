@@ -1,0 +1,40 @@
+{
+  "name": "psrwebextension",
+  "version": "1.0.0",
+  "description": "Netwrix Password Secure browser extension",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run scss\" \"web-ext run -t=chromium\"",
+    "start:firefox": "concurrently \"npm run scss\" \"web-ext run --start-url='about:debugging#/runtime/this-firefox'\"",
+    "copy:content": "node copyContentScriptsToNewExtension",
+    "test:ci": "jest",
+    "test:dev": "jest --watch",
+    "scss": "node-sass --watch scss -o css",
+    "build": "node-sass scss -o css",
+    "build:grunt": "grunt",
+    "build:api": "node buildApi.js",
+    "postinstall": "node postinstall.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "5.2.0",
+    "bootstrap-scss": "^4.3.1",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "grunt": "^1.5.3",
+    "grunt-cli": "^1.4.3",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "jest": "^27.4.7",
+    "jest-junit": "^13.0.0",
+    "node-sass": "^9.0.0",
+    "web-ext": "^6.2.0"
+  }
+}

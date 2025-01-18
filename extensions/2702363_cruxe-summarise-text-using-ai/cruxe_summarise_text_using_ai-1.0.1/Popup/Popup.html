@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cruxe Extension</title>
+
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="Popup.css" />
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+			integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+			crossorigin="anonymous"
+		/>
+	</head>
+	<body>
+		<div class="extension-container">
+			<div class="cruxe-container flex-center">
+				<div class="img-container flex-center">
+					<img src="../icon128.png" alt="" />
+					<h2>CruXe</h2>
+				</div>
+			</div>
+			<div class="title-container flex-center-horizontal">
+				<h2 id="heading"></h2>
+			</div>
+
+			<div class="form-wrapper">
+				<form action="" id="myform">
+					<textarea
+						spellcheck=""
+						id="form-data"
+						maxlength="5000"
+						placeholder="Copy or Enter your text here "
+						required
+						class="text-field"
+					></textarea>
+				</form>
+			</div>
+			<div class="length range__slider" data-min="50" data-max="150">
+				<div class="length__title field-title" data-length="0">Words in Summary :</div>
+				<input id="slider" type="range" min="50" max="150" value="75" step="25" />
+			</div>
+
+			<button class="copyText"><i class="far fa-copy"></i></button>
+			<div class="summery-container text-field" id="display">
+				<p class="summary-text">Summary</p>
+				<div class="summary"></div>
+				<div class="loader-container flex-center">
+					<svg
+						class="spinner"
+						width="40px"
+						height="40px"
+						viewBox="0 0 66 66"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<circle
+							class="path"
+							fill="none"
+							stroke-width="5"
+							stroke-linecap="round"
+							cx="33"
+							cy="33"
+							r="30"
+						></circle>
+					</svg>
+				</div>
+			</div>
+			<div class="btn-container">
+				<button class="btn" id="submit-btn">Summarize</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="Popup.js" defer></script>
+	</body>
+</html>

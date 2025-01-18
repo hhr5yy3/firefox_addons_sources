@@ -1,0 +1,1 @@
+(async()=>{await import(chrome.runtime.getURL("assets/src/ui/index-c2fdcd39.js"))})();

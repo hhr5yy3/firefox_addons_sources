@@ -1,0 +1,10 @@
+// [snowpack] add styles to the page (skip if no document exists)
+if (typeof document !== 'undefined') {
+  const code = ".card-bg[data-v-f9b3b310] {\n  position: absolute;\n  z-index: 0;\n  top: 0;\n  left: 0;\n  width: 100vw;\n  height: 100vh;\n  background-color: hsl(var(--clr-grey), 0.6);\n}\n.card[data-v-f9b3b310] {\n  --card-with: 80vw;\n  --card-height: 80vh;\n  position: absolute;\n  top: calc(50% - var(--card-height) / 2);\n  left: calc(50% - var(--card-with) / 2);\n  width: var(--card-with);\n  height: var(--card-height);\n  background-color: hsl(var(--clr-black));\n  border-radius: var(--brd-rad);\n  display: flex;\n  flex-direction: column;\n  outline: none;\n}\n.card__header[data-v-f9b3b310] {\n  height: min-content;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  margin: 1rem 1rem;\n}\n.card__body[data-v-f9b3b310] {\n  margin: 2rem 2.5rem;\n  height: 100%;\n  overflow: auto;\n  padding-bottom: 2rem;\n}\n.card__close[data-v-f9b3b310] {\n  width: 4rem;\n  height: 4rem;\n  cursor: pointer;\n}\n.card__close[data-v-f9b3b310]:hover {\n  color: hsl(var(--clr-alert));\n}\n.card--opening[data-v-f9b3b310] {\n  animation: enter-f9b3b310 500ms ease;\n  animation-fill-mode: backwards;\n  animation-delay: 350ms;\n}\n.card--closing[data-v-f9b3b310] {\n  animation: enter-f9b3b310 500ms ease;\n  animation-direction: reverse;\n  animation-fill-mode: forwards;\n  animation-delay: 150ms;\n}\n@keyframes enter-f9b3b310 {\n0% {\n    opacity: 0.2;\n    transform: scale(0);\n}\n70% {\n    opacity: 1;\n    transform: scale(1.1);\n}\n100% {\n    transform: scale(1);\n}\n}";
+
+  const styleEl = document.createElement("style");
+  const codeEl = document.createTextNode(code);
+  styleEl.type = 'text/css';
+  styleEl.appendChild(codeEl);
+  document.head.appendChild(styleEl);
+}

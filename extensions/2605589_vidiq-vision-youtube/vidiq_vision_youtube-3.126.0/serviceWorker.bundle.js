@@ -1,0 +1,1 @@
+!function(e,o){if("object"==typeof exports&&"object"==typeof module)module.exports=o();else if("function"==typeof define&&define.amd)define([],o);else{var t=o();for(var r in t)("object"==typeof exports?exports:e)[r]=t[r]}}(globalThis,(function(){return(()=>{try{importScripts("./background.bundle.js")}catch(e){console.error("vidIQ --",e)}return{}})()}));

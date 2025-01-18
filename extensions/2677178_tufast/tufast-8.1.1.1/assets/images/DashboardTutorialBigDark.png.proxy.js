@@ -1,0 +1,1 @@
+export default "/assets/images/DashboardTutorialBigDark.png";

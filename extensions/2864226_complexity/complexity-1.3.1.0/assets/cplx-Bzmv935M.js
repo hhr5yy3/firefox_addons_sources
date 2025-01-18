@@ -1,0 +1,1 @@
+import{o,q as n}from"./cplx-Cdcyb6EG.js";const e=()=>{if(!o())throw new Error("This script should only be executed in main world context")},r=()=>{if(!n())throw new Error("This script should only be executed in extension context")};export{e as a,r as o};

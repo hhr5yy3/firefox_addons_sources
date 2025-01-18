@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_siteimprove_alfa_web_extension=self.webpackChunk_siteimprove_alfa_web_extension||[]).push([[9076],{19076:e=>{e.exports=JSON.parse('{"$schema":"../schema/rule.json","responsibility":"development","difficulty":4,"affects":["vision"],"category":"other"}')}}]);

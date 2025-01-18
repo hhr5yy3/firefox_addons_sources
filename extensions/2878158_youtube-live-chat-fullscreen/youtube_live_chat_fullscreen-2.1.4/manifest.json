@@ -1,0 +1,47 @@
+{
+  "version": "2.1.4",
+  "manifest_version": 2,
+  "description": "__MSG_extensionDescription__",
+  "name": "__MSG_extensionName__",
+  "default_locale": "en",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6fecd3d1-1743-4913-af18-f30d06d1fad6}"
+    }
+  },
+  "background": {
+    "page": "src/background/index.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "src/content/index.js"
+      ],
+      "css": [
+        "style.css"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "images/extension_16.png",
+    "32": "images/extension_32.png",
+    "48": "images/extension_48.png",
+    "128": "images/extension_128.png"
+  },
+  "browser_action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "images/extension_16.png",
+      "32": "images/extension_32.png",
+      "48": "images/extension_48.png",
+      "128": "images/extension_128.png"
+    }
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}

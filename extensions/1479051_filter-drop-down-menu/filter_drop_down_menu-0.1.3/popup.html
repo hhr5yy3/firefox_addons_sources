@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel=stylesheet href="popup.css">
+</head>
+<body>
+  <section>
+    <form id=search class=browser-style>
+      <label><input id=q type=text autocapitalize=off placeholder=popupTextBox data-i18n=placeholder autofocus></label>
+
+      <select id=opt class=browser-style>
+        <option value=cn data-i18n=text>filterContains
+        <option value=bw data-i18n=text>filterBeginsWith
+        <option value=ew data-i18n=text>filterEndsWith
+        <option value=nc data-i18n=text>filterDoesNotContain
+        <option value=nb data-i18n=text>filterDoesNotBeginWith
+        <option value=ne data-i18n=text>filterDoesNotEndWith
+      </select>
+
+      <button id=go type=submit data-i18n=textContent class=browser-style>popupAddBtn</button>
+    </form>
+
+    <ul id=filters>
+      <ol class="filter-cn">lorem</ol>
+      <ol class="filter-nc">ipsum</ol>
+      <ol class="filter-bw">dolor</ol>
+      <ol class="filter-ew">sit</ol>
+      <ol class="filter-nb">amet</ol>
+      <ol class="filter-ne">consectetur</ol>
+    </ul>
+
+    <div id=summary>Found: 0</div>
+
+  </section>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Mapio</title>
+  <style>
+
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #overlay {
+      background-color: #000000;
+      height: 100vh;
+      left: 0;
+      opacity: 0.5;
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      z-index: -1;
+    }
+
+    #modals {
+      background: no-repeat url('head.jpg') #FFFFFF;
+      border: 2px solid #52B3F4;
+      margin: 150px auto 0 auto;
+      min-height: 500px;
+      width: 790px;
+    }
+
+    #modalB {
+      display: none;
+    }
+
+    #title {
+      margin: 40px 0 0 189px;
+      font-size: 2em;
+      font-weight: 600;
+    }
+
+    #content {
+      margin: 70px 100px 0 60px;
+      text-align: justify;
+    }
+
+    .subtitle {
+      color: #1088D9;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    .buttons {
+      margin: 30px 0;
+      text-align: right;
+    }
+
+    .button {
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 1.2em;
+      margin-left: 20px;
+      min-width: 180px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .b1 {
+      background-color: #79ABCC;
+    }
+
+    .b2 {
+      background-color: #47B5FF;
+    }
+
+  </style>
+  </head>
+  <body>
+    <div id="overlay"></div>
+    <div id="modals">
+      <div id="modalA">
+        <div id="title">Die MAPIO-Erweiterung ist installiert!</div>
+        <div id="content">
+          <div class="subtitle">Vielen Dank, dass Sie unsere Erweiterung installiert haben.</div>
+          Damit unser Service richtig funktioniert, müssen wir Folgendes sammeln das Schlüsselwort Ihrer Suche, damit wir Ihnen Anzeigen vorschlagen können, die zu Ihrer Suche passen.<br><br>
+          Wenn Sie sich dafür entscheiden, uns nicht zu erlauben, das Schlüsselwort Ihrer Suche zu sammeln, dann sind wir nicht in der Lage, Ihnen Anzeigen anzubieten.<br><br>
+          Für weitere Informationen können Sie unsere <a href="https://addons.mozilla.org/firefox/addon/mapionet-immo/privacy/" target="_blank">Datenschutzrichtlinie lesen</a>.<br><br>
+          Sind Sie damit einverstanden, dass wir das Schlüsselwort Ihrer Suche vorübergehend sammeln, um Ihnen relevante Anzeigen zu liefern?
+          <div class="buttons">
+            <span class="button b1" id="reject">Nicht erlauben</span> <span class="button b2" id="accept">Zulassen</span>
+          </div>
+        </div>
+       </div>
+      <div id="modalB">
+        <div id="title">Die MAPIO-Erweiterung ist installiert!</div>
+        <div id="content">
+          Leider können wir ohne Ihre Zustimmung und ohne die Erfassung Ihres Suchbegriffs nicht in der Lage sein nicht in der Lage sein, Ihnen relevante Angebote zu unterbreiten.<br><br>
+          Wir empfehlen Ihnen, die Erfassung dieser Informationen zuzulassen, damit unser Dienst funktionsfähig ist.
+          <div class="buttons">
+            <span class="button b1" id="bye">Ich möchte den Dienst<br>nicht nutzen</span> <span class="button b2" id="restart">Ich habe meine<br>Meinung geändert</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="consent.js"></script>
+  </body>
+</html>

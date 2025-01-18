@@ -1,0 +1,12 @@
+<md-chips ng-model="group.customLinks" ng-if="group.customLinks.length > 0" class="custom-links-chips" readonly="true"
+    md-removable="false" md-enable-chip-edit="false"
+    input-aria-label="Saved link"
+    delete-button-label="Remove link">
+    <md-chip-template>
+        <a data-href="{{$chip.url}}" ng-click="openTab($chip.url)">
+            <md-tooltip md-direction="top">{{$chip.title}} : {{$chip.url}}</md-tooltip>
+            <div ng-if="$chip.hasSvg" class="value {{$chip.hasSvg ? 'load-svg': ''}}" data-svg-id="{{$chip.svgId}}" ng-bind-html="loadSvg($chip.svgId)"></div>
+            <div ng-if="$chip.hasSvg === false" class="value">{{$chip.title}}</div>
+        </a>
+    </md-chip-template>
+</md-chips>

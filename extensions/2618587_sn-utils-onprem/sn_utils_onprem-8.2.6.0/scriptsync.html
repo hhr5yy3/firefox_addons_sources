@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>sn-scriptsync SN Utils for ServiceNow by arnoudkooi.com</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/datatables.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/scriptsync.css">
+
+    <script src="js/purify.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/datatables.min.js"></script>
+    <script src="js/datatables-datetime.js"></script>
+    <script src="scriptsync.js"></script>
+    
+    <base href="/#">
+</head>
+<body>
+    <h5><img class="wdth40" src="/images/icon128.png" alt="SN Utils logo" />sn-scriptsync helper tab</h5>
+    <div class="form-check" title="Reload active tab on save, to see result of the update">
+        <input class="form-check-input snu-setting" type="checkbox" id="reloadactivetab" 
+            name="reloadactivetab">
+        <label class="form-check-label" for="reloadactivetab">
+            Reload active tab on save from VS Code.
+        </label>
+    </div>
+
+    <div class="alert alert-info hidden" id="instanceapprovediv" role="info">
+
+        <h5>New instance connectivity</h5>
+        Allow sn-scriptsync to interacft with <b id="instanceurl">instance</b>? <br/><br/>
+
+        <button type="button" id="instanceallow" class="btn btn-success">Allow</button>
+        <button type="button" id="instanceblock" class="btn btn-danger">Block</button>
+      </div>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab" aria-controls="home" aria-selected="true">Activity</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="instances-tab" data-bs-toggle="tab" data-bs-target="#instances" type="button" role="tab" aria-controls="profile" aria-selected="false">Instances</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+            <table id="synclog" class="display table-condensed tbl" >
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Origin</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="instances" role="tabpanel" aria-labelledby="instances-tab">
+            
+            <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <h5>Allowed instances</h5>
+                    <ul id="intanceslistallowed">
+                        <li>-none-</li>
+                    </ul>
+                  </div>
+                  <div class="col">
+                    <h5>Blocked instances</h5>
+                    <ul id="intanceslistblocked">
+                        <li>-none-</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+        </div>
+      </div>
+
+
+
+    <div id="bannermessage" class="alert alert-primary" role="alert">
+       Welcome to the sn-scriptsync helper tab.
+    </div>
+
+    <!-- <div class="msg">
+        🌟 If you ❤️ sn-scriptsync, 
+        <a href='#' target='_blank'>please consider a review!</a> in the 
+        <a href='#' target='_blank'>VS Code Marketlace</a> 
+        or <a href='#' target="_blank">VSX Registry</a>. 🌟
+    </div> -->
+
+    <span class="ft8">
+        <a href="https://www.arnoudkooi.com" target="arnoudkooi">arnoudkooi.com</a> 
+    </span>
+</body>
+</html>

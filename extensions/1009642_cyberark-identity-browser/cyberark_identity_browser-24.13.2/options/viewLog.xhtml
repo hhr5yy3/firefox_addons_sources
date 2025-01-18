@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>View Log</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,700,900' rel='stylesheet' type='text/css'/>
+<style>
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}
+ins{background-color:#ff9;color:#000;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+
+
+body {font-family: "roboto";}
+
+.container {margin:20px;}
+
+.container ul {
+	list-style-type: none;
+	overflow: hidden;
+	height:50px;
+	font-size:12px;
+	font-weight: 800;
+	width:700px;
+}
+
+.container ul li {
+	float:left;
+	margin-right:20px;
+	padding-right:20px;
+	border-right:1px solid #DAD8DB;
+	height:28px;
+	overflow: hidden;
+}
+
+.container ul li:first-child span {
+	display: block;
+	padding-top:7px;
+}
+
+.container ul li:last-child {
+	border-right:none;
+}
+
+.container ul li a {
+	display:inline-block;
+	text-decoration: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	padding: 7px 15px 7px 15px;
+	border-width: 1px;
+	border-style: solid;
+	background-image: none;
+	background-color: #f0f0f0;
+	background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#fff),color-stop(100%,#f0f0f0));
+	background-image: -webkit-linear-gradient(top,#fff,#f0f0f0);
+	background-image: -moz-linear-gradient(top,#fff,#f0f0f0);
+	background-image: -o-linear-gradient(top,#fff,#f0f0f0);
+	background-image: -ms-linear-gradient(top,#fff,#f0f0f0);
+	background-image: linear-gradient(top,#fff,#f0f0f0);
+	border-color: #d7d7d7;
+	cursor: pointer;
+	vertical-align: middle;
+	font-size:12px;
+	color: #53585c; 
+	font-weight: 500;
+}
+
+.container ul li input { 
+	margin-right:20px;
+}
+
+.container table { 
+	font-size: 13px;  
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.container table tr {
+	border-top: 1px solid #DAD8DB;
+}
+
+.container table tr.header {
+	border-top: none;
+}
+
+.container table tr th {
+	text-align: left;
+	padding:5px 10px 5px 10px;
+	border-right:1px solid #DAD8DB; 
+}
+
+.container table tr th:first-child {
+	padding: 3px 10px 3px 0px;
+}
+
+.container table tr th:last-child {
+	border-right:none;	
+}
+
+.container table tr td { 
+	padding:8px 10px 8px 10px;
+	font-size:.9em;
+}
+
+.container table tr.space { 
+	border-top:none;
+}
+
+.container table tr.space td {
+	padding: 0 0 0 0 !important;
+	height: 5px;
+}
+
+.container table tr td:first-child { 
+	padding:8px 10px 8px 0px;
+}
+
+</style>
+<script src="viewLog.js"></script>
+</head>
+<body class="container">
+
+<ul>
+	<li><a id="clear">clearall</a></li>
+	<li>addmark: <input type="text" id="markText"/><a id="markBtn">mark</a></li>
+</ul>
+
+<table id="logs">
+	<tr class="header">
+		<th>time</th>
+		<th>tabid</th>
+		<th>level</th>
+		<th>logger</th>
+		<th>message</th>
+	</tr>
+	<tr class="space">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	  
+</table>
+
+<ul style="margin-top:20px;">
+	<li><span id="usage"></span></li>
+</ul>
+
+</body>
+</html>

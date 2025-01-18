@@ -1,0 +1,230 @@
+:root {
+    --popup-black: #1e1e23;
+    --popup-white: #f5f3f1;
+    --popup-blue: hsl(89, 31%, 51%);
+    --level-color-1: #E57373;
+    --level-color-2: #eccc45;
+    --level-color-3: #eccc45; 
+    --level-color-4: #7BD164;
+    --slider-bg-color: #646473;
+}
+body, body > section, body p, body h1, body h2, body h3 {
+    color: var(--popup-white)!important;
+    fill: var(--popup-white)!important;
+}
+body h3[data-i18n="firstRunSectionLabel"] {
+    color: var(--popup-black)!important;
+    fill: var(--popup-black)!important;  
+}
+body p[data-i18n="firstRunDescription"] {
+    color: var(--popup-black)!important;
+    fill: var(--popup-black)!important;  
+}
+body, #dashboard-nav {
+    background-color: var(--popup-black)!important;
+    position: relative!important;
+}
+body {
+    margin: 20px !important;
+    padding-top: 10px!important;
+    padding-bottom: 40px!important;
+}
+body > section {
+    display: none;
+}
+body p {
+    padding-bottom: 5px;
+}
+body h3 {
+    padding-top: 10px;
+}
+body[data-pane="settings"] > section[data-pane="settings"],
+body[data-pane="filters"] > section[data-pane="filters"],
+body[data-pane="disabled"] > section[data-pane="disabled"],
+body[data-pane="about"] > section[data-pane="about"] {
+    display: block;
+}
+body[data-pane="settings"] #dashboard-nav .tabButton[data-pane="settings"],
+body[data-pane="filters"] #dashboard-nav .tabButton[data-pane="filters"],
+body[data-pane="disabled"] #dashboard-nav .tabButton[data-pane="disabled"],
+body[data-pane="about"] #dashboard-nav .tabButton[data-pane="about"] {
+    border-bottom: 3px solid var(--popup-white)!important;
+    background-color: var(--popup-white)!important;
+    color: var(--popup-black)!important;
+    fill: var(--popup-black)!important;
+}
+body #dashboard-nav .tabButton[data-pane="about"] {
+    display:none!important;
+}
+.tabButton {
+    border-bottom: 3px solid transparent !important;
+    cursor: pointer!important;
+    color: var(--popup-white)!important;
+    fill: var(--popup-white)!important;
+}
+.tabButton:hover {
+    color: var(--popup-black)!important;
+    fill: var(--popup-black)!important;
+    background-color: var(--popup-white)!important;
+    background: var(--popup-white)!important;
+    border-bottom: transparent!important;
+    cursor: pointer!important;
+    opacity:0.85;
+}
+.tabButton.active:hover {
+    cursor: default!important;
+    opacity:1!important;
+}
+#dashboard-nav .logo {
+    width:32px;
+    padding-right:20px;
+}
+.icon-level {
+    width:64px;
+}
+.logo img, .icon-level img{
+    filter: brightness(0) invert(1);
+}
+#dashboard-nav, #header {
+    border: 0;
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+#dashboard-nav {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-top: 1px solid var(--popup-white);
+}
+#header {
+    position: relative;
+    display: flex;
+    justify-content: flex-end!important; /* Aligns children (the img) to the end (right) */
+    align-items: center!important; /* Optional, if you want vertical alignment */
+}
+#header img {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom:20px;
+}
+.filteringModeSlider {
+    margin: 0 auto;
+}
+.filteringModeSlider span {
+    background-color: var(--popup-white)!important;
+    height: 1px!important;
+    border-radius: 3px;
+}
+.filteringModeCard {
+    border: 1px solid var(--popup-white)!important;
+}
+.filteringModeCard:hover {
+    cursor:pointer;
+}
+.filteringModeCard:has(.radio > [type="radio"]:checked) {
+    background-color: var(--popup-white)!important;
+    border: 1px solid var(--popup-white)!important;
+    cursor:default;
+}
+.filteringModeCard:has(.radio > [type="radio"]:checked) .filteringModeSlider span {
+    background-color: var(--popup-black)!important;
+    height: 2px!important;
+    border-radius: 3px;
+}
+.filteringModeCard:has(.radio > [type="radio"]:checked) > span,
+.filteringModeCard:has(.radio > [type="radio"]:checked) > div {
+    color: var(--popup-black)!important;
+    fill: var(--popup-black)!important;
+    font-weight: bold!important;
+}
+.filteringModeSlider .filteringModeCard:has(.radio > [type="radio"]:checked) > span[data-level] {
+    background-color: var(--popup-black)!important;
+}
+.filteringModeCard img {
+    filter: brightness(0) invert(85%)!important;
+}
+.filteringModeCard:has(.radio > [type="radio"]:checked) img {
+    filter: brightness(0) invert(25%)!important;
+}
+.filteringModeCard span:has(> .input) {
+    align-items: center;
+    display: inline-flex;
+}
+.filteringModeCard {
+    padding-bottom: 1em!important;
+}
+.filteringModeCard > div {
+    display: flex;
+    padding: 1em 1.5em!important;
+    border: none !important;
+}
+
+.groupEntry.hideUnused:not([data-groupkey="user"]) .geDetails::before {
+    color: var(--popup-white)!important;
+}
+
+.groupEntry:not([data-groupkey="user"]) .geDetails::before {
+    color: var(--popup-white)!important;
+}
+.checkbox > input[type="checkbox"] {
+    cursor:pointer!important;
+}
+.checkbox > input[type="checkbox"]:checked + svg {
+    background-color: var(--popup-white);
+    border-color: var(--popup-white);
+    stroke: var(--popup-black);
+}
+.checkbox > input[type="checkbox"] + svg {
+    background-color: transparent;
+    border: 2px solid var(--popup-white);
+    border-radius: 2px;
+    box-sizing: border-box;
+    fill: none;
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    stroke: none;
+    stroke-width: 5px;
+    width: 100%;
+}
+.radio > input[type="radio"] {
+    opacity: 0.5;
+}
+.radio > input[type="radio"]:checked + svg > path, .radio > input[type="radio"]:checked + svg > circle {
+    fill: var(--popup-black)!important;
+}
+input[type="radio"]:checked + svg > circle {
+    fill: var(--popup-black)!important;
+}
+#trustedSites {
+    min-height: 10rem;
+    resize: vertical;
+    width: 100%;
+    padding: 5px;
+    line-height: 1.5em;
+    border: 1px solid var(--popup-white)!important;
+    border-radius: 3px;
+}
+#trustedSites:focus {
+    border: 1px solid var(--level-color-1)!important;
+}
+body.firstRun .firstRun {
+    background-color: var(--popup-white)!important;
+    padding: 4px 16px!important;
+    color: var(--popup-black)!important;
+    margin-top: 20px!important;
+}
+#addon-inline-options {
+    padding: 20px !important;
+    background-color: var(--popup-black)!important;
+}

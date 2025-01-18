@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Map Route Pro & Search</title>
+
+	<link rel="icon" type="image/x-icon" href="./images/favicon.svg">
+
+	<link href="https://fonts.googleapis.com/css2?family=Inter&family=Roboto:wght@400;500;700;900&display=swap"
+		rel="stylesheet" />
+	<link rel="stylesheet" href="scss/style.css" />
+	<!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+	<link href="./scss/atlas.css" rel="stylesheet" />
+	<script src="./js/atlas/atlas.js"></script>
+
+	<!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
+	<script src="./js/atlas/atlas-service.js"></script>
+	<script src="./js/directions.js"></script>
+	<script src="./js/domHelper.js"></script>
+	<script defer src="./js/getSuggestions.js"></script>
+	<script src="./js/loadMap.js"></script>
+	<script defer src="./js/localStorage.js"></script>
+	<script src="./js/maps.js"></script>
+	<script defer src="./js/onload.js"></script>
+	<script defer src="./js/tabSwitch.js"></script>
+	<script defer src="./js/yahooSearch.js"></script>
+	<script defer src="./js/addNewSavedLoc.js"></script>
+	<script defer src="./js/savedLocationTab.js"></script>
+</head>
+
+<body>
+	<div class="container-main">
+		<header>
+			<div class="grid">
+				<img src="images/site-logo.svg" alt="logo-icon" />
+			</div>
+		</header>
+		<div class="inner-banner">
+			<div class="cont-top">
+				<div class="disabled-overlay">
+					<div class="disabled-inner">
+						<p class="disabled-head">Welcome to Maps Route Pro & Search</p>
+						<p class="disabled-desc">To activate this feature, an opt-in is necessary. Please grant us the
+							required permissions.</p>
+						<a class="enable-optinCta">View Permissions</a>
+					</div>
+				</div>
+				<div class="grid">
+					<div class="cont-wrap">
+						<div class="tab">
+							<button id="home-directions-tab" class="tablinks active defaultOpen">
+								<img src="./images/direction-def.svg" alt="default-icon" class="def-icon" />
+								<img src="./images/direction-active.svg" alt="default-icon" class="active-icon" />
+								Directions
+							</button>
+							<button id="home-maps-tab" class="tablinks">
+								<img src="./images/loc-default.svg" alt="default-icon" class="def-icon" />
+								<img src="./images/loc-active.svg" alt="default-icon" class="active-icon" />
+								Maps
+							</button>
+						</div>
+
+						<div id="directions" class="tabcontent tabcontent-home">
+							<ul class="map-type-list">
+								<li class="active" id="home-car-mode">
+									<img src="./images/car.svg" class="def-map-icon" alt="icon-1" />
+									<img src="./images/car-active.svg" class="active-map-icon" alt="icon-1" />
+								</li>
+								<li id="home-walk-mode">
+									<img src="./images/walk.svg" class="def-map-icon" alt="icon-1" />
+									<img src="./images/walk-active.svg" class="active-map-icon" alt="icon-1" />
+								</li>
+								<li id="home-bicycle-mode">
+									<img src="./images/cycle.svg" class="def-map-icon" alt="icon-1" />
+									<img src="./images/cycle-active.svg" class="active-map-icon" alt="icon-1" />
+								</li>
+							</ul>
+							<div class="maps-content">
+								<ul class="curr-dest-icon">
+									<li>
+										<img src="./images/start.svg" alt="start-icon" />
+									</li>
+									<li></li>
+									<li>
+										<img src="./images/end.svg" alt="start-icon" />
+									</li>
+								</ul>
+								<form>
+									<div class="field-wrap">
+										<input type="text" placeholder="Add starting point" id="query-from"
+											autocomplete="off" />
+										<div id="suggestion-list-from" class="suggest-list"></div>
+									</div>
+									<div class="field-wrap">
+										<input type="text" placeholder="Add destination" id="query-to"
+											autocomplete="off" />
+										<div id="suggestion-list-to" class="suggest-list"></div>
+									</div>
+
+									<button id="home-get-directions">Get Directions</button>
+								</form>
+								<div id="home-reverse-directions" class="reverse-icon">
+									<img src="./images/reverse-icon.svg" alt="reverse-icon" />
+								</div>
+							</div>
+						</div>
+
+						<div id="maps" class="tabcontent tabcontent-home">
+							<form>
+								<div class="field-wrap">
+									<input type="text" placeholder="Enter a location" id="query" autocomplete="off" />
+									<div id="suggestion-list" class="suggest-list"></div>
+								</div>
+
+								<button id="home-get-maps">Continue</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="saved-category-overlay">
+					<div class="saved-category-overlay__card">
+						<div class="top-bar">
+							<p class="top-bar__title">Choose from your saved locations</p>
+							<svg class="saved-category-overlay-close" width="12" height="12" viewBox="0 0 12 12" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path d="M1 1L11 11M1 11L11 1" stroke="#252E40" stroke-width="0.666667"
+									stroke-linecap="square" />
+							</svg>
+						</div>
+
+						<div class="saved-items">
+							<ul>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="cont-btm">
+				<div class="grid">
+					<form id="yahooSearch">
+						<input id="yahooSearchQuery" type="text" placeholder="Search the web" autocomplete="off" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<ul>
+				<li>
+					<a href="https://maproutepro.com/public/privacypolicy_ff.html" target="_blank">Privacy Policy</a>
+				</li>
+				<li>
+					<a href="https://maproutepro.com/public/termsofservice_ff.html" target="_blank">Terms of Service</a>
+				</li>
+				<li>
+					<a href="https://maproutepro.com/public/contactus_ff.html" target="_blank">Contact Us</a>
+				</li>
+				<li>
+					<a href="https://maproutepro.com/public/uninstall_ff.html" target="_blank">Uninstall</a>
+				</li>
+				<li>
+					<a href="https://maproutepro.com/public/ccpa_ff.html" target="_blank">Do Not Share My Personal
+						Information</a>
+				</li>
+			</ul>
+		</footer>
+	</div>
+	<div class="container-result">
+		<header>
+			<div class="">
+				<p class="curr-time">09:52 PM</p>
+				<p class="curr-date">Monday, Feb 18</p>
+			</div>
+		</header>
+		<div id="myMap" class="map-grid"></div>
+		<div class="result-box-wrap">
+			<div class="result-box-inner">
+				<div class="tab">
+					<button id="results-directions-tab" class="tablinks">
+						<img src="./images/direction-def.svg" alt="default-icon" class="def-icon" />
+						<img src="./images/direction-active.svg" alt="default-icon" class="active-tab" />
+						<span class="active-tab">Directions</span>
+					</button>
+					<button id="results-maps-tab" class="tablinks">
+						<img src="./images/loc-default.svg" alt="default-icon" class="def-icon" />
+						<img src="./images/loc-active.svg" alt="default-icon" class="active-tab" />
+						<span class="active-tab">Maps</span>
+					</button>
+					<button id="results-saved-loc-tab" class="tablinks defaultOpen">
+						<img src="./images/saved-def.svg" alt="default-icon" class="def-icon" />
+						<img src="./images/saved-active.svg" alt="default-icon" class="active-tab" />
+						<span class="active-tab">Saved Location</span>
+					</button>
+				</div>
+			</div>
+
+			<div id="direction-results" class="tabcontent tabcontent-results">
+				<ul class="map-type-list">
+					<li id="results-car-mode">
+						<img src="./images/car.svg" class="def-map-icon" alt="icon-1" />
+						<img src="./images/car-active.svg" class="active-map-icon" alt="icon-1" />
+					</li>
+					<li id="results-walk-mode">
+						<img src="./images/walk.svg" class="def-map-icon" alt="icon-1" />
+						<img src="./images/walk-active.svg" class="active-map-icon" alt="icon-1" />
+					</li>
+					<li id="results-bicycle-mode">
+						<img src="./images/cycle.svg" class="def-map-icon" alt="icon-1" />
+						<img src="./images/cycle-active.svg" class="active-map-icon" alt="icon-1" />
+					</li>
+				</ul>
+				<div class="maps-content">
+					<ul class="curr-dest-icon">
+						<li>
+							<img src="./images/start.svg" alt="start-icon" />
+						</li>
+						<li></li>
+						<li>
+							<img src="./images/end.svg" alt="start-icon" />
+						</li>
+					</ul>
+					<form>
+						<div class="field-wrap">
+							<input type="text" placeholder="Add starting point" id="results-query-from"
+								autocomplete="off" />
+							<div id="results-suggestion-list-from" class="suggest-list"></div>
+						</div>
+						<div class="field-wrap">
+							<input type="text" placeholder="Add destination" id="results-query-to" autocomplete="off" />
+							<div id="results-suggestion-list-to" class="suggest-list"></div>
+						</div>
+
+						<button id="results-get-directions">Get Directions</button>
+					</form>
+					<div id="results-reverse-directions" class="reverse-icon">
+						<img src="./images/reverse-icon.svg" alt="reverse-icon" />
+					</div>
+				</div>
+
+				<div class="instructions-wrapper">
+					<div class="share-via-card share-loc-wrap">
+						<div id="directions-print-btn">
+							<svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M15.7146 0C16.5031 0 17.1431 0.64 17.1431 1.42857V2.85714H2.85742V1.42857C2.85742 0.64 3.49742 0 4.28599 0H15.7146ZM1.42857 4.28564H18.5714C19.36 4.28564 20 4.92564 20 5.71422V14.2856C20 15.0742 19.36 15.7142 18.5714 15.7142H17.1429V18.5714C17.1429 19.3599 16.5029 19.9999 15.7143 19.9999H4.28571C3.49714 19.9999 2.85714 19.3599 2.85714 18.5714V15.7142H1.42857C0.64 15.7142 0 15.0742 0 14.2856V5.71422C0 4.92564 0.64 4.28564 1.42857 4.28564ZM4.28571 18.5714H15.7143V11.4285H4.28571V18.5714ZM14.2857 8.57136H17.1429V7.14279H14.2857V8.57136ZM5.71387 15.7144H9.99958V17.1429H5.71387V15.7144ZM14.2853 12.8569H5.71387V14.2855H14.2853V12.8569Z"
+									fill="#1563F1" />
+							</svg>
+						</div>
+						<ul>
+							<a title="Whatsapp" id="whatsapp-directions-location-share" target="_blank"
+								href="https://web.whatsapp.com/send?text=https://maproutepro.com?maps=eyJ0ZXh0IjoiTXVtYmFpIEhvc2llcnksIEthbmFkZSBNYXJ1dGkgTGFuZSwgTmFpa3dhZGkgUHVyYSwgTmFzaGlrIDQyMjAwMSwgTWFoYXJhc2h0cmEiLCJsb24iOjczLjc5MDk5NCwibGF0IjoyMC4wMDM3ODF9">
+								<li>
+									<img src="./images/whatsapp.svg" alt="share-icon">
+								</li>
+							</a>
+							<a id="mail-directions-location-share" title="Email"
+								href="mailto:?body=https://maproutepro.com?maps=eyJ0ZXh0IjoiTXVtYmFpIEhvc2llcnksIEthbmFkZSBNYXJ1dGkgTGFuZSwgTmFpa3dhZGkgUHVyYSwgTmFzaGlrIDQyMjAwMSwgTWFoYXJhc2h0cmEiLCJsb24iOjczLjc5MDk5NCwibGF0IjoyMC4wMDM3ODF9">
+								<li>
+									<img src="./images/email.svg" alt="share-icon">
+								</li>
+							</a>
+							<li id="copy-directions-location" title="Copy Link">
+								<img src="./images/link.svg" alt="share-icon">
+							</li>
+						</ul>
+						<span class="link-cop-directions">
+							<img src="./images/checkmark.svg">
+							Link Copied
+						</span>
+					</div>
+					<div class="instructions-container">
+
+					</div>
+				</div>
+
+			</div>
+
+			<div id="maps-results" class="tabcontent tabcontent-results">
+				<form>
+					<div class="field-wrap">
+						<input type="text" class="maps-tab-search" id="results-query" placeholder="Enter a location" autocomplete="off" />
+						<div id="results-suggestion-list" class="suggest-list"></div>
+					</div>
+
+					<span id="results-maps-input-reset" class="clear-input">
+						<img src="./images/search-clear.svg" />
+					</span>
+				</form>
+				<ul class="maps-list-options">
+					<li class="maps-list-child" id="results-maps-get-directions-dropdown">
+						<div class="maps-list-inner-1">
+							<div class="maps-list-left">
+								<img src="./images/maps-icon-1.svg" alt="maps-icon" />
+								<span>Get Directions</span>
+							</div>
+							<div class="maps-list-right">
+								<img src="./images/arrow-maps.svg" alt="arrow" />
+							</div>
+						</div>
+					</li>
+					<li class="maps-list-child">
+						<div class="maps-list-inner">
+							<div class="maps-list-left">
+								<img src="./images/maps-icon-2.svg" alt="maps-icon" />
+								<span>Save Location</span>
+							</div>
+							<div class="maps-list-right">
+								<img src="./images/arrow-maps.svg" alt="arrow" />
+							</div>
+						</div>
+						<div class="maps-list-cont">
+							<ul class="saved-loc-list" id="maps-tab-saved-loc-list">
+								<li class="parent-li-maps-tab">Save to:</li>
+								<li class="parent-li-maps-tab">
+									<img src="./images/home.svg" alt="maps-icon" class="def-icon" />
+									<img src="./images/home-active.svg" class="active-icon">
+									<span>Home</span>
+									<div class="saved-popup">
+										<span>
+											<img src="./images/right-mark.svg" alt="right-mark">
+										</span>
+										Saved to Home
+									</div>
+									<div class="removed-popup">
+										Removed from Home
+									</div>
+								</li>
+								<li class="parent-li-maps-tab">
+									<img src="./images/work.svg" alt="maps-icon" class="def-icon" />
+									<img src="./images/work-active.svg" class="active-icon">
+									<span>Work</span>
+									<div class="saved-popup">
+										<span>
+											<img src="./images/right-mark.svg" alt="right-mark">
+										</span>
+										Saved to Work
+									</div>
+									<div class="removed-popup">
+										Removed from Work
+									</div>
+								</li>
+							</ul>
+							<div id="map-tab-add-new-loc-form"></div>
+							<button id="maps-tab-add-save-loc">+ Add New</button>
+						</div>
+					</li>
+					<li class="maps-list-child print-location">
+						<div class="maps-list-inner-1">
+							<div class="maps-list-left">
+								<img src="./images/maps-icon-3.svg" alt="maps-icon" />
+								<span>Print location</span>
+							</div>
+							<div class="maps-list-right">
+								<img src="./images/arrow-maps.svg" alt="arrow" />
+							</div>
+						</div>
+					</li>
+					<li class="maps-list-child">
+						<div class="maps-list-inner">
+							<div class="maps-list-left">
+								<img src="./images/maps-icon-4.svg" alt="maps-icon" />
+								<span>Share Location</span>
+							</div>
+							<div class="maps-list-right">
+								<img src="./images/arrow-maps.svg" alt="arrow" />
+							</div>
+						</div>
+						<div class="maps-list-cont">
+							<div id ="results-map-share-loc-wrap" class="share-loc-wrap">
+								<span class="share-text"> Share Via: </span>
+								<ul>
+									<a title="Whatsapp">
+										<li id="whatsapp-maps-location-share">
+											<img src="./images/whatsapp.svg" alt="share-icon" />
+										</li>
+									</a>
+									<a title="Email">
+										<li id="mail-maps-location-share">
+											<img src="./images/email.svg" alt="share-icon" />
+										</li>
+									</a>
+									<li id="copy-maps-location" title="Copy Link">
+										<img src="./images/link.svg" alt="share-icon" />
+									</li>
+								</ul>
+								<span class="link-cop">
+									<img src="./images/checkmark.svg" />
+									Link Copied
+								</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div id="saved-results" class="tabcontent tabcontent-results">
+				<ul id="save-loc-tab-saved-loc-list" class="saved-loc-list-2">
+					<li class="saved-loc2-child parent-li">
+						<div class="default-view">
+							<ul class="options-list">
+								<li>Add location</li>
+							</ul>
+							<div class="saved-loc-inner">
+								<div class="saved-loc-left">
+									<img src="./images/home.svg" />
+									<span>Home</span>
+								</div>
+								<div class="saved-loc-right">
+									<img src="./images/options.svg" />
+								</div>
+							</div>
+							<div class="saved-loc-usr-int">
+								<div class="field-wrap">
+									<input type="text" placeholder="Add location" id="saved-loc-tab-add-input" autocomplete="off" />
+								<div class="suggest-list"></div>
+								</div>
+								
+								<ul class="saved-address-list">
+								</ul>
+							</div>
+						</div>
+						<div class="rename-view">
+							<span title="Cancel Raname" class="clear-search">
+								<img src="./images/close-save-1.svg" />
+							</span>
+							<form id="renameLocForm">
+								<input type="text" placeholder="Name" class="rename-add" />
+								<input type="submit" hidden />
+							</form>
+						</div>
+					</li>
+					<li class="saved-loc2-child parent-li">
+						<div class="default-view">
+							<ul class="options-list">
+								<li>Add location</li>
+							</ul>
+							<div class="saved-loc-inner">
+								<div class="saved-loc-left">
+									<img src="./images/work.svg" />
+									<span>Work</span>
+								</div>
+								<div class="saved-loc-right">
+									<img src="./images/options.svg" />
+								</div>
+							</div>
+							<div class="saved-loc-usr-int">
+								<div class="field-wrap">
+									<input type="text" placeholder="Add location" id="saved-loc-tab-add-input" autocomplete="off" />
+								<div class="suggest-list" id=""></div>
+								</div>
+								
+								<ul class="saved-address-list">
+
+								</ul>
+							</div>
+						</div>
+						<div class="rename-view">
+							<span class="clear-search">
+								<img src="./images/close-save-1.svg" />
+							</span>
+							<form id="renameLocForm">
+								<input type="text" placeholder="Name" class="rename-add" />
+								<input type="submit" hidden />
+							</form>
+						</div>
+					</li>
+				</ul>
+				<div id="save-loc-tab-add-loc-sec"></div>
+				<button id="add-new-loc-cat-save-tab">+ Add New</button>
+			</div>
+		</div>
+		<div class="saved-category-overlay saved-category-overlay-2">
+			<div class="saved-category-overlay__card">
+				<div class="top-bar">
+					<p class="top-bar__title">Choose from your saved locations</p>
+					<svg class="saved-category-overlay-close" width="12" height="12" viewBox="0 0 12 12" fill="none"
+						xmlns="http://www.w3.org/2000/svg">
+						<path d="M1 1L11 11M1 11L11 1" stroke="#252E40" stroke-width="0.666667"
+							stroke-linecap="square" />
+					</svg>
+				</div>
+
+				<div class="saved-items">
+					<ul>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</div>
+	</div>
+	<div class="privacyOptin-overlay">
+		<div class="optin-wrap">
+			<p class="optin-head">Your Privacy is Our Priority</p>
+			<div class="p-icon-wrap">
+				<img src="./images/privacy.svg" alt="privacy-icon" />
+			</div>
+			<div class="privacy-cont">
+				<form id="uninstallForm">
+                    <div class="form-group">
+                        <ul>
+                            <li>
+                                Can we collect and process the following technical data:
+                            </li>
+                        </ul>
+                        <p>
+                            IP Address, user agent details and geolocation derived from IP: We collect this information to enhance our product, identify troubleshooting issues, and assist in fraud detection. Please note that we anonymize your IP address as soon as possible. Furthermore, this data cannot be used to personally identify any user.
+                        </p>
+                    </div>
+                </form>
+                <p class="ref-desc">
+                    Refraining from sharing this data will affect our ability to display precise maps and direction-related results.
+                    <br> <b>You can continue to enjoy the customized web browsing feature.</b>
+                </p>
+				<div class="button-flex">
+                    <a class="optin-cta disagree">Decline</a>
+                    <a class="optin-cta agree">Accept</a>
+                </div>
+				<p class="privacy-desc">
+					For detailed information on the data collected by the application and the purposes behind it, please
+					read our
+					<a href="https://maproutepro.com/public/privacypolicy_ff.html" target="_blank">Privacy Policy</a>.
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="print-map-overlay">
+		<div class="print-map-inner">
+			<div class="print-map-cont">
+				<img class="close-button" src="./images/opt-close.svg" alt="">
+				<section class="print-map-header">
+					<img src="./images/site-logo.svg" />
+					<button href="#" class="print-button">Print</button>
+				</section>
+				<section class="print-map-result">
+					<p class="print-map-loc"></p>
+					<div id="print-map"></div>
+				</section>
+			</div>
+		</div>
+	</div>
+	<div class="print-direction-overlay">
+		<div class="print-map-inner">
+			<div class="print-map-cont">
+				<img class="close-button" src="./images/opt-close.svg" alt="">
+				<section class="print-map-header">
+					<img src="./images/site-logo.svg" />
+					<a href="#" class="print-button">Print</a>
+				</section>
+				<section class="print-map-result">
+					<div class="print-map-result-inner">
+						<p class="print-map-loc"></p>
+						<div class="loc-dist">
+							<p class="mins"></p>
+							<p class="miles"></p>
+						</div>
+					</div>
+
+					<div id="print-map-directions"></div>
+					<div class="direction-print-list">
+
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+	<div class="delete-overlay">
+		<div class="delete-cont">
+			<div class="delete-header">
+				Delete Trip
+				<span class="close-btn">
+					<img src="./images/close-save-1.svg">
+				</span>
+			</div>
+			<div class="delete-inner">
+				<p>Are you sure you want to delete trip along with saved locations in it?</p>
+				<div class="delete-btn-wrap">
+					<button id="cancel-btn">CANCEL</button>
+					<button id="delete-btn">DELETE</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html>

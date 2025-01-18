@@ -1,0 +1,1 @@
+"undefined"==typeof _idaptiveUniqueGlobal&&(_idaptiveUniqueGlobal={}),"undefined"==typeof _idaptivePopOverGlobal&&(_idaptivePopOverGlobal={}),(()=>{function i(){var i=this;void 0===i.brand&&(i.brand={}),i.brand.storagePrefix="_IdApTiV"}i.call(_idaptiveUniqueGlobal),i.call(_idaptivePopOverGlobal)})();

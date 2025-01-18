@@ -1,0 +1,230 @@
+@import url('../../assets/font/roboto-font.css');
+@import url('./components/alert.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f0f0f0;
+  color: #222222;
+  font-family: 'Roboto', Arial, 'Helvetica' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 140%;
+}
+
+.hide {
+  display: none;
+}
+
+.settings {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-items: center;
+  align-items: start;
+  width: 660px;
+  margin: 0 auto;
+  gap: 0 40px;
+}
+
+.settings > svg:first-of-type {
+  margin: 40px 0 24px 0;
+}
+
+.settings-container {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 40px;
+  margin-bottom: 124px;
+}
+
+.settings-section {
+  display: flex;
+  flex-flow: column nowrap;
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+
+.settings-section-title {
+  font-family: Inter, Arial, 'Helvetica';
+  font-size: 16px;
+  line-height: 1.1;
+  margin: 0 0 14px 0;
+}
+
+.settings-sub-section {
+  padding: 0 24px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.settings-sub-section--empty:not(.hide) {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px 0;
+  color: #666;
+  font-weight: 400;
+}
+
+.settings-sub-section:last-of-type {
+  border-bottom: none;
+}
+
+.settings-sub-section h3 {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 140%;
+  margin: 16px 0 1px 0;
+}
+
+.settings-sub-section-description {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: #4b4b4b;
+}
+
+.themes-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: start;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.themes-container .theme-item {
+  flex-basis: 193px;
+  border: 2px solid #d8d8d8;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column wrap;
+  overflow: hidden;
+}
+.themes-container .theme-item:hover,
+.themes-container .selected {
+  border: 2px solid #fd5a13;
+  background: #fbe9e6;
+}
+
+.theme-item .theme-input {
+  height: 40px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  border-top: 1px solid #d8d8d8;
+}
+
+.theme-item.selected .theme-input {
+  border-top: 1px solid #ffccba;
+}
+
+.theme-item .theme-input .input-radio-text {
+  width: 100%;
+  color: #222222;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 12px;
+}
+
+.input-radio-input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  margin: 10px 0 0 7px;
+}
+
+.input-radio-text {
+  position: relative;
+  padding: 0 25px 0 0;
+  cursor: pointer;
+}
+
+.input-radio-text:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ababab;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.input-radio-text:after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fd5a13;
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.input-radio-input:checked + .input-radio-text:before {
+  border: 1px solid #fd5a13;
+}
+
+.input-radio-input:checked + .input-radio-text:after {
+  opacity: 1;
+}
+
+.list-item {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: start;
+  justify-content: start;
+}
+
+.list-item .item {
+  width: 100%;
+  padding: 17px 24px;
+  font-weight: 500;
+  font-size: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+}
+
+.item-content {
+  flex: 1;
+}
+
+.list-item .item a {
+  color: #fd5a13;
+  text-decoration: none;
+}
+
+#favories-list .item {
+  border-bottom: none;
+}
+
+.list-item .item .item-label {
+  display: flex;
+  align-items: center;
+}
+
+#account-name,
+#account-email {
+  margin-bottom: 0;
+}
+
+#account-name {
+  text-transform: capitalize;
+}

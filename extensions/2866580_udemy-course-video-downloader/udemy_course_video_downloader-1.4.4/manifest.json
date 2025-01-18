@@ -1,0 +1,98 @@
+{
+  "manifest_version": 3,
+  "name": "Udemy course video downloader",
+  "description": "One-Click (Batch) Download of Udemy Course Lecture Videos to Your PC in High Quality Online for FREE, NO ADS, Magic Udemy Downloader",
+  "version": "1.4.4",
+  "icons": {
+    "256": "assets/imgs/download_256.png",
+    "128": "assets/imgs/download_128.png",
+    "64": "assets/imgs/download_64.png",
+    "48": "assets/imgs/download_48.png",
+    "32": "assets/imgs/download_32.png",
+    "16": "assets/imgs/download_16.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/imgs/download_red.png",
+        "assets/imgs/loading_red.png",
+        "assets/imgs/download_yellow.png",
+        "assets/imgs/download_white.png",
+        "assets/imgs/loading_white.png",
+        "assets/imgs/discard-white.png",
+        "assets/imgs/discard-green.png",
+        "assets/imgs/google_favicon.ico",
+        "assets/libs/inject.js",
+        "assets/libs/drm_inject.js",
+        "js/web_worker.js"
+      ],
+      "matches": [
+        "*://*.udemy.com/*",
+        "<all_urls>"
+      ]
+    }
+  ],
+  "permissions": [
+    "downloads",
+    "storage",
+    "cookies",
+    "identity",
+    "webRequest",
+    "contextMenus",
+    "tabs",
+    "activeTab",
+    "alarms"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "ucenter.html"
+  },
+  "sidebar_action": {
+    "default_icon": {
+      "48": "assets/imgs/download_48.png",
+      "32": "assets/imgs/download_32.png",
+      "16": "assets/imgs/download_16.png"
+    },
+    "default_title": "UdemyFetcher\u2122",
+    "default_panel": "downloadsp.html",
+    "open_at_install": false
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; worker-src 'self' 'wasm-unsafe-eval';"
+  },
+  "background": {
+    "scripts": [
+      "js/service_work.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "js/content.js"
+      ],
+      "css": [
+        "css/content.css"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "default_locale": "en",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{a5376339-a50f-f096-248c-0e0cdde4f9af}"
+    }
+  },
+  "commands": {
+    "open-download-sidebar": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+S"
+      },
+      "description": "Open sidebar"
+    }
+  }
+}

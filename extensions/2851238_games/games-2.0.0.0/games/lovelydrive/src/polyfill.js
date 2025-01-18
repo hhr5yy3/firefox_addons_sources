@@ -1,0 +1,83 @@
+// For Safari
+if (!window.AudioContext) {
+    AudioContext = webkitAudioContext
+}
+
+if (!Float32Array.prototype.slice) {
+    Float32Array.prototype.slice = function (start, end) {
+        return new Float32Array(Array.prototype.slice.call(this, start, end))
+    }
+}
+
+/*
+ * Web audio is only allowed to be played after a user interaction.
+ * Attempt to automatically unlock audio on the first user interaction.
+ * Concept from: http://paulbakaus.com/tutorials/html5/web-audio-on-ios/
+ *
+ * Stealthily barrowed from Howler.js; license information appears below.
+ *
+ * Copyright (c) 2013-2014 James Simpson and GoldFire Studios, Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+var audioEnabled = 0
+function enableAudio(callback) {
+    // Only run this if audio isn't already enabled.
+    if (audioEnabled) {
+        return
+    }
+
+    // Call this method on touch start to create and play a buffer, then check if the audio
+    // actually played to determine if audio has been unlocked.
+    var ctx = new AudioContext(),
+        unlock = function() {
+            // Create an empty buffer.
+            var source = ctx.createBufferSource()
+
+            source.buffer = ctx.createBuffer(1, 1, 22050)
+            source.connect(ctx.destination)
+
+            // Play the empty buffer.
+            if (source.start) {
+                source.start(0)
+            }
+            else {
+                source.noteOn(0)
+            }
+
+            // Setup a timeout to check that we are unlocked on the next event loop.
+            setTimeout(function () {
+                if ((source.playbackState === source.PLAYING_STATE || source.playbackState === source.FINISHED_STATE)) {
+                    // Update the unlocked state and prevent this check from happening again.
+                    audioEnabled = 1
+
+                    // Remove the touch start listener.
+                    document.removeEventListener("pointerup", unlock, false)
+
+                    // Notify client that we're ready to play
+                    callback()
+                }
+            }, 0)
+        }
+
+    // Setup a touch start listener to attempt an unlock in.
+    document.addEventListener("pointerup", unlock, false);
+
+    return 1
+}

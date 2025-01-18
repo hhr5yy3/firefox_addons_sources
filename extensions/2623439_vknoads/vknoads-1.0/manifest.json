@@ -1,0 +1,28 @@
+{
+	"manifest_version": 2,
+	"name": "Блокировка Рекламы и Трэкеров Вконтакте",
+	"short_name": "vkNoAds",
+	"description": "Это акула злая - она видит рекламу и съедает ее. Не зли акулу!",
+	"version": "1.0",
+	"author": "CreExtive",
+
+	"icons":{
+		"96": "shark96.png",
+		"48": "shark48.png"
+	},
+
+
+	"permissions":[
+		"webRequest", "webRequestBlocking", "*://*/*"
+	],
+
+	"content_scripts":[
+		{
+			"matches":["*://*.vk.com/*"],
+			"run_at": "document_start",
+			"css":["main.css"]
+		}
+	]
+		
+
+}

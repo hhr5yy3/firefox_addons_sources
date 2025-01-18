@@ -1,0 +1,72 @@
+{
+  "manifest_version": 2,
+  "name": "Lights Off - Free",
+  "version": "4.9.1",
+  "description": "__MSG_extension_description__",
+  "browser_action": {
+    "default_title": "Lights Off - Free",
+    "default_icon": {
+      "19": "icon.png",
+      "38": "icon.png"
+    },
+    "default_popup": "ui/popup/index.html"
+  },
+  "background": {
+    "page": "background/index.html"
+  },
+  "commands": {
+    "toggle": {
+      "suggested_key": {
+        "default": "Alt+Shift+D"
+      },
+      "description": "__MSG_toggle_extension__"
+    },
+    "addSite": {
+      "suggested_key": {
+        "default": "Alt+Shift+A"
+      },
+      "description": "__MSG_toggle_current_site__"
+    },
+    "switchEngine": {
+      "description": "__MSG_theme_generation_mode__"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "inject/fallback.js",
+        "inject/index.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "permissions": [
+    "webRequest",
+    "contextMenus",
+    "webNavigation",
+    "webRequestBlocking",
+    "alarms",
+    "storage",
+    "tabs",
+    "theme",
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "default_locale": "en_US",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{41b57c90-eb8b-7c9b-4510-f6cf48908edb}",
+      "strict_min_version": "78.0"
+    },
+    "gecko_android": {}
+  }
+}

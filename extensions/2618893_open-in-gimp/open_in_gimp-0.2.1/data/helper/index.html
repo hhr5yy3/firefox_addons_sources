@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head><script src="/v2/chrome.permissions.request.js"></script><script src="/v2/chrome.runtime.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>One Last Step :: Open in GIMP photo editor</title>
+  </head>
+  <body>
+    <h1>One Last Step</h1>
+    <p>For the extension to be able to send image files to the GIMP editor, download, unzip and install this open-source native client.</p>
+    <ul id="steps">
+      <li class="step1">Click <a href="#" data-cmd="download">here</a> to download the package for you OS (Window, Mac, and Linux are currently supported) or click <a href="https://github.com/andy-portmen/native-client/releases" target="_blank">here</a> to browse all available download options.</li>
+      <li>Extract the downloaded package in a local directory</li>
+      <li class="linux">Now open a terminal in the top-level directory (directory that contains <code>install.sh</code>), and run <code>./install.sh</code></li>
+      <li class="windows">Now double-click the <code>install.bat</code> file</li>
+    </ul>
+    <div class="flex">
+      <input type="button" data-cmd="check" value="Check Connection">
+    </div>
+    <p class="note canhide">The installer script copies a few files to two different locations for your browser to be able to detect this native client. If you already have NodeJS in your system, the installed version of NodeJS will be used. So please make sure you have an up-to-date version of NodeJS installed. If you don't have this application, the portable version will be used. Read more <a target="_blank" href="https://github.com/andy-portmen/native-client">here</a>.</p>
+    <p class="note canhide">To completely remove this native client, run <code class="linux">./uninstall.sh</code><code class="windows">uninstall.bat</code>.</p>
+    <p class="note">To make sure the native client is accessible, click on the "<a href="#" data-cmd="check">Check Connection</a>" button. <span id="alternative">If you still get this page even when the "Check Button" reports successful connection, it means the application cannot be accessed (path is not correct in the <a href="#" data-cmd="options">options page</a>)</span>. If the path to the executable is correct and the native client is connected, you can debug the connection by enabling console logs in <a target="_blank" href="https://www.chromium.org/for-testers/enable-logging">Chrome and Opera</a> or <a target="_blank" href="https://developer.mozilla.org/docs/Tools/Browser_Console">Firefox</a>.</p>
+
+    <div class="guide canhide">
+      Installation Guide:
+      <ul>
+        <li>Windows: <a href="https://www.youtube.com/watch?v=yZAoy8SOd7o" target="_blank">YouTube</a></li>
+        <li>Mac &amp; Linux: <a href="https://www.youtube.com/watch?v=2asPoW2gJ-c" target="_blank">YouTube</a></li>
+      </ul>
+    </div>
+    <div class="guide canhide">
+      Command Line Arguments:
+      <details>
+        <summary>Although arguments are not required when starting GIMP, the most common arguments are shown below. On a Unix system, you can use man gimp for a complete list.</summary>
+        <ul>
+          <li><code>-?, --help</code> Display a list of all commandline options.</li>
+          <li><code>--help-all</code> Show all help options.</li>
+          <li><code>--help-gtk</code> Show GTK+ Options.</li>
+          <li><code>-v, --version</code> Print the GIMP version and exit.</li>
+          <li><code>--license</code> Show license information and exit.</li>
+          <li><code>--verbose</code> Show detailed start-up messages.</li>
+          <li><code>-n, --new-instance</code> Start a new GIMP instance.</li>
+          <li><code>-a, --as-new</code> Open images as new.</li>
+          <li><code>-i, --no-interface</code> Run without a user interface.</li>
+          <li><code>-d, --no-data</code> Do not load patterns, gradients, palettes, or brushes. Often useful in non-interactive situations where start-up time is to be minimized.</li>
+          <li><code>-f, --no-fonts</code> Do not load any fonts. This is useful to load GIMP faster for scripts that do not use fonts, or to find problems related to malformed fonts that hang GIMP.</li>
+          <li><code>-s, --no-splash</code> Do not show the splash screen while starting.</li>
+          <li><code>--no-shm</code> Do not use shared memory between GIMP and plugins.</li>
+          <li><code>--no-cpu-accel</code> Do not use special CPU acceleration functions. Useful for finding or disabling buggy accelerated hardware or functions.</li>
+          <li><code>--session=name</code> Use a different sessionrc for this GIMP session. The given session name is appended to the default sessionrc filename.</li>
+          <li><code>--gimprc=filename</code> Use an alternative gimprc instead of the default one. The gimprc file contains a record of your preferences. Useful in cases where plugins paths or machine specs may be different.</li>
+          <li><code>--system-gimprc=filename</code> Use an alternate system gimprc file.</li>
+          <li><code>-b, --batch=commands</code> Execute the set of commands non-interactively. The set of commands is typically in the form of a script that can be executed by one of the GIMP scripting extensions. When the command is -, commands are read from standard input.</li>
+          <li><code>--batch-interpreter=proc</code> Specify the procedure to use to process batch commands. The default procedure is Script-Fu.</li>
+          <li><code>--console-messages</code> Do not popup dialog boxes on errors or warnings. Print the messages on the console instead.</li>
+          <li><code>--pdb-compat-mode=mode</code> PDB compatibility mode (off|on|warn).</li>
+          <li><code>--stack-trace-mode=mode</code> Debug in case of a crash (never|query|always).</li>
+          <li><code>--debug-handlers</code> Enable non-fatal debugging signal handlers. Useful for GIMP debugging.</li>
+          <li><code>--g-fatal-warnings</code> Make all warnings fatal. Useful for debug.</li>
+          <li><code>--dump-gimprc</code> Output a gimprc file with default settings. Useful if you messed up the gimprc file.</li>
+          <li><code>--display=display</code> Use the designated X display (does not apply to all platforms).</li>
+        </ul>
+      </details>
+    </div>
+
+    <div id="notify"></div>
+    <script src="index.js"></script>
+  </body>
+</html>

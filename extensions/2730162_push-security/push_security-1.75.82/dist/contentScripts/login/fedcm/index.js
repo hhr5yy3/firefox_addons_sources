@@ -1,0 +1,1 @@
+!function(){"use strict";let t=!1;t||function(){const n=navigator.credentials.get;navigator.credentials.get=async function(...t){const i=await n.apply(this,t);if("identity"===(null==i?void 0:i.type))try{window.postMessage({id:"FEDCM_LOGIN_DETECTED",token:i.token})}catch{}return i},t=!0}()}();

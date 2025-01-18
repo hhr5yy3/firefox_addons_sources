@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="/dist/jquery.localizationTool.css">
+    <!-- <title>pomodoro.addon</title> -->
+</head>
+<body>
+    <div class="popup-content">
+        <div class="header">
+            <img src="../icons/pomodoro-48.png" id="logo-app" width="24" height="24"/>
+            <h4 id="name-app">pomodoro.addon</h4>
+            <div class="menu d-flex ml-5">
+                <button class="border-0 btn-neomorphisme p-9 mr-3 cursor-pointer " type="button" id="pomodoro-btn">
+                    <img src="../icons/akar-icons_home.png" id="home-icon"/>
+                </button>
+                <!-- <button class="border-0 btn-neomorphisme p-9 mr-3 cursor-pointer " type="button" id="stat-btn">
+                    <img src="../icons/foundation_graph-pie.png" id="stat-icon"/>
+                </button> -->
+                <button class="border-0 btn-neomorphisme p-9 mr-3 cursor-pointer" type="button" id="option-btn"><img src="../icons/akar-icons_gear.png" id="setting-icon"/></button>
+                <button class="border-0 btn-neomorphisme p-9 mr-3 cursor-pointer" type="button" id="credit-btn"><img src="../icons/akar-icons_info.png" id="info-icon"/></button>
+                <button class="border-0 btn-neomorphisme p-9 mr-3 cursor-pointer" type="button" id="help-btn"><img src="../icons/akar-icons_question-fill.png" id="quiz-icon"/></button>
+               
+            </div>
+        </div>
+        <div id="content1" class="">
+
+            <div id="part1 mb-1 ">
+                <div class="part1-title">
+                    <img src="../icons/ant-design_field-time-outlined.png" alt="" width="24" height="24">
+                    <div class="cycle-title translate-en">SESSION <span id="session-done">0</span>/<span id="session-total">4</span></div>
+                    <div class="cycle-title translate-fr hidden" >SESSION <span id="session-done">0</span>/<span id="session-total">4</span></div>
+                    <div class="cycle-title translate-ru hidden" >СЕССИЯ <span id="session-done">0</span>/<span id="session-total">4</span></div>
+                </div>
+                <div class="timer-block">
+                    <div id="timer" class="timer-neomorphisme">
+                        <div class="pomodoro-color" id="timer-content">
+                            <p id="show-chrono">1:00</p>
+                            <p id="cycle-part">pomodori</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="actions d-flex mt-2 mb-2">
+                    <button class="mr-2 btn-control btn-neomorphisme cursor-pointer tooltip" id="play">
+                        <span class="tooltiptext" id="play-tooltip">Start round</span>
+                        <img src="../icons/play.png" width="16" height="16" id="play-img"/>
+                    </button>
+                    <button class="mr-2 btn-control btn-neomorphisme cursor-pointer tooltip" id="next-round">
+                        <span class="tooltiptext" id="next-tooltip">Next round</span>
+                        <img src="../icons/next.png" width="16" height="16" id="next-round-img"/>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <div id="part2">
+                <div class="part1-title mt-2    ">
+                    <img src="../icons/ic_baseline-free-breakfast.png" alt="" width="24" height="24">
+                    <span class="cycle-title  translate-en">Discoveries</span>
+                    <span class="cycle-title hidden  translate-fr">Découvertes</span>
+                    <span class="cycle-title hidden  translate-ru">Открытия</span>
+                </div>
+                <p class="text-small"> <label class=" translate-en" >During your break discover :</label>
+                    <label class="hidden  translate-fr">Pendant votre pause découvrez :</label>
+                    <label class="hidden  translate-ru"> Во время перерыва узнайте: :</label>
+
+                     <div class="discover-action" style="justify-content: center;">
+                        <button class="mr-2 btn-actions btn-neomorphisme p-9 cursor-pointer tooltip" id="precedent-discover">
+                            Prev
+                        </button>
+                        <button class="mr-2 btn-actions btn-neomorphisme p-9 cursor-pointer tooltip" id="suivant-discover">
+                            Next
+                        </button>
+
+                    </div>
+                </p>
+                <div id="discover-content">
+                       
+                        
+                    <img src="../icons/rest.png" alt="" width="64px" height="64px" class="discover-img" id="discover-image" style="display: none;"> 
+                    <div class="text-vertical-center" id="detail">
+                        <h3 id="discover-title" class="text-bold ml-2 mt-0-5" style="color: white;">Lorem Ipsum</h3>
+                        <p class="ml-2" id="discover-desc"> 
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        <p>
+                        <a  id="discover-title-link">
+                            <button class="ml-2 btn-actions btn-neomorphisme-dark p-9 cursor-pointer" id="consulter" style="background-color: black;">
+                                Go
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="content2" class="" style="display: none;">
+            <div id="part1">
+                <div class="part1-title">
+                    <img src="../icons/ci_settings-future.png" alt="" width="24" height="24">
+                    <span class="cycle-title  translate-en" id="">options</span>
+                    <span class="cycle-title  translate-fr hidden" id="">options</span>
+                    <span class="cycle-title  translate-ru hidden" id="">опции</span>
+                </div>
+                <div class="options-block mt-2">
+                    <div class="form-input d-flex mt-2 mb-2">
+                        <label class="text-vertical-center mr-1 mt-0-5  translate-en" for="langue">Translate</label>
+                        <label class="text-vertical-center mr-1 mt-0-5  translate-fr hidden" for="langue">Traduire</label>
+                        <label class="text-vertical-center mr-1 mt-0-5  translate-ru hidden" for="langue">Перевести</label>
+                        <div class="d-block">
+                            <select name="langue" id="langue">
+                                <option value="en">English</option>
+                                <option value="fr">French</option>
+                                <option value="ru">Russian</option>
+                            </select>
+                    
+                        </div>
+                    
+                    
+                    </div>
+                    <div class="form-input d-flex">
+                        <label class="text-vertical-center mr-1 mt-0-5  translate-en">Max session</label>
+                        <label class="text-vertical-center mr-1 mt-0-5  translate-fr hidden">Total de session</label>
+                        <label class="text-vertical-center mr-1 mt-0-5  translate-ru hidden">Всего за сеанс</label>
+                        <div class="d-block">
+                            <input type="number" name="pomodoro-session" min="1" value="4" pattern="[0-9][0-9]"> <br>
+                            <span for="pomodoro-session" class="text-xsmall mt-1  translate-en">Total session</span>
+                            <span for="pomodoro-session" class="text-xsmall mt-1  translate-fr hidden">Total de session</span>
+                            <span for="pomodoro-session" class="text-xsmall mt-1  translate-ru hidden">Всего за сеанс</span>
+                        </div>
+                    </div>
+                    <div class="form-block mt-2">
+                        <div class="form-input d-flex">
+                            <label class="text-vertical-center mr-1 mt-0-5">pomodori(mn)</label>
+                            <div class="d-block">
+                                <input type="number" name="pomodoro-time" min="1" value="25" max="60" pattern="[0-9][0-9]"> <br>
+                                <span for="pomodoro-time" class="text-xsmall mt-1  translate-en">your work duration</span>
+                                <span for="pomodoro-time" class="text-xsmall mt-1  translate-fr hidden">Durée de travail</span>
+                                <span for="pomodoro-time" class="text-xsmall mt-1  translate-ru hidden">продолжительность вашей работы</span>
+                            </div>
+                        </div>
+                        <div class="form-input d-flex mt-2">
+                            <label class="text-vertical-center mr-1 mt-0-5  translate-en">Break(mn)</label>
+                            <label class="text-vertical-center mr-1 mt-0-5  translate-fr hidden">Pause(mn)</label>
+                            <label class="text-vertical-center mr-1 mt-0-5  translate-ru hidden">Перемена(мн)</label>
+                            <div class="d-block">
+                                <input type="number" name="break-time" min="1" value="5" max="60"> <br>
+                                <span for="break-time" class="text-xsmall mt-1  translate-en">your break duration</span>
+                                <span for="break-time" class="text-xsmall mt-1  translate-fr hidden">Durée de pause</span>
+                                <span for="break-time" class="text-xsmall mt-1  translate-ru hidden">продолжительность вашего перерыва</span>
+                            </div>
+                            
+                        </div>
+                        <div class="form-input d-flex mt-2">
+                            <label class="text-vertical-center mr-1 mt-0-5  translate-en">Alarm</label>
+                            <label class="text-vertical-center mr-1 mt-0-5  translate-fr hidden">Alarme</label>
+                            <label class="text-vertical-center mr-1 mt-0-5  translate-ru hidden">Тревога</label>
+                            <div class="d-block">
+                                <select name="alarm" id="alarm">
+                                    <option value="data-scan.wav">Data Scan</option>
+                                    <option value="classic-short-alarm-993.wav">Short alarm</option>
+                                 
+                                </select> <br>
+                                <span for="alarm" class="text-xsmall mt-1   translate-en">alarm song</span>
+                                <span for="alarm" class="text-xsmall mt-1   translate-fr hidden">Chanson d'alarme</span>
+                                <span for="alarm" class="text-xsmall mt-1   translate-ru hidden">тревожная песня</span>
+                            </div>
+                            
+
+                        </div>
+                       
+                        <div class="form-input d-flex mt-2 mb-2">
+                            <label class="text-vertical-center mr-1 mt-0-5  translate-en">Volume</label>
+                            <label class="text-vertical-center mr-1 mt-0-5  translate-fr hidden">Volume</label>
+                            <label class="text-vertical-center mr-1 mt-0-5  translate-ru hidden">Volume</label>
+                            <div class="d-block">
+                                <input type="number" name="pomodoro-volume" min="1" value="25" max="100" id="volume"> <br>
+                                <span for="alarm" class="text-xsmall mt-1 translate-en">volume of alarm</span>
+                                <span for="alarm" class="text-xsmall mt-1 translate-fr hidden">volume de alarme</span>
+                                <span for="alarm" class="text-xsmall mt-1 translate-ru hidden">Объем</span>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="content3" class="p-1" style="display: none; margin-top: 0px; overflow-y: auto; position: fixed;">
+            <div class="d-flex" style="width: 100%;">
+                <div class="part1-title">
+                    <img src="../icons/akar-icons_info.png" alt="" width="24" height="24">
+                    <span class="cycle-title">About</span>
+                </div>
+            </div>
+            
+            <div class="mt-1 pr-4 translate-en">
+                <b>pomodoro.addon v3.0</b> is a add-on working with FireFox. It help you to use pomodoro method.
+                The discover session show you some talents in art, music, gaming, peinting etc... 
+                The ad is free and if you want to have a place in discover session, 
+                please contact me on my twitter or <a href="mailto:mengodkidjo@gmail.com"> mail</a>. <br>
+                <span id="share-text" style="display: none;">
+                    Hey I use pomodoro.addon extension to apply pomodoro technique and discoveraccount creators in several fields including games, music, art, cooking etc.Download this amazing extension on firefox https://addons.mozilla.org/fr/firefox/addon/pomodoro-addon/ or chrome
+                </span> 
+                <div style="display: flex;">
+                    <button class="p-9 bg-blue btn-actions border-radius-4 cursor-pointer mt-1" id="share-btn">Share it</button>
+                    <a href="https://www.buymeacoffee.com/ledoc" class="ml-5  mt-1" style="justify-content: end;">
+                        <button class="btn border-0 buy-coffe-btn border-radius-coffe cursor-pointer ">
+                            ☕&nbsp;Buy me coffee
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-1 pr-4 translate-fr hidden">
+                <b>pomodoro.addon v3.0</b> est un module complémentaire fonctionnant avec FireFox. Il vous aide à utiliser la méthode Pomodoro.
+                La session de découverte vous montre quelques talents dans l'art, la musique, les jeux, la peinture etc...
+                L'annonce est gratuite et si vous souhaitez avoir une place en session découverte,
+                merci de me contacter sur mon twitter ou <a href="mailto:mengodkidjo@gmail.com"> mail</a>. <br>
+                <span id="share-text" style="display: none;">
+                    Hé, j'utilise l'extension pomodoro.addon pour appliquer la technique pomodoro et découvrir les créateurs de comptes dans
+                    plusieurs domaines
+                    y compris les jeux, la musique, l'art, la cuisine, etc.Téléchargez cette extension étonnante sur firefox
+                    https://addons.mozilla.org/fr/firefox/addon/pomodoro-addon/ or chrome
+                </span>
+                <div style="display: flex;">
+                    <button class="p-9 bg-blue btn-actions border-radius-4 cursor-pointer mt-1" id="share-btn">Share it</button>
+                    <a href="https://www.buymeacoffee.com/ledoc" class="ml-5  mt-1" style="justify-content: end;">
+                        <button class="btn border-0 buy-coffe-btn border-radius-coffe cursor-pointer ">
+                            ☕&nbsp;Soutenir le dev
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-1 pr-4 translate-ru hidden">
+                <b>pomodoro.addon v3.0</b> является надстройкой, работающей с FireFox. Это поможет вам использовать метод помидора.
+                Сеанс знакомств покажет вам некоторые таланты в искусстве, музыке, играх, рисовании и т. д.
+                Объявление бесплатное, и если вы хотите получить место в сеансе обнаружения,
+                пожалуйста, свяжитесь со мной в моем твиттере или <a href="mailto:mengodkidjo@gmail.com"> mail</a>. <br>
+                <span id="share-text" style="display: none;">
+                    Эй, я использую расширение pomodoro.addon, чтобы применить технику помидора и обнаружить создателей учетных записей в
+                    нескольких областях.
+                    включая игры, музыку, искусство, кулинарию и т. д. Загрузите это замечательное расширение для Firefox.
+                    https://addons.mozilla.org/fr/firefox/addon/pomodoro-addon/ or chrome
+                </span>
+                <div style="display: flex;">
+                    <button class="p-9 bg-blue btn-actions border-radius-4 cursor-pointer mt-1" id="share-btn">Share it</button>
+                    <a href="https://www.buymeacoffee.com/ledoc" class="ml-5  mt-1" style="justify-content: end;">
+                        <button class="btn border-0 buy-coffe-btn border-radius-coffe cursor-pointer ">
+                            ☕&nbsp;Купи мне кофе
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <h4 class="mt-0 mb-0 translate-en">Contacts</h4>
+            <h4 class="mt-0 mb-0 translate-fr hidden">Contacts</h4>
+            <h4 class="mt-0 mb-0 translate-ru hidden">Контакты</h4>
+            <div class="mt-1 mb-0 translate-en">
+                This addon is make with love and passion by ledoc. Follow me on :
+                <p class="mb-0 mt-0">
+                    <a href="https://twitter.com/darrell_kidjo?t=QBDVkfqxu5YTtM9UAilMPw&s=08" style="text-decoration: none;">
+                        <img src="../icons/twitter.png" width="24" height="24" class="text-vertical-center"/> 
+                        <span class="text-vertical-center"> twitter (@darrell_kidjo)</span>
+                    </a> - where i make my best tweet<br> <br>
+                    <a href="https://www.instagram.com/kidjodarrell?r=nametag" style="text-decoration: none;">
+                        <img src="../icons/instagram.png" width="24" height="24" class="text-vertical-center"/>
+                        <span class="text-vertical-center"> Instagram (@kidjodarrell)</span>
+                    </a> - Where i show my awesome designs with figma <br>
+                </p>
+            </div>
+            <div class="mt-1 mb-0 translate-fr hidden">
+                Cet addon est fait avec amour et passion par ledoc. Suivez-moi sur :
+                <p class="mb-0 mt-0">
+                    <a href="https://twitter.com/darrell_kidjo?t=QBDVkfqxu5YTtM9UAilMPw&s=08" style="text-decoration: none;">
+                        <img src="../icons/twitter.png" width="24" height="24" class="text-vertical-center" />
+                        <span class="text-vertical-center"> twitter (@darrell_kidjo)</span>
+                    </a> - où je fais mes meilleurs tweet<br> <br>
+                    <a href="https://www.instagram.com/kidjodarrell?r=nametag" style="text-decoration: none;">
+                        <img src="../icons/instagram.png" width="24" height="24" class="text-vertical-center" />
+                        <span class="text-vertical-center"> Instagram (@kidjodarrell)</span>
+                    </a> -Où je montre mes superbes créations avec figma <br>
+                </p>
+            </div>
+            <div class="mt-1 mb-0 translate-ru hidden">
+                Этот аддон создан с любовью и страстью компанией ledoc. Следите за мной в:
+                <p class="mb-0 mt-0">
+                    <a href="https://twitter.com/darrell_kidjo?t=QBDVkfqxu5YTtM9UAilMPw&s=08" style="text-decoration: none;">
+                        <img src="../icons/twitter.png" width="24" height="24" class="text-vertical-center" />
+                        <span class="text-vertical-center"> twitter (@darrell_kidjo)</span>
+                    </a> -где я делаю свой лучший твит<br> <br>
+                    <a href="https://www.instagram.com/kidjodarrell?r=nametag" style="text-decoration: none;">
+                        <img src="../icons/instagram.png" width="24" height="24" class="text-vertical-center" />
+                        <span class="text-vertical-center"> Instagram (@kidjodarrell)</span>
+                    </a> - Где я показываю свои потрясающие дизайны с Figma <br>
+                </p>
+            </div>
+        </div>
+        <div id="content4" class="p-1 " style="display: none; overflow-y: auto;">
+            <div class="d-flex" style="width: 100%;">
+                <div class="part1-title">
+                    <img src="../icons/akar-icons_question-fill.png" alt="" width="24" height="24">
+                    <span class="cycle-title translate-en">HELP</span>
+                    <span class="cycle-title translate-fr hidden">AIDE</span>
+                    <span class="cycle-title translate-ru hidden">помощь</span>
+                    
+                </div>
+            </div>
+            <div class="translate-en">
+                <p class="mt-1 mb-1 pr-4">
+                    The Pomodoro technique is a time management technique developed by Francesco Cirillo at the end of the 1980s.
+                    This method is based on the use of a timer allowing to respect periods of 25 minutes called pomodori.
+                </p>
+                <h4 class="mt-1 mb-0">
+                    First step
+                </h4>
+                <p class="mt-1 mb-1 pr-4">
+                    Go to options and define the duration of a pomodori, that of a pause, the music of the alarm and its volume.
+                </p>
+                <h4 class="mt-1 mb-0">
+                    Second step
+                </h4>
+                <p class="mt-1 mb-1 pr-4">
+                    Then go to pomodori then start the timer with the play button. To pause click on the pause button.
+                    To go to a next cycle click on the next button. The session represents the couple working time & break time.
+                    During your breaks only, consult the list on the right in the pomodori menu. It is a space of discovery to
+                    make you pass the time to succeed in the method.
+                    It shows elements in the fields of art, music, video games or board games and other fields.
+                <h5 class="pr-4">It's finish you can go and enjoy the add-on and if you like it go on credits to get my contact and buy
+                    me a coffee ;)</h5>
+                </p>
+            </div>
+             <div class="translate-fr hidden">
+                <p class="mt-1 mb-1 pr-4">
+                    La technique Pomodoro est une technique de gestion du temps développée par Francesco Cirillo à la fin des années 1980.
+                    Cette méthode est basée sur l'utilisation d'un chronomètre permettant de respecter des périodes de 25 minutes appelées
+                    pomodori.
+                </p>
+                <h4 class="mt-1 mb-0">
+                   Etape 1
+                </h4>
+                <p class="mt-1 mb-1 pr-4">
+                    Allez dans les options et définissez la durée d'un pomodori, celle d'une pause, la musique de l'alarme et son volume.
+                </p>
+                <h4 class="mt-1 mb-0">
+                   Etape 2
+                </h4>
+                <p class="mt-1 mb-1 pr-4">
+                    Allez ensuite sur pomodori puis démarrez le chronomètre avec le bouton play. Pour mettre en pause, cliquez sur le bouton
+                    pause.
+                    Pour passer au cycle suivant, cliquez sur le bouton suivant. La séance représente le couple temps de travail & temps de
+                    pause.
+                    Pendant vos pauses uniquement, consultez la liste à droite dans le menu pomodori. C'est un espace de découverte pour
+                    vous faire passer le temps pour réussir la méthode.
+                    Il montre des éléments dans les domaines de l'art, de la musique, des jeux vidéo ou des jeux de société et d'autres
+                    domaines.
+                <h5 class="pr-4">C'est fini, vous pouvez aller profiter de l'add-on et si vous l'aimez, allez sur les crédits pour obtenir mon contact et
+                acheter
+                moi un café ;)</h5>
+                </p>
+            </div>
+            <div class="translate-ru hidden">
+                <p class="mt-1 mb-1 pr-4">
+                    Техника Pomodoro — это техника тайм-менеджмента, разработанная Франческо Чирилло в конце 1980-х годов.
+                    Этот метод основан на использовании таймера, позволяющего соблюдать периоды в 25 минут, называемые помодори.
+                </p>
+                <h4 class="mt-1 mb-0">
+                    Первый шаг
+                </h4>
+                <p class="mt-1 mb-1 pr-4">
+                    Перейдите к параметрам и определите продолжительность помодори, паузы, музыку будильника и его громкость.
+                </p>
+                <h4 class="mt-1 mb-0">
+                    Второй шаг
+                </h4>
+                <p class="mt-1 mb-1 pr-4">
+                    Затем перейдите в Помодори, затем запустите таймер с помощью кнопки воспроизведения. Для паузы нажмите на кнопку паузы.
+                    Чтобы перейти к следующему циклу, нажмите кнопку «Далее». Сеанс представляет собой рабочее время пары и время перерыва.
+                    Только во время перерывов сверяйтесь со списком справа в меню помидоров. Это пространство открытий для
+                    заставить вас скоротать время, чтобы преуспеть в методе.
+                    Он показывает элементы в области искусства, музыки, видеоигр или настольных игр и других областях.
+                <h5 class="pr-4">Это конец, вы можете пойти и насладиться надстройкой, и если вам это нравится, перейдите на кредиты, чтобы получить мой
+                контакт и купить
+                мне кофе ;)</h5>
+                </p>
+            </div>
+            
+        </div>
+        
+        <div id="error-content" class="hidden">
+            <p>Cette page ne peut être transformée.</p>
+            <p>Veuillez essayer une autre page.</p>
+        </div>
+     </div>
+
+    
+    <!-- <script src="../alarm.js"></script> -->
+    <script type="text/javascript" src="../jquery-3.6.0.min.js"></script> 
+
+    <!-- <script type="text/javascript" src="../app4back.js"> -->
+       
+    </script>
+    <script src="../main.js"></script>
+   
+</body>
+</html>

@@ -1,0 +1,45 @@
+.toggle[data-v-3797b0bc] {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(var(--clr-white));
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.toggle[data-v-3797b0bc]::before {
+  position: absolute;
+  transform: translate(50%);
+  content: "";
+  width: 5%;
+  height: 5%;
+  opacity: 0;
+  border-radius: 100%;
+  transition: transform 200ms ease, opacity 200ms ease;
+  transform-origin: center;
+  background-color: hsl(var(--clr-primary), 0.8);
+}
+.toggle[data-v-3797b0bc]:hover:not(.toggle--toggled)::before {
+  opacity: 1;
+  transform: scale(1000%);
+}
+.toggle--toggled[data-v-3797b0bc] {
+  background-color: hsl(var(--clr-primary)) !important;
+}
+.toggle--toggled[data-v-3797b0bc]:hover {
+  background-color: hsl(var(--clr-primary), 0.8);
+}
+.toggle--disabled[data-v-3797b0bc] {
+  background-color: hsl(var(--clr-white), 0.5);
+  cursor: not-allowed !important;
+}
+.toggle--disabled[data-v-3797b0bc]:hover::before {
+  opacity: 0 !important;
+  transform: none !important;
+}
+.toggle__icon[data-v-3797b0bc] {
+  width: 80%;
+  height: 80%;
+}

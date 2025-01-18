@@ -1,0 +1,1 @@
+const e={tooltip:"Elegir modelo de lenguaje"},o={tooltip:"Elegir modelo de imagen"},l={languageModelSelector:e,imageGenModelSelector:o};export{l as default,o as imageGenModelSelector,e as languageModelSelector};

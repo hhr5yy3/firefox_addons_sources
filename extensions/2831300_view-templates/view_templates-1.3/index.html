@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="./assets/image/icon_1.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/privacy.css?version=1" />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css?version=55">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/axios.min.js"></script>
+    <script src="./assets/js/purify.min.js"></script>
+
+    <title>New Tab</title>
+</head>
+
+<body>
+    <div class="fist">
+
+        <div class="d-flex align-items-center justify-content-between px-4 main-div">
+            <div></div>
+            <div id="popup_1" class="openPop" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                <img src="./assets/image/logo_1.png" class="input-imgs" alt="/">
+                <img src="./assets/image/Asset 1.png" class="input-img" title="convert-file" alt="convert-file">
+            </div>
+        </div>
+    </div>
+
+    <!-- Add shortcut modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog specialWidth modal-dialog-centered">
+            <div class="modal-content">
+                <form id="add-shortcut">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"><span id="popup-txt">Add</span>
+                            shortcut</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label class="d-block">Name</label>
+                        <input type="text" name="name" id="s-name">
+                        <input type="hidden" name="id" id="s-id">
+                        <label class="d-block">URL</label>
+                        <input type="text" name="url" id="s-url">
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center align-items-center">
+                        <button type="submit" class="btn form_button" value="Add">Submit</button>
+                        <button type="button" class="btn form_button" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="prompt-container third_privacy">
+        <div class="prompt-overlay-content">
+            <div class="prompt-header">
+                <h1>Privacy Notice</h1>
+            </div>
+            <div class="content-container">
+                <p class="text-left head-pt">
+                    <strong>Read more about our privacy
+                        practices
+                        <a href="https://viewtemplates.com/app/privacy.html" target="_blank"
+                            class="txt-hightlight">here</a>
+                    </strong>
+                </p>
+                <div class="prompt-content">
+                    <div class="txt-area">
+                        <div class="privacy_ul">
+                            <div class="pt-item privacy_li">
+                                <div class="pt-wrap">
+                                    <div class="pt-txt">
+                                        <div class="pt-c">
+                                            1. Permission to collect and process the following Technical
+                                            information:
+                                            <div class="sub-item">
+                                                <p>
+                                                    Install Date and User Agent details.
+                                                </p>
+                                                <p>
+                                                    This data is collected to make improvements to our product, and
+                                                    help
+                                                    us in fraud detection, troubleshooting issues and tracking
+                                                    outages
+                                                    and cannot be used to personally identify a user.
+                                                </p>
+                                                <p>
+                                                    If you decline this data collection, we may not be able to debug
+                                                    certain versions of Firefox against our Extension.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="buttons-area">
+                <button id="savebtn" type="button" class="prompt-btn tracker enable-confirm">
+                    Yes, you can collect anonymous data
+                </button>
+                <button id="savebtn2" type="button" class="prompt-btn tracker enable-confirm BorderBtn">
+                    No, do not collect anonymous data
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--==================================== new-end ========================================-->
+
+    <div class="secend">
+        <div class="setting" id="footer_ff">
+            <div class="title-section">Settings
+                <a class="close-pop close-pop-bottom" id="footerClose">
+                    X
+                </a>
+            </div>
+            <div class="row bottom-section">
+                <div id="bottom-right" class="col-4 p-0">
+                    <ul class="text-left list-unstyled left-menu">
+                        <li>
+                            <button id="convert" class="openPop" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                View Templates
+                            </button>
+                        </li>
+                        <li>
+                            <button id="info" class="active">
+                                Info
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-8 pr-0" id="menu-right">
+                    <div class="info">
+                        <div class="text-center mb-2">INFO</div>
+                        <hr class="hr-2" style='width:75%; margin: auto; ' />
+                        <div class="row" style='margin-top: 20px; '>
+                            <a rel="noreferrer" class="" target="_blank"
+                                href="https://viewtemplates.com/app/privacy.html">
+                                <button>Privacy Policy</button>
+                            </a>
+                            <a rel="noreferrer" class="" target="_blank" href="https://viewtemplates.com/app/eula.html">
+                                <button>EULA</button>
+                            </a>
+                            <a rel="noreferrer" class="" target="_blank"
+                                href="https://viewtemplates.com/app/uninstall.html">
+                                <button>Uninstall</button>
+                            </a>
+                            <a rel="noreferrer" class="" target="_blank"
+                                href="https://viewtemplates.com/app/contact.html">
+                                <button>Contact Us</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bg-light w-100 bottom-0 px-4 py-2 bottom-bar">
+            <img id="footer" class="float-end input-img" src="./assets/image/7216128.png" alt="/">
+        </div>
+
+
+        <!-- view - popup -->
+
+        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered m-auto p-5" role="document">
+                <div class="modal-content">
+                    <div id="categoryPop">
+                        <div class="modal-header justify-content-between">
+                            <div class="p-3"></div>
+                            <div class="input-icon">
+                                <input id="categorySearch" type="text" placeholder="Search Templates"
+                                    autocomplete="off">
+                                <div id="searchIcon">
+                                    <img src="assets/image/magnify-glass.svg" alt="search">                                    
+                                </div>
+                                <ul class="modal_search_results clo" id="modalsuggestions"></ul>
+                            </div>
+                            <button type="button" class="btn close-btn" data-bs-dismiss="modal" aria-label="Close">
+                                <img src="assets/image/x-mark.svg" alt="close">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" id="cards"></div>
+                        </div>
+                    </div>
+                    <div id="listOfcategoryPop">
+                        <div class="modal-header justify-content-between">
+                            <button class="btn arrow-btn" id="backtoCategoty">
+                               <img src="assets/image/back-arrow.svg" alt="back-arrow">
+                            </button>
+                            <h2 class="title text-capitalize" id="listOfcategoryPopTitle"></h2>
+                            <input type="hidden">
+                            <button class="btn close-btn" id="closeList" data-bs-dismiss="modal" aria-label="Close">
+                                <img src="assets/image/x-mark.svg" alt="close">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="galleryMain">
+                                <div id="masonry"></div>
+                                <div id="notFound"></div>
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="templatePop">
+                        <div class="modal-header justify-content-between">
+                            <button class="btn arrow-btn" id="backtoList">
+                                <img src="assets/image/back-arrow.svg" alt="back-arrow"/>
+                            </button>
+                            <h2 class="title text-capitalize m-0">Template</h2>
+                            <button class="btn close-btn" data-bs-dismiss="modal" aria-label="Close">
+                                <img src="assets/image/x-mark.svg" alt="close">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" id="templateAppend">
+                                <div class="col-lg-7 col-sm-6">
+                                    <div id="showImage"></div>
+                                </div>
+                                <div class="col-lg-5 col-sm-6 my-auto">
+                                    <h1 id="templatesTxt"></h1>
+                                    <div class="mb-5" id="btn-main"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- add popup  -->
+        <div class="keep" id="keep">
+            <div class="arrow">
+                <img class="vert-move" src="assets/image/blue-arrow.png" height="140" width="75" />
+            </div>
+            <div class="keepbox" id="keepbox">
+                <img src="assets/image/check.png" width="40" alt="">
+                <h2 class="m-0">Click To View Templates</h2>
+            </div>
+        </div>
+        <div id="setPixelImage"></div>
+        <ul id="highscores"></ul>
+        <script src="./assets/js/jquery.min.js"></script>
+        <script src="./assets/js/bootstrap.bundle.min.js"></script>
+        <script src="./assets/js/axios.min.js"></script>
+        <script src="./assets/js/jQuery.print.min.js"></script>
+        <script src="./script.js?version=2"></script>
+        <script src="./view.js" nonce="8IBTHwOdqNKAWeKl7plt8g=="></script>
+</body>
+
+</html>

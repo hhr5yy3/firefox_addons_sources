@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            :root {
+                --accent-color-1: orange;
+                --accent-color-2: white;
+                --bg-color-1: #000000;
+                --bg-color-2: #333333;
+            }
+            body {
+                width: 672px;/*needed for firefox*/
+                font-size: 75%;/*needed for firefox*/
+                background-color: var(--bg-color-1);
+                font-family: "Arial";
+            }
+            hr{
+                margin: 6px; /*needed for firefox*/
+            }
+            h1{
+                font-family: "Garamond";
+            }
+            div{
+                color: var(--accent-color-1);
+            }
+            #ribbon{
+                position: sticky;
+                top:0px;
+                background-color: var(--bg-color-2);
+                padding: 4px;
+            }
+            .menu-button{
+                background-color: var(--bg-color-1);
+                color: var(--accent-color-1);
+                border-color: var(--accent-color-1);
+                border: none;
+                margin: 2px 4px 4px 0;
+                padding: 6px;
+                border-radius: 8px;
+                line-height: 16px;
+                vertical-align:middle;
+            }
+            input[type="number"]{
+                height: 18px;
+                width: 48px;
+            }
+            input[type="checkbox"]{
+                margin-left: 12px;
+                accent-color: var(--bg-color-2);
+            }
+            input[type="radio"] {
+                vertical-align: middle;
+                margin-bottom: 0;
+                margin-top: 0;
+                padding-bottom: 0;
+                padding-top: 0;
+                accent-color: var(--bg-color-2);
+            }
+            #size-menu-button{
+                border: solid;
+                border-width: 1px;
+            }
+            #type-menu, #layout-menu ,#url-menu, #save-menu, #advanced-menu, #display-menu, #feedback-request, #five-stars{
+                display:none;
+            }
+            button{
+                line-height: 18px;  
+            }
+            button:hover{
+                cursor:pointer;
+            }
+            .submenu{
+                background-color: var(--bg-color-1);
+                border-radius: 8px;
+                padding: 6px;
+                line-height: 26px
+            }
+            .container{
+                display: inline-block;
+                background-repeat: no-repeat, repeat;
+                background-size: contain, auto;
+                margin: 4px;
+            }
+            .container:hover, .star:hover{
+                cursor: pointer;
+            }
+            .description{
+                padding: 2px;
+                background-color: rgb(0 0 0 / 60%);
+            }
+            .download{
+                margin: 0;
+                border: solid;
+                border-width: 4px;
+            }
+            .icon-button{
+                width: 24px;
+                height: 24px;
+            }
+            .submenu-button{
+                background-color: var(--bg-color-1);
+                border-radius: 8px;
+                border-width: 2px;
+                border-color: var(--accent-color-2);
+                color: var(--accent-color-2);
+            }
+            .save{
+                float: right;
+                border-width: 2px;
+                border-color: var(--accent-color-1);
+            }
+            .new-tab-img{
+                width: 24px;
+                float: right;
+                margin: 4px 4px;
+                z-index: 4;
+            }
+            .scenario-msg{
+                display: none;
+            }
+            #results-section{
+                overflow-y: scroll;
+                height: 466px;
+                scrollbar-color: var(--accent-color-1) var(--bg-color-1);
+            }
+            #dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: var(--bg-color-1);
+                min-width: 128px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                right: 0;
+                z-index: 8;
+            }
+            #dropdown-content a {
+                color: var(--accent-color-2);
+                padding: 12px 16px;
+                text-decoration: none;
+                display: flex;
+            }
+            #dropdown-content a:hover {
+                background-color: var(--bg-color-2);
+            }
+            .link-img{
+                width:24px;
+                height:24px;
+                margin-right: 8px;
+            }
+            .star{
+                width: 24px;
+                height: 24px;
+            }
+            .square {
+                display: inline-block;
+                height: 11px;
+                width: 11px;
+            }
+            .theme-button{
+                padding: 0;
+                display: none;
+                border-color: var(--accent-color-2);
+            }
+            .theme-button:hover{
+                border-color: var(--accent-color-1);
+            }
+            #suggestions{
+                color: var(--accent-color-2);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="ribbon">
+            <button class="menu-button i18n" id="size-menu-button">Size</button>
+            <button class="menu-button i18n" id="type-menu-button">Type</button>
+            <button class="menu-button i18n" id="layout-menu-button">Layout</button>
+            <button class="menu-button i18n" id="url-menu-button">URL</button>
+            <button class="menu-button i18n" id="advanced-menu-button">Advanced</button>
+            <button class="menu-button i18n" id="save-menu-button">Save As</button>            
+            <input class="menu-button svg-src" type="image" id="display-menu-button" src="assets/display.svg" style="height: 16px; margin-top:2px; margin-bottom: 4px;"/>
+            <span class="i18n" id="images-text">Images:</span>&nbsp;<span id="count" style="font-size: 16px">0</span>
+            <span style="position: relative; display: inline-block; float: right; margin-left: 16px;">
+                <button id="dropdown" class="icon-button svg-bg tooltip" style="background: url(assets/hamburger.svg); border:none;"></button>
+                <div id="dropdown-content">
+                    <a href="https://suricata.software/en/image_downloader" target="_blank">
+                        <img class="link-img svg-src" src="assets/guide.svg" style="float: left" />
+                        <span class="i18n" style="display: inline;">User guide</span>
+                    </a>
+                    <a id="review-link" target="_blank">
+                        <img class="link-img svg-src" src="assets/review.svg" /><span class="i18n">Rate us</span>
+                    </a>
+                    <a href="https://suricata.software/en/contact" target="_blank">
+                        <img class="link-img svg-src" src="assets/contact.svg" /><span class="i18n">Contact us</span>
+                    </a>
+                </div>
+            </span>
+            <button class="icon-button svg-bg tooltip" id="download-all" style="background: url(assets/downloadAll.svg); background-color: var(--bg-color-1); border-radius: 4px; border-width: 2px; border-color: var(--bg-color-2); float: right; margin-left: 8px;"></button>
+            <button class="icon-button tooltip" id="download-selected" style="background: url(assets/downloadSelected20X20Disable.png); border-radius: 4px; border-width: 2px; border-color: var(--bg-color-2); float: right;"></button>
+            <div class="submenu" id="size-menu">
+                <button id="s-button" class="submenu-button tooltip">S</button>
+                <button id="m-button" class="submenu-button tooltip">M</button>
+                <button id="l-button" class="submenu-button tooltip">L</button>
+                <button id="a-button" class="submenu-button tooltip">A</button>
+                &nbsp;<span class="i18n">Width:</span>
+                <input id="min-w" type="number" step="1" min="1" placeholder="Min" />
+                <input id="max-w" type="number" step="1" min="1" placeholder="Max" />
+                &nbsp;<span class="i18n">Height:</span>
+                <input id="min-h" type="number" step="1" min="1" placeholder="Min" />
+                <input id="max-h" type="number" step="1" min="1" placeholder="Max" />
+                <button id="save-size" class="icon-button save tooltip" style="background: url(assets/save-dark20X20.png)"></button>
+            </div>
+            <div class="submenu" id="type-menu">
+                <input id="jpeg" type="checkbox" style="margin-left: 4px" />JPEG<input id="png" type="checkbox" />PNG
+                <input id="gif" type="checkbox" />GIF<input id="webp" type="checkbox" />WebP
+                <input id="bmp" type="checkbox" />BMP<input id="svg" type="checkbox" />SVG
+                <input id="tiff" type="checkbox" />TIFF<input id="avif" type="checkbox" />AVIF
+                <input id="ico" type="checkbox" />ICO<input id="other" type="checkbox" />Other
+                <button id="save-type" class="icon-button save tooltip" style="background: url(assets/save-dark20X20.png)"></button>
+            </div>
+            <div class="submenu" id="layout-menu">
+                <button class="submenu-button i18n" id="all-layout">All</button>
+                <button class="submenu-button i18n" id="wide-layout">Wide</button>
+                <button class="submenu-button i18n" id="square-layout">Square</button>
+                <button class="submenu-button i18n" id="tall-layout">Tall</button>
+                <span style="padding-left: 16px;"></span>
+                <select name="sign" id="custom-operetor" style="height: 24px;">
+                    <option value="less"><</option>
+                    <option value="less-equal"><=</option>
+                    <option value="equal">=</option>
+                    <option value="greater-equal">>=</option>
+                    <option value="greater">></option>
+                </select>
+                <input id="custom-ratio" type="number" min="0.1" step="0.1" placeholder="Ratio" />
+                <button id="save-layout" class="icon-button save tooltip" style="background: url(assets/save-dark20X20.png)"></button>
+            </div>
+            <div class="submenu" id="url-menu">
+                <span style="float:left;display: inline-block">
+                    <input type="radio" id="include-url" name="url" value="include"><label class="i18n" for="include-url">Include</label>
+                    <input type="radio" id="exclude-url" name="url" value="exclude"><label class="i18n" for="exclude-url">Exclude</label>
+                    <input id="urls" style="width: 128px;" placeholder="URL"/>
+                </span>
+                <button id="clean-urls" class="icon-button svg-bg" style="background: url(assets/trash.svg); margin-left: 8px;float: left"></button>
+                <button id="save-url" class="icon-button save tooltip" style="background: url(assets/save-dark20X20.png)"></button>&nbsp;
+            </div>
+            <div class="submenu" id="advanced-menu">
+                <span class="i18n" style="margin-left: 4px">Image versions:</span>
+                <select id="img-ver">
+                    <option class="i18n" value="smallest">Smallest</option>
+                    <option class="i18n" value="largest">Largest (recommended)</option>
+                    <option class="i18n" value="unique">All unique</option>
+                    <option class="i18n" value="all">All</option>
+                </select>
+                <button id="save-advanced" class="icon-button save tooltip" style="background: url(assets/save-dark20X20.png)"></button>
+            </div>
+            <div class="submenu" id="save-menu">
+                <span class="i18n">Folder:</span>
+                <input type="radio" id="auto-folder" name="folder" value="auto"><label class="i18n" for="auto-folder">Auto</label>&nbsp;
+                <input type="radio" id="custom-folder" name="folder" value="custom"><input id="custom-folder-name" style="width: 64px;" placeholder="Folder"/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="i18n">File:</span>
+                <input type="radio" id="auto-file" name="file" value="auto"><label class="i18n" for="auto-file">Auto</label>&nbsp;
+                <input type="radio" id="custom-file" name="file" value="custom"><input id="custom-file-name" style="width: 64px;" placeholder="File"/>&nbsp;&nbsp;
+                <a href="https://suricata.software/en/image_downloader#save-as" target="_blank"><img class="svg-src" height="20px" width="20px" src="assets/help.svg" style="vertical-align: middle;padding-bottom: 4px" /></a>
+                <button id="save-download" class="icon-button save tooltip" style="background: url(assets/save-dark20X20.png)"></button>
+            </div>
+            <div class="submenu" id="display-menu">
+                <span id="open-as-options" style="display:none;">
+                    <span style="display:inline-block">
+                        <input type="radio" name="open-as" id="open-as-popup" value="popup">
+                        <img class="svg-src tooltip" src="assets/popup.svg" height="24px" style="vertical-align: middle; margin-left:0px; margin-right: 4px" />
+                    </span>
+                    <span style="display:inline-block">
+                        <input type="radio" name="open-as" id="open-as-side-panel" value="sidePanel">
+                        <img class="svg-src tooltip" src="assets/side-panel.svg" height="24px" style="vertical-align: middle; margin-left:0px; margin-right: 2px" />     
+                    </span>
+                </span>
+                &nbsp;&nbsp;&nbsp;
+                <span style="display:inline-block;">
+                    <img class="svg-src tooltip" src="assets/result-width.svg" height="24px" style="float:left; margin-left:2px; margin-right: 2px" />&nbsp;
+                    <input id="results-width" type="number" min="10" max=100 step="1" placeholder="100" style="width:40px"/>%&nbsp;
+                </span>&nbsp;&nbsp;
+                <span id="themes-dropdown" style="display: inline-block;position: absolute;"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="display:inline-block">
+                    <img class="svg-src tooltip" src="assets/language.svg" height="24px" style="float:left; margin-left:2px; margin-right: 2px" />
+                    <select id="languages" style="height: 24px;">
+                        <option value="am">Amharic</option>
+                        <option value="ar">Arabic</option>
+                        <option value="bn">Bengali</option>
+                        <option value="bg">Bulgarian</option>
+                        <option value="ca">Catalan</option>
+                        <option value="zh_CN">Chinese (China)</option>
+                        <option value="zh_TW">Chinese (Taiwan)</option>
+                        <option value="hr">Croatian</option>
+                        <option value="cs">Czech</option>
+                        <option value="da">Danish</option>
+                        <option value="nl">Dutch</option>
+                        <option value="en">English</option>
+                        <option value="et">Estonian</option>
+                        <option value="fil">Filipino</option>
+                        <option value="fi">Finnish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="el">Greek</option>
+                        <option value="gu">Gujarati</option>
+                        <option value="he">Hebrew</option>
+                        <option value="hi">Hindi</option>
+                        <option value="hu">Hungarian</option>
+                        <option value="id">Indonesian</option>
+                        <option value="it">Italian</option>
+                        <option value="ja">Japanese</option>
+                        <option value="kn">Kannada</option>
+                        <option value="ko">Korean</option>
+                        <option value="lv">Latvian</option>
+                        <option value="lt">Lithuanian</option>
+                        <option value="ms">Malay</option>
+                        <option value="ml">Malayalam</option>
+                        <option value="mr">Marathi</option>
+                        <option value="no">Norwegian</option>
+                        <option value="fa">Persian</option>
+                        <option value="pl">Polish</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="ro">Romanian</option>
+                        <option value="ru">Russian</option>
+                        <option value="sr">Serbian</option>
+                        <option value="sk">Slovak</option>
+                        <option value="sl">Slovenian</option>
+                        <option value="es">Spanish</option>
+                        <option value="sw">Swahili</option>
+                        <option value="sv">Swedish</option>
+                        <option value="ta">Tamil</option>
+                        <option value="te">Telugu</option>
+                        <option value="th">Thai</option>
+                        <option value="tr">Turkish</option>
+                        <option value="uk">Ukrainian</option>
+                        <option value="vi">Vietnamese</option>
+                    </select>
+                </span>
+                <button id="save-display" class="icon-button save tooltip" style="background: url(assets/save-dark20X20.png)"></button>
+            </div>
+        </div>
+        <!--div id="advertisement" style="height: 0;background-color: aqua; transition: height 2s"><img src="assets/result-width.svg" /><span>asdf</span><input type="image" src="assets/display.svg"/></div-->
+        <div id="results-section">
+            <div id="opps-div" class="scenario-msg" style="border:2px solid var(--accent-color-1); min-height:272px;">
+                <img id="opps-img" class="scenario-msg" src="assets/opps256.jpg" style="float: left;padding: 8px" />
+                <h1 id="scenario-0" style="padding-top: 8px;" class="i18n scenario-msg">Web browsers prevent extensions from working on the add-ons store site.</h1>
+                <h1 id="scenario-1" style="padding-top: 8px;" class="i18n scenario-msg">Extensions can only work on web pages.</h1>
+                <h1 id="scenario-2" style="padding-top: 8px;" class="i18n scenario-msg">Extension failed to capture the images.\nRefresh the page, wait until the images are loaded on the page, then open the extension. If it still fails, it is possible that the site employs techniques that prevent image detection. See if you can capture images on a different site.</h1>
+                <h1 id="scenario-3" style="padding-top: 8px;" class="i18n scenario-msg">None of the images passed your filtering. Consider relaxing the requirements</h1>
+            </div>
+            <div id="results-found" style="padding: 0;margin: 0;"></div>
+        </div>
+        <div style="line-height: 20px">
+            <hr>
+            <h2 style="margin: 8px 0 8px 0;"><span>
+                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="8" fill="var(--bg-color-2)" />
+                    <path id="orange-circle" d="M 8 8 L8 0 A8 8 0 0 1 8 0" fill="var(--accent-color-1)" />
+                </svg>
+                </span>
+                <span id="searching" class="i18n">Searching...</span>
+                <span id="finished" class="i18n">Finished.</span>&nbsp;
+                <span><a id="review-req" class="i18nt" style="display: none;color: var(--accent-color-2);" target="_blank">If you like our extension, you can help us by rating it :-)</a>
+                </span><span id="get-more" class="i18n">Get more images of</span>&nbsp;<span><a id="suggestions" target="_blank"></a></span></h2>
+        </div>
+        <script src="popup.js"></script>
+    </body>
+</html>

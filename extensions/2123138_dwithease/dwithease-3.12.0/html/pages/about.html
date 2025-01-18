@@ -1,0 +1,56 @@
+<div id="about">
+    <div class="content">
+        <h1 i18n-content="about_title"></h1>
+
+        <div id="product-header">
+            <div class="product-title">
+                <h2>DWithEase</h2>
+                <div i18n-content="about_product_version" class="product-version">
+                    <!--directive: i18n-substitute $1:<b>{{version}}</b>-->
+                    <!--directive: i18n-substitute $2:</b>-->
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/dwithease/" target="_blank"><img src="../../images/icons/social/icon-facebook.png" class="icon icon-fb"></a>
+                    <a href="https://github.com/ForkPoint/dwithease" target="_blank"><img src="../../images/icons/social/icon-github.png" class="icon icon-git"></a>
+                    <a ng-if="!isFirefox && !isEdgeChromium" href="https://chrome.google.com/webstore/detail/demandware-with-ease/ffhabonelknmejmdnekedmijlhebpcio" target="_blank"><img src="../../images/icons/social/icon-google.png" class="icon icon-google"></a>
+                </div>
+            </div>
+        </div>
+        <div i18n-content="about_product_description" class="product-description"></div>
+        <div id="help-container">
+            <md-button i18n-content="about_buttons_roadmap" class="md-raised md-primary" aria-label="Info" ng-href="https://roadmap.dwithease.com" target="_blank"></md-button>
+            <md-button i18n-content="about_buttons_info" class="md-raised md-primary" aria-label="Info" ng-href="https://dwithease.com/docs/" target="_blank" ng-click="getHelpClicked()"></md-button>
+            <md-button ng-if="!isFirefox && !isEdgeChromium" i18n-content="about_buttons_issues" class="md-raised md-primary" aria-label="Support" ng-href="https://chrome.google.com/webstore/detail/demandware-with-ease/ffhabonelknmejmdnekedmijlhebpcio/support" target="_blank" ng-click="reportIssueClicked('chrome')"></md-button>
+            <md-button ng-if="isFirefox || isEdgeChromium" i18n-content="about_buttons_issues" class="md-raised md-primary" aria-label="Support" ng-href="https://forkpoint.com/contact-us/" target="_blank" ng-click="reportIssueClicked((isFirefox && 'firefox') || (isEdgeChromium && 'edge') || 'other')"></md-button>
+            <md-button i18n-content="about_buttons_changelog" class="md-raised md-primary" aria-label="Changelog" ng-click="changeLogClicked()"></md-button>
+        </div>
+
+        <div i18n-content="about_tos" id="product-tos">
+            <!--directive: i18n-substitute $1:<a class="link" href="https://creativecommons.org/licenses/by-nd/3.0/" target="_blank" ng-click="licenseClicked()">Creative Commons Attribution-NoDerivs 3.0 Unported License</a>-->
+        </div>
+        <div class="company-info-container">
+            <div i18n-content="about_author" class="created-by"></div>
+            <div class="company-logo">
+                <a href="https://forkpoint.com" target="_blank" ng-click="logoClicked()">
+                    <img src="../../images/logo/forkpoint-logo-positive.png" alt="forkpoint logo">
+                </a>
+            </div>
+        </div>
+
+        <div class="contributors-section">
+            <div class="contributors-heading">A big <strong>THANK YOU</strong> to our amazing developers that built this extension!</div>
+            <div id="word-cloud"></div>
+        </div>
+
+        <div id="changelogModal" ng-class="changelogModal ? 'changelogModal customModal' : 'hidden'">
+            <div>
+                <h2 i18n-content="about_changelog"></h2>
+                <div changelog></div>
+
+                <md-button class="md-icon-button action-btn close" aria-label="Close" ng-click="closeModal()">
+                    <md-icon md-font-set="material-icons">close</md-icon>
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>

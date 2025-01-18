@@ -1,0 +1,1 @@
+import{g as n}from"./cplx-BbAh7E-i.js";import{f as l,i as o}from"./cplx-CzQHx1MX.js";var g=l,f=o,c="Expected a function";function u(i,a,t){var r=!0,e=!0;if(typeof i!="function")throw new TypeError(c);return f(t)&&(r="leading"in t?!!t.leading:r,e="trailing"in t?!!t.trailing:e),g(i,a,{leading:r,maxWait:a,trailing:e})}var d=u;const _=n(d);export{_ as t};

@@ -1,0 +1,169 @@
+body {
+  /* Disabling classic size in Version 2.0+
+  width: 250px;
+  height: 600px;
+  */
+  overflow: hidden; /* Ensure the body does not scroll */
+  background-color: #f7f7f8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: Helvetica, Arial, sans-serif; /* Set default font to Helvetica */
+}
+
+#menu {
+  padding-left: 15px; /* Add space on the left */
+  padding-right: 15px; /* Add space on the right */
+  margin: 0;
+  overflow-y: auto; /* Only the menu should scroll */
+  flex-grow: 1; /* Ensure it takes up remaining space */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+}
+
+li:not(.category):not(.sub-category),
+list-item-link,
+.other-menues {
+  color: #000000; 
+  border: 1px dashed #fb7b2d;
+  margin-top: 3px;
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  width: 200px;  /* Button Length */
+  cursor: pointer;
+  height: 20px;  /* Button width */
+  background-color: #ffffff; 
+  border-radius: 5px;
+  font-size: 15px;
+  box-shadow: 1px 2px 15px -7px rgba(0,0,0,0.46);
+  transition: background-color 0.3s, font-weight 0.3s; /* Add smooth transition */
+}
+
+li:not(.category):not(.sub-category):hover,
+.other-menues:hover {
+  background-color: #ffa500; /* Change background color to orange on hover */
+  font-weight: bold; /* Make text bold on hover */
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.normal {
+  font-size: 13px;
+  color: #353535;
+}
+
+.links {
+  margin: 3px;
+  text-align: center;
+}
+
+.important {
+  color: #210d55;
+  font-size: 13px;
+  padding-left: 4px;
+}
+
+.category {
+  font-weight: bold;
+  padding: 1px 0 1px;
+  border-bottom: 1px solid #ccc;
+  list-style-type: none;
+  text-align: center;
+  width: 100%;
+}
+
+.sub-category {
+  font-weight: bold;
+  padding: 10px 0 5px;
+  border-bottom: 1px solid #ccc;
+  list-style-type: none;
+  font-size: 0.9em;
+  text-align: center;
+  width: 100%;
+}
+
+.red {
+  color: red;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+/* Styles for the toggle switch container */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+  padding: 0 5px;
+}
+
+/* New class for inner container */
+.toggle-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust this value to increase/decrease space between text and switch */
+}
+
+/* Styles for the text */
+.toggle-inner span {
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+/* Styles for the toggle switch */
+.toggle-switch {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background-color: #e9e9ea;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex-shrink: 0; /* Prevent the switch from shrinking */
+}
+
+/* Styles for the toggle switch inner circle */
+.toggle-switch-inner {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 15px;
+  height: 15px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for the active state of the toggle switch */
+.toggle-switch.active {
+  background-color: #34c759;
+}
+
+/* Styles for the inner circle when the toggle is active */
+.toggle-switch.active .toggle-switch-inner {
+  transform: translateX(20px);
+}
+
+/* Version 2.0 */
+
+.logo-container { display: flex; flex-wrap: wrap; justify-content: space-around; }
+.logo-item { width: 60px; height: 70px; cursor: pointer; position: relative; }
+.logo-item img { width: 40px; height: 40px; transition: transform 0.35s ease; }
+.logo-item:hover img { transform: scale(2.0); }
+.logo-name { display: none; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+.logo-item:hover .logo-name { display: block; }
+.footer { display: flex; justify-content: space-between; font-size: 10px; margin-top: 5px; }
+.category-title {
+  margin-top: 5px; /* Adjust as needed */
+  margin-bottom: 12px; /* Spacing after category title */
+  font-weight: bold;
+  text-align: center;
+}
+

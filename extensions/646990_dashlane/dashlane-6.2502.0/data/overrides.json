@@ -1,0 +1,1164 @@
+{
+  "webtesting.webanalysis.dashlane.com": [
+    {
+      "description": "Testing overrides for remote file update feature",
+      "author": "Marwan Liani",
+      "timeStamp": 1614340854416,
+      "type": "startsWith",
+      "value": "https://webtesting.webanalysis.dashlane.com/remote_file.html",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#email"
+        },
+        {
+          "type": "css",
+          "selector": "#username"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#username",
+          "classification": "address,city"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#email",
+          "classification": "address,country"
+        }
+      ]
+    }
+  ],
+  "s3-eu-west-1.amazonaws.com": [
+    {
+      "description": "Testing overrides for remote file update feature",
+      "author": "Marwan Liani",
+      "timeStamp": 1614340854416,
+      "type": "startsWith",
+      "value": "https://s3-eu-west-1.amazonaws.com/web-testing.webanalysis.dashlane.com/remote_file",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#email"
+        },
+        {
+          "type": "css",
+          "selector": "#username"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#username",
+          "classification": "address,city"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#email",
+          "classification": "address,country"
+        }
+      ]
+    }
+  ],
+  "keepa.com": [
+    {
+      "description": "Fix keepa.com register form incorrectly seen by model as login form",
+      "author": "Daniel Glazman",
+      "timeStamp": 1614340854416,
+      "type": "startsWith",
+      "value": "https://keepa.com/#!",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#loginTab.inactive"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#loginForm",
+          "classification": "register"
+        }
+      ]
+    }
+  ],
+  "hattrick.org": [
+    {
+      "description": "Fix login form on hattrick.org",
+      "author": "Daniel Glazman",
+      "timeStamp": 1615556922115,
+      "type": "regexp",
+      "value": "^https://(www\\.)hattrick.org/\\.*",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": ".logininputbox"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": ".logout select",
+          "classification": "other"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#ctl00_CPContent_ucLogin_txtUserName",
+          "classification": "username"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#aspnetForm",
+          "classification": "login"
+        }
+      ]
+    }
+  ],
+  "pinterest.com": [
+    {
+      "description": "Fix change_password form on pinterest.com",
+      "author": "Daniel Glazman",
+      "timeStamp": 1617782483914,
+      "type": "startsWith",
+      "value": "https://www.pinterest.com/settings/account-settings/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "[data-test-id=\"accountSettingsContainer\"]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "[data-test-id=\"accountSettingsContainer\"]",
+          "classification": "change_password"
+        },
+        {
+          "type": "set",
+          "cssSelector": "[data-test-id=\"done-button\"] > button:first-of-type",
+          "classification": "action,change_password"
+        }
+      ]
+    }
+  ],
+  "accounts.google.com": [
+    {
+      "description": "Fix google login first step",
+      "author": "Daniel Glazman",
+      "timeStamp": 1622799715525,
+      "type": "startsWith",
+      "value": [
+        "https://accounts.google.com/ServiceLogin",
+        "https://accounts.google.com/signin/v2/identifier",
+        "https://accounts.google.com/v3/signin/identifier",
+        "https://accounts.google.com/InteractiveLogin/identifier"
+      ],
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "[role=\"presentation\"][jsshadow][jscontroller]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "button",
+          "classification": "other",
+          "index": -1
+        },
+        {
+          "type": "set",
+          "cssSelector": "button",
+          "classification": "other",
+          "index": 0
+        },
+        {
+          "type": "set",
+          "cssSelector": "[role=\"presentation\"][jsshadow][jscontroller]",
+          "classification": "login,step"
+        }
+      ]
+    },
+    {
+      "description": "Fix google login final step",
+      "author": "Daniel Glazman",
+      "timeStamp": 1622817495076,
+      "type": "startsWith",
+      "value": [
+        "https://accounts.google.com/signin/v2/challenge/pwd",
+        "https://accounts.google.com/v3/signin/challenge/pwd"
+      ],
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "[role=\"presentation\"][jsshadow][jscontroller]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "button",
+          "classification": "other",
+          "index": -1
+        },
+        {
+          "type": "set",
+          "cssSelector": "[role=\"presentation\"][jsshadow][jscontroller]",
+          "classification": "login,final"
+        }
+      ]
+    }
+  ],
+  "twitter.com": [
+    {
+      "description": "Fix twitter login first step - form type 1",
+      "author": "Amelie Martin",
+      "timeStamp": 1637931508481,
+      "type": "startsWith",
+      "value": "https://twitter.com/i/flow/login",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "input[autocomplete=username]"
+        },
+        {
+          "type": "css",
+          "selector": "nav"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#react-root > :first-child > :first-child",
+          "classification": "login,step"
+        },
+        {
+          "type": "set",
+          "cssSelector": "input[autocomplete=username]",
+          "classification": "email,phone,mobile,username"
+        }
+      ]
+    },
+    {
+      "description": "Fix twitter login first step - form type 2",
+      "author": "Amelie Martin",
+      "timeStamp": 1637931508481,
+      "type": "startsWith",
+      "value": "https://twitter.com/i/flow/login",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "input[autocomplete=username]"
+        },
+        {
+          "type": "css",
+          "selector": "main > div > div:empty, main > div:empty"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "div[aria-modal=true] > :first-child > :first-child > div[role=group] > :last-child > :first-child > :first-child",
+          "classification": "login,step"
+        },
+        {
+          "type": "set",
+          "cssSelector": "input[autocomplete=username]",
+          "classification": "email,phone,mobile,username"
+        }
+      ]
+    },
+    {
+      "description": "Fix twitter login second step - form type 1",
+      "author": "Amelie Martin",
+      "timeStamp": 1637931508481,
+      "type": "startsWith",
+      "value": "https://twitter.com/i/flow/login",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "input[name=password]"
+        },
+        {
+          "type": "css",
+          "selector": "nav"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#react-root > :first-child > :first-child",
+          "classification": "login,step"
+        }
+      ]
+    },
+    {
+      "description": "Fix twitter login second step - form type 2",
+      "author": "Amelie Martin",
+      "timeStamp": 1637931508481,
+      "type": "startsWith",
+      "value": "https://twitter.com/i/flow/login",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "input[name=password]"
+        },
+        {
+          "type": "css",
+          "selector": "main > div > div:empty, main > div:empty"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "div[aria-modal=true] > :first-child > :first-child > div[role=group] > :last-child > :first-child > :first-child",
+          "classification": "login,step"
+        }
+      ]
+    },
+    {
+      "description": "Fix twitter login OTP - form type 1",
+      "author": "Amelie Martin",
+      "timeStamp": 1637931508481,
+      "type": "startsWith",
+      "value": "https://twitter.com/i/flow/login",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "input[inputmode=numeric]"
+        },
+        {
+          "type": "css",
+          "selector": "nav"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#react-root > :first-child > :first-child",
+          "classification": "login,final"
+        },
+        {
+          "type": "set",
+          "cssSelector": "input[inputmode=numeric]",
+          "classification": "otp"
+        }
+      ]
+    },
+    {
+      "description": "Fix twitter login OTP - form type 2",
+      "author": "Amelie Martin",
+      "timeStamp": 1637931508481,
+      "type": "startsWith",
+      "value": "https://twitter.com/i/flow/login",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "input[inputmode=numeric]"
+        },
+        {
+          "type": "css",
+          "selector": "main > div > div:empty, main > div:empty"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "div[aria-modal=true] > :first-child > :first-child > div[role=group] > :last-child > :first-child > :first-child",
+          "classification": "login,final"
+        },
+        {
+          "type": "set",
+          "cssSelector": "input[inputmode=numeric]",
+          "classification": "otp"
+        }
+      ]
+    }
+  ],
+  "paycomonline.net": [
+    {
+      "description": "Recognize the SSN field as a secondary login",
+      "author": "Amelie Martin",
+      "timeStamp": 1646667352569,
+      "type": "startsWith",
+      "value": "https://www.paycomonline.net/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#txtlogin"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#userpinid",
+          "classification": "username,secondary"
+        }
+      ]
+    }
+  ],
+  "facebook.com": [
+    {
+      "description": "Fix the password field for FBs login",
+      "author": "Amelie Martin",
+      "timeStamp": 1646919731239,
+      "type": "startsWith",
+      "value": "https://www.facebook.com",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "[data-testid=\"royal_login_form\"]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "[data-testid=\"royal_login_form\"]",
+          "classification": "login"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#pass",
+          "classification": "password"
+        }
+      ]
+    }
+  ],
+  "portal.zinghr.com": [
+    {
+      "description": "Recognize both login fields of zinghr.com",
+      "author": "Laure Hugo",
+      "timeStamp": 1647509062,
+      "type": "startsWith",
+      "value": "https://portal.zinghr.com/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#txtCompanyCode"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#txtCompanyCode",
+          "classification": "username,secondary"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#txtEmpCode",
+          "classification": "username"
+        }
+      ]
+    }
+  ],
+  "b2b.drapertools.com": [
+    {
+      "description": "Recognize the account number field as the secondary login (EXTENSION-21992)",
+      "author": "Amelie Martin",
+      "timeStamp": 1654161337,
+      "type": "startsWith",
+      "value": "https://b2b.drapertools.com/signin.php",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#loginform"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#account",
+          "classification": "username,secondary"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#branch",
+          "classification": "other"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#userid",
+          "classification": "username"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#password",
+          "classification": "password"
+        }
+      ]
+    }
+  ],
+  "eftps.gov": [
+    {
+      "description": "Improve the login experience (EXTENSION-21847)",
+      "author": "Amelie Martin",
+      "timeStamp": 1654851023,
+      "type": "startsWith",
+      "value": "https://www.eftps.gov/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#LoginForm"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#LoginForm",
+          "classification": "login"
+        },
+        {
+          "type": "set",
+          "cssSelector": "[name=\"EIN1\"]",
+          "classification": "other"
+        },
+        {
+          "type": "set",
+          "cssSelector": "[name=\"EIN2\"]",
+          "classification": "username"
+        },
+        {
+          "type": "set",
+          "cssSelector": "[name=\"SSN1\"]",
+          "classification": "other"
+        },
+        {
+          "type": "set",
+          "cssSelector": "[name=\"SSN2\"]",
+          "classification": "other"
+        },
+        {
+          "type": "set",
+          "cssSelector": "[name=\"SSN3\"]",
+          "classification": "other"
+        },
+        {
+          "type": "set",
+          "cssSelector": "[name=\"PIN\"]",
+          "classification": "username,secondary"
+        }
+      ]
+    }
+  ],
+  "iitri-cp.deltekenterprise.com": [
+    {
+      "description": "Recognize the secondary login (EXTENSION-22511)",
+      "author": "Amelie Martin",
+      "timeStamp": 1656339963,
+      "type": "startsWith",
+      "value": "https://iitri-cp.deltekenterprise.com/cpweb/cploginform.htm",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#signInFrame"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#DATABASE",
+          "classification": "username,secondary"
+        }
+      ]
+    }
+  ],
+  "paypal.com": [
+    {
+      "description": "Fix the address fields on Paypal's registration form",
+      "author": "Amelie Martin",
+      "timeStamp": 1661939314,
+      "type": "regexp",
+      "value": "^https://www.paypal.com/../welcome/signup/#/name_address",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#paypalAccountData_address1_0"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#paypalAccountData_address1_0",
+          "classification": "address"
+        },
+        {
+          "type": "set",
+          "cssSelector": "paypalAccountData_address2_0",
+          "classification": "address,extra"
+        }
+      ]
+    }
+  ],
+  "account.simplyhired.com": [
+    {
+      "description": "Recognize the login form and password on simplyhired",
+      "author": "Amelie Martin",
+      "timeStamp": 1663233262684,
+      "type": "startsWith",
+      "value": "https://account.simplyhired.com/login",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": ".sign-in-container"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": ".account-tab-item",
+          "classification": "login"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#input-password",
+          "classification": "password"
+        }
+      ]
+    }
+  ],
+  "app-ab14.marketo.com": [
+    {
+      "description": "Recognize the change password form (issue #1069)",
+      "author": "Amelie Martin",
+      "timeStamp": 1664285433602,
+      "type": "startsWith",
+      "value": "https://app-ab14.marketo.com/homepage/resetPasswordRequest",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#hprpResetPasswordForm"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#hprpResetPasswordForm",
+          "classification": "change_password"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#hprpNewPw1",
+          "classification": "password,new"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#hprpNewPw2",
+          "classification": "password,confirmation"
+        }
+      ]
+    }
+  ],
+  "cenpos.net": [
+    {
+      "description": "Fix the login form and fields (issue #1174)",
+      "author": "Amelie Martin",
+      "timeStamp": 1666946066598,
+      "type": "startsWith",
+      "value": "https://www.cenpos.net/vt/#/login",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": ".login-container"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": ".v-form",
+          "classification": "login"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#userName",
+          "classification": "username"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#password",
+          "classification": "password"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#merchant",
+          "classification": "username,secondary"
+        }
+      ]
+    }
+  ],
+  "americancentury.com": [
+    {
+      "description": "Fix the login form and username (issue #1122)",
+      "author": "Amelie Martin",
+      "timeStamp": 1679483078196,
+      "type": "startsWith",
+      "value": "https://www.americancentury.com/signin",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "[data-testid=\"signinWrapper\"]"
+        },
+        {
+          "type": "css",
+          "selector": "input[name=\"userName\"]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "[data-testid=\"signinWrapper\"] > div:first-child > div:nth-child(2) > div:first-child",
+          "classification": "login,step"
+        },
+        {
+          "type": "set",
+          "cssSelector": "input[name=\"userName\"]",
+          "classification": "username"
+        },
+        {
+          "type": "set",
+          "cssSelector": "button[name=\"Continue\"]",
+          "classification": "action,next"
+        }
+      ]
+    }
+  ],
+  "users.nexusmods.com": [
+    {
+      "description": "Fix the OTP field in login form (issue #1423)",
+      "author": "Amelie Martin",
+      "timeStamp": 1679483096885,
+      "type": "startsWith",
+      "value": "https://users.nexusmods.com/auth/sign_in",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#otp_attempt"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#otp_attempt",
+          "classification": "otp"
+        }
+      ]
+    },
+    {
+      "description": "Fix the OTP field in change password form (issue #1423)",
+      "author": "Amelie Martin",
+      "timeStamp": 1679483113151,
+      "type": "startsWith",
+      "value": "https://users.nexusmods.com/account/security",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#changePasswordForm"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#change_password_two_fa",
+          "classification": "otp"
+        }
+      ]
+    }
+  ],
+  "manage.auth0.com": [
+    {
+      "description": "Disable the client id field (issue #1687)",
+      "author": "Amelie Martin",
+      "timeStamp": 1680007226786,
+      "type": "startsWith",
+      "value": "https://manage.auth0.com/dashboard/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "[name=\"client_id\"]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "[name=\"client_id\"]",
+          "classification": "other"
+        }
+      ]
+    }
+  ],
+  "specifyapp.com": [
+    {
+      "description": "Fix the username's data-form-type value (issue #1701)",
+      "author": "Amelie Martin",
+      "timeStamp": 1680686236105,
+      "type": "startsWith",
+      "value": "https://specifyapp.com/login",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#email"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#email",
+          "classification": "email"
+        }
+      ]
+    }
+  ],
+  "personal.okta.com": [
+    {
+      "description": "Classify the pin fields as other (issue #1719)",
+      "author": "Amelie Martin",
+      "timeStamp": 1681398341293,
+      "type": "startsWith",
+      "value": "https://personal.okta.com/enduser/personal/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "[name=\"create-encryption-pin\"]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#o-password-0-input",
+          "classification": "other"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#o-password-1-input",
+          "classification": "other"
+        }
+      ]
+    }
+  ],
+  "acm.onelogin.com": [
+    {
+      "description": "Recognize the 2-steps form (issue #2967)",
+      "author": "Amelie Martin",
+      "timeStamp": 1692354096702,
+      "type": "startsWith",
+      "value": "https://acm.onelogin.com/login2",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#username"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "form",
+          "classification": "login,step"
+        }
+      ]
+    }
+  ],
+  "twitch.tv": [
+    {
+      "description": "Recognize the registration form (issue #1833)",
+      "author": "Amelie Martin",
+      "timeStamp": 1692624558061,
+      "type": "startsWith",
+      "value": "https://www.twitch.tv",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#signup-username"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "form",
+          "classification": "register"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#signup-username",
+          "classification": "username,new"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#password-input",
+          "classification": "password,new"
+        }
+      ]
+    }
+  ],
+  "libs.na.bambora.com": [
+    {
+      "description": "Strip the part extra from the card number (#3232)",
+      "author": "Amelie Martin",
+      "timeStamp": 1704278419654,
+      "type": "startsWith",
+      "value": "https://libs.na.bambora.com",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#bambora-card-number"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#bambora-card-number",
+          "classification": "payment,number,credit_card"
+        }
+      ]
+    }
+  ],
+  "app.optimizely.com": [
+    {
+      "description": "Recognize the forgot password button (#3213)",
+      "author": "Amelie Martin",
+      "timeStamp": 1704291654510,
+      "type": "startsWith",
+      "value": "https://app.optimizely.com/signin",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#sign-in-form"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "[data-test-section=\"signin-forgot-link\"]",
+          "classification": "action,forgot_password"
+        }
+      ]
+    }
+  ],
+  "cores.reg.gov.ab.ca": [
+    {
+      "description": "Recognize the service provider password as other (#3281)",
+      "author": "Amelie Martin",
+      "timeStamp": 1706061940789,
+      "type": "startsWith",
+      "value": "https://cores.reg.gov.ab.ca/cores/cr/cr_login.login_page",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "input[name=\"p_sp_pw\"]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "input[name=\"p_sp_pw\"]",
+          "classification": "other"
+        }
+      ]
+    }
+  ],
+  "online.adp.com": [
+    {
+      "description": "Recognize the username field (#3343)",
+      "author": "Amelie Martin",
+      "timeStamp": 1710501416367,
+      "type": "startsWith",
+      "value": "https://online.adp.com/signin/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#login-form_username"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#login-form_username",
+          "classification": "username"
+        },
+        {
+          "type": "set",
+          "cssSelector": "[id=\"signin.rememberPopOverText\"]",
+          "classification": "other"
+        },
+        {
+          "type": "set",
+          "cssSelector": "#forgot_uid_link > sdf-button",
+          "classification": "other"
+        }
+      ]
+    }
+  ],
+  "cdn.registerdisney.go.com": [
+    {
+      "description": "Force the classification of the Disney login form (#135)",
+      "author": "Amelie Martin",
+      "timeStamp": 1713455826377,
+      "type": "startsWith",
+      "value": "https://cdn.registerdisney.go.com/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#InputIdentityFlowValue"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "form",
+          "classification": "login,step"
+        }
+      ]
+    }
+  ],
+  "chewy.com": [
+    {
+      "description": "Prevent radio button to be classified",
+      "author": "François Decan",
+      "timestamp": 1722514019747,
+      "type": "startsWith",
+      "value": "https://www.chewy.com/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#channel-password"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#channel-password",
+          "classification": "other"
+        }
+      ]
+    }
+  ],
+  "reddit.com": [
+    {
+      "description": "Classify correctly otp field",
+      "author": "François Decan",
+      "timestamp": 1722514019747,
+      "type": "startsWith",
+      "value": "https://www.reddit.com/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "input[name=\"appOtp\"]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "input[name=\"appOtp\"]",
+          "classification": "otp"
+        }
+      ]
+    }
+  ],
+  "slack.com": [
+    {
+      "description": "Classify correctly otp field",
+      "author": "François Decan",
+      "timestamp": 1722514019747,
+      "type": "regexp",
+      "value": "^https://(w{0,3}.)?(.*.)?slack.com/sign_in_with_password",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "input[inputmode=\"numeric\"][maxlength=\"1\"]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "input[inputmode=\"numeric\"][maxlength=\"1\"]",
+          "classification": "otp,part"
+        }
+      ]
+    },
+    {
+      "description": "Classify correctly otp field 2",
+      "author": "François Decan",
+      "timestamp": 1722514019747,
+      "type": "regexp",
+      "value": "^https://(w{0,3}.)?(.*.)?slack.com/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": ".split_input_item > input"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": ".split_input_item > input",
+          "classification": "otp,part"
+        }
+      ]
+    }
+  ],
+  "auth.services.adobe.com": [
+    {
+      "description": "Force the classification of the Adobe login form (#3743)",
+      "author": "Yannick Mougin",
+      "timeStamp": 1730214637184,
+      "type": "startsWith",
+      "value": "https://auth.services.adobe.com/",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#EmailPage-EmailField"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#EmailForm",
+          "classification": "login,step"
+        }
+      ]
+    }
+  ],
+  "linkedin.com/mypreferences/d/passkey": [
+    {
+      "description": "Fix password verification field to be an existing password instead of a new one",
+      "author": "Yannick Mougin",
+      "timeStamp": 1730214637184,
+      "type": "regexp",
+      "value": "^https://(w{0,3}.)?(.*.)?linkedin.com/mypreferences/d/passkey",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "input[type=password]"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "input[type=password]",
+          "classification": "password"
+        }
+      ]
+    }
+  ],
+  "signin.siemens.com": [
+    {
+      "description": "Fix password verification field to be an existing password instead of a new one",
+      "author": "Yannick Mougin",
+      "timeStamp": 1730214637184,
+      "type": "startsWith",
+      "value": "https://signin.siemens.com/regapi/login",
+      "conditions": [
+        {
+          "type": "css",
+          "selector": "#login"
+        }
+      ],
+      "actions": [
+        {
+          "type": "set",
+          "cssSelector": "#login",
+          "classification": "username"
+        }
+      ]
+    }
+  ]
+}

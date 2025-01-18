@@ -1,0 +1,1 @@
+(function r(){var t=ThrushFuture.Init.PopoverScript.inject;t()})();

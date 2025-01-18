@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<!--
+    This file is part of the OpenLink Structured Data Sniffer
+
+    Copyright (C) 2015-2021 OpenLink Software
+
+    This project is free software; you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation; only version 2 of the License, dated June 1991.
+
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+-->
+    <head>
+	<meta charset="UTF-8">
+        <link type="text/css" href="lib/css/smoothness/jquery-ui.min.css" rel="stylesheet" />
+        <link type="text/css" href="lib/css/smoothness/theme.css" rel="stylesheet" />
+        <link type="text/css" href="lib/css/footable-0.1.css" rel="stylesheet" />
+        <link type="text/css" href="lib/css/codemirror.css" rel="stylesheet" />
+        <link type="text/css" href="lib/css/yasqe.css" rel="stylesheet" />
+
+        <script type="text/javascript" src="lib/jquery-3.1.0.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-ui.min.js"></script>
+
+        <script type="text/javascript" src="lib/microdatajs/jquery.microdata.js"></script>
+        <script type="text/javascript" src="lib/microdatajs/jquery.microdata.json.js"></script>
+        <script type="text/javascript" src="lib/jsonld.js"></script>
+        <script type="text/javascript" src="lib/n3-browser.js"></script>
+        <script type="text/javascript" src="lib/rdflib.js"></script>
+        <script type="text/javascript" src="lib/FileSaver.js"></script>
+        <script type="text/javascript" src="lib/namespace.js"></script>
+        <script type="text/javascript" src="lib/codemirror.js"></script>
+        <script type="text/javascript" src="lib/yasqe.js"></script>
+        <script type="text/javascript" src="lib/solid-client-authn.bundle.js"></script>
+        <script type="text/javascript" src="lib/papaparse.js"></script>
+        <script type="text/javascript" src="lib/rss-parser.js"></script>
+        <script type="text/javascript" src="lib/tidy.js"></script>
+
+
+        <script type="text/javascript" src="browser.js"></script>
+        <script type="text/javascript" src="utils.js"></script>
+        <script type="text/javascript" src="OidcWebid.js"></script>
+        <script type="text/javascript" src="settings.js"></script>
+        <script type="text/javascript" src="page_panel.js"></script>
+        <script type="text/javascript" src="handlers.js"></script>
+        <script type="text/javascript" src="converters.js"></script>
+        <script type="text/javascript" src="datablock.js"></script>
+        <script type="text/javascript" src="ttl_gen.js"></script>
+        <script type="text/javascript" src="html_gen.js"></script>
+        <link rel="stylesheet" href="dataview.css" />
+        <link rel="stylesheet" href="tabs.css" />
+        <link rel="stylesheet" href="content.css" />
+
+        <style type="text/css">
+          :root {
+              color-schema: light dark;
+          }
+
+
+          div#rest_query .CodeMirror-gutters {
+            display: none;
+          }
+
+          div.content {
+            width: 100%;
+            height: calc(100% - 20px);
+          }
+
+          table.docdata {
+            width: 100%;
+          }
+
+ 	  div.ritem {display:flex; flex-direction:row; align-items: baseline; padding-top:5px;}
+
+          body.sniffer_sf {
+            width: 760px;
+            height: 580px;
+          }
+
+          div.content_sf {
+            width: 755px;
+            height: 530px;
+          }
+        </style>
+
+    </head>
+    <body class="sniffer">
+
+      <div class="super_links_msg"> 
+        <div style="width:16px;">
+          <img src="images/throbber.gif" class="super_links_img">
+        </div>
+        <div id="super_links_msg_text">&nbsp;Uploading&nbsp;data</div>
+      </div>
+
+      <div id="super_links_snackbar">
+        <div id="msg1"></div>
+        <div id="msg2"></div>
+      </div>
+
+      <div class="osds_revert_css osds_popup" style="display:none">
+        <div class="osds_revert_css osds_popup-title"> <b>&nbsp;Error</b></div>
+        <div class="osds_revert_css osds_popup-content">
+          <p class="osds_revert_css" id="osds_popup_msg">  </p>
+          <div class="osds_revert_css osds_popup_btns">
+            <input id="osds_popup_retry" value=" Try&nbsp;Again " type="button" class="osds_revert_css osds_popup_btn">
+            <input id="osds_popup_cancel" value=" Cancel " type="button" class="osds_revert_css osds_popup_btn">
+          </div>
+        </div>
+      </div>
+
+
+<!-- POPUP & MESSAGES -->
+      <div class="popup" id="alert-dlg" title="Info">
+        <p id="alert-msg">
+        </p>
+        <a id="alert_href" href=""></a>
+      </div>
+
+
+      <div class="popup popup_flex_cols" id="save-confirm" title="Data Source" >
+        <p/>
+        <div class="popup_frm_row" >
+          <div class="popup_frm_label4">Action:</div>
+            <SELECT id="save-action" style="WIDTH: 300px" >
+              <OPTION id="view" selected>View Raw Data</OPTION>
+              <OPTION id="filesave">Download Raw Data</OPTION>
+              <OPTION id="fileupload">Upload to Data Space or Pod</OPTION>
+              <OPTION id="sparqlupload">Upload to SPARQL endpoint</OPTION>
+            </SELECT>
+        </div>
+
+        <div id="save-file" class="popup_frm_row">
+          <div class="popup_frm_label4">Save&nbsp;As:</div>
+          <input id="save-filename" style="WIDTH: 300px">
+        </div>
+
+        <div id="save-fmt-item" class="popup_frm_row">
+          <div class="popup_frm_label4">Format:</div>
+            <SELECT id="save-fmt" style="WIDTH: 100px" >
+              <OPTION id="ttl" selected>Turtle</OPTION>
+              <OPTION id="jsonld">JSON-LD</OPTION>
+              <OPTION id="rdf">RDF/XML</OPTION>
+              <OPTION id="json">JSON</OPTION>
+            </SELECT>
+        </div>
+
+        <div id="login-fmt-item" class="popup_frm_row">
+          <button id="oidc-login-btn">Login </button>
+          <a id="oidc-webid" href="" title="" style="display:none"> <img id="uid-icon" src="images/uid.png" style="width:28px"> </a> 
+        </div>
+
+        <div id="save-sparql-item" style="display:flex; flex-direction:column">
+          <div class="popup_frm_row">
+            <div class="popup_frm_label6">Endpoint&nbsp;URL:</div>
+            <input id="save-sparql-endpoint" style="WIDTH: 360px" value="https://linkeddata.uriburner.com/sparql">
+          </div>
+          <div class="popup_frm_row">
+            <div class="popup_frm_label6">Graph&nbsp;Name:</div>
+            <input id="save-sparql-graph" style="WIDTH: 360px" value="urn:records:test">
+          </div>
+          <p/>
+          <div class="popup_frm_row">
+            <input id="save-sparql-check-res" type="checkbox" checked >
+            <div>Execute&nbsp;Sample&nbsp;SPARQL&nbsp;Query&nbsp;after&nbsp;upload</div>
+          </div>
+        </div>
+
+        <div id="oidc-upload" class="popup_frm_row">
+          <div class="popup_frm_label6">Save&nbsp;To&nbsp;URL:</div>
+          <input id="oidc-url" style="WIDTH: 380px">
+        </div>
+      </div>
+
+
+      <div class="popup" id="login-dlg" title="Login via OIDC provider">
+        <p/>
+        <table id="oidc-login1" style="font-size: 14px;">
+         <tr >
+          <td> <button id="oidc-login-btn1">Login</button> </td>
+          <td> <a id="oidc-webid1" href="" title="" style="display:none"> <img id="uid-icon" src="images/uid.png" style="width:28px"> </a> </td>
+         </tr>
+        </table>
+      </div>
+
+<!---------END POPUP --------------------->
+
+      <div class="top"></div>
+
+      <div class="btn_block">
+         <input type="image" id="login_btn" class="image_btn" src="images/slogin24.png" title="OIDC Login">
+         <input type="image" id="sparql_btn" class="image_btn" src="images/osds-icon-query-24.png" title="LOD Cloud Lookup Query using SPARQL Query Language">
+         <input type="image" id="rww_btn" class="image_btn" src="images/osds-icon-annotate-24.png" title="Create Annotations and store to a Document Location of your choice, using WebDAV, LDP, or SPARQL protocols">
+         <input type="image" id="import_btn" class="image_btn" src="images/osds-icon-describe-24.png" title="Obtain a description of this Web Document i.e., the document identified by the hyperlink in the address bar">
+         <input type="image" id="rest_btn" class="image_btn" src="images/osds-icon-rest-24.png" title="Web Service Console for RESTful interaction with HTTP Servers">
+         <input type="image" id="download_btn" class="image_btn" src="images/osds-icon-download-24.png" title="View or Download structured data">
+      </div>
+
+      <div class="content">
+       <ul class="tabs" role="tablist">
+        <li id="tab-micro" >
+          <input type="radio" name="tabs" id="itab-micro" />
+          <label for="itab-micro" role="tab" aria-selected="true">
+            Microdata
+          </label>
+          <div id="micro_items" class="tab-content" role="tabpanel" aria-hidden="false">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-jsonld" >
+          <input type="radio" name="tabs" id="itab-jsonld" />
+          <label for="itab-jsonld" role="tab" aria-selected="false">
+            JSON-LD
+          </label>
+          <div id="jsonld_items" class="tab-content" role="tabpanel" aria-hidden="true">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-turtle" >
+          <input type="radio" name="tabs" id="itab-turtle" />
+          <label for="itab-turtle" role="tab" aria-selected="false">
+            Turtle
+          </label>
+          <div id="turtle_items" class="tab-content" role="tabpanel" aria-hidden="true">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-rdfa" >
+          <input type="radio" name="tabs" id="itab-rdfa" />
+          <label for="itab-rdfa" role="tab" aria-selected="false">
+            RDFa
+          </label>
+          <div id="rdfa_items" class="tab-content" role="tabpanel" aria-hidden="true">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-rdf" >
+          <input type="radio" name="tabs" id="itab-rdf" />
+          <label for="itab-rdf" role="tab" aria-selected="false">
+            RDF/XML
+          </label>
+          <div id="rdf_items" class="tab-content" role="tabpanel" aria-hidden="true">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-json" >
+          <input type="radio" name="tabs" id="itab-json" />
+          <label for="itab-json" role="tab" aria-selected="false">
+            JSON
+          </label>
+          <div id="json_items" class="tab-content" role="tabpanel" aria-hidden="true">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-jsonl" >
+          <input type="radio" name="tabs" id="itab-jsonl" />
+          <label for="itab-jsonl" role="tab" aria-selected="false">
+            JSONL
+          </label>
+          <div id="jsonl_items" class="tab-content" role="tabpanel" aria-hidden="true">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-csv" >
+          <input type="radio" name="tabs" id="itab-csv" />
+          <label for="itab-csv" role="tab" aria-selected="false">
+            CSV
+          </label>
+          <div id="csv_items" class="tab-content" role="tabpanel" aria-hidden="true">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-rss" >
+          <input type="radio" name="tabs" id="itab-rss" />
+          <label for="itab-rss" role="tab" aria-selected="false">
+            RSS
+          </label>
+          <div id="rss_items" class="tab-content" role="tabpanel" aria-hidden="true">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-atom" >
+          <input type="radio" name="tabs" id="itab-atom" />
+          <label for="itab-atom" role="tab" aria-selected="false">
+            Atom
+          </label>
+          <div id="atom_items" class="tab-content" role="tabpanel" aria-hidden="true">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-posh" >
+          <input type="radio" name="tabs" id="itab-posh" />
+          <label for="itab-posh" role="tab" aria-selected="false">
+            POSH
+          </label>
+          <div id="posh_items" class="tab-content" role="tabpanel" aria-hidden="true">
+            <table class="wait">
+              <tr>
+                <td><img src="images/throbber.gif" width="16" /></td>
+                <td>Processing data...</td>
+              </tr>
+            </table>
+          </div>
+        </li>
+
+        <li id="tab-src" >
+          <input type="radio" name="tabs" id="itab-src" />
+          <div id="src_items" class="tab-content" role="tabpanel" aria-hidden="true" style="font-size: 13px;">
+            <table style="width: 100%;height:40px;">
+              <tr>
+                <td>
+                  <button id="src_exit" style="margin:5px; margin-left:10px;">Exit</button>
+                </td>
+              </tr>
+            </table>
+            <div style="width: 100%; height: calc(100% - 40px);">
+                <textarea id="src_place" style="white-space:nowrap">
+                </textarea>
+            </div>
+          </div>
+        </li>
+
+        <li id="tab-cons" >
+          <input type="radio" name="tabs" id="itab-cons" />
+          <div id="cons_items" class="tab-content" role="tabpanel" aria-hidden="true" style="font-size: 13px;">
+
+            <div style="display:flex; flex-direction:row; align-items:baseline;">
+              <button id="rest_exec" style="margin:10px; margin-left:15px;">Run</button>
+              <button id="rest_exit" >Exit</button>
+            </div>
+            <div class="rest_path">
+              <span class="rest_frm_label5">URL</span>
+              <input id="rest_url" class="rest_frm_field" style="background-color: #dce9f9;" readonly >
+            </div>
+            <p/>
+            <div class="rest_path">
+              <span class="rest_frm_label5">Scheme</span>
+              <input id="rest_scheme" class="rest_frm_field">
+            </div>
+            <div class="rest_path">
+              <span class="rest_frm_label5">Authority</span>
+              <input id="rest_auth" class="rest_frm_field">
+            </div>
+            <div class="rest_path">
+              <span class="rest_frm_label5">Path</span>
+              <input id="rest_path" class="rest_frm_field">
+            </div>
+            <p/>
+            <div id="rest_query">
+              <div class="rest_query_title" >
+                <span class="rest_frm_label9">Query&nbsp;Parameter</span>
+                <input id="query_id" class="rest_frm_field" >
+              </div>
+              <textarea id="query_place" style="width: 100%; height: 100px">
+              </textarea>
+            </div>
+
+            <table id="rest_params" class="footable">
+              <thead>
+                <tr>
+                  <th width="12px"></th>
+                  <th width="40%">Parameter</th>
+                  <th width="auto">Value</th>
+                </tr>
+              </thead>
+              <tbody id="restData">
+              </tbody>
+            </table>
+            <button style="margin:8px; margin-top:8px;" id="rest_add" class="rest_add">Add</button>
+            <p/>
+            <div class="rest_path">
+              <span class="rest_frm_label5">Fragment</span>
+              <input id="rest_hash" class="rest_frm_field">
+            </div>
+          </div>
+        </li>
+
+       </ul>
+      </div>
+
+
+      <div class="bottom_block">
+        <div class="bottom_block_left">
+          <a href="http://osds.openlinksw.com">OpenLink Structured Data Sniffer</a>
+          <div id="ext_ver" style="width:50px">ver:0.0.0</div>
+        </div>
+
+        <div>
+          Copyright&nbsp;&copy;&nbsp;2015-<span id="c_year">2021</span> 
+          <a href="http://www.openlinksw.com"> OpenLink&nbsp;Software </a>
+        </div>
+      </div>
+
+    </body>
+</html>

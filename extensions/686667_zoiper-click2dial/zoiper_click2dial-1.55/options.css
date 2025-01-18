@@ -1,0 +1,152 @@
+body {
+  background: var(--color-gray-90);
+}
+
+.wrapper {
+  margin: auto;
+  max-width: 450px;
+  min-height: 700px;
+}
+
+.page-header {
+  padding: 1em 0;
+}
+
+.main {
+  background: var(--color-white);
+  color: var(--color-gray-40);
+  box-shadow: var(--color-shadow) 0 5px 20px;
+  border-radius: 6px;
+}
+
+.section {
+  padding: 2em;
+}
+
+.title {
+  padding: 2em 2em 0 2em;
+}
+
+.title > * {
+  display: inline;
+}
+
+.title h2 {
+  padding-right: 0.2em;
+}
+
+.section label {
+  font-weight: 500;
+}
+
+.separator-bottom {
+  border-bottom: 1px solid var(--color-gray-90);
+}
+
+.simple-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-box {
+  width: 1em;
+  cursor: help;
+  background: var(--color-gray-20);
+  border-radius: 50%;
+}
+
+.btn-add-exception {
+  cursor: pointer;
+  border: 0;
+  padding: 1em;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.btn-add-exception {
+  background: var(--color-brand-primary);
+}
+
+#error-message {
+  display: none;
+  margin: 1em 0;
+  color: var(--color-brand-primary);
+  text-align: center;
+  font-weight: bold;
+}
+
+#exceptions {
+  display: flex;
+  flex-direction: column;
+}
+
+#exceptions ul {
+  list-style: none;
+  padding: 0;
+}
+
+#exceptions ul li {
+  display: flex;
+  align-items: center;
+  padding: 0em 2em;
+}
+
+#exceptions ul li p {
+  flex: 1;
+  margin: 0;
+}
+
+#exceptions ul li .delete {
+  display: flex;
+  height: 3em;
+  cursor: pointer;
+}
+
+#exceptions ul li .delete div {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  align-self: center;
+  transform: rotate(-45deg);
+}
+
+#exceptions ul li .delete div::before,
+#exceptions ul li .delete div::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-gray-80);
+  transition: background-color 150ms ease-in-out;
+}
+
+#exceptions ul li:hover .delete div::before,
+#exceptions ul li:hover .delete div::after{
+  background-color: var(--color-gray-70);
+}
+
+#exceptions ul li .delete div::before {
+  width: 4px;
+  height: 20px;
+}
+
+#exceptions ul li .delete div::after {
+  height: 4px;
+  width: 20px;
+}
+
+.input-action-pair {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1em 2em 0 2em;
+}
+
+.input-action-pair > input {
+  flex: 1;
+  margin-right: 0.5rem;
+}

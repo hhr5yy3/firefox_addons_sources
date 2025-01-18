@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Qui-Quo</title>
+    <link href="style/popup.css" rel="stylesheet">
+    <link href="style/material-components-web.min.css" rel="stylesheet">
+    <script type="text/javascript" src="../operators/util.js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+    <script type="text/javascript" src="../popup-shared.js"></script>
+    <script type="text/javascript" src="js/material-components-web.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body id="popupContainer">
+<header id="header" class="mdc-top-app-bar header">
+    <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+            <button style="display: none" id="close" class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
+                    aria-label="Close popup">close
+            </button>
+            <a class="brand qq-brand" href="/agency"><span>Q</span>ui-<span>Q</span>uo</a>
+        </section>
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+            <button id="bookmarks" class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+                    aria-label="Bookmark">bookmark
+            </button>
+            <button id="last_quotes" class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+                    aria-label="Last quotes">
+                playlist_add_check
+            </button>
+            <button id="agency_page" class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+                    aria-label="Account">
+                manage_accounts
+            </button>
+        </section>
+    </div>
+</header>
+<main class="mdc-top-app-bar--fixed-adjust" id="quote" >
+    <div class="manager-container mdc-card mdc-card--elevated">
+        <div class="avatar"><img  class="logo" alt="Avatar" src="https://via.placeholder.com/50"></div>
+        <div class="select-wrapper">
+            <label for="manager">Менеджер: </label>
+            <select id="manager" class="manager"></select>
+        </div>
+    </div>
+    <div class="card-container" data-swipe-threshold="100" data-swipe-timeout="250"></div>
+    <div class="mdc-card mdc-card--elevated qq-instructions">
+        <div class="mdc-card-wrapper__text-section">
+            <p style="display: block;">
+                Список туров пуст.<br><br>
+
+                Чтобы наполнить его, откройте веб-сайт
+                <a id="touroperators" href="#">туроператора</a> и сделайте там поиск,<br>
+                как Вы обычно это делаете. Выберите тур, заинтересовавший клиента, <br>
+                и нажмите на галочку <span alt="Выбрать тур" class="qq-add-btn"></span> напротив него.<br><br>
+
+                Сформировав список, снова нажмите на кнопку
+                <img alt="Выбрать тур" src="../img/icon.png"> и потом на кнопку Готово.<br>
+                Будет создана подборка, которую вы сможете послать через мессенджер, соцсеть, по email или распечатать.
+            </p>
+        </div>
+    </div>
+        </div>
+</main>
+<main class="mdc-top-app-bar--fixed-adjust" id="logon">
+    <div class="card-container">
+        <div class="mdc-card mdc-card--elevated qq-card-second-type">
+            <div id="logon-hello">
+                Кажется, это Ваш первый запуск Qui-Quo. Добро пожаловать!
+            </div>
+            <div id="logon-msg">
+                Прежде, чем Вы начнете пользоваться программой, необходимо кое-что настроить.<br>
+                Все будет сделано автоматически. Вам надо только ввести логин и пароль.
+            </div>
+        </div>
+        <div class="mdc-card mdc-card--elevated qq-card-second-type">
+            <dd id="logonErrorDd" class="invisible">
+                <div id="logonErrorDiv">Неверный логин или пароль</div>
+            </dd>
+            <div class="inline-text-field-container">
+
+                <div class="mdc-text-field login mdc-text-field--outlined mdc-text-field--with-leading-icon">
+
+                    <i aria-hidden="true" class="material-icons mdc-text-field__icon"><!---->login<!----></i>
+
+
+                    <input  class="mdc-text-field__input" autocorrect="off" autocomplete="off" spellcheck="false"
+                           id="login-mdc-text-field" maxlength="524288">
+
+                    <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch" style="">
+
+                            <label for="login-mdc-text-field" class="mdc-floating-label" style=""><!---->Логин
+                                <!----></label>
+
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="inline-text-field-container">
+
+                <div class="mdc-text-field password mdc-text-field--outlined mdc-text-field--with-leading-icon">
+
+                    <i aria-hidden="true" class="material-icons mdc-text-field__icon"><!---->password<!----></i>
+
+
+                    <input class="mdc-text-field__input" autocorrect="off" autocomplete="off" spellcheck="false"
+                           id="password-mdc-text-field" maxlength="524288" type="password">
+
+                    <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch" style="">
+
+                            <label for="password-mdc-text-field" class="mdc-floating-label" style=""><!---->Пароль
+                                <!----></label>
+
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                </div>
+                <div class="mdc-text-field-helper-line">
+                    <div class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent"
+                         id="password-helper" aria-hidden="true">
+                        <a id="recover_password" href="#">Забыли
+                            пароль?</a>.
+                    </div>
+                </div>
+
+            </div>
+            <p style="margin-left:4px;">Если пароль сохранен в браузере, то достаточно зайти в личный кабинет <a
+                    id="website_login" href="#">на сайте</a>, и
+                программа сама разблокируется.</p>
+            <div class="footer">
+                <button class="mdc-button mdc-button--outlined" id="logon-ok">OK</button>
+                <button class="mdc-button mdc-button--outlined" id="logon-cancel">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+</main>
+<main class="mdc-top-app-bar--fixed-adjust" id="cant-make-quote">
+    <div class="card-container">
+        <div class="mdc-card mdc-card--elevated qq-card-second-type">
+            <div id="cant-make-quote-msg"></div>
+            <button id="unlock">Я только что пополнил баланс/разморозил аккаунт. Разблокировать доступ.</button>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="mdc-bottom-app-bar__row">
+        <button id="quote-clear" class="mdc-button mdc-button--outlined">
+            <span class="mdc-button__ripple"></span>
+            <span class="mdc-button__label" style="
+    font-size: 12px;
+    font-weight: bold;
+">Очистить</span>
+        </button>
+        <button id="quote-postpone" class="mdc-button mdc-button--outlined">
+            <span class="mdc-button__ripple"></span>
+            <span class="mdc-button__label" style="">Отложить</span>
+        </button>
+        <button class="mdc-button mdc-button--outlined" style="display:none"  type="button"
+                id="add-tours"><span class="mdc-button__ripple"></span>
+            <span class="mdc-button__label">Добавить</span>
+        </button>
+        <button id="quote-done" class="mdc-button mdc-button--raised">
+        <span class="mdc-button__label">Готово</span>
+        </button>
+    </div>
+</footer>
+<div id="popup-bg"></div>
+<div id="popup">Обработка запроса...</div>
+<div class="mdc-dialog">
+    <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface"
+             role="alertdialog"
+             aria-modal="true"
+             aria-labelledby="qq-dialog-title"
+             aria-describedby="qq-dialog-content">
+            <h2 class="mdc-dialog__title" id="qq-dialog-title"><!---->Dialog header<!----></h2>
+            <div class="mdc-dialog__content" id="qq-dialog-content">
+                Discard draft?
+            </div>
+            <div class="mdc-dialog__actions">
+                <button type="button" class="mdc-button mdc-dialog__button" style="display: none" data-mdc-dialog-action="cancel">
+                    <span class="mdc-button__ripple"></span>
+                    <span class="mdc-button__label">Cancel</span>
+                </button>
+                <button hidden type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="discard">
+                    <span class="mdc-button__ripple"></span>
+                    <span class="mdc-button__label">OK</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+</div>
+<aside class="mdc-snackbar">
+    <div class="mdc-snackbar__surface" role="status" aria-relevant="additions">
+        <div class="mdc-snackbar__label" aria-atomic="false">
+            Тур удален из подборки
+        </div>
+        <div class="mdc-snackbar__actions" aria-atomic="true">
+            <button type="button" class="mdc-button mdc-snackbar__action">
+                <span class="mdc-button__ripple"></span>
+                <span class="mdc-button__label">Отменить?</span>
+            </button>
+        </div>
+    </div>
+</aside>
+</body>
+</html>

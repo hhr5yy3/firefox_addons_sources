@@ -1,0 +1,156 @@
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="jquery/colorbox.css" rel="stylesheet">
+    <link href="popup.css" rel="stylesheet">
+    <link href="operators/buttons.css" rel="stylesheet">
+    <link href="jquery/ui/jquery-ui.min.css" rel="stylesheet">
+    <script type="text/javascript" src="jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery/ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery.colorbox.js"></script>
+    <script type="text/javascript" src="operators/util.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
+    <script type="text/javascript" src="popup-shared.js"></script>
+</head>
+<body id="popupContainer">
+<div id="header">
+    <div class="logo hide"></div>
+    <ul>
+        <li><a id="bookmarks" href="#">Закладки</a></li>
+        <li><a id="last_quotes" href="#">Мои подборки</a></li>
+        <li><a id="agency_page" href="#">Личный кабинет</a></li>
+    </ul>
+    <div class="manager">
+        <label>Менеджер: </label>
+        <select id="manager"></select>
+    </div>
+    <a href="#" id="reload" title="Перезагрузить"><img alt="Перезагрузить"
+                                                src="img/reload.png"></a>
+    <a href="#" id="close" title="Закрыть"><img alt="Закрыть"
+
+                                                src="img/glyphicons_207_remove_2.png"></a>
+</div>
+<div id="logon">
+    <div id="logon-hello">
+        Кажется, это Ваш первый запуск Qui-Quo. Добро пожаловать!
+    </div>
+    <div id="logon-msg">
+        Прежде, чем Вы начнете пользоваться программой, необходимо кое-что настроить.<br>
+        Все будет сделано автоматически. Вам надо только ввести логин и пароль.
+    </div>
+    <dl>
+        <dd id="logonErrorDd" class="invisible">
+            <div id="logonErrorDiv">Неверный логин или пароль</div>
+        </dd>
+        <dt>
+            Логин:
+        </dt>
+        <dd>
+            <input name="login" id="logon-login" type="text" size="20"/>
+        </dd>
+
+        <dt>
+            Пароль:
+        </dt>
+        <dd>
+            <input name="password" id="logon-password" type="password" size="20"/>
+        </dd>
+    </dl>
+    <p style="margin-left:4px;">Забыли пароль? Его можно восстановить перейдя <a id="recover_password" href="#">по этой
+        ссылке</a>.</p>
+    <p style="margin-left:4px;">Если пароль сохранен в браузере, то достаточно зайти в личный кабинет <a
+            id="website_login" href="#">на сайте</a>, и
+        программа сама разблокируется.</p>
+    <div class="footer">
+        <button id="logon-ok">OK</button>
+        <button id="logon-cancel">Отмена</button>
+    </div>
+</div>
+<div id="cant-make-quote">
+    <div id="cant-make-quote-msg"></div>
+    <button style="display: none">Я только что пополнил баланс/разморозил аккаунт. Разблокировать доступ.</button>
+</div>
+<div id="quote">
+    <div id="quote-table-wrapper">
+        <table id="main-table">
+            <thead>
+            <tr>
+                <th data-object="city_from" data-type="str" class="sort-none">Вылет</th>
+                <th data-object="checkinDt" data-type="date" class="sort-none">Заезд</th>
+                <th data-object="nights" data-type="int" class="sort-none">Нч</th>
+                <th data-object="hotelName" data-type="str" class="sort-none">Отель</th>
+                <th data-object="boardType" data-type="str" class="sort-none">Питание</th>
+                <th data-object="roomType" data-type="str" class="sort-none">Номер</th>
+                <th data-object="price" data-type="int" class="sort-none"> Цена</th>
+                <th class="sort-off"></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <p>
+            Список туров пуст.<br><br>
+
+            Чтобы наполнить его, откройте веб-сайт <a id="touroperators" href="#">туроператора</a> и сделайте там поиск,<br>
+            как Вы обычно это делаете. Выберите тур, заинтересовавший клиента, <br>
+            и нажмите на галочку <span alt="Выбрать тур" class="qq-add-btn"></span> напротив него.<br><br>
+
+            Сформировав список, снова нажмите на кнопку <img alt="Выбрать тур" src="img/icon.png"> и потом на кнопку
+            Готово.<br>
+            Будет создана подборка, которую вы сможете послать через мессенджер, соцсеть, по email или распечатать.
+        </p>
+    </div>
+    <div class="footer">
+        <button type="button" id="quote-clear">Очистить всё</button>
+        <button style="float: left;" type="button" id="quote-postpone">Отложить</button>
+        <button style="display: none;float: left;" type="button" id="add-tours">+ Добавить тур</button>
+        <button type="button" id="quote-done" title="Создать подборку (Alt+Shift+Q)">Готово</button>
+    </div>
+</div>
+<div id="banner">
+    <div class="content"></div>
+</div>
+<div id="popup-bg"></div>
+<div id="popup">Обработка запроса...</div>
+<div style="position: absolute;
+    display: none;
+    width: 100%;
+    height: 90%;
+    top: 10%;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    backdrop-filter: blur(10px)" hidden id="permission-alert">
+    <div>
+        <b> У вас сбились настройки расширения. Для их восстановления сделайте следующее:</b></div>
+    <span> 1. Справа вверху нажмите <b>правой</b> кнопкой мыши на кнопку Q</span>
+    <span> 2. В меню выберите "Расширение может получать доступ..."</span>
+    <span>3. Выберите "На всех сайтах"</span>
+    <br>
+    <img height="264" src="img/how-to-permissions.png" alt="how-to-set-permission">
+    <br>
+</div>
+<div style="position: absolute;
+    display: none;
+    width: 100%;
+    height: 90%;
+    top: 10%;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    -webkit-backdrop-filter: blur(10px)" hidden id="permission-alert-safari">
+    <div>
+        <b> У вас сбились настройки расширения. Для их восстановления сделайте следующее:</b></div>
+    <span> 1. Слева вверху нажмите <b>Safari</b></span>
+    <span> 2. В меню выберите "Настройки"</span>
+    <span> 3. Выберите "Расширения"</span>
+    <span> 4. Нажмите "Разрешать всегда на каждом веб-сайте"</span>
+    <img height="330" src="img/how-to-permissions-safari.png" alt="how-to-set-permission">
+    <br>
+</div>
+
+</body>
+</html>

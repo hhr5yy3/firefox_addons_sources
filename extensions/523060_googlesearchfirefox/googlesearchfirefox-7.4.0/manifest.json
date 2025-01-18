@@ -1,0 +1,78 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_ExtensionName__",
+  "description": "__MSG_ExtensionDescription__",
+  "default_locale": "en",
+  "version": "7.4.0",
+  "icons": {
+    "44": "trustmark_44x44px.b24dcbc1.png",
+    "48": "logo_eu_b2b_48.5b008d46.png",
+    "100": "logo_eu_b2b.3b670708.png",
+    "128": "logo_eu_b2b.3b670708.png"
+  },
+  "background": {
+    "scripts": [
+      "background.62b72c53.js"
+    ]
+  },
+  "action": {
+    "default_title": "__MSG_ExtensionName__",
+    "default_icon": {
+      "16": "icon_default-16.20395bc3.png",
+      "24": "icon_default-24.221b32cd.png",
+      "32": "icon_default-32.f26ad812.png"
+    },
+    "default_popup": "popup.f60ab69f.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "include_globs": [
+        "*://www.google.*"
+      ],
+      "js": [
+        "google.89a98558.js"
+      ],
+      "css": [
+        "google.e777f581.css"
+      ]
+    }
+  ],
+  "permissions": [
+    "scripting",
+    "alarms",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content-scripts/fakeShops/index.css"
+      ],
+      "matches": [
+        "*://*/*"
+      ]
+    },
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "resources": [
+        "ico_stars.bf977877.png",
+        "trustmark_44x44px.b24dcbc1.png"
+      ]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "jid1-PBNne26X1Kn6hQ@jetpack",
+      "strict_min_version": "127.0"
+    }
+  }
+}

@@ -1,0 +1,736 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>Forecastfox (fix version)</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Forecastfox is a browser extension that adds weather to Mozilla Firefox and Google Chrome." />
+		<link rel="shortcut icon" href="/skin/images/logo16.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="/skin/options.css" />
+		<script type="text/javascript" src="/content/options.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/utils.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/i18n.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/prefs.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/locale/supported.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/date.toLocaleFormat.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/tooltiptxt.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/themes.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/forecastbar.js" charset="utf-8"></script>
+
+		<link rel="stylesheet" href="/skin/themes_all.css" type="text/css" charset="utf-8"/>
+		<script type="text/javascript" src="/skin/themes_all.js" charset="utf-8"></script>
+		<style type="text/css">#icon_pack_container .theme_image {background-image: url('/skin/themes_all.png');}</style>
+
+	</head>
+<body>
+<form id="s3forecast_form" action="#">
+<div id="main_container">
+	<table id="header_box" width="100%" cellspacing="0" cellpadding="0" border="0">
+	<tr valign="bottom">
+		<td><a href="http://www.s3blog.org/forecastfox.html" title="menu.homepage" style="margin-left: -35px;float: left;"><img src="/skin/images/header_logo.png"/></a><h3 id="header_title"><span label="features.options"></span><span style="font-size: 10px; font-weight: normal; padding-left: 10px;" id="addon_version"></span></h3></td>
+		<td align="right"><img src="/skin/images/globe.png"/></td>
+		<td align="right" width="1">
+			<span id="settings_saved" is_hidden="true" label="options.saved"></span>
+			<select id="current_locale"></select>
+		</td>
+	</tr>
+	</table>
+
+	<noscript><p style="font-size: 150%; color: red; font-weight: bold;">Forecastfox requires JavaScript to be enabled!</p></noscript>
+
+	<div id="top_instructions">
+		<span style="float: right;">(<span id="top_instructions_close" class="text_link" label="features.close">close</span>)</span>
+		<div label="options.instructions.top"></div>
+	</div>
+	<div id="migration_callout">
+		<span style="float: right;">(<span id="migration_callout_close" class="text_link" label="features.close">close</span>)</span>
+		<div id="migration_callout_content"></div><br/>
+		<a href="http://www.s3blog.org/forecastfox/support.html">http://www.s3blog.org/forecastfox/support.html</a>
+	</div>
+
+	<div id="customize_container">
+		<!-- -------------------------------------------------- -->
+		<h3 label="options.locations.header"></h3>
+		<div class="customize_box">
+			<div id="header_location"></div>
+			<div id="location_form" title="options.search.button" label="options.search.instructions"></div>
+			<div id="englishnames">
+				<span label="options.search.english"></span>
+				<span class="option_group" pref_name="show_english_locations" pref_type="boolean">
+					<span class="option" value="true" label="options.yes"></span>
+					<span class="option" value="false" label="options.no"></span>
+				</span>
+			</div>
+		</div>
+		<div class='separator'></div>
+
+		<!-- -------------------------------------------------- -->
+		<h3 label="options.update_time"></h3>
+		<div class="customize_box">
+			<span class="option_group" pref_name="update_timer_value" pref_type="numeric">
+				<span class="option" value="1" label="1"></span>
+				<span class="option" value="3" label="3"></span>
+				<span class="option" value="5" label="5"></span>
+				<span class="option" value="10" label="10"></span>
+				<span class="option" value="15" label="15"></span>
+				<span class="option" value="20" label="20"></span>
+				<span class="option" value="30" label="30"></span>
+				<span class="option" value="45" label="45"></span>
+				<span class="option" value="60" label="60"></span>
+			</span>
+		</div>
+		<div class='separator'></div>
+
+		<!-- -------------------------------------------------- -->
+		<h3 label="options.previous"></h3>
+		<div id="forecast_location_item_rotate"></div>
+		<div class="customize_box"><div id="forecast_location_list_items"></div></div>
+		<div class='separator'></div>
+
+		<!-- -------------------------------------------------- -->
+		<h3 label="options.units.header"></h3>
+		<div class="customize_box">
+			<span class="option_group" pref_name="unitsystem" pref_type="string">
+				<span class="option" value="american" label="options.units.american"></span>
+				<span class="option" value="metric" label="options.units.metric"></span>
+				<span class="option" value="custom" label="options.units.custom"></span>
+			</span>
+			<div id="unitsystem_custom_units">
+				<div id="multiselect_callout" style="text-align: center;"></div>
+<!--
+	"units": {
+		"temperature": ["f"],
+		"speed": ["mph"],
+		"date": "date_system",
+		"date_custom_format" : "%d-%m-%Y",
+		"time": ["h12"],
+		"pressure": ["inhg"],
+		"distance": { "shrt": ["inches"], "lng": ["mi"] }
+	},
+  -->
+				<table class="option_units">
+					<tr class="option_group" valign="top" pref_name="units" pref_key="temperature" pref_type="array">
+						<td class="option_label"><span label="options.units.temp.header"></span></td>
+						<td>
+							<span class="option" value="f" label="options.units.temp.f"></span>
+							<span class="option" value="c" label="options.units.temp.c"></span>
+							<span class="option" value="k" label="options.units.temp.k"></span>
+						</td>
+					</tr>
+					<tr class="option_group" valign="top" pref_name="units" pref_key="speed" pref_type="array">
+						<td class="option_label"><span label="options.units.wind.header"></span></td>
+						<td>
+							<span class="option" value="mph" label="options.units.wind.mph"></span>
+							<span class="option" value="kph" label="options.units.wind.kmh"></span>
+							<span class="option" value="ms" label="options.units.wind.ms"></span>
+							<span class="option" value="bft" label="options.units.wind.bft"></span>
+							<span class="option" value="knots" label="options.units.wind.knots"></span>
+						</td>
+					</tr>
+					<tr class="option_group" valign="top">
+						<td class="option_label"><span label="options.units.date.header"></span></td>
+						<td>	<span class="option_group" pref_name="units" pref_key="date" pref_type="string">
+							<span class="option" value="date_system" label="options.units.date.system"></span>
+							<span class="option" value="date_custom" label="options.units.date.custom"></span>
+							</span>
+							<span style="float: right;" id="date_custom_example">Date example</span>
+							<div id="date_custom_box" is_hidden="true">
+								<span id="date_format_hint" class="text_link" label="options.units.date.format.rules"></span><br/>
+								<input style="width: 95%" type="text" id="date_custom_format" title="options.press.enter"/>
+							</div>
+							<div id="date_format_hint_tooltip" is_hidden="true">
+								<div label="options.units.date.format.a1">%a - abbreviated weekday name</div>
+								<div label="options.units.date.format.a2">%A - full weekday name</div>
+								<div label="options.units.date.format.b1">%b - abbreviated month names</div>
+								<div label="options.units.date.format.b2">%B - full month names</div>
+								<div label="options.units.date.format.d">%d - day of month [01,31]</div>
+								<div label="options.units.date.format.j">%j - day number [1,366]</div>
+								<div label="options.units.date.format.m">%m - month number [01,12]</div>
+								<div label="options.units.date.format.y1">%y - year with century [00,99]</div>
+								<div label="options.units.date.format.y2">%Y - year including century</div>
+								<div label="options.units.date.format.w1">%w - weekday number [0,6]</div>
+								<div label="options.units.date.format.w2">%W - week number [00,53]</div>
+								<div label="options.units.date.format.z">%Z - timezone name or abbreviation</div>
+								<div>%% - %</div>
+							</div>
+						</td>
+					</tr>
+					<tr class="option_group" valign="top" pref_name="units" pref_key="time" pref_type="array">
+						<td class="option_label"><span label="options.units.time.header"></span></td>
+						<td>
+							<span class="option" value="h12" label="options.units.time.h12"></span>
+							<span class="option" value="h24" label="options.units.time.h24"></span>
+						</td>
+					</tr>
+					<tr class="option_group" valign="top" pref_name="units" pref_key="pressure" pref_type="array">
+						<td class="option_label"><span label="options.units.pressure.header"></span></td>
+						<td>
+							<!-- undecided: include more units and show abbreviations only? -->
+							<span class="option" value="inhg" label="options.units.pressure.inhg"></span>
+							<span class="option" value="mmhg" label="options.units.pressure.mmhg"></span>
+							<span class="option" value="psi" label="options.units.pressure.psi"></span>
+							<span class="option" value="mb" label="options.units.pressure.mbar"></span>
+							<span class="option" value="hpa" label="options.units.pressure.hpa"></span>
+						</td>
+					</tr>
+					<tr class="option_group" valign="top" pref_name="units" pref_key="distance.lng" pref_type="array">
+						<td class="option_label"><span label="options.units.visibility.header"></span></td>
+						<td>
+							<span class="option" value="mi" label="options.units.visibility.mi"></span>
+							<span class="option" value="km" label="options.units.visibility.km"></span>
+							<span class="option" value="m" label="options.units.visibility.m"></span>
+							<span class="option" value="nm" label="options.units.visibility.nm"></span>
+						</td>
+					</tr>
+  					<tr class="option_group" valign="top" pref_name="units" pref_key="distance.shrt" pref_type="array">
+						<td class="option_label"><span label="options.units.precip.header"></span></td>
+						<td>
+							<span class="option" value="inches" label="options.units.precip.inches"></span>
+							<span class="option" value="cm" label="options.units.precip.cm"></span>
+							<span class="option" value="mm" label="options.units.precip.mm"></span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class='separator'></div>
+
+		<!-- -------------------------------------------------- -->
+		<h3 label="options.theme.icons"></h3>
+		<div class="customize_box"><center>
+			<span class="option_group" id="icon_pack_container" pref_name="theme_icon_pack" pref_type="string"></span>
+		</center></div>
+		<div class='separator'></div>
+
+		<!-- -------------------------------------------------- -->
+		<h3 label="options.tooltiptext.header"></h3>
+		<div class="customize_box">
+			<table id="customize_box_tooltiptext" width="100%">
+				<tr>
+					<td style="padding-right: 15px;" width="300"><span label="options.forecastbar.day_name"></span></td>
+					<td>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_day_name" pref_type="string">
+						<span class="option" value="full" label="options.forecastbar.day_name.full"></span></span></div>
+
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_day_name" pref_type="string">
+						<span class="option" value="short" label="options.forecastbar.day_name.short"></span></span></div>
+
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_day_name" pref_type="string">
+						<span class="option" value="date" label="options.forecastbar.day_name.date"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.days_or_nights"></span></td>
+					<td>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_days_or_nights" pref_type="string">
+						<span class="option" value="days" label="options.forecastbar.days_or_nights.days"></span></span></div>
+
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_days_or_nights" pref_type="string">
+						<span class="option" value="nights" label="options.forecastbar.days_or_nights.nights"></span></span></div>
+
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_days_or_nights" pref_type="string">
+						<span class="option" value="both" label="options.forecastbar.days_or_nights.both"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.daynight_separators"></span></td>
+					<td>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_separators" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_separators" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.forecast_days"></span></td>
+					<td>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_forecast_days" pref_type="numeric">
+						<span class="option" value="0" label="0"></span></span></div>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_forecast_days" pref_type="numeric">
+						<span class="option" value="1" label="1"></span></span></div>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_forecast_days" pref_type="numeric">
+						<span class="option" value="2" label="2"></span></span></div>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_forecast_days" pref_type="numeric">
+						<span class="option" value="3" label="3"></span></span></div>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_forecast_days" pref_type="numeric">
+						<span class="option" value="4" label="4"></span></span></div>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_forecast_days" pref_type="numeric">
+						<span class="option" value="5" label="5"></span></span></div>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_forecast_days" pref_type="numeric">
+						<span class="option" value="6" label="6"></span></span></div>
+						<div class="tooltiptext_option"><span class="option_group" pref_name="tooltiptext_forecast_days" pref_type="numeric">
+						<span class="option" value="7" label="7"></span></span></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class='separator'></div>
+
+		<!-- -------------------------------------------------- -->
+		<h3 label="options.forecastbar.header"></h3>
+		<div class="customize_box">
+			<table id="customize_box_forecastbar" width="100%">
+				<tr>
+					<td style="padding-right: 15px;" width="300"><span label="options.forecastbar.show"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_show" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_show" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr valign="top">
+					<td style="padding-right: 15px;"><span label="options.forecastbar.position"></span></td>
+					<td><table>
+						<tr>
+							<td align="right">
+								<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_position" pref_type="string">
+								<span class="option" value="top-left" label="options.forecastbar.position_top_left"></span></span></div>
+							</td>
+							<td>
+								<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_position" pref_type="string">
+								<span class="option" value="top-right" label="options.forecastbar.position_top_right"></span></span></div>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">
+								<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_position" pref_type="string">
+								<span class="option" value="bottom-left" label="options.forecastbar.position_bottom_left"></span></span></div>
+							</td>
+							<td>
+								<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_position" pref_type="string">
+								<span class="option" value="bottom-right" label="options.forecastbar.position_bottom_right"></span></span></div>
+							</td>
+						</tr>
+						</table>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.view_vertical"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_view_vertical" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_view_vertical" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr valign="top">
+					<td style="padding-right: 15px;" colspan="2">
+						<div>
+							<input type="button" id="forecastbar_exclude_links_save" style="float: right;" label="options.save_changes"/>
+							<div label="options.forecastbar.exclude_links"></div>
+						</div>
+						<div style="position: relative;">
+							<textarea name="forecastbar_exclude_links" required="required" wrap="off" id="forecastbar_exclude_links" rows="6"></textarea>
+							<div id="forecastbar_exclude_links_placeholder">
+								<div style="padding-top: 4px;" label="options.forecastbar.exclude_links.tip1"></div>
+								<div label="options.forecastbar.exclude_links.tip2"></div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.location_show"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_location_show" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_location_show" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.day_name"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_day_name" pref_type="string">
+						<span class="option" value="full" label="options.forecastbar.day_name.full"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_day_name" pref_type="string">
+						<span class="option" value="short" label="options.forecastbar.day_name.short"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_day_name" pref_type="string">
+						<span class="option" value="date" label="options.forecastbar.day_name.date"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.cc"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_cc" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_cc" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.days_or_nights"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_days_or_nights" pref_type="string">
+						<span class="option" value="days" label="options.forecastbar.days_or_nights.days"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_days_or_nights" pref_type="string">
+						<span class="option" value="nights" label="options.forecastbar.days_or_nights.nights"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_days_or_nights" pref_type="string">
+						<span class="option" value="both" label="options.forecastbar.days_or_nights.both"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.daynight_separators"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_daynight_separators" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_daynight_separators" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.forecast_days"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_days" pref_type="numeric">
+						<span class="option" value="0" label="0"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_days" pref_type="numeric">
+						<span class="option" value="1" label="1"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_days" pref_type="numeric">
+						<span class="option" value="2" label="2"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_days" pref_type="numeric">
+						<span class="option" value="3" label="3"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_days" pref_type="numeric">
+						<span class="option" value="4" label="4"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_days" pref_type="numeric">
+						<span class="option" value="5" label="5"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_days" pref_type="numeric">
+						<span class="option" value="6" label="6"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_days" pref_type="numeric">
+						<span class="option" value="7" label="7"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr valign="top">
+					<td style="padding-right: 15px;"><span label="options.forecastbar.forecast_labels"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="0" label="0"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="1" label="1"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="2" label="2"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="3" label="3"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="4" label="4"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="5" label="5"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="6" label="6"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="7" label="7"></span></span></div>
+						<br>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="8" label="8"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="9" label="9"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="10" label="10"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="11" label="11"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="12" label="12"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="13" label="13"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="14" label="14"></span></span></div>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_forecast_labels" pref_type="numeric">
+						<span class="option" value="15" label="15"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><img style="padding-right: 5px;" src="/skin/images/radar.png"><span label="options.forecastbar.button_radar"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_button_radar" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_button_radar" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><img style="padding-right: 5px;" src="/skin/images/hourly.png"><span label="options.forecastbar.button_hourly"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_button_hourly" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_button_hourly" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><img style="padding-right: 5px;" src="/skin/images/5day.png"><span label="options.forecastbar.button_5day"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_button_5day" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_button_5day" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><img style="padding-right: 2px;" src="/skin/images/arrow_left.png"><img style="padding-right: 5px;" src="/skin/images/arrow_right.png"><span label="options.forecastbar.button_locations"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_button_locations" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_button_locations" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><img style="padding-right: 5px;" src="/skin/images/reload.png"><span label="options.forecastbar.button_reload"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_button_reload" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_button_reload" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+
+				<!-- -------------------------------------------------- -->
+				<tr><td colspan="2"><h4 label="options.forecastbar.feature.header"></h4></td></tr>
+				<!-- -------------------------------------------------- -->
+
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.feature.humidity"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_humidity" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_humidity" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.feature.dewpoint"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_dewpoint" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_dewpoint" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.feature.uvindex"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_uvindex" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_uvindex" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.feature.winds"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_winds" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_winds" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.feature.visibility"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_visibility" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_visibility" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.feature.pressure"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_pressure" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_pressure" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.feature.precipitation"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_precipitation" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_precipitation" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+				<tr><td colspan="2"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.forecastbar.feature.moon"></span></td>
+					<td>
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_moon" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span></span></div>
+
+						<div class="forecastbar_option"><span class="option_group" pref_name="forecastbar_feature_moon" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span></span></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class='separator'></div>
+
+		<!-- -------------------------------------------------- -->
+		<h3 label="options.other.header"></h3>
+		<div class="customize_box">
+			<table id="customize_box_other" width="100%">
+				<tr>
+					<td style="padding-right: 15px;" width="300"><span label="options.theme.black_white"></span></td>
+					<td width="100"><span class="option_group" pref_name="theme_black_white" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span>
+					</span></td>
+					<td><span class="option_group" pref_name="theme_black_white" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span>
+					</span></td>
+				</tr>
+				<tr><td colspan="3"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.theme.button_temperature"></span></td>
+					<td><span class="option_group" pref_name="theme_button_temperature" pref_type="boolean">
+						<span class="option" id="theme_button_temperature_1" value="true" label="options.yes"></span>
+					</span></td>
+					<td><span class="option_group" pref_name="theme_button_temperature" pref_type="boolean">
+						<span class="option" id="theme_button_temperature_2" value="false" label="options.no"></span>
+					</span></td>
+				</tr>
+				<tr><td colspan="3"><div class='separator'></div></td></tr>
+				<tr valign="top">
+					<td style="padding-right: 15px;"><span label="options.radar"></span></td>
+					<td colspan="2">
+						<span class="option_group" pref_name="radar_type" pref_type="string">
+							<span class="option" value="system" label="options.radar.system"></span>
+							<span class="option" value="windy.com">windy.com</span>
+							<span class="option" value="custom" label="options.radar.custom"></span>
+						</span>
+					</td>
+				</tr>
+				<tr id="radar_layer_box">
+					<td colspan="3" align="right">
+						<span class="option_group" pref_name="radar_layer" pref_type="string">
+							<span class="option" value="wind" label="options.radar.layer.wind"></span>
+							<span class="option" value="rain" label="options.radar.layer.precipitation"></span>
+							<span class="option" value="temp" label="options.radar.layer.temperature"></span>
+							<span class="option" value="clouds" label="options.radar.layer.clouds"></span>
+							<span class="option" value="pressure" label="options.radar.layer.pressure"></span>
+							<span class="option" value="radar" label="options.radar.layer.radar"></span>
+						</span>
+					</td>
+				</tr>
+				<tr id="radar_url_box">
+					<td colspan="3"><span label="options.radar.url"></span><input style="width:100%" type="text" title="options.press.enter" id="radar_custom_url"/>	</td>
+				</tr>
+				<tr><td colspan="3"><div class='separator'></div></td></tr>
+				<tr>
+					<td style="padding-right: 15px;"><span label="options.swa"></span></td>
+					<td><span class="option_group" pref_name="warning_swa" pref_type="boolean">
+						<span class="option" value="true" label="options.yes"></span>
+					</span></td>
+					<td><span class="option_group" pref_name="warning_swa" pref_type="boolean">
+						<span class="option" value="false" label="options.no"></span>
+					</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class='separator'></div>
+
+		<!-- -------------------------------------------------- -->
+		<h3 label="options.restore.header"></h3>
+		<div class="customize_box">
+			<p style="line-height: normal" label="options.restore.message"></p>
+			<center><input type="button" id="reset_settings" label="options.restore.button"/></center>
+		</div>
+		<div class='separator'></div>
+
+		<!-- -------------------------------------------------- -->
+		<div class="customize_box">
+			<table width="100%"><tr>
+				<td style="white-space: nowrap;">
+				<input type="button" id="save_settings" label="options.save.button"/>
+				<input type="button" id="copy_settings" label="options.copy.button"/>
+				<input id="load_settings_file" type="file" style="display: none"/>
+				</td><td align="right">
+				<input type="button" id="load_settings" label="options.load.button"/>
+				</td>
+			</tr></table>
+		</div>
+
+	</div>
+
+	<div id="bottom_instructions" label="options.instructions.bottom" style="text-align: center;"></div>
+
+	<div id="footer">
+		<div style="float: right"><span id="copyright"></span> <a href="http://www.accuweather.com/?partner=forecastfox" target="_blank">AccuWeather.com®</a></div>
+		<a href="http://www.s3blog.org/forecastfox.html" target="_blank">home</a> :: <a href="http://www.s3blog.org/forecastfox/support.html" target="_blank">support</a>
+	</div>
+</div>
+
+	<div id="s3forecast_tooltiptxt" is_hidden="true"></div>
+	<!-- -------------------------------------------------- -->
+	<div id="forecast_location_box" is_hidden="true">
+		<div id="forecast_geolocation_cover"></div>
+		<div id="forecast_geolocation_box">
+			<table id="geolocation_box" width="100%" height="100%" cellspacing="0" cellpadding="0" border="0"><tr valign="top" height="1"><td>
+				<!-- Montco -->
+				<div id="geolocation_search_text_box">
+					<input type="text" id="geolocation_search_text" is_hidden="true" autocomplete="on" name="geolocation_search_text" label="options.search.instructions"/>
+					<span id="geolocation_header" label="options.locations.header"></span>
+					<div id="geolocation_wait" is_hidden="true"></div>
+					<div id="geolocation_search_button" is_hidden="true"></div>
+					<div id="geolocation_close_button"></div>
+				</div>
+				</form>
+				<div id="geolocation_error" is_hidden="true"></div>
+			</td></tr>
+			<tr height="100%"><td style="padding:1px; border: 1px #000000 solid;border-radius: 5px;"><iframe id="geolocation_frame" width="100%" height="100%"></iframe></td></tr>
+			</table>
+		</div>
+	</div>
+	<!-- -------------------------------------------------- -->
+	<div is_hidden="true" id="template_list">
+	</div>
+
+</form>
+</body>
+</html>

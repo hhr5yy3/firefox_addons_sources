@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+	
+	<style>
+		body {
+			
+			font-size: 1.1em;
+		}
+	</style>
+	
+  </head>
+
+  <body class="browser-style">
+
+    <form class="browser-style">
+		<h2>Extension Options: Be sure to save your changes</h2>
+        <p class="browser-style"><label>Redmine URL: <input type="text" id="redmineurl" size="50" maxlength="200"></label></p>
+		
+		<p class="browser-style"><label>Redmine API key: <input type="text" id="apikey" size="50" maxlength="200"></label></p>
+		
+		<p class="browser-style"><label>Default activity code: <input type="text" id="activity" size="5" maxlength="6"></label> <button type="button" id="getactivities" class="browser-style">Show activities</button></p>
+		
+		<div id="activitylist" style="display:none; margin-top: 5px; margin-bottom: 20px; font-size: 0.8em;"></div>
+		
+		<div id="errornote" style="display:none; color: red;"><strong>Error: Could not connect to Redmine.</strong> Please check your Redmine URL, and make sure you are online.</div>
+		
+		<p class="browser-style"><label>Minimum time entry: <input type="number" id="minimum" size="5" maxlength="3"> minutes</label><br />
+		<span style="font-size:0.8em;">This is the smallest amount of time that will be recorded. In other words, if you set this to 5 minutes and you record 3 minutes of time, the time entry will be stored as 5 minutes.</span>
+		</p>
+		
+		<p class="browser-style"><label>Round time up to nearest: <input type="number" id="roundto" size="5" maxlength="3"> minutes</label><br />
+		<span style="font-size:0.8em;">All entries will round up (not down) to the next interval. Normal people might set this to 5 or 10 minutes; lawyers might set it to 30 minutes or a week.</span>
+		</p>
+		
+		<p class="browser-style"><input type="checkbox" name="timecomments" id="timecomments" /> <label for="timecomments">Show start/stop time in comments</label></p>
+		
+		<p class="browser-style"><input type="checkbox" name="getcomments" id="getcomments" /> <label for="getcomments">Ask for text comments after stopping timer</label></p>
+		
+		<input type="hidden" id="buttonsize" value="0" />
+		<!-- HAVE TO HIDE THIS FEATURE FOR NOW -- see comments in background.js
+		<p>Button size: <select id="buttonsize">
+			<option value="0">Small</option>
+			<option value="1">Medium</option>
+			<option value="2">Large</option>
+			</select>
+		</p>
+		-->
+		<div id="generalerror" style="display:none; color: red;"><strong>Error: Could not connect to Redmine.</strong> Please check your Redmine URL, and make sure you are online.</div>
+		
+        <button id="saveoptions" type="button" class="browser-style">Save Options</button> <div id="savednote" style="display:none; color: blue;"><strong>Saved!</strong></div>
+    </form>
+
+    <script src="options.js"></script>
+
+  </body>
+
+</html>

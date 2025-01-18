@@ -1,0 +1,1 @@
+document.body.classList.add("yahoo_search_set_ext_installed");

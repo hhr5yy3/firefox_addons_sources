@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const o=["personal.okta1.com","personal.trexcloud.com","personal.okta.com"];const e=new URLSearchParams(window.location.search);let t=e.get("hostname")||"";if(!o.some(o=>o===t)){t="personal.okta.com"}document.querySelector("a#hostname").href=`https://${t}`});

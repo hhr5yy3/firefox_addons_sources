@@ -1,0 +1,1 @@
+Okta.WebExtensionBackgroundInit=function(t){var a=Okta.sessionStorage,e=Okta.fn.storage.apiStorage,n=Okta.fetch(fetch),r=Okta.Request(n,a,e),k=Okta.Storage(a,e),o=Okta.WebExtension(k,r,t),i=Okta.startBackgroundScript,c=ThrushFuture.Init.BackgroundScript.inject;i(o,a,e,r);c()};

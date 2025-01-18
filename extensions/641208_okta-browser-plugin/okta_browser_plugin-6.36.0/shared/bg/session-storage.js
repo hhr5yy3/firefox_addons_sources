@@ -1,0 +1,1 @@
+const OktaSessionStorage=function(){const s={};return{get:e=>s[e],set:(e,t)=>s[e]=t,clear:e=>{delete s[e]},clearAll:()=>{Object.keys(s).forEach(e=>delete s[e])}}};Okta.sessionStorage=OktaSessionStorage();

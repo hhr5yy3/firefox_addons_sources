@@ -1,0 +1,1 @@
+!function(){"use strict";document.addEventListener("DOMContentLoaded",(()=>{document.querySelector("rester-app").setAttribute("theme",localStorage.theme||"dark")}))}();

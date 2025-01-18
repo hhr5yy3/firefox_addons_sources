@@ -1,0 +1,1 @@
+"use strict";function format(s,t){return"json"===t?resterFormatJson.formatJson(s):"xml"===t?vkbeautify.xml(s,4):void 0}importScripts("../../../node_modules/frigus02-vkbeautify/vkbeautify.js","../scripts/format-json.js"),self.onmessage=function(s){const t=format(s.data.code,s.data.language);postMessage(t)};

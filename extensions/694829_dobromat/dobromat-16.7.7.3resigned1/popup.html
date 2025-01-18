@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dobromat</title>   
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="/js/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="/js/translate.js"></script>
+    <script type="text/javascript" src="/js/popup.js"></script>
+
+
+	<link href='/lib/bootstrap/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <link href='https://fonts.googleapis.com/css?family=Dosis:600,700' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		html, body {
+			width: 550px;
+			height: 600px;			
+			overflow-x: hidden;
+		}
+		body {
+			font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+			font-size: 14px;
+			line-height: 1.45em;
+			color: #333;					
+		}
+		strong {
+			font-family: 'Dosis', sans-serif;
+			font-size: 19px;
+			color: rgb(244, 123, 5);
+			font-weight: 700;
+		}		
+		h2 {
+			font-family: 'Dosis', sans-serif;			
+			color: rgb(244, 123, 5);			
+		}	
+		h2 {
+			font-size: 19px;
+			font-weight: 700;
+		}
+		h3 {
+			font-weight: normal;
+			font-size: 14px;			
+		}
+		p {
+			padding: 0;	
+			margin: 15px 10px;
+		}
+		div.margined {
+			margin: 15px 10px;
+		}
+		p.gray {				
+			background-color: #E5F7F4;
+			border: 1px solid #CFD2D1;			
+			border-radius: 5px;    	
+			padding: 1em;	
+		}	
+		.text-center {
+			text-align: center;
+		}
+
+		.btn-orange {
+			display: inline-block;
+			font-family: 'Dosis', sans-serif;
+			font-size: 15px;
+    		font-weight: 600;
+    		line-height: 1.3333333;
+    		text-shadow: 1px 1px 1px #05374E;
+    		text-decoration: none;
+			color: #fff;    
+    		border: 1px solid #D46902;
+    		border-radius: 6px;
+    		background-color: rgb(244, 123, 5);        	
+        	padding: 0.55em 1.15em;    	
+        	margin-top: 10px;	    
+    		cursor: pointer;    		
+		}
+		.btn-orange:hover, .btn-orange:active, .btn-orange:focus {
+    		background-color: rgb(0, 152, 220);
+    		border-color: #0061B5;
+    		color: white;
+    		text-decoration: none;
+		}
+
+		#choose-org {
+			margin: 0;
+			margin-bottom: 10px;
+		}
+
+		.on {
+			display: none;
+			line-height: 2em;
+			text-align: center;
+		}		
+		.active .on {
+			display: block;
+		}
+		.active .off {
+			display: none;
+		}		
+		.border-top {
+			 padding-top:10px;
+			 border-top: 1px solid #eee;
+			 margin-top:5px; 
+		}
+		
+		#lastShoppings table {
+			font-size: 12px;	
+			background: rgba(221, 221, 221, 0.20);
+    		border: 1px solid #dddddd;				
+		}
+	</style>	
+  </head>  
+  <body>
+
+	
+  	<div class="margined">  		
+		
+		<img class="pull-left" src="" alt="Dobromat logo" style="margin-bottom:-10px" data-translate="popupLogo" data-translateattribute="src"/>	
+
+		<div class="pull-right margined">
+
+			<div class="signedOff" style="display:none">
+				<button class="btn btn-info" data-toggle="collapse" data-target="#loginWrap">
+					<i class="glyphicon glyphicon-user"></i>  <span data-translate="btn_login_teaser">[loginteaser]</span> 
+				</button>
+			</div>
+			
+			<div class="signedIn" style="display:none">									
+				<a href="#" target="_blank" id="myShoppings" class="btn btn-info" style="display:none;  text-shadow:1px 1px 1px #006B8C;">
+					<i class="glyphicon glyphicon-shopping-cart"></i> <span data-translate="btn_myshoppings">[myshoppings]</span>
+					<br/>
+					<small style="text-shadow:none; color:#023D4E"><span id="userLogin"></span></small>
+				</a>	
+			</div>
+
+		</div>						
+
+		<div class="clearfix"></div>
+
+	</div>
+
+	<div id="wrap">
+
+		<div class="off margined alert alert-info text-center">			
+			<span data-translate="activeShopPage"></span><br/>
+			<a class="btn-orange add-server" href="[listShops]" data-translate="page_listShops" data-translateattribute="href" target="_blank"><span data-translate="btn_listShops">[listShops]</span></a>							
+		</div>
+
+		<div class="on margined alert alert-info text-center">			
+			<strong id="commission"></strong> <span data-translate="shoppingIn">[shoppingIn]</span> <strong id="shop"></strong> <span data-translate="shoppingFor">[shoppingFor]</span><br/>
+			<strong id="organization"></strong><br/>				
+			<button class="btn-orange" id="choose-org" data-translate="btn_changeOrg">[change]</button><br/>
+			<div style="line-height:1em">
+				<small data-translate="centSlogan">[centSlogan]</small>					
+			</div>
+		</div>
+
+	</div>
+
+		
+
+	<div class="margined collapse" id="loginWrap">
+		
+			<h2 class="well" style="padding: 8px;  margin: 0; float: left; margin-bottom: -2px; border-bottom-right-radius: 0; border-bottom-left-radius: 0; border-bottom: 1px solid transparent;" >
+				<i class="glyphicon glyphicon-user"></i> <span data-translate="loginTitle">[loginTitle]</span>
+			</h2>
+
+			<a class="pull-right btn btn-link add-server" target="_blank" href="[registration]" data-translate="page_registration" data-translateattribute="href"><strong data-translate="btn_registration">[registration]</strong></a>
+					
+			<div style="border-top-left-radius:0; clear:both;" class="well">
+			<form action="extensions/login" method="POST" class="form-horizontal add-server">
+
+				<div class="col-xs-offset-3 col-xs-9" style="color:red; font-weight:bold; padding-bottom:10px; display:none" id="errorMsg" data-translate="loginError">[loginerror]</div>
+				
+				<div class="form-group">
+					<label class="col-xs-3" for="login">Email:</label>
+					<div class="col-xs-9">
+						<input type="text" name="login" id="login" class="form-control"/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-xs-3" for="password">Heslo:</label>
+					<div class="col-xs-9">
+						<input type="password" name="password" id="password" class="form-control"/>
+					</div>
+				</div>
+
+				<div class="form-group">					
+					<div class="col-xs-offset-3 col-xs-9">
+					<button type="submit" class="btn btn-primary" data-translate="loginBtn">[login]</button>
+					<a class="btn btn-link pull-right add-server" target="_blank" href="pouzivatel/obnovahesla"><span data-translate="btn_lostPassword">[lostPassword]</span></a>
+				</div>
+		</div>
+
+			</form>
+		</div>
+
+	</div>
+
+	<div id="lastShoppings" class="margined" style="display:none"></div>
+
+
+	
+
+	<div class="margined collapse alert alert-info" style="clear:right" id="extensionInfo">				
+		<button type="button" class="close" data-toggle="collapse" data-target="#extensionInfo" title="[close]" data-translate="close_title" data-translateattribute="title">&times;</button>				
+		<i class="glyphicon glyphicon-question-sign"></i> <b data-translate="moreInfoTitle">[info]</b><br/>			
+		<span data-translate="moreInfoMsg">[more info]</span>
+		<br/>
+		<br/>
+		<a class="pull-right add-server" target="_blank" href="[moreinfo]" data-translate="page_moreInfo" data-translateattribute="href"><b><span data-translate="moreInfoBtn">[more info]</span> &raquo;</b></a>
+		<div class="clearfix"></div>
+	</div>
+	
+	<div class="text-center">
+		<button class="btn btn-link btn-lg" style="padding:0;" data-toggle="collapse" data-target="#extensionInfo" data-translate="moreInfoTitle" data-translateattribute="title" title=""><i class="glyphicon glyphicon-question-sign"></i></button>
+	</div>	
+
+  </body>
+</html>
+

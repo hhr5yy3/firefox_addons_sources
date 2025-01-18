@@ -1,0 +1,303 @@
+::-ms-clear {
+  /**
+   * X on inputs is too big, did not find a straight-forward way
+   * to change its size, hide it until further notice
+   * display:none breaks padding-right on input:
+   * http://stackoverflow.com/a/14739092
+   */
+  width: 0;
+  height: 0;
+}
+/* custom */
+* {
+  box-sizing: border-box;
+}
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* prettier-ignore */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
+big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl,
+dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time,
+mark, audio, video, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* HTML5 display-role reset for older browsers */
+/* prettier-ignore */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+button {
+  color: inherit;
+}
+strong {
+  font-weight: 600;
+}
+/*
+ * Custom @font-face rules are injected as a style element by
+ * <AppThemeProvider /> and rely on the @dashlane/fonts dependency.
+ */
+:root {
+  /* Font family variables */
+
+  /* Password Specific Styles */
+
+  /* Font size variables */
+
+  /* Font weight variables */
+
+  /* Line heights variables */
+}
+/*
+@deprecated
+* use z-index.ts values
+* Refer to z-index variables & values used in ui-components before updating this file.
+*/
+:root {
+  /* 1. Base z-index, to be used for most content elements that require a z-index. */
+  /* 2. "Below" z-index, to be used when placing an element "below" another within the stacking context. */
+
+  /* 3. Various previous "Content Overlap" z-index values, can be merged with caution. */
+
+  /* 4. Panel z-index. */
+
+  /* 5. "Above Panel" z-index. */
+
+  /*
+  * All variables from here refer to previously hardcoded z-index values.
+  */
+
+  /* Base z-index, see 1, keep sorted to reduce merge conflicts */
+
+  /* "Content Overlap" z-index, see 3. */
+
+  /* Looks unused ? */
+
+  /* Panel z-index, see 4. */
+
+  /* "Above Panel" z-index, see 5. */
+}
+html,
+body {
+  font-family: 'Public Sans', 'Helvetica Neue', Helvetica,
+    Arial, 'Lucida Grande', sans-serif;
+  height: 100%;
+}
+body {
+  line-height: initial;
+  width: 100%;
+  /*
+      Remove "rubberband" scroll effect when reaching the page limit
+      https://developers.google.com/web/updates/2017/11/overscroll-behavior#disableglow
+    */
+  overscroll-behavior-y: none;
+}
+h1 {
+  font-family: 'GT Walsheim Pro', 'Helvetica', 'Arial',
+    sans-serif;
+}
+button {
+  font-family: 'Public Sans', 'Helvetica Neue', Helvetica,
+    Arial, 'Lucida Grande', sans-serif;
+}
+/*
+  Do not apply this global styling to ui-components components because styling will clash.
+*/
+input:focus:not[class*='ui-components'],
+textarea:focus:not[class*='ui-components'] {
+  border-radius: 4px;
+  box-shadow: none;
+  outline: none;
+}
+
+/* GT Walsheim Pro */
+
+@font-face {
+  font-family: 'GT Walsheim Pro';
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('GT Walsheim Pro Light'), local('GTWalsheimPro-Light'),
+    url(/620b65e9523503d0d6e0.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'GT Walsheim Pro';
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('GT Walsheim Pro Regular'), local('GTWalsheimPro-Regular'),
+    url(/5d003e71616db8f7d61c.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'GT Walsheim Pro';
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('GT Walsheim Pro Medium'), local('GTWalsheimPro-Medium'),
+    url(/8a124e761cceac039878.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'GT Walsheim Pro';
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('GT Walsheim Pro Bold'), local('GTWalsheimPro-Bold'),
+    url(/bc09e837049ce08667e1.woff2) format('woff2');
+}
+
+/* Public Sans */
+
+@font-face {
+  font-family: 'Public Sans';
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('Public Sans Light'), local('PublicSans-Light'),
+    url(/cdd47d09b6bfea77bd3a.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('Public Sans Regular'), local('PublicSans-Regular'),
+    url(/df96c41aa5b9122054bb.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('Public Sans Medium'), local('PublicSans-Medium'),
+    url(/2fa3733025adac23acbd.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('Public Sans SemiBold'), local('PublicSans-SemiBold'),
+    url(/01fff8c250aab7927a1e.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('Public Sans Bold'), local('PublicSans-Bold'),
+    url(/ebee06c589c0446f1e4e.woff2) format('woff2');
+}
+
+/* Space Mono */
+
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('Space Mono Regular'), local('SpaceMono-Regular'),
+    url(/4421671c7ddc1c03184d.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('Space Mono Bold'), local('SpaceMono-Bold'),
+    url(/4a632e4331ad1ca3a80e.woff2) format('woff2');
+}
+
+/* Apercu Mono Pro */
+
+@font-face {
+  font-family: 'Apercu Mono Pro';
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('Apercu Mono Pro Regular'), local('ApercuMonoPro-Regular'),
+    url(/7bcdcb135690a7b0e804.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('PublicSans-Regular'),
+    url(/0a9b80cacf3c05afd978.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Apercu Mono Pro';
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('ApercuMonoPro-Regular'),
+    url(/8a81173f6b4cf6c859de.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('PublicSans-SemiBold'),
+    url(/4653fc7ad741a19f5af9.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('PublicSans-Medium'),
+    url(/64904ce87d6b967f8521.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'GT Walsheim Pro';
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  src: local('GTWalsheimPro-Medium'),
+    url(/2677f80de50dc27c8ac6.woff2) format('woff2');
+}
+

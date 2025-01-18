@@ -1,0 +1,115 @@
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+keeper-positionable-popup {
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+      -ms-user-select: none !important;
+          user-select: none !important;
+}
+keeper-positionable-popup.repositioning {
+  -moz-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+keeper-positionable-popup iframe {
+  border: none;
+  pointer-events: auto !important;
+}
+
+.keeper-rtl keeper-draggable-element {
+  left: 72px;
+}
+
+keeper-lock {
+  background-image: url("moz-extension://__MSG_@@extension_id__/images/ico-field-fill-lock.svg");
+  background-size: 24px 24px !important;
+  cursor: pointer !important;
+  height: 24px !important;
+  width: 24px !important;
+  position: absolute !important;
+  opacity: 0;
+  margin-top: auto !important;
+  padding: 0;
+  z-index: 2147483647 !important;
+  background-repeat: no-repeat !important;
+}
+keeper-lock.keeper-loading {
+  background-image: url("moz-extension://__MSG_@@extension_id__/images/lock-loading.gif");
+  background-size: 22px 16px !important;
+  height: 16px !important;
+  width: 22px !important;
+}
+keeper-lock:hover {
+  opacity: 1 !important;
+}
+
+#overlayAlertFixinator {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 3px;
+  color: #ffc700;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+     -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  position: absolute;
+  text-align: center;
+  z-index: 2147483647;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+          flex-direction: column;
+  padding: 16px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  min-width: 100px;
+  max-width: 200px;
+}
+#overlayAlertFixinator.fixinatorOverlayFade {
+  opacity: 0;
+  -moz-transition: opacity 1s;
+  transition: opacity 1s;
+}
+#overlayAlertFixinator #fixinatorOverlayText {
+  text-align: center;
+  font-size: 14px;
+  font-family: Outfit, sans-serif;
+  color: white;
+  white-space: pre-wrap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#overlayAlertFixinator #fixinatorOverlayIcon {
+  -webkit-align-self: center;
+          align-self: center;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 12px;
+}
+#overlayAlertFixinator #fixinatorOverlayIcon path {
+  fill: #ffc700;
+}

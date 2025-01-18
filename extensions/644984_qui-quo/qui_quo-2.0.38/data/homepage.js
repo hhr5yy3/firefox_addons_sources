@@ -1,0 +1,1 @@
+document.getElementById("plugin").setAttribute("installed", "true");

@@ -1,0 +1,1365 @@
+<!--
+
+SSS's options page elements and formatting. All functionality, including setting default values
+or loading the user settings, is provided by settings.ts and possibly some helper scripts.
+
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<style>
+	/* general formatting and layout */
+
+	* {
+		font: message-box;
+		font-size: 1rem;
+		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+	}
+	body {
+		background-color: #F9F9FA;
+		max-width: 1200px;
+		padding: 50px 30px;
+		margin: 0 auto;
+		display: none;	/* disable page until script is ready */
+	}
+	body .header {
+		display: flex;
+		align-items: center;
+	}
+	body .header img {
+		object-fit: contain;
+	}
+	body .header h1 {
+		flex-grow: 1;
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+	body .header h1,
+	body .header span {
+		font-size: 2rem;
+	}
+	input[type=text],
+	input[type=number],
+	input[type=button],
+	input[type=color],
+	textarea,
+	select {
+		width: 100%;
+		padding: 4px 4px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+	input[type=checkbox],
+	input[type=button],
+	input[type=color],
+	select {
+		cursor: pointer;
+	}
+	input:hover,
+	textarea:hover,
+	select:hover {
+		border: 1px solid #3399FF !important;
+	}
+	input[type=button]:disabled {
+		border: 1px solid #ccc !important;
+		cursor: auto !important;
+		opacity: 0.5;
+	}
+	.hidden {
+		display: none !important;
+	}
+
+	/* sections */
+
+	.section {
+		margin-top: 25px;
+		margin-bottom: 50px;
+	}
+	.collapsed-section {
+		margin-bottom: 0px;
+	}
+	.section-name {
+		padding: 5px 0px 5px 6px;
+		font-size: 130%;
+		color: #222222;
+		border-bottom: 1px #c6e3ff solid;
+		border-left: 5px #c6e3ff solid;
+	}
+	.section-name {
+		cursor: pointer;
+	}
+	.section-name::before {
+		content: "\00a0▽\00a0\00a0";
+		font-size: 85%;
+	}
+	.collapsed-section .section-name::before {
+		content: "\00a0▷\00a0\00a0";
+	}
+	.section-settings {
+		border-left: 5px #c6e3ff solid;
+	}
+	.collapsed-section .section-settings {
+		display: none;
+	}
+	.section:hover > .section-name {
+		color: #3399FF;
+		border-bottom: 1px #3399FF solid;
+		border-left: 5px #3399FF solid;
+	}
+	.section:hover > .section-settings {
+		border-left: 5px #3399FF solid;
+	}
+
+	/* settings */
+
+	.setting {
+		display: flex;
+		border-bottom: 1px #ddd solid;
+		padding: 8px;
+	}
+	.setting:hover {
+		background-color: #fff;
+	}
+	.setting-name {
+		width: 40%;
+		max-width: 300px;
+		margin-right: 20px;
+	}
+	.setting-value {
+		width: 35%;
+		max-width: 250px;
+		margin-top: 2px;
+	}
+	.setting-description {
+		font-size: 0.8rem;
+		width: 80%;
+		padding-left: 20px;
+		color: #666;
+	}
+	.setting-description * {
+		font-size: 0.8rem;
+	}
+	.setting-description a {
+		font-size: 0.8rem;
+		color: #666;
+	}
+	.setting-description details,
+	.setting-description summary {
+		font-size: 0.8rem;
+		color: #666;
+	}
+	.setting-description summary:hover {
+		color: #3399FF;
+		cursor: pointer;
+	}
+	.setting-reset {
+		visibility: hidden;
+		min-width: 65px;
+	}
+	.setting:hover .setting-reset {
+		visibility: visible;
+	}
+	.setting.disabled .setting-value {
+		font-size: 0.8rem;
+	}
+	.setting.disabled {
+		color: #666;
+	}
+	.setting.disabled:hover {
+		background-color: #0000;
+	}
+	.setting.indent .setting-name::before {
+		content: "└\00a0\00a0";
+	}
+
+	/* search engines "table" */
+
+	#engines-table {
+		width: 100%;
+		padding-bottom: 20px;
+	}
+	#engines-table * {
+		font-size: 0.8rem;
+	}
+	.engine-table-row {
+		width: 100%;
+		display: flex;
+		flex-flow: column;
+	}
+	.engine-itself {
+		width: 100%;
+		display: flex;
+	}
+	.engine-options {
+		margin-left: 103px;	/* 24 + 24 + 24 + 24 + 4 (dragger + icon + 4px margin-right) + 3 (just padding) */
+		margin-top: 3px;
+		margin-bottom: 4px;
+		display: none;
+	}
+	.engine-table-row:not(.static-row):hover {
+		background: #c6e3ff88;
+	}
+	.engine-itself > div,
+	.engine-options > div {
+		margin: 1px;
+	}
+	.engine-dragger {
+		cursor: move;
+	}
+	.engine-dragger,
+	.engine-is-enabled,
+	.engine-is-enabled-in-context-menu,
+	.engine-icon-img {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 22px;
+	}
+	.engine-shortcut {
+		width: 30px;
+	}
+	.engine-shortcut input {
+		text-transform: uppercase;
+		text-align: center;
+	}
+	.engine-delete {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 22px;
+	}
+	.engine-icon-img {
+		margin-right: 5px !important;
+	}
+	.engine-icon-img img {
+		padding: 0;
+		width: 22px;
+	}
+	.engine-name {
+		width: 15%;
+	}
+	.engine-search-link,
+	.engine-description-small {
+		width: 50%;
+	}
+	.engine-icon-link {
+		width: 35%;
+	}
+	.engine-uneditable {
+		padding: 4px 4px;
+		border: 1px solid #e5e5e5;
+		background-color: #f5f5f5;
+		border-radius: 4px;
+	}
+	.engine-uneditable-name {
+		width: 14.8%;	/* small width adjustment to look better in relation with editable elements with 15% */
+		overflow-x: hidden;	/* fixes cell staying too wide on a narrow window */
+	}
+	.engine-uneditable-description {
+		width: 85%;
+	}
+	.engine-add-button {
+		max-width: 150px;
+		min-width: 0px;
+		width: 30%;
+	}
+
+	/* group popup */
+
+	#group-popup-container {
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		width: 90vw;
+		height: 90vh;
+		max-width: 500px;
+		max-height: 650px;
+		background-color: #F9F9FA;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		min-height: 150px;	/* avoids visual glitches when window is REALLY short */
+	}
+	#group-background-div {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		background-color: black;
+		opacity: 0.8;
+		width: 100vw;
+		height: 100vh;
+	}
+	#group-popup-header {
+		display: flex;
+		padding: 0.6rem;
+	}
+	#group-icon-img,
+	#group-icon-canvas {
+		cursor: pointer;
+		transition: all 0.2s;
+		width: 24px;
+		height: 24px;
+	}
+	#group-icon-img:hover,
+	#group-icon-canvas:hover {
+		transform: scale(1.2, 1.2);
+	}
+	#group-popup-header > input {
+		margin-left: 0.3rem;
+	}
+	#group-popup-header > label {
+		display: flex;
+		align-items: center;
+		padding: 0.2rem;
+	}
+	#group-title-field {
+		overflow-x: auto;	/* avoids visual glitches when window is REALLY narrow */
+	}
+	#group-popup-content {
+		overflow-y: scroll;
+	}
+	#group-selected-engines-container {
+		border-bottom: 1px solid #ccc;
+		padding-bottom: 0.5rem;
+		margin-bottom: 0.5rem;
+	}
+	#group-selected-engines-container > div {
+		cursor: default;
+	}
+	#group-selected-engines-container .group-engines-list-row:hover .group-remove-engine-button {
+		visibility: visible;
+	}
+	#group-selected-engines-container:empty {
+		text-align: center; /* can't format this inside ::before */
+	}
+	#group-selected-engines-container:empty::before {
+		content: "Choose the engines that will belong to this group:";
+		padding: 0.5rem;
+		font-size: 0.9rem;
+		font-style: italic;
+		text-align: center;
+	}
+	.group-remove-engine-button {
+		margin-left: auto !important;
+		margin-right: 1rem !important;
+		visibility: hidden;
+	}
+	.group-engines-list-row {
+		display: flex;
+		flex-direction: row;
+		cursor: pointer;
+		padding-left: 0.5rem;
+		user-select: none;		/* only added in Firefox 69 */
+		-moz-user-select: none;	/* support for older versions */
+		align-items: center;
+	}
+	.group-engines-list-row:hover {
+		background: #c6e3ff88;
+	}
+	.group-engines-list-row > * {
+		margin: 0.2rem;
+	}
+	.group-engines-list-row .engine-dragger {
+		text-align: center;
+		min-width: 30px;
+	}
+	.group-engines-list-row .engine-icon-img {
+		text-align: center;
+		min-width: 30px;
+	}
+	.group-engines-list-row .engine-icon-img > img {
+		width: 22px;
+		height: 22px;
+	}
+	#group-popup-footer {
+		display: flex;
+		border-radius: 4px;
+		width: 100%;
+		padding: 0.6rem;
+		margin-top: auto;	/* pushes footer to the bottom */
+	}
+	#group-popup-footer > * {
+		margin: 0.2rem;
+	}
+	.group-engine-description {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		cursor: pointer;
+	}
+
+	/* platform/version specific elements */
+
+	.os-windows, .os-mac, .os-linux {
+		display: none;
+	}
+
+	/* specifics */
+
+	#section_instructions li,
+	#section_instructions summary {
+		padding-top: 3px;
+		padding-bottom: 3px;
+	}
+
+	#section_instructions ul li ul {
+		padding-left: 20px;
+	}
+
+	/* emphasizes text */
+	pop,
+	popm {
+		background: #eee;
+		white-space: nowrap;
+	}
+
+	/* emphasizes text, but monospaced */
+	popm {
+		font-family: "Courier New", Courier, mono;
+	}
+
+	/********************/
+	/* DARK MODE COLORS */
+	/********************/
+
+	input[name="toggleDarkMode"] {
+		max-width: 50px;
+	}
+
+	body.dark {
+		color: #eee;
+		background-color: #181A1B;
+	}
+	body.dark input[type=text],
+	body.dark input[type=number],
+	body.dark input[type=button],
+	body.dark input[type=color],
+	body.dark textarea,
+	body.dark select {
+		border: 1px solid #45454b;
+		color: #eee;
+		background-color: #2a2a31;
+	}
+	body.dark input[type=button] {
+		border: 1px solid #7f93a6;
+		background-color: #45454b;	/* make them different from other inputs */
+	}
+	body.dark optgroup {
+		background-color: #161618;
+	}
+
+	body.dark .section-name {
+		color: #ddd;
+	}
+
+	body.dark .setting {
+		border-bottom: 1px #45454b solid;
+	}
+	body.dark .setting:hover {
+		background-color: #0e0e0f;
+	}
+
+	body.dark .setting-description,
+	body.dark .setting-description * {
+		color: #ddd;
+	}
+
+	body.dark .engine-uneditable {
+		border: 1px solid #45454b;
+		background-color: #45454b;
+	}
+	body.dark .engine-table-row:not(.static-row):hover {
+		background: #3c3c42;
+	}
+
+	body.dark pop,
+	body.dark popm {
+		background: #2a2a31;
+	}
+
+	body.dark #group-popup-container {
+		background-color: #181A1B;
+	}
+	body.dark .group-engines-list-row:hover {
+		background: #3c3c42;
+	}
+</style>
+<title>SSS Options</title>
+<link rel="shortcut icon" type="image/png" href="/icons/icon48.png"/>
+</head>
+
+<body>
+<div id="settings">
+	<div class="header">
+		<img src="/icons/icon96.png" alt="">
+		<h1><span style="color: #3399FF">Swift Selection Search (SSS)</span><br>Options</h1>
+		<input type="button" name="toggleDarkMode" value="🌓" title="Switch between Dark/Light options page">
+	</div>
+
+	<div class="section" id="section_instructions">
+		<div class="section-name">Instructions</div>
+
+		<div class="section-settings">
+			<div class="setting">
+				<div class="setting-name" style="max-width: 160px;">Quick setup</div>
+				<div class="setting-description">
+					<ol>
+						<li>Add new search engines using the <pop>Add engine</pop> button in the <pop>Search engines</pop> section below. SSS comes with a few examples! You can also load engines from Firefox (the ones used in the search bar).</li>
+						<li>Engines appear in a popup and/or context menu when you select text on a page. When you click one, the search URL you defined is called and <popm>{searchTerms}</popm> gets replaced by whatever text is selected.</li>
+						<li>For customizing popup look, context menu, click behaviour, etc, please explore the options in this page. ;)</li>
+					</ol>
+				</div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name" style="max-width: 160px;">Problems?</div>
+				<div class="setting-description">
+					<ul>
+						<li>Some blocking lists in your ad blocker can stop certain search engine icons or names from loading! If an icon doesn't show up, please check that. (ex.: YouTube may be blocked by <pop>Fanboy's Annoyance List</pop>. Sometimes simply renaming "YouTube" to something else like "YouTub" works too!)</li>
+						<li>If the popup appears when you pause/unpause a YouTube video, it's because you slightly moved the mouse and selected the country code beside the YouTube logo at the top. ;) Annoying, I know! Try setting the "Minimum selected characters" setting to 3, or use an "Opening behaviour" that isn't "Auto".</li>
+						<li>Some search engine icons may not appear if they are <popm>resource://</popm> links (some imported engines have those). This is normal, unfortunately. Please try finding another icon for the engine, or delete the icon link and SSS will try getting it for you.</li>
+						<li>If the popup does not appear at all on a website or parts of a website, it may be due to that site's content policy. For example, <pop>addons.mozilla.org</pop> disables page modifications, and <pop>bugzilla.mozilla.org</pop> can block images.</li>
+						<li>Is your problem not here? Please go to SSS's page on <a target="_blank" href="https://addons.mozilla.org">Mozilla Add-ons</a> and check how you can report it.</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name" style="max-width: 160px;">I don't know how to add a particular site...</div>
+				<div class="setting-description">
+					<details>
+						<summary>[Press to expand/collapse]</summary>
+						<ul>
+							<li>It's not always easy to figure out! I'll try to help. :)</li>
+							<li>After using a search bar on a website, the site will usually place what you searched for in the URL somewhere. For example, if you search for <pop>Firefox Add-ons</pop> on Google, Google adds <popm>q=Firefox+Add-ons</popm> to the URL (among probably a lot of other things). <popm>q</popm> is the parameter Google uses for user queries. Other sites will use different structures, but what you wrote should be there (unless the site uses POST requests, but that's another story!).</li>
+							<li>SSS needs a search URL that says <popm>{searchTerms}</popm> in the part where your query usually goes. In the previous example, that means replacing <popm>q=Firefox+Add-ons</popm> with <popm>q={searchTerms}</popm>.</li>
+							<li>Tips
+								<ul>
+									<li>Check the search URLs of the search engines that come with SSS! They may help.</li>
+									<li>Many websites use the <popm>?</popm> symbol and then add a lot of parameters separated with the <popm>&</popm> symbol. You'll usually be looking for the parameter that represents your query and replacing that with <popm>{searchTerms}</popm>.</li>
+									<li>Most of the time, the URL also contains a lot of unnecessary parameters. Removing them is mostly trial and error.</li>
+									<li>Sometimes it's not a parameter, and sometimes it's in another place in the URL. Sometimes websites are complicated. :(</li>
+								</ul>
+							</li>
+						</ul>
+					</details>
+				</div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name" style="max-width: 160px;">Advanced usage</div>
+				<div class="setting-description">
+					<details>
+						<summary>[Press to expand/collapse]</summary>
+						<ul>
+							<li>
+								You may notice that when you select a search engine in the list of engines it expands and can show additional options. One of these is the "Text encoding" option. Being able to change the encoding is sometimes essential for websites that use non-latin alphabets like Japanese, Chinese, etc. If you run into problems with such websites try changing the encoding from UTF-8 to a more adequate one (it depends on what encoding the website uses for its search!).
+							</li>
+
+							<li>
+								Most <a target="_blank" href="https://developer.mozilla.org/docs/Web/API/URL#Properties">JavaScript URL properties</a> are available for search URLs as <popm>{hash}</popm>, <popm>{host}</popm>, <popm>{hostname}</popm>, <popm>{href}</popm>, <popm>{origin}</popm>, <popm>{password}</popm>, <popm>{pathname}</popm>, <popm>{port}</popm>, <popm>{protocol}</popm>, <popm>{search}</popm> and <popm>{username}</popm>. For example, if <popm>{hostname}</popm> is present in the search URL when searching, it will be replaced by the website domain you are on (ex.: <popm>google.com</popm>).
+							</li>
+
+							<li>
+								Variables such as <popm>{searchTerms}</popm> and the JavaScript URL properties (like <popm>{hostname}</popm>, <popm>{href}</popm>, etc) support text replacements in the format <popm>{variable{original text|new text}}</popm>, allowing multiple pairs of <popm>{original text|new text}</popm>.
+
+								<ul>
+									<li>
+										So if you want to always replace spaces in your search with "+", and "@" with "at", you can use <popm>{searchTerms{ |+}{@|at}}</popm> in your search engine.
+									</li>
+
+									<li>
+										Since SSS uses the special characters <popm>\</popm>, <popm>{</popm>, <popm>|</popm>, and <popm>}</popm> for delimiting the replacements, if you want to use these characters in the replacement itself, you should precede them with a <popm>\</popm>. This is called "escaping characters". For example, <popm>{searchTerms{\{|\}}}</popm> replaces <popm>{</popm> with <popm>}</popm> in your text and <popm>{searchTerms{ |\\}}</popm> replaces spaces with a <popm>\</popm> (yes, that is hard to read!).
+									</li>
+
+									<li>
+									Replacements can also be <a target="_blank" href="https://developer.mozilla.org/docs/Web/JavaScript/Guide/Regular_Expressions">regular expressions</a>. If you don't know these, it's okay. It's way beyond the scope of these instructions to explain them.
+									<ul>
+										<li>
+											These come in the form of either <popm>{searchTerms{re/your_regex_here/flags_here}}</popm>, where the selected text will be replaced with only the characters that match the expression, or <popm>{searchTerms{re/your_regex_here/flags_here|replacement}}</popm>, where the match will be replaced with the replacement. If you use the <popm>g</popm> flag that matches all occurrences, each of them will be replaced with the replacement.
+										</li>
+
+										<li>
+											Replacements support match groups, so $1 in the replacement corresponds to the first match, $2 to the second, etc.
+										</li>
+
+										<li>
+											As examples, if you want to remove all non-alphanumeric characters from the searchTerms you can use <popm>{searchTerms{re/[0-9a-z]/gi}}</popm> (<popm>g</popm> finds all matches and <popm>i</popm> is case insensitiveness). To find words separated by spaces and switch them you can use <popm>{searchTerms{re/(\w+)\s+(\w+)/g|$2 $1}}</popm>. This will transform any two words like "John Smith" into "Smith John".
+										</li>
+									</ul>
+								</ul>
+							</li>
+							<li>
+								Variables support using only part of the selected text with the indexing format <popm>{variable[index]}</popm> or <popm>{variable[start:end]}</popm> (start and end both optional).
+								<ul>
+									<li>
+										<popm>{searchTerms[index]}</popm> allows selecting a character at a certain position (zero based), so if you search for "Firefox" and use <popm>{searchTerms[0]}</popm> you will get "F", and if you use <popm>{searchTerms[2]}</popm> you will get "r".
+									</li>
+
+									<li>
+										<popm>{searchTerms[start:end]}</popm> is for multiple characters, so <popm>{searchTerms[0:2]}</popm> for "Firefox" gives you "Fi", <popm>{searchTerms[2:5]}</popm> gives you "ref", <popm>{searchTerms[2:]}</popm> gives you "refox", and <popm>{searchTerms[:5]}</popm> gives you "Firef".
+									</li>
+
+									<li>
+										Indexing with negative numbers is also allowed, where <popm>{searchTerms[-1]}</popm> gives the last character of the selected text, and <popm>{searchTerms[-3:]}</popm> gives the last three.
+									</li>
+								</ul>
+							</li>
+
+							<li>
+								Variables support a few functions. These are in the format <popm>{variable(function_name)}</popm>.
+
+								<ul>
+									<li>
+										<popm>{searchTerms(lowercase)}</popm> and <popm>{searchTerms(uppercase)}</popm> respectively convert the text to <pop>lower case</pop> and <pop>UPPER CASE</pop>.
+									</li>
+									<li>
+										<popm>{searchTerms(encodeURIComponent)}</popm> applies URL encoding to the text, replacing forbidden URL characters with their escaped versions. For example, % is replaced by %25, / is replaced by %2F, etc. NOTE: SSS <pop>always</pop> applies URL encoding after all replacements happen (otherwise the URL could have invalid characters), so this function should be used only for the rare sites that apply encoding more than once, or apply encoding and then do additional modifications.
+									</li>
+									<li>
+										<popm>{searchTerms(disableURIEncoding)}</popm> disables the default URL encoding that is otherwise always applied to the final text. This is useful for websites that search for links. For example, the Internet Archive website can search for <popm>https://www.mozilla.org</popm> but not for <popm>https%3A%2F%2Fwww.mozilla.org</popm> (the result of the encoding), so you should use <popm>disableURIEncoding</popm>.
+									</li>
+								</ul>
+							</li>
+
+							<li>
+								Any variable modifications mentioned above (replacements, indexing, functions) can be used in conjunction. So something like <popm>{searchTerms[2:5]{ |+}{@|at}(lowercase)}</popm> is valid and will apply each modification in the given order, so first selecting only characters 2, 3 and 4, then converting any spaces and @, and then converting the result to lowercase. (The only exception is disableURIEncoding, whose order doesn't matter.)
+							</li>
+						</ul>
+					</details>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section collapsed-section" id="section_searchEngines">
+		<div class="section-name">Search engines</div>
+
+		<div class="section-settings">
+			<div class="setting">
+				<div id="engines-table">
+					<div class="engine-table-row static-row">
+						<div class="engine-itself">
+							<div class="engine-dragger"></div>
+							<div class="engine-is-enabled" title="Show in popup">P.</div>
+							<div class="engine-is-enabled-in-context-menu" title="Show in context menu">C.</div>
+							<div class="engine-icon-img"></div>
+							<div class="engine-name">Name</div>
+							<div class="engine-search-link">Search URL</div>
+							<div class="engine-icon-link">Icon URL</div>
+							<div class="engine-shortcut" title="Shortcut">S.</div>
+							<div class="engine-delete"></div>
+						</div>
+					</div>
+
+					<div id="engines"></div>
+
+					<div class="engine-table-row static-row">
+						<div class="engine-itself">
+							<div class="engine-dragger"></div>
+							<div class="engine-is-enabled"></div>
+							<div class="engine-is-enabled-in-context-menu"></div>
+							<div class="engine-icon-img"></div>
+							<div class="engine-add-button"><input type="button" name="addEngineButton" value="Add engine"></div>
+							<div class="engine-add-button"><input type="button" name="addGroupButton" value="Add group"></div>
+							<div class="engine-add-button"><input type="button" name="addSeparatorButton" value="Add separator"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Import browser search engines</div>
+				<div class="setting-value">
+					<input type="button" name="importBrowserEnginesButton" value="Import"/>
+				</div>
+				<div class="setting-description">Imports the search engines that you usually use in the browser's search bar.
+					<br><br>NOTE: These engines are managed by Firefox and so they can't use some SSS settings. For example, browser engines only respect "Open in this tab" or "Open in new tab" (other click behaviours behave as "Open in new tab").</div>
+				<div class="setting-reset"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Reset search engines</div>
+				<div class="setting-value">
+					<input type="button" name="resetSearchEnginesButton" value="Reset engines">
+				</div>
+				<div class="setting-description">Resets search engines to the defaults (as if running SSS for the first time).</div>
+				<div class="setting-reset"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Source for automatic icon URLs</div>
+				<div class="setting-value">
+					<select class="setting-input" name="searchEngineIconsSource">
+						<option value="none">None</option>
+						<option value="favicon-kit">Favicon Kit (faviconkit.com)</option>
+					</select>
+				</div>
+				<div class="setting-description">Defines the origin of automatic search engine icons when you add a new engine. Change this option if you have privacy concerns or would prefer to add all icons yourself.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section collapsed-section" id="section_popupBehaviour">
+		<div class="section-name">Popup/icons behaviour</div>
+
+		<div class="section-settings">
+			<div class="setting">
+				<div class="setting-name">Opening behaviour</div>
+				<div class="setting-value">
+					<select class="setting-input" name="popupOpenBehaviour">
+						<option value="off">Off (never)</option>
+						<option value="auto">Auto (opens on text selection)</option>
+						<option value="hold-alt">Hold Alt (hold the Alt key [Option on Mac] when selecting)</option>
+						<option value="keyboard">Keyboard-only (press the keyboard shortcut after text is selected)</option>
+						<option value="middle-mouse">Middle mouse button (press the middle button on the selected text)</option>
+					</select>
+				</div>
+				<div class="setting-description">When to open the popup.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting hidden indent">
+				<div class="setting-name">Middle mouse click margin</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="middleMouseSelectionClickMargin" min="0">
+				</div>
+				<div class="setting-description">Adds a margin in pixels so you can middle-click near the selection as well as on it.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting hidden indent">
+				<div class="setting-name">Minimum selected characters</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="minSelectedCharacters" min="0">
+				</div>
+				<div class="setting-description">In "Auto" opening behaviour, only shows popup if you have at least this number of characters selected (discarding surrounding spaces). Setting to 0 always shows.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting hidden indent">
+				<div class="setting-name">Maximum selected characters</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="maxSelectedCharacters" min="0">
+				</div>
+				<div class="setting-description">In "Auto" opening behaviour, only shows popup if you have a maximum of this number of characters selected (discarding surrounding spaces). Setting to 0 always shows.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting hidden indent">
+				<div class="setting-name">Popup delay</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupDelay" min="0">
+				</div>
+				<div class="setting-description">Number of milliseconds to delay the popup when selecting text. It can avoid wrong clicks if you usually triple click to select paragraphs.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Popup location</div>
+				<div class="setting-value">
+					<select class="setting-input" name="popupLocation">
+						<option value="selection">Bottom right corner of selection "rectangle"</option>
+						<option value="cursor">At cursor location</option>
+					</select>
+				</div>
+				<div class="setting-description">Where the popup should appear after selecting text.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Left mouse button click</div>
+				<div class="setting-value">
+					<select class="setting-input" name="mouseLeftButtonBehaviour">
+						<option value="this-tab">Open in this tab</option>
+						<option value="new-tab">Open in new tab</option>
+						<option value="new-bg-tab">Open in new background tab</option>
+						<option value="new-tab-next">Open in new tab (next to current tab)</option>
+						<option value="new-bg-tab-next">Open in new background tab (next to current tab)</option>
+						<option value="new-window">Open in new window</option>
+						<!-- <option value="new-bg-window">(unsupported in Firefox) Open in new background window</option> -->
+					</select>
+				</div>
+				<div class="setting-description">What to do when a search engine is clicked with the left mouse button.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Right mouse button click</div>
+				<div class="setting-value">
+					<select class="setting-input" name="mouseRightButtonBehaviour">
+						<option value="this-tab">Open in this tab</option>
+						<option value="new-tab">Open in new tab</option>
+						<option value="new-bg-tab">Open in new background tab</option>
+						<option value="new-tab-next">Open in new tab (next to current tab)</option>
+						<option value="new-bg-tab-next">Open in new background tab (next to current tab)</option>
+						<option value="new-window">Open in new window</option>
+						<!-- <option value="new-bg-window">(unsupported in Firefox) Open in new background window</option> -->
+					</select>
+				</div>
+				<div class="setting-description">What to do when a search engine is clicked with the right mouse button.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Middle mouse button click</div>
+				<div class="setting-value">
+					<select class="setting-input" name="mouseMiddleButtonBehaviour">
+						<option value="this-tab">Open in this tab</option>
+						<option value="new-tab">Open in new tab</option>
+						<option value="new-bg-tab">Open in new background tab</option>
+						<option value="new-tab-next">Open in new tab (next to current tab)</option>
+						<option value="new-bg-tab-next">Open in new background tab (next to current tab)</option>
+						<option value="new-window">Open in new window</option>
+						<!-- <option value="new-bg-window">(unsupported in Firefox) Open in new background window</option> -->
+					</select>
+				</div>
+				<div class="setting-description">What to do when a search engine is clicked with the middle mouse button.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">When using a shortcut</div>
+				<div class="setting-value">
+					<select class="setting-input" name="shortcutBehaviour">
+						<option value="this-tab">Open in this tab</option>
+						<option value="new-tab">Open in new tab</option>
+						<option value="new-bg-tab">Open in new background tab</option>
+						<option value="new-tab-next">Open in new tab (next to current tab)</option>
+						<option value="new-bg-tab-next">Open in new background tab (next to current tab)</option>
+						<option value="new-window">Open in new window</option>
+						<!-- <option value="new-bg-window">(unsupported in Firefox) Open in new background window</option> -->
+					</select>
+				</div>
+				<div class="setting-description">What to do when searching via shortcut. Also applies when selecting the engine with the TAB key.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Allow popup on editable fields</div>
+				<div class="setting-value">
+					<input class="setting-input" type="checkbox" name="allowPopupOnEditableFields" autocomplete="off">
+				</div>
+				<div class="setting-description">Show the popup when text is selected with the mouse on an editable text field, such as a login form, a search bar, or an email composing window. NOTE: "Shortcut to open popup" ignores this option and always works on editable fields.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Hide popup on page scroll</div>
+				<div class="setting-value">
+					<input class="setting-input" type="checkbox" name="hidePopupOnPageScroll" autocomplete="off">
+				</div>
+				<div class="setting-description">Hides the popup when the page moves.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Hide popup on right click</div>
+				<div class="setting-value">
+					<input class="setting-input" type="checkbox" name="hidePopupOnRightClick" autocomplete="off" checked>
+				</div>
+				<div class="setting-description">Hides the popup when the right mouse button is pressed outside of the popup. NOTE: Left or middle clicks always hide it regardless.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Hide popup on search engine click</div>
+				<div class="setting-value">
+					<input class="setting-input" type="checkbox" name="hidePopupOnSearch" autocomplete="off" checked>
+				</div>
+				<div class="setting-description">Hides the popup when a search engine is clicked. This also applies when using shortcuts.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Allow search engine shortcuts without popup</div>
+				<div class="setting-value">
+					<input class="setting-input" type="checkbox" name="useEngineShortcutWithoutPopup" autocomplete="off" checked>
+				</div>
+				<div class="setting-description">Enables search engine shortcuts even if the popup is not visible.<br>
+					NOTE: A shortcut will not work if the engine is not enabled for the popup (even though the popup isn't needed). They also won't work when writing in an editable field.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Shortcut to open popup</div>
+				<div class="setting-value">--</div>
+				<div class="setting-description">
+					To change this shortcut, use Firefox's "Manage Extension Shortcuts" menu.
+					<br>
+					Default value is Ctrl+Shift+Space (NOTE: for Mac, Ctrl means Command).
+				</div>
+				<div class="setting-reset"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Shortcut to toggle auto popup opening</div>
+				<div class="setting-value">--</div>
+				<div class="setting-description">
+					To change this shortcut, use Firefox's "Manage Extension Shortcuts" menu.
+					<br>
+					Default value is Ctrl+Shift+U (NOTE: for Mac, Ctrl means Command).
+				</div>
+				<div class="setting-reset"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Popup animation duration</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupAnimationDuration" min="0">
+				</div>
+				<div class="setting-description">Duration of popup animation, in milliseconds. Use 0 to make the popup show instantly.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Auto copy to clipboard</div>
+				<div class="setting-value">
+					<select class="setting-input" name="autoCopyToClipboard">
+						<option value="off">Off</option>
+						<option value="always">Always</option>
+						<option value="non-editable-only">Only for non-editable text</option>
+					</select>
+				</div>
+				<div class="setting-description">Automatically copy selected text to clipboard when popup opens.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Website blocklist</div>
+				<div class="setting-value" style="z-index: 1;">
+					<textarea class="setting-input" name="websiteBlocklist" style="font-size: 12px;"></textarea>
+				</div>
+				<div class="setting-description">
+					Disables the popup on these URLs. Write each URL on a different line, WITHOUT using "http", "https", or any other protocol. URLs support the wildcard * (meaning "any number of characters, including zero") or regular expressions (regex) in the form /your_regex_here/.
+					<br><br>
+					NOTE: Opening the popup via the keyboard shortcut always works, regardless of this setting.
+					<br><br>
+					<details>
+						<summary>[Press to see examples]</summary>
+						<div>
+							<br>
+							<popm>google.com</popm> → Blocks google.com, but not www.google.com nor drive.google.com<br>
+							<popm>*.google.com</popm> → Blocks www.google.com and drive.google.com, but not google.com<br>
+							<popm>*google.com</popm> → Blocks google.com, www.google.com, drive.google.com<br>
+							<popm>drive.google.com</popm> → Blocks drive.google.com<br>
+							<popm>docs.google.com/spreadsheets</popm> → Blocks docs.google.com/spreadsheets (other pages still work)<br>
+							<popm>/\.com/</popm> → (Regex) Blocks all websites that contain ".com" somewhere in the URL<br>
+							<br>
+							NOTE: Any regex errors are reported to Firefox' Browser Console (Ctrl+Shift+J) as warnings by SSS. To see them, make sure that "Show Content Messages" is enabled in the top right cog wheel (options) menu of the Browser Console.
+						</div>
+					</details>
+				</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section collapsed-section" id="section_popupAppearance">
+		<div class="section-name">Popup/icons look</div>
+
+		<div class="section-settings">
+			<div class="setting">
+				<div class="setting-name">Display text box</div>
+				<div class="setting-value">
+					<input class="setting-input" type="checkbox" name="showSelectionTextField" autocomplete="off" checked>
+				</div>
+				<div class="setting-description">Shows a text box with the current text selection in the popup. Useful to make edits to the text before searching with one of the engines.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting hidden indent">
+				<div class="setting-name">Text box location</div>
+				<div class="setting-value">
+					<select class="setting-input" name="selectionTextFieldLocation">
+						<option value="top">Top</option>
+						<option value="bottom">Bottom</option>
+					</select>
+				</div>
+				<div class="setting-description">Location of the text field in the popup, above or below the search engines.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Display in a single row</div>
+				<div class="setting-value">
+					<input class="setting-input" type="checkbox" name="useSingleRow" autocomplete="off" checked>
+				</div>
+				<div class="setting-description">Places all search engines in a single row, instead of a grid.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting hidden indent">
+				<div class="setting-name">Number of icons per row in grid</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="nPopupIconsPerRow" min="1">
+				</div>
+				<div class="setting-description">Max number of search engines per row in grid display.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting hidden indent">
+				<div class="setting-name">Icon alignment in grid</div>
+				<div class="setting-value">
+					<select class="setting-input" name="iconAlignmentInGrid">
+						<option value="left">Left</option>
+						<option value="middle">Middle</option>
+						<option value="right">Right</option>
+					</select>
+				</div>
+				<div class="setting-description">Specifies how to align icons when a row is not full in grid display.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Icon size</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupItemSize" min="0">
+				</div>
+				<div class="setting-description">Search engine icon size in pixels.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Separator width</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupSeparatorWidth" min="0">
+				</div>
+				<div class="setting-description">Separator icon width as a percentage of icon size.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Icon horizontal padding</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupItemPadding" min="0">
+				</div>
+				<div class="setting-description">Search engine icon horizontal padding (left and right) in pixels.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Icon vertical padding</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupItemVerticalPadding" min="0">
+				</div>
+				<div class="setting-description">Search engine icon vertical padding (top and bottom) in pixels.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Icon hover behaviour</div>
+				<div class="setting-value">
+					<select class="setting-input" name="popupItemHoverBehaviour">
+						<option value="nothing">Nothing (no hover effect)</option>
+						<option value="highlight">Highlight-only</option>
+						<option value="highlight-and-move">Highlight & Move</option>
+						<option value="scale">Scale</option>
+					</select>
+				</div>
+				<div class="setting-description">What happens to hovered search engine icons.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Icon roundness</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupItemBorderRadius" min="0">
+				</div>
+				<div class="setting-description">Icon border radius in pixels. Makes icons more or less round. NOTE: this will likely be unnoticeable on icons without a background.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Popup background color</div>
+				<div class="setting-value">
+					<input type="color" name="popupBackgroundColorPicker">
+					<input class="setting-input" type="text" name="popupBackgroundColor">
+				</div>
+				<div class="setting-description">Color for the popup background. Supports transparency using #rrggbbaa.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Popup highlight color</div>
+				<div class="setting-value">
+					<input type="color" name="popupHighlightColorPicker">
+					<input class="setting-input" type="text" name="popupHighlightColor">
+				</div>
+				<div class="setting-description">Color for the popup highlight. Supports transparency using #rrggbbaa.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Popup horizontal padding</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupPaddingX" min="0">
+				</div>
+				<div class="setting-description">Popup left/right padding, in pixels.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Popup vertical padding</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupPaddingY" min="0">
+				</div>
+				<div class="setting-description">Popup top/bottom padding, in pixels.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Popup horizontal offset</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupOffsetX">
+				</div>
+				<div class="setting-description">Popup horizontal offset from the default position, in pixels (positive values move right).</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Popup vertical offset</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupOffsetY">
+				</div>
+				<div class="setting-description">Popup vertical offset from the default position, in pixels (positive values move up).</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Popup roundness</div>
+				<div class="setting-value">
+					<input class="setting-input" type="number" name="popupBorderRadius" min="0">
+				</div>
+				<div class="setting-description">Popup border radius in pixels. Makes popup more or less round.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Use custom CSS formatting (experimental)</div>
+				<div class="setting-value">
+					<input class="setting-input" type="checkbox" name="useCustomPopupCSS" autocomplete="off">
+				</div>
+				<div class="setting-description">If you know CSS you can apply any formatting you want to the popup, such as custom icon hover animations or a background image. Please keep in mind that your custom CSS will be *added* to the internal CSS that SSS uses, and so might conflict with it.
+				<br>
+				<br>
+				NOTE: If the popup's internal CSS changes in any future update, this option may disable itself to avoid problems.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting hidden indent">
+				<div class="setting-name">Custom CSS</div>
+				<div class="setting-value" style="z-index: 1;">
+					<textarea class="setting-input" name="customPopupCSS" style="font-size: 12px;"></textarea>
+				</div>
+				<div class="setting-description"></div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section collapsed-section" id="section_contextMenu">
+		<div class="section-name">Context menu</div>
+
+		<div class="section-settings">
+			<div class="setting">
+				<div class="setting-name">Is the context menu enabled?</div>
+				<div class="setting-value">
+					<input class="setting-input" type="checkbox" name="enableEnginesInContextMenu" autocomplete="off" checked>
+				</div>
+				<div class="setting-description">Enables a "Search for..." context menu with your search engines. Appears when you right click the page while having text selected.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Context menu left click behaviour</div>
+				<div class="setting-value">
+					<select class="setting-input" name="contextMenuItemBehaviour">
+						<option value="this-tab">Open in this tab</option>
+						<option value="new-tab">Open in new tab</option>
+						<option value="new-bg-tab">Open in new background tab</option>
+						<option value="new-tab-next">Open in new tab (next to current tab)</option>
+						<option value="new-bg-tab-next">Open in new background tab (next to current tab)</option>
+						<option value="new-window">Open in new window</option>
+						<!-- <option value="new-bg-window">(unsupported in Firefox) Open in new background window</option> -->
+					</select>
+				</div>
+				<div class="setting-description">What to do when a search engine is left clicked in the context menu.
+					<br>NOTE: For popup click options, please look in the "Popup/icons behaviour" section.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Context menu right click behaviour</div>
+				<div class="setting-value">
+					<select class="setting-input" name="contextMenuItemRightButtonBehaviour">
+						<option value="this-tab">Open in this tab</option>
+						<option value="new-tab">Open in new tab</option>
+						<option value="new-bg-tab">Open in new background tab</option>
+						<option value="new-tab-next">Open in new tab (next to current tab)</option>
+						<option value="new-bg-tab-next">Open in new background tab (next to current tab)</option>
+						<option value="new-window">Open in new window</option>
+						<!-- <option value="new-bg-window">(unsupported in Firefox) Open in new background window</option> -->
+					</select>
+				</div>
+				<div class="setting-description">What to do when a search engine is right clicked in the context menu.
+					<br>NOTE: For popup click options, please look in the "Popup/icons behaviour" section.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Context menu middle click behaviour</div>
+				<div class="setting-value">
+					<select class="setting-input" name="contextMenuItemMiddleButtonBehaviour">
+						<option value="this-tab">Open in this tab</option>
+						<option value="new-tab">Open in new tab</option>
+						<option value="new-bg-tab">Open in new background tab</option>
+						<option value="new-tab-next">Open in new tab (next to current tab)</option>
+						<option value="new-bg-tab-next">Open in new background tab (next to current tab)</option>
+						<option value="new-window">Open in new window</option>
+						<!-- <option value="new-bg-window">(unsupported in Firefox) Open in new background window</option> -->
+					</select>
+				</div>
+				<div class="setting-description">What to do when a search engine is middle clicked in the context menu.
+					<br>NOTE: For popup click options, please look in the "Popup/icons behaviour" section.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Context menu title</div>
+				<div class="setting-value">
+					<input class="setting-input" type="text" name="contextMenuString">
+				</div>
+				<div class="setting-description">Title for the SSS submenu in the context menu. If you use %s somewhere in the title, it will be replaced by whatever text is selected when the context menu opens.</div>
+				<div class="setting-reset"><input type="button" value="Default"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section collapsed-section" id="section_storageAndBackup">
+		<div class="section-name">Storage & backup</div>
+
+		<div class="section-settings">
+			<div class="setting">
+				<div class="setting-name">Storage size</div>
+				<div class="setting-value">
+					<span id="storage-size" class="warn-when-over-storage-limit"></span>
+				</div>
+				<div class="setting-description">
+					This is an estimate size of your SSS engines and options. <span class="warn-when-over-storage-limit">Engines with "data:image" icons tend to occupy a lot of space</span>. WARNING: Actual size will very likely be above or below the displayed value.
+				</div>
+				<div class="setting-reset"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Sync options (upload)</div>
+				<div class="setting-value">
+					<input type="button" name="saveSettingsToSyncButton" value="Save to Sync" class="warn-when-over-storage-limit">
+				</div>
+				<div class="setting-description">
+					Saves all SSS options and engines in Firefox Sync. This does not force upload, so you may have to wait for Firefox to sync or force the sync yourself from Firefox's menu. <span class="warn-when-over-storage-limit">Beware that storage size should be below 100KB for this to work. If above the limit, start by deleting any "data:image" URLs in your engines, or any other extremely long URLs.</span> Estimate size is not exact, so it may still work if above the limit, or fail if below it.
+				</div>
+				<div class="setting-reset"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Sync options (download)</div>
+				<div class="setting-value">
+					<input type="button" name="loadSettingsFromSyncButton" value="Load from Sync">
+				</div>
+				<div class="setting-description">
+					Downloads previously saved SSS options and engines from Firefox Sync. This will override all existing options and engines!
+				</div>
+				<div class="setting-reset"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Export options to file</div>
+				<div class="setting-value">
+					<input type="button" name="exportSettingsToFileButton" value="Export to file">
+				</div>
+				<div class="setting-description">
+					Exports all SSS options and engines to a file.
+				</div>
+				<div class="setting-reset"></div>
+			</div>
+
+			<div class="setting">
+				<div class="setting-name">Import options from file</div>
+				<div class="setting-value">
+					<input type="button" name="importSettingsFromFileButton" value="Import from file">
+					<input name="importSettingsFromFileButton_real" type="file" accept=".json" style="display: none"/>
+				</div>
+				<div class="setting-description">
+					Imports SSS options and engines from a file (previously exported). This will override all existing options and engines!
+				</div>
+				<div class="setting-reset"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="section collapsed-section" id="section_reset">
+		<div class="section-name">Reset</div>
+
+		<div class="section-settings">
+			<div class="setting">
+				<div class="setting-name">Reset all options</div>
+				<div class="setting-value">
+					<input type="button" name="resetSettingsButton" value="Reset options">
+				</div>
+				<div class="setting-description">Resets all options except search engines to their defaults (as if running SSS for the first time).</div>
+				<div class="setting-reset"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- NOTE: tabindex is needed to receive keydown events -->
+<div id="group-popup" class="hidden" tabindex="-1">
+	<div id="group-background-div"></div>
+	<div id="group-popup-container">
+		<div id="group-popup-header">
+			<label>
+				<img class="hidden" id="group-icon-img">
+				<canvas width="24" height="24" class="hidden" id="group-icon-canvas"></canvas>
+				<input type="color" style="display: none;" id="group-color-picker">
+			</label>
+			<input type="text" id="group-title-field">
+		</div>
+		<div id="group-popup-content">
+			<div id="group-selected-engines-container"></div>
+			<div id="group-available-engines-container"></div>
+		</div>
+		<div id="group-popup-footer">
+			<input type="button" value="Save" id="group-popup-save-button">
+			<input type="button" value="Cancel" id="group-popup-cancel-button">
+		</div>
+	</div>
+</div>
+
+<template id="group-engines-list-row-template">
+	<div class="group-engines-list-row">
+		<div class="engine-dragger">☰</div>
+		<div class="engine-icon-img">
+			<img>
+		</div>
+		<span class="engine-in-group-name">Engine name</span>
+		<div class="group-remove-engine-button">
+			<input type="button" value="✖" title="Remove this engine from the group">
+		</div>
+	</div>
+</template>
+
+<script src="../libs/Sortable.js"></script>
+<script src="settings.js"></script>
+</body>
+
+</html>

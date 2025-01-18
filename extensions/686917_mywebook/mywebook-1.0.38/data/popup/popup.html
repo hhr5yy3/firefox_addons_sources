@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Mywebook</title>
+
+		<link rel="stylesheet" type="text/css" media="screen" href="../lib/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="../lib/select2/select2.min.css" />
+		<!-- build:css css/popup.css -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/cui.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/overrides.css" />
+		<!-- endbuild -->
+	</head>
+
+	<body>
+		<div id="divMain">
+			<div id="zzBusy" style="position: absolute; left: 237px; top: 10px; visibility: hidden">
+				<img src="img/indicator.gif" />
+			</div>
+			<div class="cui-header">
+				<div id="zzClose" class="close"><span>×</span></div>
+				<div class="cui-logo"></div>
+			</div>
+			<div id="divHome" class="cui-page">
+				<div class="cui-cmpt-cont cui-hidden" id="cmptBtnCont">
+					<div style="border-bottom: 1px solid #eee; padding-bottom: 20px">
+						<table style="width: 100%">
+							<tr>
+								<td style="vertical-align: top; width: 70px">
+									<!-- <img src="img/item-front.png" /> -->
+									<!--									<div id="cmptBt nImg" class="cui-mr10"></div>-->
+								</td>
+								<td style="vertical-align: top; text-align: left">
+									<div
+										id="cmptBtnTxt1"
+										style="font-size: 16px; color: #ff5c26; font-weight: bold"
+									></div>
+									<div
+										id="cmptBtnTxt2"
+										class="cui-font-sm"
+										style="margin-top: 8px; margin-bottom: 7px"
+									></div>
+									<div class="cui-btn cui-btn-orange">Πληροφορίες διαγωνισμού</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+				<div id="zzTagsCont" class="cui-mt20 cui-hidden">
+					<div class="cui-mb10 cui-font-sm">
+						Επιλέξτε ή δημιουργήστε ετικέτες πριν αποθηκεύσετε τη σελίδα στα αποκόμματα σας
+						(προαιρετικά)
+					</div>
+					<div class="cui-tags-cont cui-mb20">
+						<select id="zzTags" multiple="multiple" style="width: 100% !important"></select>
+					</div>
+					<div id="zzBookmarkCurrentPage" class="cui-btn cui-btn-blue cui-fullwidth">
+						Αποθήκευση σελίδας στα αποκόμματα
+					</div>
+				</div>
+
+				<div id="zzContLogin" class="cui-text-center cui-hidden">
+					<table style="width: 100%">
+						<tr>
+							<!--							<td style="width: 70px;"><img src="img/offline.png"></td>-->
+							<td style="text-align: left">
+								<!--								<b>Δεν είστε Συνδεδεμένοι</b>-->
+								<div class="cui-font-sm">
+									Για να μπορείτε να αποθηκεύετε σελίδες από το διαδίκτυο, συνδεθείτε στο mywebook.
+								</div>
+							</td>
+							<td>
+								<div id="zzBtnLogin" class="cui-btn cui-btn-green">Σύνδεση</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div id="zzMessage" class="cui-title cui-mtb40 cui-hidden cui-text-center"></div>
+
+				<div id="idDbgStatus" class="cui-font-sm cui-gray"></div>
+
+				<div class="cui-links">
+					<table class="cui-table-pages">
+						<tr>
+							<td>
+								<a class="cui-link1" href="#" id="zzShowBookmarks"
+									><img src="img/clip_small.png" /><br />Αποκόμματα</a
+								>
+							</td>
+							<td>
+								<a class="cui-link2" href="#" id="zzShowHomePage"
+									><img src="img/Home_Small.png" /><br />Κεντρική Σελίδα</a
+								>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a class="cui-link3" href="#" id="idPrefsStart"
+									><img src="img/dimographic_small.png" /><br />Δημογραφικά</a
+								>
+							</td>
+							<td>
+								<a class="cui-link4" href="#" id="zzShowFavorites"
+									><img src="img/Fav_small.png" /><br />Οι Ιστοσελίδες μου</a
+								>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div id="divPrefsPage1" class="cui-page cui-wide-page">
+				<div id="cmptTextPage1"></div>
+				<div class="cui-mt20 cui-fullwidth">
+					<div zzattrPageClose="1" class="cui-btn cui-btn-half cui-btn-red cui-left">Επιστροφή</div>
+					<!--					<div zzattrPageShow="divPrefsReadMore" class="cui-btn cui-btn-half cui-btn-blue cui-right">Επόμενο</div>-->
+					<div id="idPrefsPage1Next" class="cui-btn cui-btn-half cui-btn-blue cui-right">
+						Επόμενο
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../lib/jquery-3.2.1.min.js"></script>
+		<script src="../lib/select2/select2.full.min.js"></script>
+		<script src="../cmn/cmn-all.js"></script>
+		<!-- build:js popup.js -->
+		<script src="uiactions.js"></script>
+		<script src="popup.js"></script>
+
+		<!-- endbuild -->
+	</body>
+</html>

@@ -1,0 +1,1 @@
+var OPERATOR_NAME = "РОСЮГКУРОРТ";

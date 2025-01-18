@@ -1,0 +1,1 @@
+window.isQuickLoginAsyncFormAction = true;

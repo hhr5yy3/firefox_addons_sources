@@ -1,0 +1,674 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="iframe.css">
+    <title>Help</title>
+  </head>
+  <body>
+
+
+  <nav>
+    <a href="#Preamble">Preamble</a>
+    <a href="#how-to">How to Use</a>
+    <a href="#Options">Options</a>
+    <a href="#Date-Clock">Date & Clock</a>
+    <a href="#Context-Menu">Context Menu</a>
+    <a href="#Container">Container</a>
+    <a href="#Theme">Theme</a>
+    <a href="#Redirect">Redirect</a>
+    <a href="#Support">Support</a>
+  </nav>
+
+  <article>
+    <section>
+
+    <h2 id="Preamble">Preamble</h2>
+    <p>Actions works from any Tab, active or background. Firefox restricts some functions (e.g. copy/prompt/warning) on some URLs.</p>
+
+
+
+    <h2 id="how-to">How to Use</h2>
+
+    <p class="note">Editing is non-destructive. Click <b>Save</b> to apply the new settings.</p>
+
+    <h4>Tab, Highlighted, All, Left, & Right</h4>
+    <ul>
+      <li>Tab actions relate to the right-clicked tab</li>
+      <li>Highlighted tabs takes priority in single tab actions which means if there are highlighted tabs (besides the active tab), the action will apply to the highlighted tabs</li>
+      <li>All actions relate to the every tab in the active window</li>
+      <li>Left/Right actions relate to the tab to the left or right of the right-clicked tab</li>
+    </ul>
+
+
+
+    <h3>Toolbar Icon</h3>
+
+    <h4>Toolbar Icon Context Menu</h4>
+    <p>Right-click on Toolbar Icon:</p>
+    <p class="note">The maximum number of items that can be added to the top-level browser action context menu is 6 on Firefox and Chrome, but there can be any number of items to submenus.</p>
+
+    <dl>
+      <dt><img src="../image/gear.svg" alt=""> Options</dt>
+      <dd>Open the Options Page</dd>
+
+      <dt>Select Match</dt>
+      <dd>Select tabs based on URL matching the pattern</dd>
+
+      <dt>Other Menus</dt>
+      <dd>Same as Tab Context Menu</dd>
+    </dl>
+
+
+    <h4>Toolbar Icon Badge <sup style="background-color: #f70;">5</sup></h4>
+    <p>Badge indicates the number of opened. Before Firefox74, up to 4 characters could have been display (9999) but that has changed to 3.</p>
+    <blockquote>There were some issues with long <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browserAction/setBadgeText" target="_blank">browserAction badge texts</a> wrapping incorrectly. The badge text supports three characters, a fourth may fit in depending on the letters used.
+
+      <cite><a href="https://blog.mozilla.org/addons/2020/03/05/extensions-in-firefox-74/" target="_blank">Extensions in Firefox 74</a></cite>
+    </blockquote>
+
+
+    <h4>Toolbar Icon Pop-up</h4>
+
+    <dl>
+      <dt>&#x264b;&nbsp; Header Zodiac Sign</dt>
+      <dd>Current Zodiac Sign display and its name on mouseover</dd>
+
+      <dt>&#x1f522;&nbsp; Tab Count</dt>
+      <dd>Current window tab count</dd>
+
+      <dt>&#x1f4c5;&nbsp; Date & Time</dt>
+      <dd>Dates & Times display if set in Settings</dd>
+
+      <dt>Select Match</dt>
+      <dd>Select Tabs based on URL matching the pattern to use <i>FoxyTab</i> or Firefox native actions</dd>
+      <dd>Set a string or Regular Expression pattern to select tabs</dd>
+      <dd>Regular Expression string (without start & end slashes and flags) uses <code>new RegExp()</code> (case-insensitive) therefore (single) escaping especial characters are necessary but not needed for forward slashes <code>/</code>.</dd>
+      <dd>Data is stored in <code>localStorage</code> for reuse but it will not be available in Private Windows.</dd>
+
+
+      <dt>Modifiers</dt>
+      <dd>Modify the behaviour of applicable actions</dd>
+      <dd>Data is stored in <code>localStorage</code> for reuse but it will not be available in Private Windows.</dd>
+      <dd>
+        <dl>
+          <dt>Pinned</dt>
+          <dd>If selected, applicable actions include pinned tab</dd>
+
+          <dt>Hidden</dt>
+          <dd>If selected, applicable actions include hidden tab</dd>
+
+          <dt>Container</dt>
+          <dd>If selected, applicable actions are limited to contextual identity of the clicked tab (or active tab)</dd>
+
+          <dt>Duplicate To Private</dt>
+          <dd>If selected, Move To Private Window keeps the original tabs</dd>
+        </dl>
+      </dd>
+
+      <dt><img src="../image/gear.svg" alt=""> Options</dt>
+      <dd>Open the Options Page</dd>
+
+      <dt>Help</dt>
+      <dd>Display the Help document</dd>
+
+    </dl>
+
+
+    <h3>Tab Context Menu</h3>
+    <p>Right-click on the Tab ...</p>
+
+    <dl>
+      <dt><img src="../image/close.svg" alt=""> Close Duplicate Tabs</dt>
+      <dd>Close all duplicate tabs, ignoring location.hash</dd>
+
+      <dt><img src="../image/pdf.svg" alt=""> Save Tab as PDF</dt>
+      <dd>Save as PDF is not available on Mac OS X in Firefox 56-81. It uses the built-in Firefox PDF creation feature.</dd>
+
+      <dt><img src="../image/camera.svg" alt=""> Capture</dt>
+      <dd>Create and copy to clipboard, a data URI encoding an image of the visible area of the given tab. The default format of the resulting image is "png".</dd>
+
+      <dt><img src="../image/print.svg" alt=""> Print</dt>
+      <dd>Print the contents of the active tab. If this function is called, the user will be presented with the print dialog from the underlying platform, and will have the chance to change the print settings and then print the currently active tab.</dd>
+
+
+
+
+      <dt><img src="../image/copy.svg" alt=""> Copy</dt>
+      <dd>Copy according to sub-menus ...
+          <dl>
+            <dt><img src="../image/title.svg" alt=""> Tab Title</dt>
+            <dd>Any Tab or highlighted, active or not</dd>
+
+            <dt><img src="../image/ip.svg" alt=""> Tab IP</dt>
+            <dd>IP (can be IPv4 or IPv6) of any Tab or highlighted, active or not (requires Show Flag option)</dd>
+
+            <dt class="indent">URLs</dt>
+            <dd>Any Tab or highlighted, All, To the Left, or To the Right</dd>
+
+            <dt class="indent">Titles & URLs</dt>
+            <dd>Any Tab or highlighted, All, To the Left, or To the Right</dd>
+
+            <dt class="indent">Custom</dt>
+            <dd>Any Tab or highlighted, All, To the Left, or To the Right</dd>
+          </dl>
+        </dd>
+
+      <dt><img src="../image/library.svg" alt=""> Bookmark</dt>
+      <dd>Bookmark All, To the Left, or To the Right<br>
+          <i>(N.B. Firefox already has the menu for tab or highlighted)</i></dd>
+
+      <dt><img src="../image/removed-bookmark.svg" alt=""> Close Bookmarked Tabs</dt>
+      <dd>Close Bookmarked Tabs All, To the Left, or To the Right</dd>
+
+      <dt><img src="../image/host.svg" alt=""> Host</dt>
+      <dd>Action based on tab host
+          <dl>
+            <dt><img src="../image/check.svg" alt=""> Keep</dt>
+            <dd>Keep all the tabs from the same host, close others</dd>
+
+            <dt><img src="../image/close.svg" alt=""> Close</dt>
+            <dd>Close all the tabs from the same host, keep others</dd>
+
+            <dt class="indent">Close other Host Tabs</dt>
+            <dd>Close all other tabs from the same host but keep the right-clicked tab, keep others</dd>
+
+            <dt><img src="../image/move.svg" alt=""> Move Host to New Window</dt>
+            <dd>Move all host tabs to a new window</dd>
+
+            <dt><img src="../image/move.svg" alt=""> Move Host to this Window</dt>
+            <dd>Move all host tabs from other windows to this window</dd>
+            <dd>To preserve security, Host tabs from the same type of window is moved
+              <ul>
+                <li>if current window is private, only host tabs in other private windows will be moved</li>
+                <li>if current window is normal, only host tabs in other normal windows will be moved</li>
+              </ul>
+            </dd>
+
+            <dt><img src="../image/reload.svg" alt=""> Reload</dt>
+            <dd>Reload all the tabs from the same host</dd>
+          </dl>
+        </dd>
+
+      <dt><img src="../image/sort-asc.svg" alt=""> Sort</dt>
+      <dd>Sort window tabs by URL or Titles, Ascending or Descending</dd>
+      <dd class="experimental">Sort window tabs by Domain, Ascending or Descending</dd>
+      <dd>Sort window tabs in reverse</dd>
+
+      <dt><img src="../image/move.svg" alt=""> Move</dt>
+      <dd>Move tabs To the Left, or To the Right to a new window</dd>
+      <dd>Move Tabor highlighted, or tabs To the Left, or To the Right to a new Private window</dd>
+
+      <dt><img src="../image/sleep.svg" alt=""> Discard</dt>
+      <dd>Discard Tab or highlighted, or tabs To the Left, or To the Right</dd>
+      <dd>Some browsers automatically "discard" tabs that they don't think are likely to be needed by the user soon. The tab stays visible in the tab-strip and the browser remembers its state, so if the user selects a tab that has been discarded, it is immediately restored.<br>
+        It's not possible to discard the currently active tab, or a tab whose document contains a beforeunload listener that would display a prompt.</dd>
+
+      <dt><img src="../image/hide.svg" alt=""> Hide</dt>
+      <dd>Hide Tab or highlighted, All, To the Left, or To the Right<br>
+          Not all tabs are eligible for being hidden:
+          <ul>
+            <li>Tabs that are pinned cannot be hidden.</li>
+            <li>Tabs that are sharing the screen, microphone or camera cannot be hidden.</li>
+            <li>The current active tab cannot be hidden.</li>
+            <li>Tabs that are in the process of being closed cannot be hidden.</li>
+          </ul>
+        </dd>
+
+      <dt><img src="../image/show.svg" alt=""> Show</dt>
+      <dd>Show hidden tabs All, To the Left, or To the Right</dd>
+
+      <dt><img src="../image/pin.svg" alt=""> Pin</dt>
+      <dd>Pin tabs All, To the Left, or To the Right<br>
+          <i>(N.B. Firefox already has the menu for tab or highlighted)</i></dd>
+
+      <dt><img src="../image/unpin.svg" alt=""> Unpin</dt>
+      <dd>Unpin tabs All, To the Left, or To the Right<br>
+          <i>(N.B. Firefox already has the menu for tab or highlighted)</i></dd>
+
+      <dt><img src="../image/shortcut.svg" alt=""> Create Desktop Shortcut</dt>
+      <dd>Creates a shortcut for the Tab or highlighted, All, To the Left, or To the Right</dd>
+
+      <dt><img src="../image/new-window.svg" alt=""> Window</dt>
+      <dd>
+          <dl>
+            <dt><img src="../image/new-window.svg" alt=""> Merge All Windows</dt>
+            <dd>Move all tabs from other windows to this window</dd>
+            <dd>To preserve security, tabs from the same type of window is moved
+              <ul>
+                <li>if current window is private, only tabs in other private windows will be moved</li>
+                <li>if current window is normal, only host tabs in other normal windows will be moved</li>
+              </ul>
+            </dd>
+
+
+            <dt><img src="../image/close.svg" alt=""> Close Other Windows</dt>
+            <dd>Close all other opened windows.</dd>
+        </dl>
+      </dd>
+
+      <dt><img src="../image/reload.svg" alt=""> Reload</dt>
+      <dd>Reload All, To the Left, or To the Right</dd>
+      <dd>Reload Tab every 1-5 minutes or by Custom interval</dd>
+      <dd>Stop Tab Reload</dd>
+
+    </dl>
+
+
+
+
+    <h3>Keyboard Shortcut</h3>
+    <p>You can change/set keyboard shortcuts (Firefox 66+).</p>
+
+    <blockquote><b>Manage extension shortcuts in Firefox</b><br><br>
+
+    You can now change your extensions' keyboard shortcuts on the add-ons page.
+
+    <ol>
+      <li>Click the menu button <code>&#x2630;</code>, click <code>Add-ons and Themes</code> and select <code>Extensions</code>.</li>
+      <li>Click the <i>Tools</i> for all <i>add-ons</i> cogwheel.<br><img src="../image/keyboard-shortcut.png" alt=""></li>
+      <li>Click <code>Manage Extension Shortcuts</code> in the menu.</li>
+      <li>You will see the shortcut options (if available) for your installed add-ons.</li>
+    </ol>
+
+    <cite><a href="https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox" target="_blank">Manage extension shortcuts in Firefox</a></cite>
+    </blockquote>
+
+    <h3>Light/Dark Theme</h3>
+    <p>Default scheme is based on <a href="https://developer.mozilla.org/docs/Web/CSS/@media/prefers-color-scheme" target="_blank">prefers-color-scheme</a>.</p>
+
+
+
+    <h2 id="Options">Options</h2>
+
+    <h3>Tab Counter</h3>
+    <p>Enable or Disable the Tab Counter</p>
+
+    <h3>Per Window</h3>
+    <p>Display Tab Counter per Window</p>
+
+    <h3>Alternative Icon</h3>
+    <p>Use an alternative grayscale toolbar icon</p>
+    <p class="note">At the moment it is not possible to change the top-level context-menu icon.</p>
+
+    <h3>Maximum Tabs</h3>
+    <p>Limit the number of Tabs (0 = no limit), requires Tab Counter</p>
+    <p>Result depends on Per Window setting i.e. maximum tabs per Window or overall</p>
+
+    <h3>Badge Text Color</h3>
+    <p>Change the Badge Text Color</p>
+
+    <h3>Badge Background Color</h3>
+    <p>Change the Badge Background Color</p>
+
+    <h3>Show Flag</h3>
+    <p>Show country Flag and process IP location (also used in Copy IP & Custom Copy)</p>
+    <p class="note">Internal database is used for IP location.</p>
+
+    <h3 class="experimental">Clean URL</h3>
+    <p>Remove tracking/redirecting strings from Tab URLs<br><i>(few patterns added, more will be added)</i></p>
+
+    <h3>Custom Reload</h3>
+    <p>Select a Custom Reload value (set to between 6 to 30 minutes at the moment)</p>
+
+
+    <h3>Custom Copy</h3>
+    <p>Set a Custom Copy format using the following parameters. Any formatting can be used, even HTML (to post to web).</p>
+
+<table>
+  <caption>Custom Format</caption>
+  <thead>
+    <tr>
+     <th style="width: 30%;">Code</th>
+     <th>Result</th>
+    </tr>
+  </thead>
+  <tbody class="code">
+    <tr><td>{ip}</td><td>Tab IP</td></tr>
+    <tr><td>{title}</td><td>Tab title</td></tr>
+    <tr><td>{url}</td><td>Tab URL</td></tr>
+    <tr><td>{hostname}</td><td>e.g. www.example.com</td></tr>
+    <tr><td>{date}</td><td>e.g. Fri Mar 20 2020</td></tr>
+    <tr><td>{time}</td><td>e.g. 23:15:30</td></tr>
+    <tr><td>{yyyy}</td><td>e.g. 2020</td></tr>
+    <tr><td>{mm}</td><td>e.g. 03</td></tr>
+    <tr><td>{dd}</td><td>e.g. 20</td></tr>
+ </tbody>
+</table>
+
+<table>
+  <caption>Examples</caption>
+  <thead>
+    <tr>
+     <th style="width: 30%;">Custom Format</th>
+     <th>Result</th>
+    </tr>
+  </thead>
+  <tbody class="code">
+    <tr>
+     <td>{title}
+
+{ip}
+({url})
+{date} {time}</td>
+     <td>Example Title
+
+100.1.1.250
+(http://www.example.com/)
+Nov 03 2018 23:26</td>
+    </tr>
+
+    <tr>
+     <td>ref: {title} [{url}]</td>
+     <td>ref: Example Title [http://www.example.com/]</td>
+    </tr>
+
+    <tr>
+     <td>&lt;b&gt;Title:&lt;/b&gt; {title}
+
+&lt;a href="{url}"&gt;{url}&lt;/a&gt;</td>
+   <td>&lt;b&gt;Title:&lt;/b&gt; Example Title
+
+&lt;a href="http://www.example.com/"&gt;http://www.example.com/&lt;/a&gt;</td>
+    </tr>
+ </tbody>
+</table>
+
+    <h3>PDF Page Settings</h3>
+    <p>Settings for the saved page, as a <code>tabs.PageSettings</code> <code>object</code>. This object must be a <b>valid JSON</b>, but all its properties are optional. Any properties not specified here will get the default values listed in the <a href="https://developer.mozilla.org//docs/Mozilla/Add-ons/WebExtensions/API/tabs/PageSettings"><code>PageSettings</code></a> documentation.</p>
+
+
+    <h3 id="import-export">Preferences: Import/Export</h3>
+    <p>You can import/export Preferences (for backup or share) from/to a local file on your computer.</p>
+    <p class="note">Import is non-destructive. Click <b>Save</b> to apply the new settings.</p>
+
+    <p class="note">Prior to 2.16, there was only one SAVE and clicking it, saved the entire data.<br>
+    <br>
+    Since 2.16, each section has its own SAVE which improves the performance as there are many checks in each section and some require the data to be built before saving.<br>
+    <br>
+    The side-effect of above is that when importing, the SAVE in the Options only saves the Options, and not the other sections. Their SAVE have to be clicked one by one as well (or ignored if desired in some cases).</p>
+
+    <h3 id="save">Save</h3>
+    <p>Please note that changes will not take effect until they are saved.</p>
+
+    <h3>Restore Defaults</h3>
+    <p>Restores the Defaults settings (good in case of error). Click "Save" to apply changes.</p>
+
+
+     <h2 id="Date-Clock">Date & Clock</h2>
+
+    <h4>Date</h4>
+    <p>Add multiple Date displays in preferred languages in the Toolbar popup. To change one, <img src="../image/bin.svg" style="width: 16px; vertical-align: initial;" alt=""> delete the unwanted one and &#10133; add a new one.<br>
+      <b>Note:</b> The selected dates will be set as toolbar icon title and can be seen on mouse-over.</p>
+
+    <h4>Clock</h4>
+    <p>Add multiple Clock displays in preferred languages and Time-zones in the Toolbar popup. To change one, <img src="../image/bin.svg" style="width: 16px; vertical-align: initial;" alt=""> delete the unwanted one and &#10133; add a new one.</p>
+    <p class="note">Not all city names can be included (there are 400+ cities). Names can to be added on popular demand.</p>
+
+
+    <h2 id="Context-Menu">Context Menu</h2>
+    <p>Enable or Disable each item on the context-menu and/or re-order the items.</p>
+
+    <ul>
+      <li>Click each menu to select/deselect</li>
+      <li>Click &#x25b2; &#x25bc; to move up/down</li>
+      <li>Click &#x232b; Clear to clear all selection</li>
+      <li>Select/deselect or enable/disable a parent menu will be applied to its sub-menus</li>
+      <li>After disabling menus, it may look better to disable the associated separators</li>
+    </ul>
+
+
+    <h2 id="Container">Container</h2>
+    <p>If <i>Firefox Multi-Account Containers</i> is installed (Nightly has it by default), you can set <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/match_patterns" target="_blank">Match Pattern</a> domains to be opened in the preferred container.</p>
+
+    <p class="warning">If <a href="https://addons.mozilla.org/firefox/addon/multi-account-containers/" target="_blank">Firefox Multi-Account Containers</a> is installed, its "Limit to designated sites" must be disabled as there will be a conflict, resulting in a loop.<br>
+    (ref: <a href="https://github.com/mozilla/multi-account-containers/issues/2350" target="_blank">"Limit to designated sites" conflict with other Container addons)</a>
+    </p>
+
+    <dl>
+       <dt>Name</dt>
+      <dd>Previously saved container name is displayed (which may be different if preferences were imported)</dd>
+      <dt>Limit to Designated Sites</dt>
+      <dd>If selected, external links in the container tab will open according to their own container settings</dd>
+    </dl>
+
+    <p class="warning">If containers are deleted, the matching patterns will become obsolete.</p>
+
+<table>
+  <caption>Examples</caption>
+  <thead>
+    <tr>
+      <th>Pattern</th>
+      <th>match</th>
+      <th>no-match</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>example.org</code>
+      </td>
+      <td>
+        <p class="pass">http://example.org/</p>
+        <p class="pass">https://example.org/some/path/</p>
+        <p class="pass"><s>ftp://example.org/some/path/</s> <a href="https://blog.mozilla.org/addons/2020/04/13/what-to-expect-for-the-upcoming-deprecation-of-ftp-in-firefox/" title="What to expect for the upcoming deprecation of FTP in Firefox" target="_blank">&#x24d8;</a></p>
+
+      </td>
+      <td>
+        <p class="fail">https://www.example.org/</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>*.example.org</code>
+      </td>
+      <td>
+        <p class="pass">http://example.org/</p>
+        <p class="pass">https://example.org/some/path/</p>
+        <p class="pass">http://www.example.org/some/path/</p>
+      </td>
+      <td>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td><code class="fail">example.*</code></td>
+      <td><p class="fail">Invalid Match Patterns</p></td>
+      <td>"*" in host must be at the start</td>
+    </tr>
+
+    <tr>
+      <td><code class="fail">*example.org</code></td>
+      <td><p class="fail">Invalid Match Patterns</p></td>
+      <td>"*" in host must be the only character or be followed by "."</td>
+    </tr>
+
+
+  </tbody>
+</table>
+
+
+
+    <h2 id="Theme">Theme</h2>
+
+    <h3>Create, Import, Export & Apply your own Theme</h3>
+    <p><a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme" target="_blank">Theme</a> is made up of a "header" graphic image file, which skins the default Firefox UI background.</p>
+
+    <h4>Creating a Theme Image</h4>
+    <p>A foreground image to be added to the header area and anchored to the upper right corner of the header area.</p>
+
+    <h4>Image Requirements:</h4>
+    <ul>
+      <li>Images should be 200 pixels high to ensure they always fill the header space vertically.</li>
+      <li>Dimensions should be <b>3000px</b> wide × <b>200px</b> high</li>
+      <li>PNG, JPG, APNG, SVG, GIF (animated GIF isn’t supported) or Data:URI file format</li>
+      <li>Image must not be larger than 300 KB in file size</li>
+    </ul>
+
+    <h4>Tips</h4>
+    <ul>
+      <li>Subtle, soft contrast images and gradients work best; highly detailed images will compete with the browser UI.</li>
+      <li>Firefox may reveal more of the lower portion of the image if another toolbar or other UI element is added to the top of the window.</li>
+      <li>The upper right-hand side of the image should have the most important information—as a user increases the width of the browser window, the browser reveals more of the left-hand side of the image.</li>
+      <li>Ultrawide monitors can run to 3440px wide, to look good on these monitors, either increase the size of the image or ensure the left of the image fades to a solid colour.</li>
+    </ul>
+
+      <h4>Import</h4>
+      <p>Import ready FoxyTab Themes (JSON files), or import an image into the theme that you are making.</p>
+      <p>Imported Image will be converted to <code>Data:URI</code> entered in "Header Image" section, if it is empty and if not, in the "Additional Backgrounds" section.</p>
+      <p>FoxyTab Theme manifests can be imported into FoxyTab in the following JSON format, using any available properties listed on <a href="https://developer.mozilla.org/Add-ons/WebExtensions/manifest.json/theme">MDN theme</a>.<br>
+      The main difference is that images must be in Data:URI format. Maximum size allowed for the JSON is set to 500kb.</p>
+      <p>The minimum requirements for a theme are "accentcolor" & "textcolor".</p>
+
+
+<precaption>Example</precaption>
+<pre>{
+  "name": "Theme Name",
+  "description": "A short explanation of your theme",
+  "version": "1.0",
+  "homepage_url": "https://.../",
+  "author": "your name",
+
+  "theme": {
+     "images": {
+       "theme_frame": "data:image/jpg;base64 ...",
+       "additional_backgrounds": [ "data:image/png;base64 ..."]
+     },
+     "colors": {
+       "frame": "green",
+       "tab_background_text": "#000"
+     },
+     "properties": {
+       "additional_backgrounds_alignment": [ "top" ],
+       "additional_backgrounds_tiling": [ "repeat"  ]
+     }
+   }
+} </pre>
+
+
+    <h4>Export</h4>
+    <p>Export the theme as JSON to archive or share.</p>
+
+    <h4>Selector</h4>
+    <p>Select previously saved themes</p>
+
+    <h4>Editing</h4>
+    <dl>
+      <dt>Add</dt>
+      <dd>Add the theme to temporary storage (click SAVE to save it permanently)</dd>
+
+      <dt>Update</dt>
+      <dd>Update the saved theme</dd>
+
+      <dt>Delete</dt>
+      <dd>Delete the saved theme</dd>
+
+      <dt>Clear</dt>
+      <dd>Clear the displayed theme</dd>
+
+      <dt>Apply</dt>
+      <dd>Apply the currently displayed theme. Changes will also be applied. You can Apply a theme without saving it.</dd>
+
+      <dt>Reset</dt>
+      <dd>Reset the current theme</dd>
+    </dl>
+
+
+
+
+    <h2 id="Redirect">Redirect</h2>
+    <p>Setup Tab Redirect rules to forward tab URLs. one rule per line, with 2-3 parts separated by space/s. Matching is case-insensitive.</p>
+
+    <h4>Format</h4>
+    <p style="white-space: pre;">match     redirect (replace)     exclude-match <i>(optional)</i></p>
+    <p class="note">The entire URL is matched in match/exclude-match.</p>
+
+<precaption>Example</precaption>
+<pre>
+http://example.com/*                            https://example.com/$1
+https://*.example2.com/*                        https://www.example2.com/$1           https://my.example2.com/*
+https://([^.]+)\.example3\.co\.uk/(\d+)/(\w+)   https://$1.example3.com/$2/$3
+</pre>
+
+    <h4>Wildcard</h4>
+    <p>Wildcard implementation is similar to <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/match_patterns" target="_blank">Match Patterns</a></p>
+
+<table>
+  <caption>Examples</caption>
+  <thead>
+    <tr>
+      <th>Pattern</th>
+      <th>match</th>
+      <th>no-match</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>*://*.example.org/*</code>
+      </td>
+      <td>
+        <code class="pass">http://example.org/</code><br>
+        <code class="pass">https://www.example.org/</code><br>
+        <code class="pass">http://www.sub.example.org/aaa/</code>
+      </td>
+      <td>
+        <code class="fail">http://www.example.com/</code>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>*://example.org/</code>
+      </td>
+      <td>
+        <code class="pass">http://example.org/</code><br>
+        <code class="pass">https://example.org/</code>
+      </td>
+      <td>
+        <code class="fail">https://www.example.org/</code><br>
+        <code class="fail">http://example.org/aaa/</code>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>https://*/path</code>
+      </td>
+      <td>
+
+        <code class="pass">https://www.example.org/path</code>
+      </td>
+      <td>
+        <code class="fail">http://example.org/</code><br>
+        <code class="fail">http://example.org/path</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+    <h4>Regular Expression</h4>
+    <p>Regular Expressions require escaping and therefore any match/exclude-match that includes backslash <code>\</code> would be regraded as Regular Expression.</p>
+    <p>Regular Expression string (without start & end slashes and flags) uses <code>new RegExp()</code> (case-insensitive) therefore (single) escaping especial characters are necessary but not needed for forward slashes <code>/</code>.</p>
+
+
+    <h4>Replacement Parameter</h4>
+    <p>$1, $2, $3, ... can be used in redirect to <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/replace" target="_blank">replace</a> <code>*</code> in wildcard type, or <code>(..)</code> in regular expression type matches.</p>
+
+
+    <h4>Test URL</h4>
+    <p>Enter a URL & click <kbd>Enter</kbd> to test the result.</p>
+
+
+
+
+    <h2 id="Support"><img src="../image/help.svg" alt=""> Support</h2>
+    <p>Please use the GitHub Community <a href="https://github.com/erosman/support" target="_blank">Support</a>.</p>
+
+    </section>
+  </article>
+  </body>
+</html>

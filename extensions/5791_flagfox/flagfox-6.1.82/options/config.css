@@ -1,0 +1,125 @@
+/* NOTE: This file contains only CSS that is only needed in config.html and is dependent on the rest of the CSS defined in common.css */
+
+/*BEGIN ACTIONS LIST ITEMS ***************************************************/
+/*{{{*/
+
+ul#actionsList { position: relative; overflow-x: hidden; overflow-y: scroll; }  /* position:relative needed for autoscrolling to work properly */
+li.action-item { list-style: none; border: none; justify-content: space-between; }
+
+li.action-item > span[data-id]:not([data-id="dragimage"]) {  /* don't wrap text; truncate with an ellipsis instead */
+    vertical-align: top;
+    text-overflow: ellipsis; overflow: hidden;
+    width: 32ch;
+}
+li.action-item > span[data-id="name"] { min-width: 5ch; }
+li.action-item > span[data-id="shortcuts"] { min-width: 1ch; }
+li.action-item > span:not([data-id]),
+li.action-item > span[data-id="dragimage"] {
+    padding: 0;
+}
+
+li.action-item button.icon { padding: 0 0.5em; }
+
+li.action-item.default        button[data-id*="delete"]   { visibility: hidden; }
+
+li.action-item.default        button[data-id="edit"]      { display: none; }  /* default: configure, not edit */
+li.action-item:not(.default)  button[data-id="configure"] { display: none; }  /* custom:  edit, not configure */
+
+li.action-item.disabled       button[data-id="delete"]    { display: none; }  /* disabled/deleted: can't delete */
+
+li.action-item:not(.disabled) button[data-id="undelete"]  { display: none; }  /* not disabled/deleted: can't undelete */
+
+.disabled:not([data-id="undelete"]) { opacity: 0.66; } /* WARNING: opacity stacks, so never use it with '*' children/descendants */
+.disabled:not([data-id="undelete"]), .disabled:not([data-id="undelete"]) * { cursor: default !important; filter: none !important; }
+
+/* -moz-html-Cell* colors are what's used for <select> item selections, generally blue; -moz-Cell* are for tree item slections, generally grey (previously the same) */
+.selected { /*text-*/color: -moz-html-CellHighlightText; background-color: -moz-html-CellHighlight; }
+
+/*}}}*/
+/*BEGIN DRAG/DROP INDICATION *************************************************/
+/*{{{*/
+
+ul#actionsList { border: medium dotted transparent; }  /* placeholder so layout stays consistent when the border changes */
+ul#actionsList.droptarget { border-color: Highlight; }  /* -moz-DragTargetZone sounds better, but doesn't actually work on all platforms */
+
+/* no placeholder for top/bottom indicators; a shift in positioning is desired to indicate placement in-between items */
+li.action-item.droptarget-top { border-top-style: dotted; border-top-color: Highlight; }
+li.action-item.droptarget-bottom { border-bottom-style: dotted; border-bottom-color: Highlight; }
+
+/*}}}*/
+/*BEGIN HOVER DROP DOWN MENUS ************************************************/
+/*{{{*/
+
+div.dropdown, div.dropdown * {
+    padding: unset;  /* padding set for other parts of the page is N/A here; unset to avoid things getting disheveled */
+    font: inherit;   /* use same font as surrounding content for this menu (just selecting buttons doesn't work) */
+    width: -moz-max-content;  /* this not being default or even a standard is reason enough to need to abandon all CSS and start over */
+}
+
+div.dropdown { display: inline-flex; position: relative; }            /* main button is inline; children flex vertically; child positions are relative to this */
+div.dropdown-menu { position: absolute; top: 100%; }                  /* position dropdown menu directly below main button */
+div.dropdown:not(:hover) > div.dropdown-menu { visibility: hidden; }  /* hide menu by default; show on hover (show on keyboard focus requires simulating hover in JS) */
+
+div.dropdown *:not(img) { align-items: stretch; flex: 1; }  /* So much crap needed to make things work; I wish CSS were actually designed to make GUIs............... */
+
+/* replace all the styling here with native menu/menuitem styling and widths to match width of main button */
+div.dropdown button, div.dropdown-menu { border: none; /*text-*/color: MenuText; background-color: Menu; min-width: 100%; }
+div.dropdown button { padding: 2%; }
+div.dropdown button:hover { /*text-*/color: -moz-MenuHoverText; background-color: -moz-MenuHover; }  /* theoretically more accurate for menus than HighlightText+Highlight */
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0.75), rgba(0,0,0,0.05));
+}
+
+/*}}}*/
+/*BEGIN CLIPBOARD BUFFER *****************************************************/
+/*{{{*/
+
+/* HACK: For this stupid thing to work, it must be not hidden, though it can be invisible via opacity=0 */
+textarea#clipboard-target {
+    position: absolute; display: block;
+    z-index: -1000;
+    width: 1px; height: 1px;
+    top: 0; left: 0;
+    margin: 0; border: 0; padding: 0;
+    color: transparent; background-color: transparent;
+    opacity: 0; resize: none;
+}
+
+/*}}}*/
+/*BEGIN LIGHTBOX *************************************************************/
+/*{{{*/
+
+div[id^="lightbox"] {
+    position: absolute; display: none;
+    margin: 0; padding: 0;
+}
+div[id^="lightbox"][id$="overlay"] {
+    top: 0%; left: 0%;
+    width: 100%; height: 100%;
+}
+body[data-showlightbox="true"] div[id^="lightbox"] {
+    display: block;
+}
+body[data-loadinglightbox="true"] div[id^="lightbox-child"] {
+    visibility: hidden;
+}
+
+div#lightbox-parentcontentoverlay {
+    z-index: 999;
+    background-color: black;
+    opacity: 0.80; filter: alpha(opacity=80);
+}
+div#lightbox-childcontentoverlay {
+    z-index: 1000;
+    background-color: transparent;
+}
+div#lightbox-childcontentbackground {
+    z-index: 1001;
+    background-color: -moz-default-background-color;
+    border: 1px solid Highlight; border-radius: 5px;
+}
+
+/*}}}*/

@@ -1,0 +1,3 @@
+function clearInputsValue() {
+    return null;
+}

@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Redmine Timer Project List</title>
+<style>
+body {
+	font-family: Verdana,Geneva,Tahoma,Arial,Helvetica,sans-serif;
+	font-size: 1em;
+}
+a {
+	color: #0000FF;
+}
+.project {
+	margin: 3px;
+}
+.bigdiv {
+    border-radius: 20px;
+    border: 3px solid #31E981;
+    color: #000000;
+	float: left;
+	margin: 10px;
+	
+}
+.recording {
+	border-color: #00120B;
+	background: #35605A;
+	color: #FFFFFF;
+}
+.smalltext {
+	font-size: 0.8em;
+}
+#timerdiv {
+	font-size: 0.8em;
+}
+</style>
+<script src="projectab.js"></script> 
+</head>
+<body>
+<p>Tap a project to record time <input type="button" id="btnShowList" value="Add/remove projects" /></p>
+<div id="addremoveprojects" style="display: none; height:auto; overflow:visible;">
+	<input type="button" id="saveprojects" value="Save" /> <a href="#" class="smalltext" id="cancelprojects">Cancel</a>
+	
+	<div id="allprojects" style="height:auto; overflow:visible; margin-top: 8px; margin-bottom: 8px;"></div>
+	<div id="wait" style="font-size: 0.8em; margin: 15px;">Please wait while we get available projects from Redmine...</div>
+	<p><a href="#" id="btnLoadMore" style="display: none;">Load more projects</a></p>
+	<input type="button" id="saveprojects2" value="Save" /> <a href="#" class="smalltext" id="cancelprojects2">Cancel</a>
+</div>
+<div id="projectlist"></div>
+</body>
+</html>

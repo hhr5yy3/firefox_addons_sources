@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Settings</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="page-header">
+        <img src="images/logo_wordmark.png">
+      </div>
+      <div class="main">
+        <div class="section separator-bottom"><p>Make phone numbers clickable and initiate calls from Zoiper</p></div>
+        <div class="simple-option section separator-bottom">
+          <label for="display-logo">Display logo</label>
+          <input type="checkbox" id="display-logo" class="toggle">
+          <label for="display-logo"></label>
+        </div>
+        <div class="simple-option section separator-bottom">
+          <label for="display-region-flag">Display country flag</label>
+          <input type="checkbox" id="display-region-flag" class="toggle">
+          <label for="display-region-flag"></label>
+        </div>
+        <div class="simple-option section separator-bottom">
+          <label for="default-region">Region</label>
+          <select id="default-region"></select>
+        </div>
+        <div class="title"><h2>Blacklist</h2>
+          <img class="info-box" src="images/info_icon.png" title="Enable/disable the extension from working on specific website or page of your choice.">
+        </div>
+        <div class="input-action-pair">
+          <input type="text" id="match-pattern" placeholder="Example: https://*.example.com/*/document/*?mode=edit">
+          <button class="btn-add-exception">Add</button>
+        </div>
+        <div id="error-message"></div>
+        <div id="exceptions"><ul></ul></div>
+      </div>
+    </div>
+    <script src="mv2-polyfill.js"></script>
+    <script src="match-pattern.js"></script>
+    <script src="helper.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

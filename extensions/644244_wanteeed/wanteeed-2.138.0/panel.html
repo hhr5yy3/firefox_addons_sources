@@ -1,0 +1,187 @@
+<div class="select-none content">
+  <div class="header">
+    <div style="padding-left:0.75rem">
+      <div class="menu community-menu dropdown-button relative cursor-pointer" data-constrainwidth="false" data-beloworigin="true" data-activates="menu">
+        <img src="img/avatar.svg" alt="wanteeed-avatar" class="image h-full w-8 py-1.5" />
+        <img src="img/bronze-badge.svg" alt="community-badge" class="image absolute inline-flex w-4 h-4 bottom-1.5 right-0" />
+      </div>
+      <i class="menu original-menu material-icons blue-grey-text text-darken-1 dropdown-button" data-constrainwidth="false"
+         data-beloworigin="true" data-activates="menu"
+         style="font-size:20px;padding:9px 0px 0 0;cursor:pointer;">menu</i>
+      <!-- Dropdown Structure -->
+      <ul id="menu" class="dropdown-content">
+        <li><a id="account" href="#!" data-i18n>mon_compte</a></li>
+        <li><a id="shops" href="#!" data-i18n>les_boutiques</a></li>
+        <li><a id="gift-cards" href="#!" data-i18n>bons_achat</a></li>
+        <li><a id="ota" href="#!" data-i18n>hebergement</a></li>
+      </ul>
+    </div>
+    <div style="flex: 1;">
+      <ul class="tabs app">
+        <li class="tab check"><a data-id="checkpanel" data-i18n>codes</a></li>
+        <li class="tab bonus"><a data-id="bonuspanel" data-i18n>bonus</a></li>
+      </ul>
+      <ul class="tabs login" style="height:37px;display:none;">
+        <li class="tab"><a data-i18n>connexion</a></li>
+      </ul>
+      <ul class="tabs register" style="height:37px;display:none;">
+        <li class="tab"><a data-i18n>activation</a>
+        </li>
+      </ul>
+      <ul class="tabs blockeralert" data-id="blockerpanel" style="display:none;">
+        <li class="tab">
+          <a data-i18n>attention</a>
+        </li>
+      </ul>
+    </div>
+    <div id="close" style="padding-right: 6px;">
+      <i class="material-icons" style="color:rgba(14, 48, 91, 0.6);font-size:20px;padding:9px 0px 0 0;cursor:pointer;">close</i>
+    </div>
+  </div>
+
+  <div id="checkpanel" class="tab-content active">
+    <div id="check" class="panel mt-6">
+      <div class="circle red-text text-lighten-1">
+        15
+      </div>
+
+      <div class="message grey-text" style="width:200px;margin:0 auto;font-size:15px;" data-i18n>
+        codes_promo_disponibles_pour_cette_boutique
+      </div>
+
+      <div id="check-vouchers" class="invisible">
+        <a class="runcheck waves-effect waves-light btn red lighten-1" style="margin:auto;height:35px;line-height:35px;"
+           data-i18n>tester_les_codes</a>
+      </div>
+
+      <div id="tip-autotest-vouchers" class="row invisible mt-6" style="margin-bottom:20px;">
+        <div class="col s12">
+          <div class="px-10 flex items-center justify-center">
+            <img src="img/unicorn-tip.svg" class="image h-full w-[4rem]" />
+            <div class=" text-center text-accent-500 pl-2 text-sm" data-i18n>tip_autotest_vouchers</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="vote" class="panel" style="display:none;">
+      <p style="margin: 0;padding:0 20px" data-i18n>
+        les_codes_promo_automatiques_ne_sont_pas_encore_disponibles_sur_cette_boutique</p>
+      <div class="circle wide red-text text-lighten-1">
+        <i class="material-icons" style="line-height:70px;font-size:32px;">thumb_up</i>
+      </div>
+      <div class="red-text text-lighten-2 message" data-i18n>je_vote</div>
+    </div>
+  </div>
+
+  <div id="bonuspanel" class="tab-content">
+    <div class="panel" style="position: relative;">
+      <div class="row" style="margin-bottom: 15px;">
+        <div class="col s12">
+          <div class="center-align valign-wrapper grey-text text-darken-2">
+            <div class="bestOfferOK hide">
+              <div class="flex justify-center"><img style="height: 39px;"></div>
+              <div style="font-size:20px;line-height: 21px;margin-top: 3px;" data-i18n>bonus_surprise</div>
+              <div class="grey-text text-darken" data-i18n>jusqu_a_x_</div>
+              <div style="margin: 11px 40px 0;font-size:13px;line-height:16px;" data-i18n>
+                nous_vous_remboursons_une_partie_de_vos_achats_sur_cette_boutique</div>
+            </div>
+            <div class="bestOfferOKenabled hide">
+              <div id="progressValidationCircle"
+                   style="width: 70px; height: 70px; position: relative; margin: 5px auto;"></div>
+              <div class="grey-text text-darken" id="textMeasureBonus" style="margin: 4px 24px 0;" data-i18n>
+                _x_des_derniers_achats_ont_donne_droit_a_un_bonus_surprise</div>
+            </div>
+            <div class="bestOfferNOK hide" style="margin-top: 47px;" data-i18n>
+              aucun_bonus_n_est_actuellement_disponible_pour_cette_boutique
+            </div>
+
+            <div class="flex flex-col items-center pb-4 m-auto font-bold bestOfferMea hide">
+              <div class="p-4 grey-text" data-i18n>
+                no_bonus_mea_title
+              </div>
+              <img class="bestOfferMeaImg" src="" />
+              <div class="mb-4 text-sm font-bold text-accent-700 mt-7" data-i18n>
+                no_bonus_mea_body
+              </div>
+              <!-- shop card -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row bonusFromWebsite hide">
+        <div class="col s12">
+          <div class="center-align valign-wrapper grey-text text-darken-2">
+            <div>
+              <div style="font-size:20px;line-height: 21px;margin-top: 3px;font-weight: bold;" data-i18n>ce_marchand_ne_permet_pas_extension</div>
+              <div style="margin: 11px 40px 15px;font-size:13px;line-height:16px;" data-i18n>vous_pouvez_activer_cashback_depuis_notre_site</div>
+              <a class="bonus-from-website waves-effect waves-light btn red lighten-1 flex flex-row items-center justify-center gap-2"
+                 style="margin:auto;height:35px;line-height:35px;" target="_blank">
+                <span data-i18n>aller_voir_les_offres</span>
+                <svg width="16" height="16" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.49372 0.251051C7.15201 -0.0836838 6.59799 -0.0836838 6.25628 0.251051C5.91457 0.585786 5.91457 1.1285 6.25628 1.46323L10.1219 5.24994H0.847059C0.379241 5.24994 0 5.58573 0 5.99994C0 6.41415 0.379241 6.74994 0.847059 6.74994H10.122L6.25628 10.5368C5.91457 10.8715 5.91457 11.4142 6.25628 11.7489C6.59799 12.0837 7.15201 12.0837 7.49372 11.7489L12.7437 6.60609C13.0854 6.27136 13.0854 5.72864 12.7437 5.39391L7.49372 0.251051Z" fill="currentColor"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row bonusNOK">
+        <div class="col s12">
+          <div class="valign-wrapper">
+            <a class="bonus waves-effect waves-light btn red lighten-1 disabled"
+               style="margin:auto;height:35px;line-height:35px;" data-i18n>pas_de_bonus</a>
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute;bottom:-3px;left:0;width:100%;">
+        <div class="left-align message red-text text-lighten-3 exclusions center hide" style="font-size:12px;">
+          <span style="cursor: pointer;" data-i18n>exclusions</span>
+        </div>
+        <div style="position: absolute;right: 3px; bottom:2px;" id="cguIcon">
+          <a id="tos" class="material-icons"
+             style="font-size:20px;padding:0px 0px 0 0;cursor:pointer;color:rgba(14, 48, 91, 0.6);"
+             href="#!">info_outline</a>
+        </div>
+      </div>
+    </div>
+    <div id="exclusionsContent" class="hide text-accent-700/60 overflow-hidden overflow-y-auto relative max-h-[300px] mt-3 mr-4 mb-0 ml-6">
+      <div class="pb-3 pr-2"></div>
+    </div>
+  </div>
+
+  <div id='blockerpanel' class="tab-content">
+    <div class="left-align valign-wrapper">
+      <i class="tiny material-icons">arrow_back</i>
+      <a class="return" data-i18n>adblock_return</a>
+    </div>
+    <div class="row valign-wrapper">
+      <div class="col s4">
+        <img class="adblock-unicorn" src="" alt="" />
+      </div>
+      <div class="col s8">
+        <p data-i18n class="grey-text">adblock_title</p>
+        <p data-i18n class="grey-text bold">adblock_content</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="center-align">
+        <a class="cta" data-i18n>adblock_cta</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="communicationZoneContainer" class="hidden">
+    <!-- placeholder zone communication (react app injectée dynamiquement) --></div>
+
+  <div id="communityPanelContainer" class="hidden">
+    <!-- placeholder zone communication (react app injectée dynamiquement) --></div>
+
+  <div class="valign-wrapper" style="height: 30px;">
+    <img class="logo valign" />
+  </div>
+</div>

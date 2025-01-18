@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title data-i18n="opt.optionstitle"></title>
+        <link type="text/css" rel="stylesheet" href="common.css"/> <!-- NOTE: common.css must be first -->
+        <link type="text/css" rel="stylesheet" href="config.css"/>
+        <!-- NOTE: HTML script tags always require both open and close tags; CSS link tags don't -->
+        <script type="application/javascript" src="/util.js"></script> <!-- NOTE: util.js must be first -->
+        <script type="application/javascript" src="domutil.js"></script>
+        <script type="application/javascript" src="import.js"></script>
+        <script type="application/javascript" src="config.js"></script>
+    </head>
+    <body data-showlightbox="false">
+        <!-- Invisible text area needed to check the clipboard for stuff to paste, because the clipboard API is awful (also, this aparently needs 3 different ways to say "off") -->
+        <textarea id="clipboard-target" autocomplete="off" draggable="false" spellcheck="false" translate="no" wrap="off"></textarea>
+        <!-- Lightbox for loading child dialogs. Enable by setting: body[data-showlightbox="true"] -->
+        <div id="lightbox-parentcontentoverlay"></div>
+        <div id="lightbox-childcontentoverlay">
+            <div id="lightbox-childcontentbackground" class="centered">
+                <iframe id="lightbox-iframe">
+                    <p><b>ERROR: Why/how on Earth would you have iframes disabled for an addon?</b></p>
+                </iframe>
+            </div>
+        </div>
+        <fieldset class="row spread section">
+            <span>
+                <span class="checkboxwrapper">
+                    <input id="showFaviconsCheckbox" type="checkbox"/>
+                </span>
+                <label for="showFaviconsCheckbox" data-i18n="opt.favicons"></label>
+            </span>
+            <span>
+                <label for="openInMenu" data-i18n="opt.openin"></label>
+                <select id="openInMenu">
+                    <option value="tabF" data-i18n="opt.tabf"></option>
+                    <option value="tabB" data-i18n="opt.tabb"></option>
+                    <option value="tabC" data-i18n="opt.tabc"></option>
+                    <option value="winF" data-i18n="opt.winf"></option>
+                    <option value="winB" data-i18n="opt.winb"></option>
+                </select>
+            </span>
+            <a id="openIconsPreviewLink"
+               href="#" tabindex="0" role="button">
+                <img src="/icons/preview.png"/>
+                <label for="openIconsPreviewLink" data-i18n="opt.preview"></label>
+            </a>
+        </fieldset>
+        <fieldset class="autoexpand-y section">
+            <legend data-i18n="opt.customize"></legend> <!-- subheader for fieldset -->
+            <ul id="actionsList" class="autoexpand-y" role="menu"/>
+                <!-- actions list to be generated here -->
+            </ul>
+            <template id="actionsList-itemTemplate">
+                <li data-id="aID:?" class="action-item" role="menuitem" draggable="true">
+                    <span class="checkboxwrapper">
+                        <input data-id="checkbox" type="checkbox"
+                               data-i18n-title="opt.show"/>
+                    </span>
+                    <span data-id="dragimage" class="draggable"> <!-- this lets the favicon be used as the drag image with a consistient size, regardless of image resolution -->
+                        <img data-id="favicon"
+                             src="/icons/default.png"/> <!-- src is set on template use; value here is what it shows before the new src finishes loading -->
+                    </span>
+                    <span data-id="name"></span> <!-- NOTE: MUST have both an opening and closing tag to add contents -->
+                    <span data-id="shortcuts"></span>
+                    <span>
+                        <button data-id="configure" class="icon"
+                                data-i18n-title="opt.editdefault">
+                            <img src="/icons/configure.png"/>
+                        </button>
+                        <button data-id="edit" class="icon"
+                                data-i18n-title="opt.editcustom">
+                            <img src="/icons/edit.png"/>
+                        </button>
+                        <button data-id="delete" class="icon"
+                                data-i18n-title="opt.delete">
+                            <img src="/icons/delete.png"/>
+                        </button>
+                        <button data-id="undelete" class="icon"
+                                data-i18n-title="opt.undelete">
+                            <img src="/icons/undelete.png"/>
+                        </button>
+                    </span>
+                </li>
+            </template>
+            <span id="actionsMangement-controls" class="row spread">
+                <!-- hover dropdown menu -->
+                <div id="actionsMangement-menu"
+                     class="dropdown" role="menu">
+                    <button id="new" role="menuitem">
+                        <img src="/icons/add.png"/>
+                        <label for="new" data-i18n="opt.new"></label>
+                    </button>
+                    <div class="dropdown-menu">
+                        <button id="clone" role="menuitem">
+                            <img src="/icons/clone.png"/>
+                            <label for="clone" data-i18n="opt.clone"></label>
+                        </button>
+                        <button id="paste" role="menuitem">
+                            <img src="/icons/copy.png"/>
+                            <label for="paste" data-i18n="opt.paste"></label>
+                        </button>
+                        <hr/>
+                        <button id="more" role="menuitem">
+                            <img src="/icons/goto.png"/>
+                            <label for="more" data-i18n="opt.getmore"></label>
+                        </button>
+                    </div>
+                </div>
+                <span>
+                    <label for="down" data-i18n="opt.move"></label>
+                    <!-- arrows start disabled and can get enabled on selection -->
+                    <button id="down" class="icon disabled">
+                        <img src="/icons/down.png"/>
+                    </button>
+                    <button id="up" class="icon disabled">
+                        <img src="/icons/up.png"/>
+                    </button>
+                </span>
+            </span>
+        </fieldset>
+        <span id="footer" class="row spread section">
+            <a id="resetMessagesLink"
+               hidden="true"
+               href="#" tabindex="0" role="button">
+                <img src="/icons/messages.png"/>
+                <label for="resetMessagesLink" data-i18n="opt.resetmsgs"></label>
+            </a>
+            <a id="aboutLink"
+               class="rightmost"
+               href="#" tabindex="0" role="button">
+                <img src="/icons/special/about.png"/>
+                <label for="aboutLink" id="aboutLinkLabel">Flagfox</label>
+            </a>
+        </span>
+    </body>
+</html>

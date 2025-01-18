@@ -1,0 +1,459 @@
+<html>
+<head>
+<style>
+body {width: 100%;height: 100%;margin: 0px;padding: 0px;border: none;}
+</style>
+</head>
+<body>
+<script type="text/javascript" id="script_google_map" charset="utf-8"></script>
+<div id="script_wrapper" style="display: none;"></div>
+<table cellspacing="0" cellpadding="0" width="100%" border="0" height="100%">
+<tr valign="top"><td id="geolocation_frame"><noscript><center><h3>Please enable JavaScript or temporarily disable NoScript</h3></center></noscript></td></tr>
+</table>
+<div style="display: none;">
+	<div id="geolocation_infowindow" style="font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 12px; margin: 0; padding: 0;">
+		<center>
+			<div style="text-align: center; padding: 3px; font-size: 1.2em; color: #2C3654; font-weight: bold;" id="infowindow_name">${name}</div>
+			<div id="geolocation_infowindow_error" style="display: none;">
+				<div id="geolocation_infowindow_accuerror" style='color: red'></div>
+				<span id="geolocation_infowindow_tryagain" style="color: #0000FF; text-decoration: underline; cursor: pointer;"></span>
+			</div>
+		</center>
+		<table style="padding-top: 10px;" cellspacing="0" cellpadding="0" width="100%" border="0">
+		<tr valign="center" style="white-space: nowrap !important;">
+			<td id="geolocation_infowindow_wait" style="padding-right: 5px;" width="16"><img src="/geolocation-plswait.gif" width="16" height="16"/></td>
+			<td style="padding-right: 10px;"><button id="geolocation_infowindow_select" style="cursor: pointer; padding: 0; font-size: 11px;" value="options.locations.select" disabled="true"></button></td>
+			<td align="right"><button id="geolocation_infowindow_zoom" style="cursor: pointer; padding: 0; font-size: 11px;" value="options.locations.zoom"></button></td>
+		</tr>
+		</table>
+	</div>
+</div>
+<script type="text/javascript" charset="utf-8">
+var geolocation = {};
+geolocation.geocodes = [];
+geolocation.show_english_locations = false;
+geolocation.locale_i18n = '';
+geolocation.loc_count = 0;
+
+geolocation.GOOGLE_MAP_URL = 'https://maps.googleapis.com/maps/api/js?sensor=false&callback=geolocation.map_initialize&language=%LANG%';
+//geolocation.GOOGLE_MAP_URL = 'https://maps.google.com/maps/api/js?sensor=false&callback=geolocation.map_initialize&language=%LANG%';
+//geolocation.GOOGLE_MAP_URL = 'https://www.google.com/maps/api/js?sensor=false&callback=geolocation.map_initialize&language=%LANG%';
+geolocation.SEARCH_URL = '';
+geolocation.GOOGLE_GEOCODE_URL = 'https://maps.googleapis.com/maps/api/geocode/json?language=en&latlng=';
+//geolocation.GOOGLE_GEOCODE_URL = 'https://maps.google.com/maps/api/geocode/json?language=en&latlng=';
+//geolocation.GOOGLE_GEOCODE_URL = 'https://www.google.com/maps/api/geocode/json?language=en&latlng=';
+
+//------------------------------------------------------------------------------
+geolocation.load_google_maps = function(lang) {
+	var url = geolocation.GOOGLE_MAP_URL.replace('%LANG%', lang);
+	var script_google_map = document.getElementById('script_google_map');
+	script_google_map.src = url;
+}
+//------------------------------------------------------------------------------
+geolocation.map_initialize = function() {
+	var map_options = {
+		'zoom' : 1,
+		'center' : new google.maps.LatLng(0.0,0.0),
+		'mapTypeId' : google.maps.MapTypeId.ROADMAP,
+		'mapTypeControl' : false,
+		'zoomControl' : true,
+//		'scaleControl' : false,
+//		'rotateControl' : false,
+		'streetViewControl' : false
+	};
+
+	geolocation.map = new google.maps.Map(document.getElementById('geolocation_frame'), map_options);
+	geolocation.show_map();
+	geolocation.script_wrapper_set('callback_init', true);
+	geolocation.infowindow = document.getElementById('geolocation_infowindow');
+}
+//------------------------------------------------------------------------------
+geolocation.show_map = function() {
+	google.maps.event.trigger(geolocation.map, 'resize');
+	if (geolocation.geocodes.length == 0) {
+		geolocation.map.setZoom(1);
+		geolocation.map.setCenter(new google.maps.LatLng(0.0,0.0));
+	}
+}
+//------------------------------------------------------------------------------
+geolocation.search = function(search_query) {
+	search_query = String(search_query).trim();
+	geolocation.remove_all_markers();
+	geolocation.show_map();
+
+	if (search_query) {
+		geolocation.do_geocode_search(search_query);
+	}
+}
+//------------------------------------------------------------------------------
+geolocation.do_geocode_search = function(search_query) {
+	try {
+		// this is the search function!
+		var geocoder = new google.maps.Geocoder();
+		geolocation.script_wrapper_set('spinner_show', true);
+
+		geocoder.geocode(geolocation.get_geocode_options(search_query), function(geocode_responses, status) {
+			//-----------------------------------------------------------
+			geolocation.script_wrapper_set('spinner_show', false);
+			//-----------------------------------------------------------
+			if (status == google.maps.GeocoderStatus.OK) {
+				geolocation.script_wrapper_set('error_hidden', true);
+				geolocation.close_all_infowindows();
+				var bounds = null;
+
+				//-----------------------------------------------------
+				geocode_responses.forEach(function(item) {
+					var geocode = new geolocation.Geocode(item);
+					var vp = geocode.viewport();
+					if (!bounds) {
+						bounds = new google.maps.LatLngBounds(vp.getSouthWest(), vp.getNorthEast());
+					}
+					bounds.extend(geocode.latlng());
+					geocode.lookup_name();
+					geocode.render();
+					geolocation.geocodes.push(geocode);
+				});
+				//-----------------------------------------------------
+				geolocation.map.fitBounds(bounds);
+				//-----------------------------------------------------
+				if (geolocation.geocodes.length == 1) {
+					geolocation.geocodes[0].open();
+				}
+			}
+			//-----------------------------------------------------------
+			else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+				geolocation.script_wrapper_set('error_show_text', 'options.search.nolocs');
+			}
+			//-----------------------------------------------------------
+			else {
+				geolocation.script_wrapper_set('error_show_text', 'options.search.error');
+			}
+		});
+	} catch (e) {
+		geolocation.script_wrapper_set('error_show_text', e);
+	}
+}
+//------------------------------------------------------------------------------
+geolocation.get_geocode_options = function(search_query) { // search_query is OPTIONAL
+	var query = search_query;
+	var opts = { 'address': query, 'language': geolocation.locale_i18n };
+	if (geolocation.show_english_locations) {
+		opts.language = 'en';
+	}
+	return opts;
+}
+//------------------------------------------------------------------------------
+geolocation.remove_all_markers = function() {
+	geolocation.geocodes.forEach(function(item) {
+		item.remove();
+	});
+	geolocation.geocodes = [];
+}
+//------------------------------------------------------------------------------
+geolocation.close_all_infowindows = function() {
+	geolocation.geocodes.forEach(function(item) {
+		item.infowindow.close();
+	});
+}
+//------------------------------------------------------------------------------
+geolocation.get_marker = function(search_id) {
+	var geocode = null;
+
+	geolocation.geocodes.forEach(function(item) {
+		if (item.id() == search_id) {
+			geocode = item;
+		}
+	});
+
+	return geocode;
+}
+//------------------------------------------------------------------------------
+geolocation.get_element = function(parent, search_id) {
+	if (parent == null) { return null; };
+
+	for (var i=0; i<parent.childNodes.length; i++) {
+		var el = parent.childNodes[i];
+		if (el.id == search_id) {
+			return el;
+		}
+		if (el.hasChildNodes()) {
+			var res = geolocation.get_element(el, search_id);
+			if (res != null) {
+				return res;
+			}
+		}
+	}
+	return null;
+}
+//------------------------------------------------------------------------------
+geolocation.Geocode = function(geocode) {
+	this._name = null;
+	this._english_name = null;
+	this._code = null;
+	this._geocode = geocode;
+	this._reverse_geocode = null;
+	this._address = null;
+	this._id = 'geo' + (geolocation.loc_count++);
+
+	this._extract_address();
+};
+//------------------------------------------------------------------------------
+geolocation.Geocode.prototype = {
+	//------------------------------------------------------------------------
+	name: function(n) {
+		if (n !== undefined) {
+			this._name = n;
+			// TODO update data / rendering?
+		}
+		return this._name;
+	},
+	//------------------------------------------------------------------------
+	code: function(c) {
+		if (c !== undefined) {
+			this._code = c;
+			// TODO update data / rendering?
+		}
+		return this._code;
+	},
+	//------------------------------------------------------------------------
+	render: function() {
+		var latlng = this.latlng();
+		this.marker = new google.maps.Marker({
+			'map': geolocation.map,
+			'position': latlng,
+			'title': this.name()
+		});
+		var infowindow = geolocation.infowindow.cloneNode(true);
+		geolocation.get_element(infowindow, 'infowindow_name').innerHTML = this.name();
+		this.infowindow = new google.maps.InfoWindow({ 'content' : infowindow });
+		this._install_listeners();
+	},
+	//------------------------------------------------------------------------
+	_get_english_name: function(callback) {
+		var resp = this._geocode;
+		this.english_name_callback = callback;
+
+		var query = {
+			'url' : geolocation.GOOGLE_GEOCODE_URL + resp.geometry.location.lat() +',' + resp.geometry.location.lng(),
+			'search_id' : this.id()
+		};
+		geolocation.script_wrapper_set('get_english_name', JSON.stringify(query));
+	},
+	//------------------------------------------------------------------------
+	_set_english_name: function(english_name) {
+		this._english_name = english_name;
+	},
+	//------------------------------------------------------------------------
+	_install_listeners: function() {
+		var self = this;
+		this._infowindow_click = google.maps.event.addListener(this.marker, 'click', function() {
+			geolocation.close_all_infowindows();
+			self.open();
+		});
+		// TODO move into the click event
+		this._infowindow_domready = google.maps.event.addListener(this.infowindow, 'domready', function() {
+			if (self.code()) {
+				self._lookup_success();
+			} else {
+				self._show_wait(true);
+				self._show_button_select(false);
+				self._show_error(false);
+
+				self._get_english_name(function() {
+					self._locate_on_accuweather();
+				});
+			}
+
+			geolocation.get_element(self.infowindow.content, 'geolocation_infowindow_zoom').addEventListener("click", function() {
+				geolocation.map.fitBounds(self.viewport());
+				geolocation.close_all_infowindows();
+				self.open();
+			});
+			geolocation.get_element(self.infowindow.content, 'geolocation_infowindow_tryagain').addEventListener("click", function() {
+				self._locate_on_accuweather();
+			});
+			geolocation.get_element(self.infowindow.content, 'geolocation_infowindow_select').addEventListener("click", function() {
+				self.select_location();
+			});
+		});
+	},
+	//------------------------------------------------------------------------
+	marker: function() { return this._marker; },
+	infowindow: function() { return this._infowindow; },
+	latlng: function() { return this._geocode.geometry.location; },
+	viewport: function() { return this._geocode.geometry.viewport; },
+	id: function() { return this._id; },
+	open: function() { this.infowindow.open(geolocation.map, this.marker); },
+	close: function() { this.infowindow.close(); },
+	toString: function() { return JSON.stringify(this._geocode); },
+	//------------------------------------------------------------------------
+	remove: function() {
+		this.close();
+		this.marker.setMap(null);
+	},
+	//------------------------------------------------------------------------
+	select_location: function() {
+		this._show_wait(true);
+		this._show_button_select(false);
+
+		var backing = this.backing();
+		geolocation.script_wrapper_set('set_location', JSON.stringify(backing));
+	},
+	//------------------------------------------------------------------------
+	backing: function() {
+		return {
+			"name" : this._name,
+			"code" : this._code,
+			"rotate" : true,
+			"current" : true,
+			"latlng" : { lat: this.latlng().lat(), lng: this.latlng().lng() }
+		};
+	},
+	//------------------------------------------------------------------------
+	lookup_name: function() {
+		// first start with the formatted address field;
+		this._name = this._address.formatted_address;
+	},
+	//------------------------------------------------------------------------
+	_extract_address: function() {
+		this._address = {};
+		var geocode = this;
+		this._geocode.address_components.forEach(function(comp) {
+			comp.types.forEach(function(item) {
+				geocode._address[item] = comp.long_name || comp.short_name;
+			});
+		});
+		this._address.formatted_address = this._geocode.formatted_address;
+	},
+	//------------------------------------------------------------------------
+	_show_wait: function(is_show) {
+		geolocation.get_element(this.infowindow.content, 'geolocation_infowindow_wait').style.visibility = (is_show) ? '' : 'hidden';
+	},
+	//------------------------------------------------------------------------
+	_show_error: function(is_show) {
+		geolocation.get_element(this.infowindow.content, 'geolocation_infowindow_error').style.display = (is_show) ? '' : 'none';
+	},
+	//------------------------------------------------------------------------
+	_show_button_select: function(is_show) {
+		if (is_show) {
+			geolocation.get_element(this.infowindow.content, 'geolocation_infowindow_select').removeAttribute('disabled')
+		} else {
+			geolocation.get_element(this.infowindow.content, 'geolocation_infowindow_select').setAttribute('disabled', true);
+		}
+	},
+	//------------------------------------------------------------------------
+	//  auto_select=true if we should select location on success 
+	//------------------------------------------------------------------------
+	_locate_on_accuweather: function() {
+		var address = this._address;
+		var url = geolocation.SEARCH_URL;
+		var resp = this._geocode;
+		var geocode = this;
+		var self = this;
+
+		this._show_wait(true);
+		this._show_button_select(false);
+		this._show_error(false);
+
+		var location = {};
+		location.locality = (this._english_name) ? this._english_name : address.location;
+		if (address.locality) {
+			location.locality = address.locality;
+		}
+		location.country = address.country;
+		if ('postal_code' in address) { location.postal_code = address.postal_code; }
+
+		var query = {
+			'latlng' : { lat: resp.geometry.location.lat(), lng: resp.geometry.location.lng() },
+			'location' : location,
+			'search_id' : this.id()
+		};
+
+		this._get_location_search_results(query);
+	},
+	//------------------------------------------------------------------------
+	_get_location_search_results : function(query) {
+		geolocation.script_wrapper_set('find_location', JSON.stringify({ 'query' : query, 'search_id' : query.search_id }));
+	},
+	//------------------------------------------------------------------------
+	_lookup_error: function() {
+		this._show_error(true);
+		this._show_wait(false);
+	},
+	//------------------------------------------------------------------------
+	_lookup_success: function(code) {
+		this._show_error(false);
+		this._show_wait(false);
+		this._show_button_select(true);
+		this.code(code);
+	}
+};
+//------------------------------------------------------------------------------
+geolocation.observer = new MutationObserver(function(mutations) {
+	for (var mutation of mutations) {
+		if (mutation.type == 'attributes') {
+			var el = mutation.target;
+			//------------------------------------------------------
+			if (mutation.attributeName == "load_map") {
+				var lang = el.getAttribute('load_map');
+				if (lang) {
+					geolocation.load_google_maps(lang);
+				}
+			}
+			//------------------------------------------------------
+			else if (mutation.attributeName == "search_url") {
+				geolocation.SEARCH_URL = el.getAttribute('search_url');
+			}
+			//------------------------------------------------------
+			else if (mutation.attributeName == "search_text") {
+				geolocation.search(el.getAttribute('search_text'));
+			}
+			//------------------------------------------------------
+			else if (mutation.attributeName == "show_english_locations") {
+				var value = mutation.target.getAttribute('show_english_locations');
+				value = (String(value) == 'true');
+				geolocation.show_english_locations = value;
+			}
+			//------------------------------------------------------
+			else if (mutation.attributeName == "locale_i18n") {
+				geolocation.locale_i18n = el.getAttribute('locale_i18n');
+			}
+			//------------------------------------------------------
+			else if (mutation.attributeName == "find_location_result") {
+				var request = JSON.parse(el.getAttribute('find_location_result'));
+				var geocode = geolocation.get_marker(request.search_id);
+				if (geocode) {
+					if (request.success) {
+						geocode._lookup_success(request.code);
+					} else {
+						geocode._lookup_error();
+					}
+				}
+			}
+			//------------------------------------------------------
+			else if (mutation.attributeName == "set_english_name") {
+				var query = JSON.parse(el.getAttribute('set_english_name'));
+				var geocode = geolocation.get_marker(query.search_id);
+				if (geocode) {
+					if (query.english_name) {
+						geocode._set_english_name(query.english_name);
+					}
+					if (geocode.english_name_callback) {
+						geocode.english_name_callback();
+						geocode.english_name_callback = null;
+					}
+				}
+			}
+		}
+	}
+});
+geolocation.script_wrapper = document.getElementById('script_wrapper');
+geolocation.observer.observe(geolocation.script_wrapper, { attributes: true, characterData: true });
+//------------------------------------------------------------------------------
+geolocation.script_wrapper_set = function(name, value) {
+	geolocation.script_wrapper.setAttribute(name, value);
+}
+//------------------------------------------------------------------------------
+</script>
+</body>
+</html>

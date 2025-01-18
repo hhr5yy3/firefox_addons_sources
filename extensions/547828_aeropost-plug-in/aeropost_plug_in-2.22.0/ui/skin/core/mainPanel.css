@@ -1,0 +1,770 @@
+AccountService.@font-face {
+  font-family: 'Montserrat-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Montserrat-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('fonts/Montserrat-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Oswald-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Oswald-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/OpenSans.woff') format('woff');
+}
+
+html {
+  width: 400px;
+  height: 600px;
+}
+
+body {
+  width: 400px;
+  height: 600px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: column; /* Safari 6.1+ */
+  font-family: 'Montserrat-Regular';
+  font-size: 14px;
+  color: #424242;
+  line-height: 16.8px;
+  letter-spacing: 0em;
+  font-weight: normal;
+  background-color: #dfdfdf;
+}
+
+#aero-signed-out-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  -webkit-flex: 1; /* Safari 6.1+ */
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: column; /* Safari 6.1+ */
+}
+
+#aero-signed-in-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex: 1; /* Safari 6.1+ */
+  -webkit-flex-direction: column; /* Safari 6.1+ */
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#aero-not-allowed-content{
+  text-align: center;
+  background-color: #fff;
+  height: 465px;
+}
+
+.aero-not-allowed-text-container {
+  margin-top: 50px;
+}
+
+.aero-footer {
+  height: 50px;
+  text-align: center;
+}
+
+#aero-signed-out-content .aero-footer-signed-out {
+  padding-top: 15px;
+}
+
+.aero-footer-signed-in {
+  background-color: #FFF;
+  padding-top: 20px;
+}
+
+#aero-signin-form-container {
+  margin-top: 20px;
+  background-color: #d1d2d4;
+  border-radius: 5px;
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#aero-signin-spinner {
+  margin-top: 15px;
+}
+
+.aero-logo-big {
+  display: block;
+  background-image: url("img/logo-big.png");
+  margin-left: auto;
+  margin-right: auto;
+  width: 0px;
+  height: 0px;
+  padding: 41px 143px 41px 143px;
+}
+
+.aero-logo-small {
+  display: block;
+  background-image: url("img/logo-small.png");
+  margin-left: auto;
+  margin-right: auto;
+  width: 0px;
+  height: 0px;
+  padding: 21px 72px 21px 72px;
+  float: left;
+  cursor: pointer;
+}
+
+.tab-content {
+  height: 414px;
+  max-height: 414px;
+}
+
+.tab-pane {
+  height: inherit;
+}
+
+.nav-tabs>li {
+  width: 89px;
+}
+
+.nav-tabs>li>a {
+  padding: 0px 5px 5px 5px;
+}
+
+.nav-tabs>li>a>div {
+  text-align: center;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  border: 1px solid #FFF;
+}
+
+.nav-tabs>li>a span {
+  font-family: 'Oswald-Regular';
+  font-size: 12px;
+  color: #757575;
+  line-height: 14.4px;
+  letter-spacing: 0em;
+  font-weight: normal;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-tabs>li.active>a span, .nav-tabs>li.active>a:hover span, .nav-tabs>li.active>a:focus span {
+  color: #0054a4;
+}
+
+#aero-sign-in-prompt {
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.aero-packages-tab-icon {
+  display: block;
+  background-color: transparent;
+  background-image: url("img/tabs/packages.png");
+  width: 0px;
+  height: 0px;
+  padding: 15px 15px 15px 15px;
+  margin-bottom: 3px;
+}
+
+.aero-prealerts-tab-icon {
+  display: block;
+  background-color: transparent;
+  background-image: url("img/tabs/prealerts.png");
+  width: 0px;
+  height: 0px;
+  padding: 15px 15px 15px 15px;
+  margin-bottom: 3px;
+}
+
+.aero-account-tab-icon {
+  display: block;
+  background-color: transparent;
+  background-image: url("img/tabs/account.png");
+  width: 0px;
+  height: 0px;
+  padding: 15px 15px 15px 15px;
+  margin-bottom: 3px;
+}
+
+.aero-feedback-tab-icon {
+  display: block;
+  background-color: transparent;
+  background-image: url("img/tabs/feedback.png");
+  width: 0px;
+  height: 0px;
+  padding: 15px 15px 15px 15px;
+  margin-bottom: 3px;
+}
+
+.nav-tabs>li.active>a .aero-packages-tab-icon, .nav-tabs>li.active>a:hover .aero-packages-tab-icon, .nav-tabs>li.active>a:focus .aero-packages-tab-icon {
+  background-image: url("img/tabs/packages-active.png");
+}
+
+.nav-tabs>li.active>a .aero-prealerts-tab-icon, .nav-tabs>li.active>a:hover .aero-prealerts-tab-icon, .nav-tabs>li.active>a:focus .aero-prealerts-tab-icon {
+  background-image: url("img/tabs/prealerts-active.png");
+}
+
+.nav-tabs>li.active>a .aero-account-tab-icon, .nav-tabs>li.active>a:hover .aero-account-tab-icon, .nav-tabs>li.active>a:focus .aero-account-tab-icon {
+  background-image: url("img/tabs/account-active.png");
+}
+
+.nav-tabs>li.active>a .aero-feedback-tab-icon, .nav-tabs>li.active>a:hover .aero-feedback-tab-icon, .nav-tabs>li.active>a:focus .aero-feedback-tab-icon {
+  background-image: url("img/tabs/feedback-active.png");
+}
+
+.aero-main-font {
+  font-family: 'Montserrat-Regular';
+  font-size: 19px;
+  color: #424242;
+  line-height: 22.8px;
+  letter-spacing: 0em;
+  font-weight: normal;
+}
+
+.aero-main-font-medium {
+  font-family: 'Montserrat-Regular';
+  font-size: 16px;
+  color: #424242;
+  line-height: 19.2px;
+  letter-spacing: 0em;
+  font-weight: normal;
+}
+
+.aero-main-font-medium-small {
+  font-family: 'Montserrat-Regular';
+  font-size: 14px;
+  color: #424242;
+  line-height: 16.8px;
+  letter-spacing: 0em;
+  font-weight: normal;
+}
+
+.aero-main-font-small {
+  font-family: 'Montserrat-Regular';
+  font-size: 13px;
+  color: #424242;
+  line-height: 14.4px;
+  letter-spacing: 0em;
+  font-weight: normal;
+}
+
+.aero-main-font-very-small {
+  font-family: 'Montserrat-Regular';
+  font-size: 12px;
+  color: #424242;
+  line-height: 14.4px;
+  letter-spacing: 0em;
+  font-weight: normal;
+}
+
+.aero-main-font-super-small {
+  font-family: 'Montserrat-Regular';
+  font-size: 10px;
+  color: #424242;
+  line-height: 12px;
+  letter-spacing: 0em;
+  font-weight: normal;
+}
+
+.aero-footer-font {
+  font-family: 'OpenSans';
+  font-size: 9px;
+  color: #424242;
+  line-height: 10.8px;
+  letter-spacing: 0em;
+  font-weight: normal;
+}
+
+.aero-main-color {
+  color: #424242 !important;
+}
+
+.aero-black {
+  color: #000000;
+}
+
+.aero-red {
+  color: #ed1c24;
+}
+
+.aero-white {
+  color: #fff;
+}
+
+.aero-underline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#aero-signin-button {
+  display: block;
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
+  width: 0px;
+  height: 0px;
+  padding: 23px 134px 23px 134px;
+  cursor: pointer;
+}
+
+html.aero-lang-en #aero-signin-button {
+  background-image: url("img/signin-button-en.png");
+}
+
+html.aero-lang-es #aero-signin-button {
+  background-image: url("img/signin-button-es.png");
+}
+
+#aero-signin-country,
+#aero-signin-account,
+#aero-signin-password {
+  height: 32px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+#aero-signin-form {
+  width: 268px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.aero-signin-container {
+  margin-bottom: 10px;
+}
+
+.aero-signin-error-container {
+  height: 20px;
+}
+
+.aero-signin-forgot-password-container {
+  text-align: center;
+}
+
+.aero-signin-loading {
+  margin-top: 15px;
+  color: #9c9a9c;
+}
+
+#aero-signin-spinner-container {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.aero-my-aero-button {
+  display: block;
+  background-image: url("images/my-aero-logo.png");
+  margin-left: auto;
+  margin-right: auto;
+  width: 0px;
+  height: 0px;
+  padding: 17px 87px 17px 87px;
+  cursor: pointer;
+}
+
+.aero-signin-spinner {
+  display: block;
+  background-image: url("img/spinner.gif");
+  margin-left: auto;
+  margin-right: auto;
+  width: 0px;
+  height: 0px;
+  padding: 64px 64px 64px 64px;
+}
+
+.aero-information-button-container {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+}
+
+#aero-information-button {
+  display: block;
+  background-color: transparent;
+  background-image: url("img/information-button.png");
+  width: 0px;
+  height: 0px;
+  padding: 15px 15px 15px 15px;
+  float: left;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#aero-information-button:hover {
+  background-image: url("img/information-button-hover.png");
+  cursor: pointer;
+}
+
+.aero-signed-in-top {
+  margin-bottom: 10px;
+}
+
+.aero-sign-out-button-container {
+  float: right;
+}
+
+.aero-sign-out-button {
+  display: block;
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
+  width: 0px;
+  height: 0px;
+  padding: 15px 37px 15px 37px;
+  cursor: pointer;
+}
+
+html.aero-lang-en .aero-sign-out-button {
+  background-image: url("img/signout-button-en.png");
+}
+
+html.aero-lang-es .aero-sign-out-button {
+  background-image: url("img/signout-button-es.png");
+}
+
+.tab-pane {
+  background-color: #FFF;
+}
+
+.aero-account-info-container {
+  width: 354px;
+  height: 320px;
+  border: 1px solid #e6e6e6;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.aero-account-info-top {
+  height: 98px;
+  background-color: #0054a4;
+  border-bottom: 2px solid #ffc425;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.aero-thumb-logo-container {
+  float: left;
+  height: inherit;
+}
+
+.aero-thumb-logo {
+  display: block;
+  background-image: url("img/thumb-white-big.png");
+  margin-left: 20px;
+  margin-right: 15px;
+  width: 0px;
+  height: 0px;
+  padding: 16px 35px 16px 35px;
+}
+
+.aero-account-info {
+  height: inherit;
+  width: 235px;
+  float: right;
+}
+
+.aero-center-vertically {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.aero-account-info-body {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.aero-account-info-title {
+  font-family: 'Montserrat-Bold';
+  font-size: 14px;
+  color: #005596;
+  line-height: 16.8px;
+  letter-spacing: 0em;
+  margin-bottom: 10px;
+}
+
+.aero-account-info-div {
+  margin-bottom: 15px;
+}
+
+.aero-fill-form-button {
+  display: block;
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
+  width: 0px;
+  height: 0px;
+  padding: 23px 134px 23px 134px;
+  cursor: pointer;
+}
+
+html.aero-lang-en .aero-fill-form-button {
+  background-image: url("img/autocomplete-popup-en.png");
+}
+
+html.aero-lang-es .aero-fill-form-button {
+  background-image: url("img/autocomplete-popup-es.png");
+}
+
+.tab-pane > div {
+  padding-top: 10px;
+}
+
+/** PACKAGES **/
+#aero-packages-empty-list,
+#aero-prealerts-empty-list {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 30px;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  display: -webkit-flex; /* Safari */
+  -webkit-justify-content: center;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#aero-packages-empty-list > div,
+#aero-prealerts-empty-list > div {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.aero-packages-top,
+.aero-prealerts-top {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  display: -webkit-flex; /* Safari */
+  -webkit-justify-content: center;
+  text-align: center;
+}
+
+.aero-packages-top>div,
+.aero-prealerts-top>div {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#aero-packages-list,
+#aero-prealerts-list {
+  margin-top: 5px;
+  overflow-y: auto;
+  max-height: 350px;
+  padding: 0px 10px;
+}
+
+.aero-update-button-container {
+  display: block;
+  background-image: url("img/tabs/refresh-bg.png");
+  width: 0px;
+  height: 0px;
+  padding: 15px 15px 15px 15px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.aero-update-button {
+  display: block;
+  background-image: url("img/tabs/refresh.png");
+  width: 0px;
+  height: 0px;
+  padding: 10px 10px 10px 10px;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
+.spinning {
+  display: block;
+  background-image: url("img/tabs/spinner.gif");
+  width: 0px;
+  height: 0px;
+  padding: 10px 10px 10px 10px;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
+.aero-package,
+.aero-prealert {
+  display: flex;
+  flex-direction: row;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-direction: row; /* Safari 6.1+ */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 3px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.aero-package:hover,
+.aero-prealert:hover {
+  border: 1px solid #aaa;
+  background-color: #eee;
+}
+
+.aero-package-image-barcode {
+  display: block;
+  background-image: url("img/package/barcode.png");
+  width: 0px;
+  height: 0px;
+  padding: 24px 24px 24px 24px;
+}
+
+.aero-package-image-customs {
+  display: block;
+  background-image: url("img/package/customs.png");
+  width: 0px;
+  height: 0px;
+  padding: 24px 24px 24px 24px;
+}
+
+.aero-package-image-packcheck {
+  display: block;
+  background-image: url("img/package/packcheck.png");
+  width: 0px;
+  height: 0px;
+  padding: 24px 24px 24px 24px;
+}
+
+.aero-package-image-alert {
+  display: block;
+  background-image: url("img/package/alert.png");
+  width: 0px;
+  height: 0px;
+  padding: 24px 24px 24px 24px;
+}
+
+.aero-package-image-airplane {
+  display: block;
+  background-image: url("img/package/airplane.png");
+  width: 0px;
+  height: 0px;
+  padding: 24px 24px 24px 24px;
+}
+
+.aero-package-image-truck {
+  display: block;
+  background-image: url("img/package/truck.png");
+  width: 0px;
+  height: 0px;
+  padding: 24px 24px 24px 24px;
+}
+
+.aero-package-image-delivered {
+  display: block;
+  background-image: url("img/package/delivered.png");
+  width: 0px;
+  height: 0px;
+  padding: 24px 24px 24px 24px;
+}
+
+.aero-package-image-returned {
+  display: block;
+  background-image: url("img/package/returned.png");
+  width: 0px;
+  height: 0px;
+  padding: 24px 24px 24px 24px;
+}
+
+.aero-package-icon-container,
+.aero-prealert-icon-container {
+  margin-top: auto;
+  margin-bottom: auto;
+  min-width: 48px;
+  width: 48px;
+  height: 48px;
+}
+
+.aero-package-info-container,
+.aero-prealert-info-container {
+  margin-left: 15px;
+}
+
+.aero-package-info-container > div,
+.aero-prealert-info-container > div {
+  line-height: 15px;
+}
+
+.aero-package-status-delivered {
+  color: #547c2d;
+}
+
+.aero-package-status-alert {
+  color: #b61b1b;
+}
+
+#aero-feedback-pane {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.aero-feedback-header {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+#aero-feedback-form {
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#aero-feedback-comment {
+  margin-bottom: 10px;
+}
+
+#aero-feedback-screenshot {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#aero-feedback-submit {
+  display: block;
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
+  width: 0px;
+  height: 0px;
+  padding: 23px 134px 23px 134px;
+  cursor: pointer;
+}
+
+html.aero-lang-en #aero-feedback-submit {
+  background-image: url("img/feedback-send-en.png");
+}
+
+html.aero-lang-es #aero-feedback-submit {
+  background-image: url("img/feedback-send-es.png");
+}

@@ -1,0 +1,574 @@
+<html>
+<head>
+
+    <meta charset="utf-8"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/lib/jquery-3.3.1.min.js"></script>
+    <script src="/lib/jsencrypt.min.js"></script>
+    <script src="/lib/jquery.client.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/background/helpers/logger.js"></script>
+    <script type="text/javascript" src="scriptLoader.js"></script>
+
+    <!-- CSS goes here -->
+    <!-- Bootstrap -->
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/ui/skin/core/general.css"/>
+</head>
+
+<body id="aero-main-panel" class="hide aeropostPlugBody">
+
+<div id="aero-signed-out-content" class="container-fluid">
+    <div class="mainLogoAp">
+        <a class="aero-main-logo">
+            <img/>
+        </a>
+    </div>
+    <p class="lead leading textCenter headingTextSignUp" rel="i18n[mainpanel.signin.prompt]"></p>
+    <div id="aero-signin-form-container" class="row">
+        <div class="col-md-12">
+            <form id="aero-signin-form" class="form-signin well">
+                <label for="aero-signin-country" class="labelSm CountryLabel"
+                       rel="i18n[mainpanel.signin.form.country]"></label>
+                <select class="form-control" data-val="true" data-val-required="i18n[mainpanel.signin.gateway.required]"
+                        id="aero-signin-country" name="Gateway">
+                </select>
+                <label for="aero-signin-account" class="labelSm emailLabel"
+                       rel="i18n[mainpanel.signin.form.account]"></label>
+                <input id="aero-signin-account" class="form-control"
+                       placeholder="i18n[mainpanel.signin.account.placeholder]" required="" autofocus>
+                <label for="aero-signin-password" class="labelSm passwordLabel"
+                       rel="i18n[mainpanel.signin.form.password]"></label>
+                <input id="aero-signin-password" class="form-control"
+                       placeholder="i18n[mainpanel.signin.password.placeholder]" required="" type="password">
+                <div class="checkbox">
+                    <input id="aero-remember-me" value="remember-me" type="checkbox">
+                    <label for="aero-remember-me" class="labelSm rememberMeLabel"
+                           rel="i18n[mainpanel.signin.form.remember]"></label>
+                </div>
+                <div class="aero-signin-error-container">
+                        <span id="aero-signin-error" class="aero-main-font-super-small aero-red"
+                              rel="i18n[mainpanel.signin.form.signInError]"></span>
+                </div>
+                <button id="aero-signin-button" class="btn btn-lg btn-primary btn-block signInAp" type="submit"
+                        rel="i18n[mainpanel.signin.form.button]"></button>
+                <br>
+                <a id="aero-signin-forgot-password" class="linkForgotPass textCenter" href=""
+                   rel="i18n[mainpanel.signin.form.forgot.password]"></a>
+            </form>
+        </div>
+        <div class="col-md-12 ">
+            <p class="ApTextVersion textCenter aero-footer-version"
+               rel="i18n[mainpanel.footer.signed.out.beta.prompt]"></p>
+        </div>
+    </div>
+    <div id="aero-signin-spinner-container">
+        <img class="aero-signin-spinner"/>
+        <div>
+            <span class="aero-signin-loading"
+                  rel="i18n[mainpanel.signin.loading]"/>
+        </div>
+    </div>
+</div>
+
+<div id="aero-signed-in-content" class="container-fluid">
+    <!-- Heading -->
+    <div class="pluginHeaderCont">
+        <div class="headingPlugin row">
+            <div class="mypluginLogoAp">
+                <a class="aero-main-logo">
+                    <img/>
+                </a>
+            </div>
+        </div>
+
+        <div id="aero-allowed-content">
+
+            <!-- Nav -->
+            <div class="mainNavPlugin row">
+                <ul class="nav navbar-nav aero-tab-list">
+                    <li >
+                        <a href="#aero-cart-pane" role="tab" data-toggle="tab">
+                            <img class="menuIcon tab-icon-cart"/>
+                            <span class="leadBlue-xs" rel="i18n[mainpanel.tab.cart]"></span>
+                        </a>
+                    </li>
+                    <!--li>
+                        <a href="#aero-orders-pane" role="tab" data-toggle="tab">
+                            <img class="menuIcon tab-icon-orders"/>
+                            <span class="leadBlue-xs" rel="i18n[mainpanel.tab.orders]"></span>
+                        </a>
+                    </li-->
+                    <li class="active">
+                        <a href="#aero-packages-pane" role="tab" data-toggle="tab">
+                            <img class="menuIcon tab-icon-tracking"/>
+                            <span class="leadBlue-xs" rel="i18n[mainpanel.tab.tracking]"></span>
+                        </a>
+                    </li>
+                    <!--li>
+                        <a href="#aero-calculator-pane" role="tab" data-toggle="tab">
+                            <img class="menuIcon tab-icon-calc"/>
+                            <span class="leadBlue-xs" rel="i18n[mainpanel.tab.calculator]"></span>
+                        </a>
+                    </li-->
+                    <li id="aero-account-pane-tab" class="userAccountCont">
+                        <a href="#aero-account-pane" role="tab" data-toggle="tab">
+                            <span class="userProfileIcon"><img/></span>
+                            <span class="userInfo">
+                                <span id="aero-header-userName" class="userName"></span>
+                                <span id="aero-header-userNo" class="userNo"></span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Body -->
+            <!-- Tab panes -->
+            <div class="pluginMainBody tab-content">
+                <!-- CART PANE -->
+                <div class="tab-pane" id="aero-cart-pane">
+                    <!-- ShoppingCart Heading-->
+                    <div id="plugin_ShoppingCartHeading" class="row">
+                        <div class="col-xs-12">
+                            <h2 id="aero-cart-header" class="plugHeadingMd"></h2>
+                        </div>
+                    </div>
+
+                    <!-- empty content -->
+                    <div id="aero-cart-empty-content">
+                        <div class="col-xs-12 text-center">
+                            <p><img class="tab-icon-cart" /></p>
+                            <p class="leadSm"><strong rel="i18n[mainpanel.cart.pane.empty.cart.title]"></strong></p>
+                            <p class="leadSm" rel="i18n[mainpanel.cart.pane.empty.cart.label]"></p>
+                            <br />
+                            <p class="plugHeadingMd"><button id="aero-go-to-site-button" rel="i18n[mainpanel.cart.pane.go.to.site.button]" class="btn btn-md btn-primary btn-block"></button></p>
+                        </div>
+                    </div>
+
+                    <div id="aero-cart-content" style="display: none;">
+                        <!-- items on cart-->
+                        <div id="aero-cart-item-list" class="row cartItemsContainer">
+
+                        </div>
+                        <!-- Summary Heading-->
+                        <div id="plugin_orderSummaryHead" class="row cartHeadSummary">
+                            <div class="col-xs-8">
+                                <h2 class="plugHeadingMd text-right" rel="i18n[mainpanel.cart.pane.summary.header]"></h2>
+                            </div>
+                            <div class="col-xs-4"></div>
+                        </div>
+                        <div id="plugin_orderSummaryCont" class="row cartSummaryBg">
+
+                        </div>
+
+                        <div class="plugin_checkoutBtnCont row cartSummaryBg">
+                            <div class="col-xs-12 text-center">
+                                <button id="aero-checkout-button" class="plugin_checkoutBtn"
+                                        rel="i18n[mainpanel.cart.pane.continue.to.checkout.button]"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ORDERS PANE -->               
+                <div class="tab-pane" id="aero-orders-pane">
+                    <!-- Orders Heading-->
+                    <div id="plugin_OrdersHeading" class="plugin_OrdersHeading row">
+                        <div class="col-xs-12">
+                            <h2 class="plugHeadingMd" rel="i18n[mainpanel.orders.pane.header]"></h2>
+                        </div>
+                        
+                    </div>
+                    <!-- orders -->
+                    <div id="plugin_orders" class="col-xs-12 text-center">
+                        <!-- empty content -->
+                        <div id="aero-orders-empty-content">
+                            <br/>
+                            <p class='leadSm'><strong rel="i18n[mainpanel.orders.pane.go.to.order.list.label]"></strong></p>
+                            <br/>
+                            <p class="plugHeadingMd"><button id="aero-go-to-order-list-button" rel="i18n[mainpanel.orders.pane.go.to.order.list.button]" class="btn btn-md btn-primary btn-block"></button></p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- PACKAGES PANE -->
+                <div class="tab-pane active" id="aero-packages-pane">
+                    <!-- Packages Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="aero-packages-packages-pane">
+                            <!-- packages Heading-->
+                            <div id="plugin_PackagesHeading" class="plugin_PackagesHeading row">
+                                <div class="col-xs-7">
+                                    <!--h2 class="plugHeadingMd" rel="i18n[mainpanel.packages.packages.pane.header]"></h2-->
+                                    <p class="leadSm">
+                                        <span rel="i18n[mainpanel.packages.tracking.pane.last.shown.label]"></span>
+                                        <a id="aero-packages-packages-update-button" class="refresh-button"><img /></a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div id="aero-packages-empty-list" class="packagesEmptyList">
+                                <div class="col-xs-8 col-xs-offset-2 text-center">
+                                    <p class="info-icon"><img /></p>
+                                    <p class="leadSm" rel="i18n[mainpanel.packages.packages.empty.list.label]"></p>
+                                </div>
+                            </div>
+                            <div id="aero-packages-container" style="display: none">
+                                <div id="aero-packages-list" class="packagesList">
+
+                                </div>
+                                <div id="aero-orders-list" class="ordersList">
+                                    
+                                </div>
+                                <!-- div to add menu bar space on bottom -->
+                                <div class="Packages_spacer"><br></div>
+                            </div>    
+                        </div>
+                        <div class="tab-pane" id="aero-packages-prealert-pane">
+                            <!-- prealerts Heading-->
+                            <div id="plugin_PrealertsHeading" class="plugin_PrealertsHeading row">
+                                <div class="col-xs-7">
+                                    <h2 class="plugHeadingMd" rel="i18n[mainpanel.packages.prealerts.pane.header]"></h2>
+                                    <p class="leadSm">
+                                        <span rel="i18n[mainpanel.packages.prealerts.pane.last.shown.label]"></span>
+                                        <a id="aero-packages-prealerts-update-button" class="refresh-button"><img /></a>
+                                    </p>
+                                </div>
+                                <div class="col-xs-5 newPrealertButtonContainer">
+                                    <p class="plugHeadingMd"><button id="aero-new-prealert-button" rel="i18n[mainpanel.packages.prealerts.pane.new.prealert.button]" class="btn btn-md btn-primary btn-block"></button></p>
+                                </div>
+                            </div>
+                            <div id="aero-prealerts-empty-list" class="prealertsEmptyList">
+                                <div class="col-xs-8 col-xs-offset-2 text-center">
+                                    <p class="info-icon"><img /></p>
+                                    <p class="leadSm" rel="i18n[mainpanel.packages.prealerts.empty.list.label]"></p>
+                                </div>
+                            </div>
+                            <div id="aero-prealerts-container" style="display: none">
+                                <div id="aero-prealerts-list" class="prealertsList">
+
+                                </div>
+                                <!-- div to add menu bar space on bottom -->
+                                <div class="Packages_spacer"><br></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Packages/Prealerts Nav -->
+                    <div class="packagesNav row">
+                        <ul class="nav navbar-nav aero-packages-tab-list">
+                            <li class="active">
+                                <a href="#aero-packages-packages-pane" role="tab" data-toggle="tab">
+                                    <span rel="i18n[mainpanel.tab.tracking]"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#aero-packages-prealert-pane" role="tab" data-toggle="tab">
+                                    <span rel="i18n[mainpanel.packages.tabs.prealerts]"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- CALCULATOR PANE -->
+                <div class="tab-pane" id="aero-calculator-pane">
+                    <!-- Calculator Heading-->
+                    <div id="plugin_CalcHeading" class="plugin_CalcHeading row">
+                        <div class="col-xs-12">
+                            <h2 class="plugHeadingMd" rel="i18n[mainpanel.calculator.pane.header]"></h2>
+                        </div>
+                    </div>
+                    <!-- Calculator Body-->
+                    <div class="plugin_CalculatorCont row">
+                        <div class="col-md-12 " id="aero-calc-form-container">
+                            <form id="aero-calc-form" class="calcForm">
+                                <label for="aero-calc-prod-cat" class="labelSm CategoryLabel"
+                                       rel="i18n[mainpanel.calculator.pane.product.category.label]"></label>
+                                <select class="form-control" data-val="true" id="aero-calc-prod-cat"
+                                        name="productCategory">
+                                </select>
+
+                                <label for="aero-calc-prod-account-type" class="labelSm CategoryLabel"
+                                       rel="i18n[mainpanel.calculator.pane.product.account.type.label]"></label>
+                                <select class="form-control" data-val="true" id="aero-calc-prod-account-type"
+                                        name="accountType">
+                                </select>
+
+                                <label for="prodValue" class="labelSm prodValue"
+                                       rel="i18n[mainpanel.calculator.pane.product.value.label]"></label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">$</div>
+                                    <input id="prodValue" name="priceCalc" class="form-control"
+                                           placeholder="i18n[mainpanel.calculator.pane.product.value.placeholder]"
+                                           required="" autofocus
+                                           type="number"></div>
+
+                                <label for="shippingValue" class="labelSm shippingValue"
+                                       rel="i18n[mainpanel.calculator.pane.product.shipping.label]"></label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">$</div>
+                                    <input id="shippingValue" name="shippingCalc" class="form-control"
+                                           placeholder="i18n[mainpanel.calculator.pane.product.shipping.placeholder]"
+                                           required=""
+                                           type="number"></div>
+
+                                <label for="weightValue" class="labelSm weightValue"
+                                       rel="i18n[mainpanel.calculator.pane.product.weight.label]"></label>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <input id="weightValue" name="weightCalc" class="form-control"
+                                               placeholder="i18n[mainpanel.calculator.pane.product.weight.placeholder]"
+                                               required="" type="number">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <input id="aero-calc-pounds-radio" type="radio" name="inlineRadioOptions"
+                                               value="pounds" checked>
+                                        <label for="aero-calc-pounds-radio" class="roundedWeightRadio"
+                                               rel="i18n[mainpanel.calculator.pane.product.pounds.label]"></label>
+                                        <input id="aero-calc-kilos-radio" type="radio" name="inlineRadioOptions"
+                                               value="kilograms">
+                                        <label for="aero-calc-kilos-radio" class="roundedWeightRadio"
+                                               rel="i18n[mainpanel.calculator.pane.product.kilos.label]"></label>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <button class="btn btn-lg btn-primary btn-block signInAp" type="submit"
+                                        rel="i18n[mainpanel.calculator.pane.calculate.button]"></button>
+                            </form>
+                        </div>
+                        <div id="aero-calc-result-container" class="col-xs-12 " style="display: none">
+                            <div class="calculatorResult">
+                                <div class="row">
+                                    <div class="col-xs-7 col-sm-6 col-md-5">
+                                        <p class="headingSm" rel="i18n[mainpanel.calculator.pane.calculation.shipping.label]"></p>
+                                    </div>
+                                    <div class="col-xs-5 col-sm-6 col-md-7">
+                                        <span id="aero-calc-shipping-value" class="bigNumberCalc "></span>
+                                        <span class="lead-thin"> USD</span>
+                                    </div>
+                                </div>           
+                                <div class="row">
+                                    <div class="col-xs-7 col-sm-6 col-md-5">
+                                        <p class="headingSm" rel="i18n[mainpanel.calculator.pane.calculation.total.label]"></p>
+                                    </div>
+                                    <div class="col-xs-5 col-sm-6 col-md-7">
+                                        <span id="aero-calc-total-value" class=""></span>
+                                        <span class="smThin"> USD</span>
+                                    </div>
+                                </div>
+                            
+                            <!-- Declared Value -->
+                            
+                            <div class="row">
+                                <div class="col-xs-7 col-sm-6 col-md-5">
+                                    <p class="headingSm" rel="i18n[mainpanel.calculator.pane.calculation.declared.value.label]"></p>
+                                </div>
+                                <div class="col-xs-5 col-sm-6 col-md-7">
+                                    <span id="aero-calc-declared-value" class=""></span><span class="smThin"> USD</span>
+                                </div>
+                            </div>
+                            
+                            <!-- CIF -->
+                            
+                            <div class="row">
+                                <div class="col-xs-7 col-sm-6 col-md-5"><p class="headingSm" rel="i18n[mainpanel.calculator.pane.calculation.cif.value.label]"></p>
+                                </div>
+                                <div class="col-xs-5 col-sm-6 col-md-7">
+                                    <span id="aero-calc-cif-value" class=""></span>
+                                    <span class="smThin"> USD</span>
+                                </div>
+                            </div>
+                            
+                            <!-- items -->
+                            <div id="aero-calc-items-container" class="row">
+                            
+                            </div>
+                        </div>
+                        <div class="baseCalculatorResult">
+                            <!-- Total  -->
+                            <div class=" mainresultBlueDiv row">
+                                <div class="col-xs-7 col-sm-6 col-md-5">
+                                   <p class="headingMd" rel="i18n[mainpanel.calculator.pane.calculation.total.shipping.label]"></p>
+                                </div>
+                                <div class="col-xs-5 col-sm-6 col-md-7">
+                                    <span id="aero-calc-total-shipping-value" class="headingMd "></span>
+                                    <span class="headingMd"> USD</span>
+                                </div>
+                            </div>
+                            <!-- botones -->
+                            <div class="">
+                                
+                                <div class="mainresultBlueDiv row">
+                                    <div class="col-xs-7 col-sm-7 col-md-7 ﻿form-group">
+                                        <button id="aero-calc-restart-button" class="btn btn-default blueCtaBtn" rel="i18n[mainpanel.calculator.pane.calculation.restart.button]">
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-5 col-sm-5 col-md-5 ﻿form-group">
+                                        <button id="aero-calc-edit-button" class="btn btn-default blueCtaBtn" rel="i18n[mainpanel.calculator.pane.calculation.edit.button]"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- ACCOUNT PANE -->
+                <div class="tab-pane" id="aero-account-pane">
+                    <!-- Account Heading-->
+                    <div id="plugin_AccountHeading" class="plugin_AccountHeading row">
+                        <div class="col-xs-6">
+                            <h2 class="plugHeadingMd" rel="i18n[mainpanel.account.pane.header]"></h2>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <button id="aero-sign-out-button" class="plugin_logoutBtn"
+                                    rel="i18n[mainpanel.account.pane.logout.button]"></button>
+                        </div>
+                        <div class="col-xs-12"><br></div>
+                    </div>
+                    <!--Panel Account -->
+                    <div class="plugin_panelAccount">
+                        <div class="panel panel-default">
+                            <div class="panel-heading ">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <h3 class="panel-title">
+                                            <span class="profileInfo"><img/></span><span
+                                                rel="i18n[mainpanel.account.pane.profile.title]"></span>
+                                        </h3>
+                                    </div>
+                                    <div class="col-xs-4 text-right">
+                                        <a id="aero-account-edit-profile" class="plugin_smLink"
+                                           rel="i18n[mainpanel.account.pane.edit.information.label]"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="plugin_AccountInfo">
+                                    <span class="plugin_AccountItem">
+                                        <div class="col-xs-5"><p class="labelSm text-right"><strong
+                                                rel="i18n[mainpanel.account.pane.name.label]"></strong></p></div>
+                                        <div class="col-xs-7"><p class="labelSm text-left"
+                                                                 id="aero-account-name-value"></p></div>
+                                    </span>
+                                   <span class="plugin_AccountItem">
+                                        <div class="col-xs-5"><p class="labelSm text-right"><strong
+                                                rel="i18n[mainpanel.account.pane.account.name.label]"></strong></p>
+                                        </div>
+                                        <div class="col-xs-7"><p class="labelSm text-left"
+                                                                 id="aero-account-number-value">SJO-167050</p></div>
+                                    </span>
+                                    <span class="plugin_AccountItem">
+                                        <div class="col-xs-5"><p class="labelSm text-right"><strong
+                                                rel="i18n[mainpanel.account.pane.counter.label]"></strong></p></div>
+                                        <div class="col-xs-7"><p class="labelSm text-left"
+                                                                 id="aero-account-counter-value">COUNTER INFO GOES
+                                            HERE</p></div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Panel Account -->
+                    <div class="plugin_panelAccount">
+                        <div class="panel panel-default">
+                            <div class="panel-heading ">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <h3 class="panel-title">
+                                            <span class="addressInfo"><img/></span><span
+                                                rel="i18n[mainpanel.account.pane.address.title]"></span>
+                                        </h3>
+                                    </div>
+                                    <div class="col-xs-4 text-right">
+                                        <a id="aero-account-edit-address" class="plugin_smLink"
+                                           rel="i18n[mainpanel.account.pane.edit.information.label]"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="plugin_AccountInfo">
+                                    <span class="plugin_AccountItem">
+                                        <div class="col-xs-5"><p class="labelSm text-right"><strong
+                                                rel="i18n[mainpanel.account.pane.address.label]"></strong></p></div>
+                                        <div class="col-xs-7"><p class="labelSm text-left"
+                                                                 id="aero-account-addresss-value"></p></div>
+                                    </span>
+                                   <span class="plugin_AccountItem">
+                                        <div class="col-xs-5"></div>
+                                        <div class="col-xs-7"><p class="labelSm text-left"
+                                                                 id="aero-account-city-value"></p></div>
+                                    </span>
+                                    <span class="plugin_AccountItem">
+                                        <div class="col-xs-5"><p class="labelSm text-right"><strong
+                                                rel="i18n[mainpanel.account.pane.phone.label]"></strong></p></div>
+                                        <div class="col-xs-7"><p class="labelSm text-left"
+                                                                 id="aero-account-phone-value"></p></div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="ApTextVersion textCenter aero-version"
+                            rel="i18n[mainpanel.footer.signed.out.beta.prompt]"></p>
+                        </div>
+                    </div>
+                    <!--Panel Account -->
+                    <!--div class="plugin_panelAccount">
+                        <div class="panel panel-default">
+                            <div class="panel-heading ">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <h3 class="panel-title">
+                                            <span class="paymentInfo"><img/></span><span
+                                                rel="i18n[mainpanel.account.pane.payment.title]"></span>
+                                        </h3>
+                                    </div>
+                                    <div class="col-xs-4 text-right">
+                                        <a id="aero-account-edit-payment" class="plugin_smLink"
+                                           rel="i18n[mainpanel.account.pane.edit.information.label]"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="plugin_AccountInfo">
+                                    <span class="plugin_AccountItem">
+                                        <div class="col-xs-5">
+                                            <p class="labelSm text-right">
+                                                <strong rel="i18n[mainpanel.account.pane.card.label]"></strong>
+                                            </p>
+                                        </div>
+                                        <div class="col-xs-7">
+                                            <p class="labelSm text-left" id="aero-account-payment-value">CARD MASK GOES HERE</p>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div-->
+                    <!--div class="plugin_FeedbackCont text-center">
+                        <p class="leadSm">
+                            <strong rel="i18n[mainpanel.account.pane.feedback.label.1]"></strong>
+                        </p>
+                        <p class="leadXs" rel="i18n[mainpanel.account.pane.feedback.label.2]"></p>
+                        <a id="contact-support" href="mailto:itsupport@aeropost.com">
+                        <button class="plugin_buttonFeedback" rel="i18n[mainpanel.account.pane.feedback.button]"></button>
+                        </a>
+                        <br><br>
+                    </div-->
+                </div>
+            </div>
+
+            <!-- NOT ALLOWED CONTENT -->
+            <div id="aero-not-allowed-content">
+                <div class="aero-not-allowed-text-container">
+                    <span rel="i18n[mainpanel.client.not.allowed]"></span>
+                </div>
+                <div class="aero-not-allowed-text-container aero-underline">
+                    <span rel="i18n[mainpanel.contact.support]"/>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

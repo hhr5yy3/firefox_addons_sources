@@ -1,0 +1,180 @@
+<div id="centralCheckPanel" class="select-none min-w-[480px] rounded-md">
+  <div class="px-8 mb-0 border border-solid border-grey-300" id="header">
+    <div class="flex items-center justify-between">
+      <div>
+        <img class="logo w-[155px] my-2 mx-auto" src="img/wanteeedLogoDark.svg" />
+      </div>
+
+      <button type="button" id="close" class="w-6 h-6 p-1 rounded focus:outline-none focus-visible:ring focus-visible:ring-highlight">
+        <span class="sr-only" data-i18n>fermer_lextension</span>
+        <span aria-hidden="true">
+          <svg class="w-full h-full stroke-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4L4.53888 20M4 4L19.4611 20" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div class="blocks">
+    <div class="py-6 px-7" id="check">
+      <div class="text-center">
+        <div class="text-xl" data-i18n>nous_testons_les_codes_promo_pour_vous</div>
+        <p class="my-4 text-base grey-text current"></p>
+        <div class="progress bg-[#eaF5f6] h-[25px] m-0 rounded-lg">
+          <div class="rounded-lg determinate !bg-brand-500">
+            <span class="right percent text-white mr-[5px] leading-6"></span>
+          </div>
+        </div>
+        <div class="mb-4 text-xl no-reduc mt-9"data-i18n>croisez_autant_de_doigts_que_vous_le_pouvez</div>
+        <div class="mt-5 text-xl hide reduc red-text text-lighten-1">
+          <span class="text-2xl" data-i18n>boouuum</span>
+          <span data-i18n>x_euros_de_moins_a_payer</span>
+        </div>
+        <div class="text-xl hide reduc" data-i18n>et_ce_n_est_peut_etre_pas_fini</div>
+      </div>
+    </div>
+
+    <div class="px-8 py-6 mb-0 border-solid border-b border-grey-100 rounded-[1%] hide" id="report">
+      <div class="no-reduc hide">
+        <div class="flex flex-row items-center">
+          <div class="grow-[7] w-min">
+            <div class="text-2xl font-bold report-title" data-i18n>pas_de_reduction_aujourd_hui</div>
+            <div class="text-base" data-i18n>mais_du_temps_de_gagne_plus_besoin_de_chercher_des_codes_sur_internet</div>
+          </div>
+          <div class="grow-[3]" id="reportNoReducTirelireImgDiv">
+            <img class="tirelire right w-[120px] -mt-5" src="img/tirelire.png" />
+          </div>
+        </div>
+      </div>
+
+      <div class="reduc hide">
+        <div class="flex flex-row items-center justify-between mb-5">
+          <div class="grow-[7]">
+            <div class="font-bold text-[35px]" data-i18n>super</div>
+            <div class="text-2xl" data-i18n>wanteeed_vous_a_permis_d_economiser_x_</div>
+          </div>
+          <div class="grow-[4]">
+            <img class="tirelire-reduc h-[95px]" src="img/tirelireReduc.png" />
+          </div>
+        </div>
+        <div class="flex flex-row items-center">
+          <a class="apply btn red lighten-1 m-auto h-[40px] leading-10" data-i18n>appliquer_le_code</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="giftCard"></div>
+
+    <div id="bonus" class="hide">
+      <div id="cashback-enabled-v1" class="px-8 pt-6 mb-0">
+        <div class="min-h-[205px] relative">
+          <div class="pb-4 text-accent-700">
+            <div class="flex flex-col items-center justify-center bestOfferOK ">
+              <div class="m-auto">
+                <img class="h-[39px]" src="img/bonusPresent.png">
+              </div>
+              <div class="mt-1 text-xl leading-5" data-i18n>bonus_surprise</div>
+              <div class="text-accent-700/60" data-i18n>jusqu_a_x_</div>
+              <div class="mx-10 mt-1 text-center" data-i18n>nous_vous_remboursons_une_partie_de_vos_achats_sur_cette_boutique</div>
+            </div>
+            <div class="m-auto bestOfferOKenabled hide">
+              <div id="progressValidationCircle" class="w-[70px] h-[70px] relative my-1.5 mx-auto"></div>
+              <div class="mx-6 mt-1 mb-0 text-accent-700/60" id="textMeasureBonus" data-i18n>_x_des_derniers_achats_ont_donne_droit_a_un_bonus_surprise</div>
+            </div>
+
+            <div class="mt-12 text-center bestOfferNOK hide" data-i18n>aucun_bonus_n_est_actuellement_disponible_pour_cette_boutique</div>
+            <div class="pb-4 bestOfferMea hide">
+              <div class="mb-4 text-2xl font-bold text-center leading-2xl text-accent-700 mt-7" data-i18n>
+                no_bonus_mea_body
+              </div>
+              <!-- shop card -->
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center bonusNOK mb-1.5">
+            <a class="bonus waves-effect waves-light btn red lighten-1 m-auto h-[35px] leading-9" data-i18n>activer_le_bonus</a>
+          </div>
+          <div class="absolute bottom-0 left-0 w-full">
+            <div class="m-auto text-xs left-align message red-text text-lighten-3 exclusions center hide">
+              <span class="cursor-pointer" data-i18n>exclusions</span>
+            </div>
+            <div class="absolute right-[3px] bottom-[2px]" id="cguIconCheckPanel">
+              <a class="p-0 text-xl cursor-pointer text-grey-500" href="#!" id="tosCheckPanel">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div id="exclusionsContent" class="hide text-accent-700/60 overflow-hidden overflow-y-auto relative max-h-[300px] mt-3 mr-4 mb-0 ml-6">
+          <div class="pb-3 pr-2"></div>
+        </div>
+      </div>
+      <section id="cashback-enabled-v2" class="hidden bg-white font-sans antialiased">
+        <div class="flex items-center space-x-5 p-10">
+          <div class="w-28 flex-shrink-0">
+            <img src="img/unicorn-gangsta.svg" class="image w-full" />
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold font-title" data-i18n>noubliez_pas</h2>
+            <p class="mt-2 text-lg text-accent-700/60" data-i18n>vous_avez_deja_active_un_cashback_nous_vous_remboursons_jusqua_x_de_votre_panier_dachat_sur_cette_boutique</p>
+          </div>
+        </div>
+        <div class="p-10 py-2">
+          <button type="button" class="main-cta inline-flex w-full items-center justify-center space-x-2 rounded-lg bg-gradient-brand-lighter px-6 py-4 text-center text-xl font-bold font-title leading-none text-white shadow-glow shadow-brand-400/40 transition-shadow hover:shadow-glow-lg hover:shadow-brand-400/90 focus-visible:outline-none focus-visible:ring focus-visible:ring-highlight">
+            <span aria-hidden="true" class="w-6 h-6">
+              <img src="img/sparkles.png" class="image w-full">
+            </span>
+            <span data-i18n>terminer_mes_achats</span>
+            <span aria-hidden="true" class="w-4 h-4">
+              <svg class="w-full h-full fill-current" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.49372 2.25105C9.15201 1.91632 8.59799 1.91632 8.25628 2.25105C7.91457 2.58579 7.91457 3.1285 8.25628 3.46323L12.1219 7.24994H2.84706C2.37924 7.24994 2 7.58573 2 7.99994C2 8.41415 2.37924 8.74994 2.84706 8.74994H12.122L8.25628 12.5368C7.91457 12.8715 7.91457 13.4142 8.25628 13.7489C8.59799 14.0837 9.15201 14.0837 9.49372 13.7489L14.7437 8.60609C15.0854 8.27136 15.0854 7.72864 14.7437 7.39391L9.49372 2.25105Z" />
+              </svg>
+            </span>
+          </button>
+        </div>
+        <div class="px-10 pt-3 pb-5">
+          <div class="relative flex items-center">
+            <div class="flex flex-1 justify-center">
+              <button
+                type="button"
+                class="exclusions inline-flex items-center justify-center space-x-2 rounded-lg px-3 py-2 text-center text-xs font-medium leading-none text-brand-600 hover:underline ring-highlight focus:bg-transparent transition-shadow focus-visible:outline-none focus-visible:ring"
+                data-i18n
+              >exclusions</button>
+            </div>
+            <div class="absolute right-0 flex items-center ml-auto flex-shrink-0">
+              <a class="p-1 inline-flex rounded-full text-grey-500 ring-highlight transition-shadow focus:outline-none focus-visible:ring" href="#!" id="tosCheckPanel">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.7143 7.34446H9.28571V5.71429H10.7143V7.34446ZM10.7143 14.2857H9.28571V8.74919H10.7143V14.2857Z" fill="currentColor" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20ZM10 18.5714C14.7339 18.5714 18.5714 14.7339 18.5714 10C18.5714 5.26613 14.7339 1.42857 10 1.42857C5.26613 1.42857 1.42857 5.26613 1.42857 10C1.42857 14.7339 5.26613 18.5714 10 18.5714Z" fill="currentColor" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div id="exclusionsContent2" class="flex max-h-28 pt-3 pb-3 hide">
+            <div class="flex justify-center p-1 text-accent-700/60 text-xs [&_ul>li]:list-disc overflow-hidden overflow-y-auto">
+              <!-- EXCLUSIONS -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id='blockeralert' class="flex flex-col px-8 py-5 hide">
+      <div class="flex flex-row items-center">
+        <div class="grow-[3]">
+          <img class="adblock-unicorn" src="img/unicorn-adblock-ko.png" />
+        </div>
+        <div class="grow-[7]">
+          <p data-i18n class="text-accent-700/60">adblock_title</p>
+          <p data-i18n class="font-bold text-accent-700/60">adblock_content</p>
+        </div>
+      </div>
+      <div class="mx-auto">
+        <a class="cta" data-i18n>adblock_cta</a>
+      </div>
+    </div>
+  </div>
+</div>

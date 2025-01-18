@@ -1,0 +1,104 @@
+/* WARNING: CSS is horrible. It's inheritance is wildly inconsistent, and seems to have been designed by an alien from non-euclidean space. No sizing or positioning value will EVER do what any normal person would think. For example, both 'html' and 'body' MUST get the boilerplate below, because CSS inheritance is extremely non-intuitive and has badly chosen defaults for many of its parameters. Search Google for any variant of "CSS why is ___ not working?", and you'll get pages of identical questions, all with various different answers, with varying effectiveness depending on intricacies that CSS is should be abstracting away. There are so many seemingly duplicate questions out there, not due to standard lack of Googling, but because all of those same questions have different answers, many of which are obsolete (regardless of when the question was posted). For example, just figuring out how to make a container fill extra space took HOURS to figure out (and it has nothing to do with flexboxes; the top-level tags just needed stupid additions like width:100% & height:100%, oh and the default margins need disabling, for some reason). Actually getting things to work requires trivial changes, but they're changes that any object-oriented programmer will look at and get confused. That said, I wouldn't be surprised if 90% of this is due to standard pathological backwards compatibility maintenance. There are a few newer settings that make things work far more sanely, e.g. box-sizing:border-box and display:flex, that are confusing to learn when mixed in with the default behaviors that were often chosen 20+ years ago. Given the sheer quantity of options that have been improved upon over the years, yet still exist, the documentation can be a pain to try to read, let alone learn from. */
+
+/*BEGIN SLATE CLEANING *******************************************************/
+/*{{{*/
+
+* {
+    box-sizing: border-box;  /* make all sizes be descriptive of the total size of the content+padding+border+margin, rather than just the content */
+    margin: 0; padding: 0;   /* wipe the all of the varying default margin/padding values so that spacing can be clearly specified by rules here */
+    -moz-user-select: none; -webkit-user-select: none;  /* disable all text selection; arbitrary text selection is unneeded and could mess up drag/drop */
+    align-items: center;
+}
+
+html, body, iframe {
+    white-space: nowrap; overflow: auto;              /* there's no text that should wrap; the body will get scrollbars if really needed; children have their own set styles */
+    background-color: -moz-default-background-color;  /* MAYBE TODO: go back to specific custom colors, but for everything, this time? */
+    width: 100%; height: 100%; margin: 0;             /* pages do not take up the entire page by default; if this isn't set, then NOTHING can */
+}
+
+iframe, body, fieldset, div, ul {  /* these containers flex vertically */
+    display: /*block-*/flex; flex-direction: column;
+}
+.row, label, span, button, a {  /* these containers flex horizontally; children centered vertically */
+    display: inline-flex; flex-direction: row;
+}
+
+button.icon {  /* make sure to disable styling for icon-only buttons */
+    border: none !important;
+    background-color: inherit;
+    margin: 0; padding: 0;
+}
+
+input[type="checkbox"] { margin: 0; padding: 0; }  /* checkbox margin/padding doesn't apply properly; reduce to zero and use a wrapper instead */
+
+/*}}}*/
+/*BEGIN GENERAL LAYOUT/SPACING ***********************************************/
+/*{{{*/
+
+@media screen and (max-width: 70em) {  /* if the window is small enough, switch the top section from a row to a column (TODO: this could be better) */
+    fieldset.row {
+        display: /*block-*/flex; flex-direction: column;
+        align-items: unset;
+    }
+}
+
+body { padding: 2% 5%; }
+.section { margin: 2.5% 4%; }
+fieldset { border-radius: 5px; }
+
+fieldset, div { padding: 0.5em; }
+span:not(.checkboxwrapper, .indented, .head), a { padding: 0 0.5em; }
+
+button.icon img, span.checkboxwrapper, select, label { margin: 0.1em 0.2em; padding: 0; }
+
+img[src*="icon"]:not([src*="flag"]), img[data-id="favicon"], img#favicon, span.checkboxwrapper { width: 16px; height: 16px; }
+
+[hidden="true"] { display: none; }
+
+/* allows an element to automatically expand to fill all remaining vertical space (MUST also be set on ALL containers between it and 'body') */
+.autoexpand-y { min-height: 0; height:100%; }  /* NOTE: this will NOT work properly without something set for min-height; CSS is a mess */
+fieldset.autoexpand-y { min-height: 10em; }
+.autoexpand-x { min-width: 0; width:100%; }
+
+.spread { justify-content: space-between; width: 100%; }  /* all children spread out as much as possible from eachother */
+.rightmost { margin-left: auto; }  /* this allows an item in a spread class container to align to the right when its the only item */
+#footer.section.spread { width: 95%; }
+
+.roundedbox { /* TODO: make better */
+    border: thin solid grey; border-radius: 5px;
+    padding: 5px; margin: 5px;
+}
+
+/* This centers an item both horizontally and vertically within its container */
+.centered {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/*}}}*/
+/*BEGIN MOUSE HOVER INDICATION ***********************************************/
+/*{{{*/
+
+a { color: -moz-hyperlinktext; text-decoration: none; }  /* generally blue */
+a:hover { color: -moz-activehyperlinktext; }             /* generally red */
+
+/* this SVG shadow can apply to anything, conforming to whatever shape needed */
+a:hover > img, button.icon:hover > img, span.checkboxwrapper:hover { filter: url(/icons/shadow.svg#drop-shadow); }
+a, a *, button.icon:hover, button.icon:hover *, span.checkboxwrapper, span.checkboxwrapper * { cursor: pointer; }
+
+.draggable { cursor: grab; }
+
+/*}}}*/
+/*BEGIN IFRAME COMMON ********************************************************/
+/*{{{*/
+
+html.iframe-contents, html.iframe-contents > body {
+    overflow: hidden;
+    margin: 0; padding: 0;
+}
+html.iframe-contents, html.iframe-contents > body, html.iframe-contents div {
+    align-items: start;
+}
+
+/*}}}*/

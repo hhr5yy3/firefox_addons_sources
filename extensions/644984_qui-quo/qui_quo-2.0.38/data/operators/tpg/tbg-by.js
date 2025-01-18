@@ -1,0 +1,2 @@
+var DEFAULT_CURRENCY = "BYN";
+var OPERATOR_CURRENCY = "tpg-by";

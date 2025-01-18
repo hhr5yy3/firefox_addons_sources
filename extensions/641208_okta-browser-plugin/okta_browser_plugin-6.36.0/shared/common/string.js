@@ -1,0 +1,1 @@
+const StringUtil={format:function(t,r){return t.replace(/\{(\d+)\}/g,function(t,n){return void 0!==r[n]?r[n]:t})},hashCode:function(n){if("string"!=typeof n)return"not string";let r=0;if(0===n.length)return r;for(let t=0;t<n.length;t++)r=(r<<5)-r+n.charCodeAt(t),r&=r;return r}};

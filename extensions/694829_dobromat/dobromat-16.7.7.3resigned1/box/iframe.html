@@ -1,0 +1,131 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script type="text/javascript" src="/js/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="/lib/selectize/selectize.js"></script>
+	<script type="text/javascript" src="/js/translate.js"></script>
+	<script type="text/javascript" src="/js/iframe.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Dosis:400,500,600' rel='stylesheet' type='text/css'>
+	<link type="text/css" rel="stylesheet" href="/lib/selectize/selectize.css">	
+	<link type="text/css" rel="stylesheet" href="/fonts/dobromat/font.css">
+	<link type="text/css" rel="stylesheet" href="/lib/font-awesome-animation.min.css">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Dosis', sans-serif;
+		}
+		html, body {					
+			width: 100%;
+			height: 100%;			
+			background-color: transparent;			
+			font-size: 19px;			
+  			line-height: 1.5em;
+		}
+		#dm-box {				
+			font-weight: 500;				
+			background-color: rgba(255, 127, 0, 0.97);
+			color: white;		
+			text-shadow: rgba(0, 0, 0, 0.85098) 1px 1px 2px;
+			border: 2px solid rgba(255,255,255,0.8);	
+			border-radius: 10px;					
+			padding: 10px;		
+			padding-bottom: 0;	
+			margin: 10px;
+			box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.29);			
+		}
+		#dm-box .selectize {
+			text-shadow: none;
+		}
+		p {
+			padding: 0;
+			margin: 10px;
+		}				
+		#dm-box .btn {
+			color: #fff;			
+			text-shadow: 1px 1px 1px #05374E;
+			padding: 0.5em 2em;
+			line-height: 1.3333333;
+			border-radius: 6px;
+			text-decoration: none;			
+			border: 1px solid rgba(255, 255, 255, 0.61);
+    		background-color: rgb(3, 170, 245);		
+    		font-size: 19px;
+    		font-weight: bold;
+    		cursor: pointer;
+    		min-width: 200px;    		
+		}
+		#dm-box .btn:hover, #dm-box .btn:active, #dm-box .btn:focus {
+		    background-color: rgb(0, 152, 220);
+		    border-color: #0061B5;
+		    box-shadow: 0 0 2px 2px rgba(255, 255, 255, 0.58);
+		}		
+		#goshopping {
+			position: relative;
+			top: 3px;
+		}
+		#dm-box strong {			
+		    font-size: 25px;
+		    font-weight: 900;		 		    		   		    		    
+		    color: rgb(22, 232, 255);
+		    text-shadow: 1px 1px 1px rgb(33, 29, 25);
+		    margin: 8px;
+		}
+		#commission {
+			margin-left: 10px;
+		}
+		#close {		
+			position: absolute;
+    		right: 0px;
+    		top: 0;
+    		background-color: #FF8711;
+    		color: white;
+    		padding: 0.2em 0.5em;
+    		box-shadow: 1px -1px 1px 0px silver;
+    		border: 2px solid white;
+    		border-radius: 50%;
+    		font-weight: bold;
+    		cursor: pointer;
+    		line-height: 15px;
+    		font-size: 22px;
+    		font-family: "Times New Roman";
+    		width: 25px;
+    		height: 25px;
+    		padding-left: 4px;
+		}
+		#close:before {
+			content: "×";
+		}
+		#close:hover {
+			background-color: #077FB5;
+		}
+		b.dm-dobromat-logo {
+			font-size: 45px;
+			position: relative;
+			top: 5px;			
+		}
+		.selectize-dropdown.single.selectize-control.selectize {
+			height: 14.35em; /* ff fix */
+		}		
+		.selectize-input > input[placeholder] {
+ 			 width: 100% !important;
+		}
+	</style>
+</head>
+<body>		
+	<div id="dm-box">		
+		<p>
+			<b class="dm-dobromat-logo"></b> <strong id="commission"></strong> <span data-translate="shoppingIn"></span> <strong id="shop-title"></strong> <span data-translate="shoppingFor"></span>
+		</p>
+		<p style="margin: 20px 12px">				
+			<select class="selectize" placeholder="[search]" data-translate="searchPlaceholder" data-translateattribute="placeholder"></select>		
+		</p>
+		<p style="text-align:center; margin-bottom:8px">
+			<button class="btn" id="goshopping"><span></span><i style="float:right; display:block;" class="dm-dobromat-logo faa-burst faa-slow animated"></i></button>
+		</p>
+		<p style="text-align:center; font-size: 16px; letter-spacing: 0.3px; font-weight:300;" data-translate="centSlogan"></p>
+	</div>
+	<button id="close" title="Zavrieť"></button>
+</body>
+</html>

@@ -1,0 +1,239 @@
+﻿<html>
+<head>
+    <title>Options for PDF Mage</title>
+    <script type="text/javascript" src="modal.js"></script>
+    <script type="text/javascript" src="options.js"></script>
+    <link type="text/css" href="options.css" rel="stylesheet">
+</head>
+<body>
+    <div id="overlay">
+        <div id="overlay-message-wrapper">
+            <p id="overlay-message"></p>
+            <button id="overlay-message-button">OK</button>
+        </div>
+    </div>
+
+    <div id="options-wrapper">
+
+        <h2>General settings</h2>
+
+        <p>PDF Mage Pro key</p>
+
+        <div>
+            <input id="proKey" type="text" />
+            <div id="proKeyInfo">
+                Your key is valid until <span id="proKeyValidUntil"></span>, remaining usages: <span id="proKeyRemainingUsages"></span>
+                <br />
+                Last converted page: <span id="proKeyLastConvertedPage"></span>
+            </div>
+            <div id="proKeyError">
+            </div>
+            <button id="proKeyApply">Apply</button>
+        </div>
+
+        <div id="proText">
+            <p>Purchase PDF Mage Pro to remove all limitations and customize the PDF file produced by PDF Mage browser addon with advanced settings:</p>
+            <ul>
+                <li>No printing restrictions</li>
+                <li>No conversions per minute limit</li>
+                <li>Turn images, links display on/off</li>
+                <li>Customize PDF page layout</li>
+                <li>Protect PDF with password</li>
+                <li>Embed source page URL, creation date directly into PDF page</li>
+                <li>And many other features... Full list is available at <a href="https://pdfmage.org/home/fulloptionssample">pdfmage.org</a></li>
+            </ul>
+            <a href="https://pdfmage.org/home/pro?buyNow=true" class="buyButton">Buy Now</a> or learn more at <a href="https://pdfmage.org/home/pro">pdfmage.org</a>
+        </div>
+
+        <h2>PDF document settings</h2>
+
+        <p>Page orientation</p>
+        <select id="pageOrientation">
+            <option value="Portrait">Portrait</option>
+            <option value="Landscape">Landscape</option>
+        </select>
+
+        <br />
+
+        <p>Number of pages</p>
+        <select id="singlePage">
+            <option value="True">Single page</option>
+            <option value="False">Multiple pages</option>
+        </select>
+
+        <br />
+
+        <p>When PDF document is ready</p>
+        <select id="pdfReadyAction">
+            <option value="Open">Open it in browser</option>
+            <option value="Download">Download</option>
+            <option value="AskWhereToSave">Ask where to save</option>
+        </select>
+
+        <br />
+
+        <p>Web page width</p>
+        <select id="pageWidth">
+            <option value="SameAsBrowserWindow">Same as browser window</option>
+            <option value="1024">1024px</option>
+            <option value="1280">1280px</option>
+            <option value="1920">1920px</option>
+            <option value="Custom">Custom</option>
+        </select>
+
+        <div id="customPageWidthBlock">
+            <p>Input width in pixels</p>
+            <input id="customPageWidth" type="text" />
+        </div>
+
+        <div id="freeOptions">
+
+            <p>
+                Free mode
+                <span class="tooltip-icon">
+                    <span class="tooltip">
+                        In order to prevent unfair usage of our free service, we ask you to choose one of the 'free mode' restrictions above.
+                        To enjoy a full-featured version with no restrictions, please consider purchasing a license.
+                    </span>
+                </span>
+            </p>
+            <select id="freeModeLimitation">
+                <option value="DisallowPrinting">Restrict printing</option>
+                <option value="DisplayFreeEditionNote">Display 'Free Mode' note in PDF document</option>
+            </select>
+
+        </div>
+
+        <div id="proOptions">
+            <p>Paper size</p>
+            <select id="paperSize">
+                <option value="A4">A4 (8.25 x 11.75 in)</option>
+                <option value="Letter ">Letter (8.5 x 11 in)</option>
+                <option value="Legal">Legal (8.5 x 14 in)</option>
+                <option value="Ledger">Ledger (11 X 17 in)</option>
+                <option value="A0">A0 (33.125 x 46.75 in)</option>
+                <option value="A1">A1 (23.375 x 33.125 in)</option>
+                <option value="A2">A2 (16.5 x 23.375 in)</option>
+                <option value="A3">A3 (11.75 x 16.5 in)</option>
+            </select>
+
+            <br />
+
+            <p>Images</p>
+            <select id="hideImages">
+                <option value="False">Show</option>
+                <option value="True">Hide</option>
+            </select>
+
+
+            <br />
+
+            <p>
+                Avoid image break
+                <span class="tooltip-icon"><span class="tooltip">Try to avoid cutting off the images between pages in multi-page PDF documents</span></span>
+            </p>
+            <select id="avoidImageBreak">
+                <option value="False">Disabled</option>
+                <option value="True">Enabled</option>
+            </select>
+
+            <br />
+
+            <p>Clickable links on page</p>
+            <select id="disableLinks">
+                <option value="False">Links enabled</option>
+                <option value="True">Links disabled</option>
+            </select>
+
+            <br />
+
+            <p>Display web page URL directly on PDF page</p>
+            <select id="displayUrlInFooter">
+                <option value="False">Disabled</option>
+                <option value="True">Enabled</option>
+            </select>
+
+            <br />
+
+            <p>Display creation time directly on PDF page</p>
+            <select id="displayDateInFooter">
+                <option value="False">Disabled</option>
+                <option value="True">Enabled</option>
+            </select>
+
+            <br />
+
+            <p>
+                Try using printer-friendly version
+                <span class="tooltip-icon"><span class="tooltip">PDF Mage can try to request a printer-friendly version of the page if the website supports it</span></span>
+            </p>
+            <select id="preferPrintFriendlyVersion">
+                <option value="False">Disabled</option>
+                <option value="True">Enabled</option>
+            </select>
+
+            <br />
+
+            <p>Protect PDF with password</p>
+            <select id="protectWithPassword">
+                <option value="False">Disabled</option>
+                <option value="True">Enabled</option>
+            </select>
+
+            <div id="pdfPasswordBlock">
+                <p>Input your password</p>
+                <input id="pdfPassword" type="text" />
+            </div>
+
+            <p>Page margins</p>
+            <select id="customMargins">
+                <option value="False">Default</option>
+                <option value="True">Custom</option>
+            </select>
+
+            <div id="customMarginsBlock">
+                <p style="width: 100%;"><i>Note: margins are measured in points (1 point = 1/72 inch)</i></p>
+
+                <p>Input top margin</p>
+                <input id="topMargin" type="text" value="0" />
+
+                <p>Input bottom margin</p>
+                <input id="bottomMargin" type="text" value="0" />
+
+                <p>Input left margin</p>
+                <input id="leftMargin" type="text" value="0" />
+
+                <p>Input right margin</p>
+                <input id="rightMargin" type="text" value="0" />
+            </div>
+
+            <p>PDF file name</p>
+            <select id="customFileName">
+                <option value="False">Default</option>
+                <option value="True">Custom</option>
+            </select>
+
+            <div id="customFileNameBlock">
+                <p style="width: 100%; font-style: italic">
+                    The following patterns are supported:
+                    <ul style="margin: 5px 0">
+                        <li><strong>&lt;Date&gt;</strong> - Date when web page was saved</li>
+                        <li><strong>&lt;Time&gt;</strong> - Time (GMT) when web page was saved</li>
+                        <li><strong>&lt;Title&gt;</strong> - Title of web page</li>
+                        <li><strong>&lt;Url&gt;</strong> - Full address of web page</li>
+                    </ul>
+                </p>
+                <br />
+                <p>File name mask</p>
+                <input id="fileNameMask" type="text" value="<Title> - saved on <Date>" />
+            </div>
+
+        </div>
+
+        <button id="saveButton">Save settings</button>
+
+        <span id="message"></span>
+
+    </div>
+</body>
+</html>

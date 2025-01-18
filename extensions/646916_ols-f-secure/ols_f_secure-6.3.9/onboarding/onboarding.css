@@ -1,0 +1,269 @@
+body {
+    font-family: 'Segoe UI', system-ui;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    font-size: 16px;
+    background: #F8F8F8;
+}
+
+.banner {
+    margin: 0;
+    height: 60px;
+    background: #0028A0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container-parent {
+    display: grid;
+    row-gap: 50px;
+    grid-template-columns: auto;
+    padding: 24px;
+    width: 719px;
+    margin:auto;
+    text-align: center;
+}
+
+.grid-container-child {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 700px;
+}
+
+.grid-item-parent {
+    padding: 20px;
+    text-align: left;
+    background: #FFFFFF;
+}
+
+.grid-item-child {
+    padding: 20px;
+    text-align: left;
+}
+
+.switch-area {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 8px;
+    margin-top: 80px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+
+.slider.round {
+    border-radius: 24px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.wrapper {
+    max-width: 50em;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.consent_buttons {
+    max-width: 36em;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.done_message {
+    margin-top: 30px;
+}
+
+.logo {
+    margin: auto;
+    display: block;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width: 100%;
+    height: 60px;
+    background-color: #003399;
+    opacity: 0;
+}
+
+.policy_link {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Segoe UI', system-ui;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 34px;
+    line-height: 44px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Segoe UI', system-ui;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 19px;
+}
+
+a, a:link, a:visited, a:active {
+    color: #003CFF;
+    font-weight: 300;
+    text-decoration: underline;
+}
+
+.hds-button {
+    align-items: center;
+    background: var(--button-color, #003CFF);
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    font-size: .75rem;
+    font-weight: 600;
+    height: 34px;
+    justify-content: center;
+    line-height: 120%;
+    padding: 4px 24px;
+    position: relative;
+    text-align: center;
+    margin: 8px;
+}
+
+.hds-button-secondary {
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--button-color, #003CFF);
+    border-radius: 4px;
+    color: var(--button-color, #003CFF);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: .75rem;
+    font-weight: 600;
+    height: 34px;
+    justify-content: center;
+    padding: 4px 24px;
+    margin: 8px;
+}
+
+button:hover {
+    opacity: .75;
+}
+
+button:active {
+    opacity: 1;
+    cursor: default;
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: default;
+}
+
+.button-inverted {
+    color: var(--button-color, #006CD9);
+    background: #fff;
+}
+
+#consent_title {
+    font-size: 2em;
+}
+
+.bg-by-fsecure {
+    background: url("../img/by_fsecure.svg") center top no-repeat;
+}
+
+@media(prefers-color-scheme: dark) {
+    body {
+        color: #fff;
+        background: #424546;
+    }
+
+    .grid-item-parent {
+        background: #2F3233;
+    }
+
+    .header {
+        filter: brightness(1.15);
+    }
+
+    a, a:link, a:visited {
+        filter: brightness(1.80);
+    }
+
+    a:hover, a:active {
+        filter: brightness(1.25);
+    }
+
+    .hds-button {
+        filter: brightness(1.25);
+    }
+
+    .hds-button-secondary {
+        filter: brightness(1.25);
+    }
+
+    .link-item {
+        box-shadow: 0em 0.1em 0.3em 0.1em DarkSlateGray;
+    }
+}

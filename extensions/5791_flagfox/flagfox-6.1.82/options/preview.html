@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="iframe-contents">
+    <head>
+        <meta charset="utf-8"/>
+        <title data-i18n="opt.previewtitle"></title>
+        <link type="text/css" rel="stylesheet" href="common.css"/>
+        <style type="text/css">
+        /*<![CDATA[*/
+            /* Flag icon previews (line-height:0 needed for consistent spacing across platforms) */
+            div#previewsetbox {
+                display: inline-flex; flex-direction: row; flex-wrap: wrap;
+                height: 300px; width: 520px; line-height: 0;
+                margin: 0; padding: 0;
+            }
+            img.previewicon {
+                cursor: pointer;
+                margin: 1px;
+                border: solid lightgrey 1px;
+            }
+        /*]]>*/
+        </style>
+        <script type="application/javascript" src="/util.js"></script>
+        <script type="application/javascript" src="domutil.js"></script>
+        <script type="application/javascript" src="flagsort.js"></script> <!-- pre-generated flag icons metadata file -->
+        <script type="application/javascript" src="preview.js"></script>
+    </head>
+    <body>
+        <div id="contents-box">
+            <div id="preview" class="roundedbox" style="background-color: white;">
+                <div id="previewsetbox"></div>
+            </div>
+            <span class="spread">
+                <span>
+                    <label data-i18n="opt.sortby" for="sortFlags"></label>
+                    <select id="sortFlags">
+                        <menupopup>
+                            <option data-i18n="opt.sortcode"  value="code" selected="true"></option>
+                            <option data-i18n="opt.sortname"  value="name"></option>
+                            <option data-i18n="opt.sortratio" value="ratio"></option>
+                            <option data-i18n="opt.sortcolor" value="color"></option>
+                        </menupopup>
+                    </select>
+                </span>
+                <button id="closeButton" autofocus>
+                    <label for="closeButton" data-i18n="opt.close"></label>
+                </button>
+            </span>
+        </div>
+    </body>
+</html>

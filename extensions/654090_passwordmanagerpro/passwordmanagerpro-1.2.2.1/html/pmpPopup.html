@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
+		<script type="text/javascript" src="/js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="/js/PMP_popup.js"></script>
+		
+	</head>
+	<body>
+	
+                <div class="PMP_Banner"><img src="/images/pmp-logo.png"></div>
+                
+		<form id="serverDetailForm">
+                    <table class="serverStatusTable"><tr><td colspan="3" id="serverFailedTd"><div class="serverFailed"></div></td></tr></table>
+                    <div id="mspOrgRequired"></div>
+                    <div id="invalidServerCredentials"></div>
+                    <div id="backToLoginForm"><img src="/images/rightArrow.svg"/></div>
+                    
+			
+                <table class="getServerDetailsTable">
+                    <tbody>
+                        <tr><td><img src="/images/hostname.svg"/></td><td><input id="hostname" type="text" value=""></td></tr>
+                        <tr><td><img src="/images/port.svg"/></td><td><input id="port" type="text" value=""></td></tr>
+                        <tr id="getOrgName"><td><img src="/images/orgname.svg"/></td><td><input id="orgName" type="text"></td></tr>
+                        <tr><td class="serverDetailsSaveButtonTd" colspan="2"><input type="submit" class="serverDetailsSaveButton">
+                        <div id="serverDetailSaveLoading"><img src="/images/loading.gif"/></div></td></tr>
+                    </tbody></table>
+		</form>
+		
+                <form id="loginForm">
+                    <table class="statusTable">
+                        <tr><td colspan="3" id="loginFailed"></td></tr>
+                        <tr><td colspan="3" id="serverNotReachable"></td></tr>
+                        <tr><td colspan="3" id="serverConnectivityLost"></td></tr>
+                    </table>
+                    
+                    <table class="loginFormTable">
+                        <tbody>
+                            <tr>
+                                <div id="serverSettingsConfig"><img src="/images/hostNameSettings.svg"/></div>
+                                <td><img src="/images/username.svg"/></td><td><input tabindex="1" id="username" type="text" value=""></td></tr>
+                            <tr id="pwdField"><td><img src="/images/password.svg"/></td><td><input tabindex="2" id="password" type="password" value=""></td></tr>
+                            <tr id="getDOMAINNAME"><td><img src="/images/domainName_AD.svg"/></td>
+                                <td><div id="DOMAINNAME" tabindex="3">
+                                    <div id="DOMAINNAMEText"></div>
+                                    <div class="SettingsDropDownIcon"><img src="/images/downArrow.svg"/></div>
+                                </div>
+                                <ul id="DOMAINNAMEDropDown"></ul></td></tr>
+                            <tr><td colspan="2"><div class="bannerLink"></div></td></tr>
+                            <tr><td colspan="2"><div class="privacyLink"></div></td></tr>
+                            <tr id="captchafield"><td></td><td><input tabindex="4" id="captchatext" type="text" value=""></td></tr>
+                              <tr id="captchaimg"><td><div id="ref_div"></div></td><td><img id="capimg"/></td></tr>
+                            <tr><td class="loginButtonTd" colspan="2"><input tabindex="5" type="submit" class="loginButton"><div id="signInLoading"><img src="/images/loading.gif"/></div></td></tr>
+                        </tbody>    
+                    </table>
+                </form>
+            
+                <form id="tfaForm">
+                    <table class="tfaStatusTable">
+                        <tr><td colspan="3" id="tfaLoginFailed"></td></tr>
+                    </table>
+                        <div id="tfaBackToLoginForm" title="Back"><img src="/images/leftArrow.svg"/></div>
+			
+			<table class="tfaFormTable">
+                                <tr id="tfaPasswordRow"><td><img src="/images/password.svg"/></td><td><input id="tfaPassword" type="password" value=""></td></tr>
+                <tr id="tfaOTPRow"><td><div id="tfaOTPImage"><img src="/images/oneTimePassword.svg"/></div></td><td><input id="tfaOTP" type="password"></td></tr>
+                                <tr><td colspan="2"><div class="tfaBannerLink"></div></td></tr>
+                                <tr><td colspan="2"><div class="tfaPrivacyLink"></div></td></tr>
+                                <tr><td class="loginButtonTd" colspan="2"><input type="submit" class="loginButton"><div id="tfaSignInLoading"><img src="/images/loading.gif"/></div></td></tr>
+                        </table>
+                </form>
+		
+		<div id="pmp_menu">
+                    <div class="header">
+                        <div class="searchColumns">
+                            <div id="searchIcon"><img src="/images/search_Inactive.png"/></div>
+                            <div id="searchContainer"><div id="searchInputContainer"><input type="text" id="searchResource"/></div>
+                            <div id="advancedSearch"><img src="/images/downArrow.svg"/></div></div>
+                            <div id="searchCriteria"></div>
+                            
+                            <span id="switchOrg"><img src="/images/selectOrg.svg"/></span>
+                            <div id="searchOrgContainer">
+                                <div id="searchOrgInputDiv">
+                                    <div id="OrgSearchIcon"><img src="/images/search_Inactive.png"/></div>
+                                    <input id="searchOrg"/>
+                                </div>
+                                <span><ul id="orgListDropDown"></ul></span>
+                            </div>
+                            
+                            <span id="popupMenuDropDown" title="Menu"><img src="/images/menu_Active.svg"/></span>
+                            <div id="dropDownMenu">
+                                <div id="loginName"></div>
+                                <ul>
+                                    <li id="popupSettings"></li>
+                                    <li id="accessControl"></li>
+                                    <!--<li id="addResource"></li>-->
+                                    <li id="help"></li>
+                                    <li id="about"></li>
+                                    <li id="signout"><span id="signoutText"></span><span><img src="/images/logout.png"/></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="selectedTabArrow"></div>
+                    <ul id="responseDataHeader">
+                        <li class="allResources"><span class="active"><img src="/images/allResources_Active.svg"/></span></li><div class="separator1"><img src="/images/separator.png"/></div>
+                        <li class="resourceGroups"><span class="active"><img src="/images/resourceGroupTab_Active_old.png"/></span></li><div class="separator2"><img src="/images/separator.png"/></div>
+                        <li class="favorites"><span class="active"><img src="/images/favorites_Active.png"/></span></li><div class="separator3"><img src="/images/separator.png"/></div>
+                        <li class="recentlyUsed"><span class="active"><img src="/images/recentlyused_Active.png"/></span></li><div class="separator4"><img src="/images/separator.png"/></div>
+                        <li class="personalPasswords"><span class="active"><img src="/images/personal-icon.png"/></span></li>
+                   </ul>
+
+                    <div id="resourceGroupHeader"></div>
+                    <div id="resourceGroups"></div>
+
+                    <div id="resourceDataDiv"></div>
+                    <div id="accountListHeader"></div>
+                    <div id="accountList"></div>
+                    <div id="accountDetails">
+                        <div id="accountDetailsHeader">
+                            <div class="accountDetailsHeaderImage">
+                                <span class="accountFavorite"></span>
+                                <div class="accountDetailsHeaderName"></div>
+                            </div>
+                            <div class="accountDetailsBackButton"><img src="/images/icon_back.png"></div>
+                        </div>
+                        <div id="accountDetailsBody"></div>
+                    </div>
+                    <div id="resourceDetails">
+                        <div id="resourceDetailsHeader">
+                            <div class="resourceDetailsHeaderName"></div>
+                            <div class="resourceDetailsBackButton"><img src="/images/icon_back.png"></div>
+                        </div>
+                        <div id="resourceDetailsBody"></div>
+                    </div>
+                    <div id="autoLoginList"></div>
+                    <div id="resourceLoading"><img src="/images/loading.gif"/></div>
+                    <div id="personalProceedLoading"><img src="/images/loading.gif"/></div>
+                    <div id="loadDuringListing"><img src="/images/loading.gif"/></div>
+
+                    <div id="settingsTab">
+                        <div class="resourceHeader"></div>
+                        
+                        <table id="commonSettingsTable">
+                            <tr><td id="clearClipboardIn"></td><td id="clipBoardTd">
+                            <input type="text" id="clipboardBoxNew" class="txtbox" size="4" maxlength="4" name="timeout">
+                            seconds
+                           </td></tr>
+                            
+                            <tr><td id="automaticallyLogoutAfter"></td><td id="logoutTd">
+                                     <input type="text" id="logoutBoxNew" class="txtbox" size="4" maxlength="4" name="timeout">
+                            minutes
+                          </td></tr>
+                              <tr>
+                                <td id="promptSave">
+                                </td>
+                                <td>
+                                    <div id="promptSaveDisplay">
+                                  <input type="checkbox" id="promptChk" name="chromesavepassword"/>
+                                    </div>
+                                </td>
+                            </tr>
+                         
+                            <tr>
+                                <td id="autoFillSubmit">
+                                </td>
+                                <td>
+                                    <div id="autoFillSubmitDiv">
+                                  <input type="checkbox" id="enableAutoFillSubmit" name="enableAutoFillSubmit"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="SSOSetting">
+                                </td>
+                                <td>
+                                    <div id="SSOSettingDiv">
+                                  <input type="checkbox" id="enableSSO" name="enableSSO"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="button" id="SettingSaveButton"/>
+                            
+                       <div id='orgLoading'><img src="/images/loading.gif"/></div>
+                                         
+                    </div>
+                    <div id="accessControlContainer">
+                        <div id="accessControlLoading"><img src="/images/loading.gif"/></div>
+                        <div id="accessControlListContainer">
+                            <div class="accessControlHeader"></div>
+                            <ul id="accessControlList"></ul>
+                        </div>
+                    </div>
+                    <div id="aboutTab">
+                        <div class="resourceHeader"></div>
+                    
+                        <table id="commonAboutTable">
+                            
+                            <tr><td id="buildNumber"></td>
+                                <td><div id="buildNumberDisplay"></div></td>
+                            </tr>
+                            <tr><td id="addonVersion"></td>
+                                <td><div id="addonVersionDisplay"></div></td>
+                            </tr>
+                            
+                        </table>
+                          
+                       <div id='orgLoading'><img src="/images/loading.gif"/></div>
+                        <div class="copy-rights"></div>                  
+                    </div>
+                    <!-- Uncomment For Add Resource Page -->
+                    <!--<div id="addResourceContainer">
+                        <div class="addResourceHeader"></div>
+                        <div class="addUserAccountHeader">
+                            <span class="addUserAccountHeaderName"></span>
+                            <span class="addUserAccountBackButton"><img src="/images/icon_back.png"></span>
+                        </div>
+                        <div id="addResourcePage">
+                            <div id="addResourceName">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3"><input id="addResourceNameInput" type="text"></span>
+                            </div>
+                            <div id="addDNSName">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3"><input id="addDNSNameInput" type="text"></span>
+                            </div>
+                            <div id="addResourceType">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3">
+                                    <span id="selectResourceType">
+                                        <span id="resourceTypeText"></span>
+                                        <span id="resourceTypeDropDownIcon"><img src="/images/downArrow.svg"></span>
+                                    </span>
+                                    <ul id="resourceTypeDropDown"></ul>
+                                </span>
+                            </div>
+                            <div id="addResourceDesc">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3"><input id="addResourceDescInput" type="text"></span>
+                            </div>
+                            <div id="addDepartment">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3"><input id="addDepartmentInput" type="text"></span>
+                            </div>
+                            <div id="addResourceUrl">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3"><input id="addResourceUrlInput" type="text"></span>
+                            </div>
+                            <div id="addLocation">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3"><input id="addLocationInput" type="text"></span>
+                            </div>
+                            <div id="addUserAcc">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3"><input id="addUserAccInput" type="text"></span>
+                            </div>
+                            <div id="addPassword">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3"><input id="addPasswordInput" type="password"></span>
+                            </div>
+                            <div id="addConfirmPassword">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3"><input id="addConfirmPasswordInput" type="password"></span>
+                            </div>
+                            <div id="addNotes">
+                                <span class="add_col_1"></span>
+                                <span class="add_col_2">:</span>
+                                <span class="add_col_3"><textarea id="addNotesInput"></textarea></span>
+                            </div>
+                            <div id="addResourceCreateButton"></div>
+                        </div>
+                    </div>  -->
+		<!--</div>-->
+                <div id="copiedToClipboard"></div>
+                <div id="settingSaved"></div>
+                <div id="settingError">Error</div>
+                <div id="checkoutLater"></div>
+                <div id="reasonFailed"></div>
+                <div id="reasonRequired">
+                    <div id="accountName"></div>
+                    <span id="getTicket"><span class="ticketText"></span>
+                    <span id="ticketId"><input type="text"/></span></span>
+                    <span id="reasonText"></span>
+                    <textarea  id="passwordReason"></textarea>
+                    <div id="proceed">Proceed</div>
+                    <div id="cancel">Cancel</div>
+                </div>
+                
+                <div id="passwordReasonPopup">
+                    <div id="accountNameRequest"></div>
+                    <span id="getTicket_request"><span class="ticketText_request"></span>
+                    <span id="ticketId_request"><input type="text"/></span></span>
+                    <span id="requestReasonText"></span>
+                     <textarea  id="passwordReasonComment"></textarea>
+                     <span id="sendRequest"></span>
+                    <span id="cancelRequest"></span>
+                </div>
+                
+                <div id="checkoutPasswordPopup">
+                    <div id="checkoutDetails"></div>
+                    <div id="confirmCheckout"></div>
+                    <div id="cancelCheckout"></div>
+                </div>
+                
+                <div id="checkinPasswordPopup">
+                    <div id="checkinDetails"></div>
+                    <div id="confirmCheckin"></div>
+                    <div id="cancelCheckin"></div>
+                </div>
+                
+                <div id="setupPersonalPasswordPopup">
+                    <div id="setupWarningDetails"></div>
+                </div>
+                
+                <form id="getPersonalPassPhrase">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td id="personalText"></td>
+                                <td id="personalInput"><input type="password" tabindex="1"/></td>
+                            </tr>
+                           <tr id="personalCaptchaField">
+                            	<td id="personalCaptchaMsg"></td>
+                            	<td id="personalCaptchaInput"><input type="text" tabindex="2"/></td>
+                            </tr>
+                            	<tr id="personalCaptchaImg">
+                            	<td><img id="personalCapImg"/></td>
+                            	<td><div id="personal_Ref_Div"></div></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td id="proceedPersonal"><input tabindex="3" type="submit"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                
+                <div id="personalCategory">
+                    <span id="categoryName"></span>
+                    <div id="selectPersonalCategory">
+                        <div id="personalCategoryIcon"><img src=""></div>
+                        <div id="personalCategoryText"></div>
+                        <div id="personalCategoryDropDownIcon"><img src="/images/downArrow.svg"/></div>
+                    </div>
+                </div>
+                    
+                <div id="categoryListDropDown">
+                    <div id="searchCategoryInputDiv">
+                        <div id="categorySearchIcon"><img src="/images/search_Inactive.png"/></div>
+                        <input id="searchCategory"/>
+                    </div>
+                    <span>
+                        <ul id="categoryList"></ul>
+                        <div id="categoryListLoading"><img src="/images/loading.gif"/></div>
+                    </span>
+                </div>
+                
+                
+                <div id="personalAccountList"></div>
+                
+                <div id="personalAccountDetails">
+                    <div id="personalAccountDetailsHeader">
+                        <span class="personalAccountFavorite"></span>
+                        <div class="personalAccountDetailsHeaderName"></div>
+                        <div class="personalAccountDetailsBackButton"><img src="/images/icon_back.png"></div>
+                    </div>
+                    <div id="personalAccountDetailsBody"></div>
+                </div>
+                
+            </div>
+                
+                <div id="bannerMessageWrapper">
+                    <div id="bannerMessageTitle"></div>
+                    <div id="bannerMessage"></div>
+                    <div id="bannerMessageButton"></div>
+                </div>
+                 <div id="privacyMessageWrapper">
+                    <div id="privacyMessageTitle"></div>
+                    <div id="privacyMessage"></div>
+                    <div id="privacyMessageButton"></div>
+                </div>
+                <div id="serverDetailErrorMessage"></div>
+                <div id="serverDetailLoading"><img src="/images/loading.gif"/></div>
+        </body>
+</html>

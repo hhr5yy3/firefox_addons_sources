@@ -1,0 +1,1 @@
+window.OPERATOR_NAME = "Malva Tour";

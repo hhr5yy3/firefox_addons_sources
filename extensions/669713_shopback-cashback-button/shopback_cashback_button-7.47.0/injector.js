@@ -1,0 +1,1 @@
+window.SbExtensionAwesomeCheck=!0;

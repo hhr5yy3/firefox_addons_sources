@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_Ext_Name__",
+  "version": "11.0.7",
+  "default_locale": "en",
+  "description": "__MSG_Ext_Description__",
+  "icons": {
+    "48": "img/icon.png"
+  },
+  "action": {
+    "default_icon": "img/icon.png",
+    "default_popup": "popup/popup.html",
+    "default_title": "__MSG_Ext_Name__"
+  },
+  "background": {
+    "page": "main.html"
+  },
+  "permissions": [
+    "alarms",
+    "scripting",
+    "tabs",
+    "notifications",
+    "contextMenus",
+    "webRequest",
+    "webNavigation",
+    "storage",
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "img/*",
+        "content-scripts/*",
+        "web-scripts/*",
+        "popup/*",
+        "webfonts/*"
+      ],
+      "matches": [
+        "*://*/*"
+      ]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "alldebrid@alldebrid.com",
+      "strict_min_version": "60.0"
+    }
+  }
+}

@@ -1,0 +1,316 @@
+<!-- ***** BEGIN LICENSE BLOCK *****
+  -
+  - Copyright (C) 2023 Marc Ruiz Altisent. All rights reserved.
+  -
+  - This file is part of FoxReplace.
+  -
+  - FoxReplace is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software
+  - Foundation, either version 3 of the License, or (at your option) any later version.
+  -
+  - FoxReplace is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+  - A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+  -
+  - You should have received a copy of the GNU General Public License along with FoxReplace. If not, see <http://www.gnu.org/licenses/>.
+  -
+  - ***** END LICENSE BLOCK ***** -->
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>options.title</title>
+    <link rel="stylesheet" href="../lib/bootstrap.css">
+    <link rel="stylesheet" href="../lib/fontawesome-free-5.9.0-web/css/all.css">
+    <link rel="stylesheet" href="options.css">
+    <script src="../lib/ag-grid.min.js"></script>
+    <script src="../lib/jquery-3.7.0.min.js"></script>
+    <script src="../lib/bootstrap.bundle.js"></script>
+    <script src="../lib/xregexp-all.js"></script>
+    <script src="../scripts/core.js"></script>
+    <script src="../scripts/storage.js"></script>
+    <script src="gridcomponents.js"></script>
+    <script src="options.js"></script>
+    <script src="groupeditor.js"></script>
+  </head>
+
+  <body>
+
+    <div>
+      <h4 class="i18n">options.substitutionList</h4>
+      <p>
+        <button id="addGroup" class="btn btn-primary" data-toggle="modal" data-target="#groupEditorModal">
+          <i class="fas fa-plus"></i>
+          <span class="i18n">options.add</span>
+        </button>
+        <span class="btn-group" role="group">
+          <button id="moveUpGroup" class="btn btn-secondary">
+            <i class="fas fa-angle-up"></i>
+            <span class="i18n">options.moveUp</span>
+          </button>
+          <button id="moveDownGroup" class="btn btn-secondary">
+            <i class="fas fa-angle-down"></i>
+            <span class="i18n">options.moveDown</span>
+          </button>
+        </span>
+        <span class="btn-group" role="group">
+          <button id="import" class="btn btn-secondary" data-toggle="modal" data-target="#importModal" data-from="file">
+            <i class="fas fa-file-import"></i>
+            <span class="i18n">options.import</span>
+          </button>
+          <button id="importFromUrl" class="btn btn-secondary" data-toggle="modal" data-target="#importModal" data-from="url">
+            <i class="fas fa-cloud-download-alt"></i>
+            <span class="i18n">options.importFromUrl</span>
+          </button>
+          <button id="export" class="btn btn-secondary">
+            <i class="fas fa-file-export"></i>
+            <span class="i18n">options.export</span>
+          </button>
+        </span>
+        <button id="resetColumns" class="btn btn-secondary">
+          <i class="fas fa-undo"></i>
+          <span class="i18n">options.resetColumns</span>
+        </button>
+        <button id="clearGroups" class="btn btn-danger" data-toggle="modal" data-target="#confirmClearGroupsModal">
+          <i class="fas fa-trash"></i>
+          <span class="i18n">options.clear</span>
+        </button>
+      </p>
+      <p id="listGrid" class="ag-theme-fresh"></p>
+    </div>
+
+    <div id="prefs">
+      <h4 class="i18n">options.subscription.header</h4>
+      <div class="form-check">
+        <input id="enableSubscription" type="checkbox" class="form-check-input"></input>
+        <label class="form-check-label i18n">options.subscription.enable</label>
+      </div>
+      <div class="form-group row my-3">
+        <div class="input-group col">
+          <div class="input-group-prepend">
+            <span class="input-group-text i18n">options.subscription.url</span>
+          </div>
+          <input id="subscriptionUrl" type="text" class="form-control"></input>
+        </div>
+        <div class="input-group col-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text i18n">options.subscription.period</span>
+          </div>
+          <input id="subscriptionPeriod" type="number" value="1" min="1" class="form-control"></input>
+        </div>
+      </div>
+      <p>
+        <label class="i18n">options.subscription.status</label>
+        <span id="status">Disabled</span>
+      </p>
+      <div id="subscriptionWarning" class="alert alert-warning d-none" role="alert">
+        <h5 class="alert-heading">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span class="i18n">options.subscription.warning.header</span>
+        </h5>
+        <p class="i18n">options.subscription.warning.content</p>
+      </div>
+      <h4 class="i18n">options.otherSettings</h4>
+      <div class="form-check">
+        <input id="enableContextMenu" type="checkbox" class="form-check-input"></input>
+        <label class="form-check-label i18n">options.enableContextMenu</label>
+      </div>
+      <div class="form-check">
+        <input id="autoReplaceOnLoad" type="checkbox" class="form-check-input"></input>
+        <label class="form-check-label i18n">options.autoReplaceOnLoad</label>
+      </div>
+      <div class="form-check">
+        <input id="autoReplacePeriodically" type="checkbox" class="form-check-input">
+        <label class="form-check-label i18n">options.autoReplacePeriodically</label>
+        <input id="autoReplacePeriod" type="number" value="1" min="1" style="width:10ex;">
+        <span class="i18n">options.autoReplacePeriodUnits</span>
+      </div>
+      <div class="form-check">
+        <input id="replaceUrls" type="checkbox" class="form-check-input"></input>
+        <label class="form-check-label i18n">options.replaceUrls</label>
+      </div>
+      <div class="form-check">
+        <input id="replaceScripts" type="checkbox" class="form-check-input"></input>
+        <label class="form-check-label i18n">options.replaceScripts</label>
+      </div>
+    </div>
+
+    <div id="importWarning" class="toast" role="alert">
+      <div class="toast-header">
+        <i class="fas fa-exclamation-triangle mr-1"></i>
+        <strong class="mr-auto i18n">warning</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+      </div>
+      <div class="toast-body">
+        <div class="alert alert-warning"></div>
+      </div>
+    </div>
+
+    <div id="groupEditorModal" class="modal" role="dialog">
+      <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div id="groupEditor">
+              <div class="form-inline mb-3">
+                <div class="form-check mr-3">
+                  <input id="groupEnabled" type="checkbox" class="form-check-input"></input>
+                  <label class="form-check-label i18n">options.group.enabled</label>
+                </div>
+                <div class="input-group mr-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text i18n">options.group.mode</span>
+                  </div>
+                  <select id="groupMode" class="custom-select">
+                    <option value="0" selected="" class="i18n">options.group.mode.autoAndManual</option>
+                    <option value="1" class="i18n">options.group.mode.auto</option>
+                    <option value="2" class="i18n">options.group.mode.manual</option>
+                  </select>
+                </div>
+                <div class="input-group mr-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text i18n">html</span>
+                  </div>
+                  <select id="groupHtml" class="custom-select">
+                    <option value="0" selected="" class="i18n">html.none</option>
+                    <option value="1" class="i18n">html.output</option>
+                    <option value="2" class="i18n">html.inputOutput</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text i18n">options.group.name</span>
+                </div>
+                <input id="groupName" type="text" class="form-control"></input>
+              </div>
+            </div>
+            <ul class="nav nav-pills mb-3" role="tablist">
+              <li class="nav-item">
+                <a id="urlsTab" class="nav-link active i18n" href="#urlsContent" role="tab" data-toggle="tab">options.group.urls</a>
+              </li>
+              <li class="nav-item">
+                <a id="substitutionsTab" class="nav-link i18n" href="#substitutionsContent" role="tab" data-toggle="tab">options.group.substitutions</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div id="urlsContent" class="tab-pane show active" role="tabpanel">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text i18n">options.group.search</span>
+                  </div>
+                  <input id="urlsSearchBar" type="search" class="form-control searchBar"></input>
+                  <div class="input-group-append">
+                    <button id="urlsSearchClear" class="btn btn-outline-secondary" type="button">
+                      <i class="fas fa-eraser"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="d-flex">
+                  <div id="urlsGrid" class="ag-theme-fresh mr-3"></div>
+                  <div>
+                    <button id="clearUrlsButton" class="btn btn-danger">
+                      <i class="fas fa-trash"></i>
+                      <span class="i18n">options.clear</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div id="substitutionsContent" class="tab-pane" role="tabpanel">
+                <p>
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <span class="i18n">options.output.function.warning</span>
+                </p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text i18n">options.group.search</span>
+                  </div>
+                  <input id="substitutionsSearchBar" type="search" class="form-control searchBar"></input>
+                  <div class="input-group-append">
+                    <button id="substitutionsSearchClear" class="btn btn-outline-secondary" type="button">
+                      <i class="fas fa-eraser"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="d-flex">
+                  <div id="substitutionsGrid" class="ag-theme-fresh mr-3"></div>
+                  <div>
+                    <div class="btn-group-vertical mb-3" role="group">
+                      <button id="moveTopSubstitutionButton" class="btn btn-secondary">
+                        <i class="fas fa-angle-double-up"></i>
+                        <span class="i18n">options.moveTop</span>
+                      </button>
+                      <button id="moveUpSubstitutionButton" class="btn btn-secondary">
+                        <i class="fas fa-angle-up"></i>
+                        <span class="i18n">options.moveUp</span>
+                      </button>
+                      <button id="moveDownSubstitutionButton" class="btn btn-secondary">
+                        <i class="fas fa-angle-down"></i>
+                        <span class="i18n">options.moveDown</span>
+                      </button>
+                      <button id="moveBottomSubstitutionButton" class="btn btn-secondary">
+                        <i class="fas fa-angle-double-down"></i>
+                        <span class="i18n">options.moveBottom</span>
+                      </button>
+                    </div>
+                    <div>
+                      <button id="clearSubstitutionsButton" class="btn btn-danger w-100">
+                        <i class="fas fa-trash"></i>
+                        <span class="i18n">options.clear</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="groupOk" class="btn btn-primary i18n" data-action="ok">options.ok</button>
+            <button id="groupCancel" class="btn btn-secondary i18n" data-action="cancel">options.cancel</button>
+            <button id="groupApply" class="btn btn-secondary i18n" data-action="apply">options.apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="importModal" class="modal" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="importTitle" class="modal-title">Import</h5>
+          </div>
+          <div class="modal-body">
+            <p class="form-group">
+              <input id="importFile" class="importFromFile form-control h-auto" type="file" accept=".json">
+              <input id="importUrl" class="importFromUrl form-control" type="text">
+            </p>
+            <div id="importError" class="alert alert-danger" role="alert"></div>
+          </div>
+          <div class="modal-footer">
+            <div class="spinner-border d-none" role="status"></div>
+            <button id="importAppend" class="btn btn-primary i18n" data-action="append">options.importAndAppend</button>
+            <button id="importOverwrite" class="btn btn-primary i18n" data-action="overwrite">options.importAndOverwrite</button>
+            <button class="btn btn-secondary i18n" data-dismiss="modal">options.cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="confirmClearGroupsModal" class="modal" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body i18n">options.confirmClearGroups.content</div>
+          <div class="modal-footer">
+            <button id="confirmClearGroupsButton" class="btn btn-danger i18n">options.confirmClearGroups.clear</button>
+            <button class="btn btn-secondary i18n" data-dismiss="modal">options.confirmClearGroups.cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../scripts/i18n.js"></script>
+
+  </body>
+
+</html>

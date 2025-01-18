@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="iframe-contents">
+    <head>
+        <meta charset="utf-8"/>
+        <title data-i18n="opt.optionstitle"></title>
+        <link type="text/css" rel="stylesheet" href="common.css"/>
+        <style type="text/css">
+        /*<![CDATA[*/
+            div#mainBox,
+            div#mainBox *,
+            span#templateBox,
+            span#templateFaviconBox,
+            input#template {
+                width: -moz-available;
+            }
+
+            div.default span#templateBox,
+            div.default div#helpBox,
+            div.default a#getMoreLink {
+                display: none;
+            }
+
+            span.selectall     { -moz-user-select: all;  -webkit-user-select: all;  }
+            input[type="text"] { -moz-user-select: text; -webkit-user-select: text; }
+
+            /* The hotkey input field is focusable, but hide the caret */
+            input#hotkey { caret-color: transparent; }
+
+            /* XUL had built-in support for putting an icon in a text field; HTML doesn't, so commence the CSS HACK: */
+            span#templateFaviconBox {
+                position: relative;
+                margin: 0; padding: 0;
+            }
+            span#templateFaviconBox > img#favicon {
+                position: absolute;
+                left: 10px;
+            }
+            span#templateFaviconBox > input#template {
+                text-indent: 32px;
+            }
+        /*]]>*/
+        </style>
+        <script type="application/javascript" src="/util.js"></script>
+        <script type="application/javascript" src="domutil.js"></script>
+        <script type="application/javascript" src="import.js"></script>
+        <script type="application/javascript" src="editaction.js"></script>
+    </head>
+    <body>
+        <div id="contents-box">
+            <span>
+                <div id="mainBox">
+                    <span>
+                        <span class="checkboxwrapper">
+                            <input id="show" type="checkbox"/>
+                        </span>
+                        <label for="show" data-i18n="opt.show"></label>
+                    </span>
+                    <span>
+                        <label data-i18n="opt.namelabel" for="name"></label>
+                        <input type="text" id="name"
+                               minlength="1" maxlength="32"
+                               tabindex="2"/>
+                    </span>
+                    <span>
+                        <label data-i18n="opt.clicklabel" for="iconclick"></label>
+                        <select id="iconclick" tabindex="3">
+                            <option value="" id="noclick"><!-- This space intentionally left blank --></option>
+                            <option value="click" data-i18n="opt.1click"></option>
+                            <option value="doubleclick" data-i18n="opt.2click"></option>
+                            <option value="tripleclick" data-i18n="opt.3click"></option>
+                            <!-- TODO/FIXME: Middle-click page action detection is currently impossible with the WebExtension API -->
+                            <!--             If Mozilla fixes this, the normal tooltip string is "opt.mclicktip" -->
+                            <option value="middleclick" data-i18n="opt.1mclick" data-i18n-title="opt.webextbreak" disabled="true"></option>
+                            <option value="doublemiddleclick" data-i18n="opt.2mclick" data-i18n-title="opt.webextbreak" disabled="true"></option>
+                            <option value="triplemiddleclick" data-i18n="opt.3mclick" data-i18n-title="opt.webextbreak" disabled="true"></option>
+                        </select>
+                    </span>
+                    <span>
+                        <label data-i18n="opt.hotkeylabel" for="hotkey"></label>
+                        <input id="hotkey" type="text" tabindex="4"
+                               data-i18n-placeholder="opt.hotkeyhelp"/>
+                    </span>
+                </div>
+                <div id="helpBox" class="roundedbox">
+                    <span class="spread">
+                        <label data-i18n="opt.placeholders" for="quickhelp"></label>
+    <!-- FIXME!!!!!!!
+                        <a id="fullhelplink"
+                           href="#" tabindex="0" role="button">
+                            <img src="/icons/help.png"/>
+                            <label data-i18n="opt.showall" for="fullhelplink"></label>
+                        </a>
+    -->
+                    </span>
+                    <table id="quickhelp">
+                        <tr> <!-- tooltips added on load from JS -->
+                            <td><label data-i18n="opt.pagetitle" for="title"></label></td>
+                            <td><span class="selectall" id="title">{title}</span></td>
+                        </tr>
+                        <tr>
+                            <td><label data-i18n="opt.fullurl" for="fullURL"></label></td>
+                            <td><span class="selectall" id="fullURL">{fullURL}</span></td>
+                        </tr>
+                        <tr>
+                            <td><label data-i18n="opt.domainname" for="domainName"></label></td>
+                            <td><span class="selectall" id="domainName">{domainName}</span></td>
+                        </tr>
+                        <tr>
+                            <td><label data-i18n="opt.ipaddress" for="IPaddress"></label></td>
+                            <td><span class="selectall" id="IPaddress">{IPaddress}</span></td>
+                        </tr>
+                        <tr>
+                            <td><label data-i18n="opt.country" for="countryName"></label></td>
+                            <td><span class="selectall" id="countryName">{countryName}</span></td>
+                        </tr>
+                    </table>
+    <!-- FIXME!!!!!!!
+                    <panel id="fullHelpPopup" style="padding: 4px">
+                        <span id="fullPlaceholdersPallete"/>
+                        <span>
+                            <label value="close" class="text-link" style="margin: 0 10px" onclick="closeFullHelpPopup()"/>
+                        </span>
+                    </panel>
+    -->
+                </div>
+            </span>
+            <span id="templateBox" class="row">
+                <label data-i18n="opt.templatelabel" for="template"></label>
+                <span id="templateFaviconBox" class="row">
+                    <img id="favicon"/> <!-- NOTE: see CSS -->
+                    <!-- TODO: for autocomplete, input needs: aria-autocomplete="list", oninput+="generateAutocomplete();" -->
+                    <input id="template" type="text"
+                           minlength="1" maxlength="1024"
+                           style="direction: ltr;"
+                           tabindex="5"
+                           data-i18n-placeholder="opt.templatehelp"/>
+                </span>
+    <!-- FIXME!!!
+                <panel id="templateAutocompletePopup" noautofocus="true"/>
+    -->
+            </span>
+            <span id="footer" class="row spread">
+                <a id="getMoreLink"
+                   href="#" tabindex="0" role="button">
+                    <img src="/icons/goto.png"/>
+                    <label data-i18n="opt.seeforum" for="getMoreLink"></label>
+                </a>
+                <span class="rightmost">
+                    <button id="saveButton" tabindex="6">
+                        <label data-i18n="opt.save" for="saveButton"></label>
+                    </button> <!-- TODO: needs icons (XUL had built-ins) -->
+                    <button id="closeButton" tabindex="7">
+                        <label data-i18n="opt.cancel" for="closeButton"></label>
+                    </button>
+                </span>
+            </span>
+        </div>
+    </body>
+</html>

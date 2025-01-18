@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title data-i18n="options">FoxyTab </title>
+    <link rel="icon" type="image/png" href="../image/icon.svg">
+    <link rel="stylesheet" href="options.css">
+    <script type="module" src="options.js"></script>
+  </head>
+  <body>
+
+    <!-- Navigation -->
+    <input type="radio" name="nav" id="nav1">
+    <input type="radio" name="nav" id="nav2">
+    <input type="radio" name="nav" id="nav3" checked>
+    <input type="radio" name="nav" id="nav4">
+    <input type="radio" name="nav" id="nav5">
+    <input type="radio" name="nav" id="nav6">
+    <input type="radio" name="nav" id="nav7">
+    <input type="radio" name="nav" id="nav8">
+
+    <nav>
+      <label for="nav3" data-i18n="options">&#x2699;&#xfe0f; </label>
+      <label for="nav4" data-i18n="dateClock"></label>
+      <label for="nav5" data-i18n="contextMenu"></label>
+      <label for="nav6" data-i18n="container"></label>
+      <label for="nav7" data-i18n="theme"></label>
+      <label for="nav8" data-i18n="redirect"></label>
+
+      <label for="nav1" data-i18n="help" style="cursor: help;">&#x1f1ed; </label>
+      <label for="nav2" data-i18n="about">&#x2139;&#xfe0f; </label>
+
+      <label><a href="../locale-maker/locale-maker.html" target="_blank"><img src="../locale-maker/locale-maker.svg" alt="">
+        <span>Locale Maker</span></a></label>
+    </nav>
+
+    <article>
+      <div class="progressBar"></div>
+
+      <!-- Help/About -->
+      <section><iframe src="help.html"></iframe></section>
+      <section><iframe src="about.html"></iframe></section>
+
+
+      <!-- user options -->
+      <section class="options">
+
+        <fieldset>
+          <legend data-i18n="options"></legend>
+
+          <label class="pointer" data-i18n="tabCounter"><input type="checkbox" id="tabCounter"></label>
+          <label class="pointer" data-i18n="perWindow"><input type="checkbox" id="perWindow"></label>
+          <p class="description" data-i18n="tabCounterDescription"></p>
+
+          <label class="pointer" data-i18n="altIcon"><input type="checkbox" id="altIcon"></label>
+          <p class="description" data-i18n="altIconDescription"></p>
+
+          <label data-i18n="maxTabs"></label>
+          <input type="number" id="maxTabs" min="0" max="1000" step="1" value="0">
+          <p class="description" data-i18n="maxTabsDescription"></p>
+
+          <label data-i18n="badgeTextColor"></label>
+          <input type="color" id="badgeTextColor" value="#ffffff">
+          <img class="bin" src="../image/bin.svg" data-i18n="delete|title" alt="">
+          <p class="description" data-i18n="badgeTextColorDescription"></p>
+
+          <label data-i18n="badgeBGColor"></label>
+          <input type="color" id="badgeBGColor" value="#ff7700">
+          <img class="bin" src="../image/bin.svg" data-i18n="delete|title" alt="">
+          <p class="description" data-i18n="badgeBGColorDescription"></p>
+
+          <label class="pointer" data-i18n="showFlag"><input type="checkbox" id="showFlag"></label>
+          <p class="description" data-i18n="showFlagDescription"></p>
+
+          <label class="pointer experimental" data-i18n="cleanUrl"><input type="checkbox" id="cleanUrl"></label>
+          <p class="description" data-i18n="cleanUrlDescription"></p>
+
+          <label data-i18n="customReload"></label>
+          <input type="number" id="customReload" min="6" max="30" step="1" value="10">
+          <p class="description" data-i18n="customReloadDescription"></p>
+
+          <label data-i18n="customCopy"></label>
+          <p class="description" data-i18n="customCopyDescription"></p>
+          <textarea id="customCopy" rows="4" spellcheck="false" placeholder="{ip} {title} {url} {date} {time}"></textarea>
+
+          <label data-i18n="pageSettings"></label>
+          <p class="description" data-i18n="pageSettingsDescription"></p>
+          <textarea id="pageSettings" rows="6" spellcheck="false" placeholder='{
+  "headerLeft": "",
+  "headerRight": "",
+  "footerLeft": "",
+  "footerRight": ""
+}'></textarea>
+
+
+        </fieldset>
+
+        <div style="display: flex;">
+          <input type="file" id="file" accept=".txt,.json">
+          <label for="file" class="flat" data-i18n="import"></label>&nbsp;
+          <button type="button" id="export" class="flat" data-i18n="export"></button>
+          <span class="spacer"></span>
+          <button type="button" id="restore" class="flat" data-i18n="restore"></button>
+        </div>
+
+        <button type="submit" data-i18n="saveOptions"></button>
+      </section>
+
+
+      <section class="dateClock">
+
+        <fieldset class="date">
+          <legend data-i18n="date">&#x1f4c5; </legend>
+
+          <label data-i18n="weekday"></label>
+          <select id="weekday">
+            <option value="short" data-i18n="short"></option>
+            <option value="long" data-i18n="long"></option>
+          </select>
+          <p class="description" data-i18n="weekdayDescription"></p>
+
+          <label data-i18n="month"></label>
+          <select id="month">
+            <option value="short" data-i18n="short"></option>
+            <option value="long" data-i18n="long"></option>
+          </select>
+          <p class="description" data-i18n="monthDescription"></p>
+
+          <!-- template -->
+          <template>
+            <li>
+              <span></span>
+              <span></span>
+              <span class="spacer"></span>
+              <button type="button" class="up">&#x25b2;</button>
+              <button type="button" class="down">&#x25bc;</button>
+              <img class="bin" src="../image/bin.svg" data-i18n="delete|title" alt="">
+            </li>
+          </template>
+
+
+
+          <div class="selector">
+            <select id="dateLocale">
+              <option value="prs-AF">Afghanistan - Dari</option>
+              <option value="ps-AF">Afghanistan - Pashto</option>
+              <option value="sq-AL">Albania - Albanian</option>
+              <option value="ar-DZ">Algeria - Arabic</option>
+              <option value="tzm-DZ">Algeria - Tamazight (Latin)</option>
+              <option value="es-AR">Argentina - Spanish</option>
+              <option value="hy-AM">Armenia - Armenian</option>
+              <option value="en-AU">Australia - English</option>
+              <option value="de-AT">Austria - German</option>
+              <option value="az-AZ">Azerbaijan - Azeri (Cyrillic)</option>
+              <option value="az-AZ">Azerbaijan - Azeri (Latin)</option>
+              <option value="ar-BH">Bahrain - Arabic</option>
+              <option value="bn-BD">Bangladesh - Bengali</option>
+              <option value="be-BY">Belarus - Belarusian</option>
+              <option value="nl-BE">Belgium - Dutch</option>
+              <option value="fr-BE">Belgium - French</option>
+              <option value="en-BZ">Belize - English</option>
+              <option value="quz-BO">Bolivia - Quechua</option>
+              <option value="es-BO">Bolivia - Spanish</option>
+              <option value="bs-BA">Bosnia and Herzegovina - Bosnian (Cyrillic)</option>
+              <option value="bs-BA">Bosnia and Herzegovina - Bosnian (Latin)</option>
+              <option value="hr-BA">Bosnia and Herzegovina - Croatian</option>
+              <option value="sr-BA">Bosnia and Herzegovina - Serbian (Cyrillic)</option>
+              <option value="sr-BA">Bosnia and Herzegovina - Serbian (Latin)</option>
+              <option value="pt-BR">Brazil - Portuguese</option>
+              <option value="ms-BN">Brunei Darussalam - Malay</option>
+              <option value="bg-BG">Bulgaria - Bulgarian</option>
+              <option value="km-KH">Cambodia - Khmer</option>
+              <option value="en-CA">Canada - English</option>
+              <option value="fr-CA">Canada - French</option>
+              <option value="iu-CA">Canada - Inuktitut (Latin)</option>
+              <option value="iu-CA">Canada - Inuktitut (Syllabics)</option>
+              <option value="moh-CA">Canada - Mohawk</option>
+              <option value="en-CB">Caribbean - English</option>
+              <option value="arn-CL">Chile - Mapudungun</option>
+              <option value="es-CL">Chile - Spanish</option>
+              <option value="zh-CN">China, People's Republic of - Chinese (Simplified) Legacy</option>
+              <option value="ug-CN">China, People's Republic of - Uyghur</option>
+              <option value="mn-CN">China, People's Republic of - Mongolian (Traditional Mongolian)</option>
+              <option value="ii-CN">China, People's Republic of - Yi</option>
+              <option value="bo-CN">China, People's Republic of - Tibetan</option>
+              <option value="es-CO">Colombia - Spanish</option>
+              <option value="es-CR">Costa Rica - Spanish</option>
+              <option value="hr-HR">Croatia - Croatian</option>
+              <option value="cs-CZ">Czech Republic - Czech</option>
+              <option value="da-DK">Denmark - Danish</option>
+              <option value="es-DO">Dominican Republic - Spanish</option>
+              <option value="quz-EC">Ecuador - Quechua</option>
+              <option value="es-EC">Ecuador - Spanish</option>
+              <option value="ar-EG">Egypt - Arabic</option>
+              <option value="es-SV">El Salvador - Spanish</option>
+              <option value="et-EE">Estonia - Estonian</option>
+              <option value="am-ET">Ethiopia - Amharic</option>
+              <option value="fo-FO">Faroe Islands - Faroese</option>
+              <option value="fi-FI">Finland - Finnish</option>
+              <option value="smn-FI">Finland - Sami (Inari)</option>
+              <option value="se-FI">Finland - Sami (Northern)</option>
+              <option value="sms-FI">Finland - Sami (Skolt)</option>
+              <option value="sv-FI">Finland - Swedish</option>
+              <option value="gsw-FR">France - Alsatian</option>
+              <option value="br-FR">France - Breton</option>
+              <option value="co-FR">France - Corsican</option>
+              <option value="fr-FR">France - French</option>
+              <option value="oc-FR">France - Occitan</option>
+              <option value="ka-GE">Georgia - Georgian</option>
+              <option value="de-DE">Germany - German</option>
+              <option value="dsb-DE">Germany - Lower Sorbian</option>
+              <option value="hsb-DE">Germany - Upper Sorbian</option>
+              <option value="el-GR">Greece - Greek</option>
+              <option value="kl-GL">Greenland - Greenlandic</option>
+              <option value="qut-GT">Guatemala - K'iche</option>
+              <option value="es-GT">Guatemala - Spanish</option>
+              <option value="es-HN">Honduras - Spanish</option>
+              <option value="zh-HK">Hong Kong S.A.R. - Chinese (Traditional) Legacy</option>
+              <option value="hu-HU">Hungary - Hungarian</option>
+              <option value="is-IS">Iceland - Icelandic</option>
+              <option value="as-IN">India - Assamese</option>
+              <option value="bn-IN">India - Bengali</option>
+              <option value="en-IN">India - English</option>
+              <option value="gu-IN">India - Gujarati</option>
+              <option value="hi-IN">India - Hindi</option>
+              <option value="kn-IN">India - Kannada</option>
+              <option value="kok-IN">India - Konkani</option>
+              <option value="ml-IN">India - Malayalam</option>
+              <option value="mr-IN">India - Marathi</option>
+              <option value="or-IN">India - Oriya</option>
+              <option value="pa-IN">India - Punjabi</option>
+              <option value="sa-IN">India - Sanskrit</option>
+              <option value="ta-IN">India - Tamil</option>
+              <option value="te-IN">India - Telugu</option>
+              <option value="id-ID">Indonesia - Indonesian</option>
+              <option value="fa-IR">Iran - Persian</option>
+              <option value="ar-IQ">Iraq - Arabic</option>
+              <option value="en-IE">Ireland - English</option>
+              <option value="ga-IE">Ireland - Irish</option>
+              <option value="he-IL">Israel - Hebrew</option>
+              <option value="it-IT">Italy - Italian</option>
+              <option value="en-JM">Jamaica - English</option>
+              <option value="ja-JP">Japan - Japanese</option>
+              <option value="ar-JO">Jordan - Arabic</option>
+              <option value="kk-KZ">Kazakhstan - Kazakh</option>
+              <option value="sw-KE">Kenya - Kiswahili</option>
+              <option value="ko-KR">Korea - Korean</option>
+              <option value="ar-KW">Kuwait - Arabic</option>
+              <option value="ky-KG">Kyrgyzstan - Kyrgyz</option>
+              <option value="lo-LA">Lao P.D.R. - Lao</option>
+              <option value="lv-LV">Latvia - Latvian</option>
+              <option value="ar-LB">Lebanon - Arabic</option>
+              <option value="ar-LY">Libya - Arabic</option>
+              <option value="de-LI">Liechtenstein - German</option>
+              <option value="lt-LT">Lithuania - Lithuanian</option>
+              <option value="fr-LU">Luxembourg - French</option>
+              <option value="de-LU">Luxembourg - German</option>
+              <option value="lb-LU">Luxembourg - Luxembourgish</option>
+              <option value="zh-MO">Macao S.A.R. - Chinese (Traditional) Legacy</option>
+              <option value="mk-MK">Macedonia (FYROM) - Macedonian (FYROM)</option>
+              <option value="en-MY">Malaysia - English</option>
+              <option value="ms-MY">Malaysia - Malay</option>
+              <option value="dv-MV">Maldives - Divehi</option>
+              <option value="mt-MT">Malta - Maltese</option>
+              <option value="es-MX">Mexico - Spanish</option>
+              <option value="mn-MN">Mongolia - Mongolian (Cyrillic)</option>
+              <option value="sr-ME">Montenegro - Serbian (Cyrillic)</option>
+              <option value="sr-ME">Montenegro - Serbian (Latin)</option>
+              <option value="ar-MA">Morocco - Arabic</option>
+              <option value="ne-NP">Nepal - Nepali</option>
+              <option value="nl-NL">Netherlands - Dutch</option>
+              <option value="fy-NL">Netherlands - Frisian</option>
+              <option value="en-NZ">New Zealand - English</option>
+              <option value="mi-NZ">New Zealand - Maori</option>
+              <option value="es-NI">Nicaragua - Spanish</option>
+              <option value="ha-NG">Nigeria - Hausa (Latin)</option>
+              <option value="ig-NG">Nigeria - Igbo</option>
+              <option value="yo-NG">Nigeria - Yoruba</option>
+              <option value="nb-NO">Norway - Norwegian (Bokmal)</option>
+              <option value="nn-NO">Norway - Norwegian (Nynorsk)</option>
+              <option value="smj-NO">Norway - Sami (Lule)</option>
+              <option value="se-NO">Norway - Sami (Northern)</option>
+              <option value="sma-NO">Norway - Sami (Southern)</option>
+              <option value="ar-OM">Oman - Arabic</option>
+              <option value="ur-PK">Pakistan, Islamic Republic of - Urdu</option>
+              <option value="es-PA">Panama - Spanish</option>
+              <option value="es-PY">Paraguay - Spanish</option>
+              <option value="quz-PE">Peru - Quechua</option>
+              <option value="es-PE">Peru - Spanish</option>
+              <option value="fil-PH">Philippines - Filipino</option>
+              <option value="en-PH">Philippines, Republic of the - English</option>
+              <option value="pl-PL">Poland - Polish</option>
+              <option value="pt-PT">Portugal - Portuguese</option>
+              <option value="fr-MC">Principality of Monaco - French</option>
+              <option value="es-PR">Puerto Rico - Spanish</option>
+              <option value="ar-QA">Qatar - Arabic</option>
+              <option value="ro-RO">Romania - Romanian</option>
+              <option value="ba-RU">Russia - Bashkir</option>
+              <option value="ru-RU">Russia - Russian</option>
+              <option value="tt-RU">Russia - Tatar</option>
+              <option value="sah-RU">Russia - Yakut</option>
+              <option value="rw-RW">Rwanda - Kinyarwanda</option>
+              <option value="ar-SA">Saudi Arabia - Arabic</option>
+              <option value="wo-SN">Senegal - Wolof</option>
+              <option value="sr-RS">Serbia - Serbian (Cyrillic)</option>
+              <option value="sr-RS">Serbia - Serbian (Latin)</option>
+              <option value="sr-CS">Serbia and Montenegro (Former) - Serbian (Cyrillic)</option>
+              <option value="sr-CS">Serbia and Montenegro (Former) - Serbian (Latin)</option>
+              <option value="zh-SG">Singapore - Chinese (Simplified) Legacy</option>
+              <option value="en-SG">Singapore - English</option>
+              <option value="sk-SK">Slovakia - Slovak</option>
+              <option value="sl-SI">Slovenia - Slovenian</option>
+              <option value="af-ZA">South Africa - Afrikaans</option>
+              <option value="en-ZA">South Africa - English</option>
+              <option value="xh-ZA">South Africa - isiXhosa</option>
+              <option value="zu-ZA">South Africa - isiZulu</option>
+              <option value="nso-ZA">South Africa - Sesotho sa Leboa</option>
+              <option value="tn-ZA">South Africa - Setswana</option>
+              <option value="eu-ES">Spain - Basque</option>
+              <option value="ca-ES">Spain - Catalan</option>
+              <option value="gl-ES">Spain - Galician</option>
+              <option value="es-ES">Spain - Spanish</option>
+              <option value="si-LK">Sri Lanka - Sinhala</option>
+              <option value="smj-SE">Sweden - Sami (Lule)</option>
+              <option value="se-SE">Sweden - Sami (Northern)</option>
+              <option value="sma-SE">Sweden - Sami (Southern)</option>
+              <option value="sv-SE">Sweden - Swedish</option>
+              <option value="fr-CH">Switzerland - French</option>
+              <option value="de-CH">Switzerland - German</option>
+              <option value="it-CH">Switzerland - Italian</option>
+              <option value="rm-CH">Switzerland - Romansh</option>
+              <option value="ar-SY">Syria - Arabic</option>
+              <option value="syr-SY">Syria - Syriac</option>
+              <option value="zh-TW">Taiwan - Chinese (Traditional) Legacy</option>
+              <option value="tg-TJ">Tajikistan - Tajik (Cyrillic)</option>
+              <option value="th-TH">Thailand - Thai</option>
+              <option value="en-TT">Trinidad and Tobago - English</option>
+              <option value="ar-TN">Tunisia - Arabic</option>
+              <option value="tr-TR">Türkiye - Turkish</option>
+              <option value="tk-TM">Turkmenistan - Turkmen</option>
+              <option value="ar-AE">U.A.E. - Arabic</option>
+              <option value="uk-UA">Ukraine - Ukrainian</option>
+              <option value="en-GB">United Kingdom - English</option>
+              <option value="gd-GB">United Kingdom - Scottish Gaelic</option>
+              <option value="cy-GB">United Kingdom - Welsh</option>
+              <option value="en-US" selected>United States - English</option>
+              <option value="es-US">United States - Spanish</option>
+              <option value="es-UY">Uruguay - Spanish</option>
+              <option value="uz-UZ">Uzbekistan - Uzbek (Cyrillic)</option>
+              <option value="uz-UZ">Uzbekistan - Uzbek (Latin)</option>
+              <option value="es-VE">Venezuela, Bolivarian Republic of - Spanish</option>
+              <option value="vi-VN">Vietnam - Vietnamese</option>
+              <option value="ar-YE">Yemen - Arabic</option>
+              <option value="en-ZW">Zimbabwe - English</option>
+            </select>
+            <span class="spacer"></span>
+            <button type="button" class="flat" data-i18n="add">&#10133; </button>
+
+          </div>
+
+          <ul></ul>
+        </fieldset>
+
+        <fieldset class="clock">
+        <legend data-i18n="clock">&#x23f2;&#xfe0f; </legend>
+
+        <label class="pointer" data-i18n="hour12"><input type="checkbox" id="hour12"></label>
+        <p class="description" data-i18n="hour12Description"></p>
+
+
+        <div class="selector">
+          <select id="clockLocale">
+            <option value="prs-AF">Afghanistan - Dari</option>
+            <option value="ps-AF">Afghanistan - Pashto</option>
+            <option value="sq-AL">Albania - Albanian</option>
+            <option value="ar-DZ">Algeria - Arabic</option>
+            <option value="tzm-DZ">Algeria - Tamazight (Latin)</option>
+            <option value="es-AR">Argentina - Spanish</option>
+            <option value="hy-AM">Armenia - Armenian</option>
+            <option value="en-AU">Australia - English</option>
+            <option value="de-AT">Austria - German</option>
+            <option value="az-AZ">Azerbaijan - Azeri (Cyrillic)</option>
+            <option value="az-AZ">Azerbaijan - Azeri (Latin)</option>
+            <option value="ar-BH">Bahrain - Arabic</option>
+            <option value="bn-BD">Bangladesh - Bengali</option>
+            <option value="be-BY">Belarus - Belarusian</option>
+            <option value="nl-BE">Belgium - Dutch</option>
+            <option value="fr-BE">Belgium - French</option>
+            <option value="en-BZ">Belize - English</option>
+            <option value="quz-BO">Bolivia - Quechua</option>
+            <option value="es-BO">Bolivia - Spanish</option>
+            <option value="bs-BA">Bosnia and Herzegovina - Bosnian (Cyrillic)</option>
+            <option value="bs-BA">Bosnia and Herzegovina - Bosnian (Latin)</option>
+            <option value="hr-BA">Bosnia and Herzegovina - Croatian</option>
+            <option value="sr-BA">Bosnia and Herzegovina - Serbian (Cyrillic)</option>
+            <option value="sr-BA">Bosnia and Herzegovina - Serbian (Latin)</option>
+            <option value="pt-BR">Brazil - Portuguese</option>
+            <option value="ms-BN">Brunei Darussalam - Malay</option>
+            <option value="bg-BG">Bulgaria - Bulgarian</option>
+            <option value="km-KH">Cambodia - Khmer</option>
+            <option value="en-CA">Canada - English</option>
+            <option value="fr-CA">Canada - French</option>
+            <option value="iu-CA">Canada - Inuktitut (Latin)</option>
+            <option value="iu-CA">Canada - Inuktitut (Syllabics)</option>
+            <option value="moh-CA">Canada - Mohawk</option>
+            <option value="en-CB">Caribbean - English</option>
+            <option value="arn-CL">Chile - Mapudungun</option>
+            <option value="es-CL">Chile - Spanish</option>
+            <option value="zh-CN">China, People's Republic of - Chinese (Simplified) Legacy</option>
+            <option value="ug-CN">China, People's Republic of - Uyghur</option>
+            <option value="mn-CN">China, People's Republic of - Mongolian (Traditional Mongolian)</option>
+            <option value="ii-CN">China, People's Republic of - Yi</option>
+            <option value="bo-CN">China, People's Republic of - Tibetan</option>
+            <option value="es-CO">Colombia - Spanish</option>
+            <option value="es-CR">Costa Rica - Spanish</option>
+            <option value="hr-HR">Croatia - Croatian</option>
+            <option value="cs-CZ">Czech Republic - Czech</option>
+            <option value="da-DK">Denmark - Danish</option>
+            <option value="es-DO">Dominican Republic - Spanish</option>
+            <option value="quz-EC">Ecuador - Quechua</option>
+            <option value="es-EC">Ecuador - Spanish</option>
+            <option value="ar-EG">Egypt - Arabic</option>
+            <option value="es-SV">El Salvador - Spanish</option>
+            <option value="et-EE">Estonia - Estonian</option>
+            <option value="am-ET">Ethiopia - Amharic</option>
+            <option value="fo-FO">Faroe Islands - Faroese</option>
+            <option value="fi-FI">Finland - Finnish</option>
+            <option value="smn-FI">Finland - Sami (Inari)</option>
+            <option value="se-FI">Finland - Sami (Northern)</option>
+            <option value="sms-FI">Finland - Sami (Skolt)</option>
+            <option value="sv-FI">Finland - Swedish</option>
+            <option value="gsw-FR">France - Alsatian</option>
+            <option value="br-FR">France - Breton</option>
+            <option value="co-FR">France - Corsican</option>
+            <option value="fr-FR">France - French</option>
+            <option value="oc-FR">France - Occitan</option>
+            <option value="ka-GE">Georgia - Georgian</option>
+            <option value="de-DE">Germany - German</option>
+            <option value="dsb-DE">Germany - Lower Sorbian</option>
+            <option value="hsb-DE">Germany - Upper Sorbian</option>
+            <option value="el-GR">Greece - Greek</option>
+            <option value="kl-GL">Greenland - Greenlandic</option>
+            <option value="qut-GT">Guatemala - K'iche</option>
+            <option value="es-GT">Guatemala - Spanish</option>
+            <option value="es-HN">Honduras - Spanish</option>
+            <option value="zh-HK">Hong Kong S.A.R. - Chinese (Traditional) Legacy</option>
+            <option value="hu-HU">Hungary - Hungarian</option>
+            <option value="is-IS">Iceland - Icelandic</option>
+            <option value="as-IN">India - Assamese</option>
+            <option value="bn-IN">India - Bengali</option>
+            <option value="en-IN">India - English</option>
+            <option value="gu-IN">India - Gujarati</option>
+            <option value="hi-IN">India - Hindi</option>
+            <option value="kn-IN">India - Kannada</option>
+            <option value="kok-IN">India - Konkani</option>
+            <option value="ml-IN">India - Malayalam</option>
+            <option value="mr-IN">India - Marathi</option>
+            <option value="or-IN">India - Oriya</option>
+            <option value="pa-IN">India - Punjabi</option>
+            <option value="sa-IN">India - Sanskrit</option>
+            <option value="ta-IN">India - Tamil</option>
+            <option value="te-IN">India - Telugu</option>
+            <option value="id-ID">Indonesia - Indonesian</option>
+            <option value="fa-IR">Iran - Persian</option>
+            <option value="ar-IQ">Iraq - Arabic</option>
+            <option value="en-IE">Ireland - English</option>
+            <option value="ga-IE">Ireland - Irish</option>
+            <option value="he-IL">Israel - Hebrew</option>
+            <option value="it-IT">Italy - Italian</option>
+            <option value="en-JM">Jamaica - English</option>
+            <option value="ja-JP">Japan - Japanese</option>
+            <option value="ar-JO">Jordan - Arabic</option>
+            <option value="kk-KZ">Kazakhstan - Kazakh</option>
+            <option value="sw-KE">Kenya - Kiswahili</option>
+            <option value="ko-KR">Korea - Korean</option>
+            <option value="ar-KW">Kuwait - Arabic</option>
+            <option value="ky-KG">Kyrgyzstan - Kyrgyz</option>
+            <option value="lo-LA">Lao P.D.R. - Lao</option>
+            <option value="lv-LV">Latvia - Latvian</option>
+            <option value="ar-LB">Lebanon - Arabic</option>
+            <option value="ar-LY">Libya - Arabic</option>
+            <option value="de-LI">Liechtenstein - German</option>
+            <option value="lt-LT">Lithuania - Lithuanian</option>
+            <option value="fr-LU">Luxembourg - French</option>
+            <option value="de-LU">Luxembourg - German</option>
+            <option value="lb-LU">Luxembourg - Luxembourgish</option>
+            <option value="zh-MO">Macao S.A.R. - Chinese (Traditional) Legacy</option>
+            <option value="mk-MK">Macedonia (FYROM) - Macedonian (FYROM)</option>
+            <option value="en-MY">Malaysia - English</option>
+            <option value="ms-MY">Malaysia - Malay</option>
+            <option value="dv-MV">Maldives - Divehi</option>
+            <option value="mt-MT">Malta - Maltese</option>
+            <option value="es-MX">Mexico - Spanish</option>
+            <option value="mn-MN">Mongolia - Mongolian (Cyrillic)</option>
+            <option value="sr-ME">Montenegro - Serbian (Cyrillic)</option>
+            <option value="sr-ME">Montenegro - Serbian (Latin)</option>
+            <option value="ar-MA">Morocco - Arabic</option>
+            <option value="ne-NP">Nepal - Nepali</option>
+            <option value="nl-NL">Netherlands - Dutch</option>
+            <option value="fy-NL">Netherlands - Frisian</option>
+            <option value="en-NZ">New Zealand - English</option>
+            <option value="mi-NZ">New Zealand - Maori</option>
+            <option value="es-NI">Nicaragua - Spanish</option>
+            <option value="ha-NG">Nigeria - Hausa (Latin)</option>
+            <option value="ig-NG">Nigeria - Igbo</option>
+            <option value="yo-NG">Nigeria - Yoruba</option>
+            <option value="nb-NO">Norway - Norwegian (Bokmal)</option>
+            <option value="nn-NO">Norway - Norwegian (Nynorsk)</option>
+            <option value="smj-NO">Norway - Sami (Lule)</option>
+            <option value="se-NO">Norway - Sami (Northern)</option>
+            <option value="sma-NO">Norway - Sami (Southern)</option>
+            <option value="ar-OM">Oman - Arabic</option>
+            <option value="ur-PK">Pakistan, Islamic Republic of - Urdu</option>
+            <option value="es-PA">Panama - Spanish</option>
+            <option value="es-PY">Paraguay - Spanish</option>
+            <option value="quz-PE">Peru - Quechua</option>
+            <option value="es-PE">Peru - Spanish</option>
+            <option value="fil-PH">Philippines - Filipino</option>
+            <option value="en-PH">Philippines, Republic of the - English</option>
+            <option value="pl-PL">Poland - Polish</option>
+            <option value="pt-PT">Portugal - Portuguese</option>
+            <option value="fr-MC">Principality of Monaco - French</option>
+            <option value="es-PR">Puerto Rico - Spanish</option>
+            <option value="ar-QA">Qatar - Arabic</option>
+            <option value="ro-RO">Romania - Romanian</option>
+            <option value="ba-RU">Russia - Bashkir</option>
+            <option value="ru-RU">Russia - Russian</option>
+            <option value="tt-RU">Russia - Tatar</option>
+            <option value="sah-RU">Russia - Yakut</option>
+            <option value="rw-RW">Rwanda - Kinyarwanda</option>
+            <option value="ar-SA">Saudi Arabia - Arabic</option>
+            <option value="wo-SN">Senegal - Wolof</option>
+            <option value="sr-RS">Serbia - Serbian (Cyrillic)</option>
+            <option value="sr-RS">Serbia - Serbian (Latin)</option>
+            <option value="sr-CS">Serbia and Montenegro (Former) - Serbian (Cyrillic)</option>
+            <option value="sr-CS">Serbia and Montenegro (Former) - Serbian (Latin)</option>
+            <option value="zh-SG">Singapore - Chinese (Simplified) Legacy</option>
+            <option value="en-SG">Singapore - English</option>
+            <option value="sk-SK">Slovakia - Slovak</option>
+            <option value="sl-SI">Slovenia - Slovenian</option>
+            <option value="af-ZA">South Africa - Afrikaans</option>
+            <option value="en-ZA">South Africa - English</option>
+            <option value="xh-ZA">South Africa - isiXhosa</option>
+            <option value="zu-ZA">South Africa - isiZulu</option>
+            <option value="nso-ZA">South Africa - Sesotho sa Leboa</option>
+            <option value="tn-ZA">South Africa - Setswana</option>
+            <option value="eu-ES">Spain - Basque</option>
+            <option value="ca-ES">Spain - Catalan</option>
+            <option value="gl-ES">Spain - Galician</option>
+            <option value="es-ES">Spain - Spanish</option>
+            <option value="si-LK">Sri Lanka - Sinhala</option>
+            <option value="smj-SE">Sweden - Sami (Lule)</option>
+            <option value="se-SE">Sweden - Sami (Northern)</option>
+            <option value="sma-SE">Sweden - Sami (Southern)</option>
+            <option value="sv-SE">Sweden - Swedish</option>
+            <option value="fr-CH">Switzerland - French</option>
+            <option value="de-CH">Switzerland - German</option>
+            <option value="it-CH">Switzerland - Italian</option>
+            <option value="rm-CH">Switzerland - Romansh</option>
+            <option value="ar-SY">Syria - Arabic</option>
+            <option value="syr-SY">Syria - Syriac</option>
+            <option value="zh-TW">Taiwan - Chinese (Traditional) Legacy</option>
+            <option value="tg-TJ">Tajikistan - Tajik (Cyrillic)</option>
+            <option value="th-TH">Thailand - Thai</option>
+            <option value="en-TT">Trinidad and Tobago - English</option>
+            <option value="ar-TN">Tunisia - Arabic</option>
+            <option value="tr-TR">Türkiye - Turkish</option>
+            <option value="tk-TM">Turkmenistan - Turkmen</option>
+            <option value="ar-AE">U.A.E. - Arabic</option>
+            <option value="uk-UA">Ukraine - Ukrainian</option>
+            <option value="en-GB">United Kingdom - English</option>
+            <option value="gd-GB">United Kingdom - Scottish Gaelic</option>
+            <option value="cy-GB">United Kingdom - Welsh</option>
+            <option value="en-US" selected>United States - English</option>
+            <option value="es-US">United States - Spanish</option>
+            <option value="es-UY">Uruguay - Spanish</option>
+            <option value="uz-UZ">Uzbekistan - Uzbek (Cyrillic)</option>
+            <option value="uz-UZ">Uzbekistan - Uzbek (Latin)</option>
+            <option value="es-VE">Venezuela, Bolivarian Republic of - Spanish</option>
+            <option value="vi-VN">Vietnam - Vietnamese</option>
+            <option value="ar-YE">Yemen - Arabic</option>
+            <option value="en-ZW">Zimbabwe - English</option>
+          </select>
+
+          <select id="timeZone">
+            <option value="Etc/GMT-12">(GMT-12:00) International Date Line West</option>
+            <option value="Pacific/Pago_Pago">(GMT-11:00) Pago Pago</option>
+            <option value="Pacific/Niue">(GMT-11:00) Niue</option>
+            <option value="Pacific/Midway">(GMT-11:00) Midway Island | Samoa</option>
+            <option value="Pacific/Tahiti">(GMT-10:00) Tahiti</option>
+            <option value="Pacific/Rarotonga">(GMT-10:00) Rarotonga</option>
+            <option value="Pacific/Honolulu">(GMT-10:00) Hawaii Time</option>
+            <option value="Pacific/Marquesas">(GMT-09:30) Marquesas Islands</option>
+            <option value="Pacific/Gambier">(GMT-09:00) Gambier</option>
+            <option value="America/Anchorage">(GMT-09:00) Alaska</option>
+            <option value="Pacific/Pitcairn">(GMT-08:00) Pitcairn</option>
+            <option value="America/Whitehorse">(GMT-08:00) Pacific Time | Whitehorse</option>
+            <option value="America/Vancouver">(GMT-08:00) Pacific Time | Vancouver</option>
+            <option value="America/Tijuana">(GMT-08:00) Pacific Time | Tijuana | Baja California</option>
+            <option value="America/Los_Angeles">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+            <option value="America/Yellowknife">(GMT-07:00) Mountain Time | Yellowknife</option>
+            <option value="America/Phoenix">(GMT-07:00) Mountain Time | Arizona</option>
+            <option value="America/Mazatlan">(GMT-07:00) Mountain Time | Mazatlan</option>
+            <option value="America/Hermosillo">(GMT-07:00) Mountain Time | Hermosillo</option>
+            <option value="America/Edmonton">(GMT-07:00) Mountain Time | Edmonton</option>
+            <option value="America/Denver">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+            <option value="America/Dawson_Creek">(GMT-07:00) Mountain Time | Dawson Creek</option>
+            <option value="America/Chihuahua">(GMT-07:00) Chihuahua | La Paz</option>
+            <option value="Pacific/Galapagos">(GMT-06:00) Galapagos</option>
+            <option value="America/Winnipeg">(GMT-06:00) Central Time | Winnipeg</option>
+            <option value="America/Tegucigalpa">(GMT-06:00) Central Time | Tegucigalpa</option>
+            <option value="America/Regina">(GMT-06:00) Central Time | Regina | Saskatchewan</option>
+            <option value="America/Mexico_City">(GMT-06:00) Central Time | Mexico City | Guadalajara | Monterrey - New</option>
+            <option value="America/Managua">(GMT-06:00) Managua</option>
+            <option value="America/Guatemala">(GMT-06:00) Guatemala | Central America</option>
+            <option value="America/El_Salvador">(GMT-06:00) El Salvador</option>
+            <option value="America/Costa_Rica">(GMT-06:00) Costa Rica</option>
+            <option value="America/Chicago">(GMT-06:00) Central Time (US &amp; Canada)</option>
+            <option value="America/Belize">(GMT-06:00) Belize</option>
+            <option value="Pacific/Easter">(GMT-05:00) Easter Island</option>
+            <option value="America/Toronto">(GMT-05:00) Eastern Time | Toronto</option>
+            <option value="America/Rio_Branco">(GMT-05:00) Rio Branco</option>
+            <option value="America/Port-au-Prince">(GMT-05:00) Port-au-Prince</option>
+            <option value="America/Panama">(GMT-05:00) Panama</option>
+            <option value="America/New_York">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+            <option value="America/Nassau">(GMT-05:00) Nassau</option>
+            <option value="America/Lima">(GMT-05:00) Lima</option>
+            <option value="America/Jamaica">(GMT-05:00) Jamaica</option>
+            <option value="America/Iqaluit">(GMT-05:00) Eastern Time | Iqaluit</option>
+            <option value="America/Indiana/Indianapolis">(GMT-05:00) Indiana (East)</option>
+            <option value="America/Havana">(GMT-05:00) Havana</option>
+            <option value="America/Guayaquil">(GMT-05:00) Guayaquil</option>
+            <option value="America/Cayman">(GMT-05:00) Cayman</option>
+            <option value="America/Cancun">(GMT-05:00) America Cancun</option>
+            <option value="America/Bogota">(GMT-05:00) Bogota | Quito</option>
+            <option value="America/Caracas">(GMT-04:00) Caracas</option>
+            <option value="Atlantic/Bermuda">(GMT-04:00) Bermuda</option>
+            <option value="America/Thule">(GMT-04:00) Thule</option>
+            <option value="America/Santo_Domingo">(GMT-04:00) Santo Domingo</option>
+            <option value="America/Santiago">(GMT-03:00) Santiago</option>
+            <option value="America/Puerto_Rico">(GMT-04:00) Puerto Rico</option>
+            <option value="America/Porto_Velho">(GMT-04:00) Porto Velho</option>
+            <option value="America/Port_of_Spain">(GMT-04:00) Port of Spain</option>
+            <option value="America/Martinique">(GMT-04:00) Martinique</option>
+            <option value="America/Manaus">(GMT-04:00) Manaus</option>
+            <option value="America/La_Paz">(GMT-04:00) La Paz</option>
+            <option value="America/Halifax">(GMT-04:00) Atlantic Time (Canada) | Halifax</option>
+            <option value="America/Guyana">(GMT-04:00) Guyana | Georgetown</option>
+            <option value="America/Grand_Turk">(GMT-04:00) Grand Turk</option>
+            <option value="America/Curacao">(GMT-04:00) Curacao</option>
+            <option value="America/Boa_Vista">(GMT-04:00) Boa Vista</option>
+            <option value="America/Barbados">(GMT-04:00) Barbados</option>
+            <option value="America/St_Johns">(GMT-03:30) Newfoundland Time | St. Johns</option>
+            <option value="Atlantic/Stanley">(GMT-03:00) Stanley</option>
+            <option value="Antarctica/Rothera">(GMT-03:00) Rothera</option>
+            <option value="Antarctica/Palmer">(GMT-03:00) Palmer</option>
+            <option value="America/Santiago">(GMT-03:00) Santiago</option>
+            <option value="America/Recife">(GMT-03:00) Recife</option>
+            <option value="America/Paramaribo">(GMT-03:00) Paramaribo</option>
+            <option value="America/Montevideo">(GMT-03:00) Montevideo</option>
+            <option value="America/Miquelon">(GMT-03:00) Miquelon</option>
+            <option value="America/Maceio">(GMT-03:00) Maceio</option>
+            <option value="America/Godthab">(GMT-03:00) Greenland | Godthab</option>
+            <option value="America/Fortaleza">(GMT-03:00) Fortaleza</option>
+            <option value="America/Cuiaba">(GMT-03:00) Cuiaba</option>
+            <option value="America/Cayenne">(GMT-03:00) Cayenne</option>
+            <option value="America/Campo_Grande">(GMT-03:00) Campo Grande</option>
+            <option value="America/Belem">(GMT-03:00) Belem</option>
+            <option value="America/Bahia">(GMT-03:00) Salvador</option>
+            <option value="America/Asuncion">(GMT-03:00) Asuncion</option>
+            <option value="America/Argentina/Buenos_Aires">(GMT-03:00) Buenos Aires</option>
+            <option value="America/Araguaina">(GMT-03:00) Araguaina</option>
+            <option value="America/Sao_Paulo">(GMT-03:00) Brasilia | Sao Paulo</option>
+            <option value="Atlantic/South_Georgia">(GMT-02:00) Mid-Atlantic | South Georgia</option>
+            <option value="America/Noronha">(GMT-02:00) Noronha</option>
+            <option value="Atlantic/Cape_Verde">(GMT-01:00) Cape Verde Is.</option>
+            <option value="Atlantic/Azores">(GMT-01:00) Azores</option>
+            <option value="America/Scoresbysund">(GMT-01:00) Scoresbysund</option>
+            <option value="Europe/London" selected>(GMT/UTC) London | Edinburgh</option>
+            <option value="Europe/Lisbon">(GMT+00:00) Lisbon</option>
+            <option value="Europe/Dublin">(GMT+00:00) Dublin</option>
+            <option value="Etc/GMT">(GMT+00:00) GMT (no daylight saving)</option>
+            <option value="Atlantic/Reykjavik">(GMT+00:00) Reykjavik</option>
+            <option value="Atlantic/Faroe">(GMT+00:00) Faeroe</option>
+            <option value="Atlantic/Canary">(GMT+00:00) Canary Islands</option>
+            <option value="America/Danmarkshavn">(GMT+00:00) Danmarkshavn</option>
+            <option value="Africa/Monrovia">(GMT/UTC) Monrovia</option>
+            <option value="Africa/El_Aaiun">(GMT+00:00) El Aaiun</option>
+            <option value="Africa/Casablanca">(GMT+00:00) Casablanca</option>
+            <option value="Africa/Bissau">(GMT+00:00) Bissau</option>
+            <option value="Africa/Accra">(GMT+00:00) Accra</option>
+            <option value="Africa/Abidjan">(GMT+00:00) Abidjan</option>
+            <option value="Africa/Algiers">(GMT+01:00) Algiers | West Central Africa</option>
+            <option value="Africa/Ceuta">(GMT+01:00) Ceuta</option>
+            <option value="Africa/Lagos">(GMT+01:00) Lagos</option>
+            <option value="Africa/Ndjamena">(GMT+01:00) Ndjamena</option>
+            <option value="Africa/Tunis">(GMT+01:00) Tunis</option>
+            <option value="Europe/Amsterdam">(GMT+01:00) Amsterdam</option>
+            <option value="Europe/Andorra">(GMT+01:00) Andorra</option>
+            <option value="Europe/Belgrade">(GMT+01:00) Central European Time | Belgrade | Bratislava | Ljubljana</option>
+            <option value="Europe/Berlin">(GMT+01:00) Berlin | Bern</option>
+            <option value="Europe/Brussels">(GMT+01:00) Brussels</option>
+            <option value="Europe/Budapest">(GMT+01:00) Budapest</option>
+            <option value="Europe/Copenhagen">(GMT+01:00) Copenhagen</option>
+            <option value="Europe/Gibraltar">(GMT+01:00) Gibraltar</option>
+            <option value="Europe/Luxembourg">(GMT+01:00) Luxembourg</option>
+            <option value="Europe/Madrid">(GMT+01:00) Madrid</option>
+            <option value="Europe/Malta">(GMT+01:00) Malta</option>
+            <option value="Europe/Monaco">(GMT+01:00) Monaco</option>
+            <option value="Europe/Oslo">(GMT+01:00) Oslo</option>
+            <option value="Europe/Paris">(GMT+01:00) Paris</option>
+            <option value="Europe/Prague">(GMT+01:00) Central European Time | Prague</option>
+            <option value="Europe/Rome">(GMT+01:00) Rome</option>
+            <option value="Europe/Stockholm">(GMT+01:00) Stockholm</option>
+            <option value="Europe/Tirane">(GMT+01:00) Tirane</option>
+            <option value="Europe/Vienna">(GMT+01:00) Vienna</option>
+            <option value="Europe/Warsaw">(GMT+01:00) Sarajevo | Skopje | Warsaw | Zagreb</option>
+            <option value="Europe/Zurich">(GMT+01:00) Zurich</option>
+            <option value="Africa/Cairo">(GMT+02:00) Cairo</option>
+            <option value="Africa/Harare">(GMT+02:00) Harare | Pretoria</option>
+            <option value="Africa/Johannesburg">(GMT+02:00) Johannesburg</option>
+            <option value="Africa/Maputo">(GMT+02:00) Maputo</option>
+            <option value="Africa/Tripoli">(GMT+02:00) Tripoli</option>
+            <option value="Africa/Windhoek">(GMT+02:00) Windhoek</option>
+            <option value="Asia/Amman">(GMT+02:00) Amman</option>
+            <option value="Asia/Beirut">(GMT+02:00) Beirut</option>
+            <option value="Asia/Damascus">(GMT+02:00) Damascus</option>
+            <option value="Asia/Gaza">(GMT+02:00) Gaza</option>
+            <option value="Asia/Jerusalem">(GMT+02:00) Jerusalem</option>
+            <option value="Asia/Nicosia">(GMT+02:00) Nicosia</option>
+            <option value="Europe/Athens">(GMT+02:00) Athens</option>
+            <option value="Europe/Bucharest">(GMT+02:00) Bucharest</option>
+            <option value="Europe/Chisinau">(GMT+02:00) Chisinau</option>
+            <option value="Europe/Helsinki">(GMT+02:00) Helsinki</option>
+            <option value="Europe/Kaliningrad">(GMT+02:00) Moscow-01 | Kaliningrad</option>
+            <option value="Europe/Kiev">(GMT+02:00) Kiev</option>
+            <option value="Europe/Riga">(GMT+02:00) Riga</option>
+            <option value="Europe/Sofia">(GMT+02:00) Sofia</option>
+            <option value="Europe/Tallinn">(GMT+02:00) Tallinn</option>
+            <option value="Europe/Vilnius">(GMT+02:00) Vilnius</option>
+            <option value="Europe/Istanbul">(GMT+03:00) Istanbul</option>
+            <option value="Africa/Khartoum">(GMT+03:00) Khartoum</option>
+            <option value="Africa/Nairobi">(GMT+03:00) Nairobi</option>
+            <option value="Antarctica/Syowa">(GMT+03:00) Syowa</option>
+            <option value="Asia/Baghdad">(GMT+03:00) Baghdad</option>
+            <option value="Asia/Kuwait">(GMT+03:00) Kuwait | Riyadh</option>
+            <option value="Asia/Qatar">(GMT+03:00) Qatar</option>
+            <option value="Asia/Riyadh">(GMT+03:00) Riyadh</option>
+            <option value="Europe/Minsk">(GMT+03:00) Minsk</option>
+            <option value="Europe/Moscow">(GMT+03:00) Moscow | St Petersburg | Volgograd</option>
+            <option value="Asia/Tehran">(GMT+03:30) Tehran</option>
+            <option value="Asia/Baku">(GMT+04:00) Baku</option>
+            <option value="Asia/Dubai">(GMT+04:00) Dubai</option>
+            <option value="Asia/Muscat">(GMT+04:00) Abu Dhabi | Muscat</option>
+            <option value="Asia/Tbilisi">(GMT+04:00) Tbilisi</option>
+            <option value="Asia/Yerevan">(GMT+04:00) Yerevan</option>
+            <option value="Europe/Samara">(GMT+04:00) Moscow+01 | Samara</option>
+            <option value="Indian/Mahe">(GMT+04:00) Mahe</option>
+            <option value="Indian/Mauritius">(GMT+04:00) Mauritius</option>
+            <option value="Indian/Reunion">(GMT+04:00) Reunion</option>
+            <option value="Asia/Kabul">(GMT+04:30) Kabul</option>
+            <option value="Antarctica/Mawson">(GMT+05:00) Mawson</option>
+            <option value="Asia/Aqtau">(GMT+05:00) Aqtau</option>
+            <option value="Asia/Aqtobe">(GMT+05:00) Aqtobe</option>
+            <option value="Asia/Ashgabat">(GMT+05:00) Ashgabat</option>
+            <option value="Asia/Dushanbe">(GMT+05:00) Dushanbe</option>
+            <option value="Asia/Karachi">(GMT+05:00) Islamabad | Karachi</option>
+            <option value="Asia/Tashkent">(GMT+05:00) Tashkent</option>
+            <option value="Asia/Yekaterinburg">(GMT+05:00) Moscow+02 | Ekaterinburg | Yekaterinburg</option>
+            <option value="Indian/Kerguelen">(GMT+05:00) Kerguelen</option>
+            <option value="Indian/Maldives">(GMT+05:00) Maldives</option>
+            <option value="Asia/Calcutta">(GMT+05:30) India Standard Time</option>
+            <option value="Asia/Colombo">(GMT+05:30) Colombo | Sri Jayawardenepura</option>
+            <option value="Asia/Kolkata">(GMT+05:30) Chennai | Kolkata | Mumbai | New Delhi</option>
+            <option value="Asia/Kathmandu">(GMT+05:45) Kathmandu</option>
+            <option value="Asia/Katmandu">(GMT+05:45) Katmandu</option>
+            <option value="Antarctica/Vostok">(GMT+06:00) Vostok</option>
+            <option value="Asia/Almaty">(GMT+06:00) Almaty</option>
+            <option value="Asia/Bishkek">(GMT+06:00) Bishkek</option>
+            <option value="Asia/Dhaka">(GMT+06:00) Astana | Dhaka</option>
+            <option value="Asia/Novosibirsk">(GMT+06:00) Almaty | Novosibirsk</option>
+            <option value="Asia/Omsk">(GMT+06:00) Moscow+03 | Omsk, Novosibirsk</option>
+            <option value="Asia/Thimphu">(GMT+06:00) Thimphu</option>
+            <option value="Indian/Chagos">(GMT+06:00) Chagos</option>
+            <option value="Asia/Rangoon">(GMT+06:30) Rangoon</option>
+            <option value="Asia/Yangon">(GMT+06:30) Yangon (Rangoon)</option>
+            <option value="Indian/Cocos">(GMT+06:30) Cocos</option>
+            <option value="Antarctica/Davis">(GMT+07:00) Davis</option>
+            <option value="Asia/Bangkok">(GMT+07:00) Bangkok</option>
+            <option value="Asia/Hovd">(GMT+07:00) Hovd</option>
+            <option value="Asia/Jakarta">(GMT+07:00) Jakarta</option>
+            <option value="Asia/Krasnoyarsk">(GMT+07:00) Moscow+04 | Krasnoyarsk</option>
+            <option value="Asia/Saigon">(GMT+07:00) Hanoi</option>
+            <option value="Indian/Christmas">(GMT+07:00) Christmas</option>
+            <option value="Antarctica/Casey">(GMT+08:00) Casey</option>
+            <option value="Asia/Brunei">(GMT+08:00) Brunei</option>
+            <option value="Asia/Choibalsan">(GMT+08:00) Choibalsan</option>
+            <option value="Asia/Hong_Kong">(GMT+08:00) Chongqing | Hong Kong | Urumqi</option>
+            <option value="Asia/Irkutsk">(GMT+08:00) Moscow+05 | Irkutsk | Ulaan Bataar</option>
+            <option value="Asia/Kuala_Lumpur">(GMT+08:00) Kuala Lumpur</option>
+            <option value="Asia/Macau">(GMT+08:00) Macau</option>
+            <option value="Asia/Makassar">(GMT+08:00) Makassar</option>
+            <option value="Asia/Manila">(GMT+08:00) Manila</option>
+            <option value="Asia/Shanghai">(GMT+08:00) China Time | Beijing</option>
+            <option value="Asia/Singapore">(GMT+08:00) Singapore</option>
+            <option value="Asia/Taipei">(GMT+08:00) Taipei</option>
+            <option value="Asia/Ulaanbaatar">(GMT+08:00) Ulaanbaatar</option>
+            <option value="Australia/Perth">(GMT+08:00) Western Time | Perth</option>
+            <option value="Asia/Pyongyang">(GMT+08:30) Pyongyang</option>
+            <option value="Asia/Dili">(GMT+09:00) Dili</option>
+            <option value="Asia/Jayapura">(GMT+09:00) Jayapura</option>
+            <option value="Asia/Seoul">(GMT+09:00) Seoul</option>
+            <option value="Asia/Tokyo">(GMT+09:00) Osaka | Sapporo | Tokyo</option>
+            <option value="Asia/Yakutsk">(GMT+09:00) Moscow+06 | Yakutsk</option>
+            <option value="Pacific/Palau">(GMT+09:00) Palau</option>
+            <option value="Australia/Darwin">(GMT+09:30) Central Time | Darwin</option>
+            <option value="Antarctica/DumontDUrville">(GMT+10:00) Dumont D'Urville</option>
+            <option value="Asia/Vladivostok">(GMT+10:00) Moscow+07 | Vladivostok | Yuzhno-Sakhalinsk</option>
+            <option value="Australia/Brisbane">(GMT+10:00) Eastern Time | Brisbane</option>
+            <option value="Pacific/Chuuk">(GMT+10:00) Truk</option>
+            <option value="Pacific/Guam">(GMT+10:00) Guam</option>
+            <option value="Pacific/Port_Moresby">(GMT+10:00) Port Moresby</option>
+            <option value="Australia/Adelaide">(GMT+10:30) Central Time | Adelaide</option>
+            <option value="Australia/Lord_Howe">(GMT+10:30) Lord Howe</option>
+            <option value="Asia/Magadan">(GMT+11:00) Magadan | Solomon Is. | New Caledonia</option>
+            <option value="Australia/Hobart">(GMT+11:00) Eastern Time | Hobart</option>
+            <option value="Australia/Sydney">(GMT+11:00) Eastern Time | Canberra | Melbourne | Sydney</option>
+            <option value="Pacific/Efate">(GMT+11:00) Efate</option>
+            <option value="Pacific/Guadalcanal">(GMT+11:00) Guadalcanal</option>
+            <option value="Pacific/Kosrae">(GMT+11:00) Kosrae</option>
+            <option value="Asia/Magadan">(GMT+11:00) Magadan</option>
+            <option value="Pacific/Noumea">(GMT+11:00) Noumea</option>
+            <option value="Pacific/Pohnpei">(GMT+11:00) Ponape</option>
+            <option value="Pacific/Norfolk">(GMT+11:00) Norfolk Islands</option>
+            <option value="Pacific/Wallis">(GMT+12:00) Wallis</option
+            <option value="Asia/Kamchatka">(GMT+12:00) Moscow+09 | Petropavlovsk-Kamchatskiy</option>
+            <option value="Pacific/Fiji">(GMT+12:00) Fiji | Marshall Is.</option>
+            <option value="Pacific/Funafuti">(GMT+12:00) Funafuti</option>
+            <option value="Pacific/Kwajalein">(GMT+12:00) Kwajalein</option>
+            <option value="Pacific/Majuro">(GMT+12:00) Majuro</option>
+            <option value="Pacific/Nauru">(GMT+12:00) Nauru</option>
+            <option value="Pacific/Tarawa">(GMT+12:00) Tarawa</option>
+            <option value="Pacific/Wake">(GMT+12:00) Wake</option>
+            <option value="Pacific/Auckland">(GMT+13:00) Auckland | Wellington</option>
+            <option value="Pacific/Enderbury">(GMT+13:00) Enderbury</option>
+            <option value="Pacific/Fakaofo">(GMT+13:00) Fakaofo</option>
+            <option value="Pacific/Tongatapu">(GMT+13:00) Tongatapu</option>
+            <option value="Pacific/Apia">(GMT+14:00) Apia</option>
+            <option value="Pacific/Kiritimati">(GMT+14:00) Kiritimati</option>
+          </select>
+
+          <span class="spacer"></span>
+          <button type="button" class="flat" data-i18n="add">&#10133; </button>
+        </div>
+
+        <ul></ul>
+        </fieldset>
+
+        <button type="submit" data-i18n="saveOptions"></button>
+
+      </section>
+
+
+      <!-- ContextMenu -->
+      <section class="contextMenu">
+        <fieldset>
+          <legend data-i18n="contextMenu"></legend>
+
+          <div class="flex-display">
+            <p class="description" data-i18n="contextMenuDescription"></p>
+            <span class="spacer"></span>
+            <button type="button" class="flat up">&#x25b2;</button>
+            <button type="button" class="flat down">&#x25bc;</button>
+            <button type="button" class="flat clear" data-i18n="clearTheme">&#x232b; </button>
+          </div>
+
+          <ul></ul>
+        </fieldset>
+
+        <button type="submit" data-i18n="saveOptions"></button>
+
+        <!-- template -->
+        <template>
+          <li>
+            <label class="pointer"><input type="checkbox"></label>
+          </li>
+        </template>
+      </section>
+
+
+      <!-- Container -->
+      <section class="container">
+        <fieldset>
+          <legend data-i18n="container"></legend>
+
+          <div class="flex">
+            <ul></ul>
+            <div>
+              <p>&nbsp;</p>
+              <textarea rows="8" spellcheck="false" placeholder="*.example.com &#10;sub.example.com"></textarea>
+              <label class="pointer" data-i18n="siteIsolation"><input type="checkbox" id="siteIsolation"></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" data-i18n="saveOptions"></button>
+
+      </section>
+
+
+      <!-- Theme -->
+      <section class="theme">
+        <fieldset>
+          <legend data-i18n="theme"></legend>
+
+          <div class="selector">
+            <select>
+              <option disabled selected>&nbsp;</option>
+            </select>
+            <span class="spacer"></span>
+            <div></div>
+          </div>
+
+          <div class="scroll">
+          <table>
+            <tbody>
+              <tr>
+                <td data-i18n="name"></td>
+                <td colspan="3"><input type="text" id="name" placeholder="Theme Name ..."></td>
+              </tr>
+              <tr>
+                <td data-i18n="description"></td>
+                <td colspan="3"><input type="text" id="description" placeholder="About your Theme ..."></td>
+              </tr>
+              <tr>
+                <td data-i18n="version"></td>
+                <td colspan="3"><input type="text" id="version" placeholder="Version ..."></td>
+              </tr>
+              <tr>
+                <td data-i18n="homePage"></td>
+                <td colspan="3"><input type="text" id="homepage_url" placeholder="http://example.com/"></td>
+              </tr>
+              <tr>
+                <td data-i18n="author"></td>
+                <td colspan="3"><input type="text" id="author" placeholder="Your name ..."></td>
+              </tr>
+              <!--
+                Type error for parameter details (Error processing images.theme_frame:
+                SyntaxError: String "..." must be a relative or PNG or JPG data:image URL) for theme.update.
+               -->
+              <tr>
+                <td>theme_frame</td>
+                <td colspan="3"><input type="text" id="theme_frame" pattern="data:image/.+" placeholder="data:image/ ..."></td></tr>
+              <tr>
+                <td>additional_backgrounds &#x26a0;&#xfe0f;</td>
+                <td colspan="3"><input type="text" id="additional_backgrounds"></td>
+              </tr>
+              <tr>
+                <td>additional_backgrounds_alignment &#x26a0;&#xfe0f;</td>
+                <td colspan="3"><input type="text" id="additional_backgrounds_alignment"></td>
+              </tr>
+              <tr>
+                <td>additional_backgrounds_tiling &#x26a0;&#xfe0f;</td>
+                <td colspan="3"><input type="text" id="additional_backgrounds_tiling"></td>
+              </tr>
+
+
+              <tr>
+                <td>frame</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="frame"><input type="color" value="#ffffff"></td>
+                <td>bookmark_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="bookmark_text"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>button_background_active</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="button_background_active"><input type="color" value="#ffffff"></td>
+                <td>button_background_hover</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="button_background_hover"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>frame_inactive</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="frame_inactive"><input type="color" value="#ffffff"></td>
+                <td>icons</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="icons"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>icons_attention</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="icons_attention"><input type="color" value="#ffffff"></td>
+                <td>ntp_background</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="ntp_background"><input type="color" value="#ffffff"></td>
+              </tr><tr>
+                <td>ntp_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="ntp_text"><input type="color" value="#ffffff"></td>
+                <td>popup</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="popup"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>popup_border</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="popup_border"><input type="color" value="#ffffff"></td>
+                <td>popup_highlight</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="popup_highlight"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>popup_highlight_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="popup_highlight_text"><input type="color" value="#ffffff"></td>
+                <td>popup_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="popup_text"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>sidebar</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="sidebar"><input type="color" value="#ffffff"></td>
+                <td>sidebar_border</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="sidebar_border"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>sidebar_highlight</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="sidebar_highlight"><input type="color" value="#ffffff"></td>
+                <td>sidebar_highlight_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="sidebar_highlight_text"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>sidebar_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="sidebar_text"><input type="color" value="#ffffff"></td>
+                <td>tab_background_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="tab_background_text"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>tab_line</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="tab_line"><input type="color" value="#ffffff"></td>
+                <td>tab_loading</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="tab_loading"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>tab_selected</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="tab_selected"><input type="color" value="#ffffff"></td>
+                <td>tab_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="tab_text"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>toolbar</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar"><input type="color" value="#ffffff"></td>
+                <td>toolbar_bottom_separator</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_bottom_separator"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>toolbar_field</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_field"><input type="color" value="#ffffff"></td>
+                <td>toolbar_field_border</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_field_border"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>toolbar_field_border_focus</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_field_border_focus"><input type="color" value="#ffffff"></td>
+                <td>toolbar_field_focus</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_field_focus"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>toolbar_field_highlight</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_field_highlight"><input type="color" value="#ffffff"></td>
+                <td>toolbar_field_highlight_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_field_highlight_text"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>toolbar_field_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_field_text"><input type="color" value="#ffffff"></td>
+                <td>toolbar_field_text_focus</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_field_text_focus"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>toolbar_text</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_text"><input type="color" value="#ffffff"></td>
+                <td>toolbar_top_separator</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_top_separator"><input type="color" value="#ffffff"></td>
+              </tr>
+              <tr>
+                <td>toolbar_vertical_separator</td>
+                <td><input type="text" pattern="#[A-Za-z0-9]{6}" id="toolbar_vertical_separator"><input type="color" value="#ffffff"></td>
+                <td></td><td></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+
+        </fieldset>
+
+        <div class="flex-display" style="margin-top: 0.5em;">
+          <input type="file" id="themeFile" accept=".json, image/*">
+          <label for="themeFile" class="flat" data-i18n="import"></label>&nbsp;
+          <button type="button" id="themeExport" class="flat" data-i18n="export"></button>
+          <span class="spacer"></span>
+          <button type="button" class="flat" data-i18n="addTheme"></button>
+          <button type="button" class="flat" data-i18n="updateTheme"></button>
+          <button type="button" class="flat" data-i18n="deleteTheme"></button>
+          <button type="button" class="flat" data-i18n="clearTheme"></button>
+          <button type="button" class="flat" data-i18n="applyTheme"></button>
+          <button type="button" class="flat" data-i18n="resetTheme"></button>
+        </div>
+
+        <button type="submit" data-i18n="saveOptions"></button>
+
+      </section>
+
+      <!-- Redirect -->
+      <section class="redirect">
+        <fieldset>
+          <legend data-i18n="redirect"></legend>
+
+          <textarea rows="8" spellcheck="false" placeholder="http://example.com/*                            https://example.com/$1
+https://*.example2.com/*                        https://www.example2.com/$1           https://my.example2.com/*
+https://([^.]+)\.example3\.co\.uk/(\d+)/(\w+)   https://$1.example3.com/$2/$3"></textarea>
+          <div><label data-i18n="testUrl"></label><input type="text" placeholder="http://example.com/abc"></div>
+          <div><label data-i18n="redirectResult"></label><span class="redirectResult">&nbsp;</span></div>
+        </fieldset>
+
+        <button type="submit" data-i18n="saveOptions"></button>
+
+      </section>
+      <!-- /user options -->
+
+    </article>
+  </body>
+</html>

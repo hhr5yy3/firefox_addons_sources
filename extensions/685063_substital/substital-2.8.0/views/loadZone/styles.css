@@ -1,0 +1,400 @@
+/*---------------
+    General
+---------------*/
+
+body {
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.load-zone {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: all 0.2s 0.2s;
+}
+
+.hidden {
+  display: none;
+}
+
+/*---------------
+    Drop zone
+---------------*/
+.drop-zone {
+  border: dashed 4px #3399cc;
+}
+
+/*---------------
+    Search bar
+---------------*/
+
+.search-bar {
+  padding: 10px 40px 10px 10px;
+  font-size: 1.6em;
+  height: 4em;
+}
+
+@media only screen and (max-width: 950px) {
+  .search-bar {
+    font-size: 1.4em;
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .search-bar {
+    font-size: 1.1em;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .search-bar {
+    font-size: 1em;
+  }
+}
+
+.search-bar > form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+/*-----------------------------
+    Search bar - Left filters
+------------------------------*/
+
+.search-bar .filters-left {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  padding: 5px;
+}
+
+.search-bar .filters-left .deaf-icon {
+  cursor: pointer;
+}
+
+/* Overrides Semantic UI - Deaf icon toggle */
+.ui.toggle.checkbox .box:before,
+.ui.toggle.checkbox label:before {
+  background: white;
+}
+
+/* Overrides Semantic UI - Deaf toggle hover */
+.ui.toggle.checkbox .box:hover::before,
+.ui.toggle.checkbox input:focus ~ .box:before,
+.ui.toggle.checkbox input:focus ~ label:before,
+.ui.toggle.checkbox label:hover::before {
+  /*background-color: rgba(255, 255, 255, 0.7);*/
+  background-color: #e4e4e4;
+}
+
+/*------------------------------------
+    Search bar - Language dropdown
+------------------------------------*/
+
+.ui.search.dropdown > input.search {
+  color: white;
+}
+
+/* Overrides Semantic UI - Dropdown text */
+.ui.selection.visible.dropdown > .text:not(.default) {
+  font-weight: 900;
+  color: white;
+}
+
+/* Overrides Semantic UI - Dropdown text focus */
+.ui.active.search.dropdown input.search:focus + .text {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.ui.compact.selection.dropdown {
+  background: #2185d0;
+  color: white;
+  font-weight: 900;
+  min-width: 210px;
+}
+
+@media only screen and (max-width: 950px) {
+  .ui.compact.selection.dropdown {
+    min-width: 185px;
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .ui.compact.selection.dropdown {
+    min-width: 150px;
+  }
+}
+
+/*------------------------------------
+    Search bar - Search main input
+------------------------------------*/
+
+.search-bar .search-text-input {
+  width: 800px;
+  margin-right: auto;
+}
+
+@media only screen and (max-width: 950px) {
+  .search-bar .search-text-input {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .search-bar .search-text-input {
+    width: 550px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .search-bar .search-text-input {
+    width: 400px;
+  }
+}
+
+/* Overrides Semantic UI - Input text placeholder */
+.ui[class*='left action'].input > input::-moz-placeholder {
+  font-size: 1.1em;
+  color: #828282;
+  -moz-transition: color 0.1s ease;
+  transition: color 0.1s ease;
+}
+.ui[class*='left action'].input > input::placeholder {
+  font-size: 1.1em;
+  color: #828282;
+  transition: color 0.1s ease;
+}
+
+/* Overrides Semantic UI - Input text placeholder focus */
+.ui[class*='left action'].input > input:focus::-moz-placeholder {
+  color: #ababab;
+}
+.ui[class*='left action'].input > input:focus::placeholder {
+  color: #ababab;
+}
+
+/*--------------------
+    Results message
+---------------------*/
+
+.search-message-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.search-message-centered__shorted {
+  height: 50%;
+}
+
+/*------------------------------------
+    Subtitles List - Search results
+------------------------------------*/
+
+.subtitle-list {
+  font-size: 1.4em;
+  box-shadow: inset 0 7px 9px -7px rgba(0, 0, 0, 0.4);
+}
+
+@media only screen and (max-width: 950px) {
+  .subtitle-list {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .subtitle-list {
+    font-size: 1em;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .subtitle-list {
+    font-size: inherit;
+  }
+}
+
+/* Overrides Semantic UI - Subtitle list item */
+.subtitle-list .ui.list > .item {
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 950px) {
+  .subtitle-list .ui.list > .item {
+    padding: 0.3em 0.4em;
+  }
+}
+
+.subtitle-list .language-label {
+  flex: 2;
+  flex-basis: auto;
+  flex-grow: 0;
+  width: 150px;
+  font-size: 0.8em;
+}
+
+@media only screen and (max-width: 950px) {
+  .subtitle-list .language-label {
+    width: 100px;
+    font-size: inherit;
+  }
+}
+
+.subtitle-list .subtitle-deaf {
+  min-width: 30px;
+}
+
+@media only screen and (max-width: 950px) {
+  .subtitle-list .subtitle-deaf {
+    min-width: 24px;
+  }
+}
+
+.subtitle-list .subtitle-name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 10;
+}
+
+.subtitle-list .subtitle-name > .header {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*---------------
+    Drop message
+----------------*/
+
+.drop-message {
+  z-index: 1100;
+}
+
+.ui.segment,
+.ui.segments .segment {
+  width: 80%;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  color: #e8e8e8;
+  font-size: 2em;
+}
+
+.ui.segment p,
+.ui.segments .segment p {
+  margin: 0;
+}
+
+.file-input {
+  display: none;
+}
+
+/*.ui.segment, .ui.segments .segment p:nth-child(2) {
+  font-size: .8em;
+}*/
+
+@media only screen and (max-width: 950px) {
+  .ui.segment,
+  .ui.segments .segment {
+    font-size: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .ui.segment,
+  .ui.segments .segment {
+    font-size: 1.4em;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .ui.segment,
+  .ui.segments .segment {
+    font-size: 1.1em;
+  }
+}
+
+/*----------------------
+    Upload file button
+-----------------------*/
+
+.upload-file-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.upload-file-button.ui.button {
+  margin: 0 0 0 10px;
+}
+
+.upload-file-button-big.ui.button {
+  margin: 0 0 10px 0;
+}
+
+/*---------------
+    Close button
+----------------*/
+
+.close-button {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 5px;
+  right: 5px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.close-button::before {
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background: white;
+  transform: rotate(45deg);
+  transition: all 0.25s;
+}
+
+.close-button::after {
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background: white;
+  transform: rotate(-45deg);
+  transition: all 0.25s;
+}
+
+.close-button:hover::before,
+.close-button:hover::after {
+  background: #e4e4e4;
+}
+
+.ui.header .sub.header {
+  padding: 10px 50px;
+  width: 665px;
+}
+

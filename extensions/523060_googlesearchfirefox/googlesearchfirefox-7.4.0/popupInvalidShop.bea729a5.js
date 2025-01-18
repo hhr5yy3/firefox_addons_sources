@@ -1,0 +1,1 @@
+const t={lastBsUpdate:"lastBsUpdate"};document.addEventListener("DOMContentLoaded",async function(){let e=document.getElementById("last-db-update");if(e){let a=await chrome.storage.local.get(),n=a?.[t.lastBsUpdate];n&&(e.textContent=new Date(n).toLocaleString())}});

@@ -1,0 +1,1 @@
+globalThis.Okta={},Okta.fn={},Okta.Page={},Okta.Config={},Okta.Modal={Mixins:{},Views:{}},Okta.loc={strings:{}},Okta.window=globalThis;

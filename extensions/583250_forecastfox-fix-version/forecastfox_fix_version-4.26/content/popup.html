@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title>Forecastfox (fix version)</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="/skin/images/logo16.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="/skin/popup.css" />
+		<script type="text/javascript" src="/content/popup.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/utils.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/i18n.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/prefs.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/themes.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/tooltiptxt.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/accuweather-processor.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/date.toLocaleFormat.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/converter.js" charset="utf-8"></script>
+	</head>
+<body>
+<table cellspacing="0" cellpadding="0" border="0" height="230" id="table_body" is_hidden="true" style="padding: 5px; min-width: 500px;">
+<tr valign="top"><td>
+	<!-- --------------------------- -->
+	<div style="padding: 2px 1px;">
+		<div id="menu_button" style="float: right;">
+			<div class="menu_button_item_box" is_hidden="true" tabindex="0" id="menu_button_item_box">
+				<div id="menu_improve" class="menu_button_item" label="menu.improve"></div>
+				<div id="menu_homepage" class="menu_button_item" label="menu.homepage"></div>
+				<div id="menu_accuweather" class="menu_button_item" label="menu.accuweather"></div>
+				
+				<div id="menu_share" class="menu_button_item" label="menu.share"></div>
+				<div id="menu_troubleshooting" class="menu_button_item" label="menu.troubleshooting"></div>
+	
+				<div id="menu_refresh" class="menu_button_item" label="menu.refresh"></div>
+				<div id="menu_locations" class="menu_button_item" label="menu.locations"></div>
+				<div id="menu_newlocation" class="menu_button_item" label="menu.newlocation"></div>
+				<div id="menu_options" class="menu_button_item" label="menu.options"></div>
+			</div>
+		</div>
+		<div id="button_reload" title="menu.refresh"></div>
+		<div id="button_arrow_right"></div>
+		<div id="button_arrow_left"></div>
+		<div id="forecast_location_list" is_hidden="true">
+			<div id="forecast_location_list_current"></div>
+			<div id="forecast_location_list_items" tabindex="0"></div>
+		</div>
+		<img id="icon_wait" src="/skin/images/plswait.gif" width="16" height="16" is_hidden="true"/>
+		<div id="forecast_location" class="simple_link"></div>
+	</div>
+	<!-- --------------------------- -->
+	<div id="forecast_data_box" style="position: relative;min-height: 350px;">
+		<div id="forecast_data_error" class="forecast_data_warning" label="features.errors.connection_tooltip" is_hidden="true"></div>
+		<div id="forecast_data_warning_swa" class="forecast_data_warning" is_hidden="true"></div>
+		<!-- --------------------------- -->
+		<div id="forecast_location_box" is_hidden="true">
+			<div id="forecast_geolocation_box">
+				<table id="geolocation_box" width="100%" height="100%" cellspacing="0" cellpadding="0" border="0"><tr valign="top" height="1"><td>
+					<form id="geolocation_form" action="#" autocomplete="on">
+					<div id="geolocation_search_text_box">
+						<input id="geolocation_search_text" is_hidden="true" autocomplete="on" name="geolocation_search_text" label="options.search.instructions"/>
+						<span id="geolocation_header" label="options.locations.header"></span>
+						<div id="geolocation_wait" is_hidden="true"></div>
+						<div id="geolocation_search_button" is_hidden="true"></div>
+						<div id="geolocation_close_button"></div>
+					</div>
+					</form>
+					<div id="geolocation_error" is_hidden="true"></div>
+				</td></tr>
+				<tr height="100%"><td style="padding:1px;"><iframe id="geolocation_frame" width="100%" height="100%"></iframe></td></tr>
+				</table>
+			</div>
+		</div>
+		<!-- --------------------------- -->
+	<div id="forecast_data_box_weather" style="display: flex;">
+		<div id="forecast_data_box_weather_menu" style="display: flex; flex-flow: column;">
+			<div class="menu_day_box" menu_id="cc" id="menu_day_box_cc">
+				<table cellspacing="0" cellpadding="0" border="0" width="100%">
+					<tr valign="top"><td><div id="menu_day_name" label="features.cc.header"></div></td><td align="right"><div id="menu_day_date"></div></td></tr>
+				</table>
+				<div style="position: relative; min-height: 45px;">
+					<img id="menu_day_icon" style="opacity:0.5;position: absolute; left: 0px;bottom: 0px;"/>
+					<table cellspacing="0" cellpadding="0" border="0" width="100%">
+						<tr valign="top"><td align="right"><div label="features.cc.now" style="margin-right: 5px;"></div></td><td align="right" width="1"><div id="menu_day_temp_now"></div></td></tr>
+						<tr valign="top"><td colspan="2" align="right"><div id="menu_day_temp_realfeel"></div></td></tr>
+					</table>
+				</div>
+			</div>
+			<div class="menu_day_box" menu_id="0" id="menu_day_box_0"></div>
+			<div class="menu_day_box" menu_id="1" id="menu_day_box_1"></div>
+			<div class="menu_day_box" menu_id="2" id="menu_day_box_2"></div>
+			<div class="menu_day_box" menu_id="3" id="menu_day_box_3"></div>
+			<div class="menu_day_box" menu_id="4" id="menu_day_box_4"></div>
+			<div class="menu_day_box" menu_id="5" id="menu_day_box_5"></div>
+		</div>
+		<div id="forecast_data_box_weather_data" style="display: flex; flex-flow: column;">
+			<div id="view_data_top" style="margin: 1px; flex-grow: 1;" class="view_data_top"></div>
+			<div id="view_data_bottom" style="margin: 0px 1px 1px 1px; flex-grow: 1;" class="view_data_bottom"></div>
+		</div>
+	</div>
+	</div>
+</td></tr>
+<!-- --------------------------- -->
+<tr valign="bottom"><td>
+	<div style="vertical-align:bottom;">
+	<div style="padding: 3px 5px">
+		<div style="float: right"><span style="color: #CCCCCC" id="copyright"></span> <a id="link_accuweather" class="simple_link" href="http://www.accuweather.com/?partner=forecastfox" target="_blank">AccuWeather.com®</a></div>
+		<span class="simple_link" id="s3forecast_settings" label="features.options"></span>
+	</div>
+	</div>
+</td></tr>
+</table>
+
+	<div id="s3forecast_tooltiptxt" is_hidden="true"></div>
+
+	<div is_hidden="true" id="template_list">
+		<!-- -------------------------------------------------- -->
+		<table cellspacing="0" cellpadding="0" border="0" width="100%" id="menu_day_template_box">
+			<tr valign="top">
+				<td colspan="2">
+					<table cellspacing="0" cellpadding="0" border="0" width="100%">
+						<tr valign="top"><td><div id="menu_day_name"></div></td><td align="right"><div id="menu_day_date"></div></td></tr>
+					</table>
+				</td>
+			</tr>
+			<tr valign="top">
+				<td width="70" style="padding-right: 5px;"><img id="menu_day_icon"/></td>
+				<td>
+					<table cellspacing="0" cellpadding="0" border="0" width="100%">
+						<tr valign="top"><td align="right"><div label="features.forecast.high" style="margin-right: 5px;"></div></td><td width="1" align="right"><div id="menu_day_temp_high"></div></td></tr>
+						<tr valign="top"><td align="right"><div label="features.forecast.low" style="margin-right: 5px;"></div></td><td width="1" align="right"><div id="menu_day_temp_low"></div></td></tr>
+					</table>
+				</div></td>
+			</tr>
+		</table>
+		<!-- -------------------------------------------------- -->
+		<div id="view_data_template_header_cc" style="padding: 2px 5px;">
+			<div>
+				<div class="features_header" id="date_local" style="float: right;"></div>
+				<span class="features_header" label="features.cc.header"></span>
+				<span class="links"> :: <a id="link_details" target="_blank" label="features.details"></a></span>
+			</div>
+			<div>
+				<div style="float: right;" id="cc_time"></div>
+				<span class="links" style="margin-right: 5px;">
+					<a id="link_hourly" target="_blank" label="features.hourly"></a>&nbsp;
+					<a id="link_radar" target="_blank" label="features.radar"></a>&nbsp;
+					<a id="link_day5" target="_blank" label="features.day5"></a>
+				</span>
+			</div>
+			<div style="border-bottom: 1px #999999 dotted; padding-top: 5px;"></div>
+		</div>
+		<!-- -------------------------------------------------- -->
+		<div id="view_data_template_header_day" style="padding: 2px 5px 0px 5px;">
+			<div>
+				<div class="features_header" id="date_local" style="float: right;"></div>
+				<span class="features_header" id="forecast_day"></span>
+				<span id="forecast_links"> :: <span class="links"><a id="link_details" target="_blank" label="features.details"></a></span></span>
+			</div>
+			<div style="border-bottom: 1px #999999 dotted; padding-top: 3px;"></div>
+		</div>
+		<!-- -------------------------------------------------- -->
+		<div id="view_data_template_cc" style="padding: 0px 5px 2px 5px">
+			<div><span class="forecast_description_short" id="forecast_description_short"></span></div>
+			<div><span class="forecast_description" id="forecast_description"></span></div>
+
+			<table cellspacing="2" cellpadding="0" width="100%" border="0">
+				<tr><td width="1">
+					<div style="padding: 0px 25px; text-align: right;">
+								<div><img align="center" id="forecast_icon"><span class="forecast_temp" id="forecast_temp"></span></div>
+								<div style="padding-bottom: 10px;" id="forecast_realfeel"></div>
+					</div>
+				</td>
+				<td align="right">
+					<table cellspacing="2" cellpadding="0" align="right" border="0">
+						<tr><td><span label="features.humidity"></span>&nbsp;<span id="forecast_humidity"></span></td></tr>
+						<tr><td><span label="features.dewpoint"></span>&nbsp;<span id="forecast_dewpoint"></span></td></tr>
+						<tr valign="top"><td><span label="features.uvindex"></span>&nbsp;<span id="forecast_uvindex_text"></span> (<span id="forecast_uvindex_index"></span>)<br/><span id="forecast_uvindex_minutes"></span></td></tr>
+					</table>
+				</td></tr>
+			</table>
+			<table cellspacing="2" cellpadding="0" align="center" wi1dth="100%" border="0">
+				<tr valign="top" style="white-space: normal !important;"><td><span label="features.winds"></span>&nbsp;<span id="forecast_winds"></span></td></tr>
+				<tr><td><span label="features.visibility"></span>&nbsp;<span id="forecast_visibility"></span></td></tr>
+				<tr><td><span label="features.pressure"></span>&nbsp;<span id="forecast_pressure_value"></span> (<b><span id="forecast_pressure_trend"></span></b>)</td></tr>
+				<tr><td><span label="features.precipitation"></span>&nbsp;<span id="forecast_precipitation_cc"></span></td></tr>
+			</table>
+		</div>
+		<!-- -------------------------------------------------- -->
+		<div id="view_data_template_day" style="padding: 0px 5px 2px 5px;">
+			<div><span class="forecast_description_short" id="forecast_description_short"></span></div>
+			<div><span class="forecast_description" id="forecast_description"></span></div>
+			<div style="padding: 15px 0px 0px 30px; text-align: right; display: inline-block;">
+				<div><img align="center" id="forecast_icon"><span class="forecast_temp" id="forecast_temp"></span></div>
+				<div id="forecast_realfeel"></div>
+			</div>
+			<div style="clear: both;"></div>
+			<table cellspacing="2" cellpadding="0" align="right" border="0" style="padding-right: 20px; padding-top: 10px;">
+				<tr id="row_sunrise"><td><span label="features.sunrise"></span>&nbsp;<span id="forecast_sunrise"></span></td></tr>
+				<tr id="row_sunset"><td><span label="features.sunset"></span>&nbsp;<span id="forecast_sunset"></span></td></tr>
+				<tr><td><span label="features.winds"></span>&nbsp;<span id="forecast_winds"></span></td></tr>
+				<tr id="row_uvindex"><td>
+					<span style="vertical-align: top;" label="features.uvindex"></span>&nbsp;<span id="forecast_uvindex_text"></span> (<span id="forecast_uvindex_index"></span>)<br/><span id="forecast_uvindex_minutes"></span>
+				</td></tr>
+				<tr id="row_moon"><td><span label="features.moon"></span>&nbsp;<span id="forecast_moon"></span></td></tr>
+				<tr><td><span label="features.precipitation"></span>&nbsp;<span id="forecast_precipitation_day"></span></td></tr>
+			</table>
+		</div>
+		<!-- -------------------------------------------------- -->
+		<div id="view_data_bottom_template_cc" style="padding: 3px 5px 5px 5px; text-align: center;">
+<!--			<img id="view_data_radar" width="350" height="210" border="0"/> 
+-->
+		</div>
+		<!-- -------------------------------------------------- -->
+
+	</div>
+</body>
+</html>

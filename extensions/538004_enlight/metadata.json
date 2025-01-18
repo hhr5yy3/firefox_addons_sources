@@ -1,0 +1,202 @@
+{
+    "id": 538004,
+    "authors": [
+        {
+            "id": 11066970,
+            "name": "Qeole",
+            "url": "https://addons.mozilla.org/en-US/firefox/user/11066970/",
+            "username": "Qeole"
+        }
+    ],
+    "average_daily_users": 302,
+    "categories": [
+        "appearance"
+    ],
+    "contributions_url": "",
+    "created": "2014-08-21T13:12:37Z",
+    "current_version": {
+        "id": 5253635,
+        "compatibility": {
+            "firefox": {
+                "min": "57.0",
+                "max": "*"
+            }
+        },
+        "edit_url": "https://addons.mozilla.org/en-US/developers/addon/enlight/versions/5253635",
+        "file": {
+            "id": 3797995,
+            "created": "2021-06-17T22:49:57Z",
+            "hash": "sha256:16d37fd7b5b7c5f09819f76298050527a8246996a7e32db3a21ec700f929bb5d",
+            "is_mozilla_signed_extension": false,
+            "size": 724794,
+            "status": "public",
+            "url": "https://addons.mozilla.org/firefox/downloads/file/3797995/enlight-2.7.11.0.xpi",
+            "permissions": [
+                "<all_urls>",
+                "activeTab",
+                "tabs",
+                "storage"
+            ],
+            "optional_permissions": [],
+            "host_permissions": []
+        },
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "is_custom": false,
+            "name": {
+                "en-US": "Mozilla Public License 2.0"
+            },
+            "slug": "MPL-2.0",
+            "url": "https://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Features\n\n- Improved the aspect of the preferences page\n\nHighlight.js\n\n- Switch to v11.0.1: Support for new languages and new themes (see highlight.js changelog for details)\n- The default set of language for autodetection has got new entries (to reflect the list of \u201ccommon\u201d languages as per the download page on highlight.js website)\n\nBug fixes\n\n- Fix race condition between language list generation, and activation of the checkboxes, in the preferences page\n- Suppress a warning in the console that was due to closing the popup too early\n- Remove useless debug messages\n\nMisc\n\n- Add a Makefile to help with compiling, checking, running the add-on\n- Build the embedded library from its sources, and to do so, add highlight.js as a Git submodule\n- Use a linter (ESLint)\n- Code clean-up"
+        },
+        "reviewed": "2021-06-17T22:50:42Z",
+        "version": "2.7.11.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Provides syntax highlighting for raw source code displayed in current tab.\n\nTo activate, click on the add-on button in Firefox toolbar, and select the language syntax you want to use (or <code>Auto-detect</code> for automatic detection). You can also select the color theme to use, or enable line numbering, in the add-on preferences.\n\nWhen line numbering is activated, you can jump to a line of the file (e.g. line 27) by adding \u201c#l27\u201d at the end of the URL and then reloading the page (hitting \u201cEnter\u201d after URL change is not enough to trigger the jump).\n\nSyntax highlighting by itself relies on <strong><i>highlight.js</i> project</strong> (see <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/4328f601d961cd63ea39c6f1d0ad06f13d2173beefabf3f96f9b9826e47076c8/https%3A//highlightjs.org\" rel=\"nofollow\">https://highlightjs.org</a>). Currently packaged is the version 11.0.1 of <i>highlight.js</i>, which provides 242 color themes and syntax for 196 programming languages.",
+        "fr": "Coloration syntaxique pour du code source brut affich\u00e9 dans l'onglet courant.\n\nPour activer la coloration, cliquer sur le bouton de l'extension dans la barre d'outils de Firefox, et s\u00e9lectionner le langage \u00e0 utiliser pour la syntaxe (ou bien <code>D\u00e9tection auto</code> pour tenter de d\u00e9tecter automatiquement le langage \u00e0 utiliser). Il est \u00e9galement possible de s\u00e9lectionner le th\u00e8me de couleurs \u00e0 utiliser, ou de rajouter la num\u00e9rotation des lignes du code visionn\u00e9, en passant par l'onglet de gestion des extensions.\n\nLorsque la num\u00e9rotation des lignes est activ\u00e9e, il est possible de sauter directement \u00e0 une ligne donn\u00e9e du fichier visionn\u00e9 (par exemple, la ligne 27) en ajoutant \u00ab #l27 \u00bb \u00e0 la fin de l'URL puis en rechargeant la page (valider avec \u00ab Entr\u00e9e\u00a0\u00bb n'est pas suffisant).\n\nLa coloration syntaxique en elle-m\u00eame repose sur le code du <strong>projet <i>highlight.js</i></strong> (voir <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/4328f601d961cd63ea39c6f1d0ad06f13d2173beefabf3f96f9b9826e47076c8/https%3A//highlightjs.org\" rel=\"nofollow\">https://highlightjs.org</a>). La version actuelle de l'extension embarque la version 10.1.1 du code de <i>highlight.js</i>, qui fournit 94 th\u00e8mes de couleurs ainsi que la syntaxe de 189 langages."
+    },
+    "developer_comments": {
+        "en-US": "Embeds a package version of <strong><i>highlight.js</i></strong> bundle. You can get the same at <a rel=\"nofollow\" href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/7df90d14e8283e54317ee9e767c7e9317f07ec839f6227d3dccba1a80247a4c3/https%3A//highlightjs.org/download/\">https://highlightjs.org/download/</a>.\n\nTechnically, the internal functioning is as follows: when one selects a language in the panel, the add-on looks for code between <code>&lt;pre&gt;&lt;/pre&gt;</code> tags in current tab and inserts it in a <code>&lt;code&gt;&lt;/code&gt;</code> block. It also add a (local) link to CSS stylesheet corresponding to the color theme to use. Then the script provided by <i>highlight.js</i> project is called and does the hard work for us. Original content of the document is backed up in a hidden <code>&lt;div&gt;</code> for later restoring.\nThis works well on raw text file containing source code, as Firefox automatically embeds it between <code>&lt;pre&gt;&lt;/pre&gt;</code> tags (to preserve spacing and line breaks) before display.\n\nIf you want to help them parsing languages, <i>highlight.js</i> is on <a rel=\"nofollow\" href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/4b9e7b63f1dc3d11ab9c219edb4bf577d80beab3141a94cad8408283be8ee88e/https%3A//highlightjs.org/contribute/\">GitHub</a>.\n\nIf you have improvements for the add-on itself, feel free to file an issue or to submit a pull request on <a rel=\"nofollow\" href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/5d0130136e836fd8d4f576ab34cf8e78a1e2c949992543b7534d05aba6569350/https%3A//github.com/Qeole/Enlight\">the add-on repo</a>.",
+        "fr": "Embarque une version empaquet\u00e9e de <strong><i>highlight.js</i></strong>. Il est possible de r\u00e9cup\u00e9rer un code identique sur la page <a rel=\"nofollow\" href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/7df90d14e8283e54317ee9e767c7e9317f07ec839f6227d3dccba1a80247a4c3/https%3A//highlightjs.org/download/\">https://highlightjs.org/download/</a>.\n\nTechniquement, le fonctionnement interne de l'extension se r\u00e9sume comme suit\u00a0: lorsqu'un langage est s\u00e9lectionn\u00e9 depuis le panneau, l'extension cherche le code plac\u00e9 entre balises <code>&lt;pre&gt;&lt;/pre&gt;</code> dans l'onglet courrant, et l'ins\u00e8re dans un bloc <code>&lt;code&gt;&lt;/code&gt;</code>. Elle rajoute \u00e9galement un lien (local) vers la feuille de style CSS correspondant au th\u00e8me \u00e0 utiliser. Le script fourni par le projet <i>highlight.js</i> prend alors la rel\u00e8ve pour colorer le texte. Le contenu initial du document est sauvegard\u00e9 dans un <code>&lt;div&gt;</code> cach\u00e9 en vue d'une restauration ult\u00e9rieure.\nCela fonctionne notamment tr\u00e8s bien sur les fichiers textes contenant du code brut, car (afin de pr\u00e9server l'espacement et les retours \u00e0 la ligne) Firefox ins\u00e8re automatiquement ce texte entre des balises <code>&lt;pre&gt;&lt;/pre&gt;</code> avant de l'afficher.\n\nSi vous souhaitez participer \u00e0 l'am\u00e9lioration du support des langages, le code de <i>highlight.js</i> est sur <a rel=\"nofollow\" href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/4b9e7b63f1dc3d11ab9c219edb4bf577d80beab3141a94cad8408283be8ee88e/https%3A//highlightjs.org/contribute/\">GitHub</a>.\n\nSi vous souhaitez proposer des am\u00e9liorations pour l'extension elle-m\u00eame, n'h\u00e9sitez pas \u00e0 ouvrir un bug ou \u00e0 soumettre une <i>pull request</i> sur <a rel=\"nofollow\" href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/5d0130136e836fd8d4f576ab34cf8e78a1e2c949992543b7534d05aba6569350/https%3A//github.com/Qeole/Enlight\">le d\u00e9p\u00f4t GitHub de l'extension</a>."
+    },
+    "edit_url": "https://addons.mozilla.org/en-US/developers/addon/enlight/edit",
+    "guid": "enlight_highlightjs@jetpack",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "url": {
+            "en-US": "https://github.com/Qeole/Enlight",
+            "fr": "https://github.com/Qeole/Enlight"
+        },
+        "outgoing": {
+            "en-US": "https://prod.outgoing.prod.webservices.mozgcp.net/v1/5d0130136e836fd8d4f576ab34cf8e78a1e2c949992543b7534d05aba6569350/https%3A//github.com/Qeole/Enlight",
+            "fr": "https://prod.outgoing.prod.webservices.mozgcp.net/v1/5d0130136e836fd8d4f576ab34cf8e78a1e2c949992543b7534d05aba6569350/https%3A//github.com/Qeole/Enlight"
+        }
+    },
+    "icon_url": "https://addons.mozilla.org/user-media/addon_icons/538/538004-64.png?modified=1624891734",
+    "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/538/538004-32.png?modified=1624891734",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/538/538004-64.png?modified=1624891734",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/538/538004-128.png?modified=1624891734"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "last_updated": "2021-06-17T22:50:42Z",
+    "name": {
+        "en-US": "Enlight",
+        "fr": "Enlight"
+    },
+    "previews": [
+        {
+            "id": 219915,
+            "caption": {
+                "en-US": "Language selection panel",
+                "fr": "Panneau de s\u00e9lection du langage"
+            },
+            "image_size": [
+                1017,
+                908
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/219/219915.png?modified=1622132284",
+            "position": 0,
+            "thumbnail_size": [
+                448,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/219/219915.jpg?modified=1622132284"
+        },
+        {
+            "id": 219916,
+            "caption": {
+                "en-US": "Highlighted code (language: diff, style: Solarized - dark)",
+                "fr": "Code coloris\u00e9 (langage: diff, th\u00e8me: Solarized - dark)"
+            },
+            "image_size": [
+                977,
+                868
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/219/219916.png?modified=1622132286",
+            "position": 1,
+            "thumbnail_size": [
+                450,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/219/219916.jpg?modified=1622132286"
+        },
+        {
+            "id": 219917,
+            "caption": {
+                "en-US": "Add-on manager: color scheme selection menu",
+                "fr": "Add-on manager : menu de s\u00e9lection du th\u00e8me de couleurs"
+            },
+            "image_size": [
+                1017,
+                908
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/219/219917.png?modified=1622132289",
+            "position": 2,
+            "thumbnail_size": [
+                448,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/219/219917.jpg?modified=1622132289"
+        },
+        {
+            "id": 219918,
+            "caption": {
+                "en-US": "Add-on manager: selection of languages to use in pop-up and for autodetection",
+                "fr": "Add-on manager : s\u00e9lection des langages \u00e0 utiliser dans le panneau et pour la d\u00e9tection automatique"
+            },
+            "image_size": [
+                977,
+                868
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/219/219918.png?modified=1622132291",
+            "position": 3,
+            "thumbnail_size": [
+                450,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/219/219918.jpg?modified=1622132291"
+        }
+    ],
+    "promoted": null,
+    "ratings": {
+        "average": 4.6471,
+        "bayesian_average": 4.293994530177185,
+        "count": 17,
+        "text_count": 8
+    },
+    "ratings_url": "https://addons.mozilla.org/en-US/firefox/addon/enlight/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.mozilla.org/en-US/reviewers/review/538004",
+    "slug": "enlight",
+    "status": "public",
+    "summary": {
+        "en-US": "Syntax highlight for raw source code.",
+        "fr": "Coloration syntaxique sur code source brut."
+    },
+    "support_email": null,
+    "support_url": {
+        "url": {
+            "en-US": "https://github.com/Qeole/Enlight/issues",
+            "fr": "https://github.com/Qeole/Enlight/issues"
+        },
+        "outgoing": {
+            "en-US": "https://prod.outgoing.prod.webservices.mozgcp.net/v1/5f60056dd77c2d98755e1389e82c6b76f8b7a28748a501b3c2cc99ed5453cf9d/https%3A//github.com/Qeole/Enlight/issues",
+            "fr": "https://prod.outgoing.prod.webservices.mozgcp.net/v1/5f60056dd77c2d98755e1389e82c6b76f8b7a28748a501b3c2cc99ed5453cf9d/https%3A//github.com/Qeole/Enlight/issues"
+        }
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.mozilla.org/en-US/firefox/addon/enlight/",
+    "versions_url": "https://addons.mozilla.org/en-US/firefox/addon/enlight/versions/",
+    "weekly_downloads": 5,
+    "_score": null
+}

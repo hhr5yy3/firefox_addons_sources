@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script>
+        if ("undefined" !== typeof safari)
+            document.write('<base href='+safari.extension.baseURI+'>');
+        else if ("undefined" !== typeof browser)
+            document.write('<base href='+browser.extension.getURL('/')+'>');
+        else document.write('<base href='+chrome.extension.getURL('/')+'>');
+    </script>
+    <title>Phishing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="css/phishingAlert.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="specific/extensionConfig.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/verifrom_api.js"></script>
+    <script type="text/javascript" src="js/verifrom-localize.js"></script>
+</head>
+<body>
+<div class='mainDiv'>
+    <span class='logo'></span>
+    <span class="partners">
+            <img src="" id="partnerLogo"/>
+            <span class="partnersTooltip" data-VerifromLocalize="phishingAlert.partnerLogo"></span>
+    </span>
+    <div class='messageTitle' data-VerifromLocalize="phishingAlert.warning">ATTENTION</div>
+<div id="alertWithNoPartners" class='messageTitle' data-verifromlocalize="phishingAlert.message1">La page correspondant à l'URL ci-dessous qui tente de s'ouvrir dans votre navigateur a été répertoriée comme correspondant à un site de Phishing.</div>
+<div id="alertWithPartners" class='messageTitle' data-verifromlocalize="phishingAlert.partnerTitle">La page correspondant à l'URL ci-dessous qui tente de s'ouvrir dans votre navigateur a été répertoriée comme correspondant à un site de Phishing.</div>
+<div class='message'>
+<p><a href='#' id='href'><span id='url'></span></a></p>
+<span data-verifromlocalize="phishingAlert.message2">Nous vous conseillons de ne pas poursuivre votre navigation vers ce site.</span><BR>
+<span data-verifromlocalize="phishingAlert.message3"></span>
+</div>
+<table>
+<tbody><tr>
+<td class="retour" colspan="2">
+<div class="retour" id="retour" data-verifromlocalize="phishingAlert.return">
+Revenir à la page précédente
+</div>
+</td>
+</tr><tr>
+<td style="width: 60%;"><div class="message" id="faussealerte" style="font-size: 1.2vmax;"><span data-verifromlocalize="phishingAlert.false1">Vous pensez qu'il s'agit d'une "fausse alerte"</span><br><span data-verifromlocalize="phishingAlert.false2">et que le site est légitime</span><br>
+<div id="negative" data-verifromlocalize="phishingAlert.buttonlabel2">cliquez ici</div>
+<span data-verifromlocalize="phishingAlert.false3">pour nous le signaler et poursuivre vers ce site.</span>
+</div>
+</td>
+<td class="bouton"><div class="bouton" id="bouton" data-verifromlocalize="phishingAlert.buttonlabel">J'AI COMPRIS<br>et je souhaite poursuivre malgré tout vers le site</div></td>
+</tr>
+</tbody></table>
+</div>
+<script defer src="js/phishingAlert.js" type="text/javascript" defer></script>
+<script defer src="js/localizeGUI.js" type="text/javascript" defer></script></div>
+</body>
+</html>

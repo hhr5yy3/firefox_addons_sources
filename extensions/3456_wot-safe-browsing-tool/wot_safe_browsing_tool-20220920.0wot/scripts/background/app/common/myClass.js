@@ -1,0 +1,1 @@
+class MyClass{constructor(s){this.store=s}}

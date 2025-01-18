@@ -1,0 +1,414 @@
+@charset "UTF-8";
+@import url("switch.css");
+html {
+    background-color: #fafafa;
+    overflow-x: hidden;
+}
+
+@media (max-width: 1000px) {
+    html {
+        overflow-x: visible;
+    }
+}
+
+header {
+    display: flex;
+    align-items: center;
+    width: 180%;
+    height: 53px;
+}
+
+.app_logo {
+    margin-left: 20px;
+    margin-right: 15px;
+    width: 33px;
+    height: 33px;
+}
+
+#app_title {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+/*-- MENU -----------------------------------------------------------*/
+
+#menu {
+    position: absolute;
+    width: 200px;
+}
+
+.menu_item {
+    width: 200px;
+    display: inline-block;
+    padding: 11px 0 11px 20px;
+}
+
+.menu_item:hover {
+    cursor: pointer;
+}
+
+.active {
+    background-color: #DEDEDE;
+}
+
+.menu_item img {
+    width: 30px;
+    height: 30px;
+    vertical-align: bottom;
+    margin-right: 7px;
+}
+
+.menu_item span {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: larger;
+    vertical-align: 4px;
+    max-width: 147px;
+}
+
+
+/*-- TABS -----------------------------------------------------------*/
+
+.tab {
+    display: none;
+    position: absolute;
+    left: 173px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    margin-left: 15%;
+    margin-top: 67px;
+    font-size: larger;
+}
+
+.tab_container {
+    display: inline-block;
+    background-color: white;
+    width: 667px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 27px;
+}
+
+.disabled {
+    color: lightgrey;
+}
+
+hr {
+    margin: 0;
+}
+
+.tab_row {
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+#import_export_row:hover,
+#website_row:hover,
+#help_row:hover,
+#support_row:hover,
+#privacy_policy_row:hover,
+#legal_row:hover,
+.start_app_row:hover {
+    cursor: pointer;
+}
+
+.tab_row label,
+.tab_row .row_label {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 13px;
+    max-width: 533px;
+}
+
+.tab_row button,
+.tab_row select {
+    margin-left: auto !important;
+    margin-right: 20px !important;
+}
+
+.tab_row .switch {
+    position: absolute;
+    left: 580px;
+}
+
+#version_value {
+    position: absolute;
+    left: 435px;
+    text-align: right;
+    width: 200px;
+}
+
+.right_arrow_icon {
+    position: absolute;
+    left: 620px;
+    width: 30px;
+    height: 30px;
+}
+
+.tab_button {
+    margin-top: 13px !important;
+    margin-left: 7px !important;
+}
+
+
+/*-- IMPORT TAB -----------------------------------------------------------*/
+
+#import_export_text {
+    margin-left: 13px;
+    margin-right: 13px;
+}
+
+.row_suptext {
+    align-self: start;
+    margin-top: 13px;
+}
+
+.row_subtext {
+    position: absolute;
+    left: 13px;
+    margin-top: 23px;
+    color: grey;
+}
+
+
+/*-- ABOUT TAB -----------------------------------------------------------*/
+
+#copyright {
+    margin-top: 13px;
+    margin-left: 7px;
+    color: grey;
+}
+
+
+/*-- SECURITY TAB -----------------------------------------------------------*/
+
+#options_locations_prompt {
+    margin-left: 13px;
+    margin-right: 13px;
+}
+
+
+/*-- LEGAL TAB -----------------------------------------------------------*/
+
+#legal_tab p {
+    margin-left: 13px;
+}
+
+
+/*-- APPEARANCE TAB -----------------------------------------------------------*/
+
+#lock_screen_texture_container {
+    padding-top: 7px;
+    padding-bottom: 20px;
+}
+
+.lock_screen_texture {
+    display: inline-block;
+    width: 180px;
+    height: 120px;
+    margin-top: 13px;
+    margin-left: 27px;
+    outline: 1px solid grey;
+    background-position: center;
+    background-size: cover;
+}
+
+input[name="lock_screen_texture"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+input[name="lock_screen_texture"] + div {
+    cursor: pointer;
+}
+input[name="lock_screen_texture"]:checked + div {
+    outline: 4px solid rgb(60, 130, 240, 0.9);
+}
+
+input[name="lock_screen_texture"]:nth-child(5n+1) {
+    margin-left: 87px;
+}
+
+#lock_screen_image_input {
+    margin-left: 47px;
+}
+
+#lock_screen_image {
+    display: inline-block;
+    width: 380px;
+    height: 313px;
+    margin: 13px 0 13px 47px;
+    border: 1px solid black;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lock_screen_image_text {
+    font-size: 27px;
+}
+
+#lock_screen_image_container {
+    margin-top: 13px;
+}
+
+#lock_screen_image_text_select {
+    margin-left: auto !important;
+    margin-right: 20px !important;
+}
+
+
+/*-- GENERATOR TAB -----------------------------------------------------------*/
+
+#generated_password {
+    margin-left: 27px;
+    margin-top: 27px;
+    width: 400px;
+    height: 24px;
+}
+
+#password_strength_container {
+    display: inline-block;
+    margin-left: 27px;
+}
+
+#password_length_container,
+#password_types_container {
+    width: 400px;
+    margin-left: 27px;
+}
+
+#password_types_container {
+    margin-top: 13px;
+    margin-bottom: 20px;
+}
+
+#password_length_slider {
+    margin-top: 20px;
+    width: 100%;
+}
+
+#password_length_label {
+    margin-top: 4px;
+    text-align: center;
+}
+
+#password_types_container input {
+    vertical-align: middle;
+}
+
+#password_types_container label {
+    display: inline-block;
+    margin-bottom: 13px;
+    margin-left: 4px;
+    vertical-align: 1px;
+}
+
+.empty_password_cell {
+    display: inline-block;
+    width: 93px;
+    height: 4px;
+    background-color: #9E9E9E;
+}
+
+.weak_password_cell {
+    background-color: #E63B2E;
+    transition: all .5s ease-in-out;
+}
+
+.average_password_cell {
+    background-color: #F9A825;
+    transition: all .5s ease-in-out;
+}
+
+.strong_password_cell {
+    background-color: #4CAF50;
+    transition: all .5s ease-in-out;
+}
+
+#crack_time_label {
+    text-align: center;
+}
+
+#crack_time_container {
+    margin-top: 4px;
+    height: 13px;
+}
+
+#refresh_button {
+    display: inline-block;
+    border-radius: 5px;
+    margin-left: 9px;
+    vertical-align: middle;
+}
+
+#refresh_button:hover {
+    background-color: rgb(156, 156, 156, .3);
+    transition: all .2s ease-in-out;
+}
+
+#refresh_button:active {
+    background-color: rgb(156, 156, 156, .5);
+    transition: all .2s ease-in-out;
+}
+
+.button_image {
+    width: 24px;
+    height: 24px;
+}
+
+
+/*-- PASSWORD OPTIONS TAB -----------------------------------------------------------*/
+
+.fieldset {
+    margin: 20px 93px 0 27px;
+    border: 1px solid #bfbfbf;
+}
+
+#memorable_fieldset {
+    height: 87px;
+}
+
+#random_fieldset {
+    height: 107px;
+    margin-bottom: 20px;
+}
+
+#separators_prompt {
+    display: inline-block;
+    margin-top: 7px;
+}
+
+#separator_input {
+    margin-top: 7px;
+    width: 267px;
+}
+
+#symbols_prompt {
+    display: inline-block;
+    margin-top: 7px;
+}
+
+#symbols_input {
+    margin-top: 7px;
+    margin-bottom: 11px;
+    width: 267px;
+}
+
+#exclude_similar_characters_prompt {
+    display: inline-block;
+    max-width: 187px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    text-align: center;
+}

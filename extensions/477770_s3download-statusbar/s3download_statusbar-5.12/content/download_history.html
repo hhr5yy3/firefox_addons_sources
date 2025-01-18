@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title label="extension_name :: display.download_history.label"></title>
+		<link rel="shortcut icon" href="/skin/logo16.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="/skin/download_history.css" />
+		<link rel="stylesheet" type="text/css" href="/skin/contextmenu.css" />
+		<link rel="stylesheet" type="text/css" href="/skin/tooltip.css" />
+		<script type="text/javascript" src="/content/download_history.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/utils.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/i18n.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/prefs.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/date.toLocaleFormat.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/md5_spark.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/contextmenu.js" charset="utf-8"></script>
+	</head>
+<body><div id="s3downbar-ibmbeeacmbeeaebmfjpmnlgkhoejinha">
+<div id="download_head">
+	<div id="download_action_head" class="download_action_head">
+			<input type="button" id="s3downbar_button_settings" title="action.open_options.label"/>
+			<input type="button" id="s3downbar_button_create_new_downloads" label="action.create_new_downloads.label" oncommand="s3downbar.action('create_new_downloads');"/>
+			<input type="button" id="s3downbar_button_pause_all" label="action.pause_all.label"/>
+			<input type="button" id="s3downbar_button_resume_all" label="action.resume_all.label"/>
+			<input type="button" id="s3downbar_button_cancel_all" label="action.cancel_all.label"/>
+			<input type="button" id="s3downbar_button_remove_all" label="action.remove_all.label"/>
+			<div style="flex-grow:1"></div>
+			<div class="progress_bar_box" id="s3downbar_summary_box_progress_bar_value" style="flex-grow:1" progress_text="" summary_text="">
+				<progress class="progress_bar" id="s3downbar_summary_progress" max="100" value="0"></progress>
+			</div>
+			<input type="search" required id="s3downbar_searchbox"/>
+			<input type="button" id="s3downbar_button_cols"/>
+	</div>
+	<div id="download_list_head" class="grid_head">
+		<div id="head_FileName" class="grid_head_cols"><div label="history.head_filename.label"></div><div class="grid_head_resizer"></div></div>
+		<div id="head_FileExt" class="grid_head_cols"><div label="history.head_file_ext.label"></div><div class="grid_head_resizer"></div></div>
+		<div id="head_FileFullPath" class="grid_head_cols"><div label="history.head_file_fullpath.label"></div><div class="grid_head_resizer"></div></div>
+		<div id="head_FileSize" class="grid_head_cols"><div label="history.head_filesize.label"></div><div class="grid_head_resizer"></div></div>
+		<div id="head_Progress" class="grid_head_cols"><div label="history.head_progress.label"></div><div class="grid_head_resizer"></div></div>
+		<div id="head_ProgressPercent" class="grid_head_cols"><div label="history.head_progress_percent.label"></div><div class="grid_head_resizer"></div></div>
+		<div id="head_Speed" class="grid_head_cols"><div label="history.head_speed.label"></div><div class="grid_head_resizer"></div></div>
+		<div id="head_TimeRemaining" class="grid_head_cols"><div label="history.head_time_remaining.label"></div><div class="grid_head_resizer"></div></div>
+		<div id="head_URL" class="grid_head_cols"><div label="history.head_url.label"></div><div class="grid_head_resizer"></div></div>
+		<div id="head_Domain" class="grid_head_cols"><div label="history.head_domain.label"></div><div class="grid_head_resizer"></div></div>
+		<div id="head_DateTime" class="grid_head_cols"><div label="history.head_datetime.label"></div><div class="grid_head_resizer"></div></div>
+	</div>
+</div>
+<div id="download_list_box"></div>
+<div id="s3downbar_download_data_list_empty" label="display.download_list_empty.label"></div>
+
+<div id="download_template" style="display: none;"><div class="grid_rows" draggable="true" tabindex_off="0">
+	<div class="grid_cols_FileName" style="display:flex"><img id="s3downbar_download_box_img" src="" width="16" height="16"/><div id="s3downbar_download_box_filename"></div></div>
+	<div class="grid_cols_FileExt" id="s3downbar_download_box_filename_ext"></div>
+	<div class="grid_cols_FileFullPath" id="s3downbar_download_box_filename_fullpath"></div>
+	<div class="grid_cols_FileSize" style="display:flex">
+			<div is_progress="true" id="s3downbar_download_box_progress_currSize"></div>
+			<div is_progress="true" style="padding: 0 3px;">/</div>
+			<div id="s3downbar_download_box_totalSize"></div>
+	</div>
+	<div class="grid_cols_Progress" id="s3dm_progress">
+		<div class="progress_bar_box" id="s3downbar_download_box_progress_bar_value" value="0%">
+			<progress class="progress_bar" id="s3downbar_download_box_progress_bar" max="100" value="0"></progress>
+		</div>
+	</div>
+	<div class="grid_cols_ProgressPercent" id="s3downbar_download_box_percent"></div>
+	<div class="grid_cols_Speed" id="s3downbar_download_box_speed"></div>
+	<div class="grid_cols_TimeRemaining" id="s3downbar_download_box_remaintime"></div>
+	<div class="grid_cols_URL" id="s3downbar_download_box_from"></div>
+	<div class="grid_cols_Domain" id="s3downbar_download_box_from_domain"></div>
+	<div class="grid_cols_DateTime" id="s3downbar_download_box_datetime"></div>
+</div></div>
+
+<div id="s3downbar_draw_box" is_hidden="true">
+	<div id="s3downbar_draw_box_hbox"></div>
+</div>
+
+</div></body>
+</html>

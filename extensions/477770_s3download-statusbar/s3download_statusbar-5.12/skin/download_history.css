@@ -1,0 +1,360 @@
+body,html {
+	margin:0;
+	padding: 0;
+	height: 100%;
+}
+body *:not(.download_action_head *) {
+	background: initial;
+	border: initial;
+	border-radius: initial;
+	border-spacing: initial;
+	border-collapse: initial;
+	direction: ltr;
+	flex-direction: initial;
+	font-weight: initial;
+	height: initial;
+	letter-spacing: initial;
+	min-width: initial;
+	max-width: initial;
+	min-height: initial;
+	max-height: initial;
+	margin: 0;
+	outline: initial;
+	padding: initial;
+	position: initial;
+	table-layout: initial;
+	text-align: initial;
+	text-shadow: initial;
+	word-break: initial;
+	word-spacing: initial;
+	word-wrap: initial;
+	color: inherit;
+	line-height: initial;
+	vertical-align: top;
+	white-space: inherit;
+	user-select: none;
+	-moz-user-select: none;
+}
+body {
+	font-family: "Segoe UI", X-LocaleSpecific, Tahoma, sans-serif, Helvetica;
+	font-size: 14px;
+}
+#s3downbar-ibmbeeacmbeeaebmfjpmnlgkhoejinha {
+	padding-top: 55px;
+}
+#s3downbar-ibmbeeacmbeeaebmfjpmnlgkhoejinha *[is_hidden="true"] {
+	display: none;
+}
+#download_head {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 100 !important;
+	background-color: #FFFFFF;
+}
+#download_action_head {
+	display: flex;
+	align-items: center;
+	background:linear-gradient(to bottom, rgb(254,254,255), rgb(229, 234, 245), rgb(211, 218, 237), rgb(225, 230, 246)) !important;
+	padding: 5px;
+	padding-top: 6px;
+	padding-right: 2px;
+}
+#download_action_head input {
+	margin: 0 2px;
+}
+#download_action_head input[type="button"] {
+	cursor: pointer;
+}
+#download_action_head .progress_bar {
+	height: 21px;
+}
+#download_action_head .progress_bar_box {
+	font-size: 9pt;
+	min-width: 150px;
+	margin-right: 5px;
+}
+#download_action_head .progress_bar_box:before {
+	position: absolute;
+	content: attr(summary_text);
+	top: 3px;
+	left: 0;
+	margin-left: 5px;
+}
+#download_action_head .progress_bar_box:after {
+	position: absolute;
+	content: attr(progress_text);
+	top: 3px;
+	right: 0;
+	margin-right: 5px;
+}
+
+.grid_head {
+	display: grid;
+/*	grid-template-columns: 1.2fr 0.4fr 1.5fr 0.8fr 1.5fr 0.4fr 0.6fr 0.6fr 1.5fr 0.6fr 0.8fr;*/
+	background:linear-gradient(to bottom, rgb(255,255,255), rgb(249, 249, 249), rgb(245, 241, 241), rgb(241, 242, 244)) !important;
+	border-top: 1px #D5D5D5 solid;
+	border-bottom: 1px #D5D5D5 solid;
+}
+.grid_head .grid_head_cols {
+	border-right: 1px #E3E4E6 solid;
+	height: 19px;
+	background: url("/skin/sort_both.png") right center no-repeat;
+	background-size: contain;
+	cursor: pointer;
+	position: relative;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	padding-right: 3px;
+	padding-bottom: 2px;
+}
+.grid_head .grid_head_cols div {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 1px 3px;
+	padding-right: 15px;
+}
+.grid_head .grid_head_resizer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 7px;
+	cursor: col-resize;
+	border: none;
+	height: inherit;
+	padding: 0 !important;
+}
+.grid_head .grid_head_cols:hover {
+	background-color: rgba(111,146,0,0.4);
+}
+.grid_head[sortName="FileName"][sortDirection="ascending"] div#head_FileName,
+.grid_head[sortName="FileExt"][sortDirection="ascending"] div#head_FileExt,
+.grid_head[sortName="FileFullPath"][sortDirection="ascending"] div#head_FileFullPath,
+.grid_head[sortName="FileSize"][sortDirection="ascending"] div#head_FileSize,
+.grid_head[sortName="Progress"][sortDirection="ascending"] div#head_Progress,
+.grid_head[sortName="ProgressPercent"][sortDirection="ascending"] div#head_ProgressPercent,
+.grid_head[sortName="Speed"][sortDirection="ascending"] div#head_Speed,
+.grid_head[sortName="TimeRemaining"][sortDirection="ascending"] div#head_TimeRemaining,
+.grid_head[sortName="URL"][sortDirection="ascending"] div#head_URL,
+.grid_head[sortName="Domain"][sortDirection="ascending"] div#head_Domain,
+.grid_head[sortName="DateTime"][sortDirection="ascending"] div#head_DateTime 
+{
+	background-image: url("/skin/sort_asc.png");
+}
+.grid_head[sortName="FileName"][sortDirection="descending"] div#head_FileName,
+.grid_head[sortName="FileExt"][sortDirection="descending"] div#head_FileExt,
+.grid_head[sortName="FileFullPath"][sortDirection="descending"] div#head_FileFullPath,
+.grid_head[sortName="FileSize"][sortDirection="descending"] div#head_FileSize,
+.grid_head[sortName="Progress"][sortDirection="descending"] div#head_Progress,
+.grid_head[sortName="ProgressPercent"][sortDirection="descending"] div#head_ProgressPercent,
+.grid_head[sortName="Speed"][sortDirection="descending"] div#head_Speed,
+.grid_head[sortName="TimeRemaining"][sortDirection="descending"] div#head_TimeRemaining,
+.grid_head[sortName="URL"][sortDirection="descending"] div#head_URL,
+.grid_head[sortName="Domain"][sortDirection="descending"] div#head_Domain,
+.grid_head[sortName="DateTime"][sortDirection="descending"] div#head_DateTime
+{
+	background-image: url("/skin/sort_desc.png");
+}
+.grid_rows {
+	display: grid;
+/*	grid-template-columns: 1.2fr 0.4fr 1.5fr 0.8fr 1.5fr 0.4fr 0.6fr 0.6fr 1.5fr 0.6fr 0.8fr;*/
+	margin-bottom: 2px;
+	border: 1px transparent solid;;
+	border-bottom: 1px #ccceee dotted;
+	cursor: default !important;
+}
+.grid_rows:focus {
+	border: 1px solid #3495F5;
+	background-color: #E0F5FE;
+}
+#download_list_box:not([start_draw="true"]) .grid_rows:hover {
+	background-color: rgba(186, 182, 186, 0.9);
+}
+#download_list_box:not([start_draw="true"]) .grid_rows[is_selected="true"]:hover {
+	background-color: rgba(84, 44, 101, 0.6);
+}
+.grid_rows[is_selected="true"] {
+	background-color: rgba(84, 44, 101, 0.4);
+	color: #CE005C;
+}
+.grid_rows[state="fileNotFound"] {
+	background-image: linear-gradient(to top, rgba(255, 136, 136, 0.3), rgba(255, 136, 136, 0.3));
+}
+.grid_rows[state="cancel"] {
+	background-image: linear-gradient(to top, rgba(108, 101, 60, 0.3), rgba(108, 101, 60, 0.3));
+}
+.grid_rows[state="progress"] {
+	background-image: repeating-linear-gradient(145deg,transparent,transparent 15px,rgba(255,255,255,0.4)15px,rgba(255,255,255,0.4)30px), linear-gradient(to top, rgba(66, 252, 3, 0.3), rgba(66, 252, 3, 0.3));
+}
+.grid_rows[state="pause"] {
+	background-image: repeating-linear-gradient(145deg,transparent,transparent 15px,rgba(255,255,255,0.4)15px,rgba(255,255,255,0.4)30px), linear-gradient(to top, rgba(255, 140, 13, 0.3), rgba(255, 140, 13, 0.3));
+}
+.grid_rows[is_progress="false"] div[is_progress="true"] {
+	display: none;
+}
+
+/*
+#s3downbar_tree treechildren::-moz-tree-progressmeter {
+	color: #00910F !important;
+}
+#s3downbar_tree treechildren::-moz-tree-progressmeter(pause), #s3downbar_tree treechildren::-moz-tree-progressmeter(cancel) {
+	color: #93988B !important;
+}
+*/
+
+
+.grid_rows div {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	padding: 1px 2px;
+	border-right: 1px transparent solid;
+	font-size: 13px;
+}
+.grid_cols_FileName {
+	text-align: left;
+}
+.grid_cols_FileExt {
+	text-align: left;
+}
+.grid_cols_FileFullPath {
+	text-align: left;
+}
+.grid_cols_FileSize {
+	text-align: right;
+	justify-content: flex-end;
+}
+.grid_cols_Progress {
+	text-align: center;
+	justify-content: center;
+}
+.grid_cols_ProgressPercent {
+	text-align: right;
+	justify-content: flex-end;
+}
+.grid_cols_Speed {
+	text-align: right;
+	justify-content: flex-end;
+}
+.grid_cols_TimeRemaining {
+	text-align: right;
+	justify-content: flex-end;
+}
+.grid_cols_URL {
+	text-align: left;
+}
+.grid_cols_Domain {
+	text-align: left;
+}
+.grid_cols_DateTime {
+	text-align: right;
+	justify-content: flex-end;
+}
+#download_list_box {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+.progress_bar {
+	width: 100%;
+	height: 18px;
+}
+.progress_bar_box {
+	position: relative;
+	flex-grow: 2;
+}
+.progress_bar_box:after{
+	position: absolute;
+	content: attr(value);
+	top: 1px;
+	right: 50%;
+	margin-right: -20px;
+}
+.progress_bar[value] {
+	border: none;
+	background-color: whiteSmoke;
+	border-radius: 3px;
+	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+}
+.progress_bar[value]::-webkit-progress-bar {
+	background-color: whiteSmoke;
+	border-radius: 3px;
+	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+}
+.progress_bar[value]::-webkit-progress-value {
+	border-radius:3px;
+}
+.progress_bar::-webkit-progress-value {
+	background: linear-gradient(to right, rgba(0,153,204,0.6), rgba(99,168,96,0.6));
+}
+.progress_bar::-moz-progress-bar {
+	background: linear-gradient(to right, rgba(0,153,204,0.6), rgba(99,168,96,0.6));
+}
+
+label {
+	display: flex;
+	align-items: center;
+}
+label input[type="checkbox"] {
+	margin-right: 3px;
+}
+#s3downbar_draw_box {
+	background: rgba(147, 208, 184, 0.4);
+	position:absolute;
+	border: 1px #6190C4 solid;
+}
+#s3downbar_draw_box[is_hidden="true"] {
+	display: none;
+}
+
+#s3downbar_button_cols {
+	height: 18px;
+	width: 18px;
+	border: none;
+	display: block;
+	border-width: 1px;
+	border-color: buttonface;
+	margin-left: 5px !important;
+	margin-right: 0 !important;
+	cursor: pointer;
+	background: url("/skin/s3dm_icons.png") right center no-repeat;
+	background-position: 0px -96px !important;
+	outline: none;
+}
+#s3downbar_button_settings {
+	height: 18px;
+	width: 18px;
+	border: none;
+	display: block;
+	border-width: 1px;
+	border-color: buttonface;
+	margin-right: 5px;
+	cursor: pointer;
+	background: url("/skin/s3dm_icons.png") right center no-repeat;
+	background-position: -64px -80px !important;
+	outline: none;
+}
+#s3downbar_button_cols:hover,
+#s3downbar_button_settings:hover {
+	border-style: outset;
+	opacity: 1;
+}
+#s3downbar_button_cols:active,
+#s3downbar_button_settings:active {
+	border-style: inset;
+}
+
+#s3downbar_download_data_list_empty {
+	text-align: center;
+	padding: 3px !important;
+}
+#s3downbar_download_data_list_empty:not([list_count="0"]) {
+	display: none !important;
+}
+#s3downbar_searchbox:invalid {
+	background-image: url("/skin/search_icon.png");
+	background-position: right center;
+	background-repeat: no-repeat;
+	box-shadow: none;
+}

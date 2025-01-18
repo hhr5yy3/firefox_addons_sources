@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <label class="i18n">label_lSessions</label><br/>
+        <select id="lSessions"><option value="">- add new -</option></select>
+        <button type="button" class="i18n" id="btnDelete">btn_delete</button>
+        <br/>
+        <br/>
+        <label class="i18n">label_startUrl</label><br/>
+        <input type="url" id="startUrl" required />
+        <br/>
+        <label class="i18n">label_endUrl</label><br/>
+        <input type="url" id="endUrl" required />
+        <br/>
+        <label class="i18n">label_pingUrl</label><br/>
+        <input type="url" id="pingUrl" required />
+        <label id="pingUrlDomain" style="display:none;"></label>
+        <br/>
+        <br/>
+        <label class="i18n">label_pingTimeout</label>
+        <input type="number" id="pingTimeout" required value="10" min="1" max="60" width="10"/>
+        <label class="i18n">label_pingTimeoutTime</label> +/- <input type="number" id="pingRand" value="0" min="0" max="60" width="10"/>
+        <br/>
+        <br/>
+        <input type="checkbox" id="notify">
+        <label for="notify" class="i18n">label_showSessionNotifications</label>
+        <br/>
+        <input type="checkbox" id="regExp" style="display:none;">
+        <label for="regExp" class="i18n" style="display:none;">label_useRegularExpressions</label>
+        <br/>
+        <div>
+          <button class="i18n" type="submit">btn_rememberChanges</button>
+        </div>
+      </form>
+    </div>
+    
+    <script src="options.js"></script>
+  </body>
+</html>

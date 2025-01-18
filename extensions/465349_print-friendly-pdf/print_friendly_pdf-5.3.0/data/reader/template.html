@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html%dir%>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>%title%</title>
+    <link rel="stylesheet" href="content.css" media="screen,print">
+  </head>
+
+  <body tabindex="1" data-mode=%data-mode%>
+    <div id="content-wrapper" data-images=%data-images%>
+      <style>
+        html {
+          overflow: overlay;
+        }
+
+        body {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-print-color-adjust: exact;
+          margin: 25px auto 0 auto;
+          padding: 10px;
+          max-width: 100%;
+          box-sizing: border-box;
+        }
+
+        hr {
+          border:0;
+          border-top: 1px solid currentColor;
+          height: 0;
+        }
+
+        body[data-mode="light"] {
+          color: #222;
+          border-color: #222;
+          background-color: #fff;
+        }
+
+        body[data-mode="dark"] {
+          color: #eee;
+          border-color: #eee;
+          background-color: #333;
+        }
+
+        body[data-mode="sepia"] {
+          color: #5b4636;
+          border-color: #5b4636;
+          background-color: #f4ecd8;
+        }
+
+        body[data-mode="solarized-light"] {
+          color: #586e75;
+          border-color: #586e75;
+          background-color: #fdf6e3;
+        }
+
+        body[data-mode="nord-light"] {
+          color: #2e3440;
+          border-color: #2e3440;
+          background-color: #e5e9f0;
+        }
+
+        body[data-mode="nord-dark"] {
+          color: #e5e9f0;
+          border-color: #e5e9f0;
+          background-color: #2e3440;
+        }
+
+        body[data-mode="groove-dark"] {
+          color: #cec4ac;
+          border-color: #cec4ac;
+          background-color: #282828;
+        }
+
+        body[data-mode="solarized-dark"] {
+          color: #839496;
+          border-color: #839496;
+          background-color: #002b36;
+        }
+
+        body[data-loaded=true] {
+          transition: color 0.4s, background-color 0.4s;
+        }
+
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+
+        img:not([width])[src$=".svg"] {
+          max-width: 100px;
+        }
+
+        div[data-images=false] canvas,
+        div[data-images=false] svg,
+        div[data-images=false] img {
+          display: none;
+        }
+
+        a {
+          color: #0095dd;
+          text-decoration: none;
+        }
+
+        #reader-domain {
+          font-family: Helvetica, Arial, sans-serif;
+          text-decoration: none;
+          border-bottom-color: currentcolor;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%;
+          display: inline-block;
+          direction: ltr;
+          color: grey;
+        }
+
+        #reader-domain>span:first-child {
+          font-size: 1.1em;
+        }
+
+        #reader-domain>span:last-child {
+          font-size: 0.8em;
+        }
+
+        #reader-title {
+          font-size: 1.6em;
+          line-height: 1.25em;
+          width: 100%;
+          margin: 20px 0;
+          padding: 0;
+        }
+
+        #reader-credits,
+        #doi,
+        #published-time,
+        #reader-estimated-time {
+          font-size: 0.85em;
+          line-height: 1.48em;
+          margin: 0 0 10px 0;
+          padding: 0;
+        }
+
+        #reader-credits:not(:empty)::after {
+          content: ' ⋮ ';
+        }
+
+        #published-time:not(:empty)::before {
+          content: ' ⋮ ';
+        }
+
+        #doi-json {
+          overflow: hidden;
+        }
+
+        #doi-json code {
+          overflow: auto;
+          max-height: 400px;
+        }
+
+        #published-time:empty,
+        #reader-credits:empty {
+          display: none;
+        }
+
+        mark.hghlght {
+          background-color: #ffff81;
+          color: #222;
+          padding: 0.1rem 0;
+        }
+
+        .hidden, #doi {
+          display: none;
+        }
+
+        .note {
+          position: absolute;
+          z-index: 10;
+          border: none;
+          outline: none;
+          font-family: inherit;
+          font-size: inherit;
+          padding: 5px;
+          min-width: 32px;
+          min-height: 32px;
+        }
+
+        .note:focus {
+          z-index: 11;
+        }
+
+        .pf-hidden {
+          display: none !important;
+        }
+
+        @media print {
+
+          body[data-mode="light"],
+          body[data-mode="dark"],
+          body[data-mode="sepia"],
+          body[data-mode="solarized-light"],
+          body[data-mode="nord-light"],
+          body[data-mode="groove-dark"],
+          body[data-mode="solarized-dark"],
+          body[data-mode="nord-dark"] {
+            color: #000;
+            border-color: #000;
+            background-color: #fff;
+            width: 100%;
+            margin: 0;
+          }
+        }
+      </style>
+      <style id="user-css">
+        /*user-css*/
+      </style>
+      <span></span> <!-- for IntersectionObserver -->
+      <a id="reader-domain" href="%href%">
+        <span>%hostname%</span>
+        <span>%pathname%</span>
+      </a>
+      <h1 dir="auto" id="reader-title">%title%</h1>
+      <span dir="auto" id="reader-credits">%byline%</span>
+      <span dir="auto" id="published-time">%published-time%</span>
+      <hr />
+      <div class="page">
+        %content%
+      </div>
+    </div>
+    <span></span> <!-- for IntersectionObserver -->
+    <script src="/data/js/jquery-3.6.0.slim.js"></script>
+    <script src="/config.js"></script>
+    <script src="template.js"></script>
+    <script async src="libs/highlight/highlight.js"></script>
+  </body>
+
+  </html>

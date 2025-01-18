@@ -1,0 +1,102 @@
+= Asciidoctor Browser Extension
+Guillaume Grossetie
+
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+:uri-license: https://github.com/asciidoctor/asciidoctor-chrome-extension/blob/main/LICENSE
+:uri-hacking: https://github.com/asciidoctor/asciidoctor-chrome-extension/blob/main/hacking.adoc
+:uri-changelog: https://github.com/asciidoctor/asciidoctor-chrome-extension/blob/main/changelog.adoc
+:uri-chrome-webstore: https://chrome.google.com/webstore/detail/asciidoctorjs-live-previe/iaalpfgpbocpdfblpnhhgllgbdbchmia
+:uri-mozilla-addon: https://addons.mozilla.org/firefox/addon/asciidoctorjs-live-preview
+:uri-opera-addon: https://addons.opera.com/extensions/details/asciidoctorjs-live-preview
+:uri-edge-webstore: https://microsoftedge.microsoft.com/addons/detail/asciidoctorjs-live-previ/pefkelkanablhjdekgdahplkccnbdggd
+
+This project uses https://github.com/asciidoctor/asciidoctor.js[Asciidoctor.js] to preview AsciiDoc as HTML inside Chrome (or Chromium), Firefox and Opera!
+
+image:https://raw.githubusercontent.com/asciidoctor/asciidoctor-browser-extension/main/promotional/chromewebstore-badge-wborder-496x150.png[link={uri-chrome-webstore},height="64px",width="212px"]
+image:https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg[link={uri-mozilla-addon},height="64px",width="184px"]
+image:https://dev.opera.com/extensions/branding-guidelines/addons_206x58_en@2x.png[link={uri-opera-addon},height="64px",width="227px"]
+image:https://raw.githubusercontent.com/asciidoctor/asciidoctor-browser-extension/main/promotional/edgewebstore-badge.png[link={uri-edge-webstore},height="64px",width="177px"]
+
+*Project health:* image:https://github.com/asciidoctor/asciidoctor-browser-extension/workflows/CI/badge.svg[Build Status, link="https://github.com/asciidoctor/asciidoctor-browser-extension/actions?query=workflow%3ACI"]
+
+== Usage
+
+=== Chrome, Chromium, Brave or Opera
+
+ 1. Install the extension from the {uri-chrome-webstore}[Chrome Web Store] or the {uri-opera-addon}[Opera Add-ons website]
+ 2. Check `Allow access to file URLs` in `chrome://extensions`
+ 3. Open local or remote .ad, .adoc, .asc, .asciidoc files in your browser
+ 4. Enjoy!
+
+=== Firefox
+
+ 1. Install the extension from the {uri-mozilla-addon}[Firefox Add-ons website]
+ 2. Open local or remote .ad, .adoc, .asc, .asciidoc files in Firefox
+ 3. Enjoy!
+
+[WARNING]
+====
+On Firefox, pages viewed directly from GitHub may not render properly.
+This is result of a https://bugzilla.mozilla.org/show_bug.cgi?id=1267027[Firefox bug] carrying over the Content Security Policies (CSP).
+The restrictive CSP sent by GitHub are applied to the content inserted by the WebExtension.
+
+In addition, the extension does not automatically trigger in Firefox when navigating to a `file://` from a link.
+Instead, you have to enter the `file://` URL directly into the address bar of the browser.
+If you do navigate to a `file://` URL from a link, simply highlight the address bar and press "Enter" to force the extension to load. There's an open issue in the https://bugzilla.mozilla.org/show_bug.cgi?id=1266960[Firefox bug tracker] to fix this limitation.
+====
+
+== Installation
+
+Loading your local copy of the extension on Chrome (or Chromium), Firefox or Opera is super easy!
+
+=== Chrome, Chromium, Brave or Opera
+
+ 1. Check `Developer mode` in `chrome://extensions`
+ 2. Click `Load unpacked extension...` and select the extension `app` directory
+ 3. That's all
+
+To see your changes, click the `Reload (Ctrl+R)` link in `chrome://extensions`.
+If you want to create a `Pack extension` just make a `zip` file of the extension `app` directory.
+
+=== Firefox
+
+ 1. Click on the `Load Temporary Add-on` in `about:debugging`
+ 2. Select the manifest file in the `app` directory
+ 3. That's all
+
+To see your changes, click the `Reload` link in `about:debugging`.
+
+== Options
+
+The extension can be configured via an options page.
+
+To open the options page, in Chrome, Brave or Opera, right-click the extension icon and choose Options on the menu.
+You can also go to `chrome://extensions` and click the Options link.
+
+In Firefox, go to `about:addons` and click the More link or the Preferences button.
+
+The options page let you add custom Asciidoctor attributes or change the theme of the AsciiDoc HTML output.
+
+== Contributing
+
+See the <<hacking#, hacking>> file.
+
+== Changelog
+
+See the <<changelog#, changelog>> file.
+
+== Copyright
+
+Copyright (C) 2013-2020 Guillaume Grossetie.
+Free use of this software is granted under the terms of the MIT License.
+
+See the {uri-license}[LICENSE] file for details.

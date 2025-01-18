@@ -1,0 +1,48 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title label="extension_name : action.checksum.label"></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="shortcut icon" href="/skin/logo16.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="/skin/file_checksum.css" />
+		<script type="text/javascript" src="/content/file_checksum.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/utils.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/i18n.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/prefs.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/md5_spark.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/sha256.js" charset="utf-8"></script>
+	</head>
+<body>
+<h3 label="extension_name - action.checksum.label"></h3>
+
+<center><input id="checksum_file_from" type="file"/></center>
+
+<div class="box" id="box_from" is_hidden="true">
+	<div id="s3downbar_checksum_file"></div>
+	<div class="flex">
+		<div class="hash_name">MD5:</div>
+		<input is_hidden="true" style="flex-grow: 2; text-overflow: ellipsis;" type="text" id="checksum_MD5_from" readonly="true"/>
+		<div is_hidden="true" id="button_copy_MD5_from" class="button_copy"></div>
+		<div is_hidden="true" label_wait="" class="progress_bar_box" id="progress_bar_box_MD5_from" value="0%"><progress class="progress_bar" id="progress_bar_MD5_from" max="100" value="0"></progress></div>
+	</div>
+	<div class="flex" style="margin-top: 5px;">
+		<div class="hash_name">SHA-256:</div>
+		<input is_hidden="true" style="flex-grow: 2; text-overflow: ellipsis;" type="text" id="checksum_SHA256_from" readonly="true"/>
+		<div is_hidden="true" id="button_copy_SHA256_from" class="button_copy"></div>
+		<div is_hidden="true" label_wait="" class="progress_bar_box" id="progress_bar_box_SHA256_from" value="0%"><progress class="progress_bar" id="progress_bar_SHA256_from" max="100" value="0"></progress></div>
+	</div>
+</div>
+
+<div class="box" id="box_to" is_hidden="true">
+	<div id="s3downbar_checksum_compare" label="action.checksum_compare.label"></div>
+	<div class="flex">
+		<div id="s3downbar_checksum_compare_check" class="checksum_unknown"></div>
+		<input style="flex-grow: 2" type="text" id="checksum_to"/>
+		<div id="button_copy_to" class="button_copy"></div>
+		<div is_hidden="true" label_wait="" class="progress_bar_box" id="progress_bar_box_to" value="0%"><progress class="progress_bar" id="progress_bar_to" max="100" value="0"></progress></div>
+	</div>
+	<div style="text-align: right;"><input type="button" label="action.checksum_compare_file.label" id="checksum_compare_file_button" style="cursor: pointer"/></div> <!-- oncommand="checksum_compare_file();" -->
+	<input id="checksum_file_to" type="file"/>
+</div>
+</body>
+</html>

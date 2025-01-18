@@ -1,0 +1,1 @@
+function SidebarButton(e){const t=e.title,s=e.svg,i=e.selected,a=e.id,c="settings__sidebar_item "+(i?"selected":"");return React.createElement("div",{className:c,onClick:e.onClick,id:a},React.createElement(SvgComponent,{className:"settings__sidebar_item_icon",svg:s}),React.createElement("h1",{className:"settings__sidebar_item_title"},t))}

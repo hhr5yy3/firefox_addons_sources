@@ -1,0 +1,544 @@
+/**
+ **********************************************************************
+ * Tranquility Reader - A Firefox Webextension that cleans up
+ * cluttered web pages
+ **********************************************************************
+
+   Copyright (c) 2012-2024 Arun Kunchithapatham
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+   Contributors:
+   Arun Kunchithapatham - Initial Contribution
+ ***********************************************************************
+ *
+ */
+
+body.tranquility
+{ 
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+  line-height:140%;  
+}
+
+div.tranquility_masker
+{ 
+  top:0;
+  left:0;
+  width:100%;  
+  height:100%;
+  background-color:silver;
+  visibility: hidden;
+  z-index: 9999985;
+  opacity:.7;
+  position: fixed;
+}
+ 
+div.tranquility_container
+{ 
+  margin:0 auto; 
+  padding:10px;
+  width:70%;
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+}
+
+div.tranquility_innercontainer 
+{
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  margin-top: 60px;
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+}  
+
+div.tranquility 
+{
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+  padding-top: 5px;
+  padding-bottom: 5px;
+} 
+
+div.tranquility_links
+{
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  font-size:18px;
+  text-align:left; 
+  border-left: solid 2px silver;
+  border-top: solid 2px silver;
+  border-bottom: solid 2px silver;
+  border-right: solid 2px silver;
+  left: 30%;
+  width:40%;
+  top: 0px;
+  height: 98%;
+  z-index: 9999990;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  visibility: hidden;
+  background-color: #FFFFFF; 
+}  
+
+div.tranquility_offline_links
+{
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  font-size:18px;
+  text-align:left; 
+  border-left: solid 2px silver;
+  border-top: solid 2px silver;
+  border-bottom: solid 2px silver;
+  border-right: solid 2px silver;
+  left: 30%;
+  width:40%;
+  top: 0px;
+  height: 98%;
+  z-index: 9999990;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  visibility: hidden;
+  background-color: #FFFFFF; 
+}  
+
+div.tranquility_nav_links
+{
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:right; 
+  border-left: solid 2px silver;
+  border-top: solid 2px silver;
+  border-bottom: solid 2px silver;
+  border-right: solid 2px silver;
+  border-radius: 20px;
+  margin: 10px;
+  right:100%;
+  background-color:silver; 
+}
+
+span.tranquility 
+{
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+} 
+
+table.tranquility 
+{
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+} 
+
+p.tranquility 
+{ 
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+} 
+
+pre.tranquility_pre
+{
+  width: 100%;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  border: solid 1px silver;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+li.tranquility 
+{ 
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+} 
+
+font.tranquility 
+{ 
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica;
+  text-align:justify;
+} 
+
+div.tranquility_more_links_btn
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  z-index: 9999980;
+  border-left: solid 1px silver;
+  border-right: solid 1px silver;
+  border-radius: 20px;
+  text-align: center;
+  float: left;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+div.tranquility_read_later_btn
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  z-index: 9999980;
+  border-left: solid 1px silver;
+  border-right: solid 1px silver;
+  border-radius: 20px;
+  text-align: center;
+  float: left;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+div.tranquility_offline_links_btn
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  z-index: 9999980;
+  border-left: solid 1px silver;
+  border-right: solid 1px silver;
+  border-radius: 20px;
+  text-align: center;
+  float: left;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+div.tranquility_viewnotes_btn
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  z-index: 9999980;
+  border-left: solid 1px silver;
+  border-right: solid 1px silver;
+  border-radius: 20px;
+  text-align: center;
+  float: left;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+div.tranquility_expand_menu_btn
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  width: 20px;
+  height: 20px;
+  z-index: 9999980;
+  text-align: right;
+  padding-top: 20px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+div.tranquility_quick_tools_div
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica;
+  z-index: 9999980;
+  text-align: right;
+  padding-top: 20px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.tranquility_original_link_div
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica;
+  z-index: 9999980;
+  text-align: right;
+  cursor: pointer;
+}
+
+div.tranquility_saveaspdf_div
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica;
+  z-index: 9999980;
+  text-align: right;
+  cursor: pointer;
+}
+
+div.tranquility_prefs_link_div
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica;
+  z-index: 9999980;
+  text-align: right;
+  cursor: pointer;
+}
+
+div.tranquility_menu
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  border-bottom: solid 1px silver;
+  border-top: solid 1px silver;
+  text-align: justify;
+  position: fixed;
+  height: 50px;
+  bottom: 0px;  
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  z-index: 9999980;
+  transition: height 0.5s;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+span.tranquility_annotation
+{
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+  padding-bottom: 1px;
+}
+
+span.tranquility_annotation_selection
+{
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+  padding-bottom: 1px;
+}
+
+p.tranquility_annotation_text
+{
+  display: none;
+  white-space: pre-wrap;
+}
+
+p.tranquility_annotation_note
+{
+  display: inline;
+  white-space: pre-wrap;
+}
+
+p.tranquility_view_notes
+{
+  display: inline;
+  white-space: pre-wrap;
+}
+
+div.tranquility_annotation_entry
+{
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:center;
+  border-left: solid 5px silver;
+  border-top: solid 5px silver;
+  border-bottom: solid 5px silver;
+  border-right: solid 5px silver;
+  border-radius: 15px;
+  top: 25%;
+  height: 50%;
+  z-index: 9999990;
+  position: fixed;
+  background-color:#FFFFFF; 
+}
+
+div.tranquility_annotation_note
+{
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+  border-left: solid 5px silver;
+  border-top: solid 5px silver;
+  border-bottom: solid 5px silver;
+  border-right: solid 5px silver;
+  border-radius: 15px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  top: 30%;
+  height: 40%;
+  z-index: 9999990;
+  position: fixed;
+  visibility: hidden;
+  display: inline;
+  white-space: pre-wrap;
+  background-color:#FFFFFF; 
+  padding: 15px;
+}
+
+div.tranquility_view_notes
+{
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+  border-left: solid 5px silver;
+  border-top: solid 5px silver;
+  border-bottom: solid 5px silver;
+  border-right: solid 5px silver;
+  border-radius: 15px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  top: 20%;
+  height: 60%;
+  z-index: 9999990;
+  position: fixed;
+  visibility: hidden;
+  background-color:#FFFFFF; 
+  padding: 15px;
+}
+
+div.tranquility_add_annotation
+{
+  font-family:Univers,Scala,Georgia,Verdana,Times,Helvetica; 
+  text-align:justify;
+  border-left: solid 5px silver;
+  border-top: solid 5px silver;
+  border-bottom: solid 5px silver;
+  border-right: solid 5px silver;
+  border-radius: 15px;
+  top:25%;
+  height: 50%;
+  z-index: 9999990;
+  position: fixed;
+}
+
+textarea.tranquility_annotation_textarea
+{
+  width: 70%;
+  height: 70%;
+  overflow-y: scroll;
+  resize: none;
+}
+
+div.tranquility_progress_bar
+{
+  background-color: #32CD32;
+  top: 50%;
+  left: 37%;
+  height: 20px;
+  width: 25%;
+  position: fixed;
+  z-index: 9999990;
+  border-left: solid 2px silver;
+  border-top: solid 2px silver;
+  border-bottom: solid 2px silver;
+  border-right: solid 2px silver;
+  border-radius: 5px; 
+}
+
+div.tranquility_page_up_div
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica;
+  z-index: 9999980;
+  text-align: right;
+  padding-top: 20px;
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  width: 40px;
+  cursor: pointer;
+}
+
+div.tranquility_page_down_div
+{
+  font-family: Univers,Scala,Georgia,Verdana,Times,Helvetica;
+  z-index: 9999980;
+  text-align: right;
+  padding-top: 20px;
+  position: fixed;
+  top: 50%;
+  right: 0%;
+  width: 40px;
+  cursor: pointer;
+}
+
+/* media overrides for smaller screens
+   added as part of supporting AndroidOS
+*/
+@media (max-width: 600px) {
+   div.tranquility_links {
+     font-size: 15px;
+   }
+   div.tranquility_offline_links {
+     font-size: 15px;
+   }
+   div.tranquility_more_links_btn {
+     font-size: 15px;
+   }
+   div.tranquility_read_later_btn {
+     font-size: 15px;
+   }
+   div.tranquility_offline_links_btn {
+     font-size: 15px;
+   }
+   div.tranquility_viewnotes_btn {
+     font-size: 15px;
+   }
+   div.tranquility_expand_menu_btn {
+     font-size: 15px;
+     right: 2%;
+     width: 20px;
+   }
+   span.tranquility_annotation {
+     font-size: 15px;
+   }
+   div.tranquility_page_up_div {
+     font-size: 15px;
+     left: 2%;
+     width: 20px;
+   }
+   div.tranquility_page_down_div {
+     font-size: 15px;
+     width: 20px;
+   }
+   div.tranquility_quick_tools_div {
+     font-size: 15px;
+     right: 2%;
+     width: 20px;
+   }
+}
+
+@media print {
+
+  .tranquility_container {
+      width:100% !important;
+  }
+
+  .tranquility div,
+  .tranquility p,
+  .tranquility span,
+  .tranquility code,
+  .tranquility pre,
+  .tranquility blockquote,
+  .tranquility ul,
+  .tranquility ol,
+  .tranquility li,
+  .tranquility figure,
+  .tranquility .wp-caption {
+    font-size: medium !important;
+    margin: 0 0 10px 0 !important;
+    padding: 0 !important;
+  }
+
+  .tranquility_progress_bar,
+  .tranquility_quick_tools_div,
+  .tranquility_page_up_div,
+  .tranquility_page_down_div,
+  .tranquility_expand_menu_btn  {
+      display: none !important;
+  }
+
+  div:not([class^="tranquility"]) {
+      display: none !important;
+  }
+}

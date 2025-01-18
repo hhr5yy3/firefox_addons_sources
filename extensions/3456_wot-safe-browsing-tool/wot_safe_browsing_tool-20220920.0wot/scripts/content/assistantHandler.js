@@ -1,0 +1,1 @@
+class AssistantHandler{constructor(e){this.store=e}getContainer(){let e=document.getElementById(ASSISTANT_CONTAINER_ID);return e||(e=document.createElement("div"),e.id=ASSISTANT_CONTAINER_ID,document.body.appendChild(e)),e}init(){ReactDOM.render(React.createElement(ReactRedux.Provider,{store:this.store},React.createElement(WotAssistant,{store:this.store})),this.getContainer())}}

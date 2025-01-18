@@ -1,0 +1,196 @@
+<html>
+<body>
+<div id="s3downbar_download_box_template">
+	<div id="download_data_box" class="download_data_box">
+		<div class="download_data_box_iframe_box"><div id="s3downbar_download_box_iframe" is_hidden="true" class="download_data_box_iframe"></div></div>
+		<div id="s3downbar_download_box_progressremainder" class="download_data_box_progressremainder"></div>
+		<div id="s3downbar_download_box_progress" class="download_data_box_progress"></div>
+		<div id="s3downbar_download_box_data" class="download_data_box_data">
+			<img src="" id="s3downbar_download_box_img" class="download_data_box_img"/>
+			<img src="" id="s3downbar_download_box_img_queue" class="download_data_box_img" is_hidden="true"/>
+			<img src="" id="s3downbar_download_box_picToShrink" picToShrink="true" is_hidden="true" class="download_data_box_img"/>
+			<div id="s3downbar_download_box_filename" class="download_data_box_filename"></div>
+			<div id="s3downbar_download_box_progress_data" class="download_data_box_progress_data">
+				<div id="s3downbar_download_box_progress_percent" class="download_data_box_progress_percent"></div>
+				<div id="s3downbar_download_box_progress_remaintime" class="download_data_box_progress_remaintime"></div>
+				<div id="s3downbar_download_box_progress_bytesReceived" class="download_data_box_progress_bytesReceived"></div>
+				<div id="s3downbar_download_box_progress_speed" class="download_data_box_progress_speed"></div>
+			</div>
+		</div>
+	</div>
+	<!-- --------------------------------------- -->
+	<div id="download_data_tooltip" class="download_data_tooltip">
+		<div class="download_data_tooltip_head">
+			<img src="" id="s3downbar_download_tooltip_img" class="download_data_tooltip_img"/>
+			<div id="s3downbar_download_tooltip_filename" class="download_data_tooltip_filename"></div>
+		</div>
+		<div class="download_data_tooltip_data_box" id="s3downbar_download_tooltip_data_box">
+			<table class="download_data_tooltip_data">
+				<tr id="s3downbar_download_tooltip_source_box"><td><div label="download.source.label"></div></td><td><input type="text" id="s3downbar_download_tooltip_source" class="download_data_tooltip_url" readonly="true"/></td></tr>
+				<tr><td><div label="download.from.label"></div></td><td><input type="text" id="s3downbar_download_tooltip_from" class="download_data_tooltip_url" readonly="true"/></td></tr>
+				<tr><td><div label="download.to.label"></div></td><td><div id="s3downbar_download_tooltip_to"></div></td></tr>
+				<tr class="download_progress"><td><div label="download.status.label"></div></td><td><div id="s3downbar_download_tooltip_status"></div></td></tr>
+				<tr class="download_finish"><td><div label="download.filesize.label"></div></td><td><div id="s3downbar_download_tooltip_size"></div></td></tr>
+				<tr class="download_finish" id="s3downbar_download_virus_scan_box"><td><div label="download.virus.label" id="s3downbar_download_virus_scan_label"></div></td><td><a id="s3downbar_download_virus_scan" target="_blank"></a></td></tr>
+				<tr><td><div label="download.time_start.label"></div></td><td><div id="s3downbar_download_tooltip_timeStart"></div></td></tr>
+				<tr class="download_finish"><td><div label="download.time_end.label"></div></td><td><div id="s3downbar_download_tooltip_timeEnd"></div></td></tr>
+				<tr class="download_progress"><td><div label="download.time_left.label"></div></td><td><div id="s3downbar_download_tooltip_timeLeft"></div></td></tr>
+				<tr class="download_progress"><td><div label="download.percent.label"></div></td><td><div id="s3downbar_download_tooltip_percent"></div></td></tr>
+				<tr class="download_finish"><td><div label="download.avg_speed.label"></div></td><td><div id="s3downbar_download_tooltip_speed"></div></td></tr>
+			</table>
+			<div class="download_data_tooltip_img_preview_box download_finish"><div class="download_data_tooltip_img_box">
+				<img src="" id="s3downbar_download_tooltip_img_preview" is_hidden="true" class="download_data_tooltip_img_preview download_finish" height="120" width="120"/>
+				<div id="s3downbar_download_tooltip_img_size" class="download_data_tooltip_img_size"></div>
+			</div></div>
+		</div>
+		<div class="download_data_tooltip_hint" id="s3downbar_download_tooltip_hint_progress">
+			<div label="download.tooltip_progress_hint1.label"></div>
+			<div label="download.tooltip_progress_hint2.label"></div>
+		</div>
+		<div class="download_data_tooltip_hint" id="s3downbar_download_tooltip_hint_finish">
+			<div label="download.tooltip_finish_hint1.label"></div>
+			<div label="download.tooltip_finish_hint2.label"></div>
+			<div label="download.tooltip_finish_hint3.label" style="padding-top: 4px !important;"></div>
+			<div label="download.tooltip_finish_hint4.label"></div>
+			<div label="download.tooltip_finish_hint5.label" style="padding-top: 4px !important;"></div>
+		</div>
+	</div>
+	<!-- --------------------------------------- -->
+	<div id="download_data_context_main" class="download_data_context_main">
+		<div id="s3downbar_context_open_DL_history" class="contextmenu_menu"><div bgimage="true"></div><div label="display.download_history.label"></div></div>
+		<div class="contextmenu_menuseparator"></div>
+		<div id="s3downbar_context_resume_all" class="contextmenu_menu"><div bgimage="true"></div><div label="action.resume_all.label"></div></div>
+		<div id="s3downbar_context_pause_all" class="contextmenu_menu"><div bgimage="true"></div><div label="action.pause_all.label"></div></div>
+		<div id="s3downbar_context_cancel_all" class="contextmenu_menu"><div bgimage="true"></div><div label="action.cancel_all.label"></div></div>
+		<div class="contextmenu_menuseparator"></div>
+		<div id="s3downbar_context_remove_all" class="contextmenu_menu"><div bgimage="true"></div><div label="action.remove_all.label"></div></div>
+		<div id="s3downbar_context_undo" class="contextmenu_menu"><div bgimage="true"></div><div label="action.undo.label"></div></div>
+		<div class="contextmenu_menuseparator"></div>
+		<div id="s3downbar_context_create_new_downloads" class="contextmenu_menu"><div bgimage="true"></div><div label="action.create_new_downloads.label"></div></div>
+		<div id="s3downbar_context_checksum_for_any_file" class="contextmenu_menu"><div bgimage="true"></div><div label="action.checksum_any_file.label"></div></div>
+		<div class="contextmenu_menuseparator"></div>
+		<div id="s3downbar_context_show_downbar" class="contextmenu_menu"><div bgimage="true"></div><div label="action.downloadbar_show.label"></div></div>
+		<div id="s3downbar_context_hide_downbar" class="contextmenu_menu"><div bgimage="true"></div><div label="action.downloadbar_hide.label"></div></div>
+		<div id="s3downbar_context_show_downbar_separator" class="contextmenu_menuseparator"></div>
+		<div id="s3downbar_context_open_options" class="contextmenu_menu"><div bgimage="true"></div><div label="action.open_options.label"></div></div>
+	</div>
+	<!-- --------------------------------------- -->
+	<div id="download_data_context_downloads" class="download_data_context_downloads">
+		<div class="download_finish">
+			<div id="s3downbar_context_file_open" class="contextmenu_menu"><div bgimage="true"></div><div label="action.open.label"></div></div>
+			<div id="s3downbar_context_file_show" class="contextmenu_menu"><div bgimage="true"></div><div label="action.show.label"></div></div>
+			<div id="s3downbar_context_antivirus_one" class="contextmenu_menu"><div bgimage="true"></div><div label="action.av_scan.label"></div><div id="s3downbar_context_antivirus_one_ratio"></div></div>
+			<div id="s3downbar_context_checksum_one" class="contextmenu_menu"><div bgimage="true"></div><div label="action.checksum.label"></div></div>
+			<div class="contextmenu_menuseparator"></div>
+			<div id="s3downbar_context_retry_one" class="contextmenu_menu"><div bgimage="true"></div><div label="action.retry_one.label"></div></div>
+			<div class="contextmenu_menuseparator"></div>
+		</div>
+		<div class="download_progress">
+			<div id="s3downbar_context_pause_one" class="contextmenu_menu"><div bgimage="true"></div><div label="action.pause_one.label"></div></div>
+			<div id="s3downbar_context_resume_one" class="contextmenu_menu"><div bgimage="true"></div><div label="action.resume_one.label"></div></div>
+			<div id="s3downbar_context_cancel_one" class="contextmenu_menu"><div bgimage="true"></div><div label="action.cancel_one.label"></div></div>
+			<div class="contextmenu_menuseparator"></div>
+			<div id="s3downbar_context_file_show_progress" class="contextmenu_menu"><div bgimage="true"></div><div label="action.show.label"></div></div>
+			<div class="contextmenu_menuseparator"></div>
+		</div>
+		<div id="s3downbar_context_visit_source" class="contextmenu_menu"><div bgimage="true"></div><div label="action.visit_source.label"></div></div>
+		<div id="s3downbar_context_copy_source" class="contextmenu_menu"><div bgimage="true"></div><div label="action.copy_source.label"></div></div>
+		<div id="s3downbar_context_copy_download" class="contextmenu_menu"><div bgimage="true"></div><div label="action.copy_download_link.label"></div></div>
+		<div class="download_finish">
+			<div class="contextmenu_menuseparator"></div>
+			<div id="s3downbar_context_delete_one" class="contextmenu_menu"><div bgimage="true"></div><div label="action.delete.label"></div></div>
+			<div id="s3downbar_context_remove_one" class="contextmenu_menu"><div bgimage="true"></div><div label="action.remove.label"></div></div>
+		</div>
+	</div>
+	<!-- --------------------------------------- -->
+	<div id="download_data_context_dl_head" class="download_data_context_dl_head">
+		<div id="s3downbar_context_head_box" class="download_data_context_dl_head_box">
+			<div id="s3downbar_context_head_FileName" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_FileName" label="history.head_filename.label"/>
+			</div>
+			<div id="s3downbar_context_head_FileExt" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_FileExt" label="history.head_file_ext.label"/>
+			</div>
+			<div id="s3downbar_context_head_FileFullPath" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_FileFullPath" label="history.head_file_fullpath.label"/>
+			</div>
+			<div id="s3downbar_context_head_FileSize" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_FileSize" label="history.head_filesize.label"/>
+			</div>
+			<div id="s3downbar_context_head_Progress" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_Progress" label="history.head_progress.label"/>
+			</div>
+			<div id="s3downbar_context_head_ProgressPercent" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_ProgressPercent" label="history.head_progress_percent.label"/>
+			</div>
+			<div id="s3downbar_context_head_Speed" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_Speed" label="history.head_speed.label"/>
+			</div>
+			<div id="s3downbar_context_head_TimeRemaining" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_TimeRemaining" label="history.head_time_remaining.label"/>
+			</div>
+			<div id="s3downbar_context_head_URL" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_URL" label="history.head_url.label"/>
+			</div>
+			<div id="s3downbar_context_head_Domain" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_Domain" label="history.head_domain.label"/>
+			</div>
+			<div id="s3downbar_context_head_DateTime" class="contextmenu_menu">
+				<input bgimage="true" type="button" id="s3downbar_context_head_up" class="contextmenu_head_up"/>
+				<input bgimage="true" type="button" id="s3downbar_context_head_down" class="contextmenu_head_down"/>
+				<input type="checkbox" id="s3downbar_context_check_DateTime" label="history.head_datetime.label"/>
+			</div>
+		</div>
+		<div class="contextmenu_menuseparator"></div>
+		<div id="s3downbar_context_head_reset" label="options.default.label" class="contextmenu_menu"></div>
+	</div>
+	<!-- --------------------------------------- -->
+	<div id="download_data_context_dl_downloads" class="download_data_context_downloads">
+		<div id="s3downbar_context_dl_file_open" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_file_open_label" label="action.open.label"></div></div>
+		<div id="s3downbar_context_dl_file_show" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_file_show_label" label="action.show.label"></div></div>
+		<div id="s3downbar_context_dl_checksum" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_checksum_label" label="action.checksum.label"></div></div>
+		<div class="contextmenu_menuseparator" id="s3downbar_menuseparator_dl_1"></div>
+
+		<div id="s3downbar_context_dl_pause" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_pause_label" label="action.pause_one.label"></div></div>
+		<div id="s3downbar_context_dl_resume" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_resume_label" label="action.resume_one.label"></div></div>
+		<div id="s3downbar_context_dl_cancel" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_cancel_label" label="action.cancel_one.label"></div></div>
+		<div id="s3downbar_context_dl_retry" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_retry_label" label="action.retry_one.label"></div></div>
+		<div class="contextmenu_menuseparator" id="s3downbar_menuseparator_dl_2"></div>
+
+		<div id="s3downbar_context_dl_visit_source" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_visit_source_label" label="action.visit_source.label"></div></div>
+		<div id="s3downbar_context_dl_copy_source" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_copy_source_label" label="action.copy_source.label"></div></div>
+		<div id="s3downbar_context_dl_copy_download" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_copy_download_label" label="action.copy_download_link.label"></div></div>
+		<div class="contextmenu_menuseparator" id="s3downbar_menuseparator_dl_3"></div>
+
+		<div id="s3downbar_context_dl_delete" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_delete_label" label="action.delete.label"></div></div>
+		<div id="s3downbar_context_dl_remove" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_remove_label" label="action.remove_history.label"></div></div>
+		<div class="contextmenu_menuseparator" id="s3downbar_menuseparator_dl_4"></div>
+
+		<div id="s3downbar_context_dl_remove_not_found" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_remove_not_found_label" label="action.remove_history.label : action.all_lost_files.label"></div></div>
+		<div id="s3downbar_context_dl_remove_all" class="contextmenu_menu"><div bgimage="true"></div><div id="s3downbar_context_dl_remove_all_label" label="action.remove_history.label : action.all_files.label"></div></div>
+		<div class="contextmenu_menuseparator" id="s3downbar_menuseparator_dl_5"></div>
+		<div id="s3downbar_context_dl_select_all" class="contextmenu_menu"><div bgimage="true"></div><div label="action.select_all.label"></div></div>
+	</div>
+</div>
+</body>
+</html>

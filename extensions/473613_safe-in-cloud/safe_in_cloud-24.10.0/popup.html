@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="css/chrome/chrome_shared.css" rel="stylesheet" type="text/css" />
+    <link href="css/popup.css" rel="stylesheet" type="text/css" />
+    <script src="d.js"></script>
+    <script src="browser.js"></script>
+    <script src="zxcvbn/zxcvbn.js" async></script>
+    <script src="zxcvbn/zxcvbnhelper.js"></script>
+    <script src="dictionary.js"></script>
+    <script src="settings.js"></script>
+    <script src="generator.js"></script>
+    <script src="strings.js"></script>
+    <script src="jssha/sha.js"></script>
+    <script src="totp/totp.js"></script>
+    <script src="searchhelper.js"></script>
+    <script src="patterns/email.js"></script>
+    <script src="patterns/confirmemail.js"></script>
+    <script src="patterns/tel.js"></script>
+    <script src="patterns/username.js"></script>
+    <script src="patterns/password.js"></script>
+    <script src="patterns/confirmpassword.js"></script>
+    <script src="patterns/passcode.js"></script>
+    <script src="patterns/search.js"></script>
+    <script src="patterns/subscribe.js"></script>
+    <script src="patterns/newpassword.js"></script>
+    <script src="patterns/name.js"></script>
+    <script src="patterns/number.js"></script>
+    <script src="patterns/csc.js"></script>
+    <script src="patterns/expmonth.js"></script>
+    <script src="patterns/expyear.js"></script>
+    <script src="patterns/expdate.js"></script>
+    <script src="patterns/submit.js"></script>
+    <script src="findhelper.js"></script>
+    <script src="labelguesser.js"></script>
+    <script src="inputguesser.js"></script>
+    <script src="patcher.js"></script>
+    <script src="patches.js"></script>
+    <script src="cardfinder.js"></script>
+    <script src="accountfinder.js"></script>
+    <script src="metafinder.js"></script>
+    <script src="popupmodel.js"></script>
+    <script src="popup.js"></script>
+</head>
+
+<body>
+
+    <!-- IDLE LAYOUT ------------------------------------------------------------>
+    <div class="layout" id="idle_layout">
+        <img id="loading_icon" src="images/loading_icon.png" />
+        <div class="toolbar">
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUTHORIZATION LAYOUT --------------------------------------------------->
+    <div class="layout lock_screen_layout" id="authorization_layout">
+        <div class="beta_label">Beta</div>
+        <div class="image_button options_button">
+            <img class="button_image_no_invert" src="images/options_button.png" />
+        </div>
+        <div class="image_button update_app_button" hidden>
+            <img class="button_image_no_invert" src="images/update_app_button.png" />
+        </div>
+        <img class="app_logo" src="images/app_logo.png" />
+        <div id="authorize_in_app_prompt">!Please authorize in SafeInCloud app...</div>
+        <div class="toolbar">
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image_no_invert"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASSWORD LAYOUT -------------------------------------------------------->
+    <div class="layout lock_screen_layout" id="password_layout">
+        <div class="beta_label">Beta</div>
+        <div class="image_button options_button">
+            <img class="button_image_no_invert" src="images/options_button.png" />
+        </div>
+        <div class="image_button update_app_button" hidden>
+            <img class="button_image_no_invert" src="images/update_app_button.png" />
+        </div>
+        <img class="app_logo" src="images/app_logo.png" />
+        <div class="password_container">
+            <div id="enter_password_prompt">!Enter password:</div>
+            <div>
+                <div id="input_container">
+                    <input type="password" id="password_input" />
+                    <input type="text" id="text_input" />
+                </div>
+                <button class="ok_button">!OK</button>
+            </div>
+            <div id="show_password_container">
+                <input type="checkbox" id="show_password_checkbox" />
+                <label for="show_password_checkbox" id="show_password_prompt">!Show password</label>
+            </div>
+            <div id="wrong_password_error">!Wrong password</div>
+        </div>
+        <div class="toolbar">
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image_no_invert"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAST UNLOCK LAYOUT ---------------------------------------------------->
+    <div class="layout lock_screen_layout" id="fast_unlock_layout">
+        <div class="beta_label">Beta</div>
+        <div class="image_button options_button">
+            <img class="button_image_no_invert" src="images/options_button.png" />
+        </div>
+        <div class="image_button update_app_button" hidden>
+            <img class="button_image_no_invert" src="images/update_app_button.png" />
+        </div>
+        <img class="app_logo" src="images/app_logo.png" />
+        <div class="password_container">
+            <div id="fast_unlock_prompt">!First 4 password symbols:</div>
+            <div>
+                <input type="password" maxlength="4" id="fast_unlock_input" />
+            </div>
+        </div>
+        <div class="toolbar">
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image_no_invert"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SELECT CARD LAYOUT ------------------------------------------------->
+    <div class="layout" id="select_card_layout">
+        <div class="title_bar">
+            <img class="navigation_button">
+            <span class="title" id="select_card_title">!Select credit card</span>
+        </div>
+        <div id="card_list">
+            <div class="card_row" id="last_card_row">
+                <input class="card_row_radio" type="radio" name="cards" />
+                <label class="card_row_label"><span class="card_title"></span><span class="card_number"></span>
+                </label>
+                <div class="show_card_button_container">
+                    <button class="show_card_button show_text">!Show</button>
+                </div>
+                <img class="card_row_image" src="images/visa_logo.png">
+                <img hidden alt="Star" class="star_icon card_row_icon" src="./images/star_on_icon.png">
+                <hr hidden>
+            </div>
+        </div>
+        <div class="toolbar">
+            <button class="select_button">!Select</button>
+            <a class="report_problem_link" target="_blank" hidden>!Report problem</a>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHOW CARD LAYOUT ----------------------------------------------------->
+    <div class="layout" id="show_card_layout">
+        <div class="snackbar"></div>
+        <div class="title_bar">
+            <img src="./images/back_button.png" alt="Back" class="navigation_button">
+            <span class="title" id="card_title_value">!Title</span>
+            <img alt="Star" class="star_icon">
+        </div>
+        <div id="card_fields_container">
+            <div class="card_field">
+                <label id="card_number_prompt">!Card number</label>
+                <span class="card_field_value" id="card_number_value">!number</span>
+                <span class="card_field_button">
+                    <div class="image_button"><img id="copy_card_number_button" class="button_image" src="images/copy_button.png"></div>
+                </span>
+            </div>
+            <div class="card_field">
+                <label id="name_on_card_prompt">!Name on card</label>
+                <span class="card_field_value" id="card_name_value">!name on card</span>
+                <span class="card_field_button">
+                    <div class="image_button"><img id="copy_card_name_button" class="button_image" src="images/copy_button.png"></div>
+                </span>
+            </div>
+            <div class="card_field">
+                <label id="expires_prompt">!Expires</label>
+                <span class="card_field_value" id="exp_date_value">!exp date</span>
+                <span class="card_field_button">
+                    <div class="image_button"><img id="copy_exp_date_button" class="button_image" src="images/copy_button.png"></div>
+                </span>
+            </div>
+            <div class="card_field">
+                <label id="csc_prompt">CVV</label>
+                <span class="card_field_value" id="csc_value">!exp date</span>
+                <span class="card_field_button">
+                    <div class="image_button"><img id="show_csc_button" class="button_image"></div>
+                    <div class="image_button"><img id="copy_csc_button" class="button_image" src="images/copy_button.png"></div>
+                </span>
+            </div>
+        </div>
+        <div class="toolbar">
+            <button class="select_button">!Select</button>
+            <a class="report_problem_link" target="_blank" hidden>!Report problem</a>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SELECT ACCOUNT LAYOUT ------------------------------------------------->
+    <div class="layout" id="select_account_layout">
+        <div class="title_bar">
+            <img class="navigation_button">
+            <span class="title" id="select_account_title">!Select account</span>
+            <div class="title_buttons_container">
+                <img src="./images/search_button.png" alt="Search" class="search_button">
+                <img src="./images/add_button.png" alt="Add" class="add_button">
+            </div>
+        </div>
+        <div id="account_list">
+            <div class="select_account_row" id="last_account_row">
+                <input class="account_row_radio" type="radio" name="accounts" />
+                <label class="account_row_label"><span class="account_title"></span class="account_totp_login"><div><span class="account_totp"></span><span class="account_login"></span></div>
+                </label>
+                <div class="show_account_button_container">
+                    <button class="show_account_button show_text">!Show</button>
+                </div>
+                <div class="account_row_icons">
+                    <canvas class="otp_icon account_row_icon" width="20" height="20"></canvas>
+                    <img hidden alt="Star" class="star_icon account_row_icon" src="./images/star_on_icon.png">
+                </div>
+                <hr hidden>
+            </div>
+        </div>
+        <div class="toolbar">
+            <button class="select_button">!Select</button>
+            <a class="report_problem_link" target="_blank" hidden>!Report problem</a>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHOW ACCOUNT LAYOUT ----------------------------------------------------->
+    <div class="layout" id="show_account_layout">
+        <div class="snackbar"></div>
+        <div class="title_bar">
+            <img class="navigation_button">
+            <span class="title" id="account_title_value">!Title</span>
+            <img alt="Star" class="star_icon">
+        </div>
+        <div id="account_fields_container">
+            <div class="account_field" id="account_login_field">
+                <label class="login_prompt">!Login</label>
+                <span class="account_field_value" id="account_login_value">!login</span>
+                <span class="account_field_button">
+                    <div class="image_button"><img id="copy_login_button" class="button_image" src="images/copy_button.png"></div>
+                </span>
+            </div>
+            <div class="account_field" id="account_password_field">
+                <label class="password_prompt">!Password</label>
+                <span class="account_field_value" id="account_password_value">!password</span>
+                <span class="account_field_button">
+                    <div class="image_button"><img id="show_password_button" class="button_image"></div>
+                    <div class="image_button"><img id="copy_password_button" class="button_image" src="images/copy_button.png"></div>
+                </span>
+            </div>
+            <div class="account_field" id="account_one_time_password_field">
+                <label class="one_time_password_prompt">!One-time password</label>
+                <span class="account_field_value" id="account_one_time_password_value">!one-time password</span>
+                <span class="account_field_button">
+                    <div class="image_button"><img id="copy_one_time_password_button" class="button_image" src="images/copy_button.png"></div>
+                </span>
+                <span class="account_field_button">
+                    <canvas class="otp_icon" width="20" height="20"></canvas>
+                </span>
+            </div>
+            <div id="extras_field"></div>
+            <div class="account_field" id="websites_field">
+                <label id="websites_prompt">!Websites</label>
+                <div class="website_row" id="last_website_row">
+                    <span class="website_value">!https://example.com</span>
+                </div>
+            </div>
+        </div>
+        <div class="toolbar">
+            <button class="select_button" hidden>!Select</button>
+            <a class="report_problem_link" target="_blank" hidden>!Report problem</a>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD ACCOUNT LAYOUT ------------------------------------------------------>
+    <div class="layout" id="add_account_layout">
+        <div class="title_bar">
+            <img class="navigation_button">
+            <span class="title" id="add_account_title">!Add Account</span>
+        </div>
+        <div class="account_field">
+            <label for="account_title_input" id="title_prompt">!Title</label>
+            <input id="account_title_input" class="account_field_input" />
+            <span class="account_field_button">
+                <img alt="Star" class="star_icon button_image_no_invert">
+            </span>
+        </div>
+        <div class="account_field">
+            <label for="account_login_input" class="login_prompt">!Login</label>
+            <input id="account_login_input" class="account_field_input" />
+            <span class="account_field_button">
+                <div class="image_button"><img id="insert_login_button" class="button_image" src="images/insert_login_button.png"></div>
+            </span>
+        </div>
+        <div class="account_field">
+            <label for="account_password_input" class="password_prompt">!Password</label>
+            <input id="account_password_input" class="account_field_input" />
+            <span class="account_field_button">
+                <div class="image_button"><img id="generate_password_button" class="button_image" src="images/generate_password_button.png"></div>
+            </span>
+            <div class="password_strength_container">
+                <div class="strength_indicator">
+                    <div class="empty_password_cell"></div>
+                    <div class="empty_password_cell"></div>
+                    <div class="empty_password_cell"></div>
+                    <div class="empty_password_cell"></div>
+                </div>
+                <div class="crack_time_container">
+                    <div class="crack_time_label" hidden>
+                        <span class="crack_time_prompt">!Crack time:</span><span> </span>
+                        <span class="crack_time_value">!10 days</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toolbar">
+            <button id="add_button">!Add</button>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+        <div id="insert_login_popup">
+            <div id="login_list">
+                <div class="login_row" id="last_login_row"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ERROR LAYOUT ----------------------------------------------------------->
+    <div class="layout" id="error_layout">
+        <div class="title_bar">
+            <img src="./images/close_button.png" alt="Close" class="navigation_button">
+            <span class="title error_title">!Error</span>
+        </div>
+        <img class="error_icon" src="images/error_icon.png" />
+        <div class="error_text"></div>
+        <div class="toolbar">
+            <a class="report_problem_link" target="_blank" hidden>!Report problem</a>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SELECT ACTION LAYOUT ----------------------------------------------------------->
+    <div class="layout" id="select_action_layout">
+        <div class="title_bar">
+            <img src="./images/close_button.png" alt="Close" class="navigation_button">
+            <span class="title select_action_title">!Select action</span>
+        </div>
+        <div class="action_button_container">
+            <button class="select_action_button" id="autofill_account_button">
+                <span class="autofill_account_button select_action_button_text">!Autofill account</span>
+            </button><br>
+            <button class="select_action_button" id="autofill_card_button">
+                <span class="autofill_card_button select_action_button_text">!Autofill card</span>
+            </button>
+        </div>
+        <div class="toolbar">
+            <a class="report_problem_link" target="_blank" hidden>!Report problem</a>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SELECT FORM LAYOUT ----------------------------------------------------------->
+    <div class="layout" id="select_form_layout">
+        <div class="title_bar">
+            <img class="navigation_button">
+            <span class="title select_action_title">!Select action</span>
+        </div>
+        <div class="action_button_container">
+            <button class="select_action_button" id="autofill_login_button">
+                <span class="autofill_login_button select_action_button_text">!Fill login form</span>
+            </button><br>
+            <button class="select_action_button" id="autofill_registration_button">
+                <span class="autofill_registration_button select_action_button_text">!Fill registration form</span>
+            </button>
+        </div>
+        <div class="toolbar">
+            <a class="report_problem_link" target="_blank" hidden>!Report problem</a>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOT FOUND LAYOUT ----------------------------------------------------------->
+    <div class="layout" id="not_found_layout">
+        <div class="title_bar">
+            <img src="./images/close_button.png" alt="Close" class="navigation_button">
+            <span class="title">SafeInCloud 2</span>
+        </div>
+        <div id="not_found_error">!Failed to find login and password for this page in SafeInCloud database.</div>
+        <div id="not_found_button_container">
+            <button id="search_account_button"><span class="search_account_button">!Search account</span></button><br>
+            <button id="add_account_button"><span class="add_account_button">!Add account</span></button>
+        </div>
+        <div class="toolbar">
+            <a class="report_problem_link" target="_blank" hidden>!Report problem</a>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEARCH ACCOUNT LAYOUT ------------------------------------------------->
+    <div class="layout" id="search_account_layout">
+        <div class="title_bar">
+            <img src="./images/back_button.png" alt="Back" class="navigation_button">
+            <input id="search_box" type="search" placeholder="!Search">
+        </div>
+        <span id="not_found_text" hidden>!Not found</span>
+        <div id="search_account_list">
+            <div class="search_account_row" id="last_search_account_row">
+                <input class="account_row_radio" type="radio" name="search_accounts" />
+                <label class="account_row_label"><span class="account_title"></span class="account_totp_login"><div><span class="account_totp"></span><span class="account_login"></span></div>
+                </label>
+                <div class="show_account_button_container">
+                    <button class="show_account_button show_text">!Show</button>
+                </div>
+                <div class="account_row_icons">
+                    <canvas class="otp_icon account_row_icon" width="20" height="20"></canvas>
+                    <img hidden alt="Star" class="star_icon account_row_icon" src="./images/star_on_icon.png">
+                </div>
+                <hr hidden>
+            </div>
+        </div>
+        <div class="toolbar">
+            <button class="select_button">!Select</button>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUERY LAYOUT ------------------------------------------------->
+    <div class="layout" id="query_layout">
+        <div class="title_bar">
+            <img src="./images/close_button.png" alt="Close" class="navigation_button">
+            <span class="title">SafeInCloud 2</span>
+        </div>
+        <div>
+            <img src="./images/question_icon.png" class="question_icon" />
+            <p class="query">!Query</p>
+        </div>
+        <div class="toolbar">
+            <button class="yes_button">!Yes</button>
+            <button class="no_button">!No</button>
+        </div>
+    </div>
+
+    <!-- CHANGE PASSWORD LAYOUT ------------------------------------------------------>
+    <div class="layout" id="change_password_layout">
+        <div class="snackbar"></div>
+        <div class="title_bar">
+            <img class="navigation_button">
+            <span class="title" id="change_password_title">!Change password</span>
+        </div>
+        <div class="account_field">
+            <label for="website_host_value" id="website_prompt">!Website</label>
+            <span class="account_field_value" id="website_host_value">!hostname</span>
+        </div>
+        <div class="account_field">
+            <label id="current_password_prompt">!Current password</label>
+            <span class="account_field_value" id="current_password_value">!password</span>
+            <div class="account_field_button">
+                <div class="image_button"><img id="show_current_password_button" class="button_image"></div>
+                <div class="image_button"><img id="copy_current_password_button" class="button_image" src="images/copy_button.png"></div>
+            </div>
+        </div>
+        <div class="account_field">
+            <label id="new_password_prompt">!New password</label>
+            <input id="new_password_input" />
+            <div class="account_field_button">
+                <div class="image_button"><img id="generate_new_password_button" class="button_image" src="images/generate_password_button.png"></div>
+                <div class="image_button"><img id="copy_new_password_button" class="button_image" src="images/copy_button.png"></div>
+            </div>
+            <div class="password_strength_container">
+                <div class="strength_indicator">
+                    <div class="empty_password_cell"></div>
+                    <div class="empty_password_cell"></div>
+                    <div class="empty_password_cell"></div>
+                    <div class="empty_password_cell"></div>
+                </div>
+                <div class="crack_time_container">
+                    <div class="crack_time_label" hidden>
+                        <span class="crack_time_prompt">!Crack time:</span><span> </span>
+                        <span class="crack_time_value">!10 days</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toolbar">
+            <button id="change_button">!Change</button>
+            <a class="report_problem_link" target="_blank" hidden>!Report problem</a>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- GENERATE PASSWORD LAYOUT ------------------------------------------------->
+    <div class="layout" id="generate_password_layout">
+        <div class="title_bar">
+            <img src="./images/back_button.png" alt="Back" class="navigation_button">
+            <span class="title" id="generate_password_title">!Generate password</span>
+        </div>
+        <input id="generated_password">
+        <div class="image_button refresh_button"><img src="./images/refresh_button.png" alt="Refresh" class="button_image"></div>
+        <div class="password_strength_container">
+            <div class="strength_indicator">
+                <div class="empty_password_cell"></div>
+                <div class="empty_password_cell"></div>
+                <div class="empty_password_cell"></div>
+                <div class="empty_password_cell"></div>
+            </div>
+            <div class="crack_time_container">
+                <div class="crack_time_label">
+                    <span class="crack_time_prompt">!Crack time:</span><span> </span>
+                    <span class="crack_time_value">!10 days</span>
+                </div>
+            </div>
+        </div>
+        <div id="password_length_container">
+            <input type="range" id="password_length_slider" min="8" max="64">
+            <div id="password_length_label">
+                <span id="password_length_prompt">!Length:</span><span> </span>
+                <span id="password_length_value">!12</span>
+            </div>
+        </div>
+        <div id="password_types_container">
+            <input type="radio" name="password_type" id="memorable_radio">
+            <label for="memorable_radio" class="memorable_label">!Memorable</label><br>
+            <input type="radio" name="password_type" id="letters_and_numbers_radio">
+            <label for="letters_and_numbers_radio" id="letters_and_numbers_label">!Letters and numbers</label><br>
+            <input type="radio" name="password_type" id="random_radio">
+            <label for="random_radio" class="random_label">!Random</label><br>
+            <input type="radio" name="password_type" id="numbers_only_radio">
+            <label for="numbers_only_radio" id="numbers_only_label">!Numbers</label>
+        </div>
+        <div class="toolbar">
+            <button class="ok_button">!OK</button>
+            <button id="password_options_button">!Options</button>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPDATE APP LAYOUT ----------------------------------------------------------->
+    <div class="layout" id="update_app_layout">
+        <div class="title_bar">
+            <img src="./images/back_button.png" alt="Back" class="navigation_button">
+            <span class="title" id="warning_title">!Warning</span>
+        </div>
+        <img class="error_icon" src="images/error_icon.png" />
+        <div class="error_text" id="update_app_error">!Your version of SafeInCloud application is out of date. Please update it.</div>
+        <div class="toolbar">
+            <button id="update_button">!Update</button>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASSWORD OPTIONS LAYOUT ------------------------------------------------->
+    <div class="layout" id="password_options_layout">
+        <div class="title_bar">
+            <img src="./images/back_button.png" alt="Back" class="navigation_button">
+            <span class="title" id="password_options_title">!Password Options</span>
+        </div>
+        <fieldset class="fieldset" id="memorable_fieldset">
+            <legend class="memorable_label">!Memorable</legend>
+            <label for="separator_input" id="separators_prompt">!Separators:</label><br>
+            <input id="separator_input"><br>
+        </fieldset>
+        <fieldset class="fieldset" id="random_fieldset">
+            <legend class="random_label">!Random</legend>
+            <label for="symbols_input" id="symbols_prompt">!Symbols:</label><br>
+            <input id="symbols_input"><br>
+            <input type="checkbox" id="exclude_similar_characters_checkbox" />
+            <label for="exclude_similar_characters_checkbox" id="exclude_similar_characters_prompt">!Exclude similar characters:</label><span> 1-l-I, 0-O</span>
+        </fieldset>
+        <div class="toolbar">
+            <button class="ok_button">!OK</button>
+            <button id="restore_button">!Restore</button>
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- START APP LAYOUT --------------------------------------------------->
+    <div class="layout" id="start_app_layout">
+        <div class="title_bar">
+            <img src="./images/close_button.png" alt="Close" class="navigation_button">
+            <span class="title error_title">!Error</span>
+        </div>
+        <img class="app_logo" src="images/app_logo.png" />
+        <div id="app_not_running_error">!SafeInCloud is not running on the computer. Run it and try again.</div>
+        <button id="start_app_button">!Start SafeInCloud</button>
+        <div class="toolbar">
+            <div class="image_button help_button">
+                <img src="./images/help_button.png" alt="Help" class="button_image"></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

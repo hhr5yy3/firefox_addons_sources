@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Exif Viewer</title>
+<link rel="stylesheet" href="exif.css">
+</head>
+<body class="webext">
+
+<div id="controls">
+	<fieldset id="info">
+		<legend id="infoLegend"></legend>
+		<label for="allControl"><input type="radio" name="info" id="allControl" checked="true"> <span id="allText"></span></label>
+		<label for="basicControl"><input type="radio" name="info" id="basicControl"> <span id="basicText"></span></label>
+	</fieldset>
+	<fieldset id="format">
+		<legend id="formatLegend"></legend>
+		<label for="listControl"><input type="radio" name="format" id="listControl" checked="true"> <span id="listText"></span></label>
+		<label for="tableControl"><input type="radio" name="format" id="tableControl"> <span id="tableText"></span></label>
+	</fieldset>
+	<fieldset id="other">
+		<legend id="otherLegend"></legend>
+		<label for="tagControl"><input type="checkbox" name="tag" id="tagControl" checked="true"> <span id="tagText"></span></label>
+		<label for="mnoteControl"><input type="checkbox" name="makernote" id="mnoteControl" checked="true"> <span id="mnoteText"></span></label>
+		<label for="histControl"><input type="checkbox" name="hist" id="histControl"> <span id="histText"></span></label>
+	</fieldset>
+</div>
+
+<div id="outputDiv_head"></div>
+
+<div class="separator"></div>
+
+<div id="navDiv">
+	<a id="iptcLink" href="#outputDiv_iptc"></a>
+	<a id="iptccoreLink" href="#outputDiv_iptc_core"></a>
+	<a id="ifd0Link" href="#outputDiv_ifd0"></a>
+	<a id="subifdLink" href="#outputDiv_subifd"></a>
+	<a id="ifd1Link" href="#outputDiv_ifd1"></a>
+	<a id="mnLink" href="#outputDiv_mn"></a>
+	<a id="iopLink" href="#outputDiv_iop"></a>
+	<a id="gpsLink" href="#outputDiv_gps"></a>
+</div>
+
+<div id="outputDiv">
+	<a name="a_top" id="a_top"></a>
+	<div id="outputDiv_img"></div>
+	<div id="outputDiv_err"></div>
+	<div id="outputDiv_iptc"></div>
+	<div id="outputDiv_iptc_core"></div>
+	<div id="outputDiv_jpeg"></div>
+	<div id="outputDiv_ifd0"></div>
+	<div id="outputDiv_subifd"></div>
+	<div id="outputDiv_ifd1"></div>
+	<div id="outputDiv_mn"></div>
+	<div id="outputDiv_iop"></div>
+	<div id="outputDiv_gps"></div>
+	<div id="outputDiv_msg">
+		<!--<p>&note1.text;</p>
+		<p>&note2.text;</p>
+		<p>&note3.text;</p>-->
+	</div>
+	<a name="a_bot" id="a_bot"></a>
+</div>
+
+<div id="aboutDiv">
+	<a id="aboutLink" href="https://araskin.webs.com/exif/exif.html" target="about"></a>
+	<a id="closeLink" href="#"></a>
+</div>
+
+<div id="histograms">
+	<h2 id="histHeaderText"></h2>
+	<div id="rgbHistogram"></div>
+	<p id="rgbHistText"></p>
+	<div id="hslHistogram"></div>
+	<p id="hslHistText"></p>
+</div>
+
+<script src="code/app.js" data-mode="webext"></script>
+<script src="code/app-load-webext.js"></script>
+</body>
+</html>

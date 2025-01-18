@@ -1,0 +1,263 @@
+= Changelog
+
+== Unreleased
+
+
+== 2.7.0 (2021-02-17)
+
+* Fix MathJax equation numbering (#412)
+* Upgrade Asciidoctor.js from 2.2.0 to 2.2.1
+** Based on Asciidoctor 2.0.12!
+* Upgrade Asciidoctor Kroki from 0.8.2 to 0.12.0
+** Add excalidraw, bpmn and bytefield as a supported diagrams
+** Global configuration using `kroki-default-format` and `kroki-default-options` attributes
+* Upgrade bulma from 0.8.2 to 0.9.1 
+* Update development dependencies
+** Bump addons-linter from 1.25.0 to 2.18.0
+** Bump puppeteer from 3.3.0 to 7.1.0
+** Bump lodash from 4.17.15 to 4.17.19
+** Bump archiver from 4.0.1 to 5.2.0
+** Bump mocha from 8.0.1 to 8.3.0
+** Bump sinon from 9.0.2 to 9.2.4
+** Bump bl from 1.2.2 to 1.2.3
+** Bump csso from 4.0.3 to 4.2.0
+** Bump standard from 14.3.4 to 16.0.3
+** Bump node-sass from 4.14.1 to 5.0.0
+** Bump eslint from 6.8.0 to 7.20.0 
+** Bump chai from 4.2.0 to 4.3.0
+
+== 2.6.1 (2020-06-16)
+
+* Do not add the toc2 class if the document has no section - thanks @mnrvwl
+* Stop auto reload when the extension has been disabled - thanks @mnrvwl
+* Remove the deprecated options_page - thanks @mnrvwl
+* Upgrade Asciidoctor.js from 2.1.1 to 2.2.0
+* Upgrade Asciidoctor Kroki from 0.7.0 to 0.8.1
+* Support sidebar toc
+* Compatibility with Firefox, use the same codebase again!
+* Remove chartist sourcemap reference
+* Update development dependencies
+** Bump mocha from 7.1.1 to 8.0.1
+** Bump puppeteer from 2.1.1 to 3.3.0 
+** Bump standard from 14.3.3 to 14.3.4
+** Bump node-sass from 4.14.0 to 4.14.1
+** Bump archiver from 3.1.1 to 4.0.1
+** Bump addons-linter from 1.23.0 to 1.25.0
+
+== 2.5.0 (Chrome)
+
+* Upgrade Asciidoctor.js from 2.0.3 to 2.1.1
+* Show errors thrown by the background script on the page (thanks @doub)
+* Catch exceptions thrown by the initial XMLHttpRequest
+* Use the `Cache-Control` header to make sure that we fetch the latest version available
+* Upgrade Asciidoctor Kroki from 0.4.0 to 0.7.0 with new diagrams: `packetdiag`, `rackdiag`, `vega` and `vegalite`
+* Upgrade chartist from 0.11.0 to 0.11.4
+* Upgrade bulma from 0.7.5 to 0.8.2
+* Update development dependencies
+** Bump eslint from 5.16.0 to 6.8.0
+** Bump sinon from 8.1.1 to 9.0.2
+** Bump browserify from 16.2.3 to 16.5.1
+** Bump uglify-js from 3.5.9 to 3.8.1
+** Bump archiver from 3.0.0 to 3.1.1
+** Bump csso from 3.5.1 to 4.0.3
+** Bump mocha from 7.0.1 to 7.1.1
+** Bump puppeteer from 1.20.0 to 2.1.1
+** Bump standard.js to 14.3.3
+* Use GitHub Actions
+
+== 2.4.1 (Firefox)
+
+Publish a new version with the same content as 2.3.1.
+
+== 2.4.0
+
+* Move the fetch and convert functions in the background script (as the latest version of Chrome 80+ blocks `XMLHttpRequest` sent by the content script)
+* Upgrade to MathJax 3.0.1
+
+⚠️ This version contains a major issue on Firefox and has been unpublished from the addons.mozilla.org.
+
+== 2.3.1
+
+* Fix Kroki on Firefox (thanks @mbeckerle)
+* Set display block on stemblock
+
+== 2.3.0
+
+* Upgrade to MathJax 3.0.0 (thanks @sindzicat)
+* Use server-side syntax highlighting (thanks @john-cj)
+* Upgrade addons-linter (Firefox) to 1.15.0
+* Upgrade Puppeteer to 1.20.0
+* Bump eslint-utils from 1.3.1 to 1.4.2
+
+== 2.2.1
+
+* Bump version to publish on https://addons.mozilla.org.
+
+== 2.2.0
+
+* Fix inter-document cross references by using `.adoc` as `outfilesuffix` (thanks @jmini)
+* Disable the diagram extension by default (can be enabled in options page)
+* The Kroki server URL can now be configured in the options page (for instance, you can point to a local instance)
+
+== 2.1.0
+
+* Set built-in attributes docfile, docname and docfilesuffix (thanks @utopalex & @ehmkah)
+* Use Kroki extension to render diagrams (support BlockDiag, SeqDiag, ActDiag, NwDiag, C4, Ditaa, Erd, GraphViz, Mermaid, Nomnoml, PlantUML, SvgBob and UMLet diagrams!)
+
+== 2.0.0
+
+* Load additional languages for highlight.js (using `:highlightjs-languages:` attribute)
+* Upgrade to Asciidoctor.js 2.0.3
+* The default safe mode is now safe (was secure)
+
+== 1.5.9.100
+
+* Add more languages to highlight.js (dockerfile, elm, golo, gradle, haskell, handlebars, kotlin, rust, swift, yaml, typescript)
+* Upgrade chartist to 0.11.0
+* Use the new Asciidoctor logo
+* Upgrade to Asciidoctor.js 1.5.9
+
+== 1.5.6.100
+
+* Add `<meta name="viewport">` to the rendered HTML (thanks @mattpalermo)
+* Remove JQuery dependency
+* Use ECMAScript 6 features to improve the code readability and structure
+* Us the `stylesheet` query string to configure the stylesheet per document `?stylesheet=github`
+* Upgrade to Asciidoctor.js 1.5.6
+* Allow to configure the polling to remote and local files
+* Don't show document title when `noheader` attribute is set (thanks @mojavelinux)
+* Use `highlight.js` as the default `source-highlighter`
+* Add PlantUML extension to render diagram
+* Load MathJax only when `stem` attribute is defined
+* Improve the performance on the first rendering
+* Improve the performance when enabling/disabling the extension
+* Redesign the options page using Bulma
+* Add the Mozilla addons linter in the build process
+
+== 1.5.5.112
+
+* Use the browser namespace
+* Use correct config for MathJax (thanks @mojavelinux)
+* Add missing images for golo, riak, maker and github themes (thanks @puffybsd)
+
+== 1.5.5.111
+
+* Add condition for unsupported API on Firefox Mobile
+
+== 1.5.5.110
+
+* Upgrade Chartist to 0.8.3
+* Upgrade MathJax to 2.7.2
+* Remove fragment identifier from outfilesuffix (thanks @oncletom)
+* Fix timezone regexp to handle numeric and non-latin timezones (thanks @guziks, @stayfool, @tequlia2pop, @noah538 & @jfstn)
+
+== 1.5.5.101
+
+ * Updating a custom .css or .js file is not automatically saved
+
+== 1.5.5.100
+
+ * Asciidoctor.js 1.5.5-4
+ * Highlight.js 9.9.0
+ * Font Awesome 4.7.0
+ * Options page now save changes automatically
+
+== 1.5.4.111
+
+ * Fix custom attributes parsing on the options page
+
+== 1.5.4.110
+
+ * Upgrade Font Awesome to 4.6.3
+ * Decode entities in document title (Thanks @ismail & @mojavelinux)
+ * MathJax is now working on remote files (Thanks @kindlychung)
+ * Add missing images from Riak theme (Thanks @ssebastianj)
+
+== 1.5.4.100
+
+ * Asciidoctor 1.5.4
+ * Font Awesome 4.5.0
+ * MathJax 2.6.0
+
+== 1.5.2.120
+
+ * Chart extension
++
+.Line chart
+```
+[chart,line]
+....
+January,February,March
+28,48,40
+65,59,80
+....
+```
+
+ * Emoji extension 
++
+.Large heart emoji
+```
+emoji:heart[lg]
+```
+
+ * Allow attributes to be defined via URL parameters
++
+.Set TOC placement to preamble
+`?toc=preamble`
+
+ * Add tip about enabling local file access to options page
+
+== 1.5.2.111
+
+ * Support embedded videos
+ * Fix enable/disable on local files
+ * Font Awesome 4.3.0
+
+== 1.5.2.100
+
+ * Asciidoctor 1.5.2
+ * Support :max-width: attribute
+ * Offline mode
+ * .txt files extension (configurable)
+
+== 1.5.1.100
+
+ * Asciidoctor 1.5.1
+ * Fade navigation to enable sections as slides (contrib)
+
+== 1.5.0.100
+
+ * Asciidoctor 1.5.0 !
+ * New stylesheet with Open Source Fonts
+ * Better print styles
+ * Font Awesome 4.1
+ * MathJax support
+ * Allow custom Javascript and Stylesheet
+
+== 0.4.0
+
+ * Upgrade to Asciidoctor 1.5.0-preview.8
+ * Activate includes!
+ * Render selection
+ * Match URLs that contain a query string
+
+== 0.3.0
+
+ * Upgrade to Asciidoctor 1.5.0.preview.1
+ * Add integration with Font Awesome 3.2.1
+
+== 0.2.5
+
+ * Add configuration option for specifying custom attributes
+ * Allow to change the theme of AsciiDoc HTML output
+
+== 0.2.4
+
+ * Add highlight.js for syntax highlighting
+ * Add context menu to send the "browser content" to the Asciidoctor Editor
+
+== 0.2.3
+
+ * Auto reload, you don't need to refresh your browser anymore!
+ * Shiny icon in `chrome://extensions/`
+ * Support .asc file extension (thanks @mojavelinux)

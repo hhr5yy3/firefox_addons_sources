@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<base target="_blank">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link type="text/css" href="popup.css" rel="stylesheet">
+	<title>IP Address</title>
+	<meta name="Robots" content="noodp, noydir, noindex, nofollow">
+	<meta name="Author" content="webdevmedia">
+	<script type="text/javascript" src="popup.js"></script>
+</head> 
+<body>
+<div class="popupwindow">
+<table>
+	<tr>
+		<td>
+			<p class="logo"><a href="https://dnslytics.com/?utm_source=addon&amp;utm_medium=logo&amp;utm_campaign=ipdomaininfo"><img src="images/logo.png"></a></p>
+		</td>
+		<td class="searchbox">
+			<div>
+				<form action="https://search.dnslytics.com/search" method="get">
+					<input title="Search online for domain, IP or ASN info" placeholder="Domain, IP or ASN" type="text" name="q" class="searchinput">
+					<input type="hidden" name="d" value="&lt;all&gt;">
+					<input type="hidden" name="utm_source" value="addon"> 
+  					<input type="hidden" name="utm_medium" value="search"> 
+  					<input type="hidden" name="utm_campaign" value="ipdomaininfo"> 
+  					<input class="btn btn-primary btn-sm" type="submit" value="Search">
+				</form>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<ul class="tabs">
+    
+    <li class="tab">
+        <input type="radio" name="tabs" id="tab1" />
+        <label for="tab1">IPv4</label>
+        <div id="tab-content1" class="content">
+			<div id="ipv4_message"></div>
+			<div id="ipv4_output">
+				<p class="myipheader">Server IP: <input id="ipv4_ip" type="text" size="30"></p>
+				<table class="table table-condensed table-hover table-striped">
+					<tr><td>Reverse DNS (PTR)</td><td id="ipv4_ptr"></td></tr>
+					<tr><td>AS number</td><td><a id="ipv4_asn"></a></td></tr>
+					<tr><td>AS name (ISP)</td><td><span id="ipv4_asnname"></span> <img id="ipv4_asnflag"></td></tr>
+					<tr><td>IP-range/subnet</td><td id="ipv4_cidr"></td></tr>
+					<tr><td>Location</td><td><span id="ipv4_location"></span> <img id="ipv4_locflag"></td></tr>
+				</table>
+				<img class="myipmap" id="ipv4_map">
+				<br>
+				<img class="myipmap" id="ipv4_map2">
+				<h1>Hosting</h1>
+				<table class="table table-condensed table-hover table-striped">
+					<tr>
+						<td>Number of domains hosted</td><td id="ipv4_ndomains"></td>
+						<td><a class="form-link text-white btn btn-primary btn-xs" id="ipv4_reverseip" href="">Reverse IP</a></td>
+					</tr>
+				</table>
+				<table id="ipv4_domains" class="table table-condensed table-hover table-striped">
+					<tr><th>Domain</th><th>DomainRank <button type="button" class="ttip" data-toggle="tooltip" data-placement="top" title="DomainRank is calculated based on the number of incoming links. Value is between 0 and 100, the higher the better.">?</button></th><th></th></tr>
+				</table>
+				<h1>DNSBL</h1>
+				<div id="ipv4_dnsblmessage"></div>
+				<table id="ipv4_dnsbllist" class="table table-condensed table-hover table-striped">
+					<tr><th>DNSBL</th><th>Status</th><th>DNSBL</th><th>Status</th></tr>
+				</table>
+				<h1>Whois</h1>
+				<div class="whois" id="ipv4_whois"></div>
+			</div>
+		</div>
+    </li>
+    
+    <li class="tab">
+      	<input type="radio" name="tabs" id="tab2" />
+      	<label for="tab2">IPv6</label>   
+      	<div id="tab-content2" class="content">
+			<div id="ipv6_message"></div>
+			<div id="ipv6_output">
+				<p class="myipheader">Server IP: <input id="ipv6_ip" type="text" size="30"></p>
+				<table class="table table-condensed table-hover table-striped">
+					<tr><td>Reverse DNS (PTR)</td><td id="ipv6_ptr"></td></tr>
+					<tr><td>AS number</td><td><a id="ipv6_asn"></a></td></tr>
+					<tr><td>AS name (ISP)</td><td><span id="ipv6_asnname"></span> <img id="ipv6_asnflag"></td></tr>
+					<tr><td>IP-range/subnet</td><td id="ipv6_cidr"></td></tr>
+					<tr><td>Location</td><td><span id="ipv6_location"></span> <img id="ipv6_locflag"></td></tr>
+				</table>
+				<img class="myipmap" id="ipv6_map">
+				<br>
+				<img class="myipmap" id="ipv6_map2">
+				<h1>Hosting</h1>
+				<table class="table table-condensed table-hover table-striped">
+					<tr>
+						<td>Number of domains hosted</td><td id="ipv6_ndomains"></td>
+						<td><td><a class="form-link text-white btn btn-primary btn-xs" id="ipv6_reverseip" href="">Reverse IP</a></td></td>
+					</tr>
+				</table>
+				<table id="ipv6_domains" class="table table-condensed table-hover table-striped">
+					<tr><th>Domain</th><th>DomainRank <button type="button" class="ttip" data-toggle="tooltip" data-placement="top" title="DomainRank is calculated based on the number of incoming links. Value is between 0 and 100, the higher the better.">?</button></th><th></th></tr>
+				</table>
+				<h1>Whois</h1>
+				<div class="whois" id="ipv6_whois"></div>
+			</div>
+		</div>
+    </li>
+
+     <li class="tab">
+      	<input type="radio" name="tabs" id="tab3" />
+      	<label for="tab3">ISP</label>   
+      	<div id="tab-content3" class="content">
+			<div id="isp_message"></div>
+			<div id="isp_output">
+			<p class="myipheader">ISP: <input id="isp_name" type="text" size="35"></p>
+			<table class="table table-condensed table-hover table-striped">
+				<tr><td>AS number</td><td><a id="isp_asn"></a></td></tr>
+				<tr><td>Registry</td><td id="isp_registry"></td></tr>
+				<tr><td>Registration date</td><td id="isp_date"></td></tr>
+				<tr><td>ASRank <button type="button" class="ttip" data-toggle="tooltip" data-placement="right" title="ASRank is based on the number of allocated IPv4 addresses. The higher the better.">?</button></td><td id="isp_rank"></td></tr>
+				<tr><td>Location</td><td><span id="isp_location"></span> <img id="isp_locflag"></td></tr>
+			</table>
+				<img class="myipmap" id="isp_map">
+				<br>
+				<img class="myipmap" id="isp_map2">
+				<h1>Whois</h1>
+				<div class="whois" id="isp_whois"></div>
+			</div>
+		</div>
+    </li>
+
+    <li class="tab">
+      	<input type="radio" name="tabs" id="tab4" />
+      	<label for="tab4">Domain</label>   
+      	<div id="tab-content4" class="content">
+			<div id="domain_message"></div>
+			<div id="domain_output">
+				<p class="myipheader">Domain: <input id="domain_dom" type="text" size="30"></p>
+				<table class="table table-condensed table-hover table-striped">
+					<tr><td>Top Level Domain (TLD)</td><td><a id="domain_tld"></a></td></tr>
+					<tr><td>Domain Suffix</td><td id="domain_suffix"></td></tr>
+					<tr><td>Alexa ranking</td><td id="domain_alexa"></td></tr>
+					<tr><td>DomainRank <button type="button" class="ttip" data-toggle="tooltip" data-placement="right" title="DomainRank is calculated based on the number of incoming links. Value is between 0 and 100, the higher the better.">?</button></td><td id="domain_ranking"></td></tr>
+				</table>
+				<h1>DNS <button type="button" class="ttip" data-toggle="tooltip" data-placement="right" title="The following DNS records are resolved: A, AAAA, MX, NS and SPF. The A and AAAA records are also resolved for the www label (e.g. www.example.com).">?</button></h1>
+				<table id="domain_dns" class="table table-condensed table-hover table-striped">
+					<tr><th>Type</th><th>Value</th><th></th></tr>
+				</table>
+				<h1>Whois</h1>
+				<div class="whois" id="domain_whois"></div>
+			</div>
+		</div>
+    </li>
+
+	<li class="tab">
+		<input type="radio" name="tabs" id="tab5" />
+		<label for="tab5">My IP</label>   
+		<div id="tab-content5" class="content">
+			<div id="myip_message"></div>
+			<div id="myip_output">
+				<p class="myipheader">Your IP: <input id="myip_ip" type="text" size="30"></p>
+				<table class="table table-condensed table-hover table-striped">
+					<tr><td>Reverse DNS (PTR)</td><td id="myip_ptr"></td></tr>
+					<tr><td>AS number</td><td><a id="myip_asn"></a></td></tr>
+					<tr><td>AS name (ISP)</td><td><span id="myip_asnname"></span> <img id="myip_asnflag"></td></tr>
+					<tr><td>IP-range/subnet</td><td id="myip_cidr"></td></tr>
+					<tr><td>Location</td><td><span id="myip_location"></span> <img id="myip_locflag"></td></tr>
+				</table>
+				<img class="myipmap" id="myip_map">
+				<br>
+				<img class="myipmap" id="myip_map2">
+				<h1>DNSBL</h1>
+				<div id="myip_dnsblmessage"></div>
+				<table id="myip_dnsbllist" class="table table-condensed table-hover table-striped">
+					<tr><th>DNSBL</th><th>Status</th><th>DNSBL</th><th>Status</th></tr>
+				</table>
+				<h1>Whois</h1>
+				<div class="whois" id="myip_whois"></div>
+			</div>
+	  </div>
+  </li>
+
+	<li class="tab">
+		<input type="radio" name="tabs" id="tab6" />
+		<label for="tab6">Options</label>   
+		<div id="tab-content6" class="content">
+			<p>Default tab:
+			<select id="defaulttab">
+				<option value="0">IPv4</option>
+				<option value="1">IPv6</option>
+				<option value="2">ISP</option>
+				<option value="3">Domain</option>
+				<option value="4">myIP</option>
+			</select></p>
+			<hr>
+			<p>Enter your plugin key to remove advertisement and get additional page views. You can find your plugin key inside the <a href="https://dnslytics.com/members">member center</a>. Plugin key is only available for Premium members <a href="https://dnslytics.com/premium-access?utm_source=addon&amp;utm_medium=premium-access&amp;utm_campaign=ipdomaininfo">more info</a>.</p>
+			<p>Plugin key:<br><input id="pluginkey" class="pluginkey" type="text"></input></p>
+			<br>
+			<input class="btn btn-primary btn-md" id="saveoptions" type="submit" value="Save options"></input></div>
+  	</li>
+
+  	<li class="tab">
+		<input type="radio" name="tabs" id="tab7" />
+		<label for="tab7">About</label>   
+		<div id="tab-content7" class="content">
+			<p>This extension displays detailed information about the current website. Including a shortcut to Your public IP Address (myIP info). The information is grouped in the following tabs:</p>
+			<p><b>IPv4:</b> shows the IP Address Information (IPv4) for the current website.</p>
+			<p><b>IPv6:</b> shows the IP Address Information (IPv6) for the current website.</p>
+			<p><b>ISP:</b> shows the ISP information for the current website.</p>
+			<p><b>Domain:</b> shows information about the domain of the current website.</p>
+			<p><b>My IP:</b> shows information about your public IP address.</p>
+			<hr /><p><b>More services:</b></p><p><b>API: </b><a href="https://dnslytics.com/api?utm_source=addon&amp;utm_medium=api&amp;utm_campaign=ipdomaininfo">Premium API</a> enables access for 3rd party services to our research and tools.</p>
+			<p><b>Browser extensions: </b><a href="https://dnslytics.com/browser-extensions-addons-accelerators?utm_source=addon&amp;utm_medium=browser-extensions&amp;utm_campaign=ipdomaininfo">Overview</a> of all our Chrome, Edge, Firefox and Opera extensions.</p>
+			<p><b>Premium Access: </b><a href="https://dnslytics.com/premium-access?utm_source=addon&amp;utm_medium=premium-access&amp;utm_campaign=ipdomaininfo">Premium website access</a> is for the IT professional. You get extra page views, more alerts and premium content and features.</p>
+		</div>
+	</li>
+
+  </ul>
+
+
+</div>
+</body> 
+</html> 

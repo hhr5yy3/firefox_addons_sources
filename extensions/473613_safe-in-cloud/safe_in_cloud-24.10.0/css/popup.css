@@ -1,0 +1,977 @@
+@charset "UTF-8";
+
+/* FIXME: beta (+ manifest.json) */
+
+.beta_label {
+    color: #b4342a;
+    margin-top: 6.7px;
+    margin-left: 6.7px;
+    position: absolute;
+    display: none;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    width: 380.8px;
+    height: 313.1px;
+}
+
+.layout {
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+.lock_screen_layout {
+    color: #222222;
+    background-position: center;
+    background-size: cover;
+    background-color: #DDDDDD;
+}
+
+.invert_image {
+    filter: invert(1);
+}
+
+.toolbar {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    height: 40px;
+    padding-top: 13.3px;
+    padding-left: 26.7px;
+}
+
+.toolbar button {
+    margin-right: 2.7px !important;
+}
+
+.title_bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 46.7px;
+}
+
+.title {
+    display: inline-block;
+    margin-left: 13.3px;
+    margin-right: 13.3px;
+    font-size: larger;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.default_cursor {
+    cursor: default;
+}
+
+.image_button {
+    display: inline-block;
+    opacity: 0.75;
+}
+
+.image_button:hover {
+    background-color: rgb(156, 156, 156, .3);
+    transition: all .2s ease-in-out;
+}
+
+.image_button:active {
+    background-color: rgb(156, 156, 156, .5);
+    transition: all .2s ease-in-out;
+}
+
+.button_image {
+    width: 24px;
+    height: 24px;
+}
+
+.button_image_no_invert {
+    width: 24px;
+    height: 24px;
+}
+
+.app_logo {
+    display: block;
+    margin-top: 66.7px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 73.3px;
+    height: 73.3px;
+}
+
+.options_button {
+    margin-top: 13.3px;
+    margin-right: 13.3px;
+    float: right;
+}
+
+.update_app_button {
+    position: absolute;
+    right: 13.3px;
+    top: 46.7px;
+}
+
+.password_strength_container {
+    display: inline-block;
+}
+
+.empty_password_cell {
+    display: inline-block;
+    width: 66.7px;
+    height: 4px;
+    background-color: #9E9E9E;
+}
+
+.weak_password_cell {
+    background-color: #E63B2E;
+    transition: all .5s ease-in-out;
+}
+
+.average_password_cell {
+    background-color: #F9A825;
+    transition: all .5s ease-in-out;
+}
+
+.strong_password_cell {
+    background-color: #4CAF50;
+    transition: all .5s ease-in-out;
+}
+
+.crack_time_label {
+    text-align: center;
+}
+
+.crack_time_container {
+    margin-top: 1.3px;
+    height: 13.3px;
+}
+
+.show_account_button,
+.show_card_button {
+    display: inline-block;
+}
+
+.show_account_button_container,
+.show_card_button_container {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    background-color: #fff;
+    right: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 5px;
+    padding-right: 8px;
+}
+
+.show_card_button_container {
+    right: 5px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.select_account_row:hover .show_account_button_container,
+.search_account_row:hover .show_account_button_container,
+.card_row:hover .show_card_button_container {
+    display: inline-block;
+}
+
+.navigation_button {
+    width: 24px;
+    height: 24px;
+    margin-left: 13.3px;
+    opacity: 0.75;
+}
+
+.title_buttons_container {
+    position: absolute;
+    right: 2.7px;
+}
+
+.add_button {
+    width: 24px;
+    height: 24px;
+    margin-right: 13.3px;
+    opacity: 0.75;
+}
+
+.search_button {
+    width: 24px;
+    height: 24px;
+    margin-right: 9.3px;
+    opacity: 0.75;
+}
+
+.navigation_button:hover,
+.search_button:hover,
+.add_button:hover {
+    background-color: rgb(156, 156, 156, .3);
+    transition: all .2s ease-in-out;
+}
+
+.navigation_button:active,
+.search_button:active,
+.add_button:active {
+    background-color: rgb(156, 156, 156, .5);
+    transition: all .2s ease-in-out;
+}
+
+.title_bar .star_icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    position: absolute;
+    right: 13.3px;
+    opacity: .9;
+}
+
+.title_bar .star_icon:hover {
+    opacity: 1;
+}
+
+/*-- SNACKBAR -----------------------------------------------------------*/
+
+.snackbar {
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    top: -46.7px;
+    transition: top .5s ease-in-out;
+    left: 0;
+    width: 100%;
+    height: 46.7px;
+}
+
+.error_snackbar {
+    background-color: rgb(226, 63, 63, 0.9);
+}
+
+.info_snackbar {
+    background-color: rgb(60, 130, 240, 0.9);
+    font-size: larger;
+    font-weight: bold;
+}
+
+.snackbar_text {
+    margin-top: 13.3px;
+    text-align: center;
+    white-space: normal;
+    overflow: hidden;
+    color: #fff;
+}
+
+
+/*-- IDLE LAYOUT -----------------------------------------------------------*/
+
+#idle_layout {
+    display: block;
+}
+
+#loading_icon {
+    display: block;
+    margin-top: 100.00px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100.00px;
+    height: 100.00px;
+}
+
+
+/*-- AUTHORIZATION LAYOUT --------------------------------------------------*/
+
+#authorize_in_app_prompt {
+    margin-top: 20px;
+    margin-left: 26.7px;
+    margin-right: 13.3px;
+    text-align: center;
+}
+
+/*-- PASSWORD LAYOUT -------------------------------------------------------*/
+
+.password_container {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 280.8px;
+}
+
+#enter_password_prompt {
+    margin-bottom: 8px;
+    padding-bottom: 2.7px;
+}
+
+#input_container {
+    display: inline;
+}
+
+#password_input {
+    width: 190px;
+}
+
+/* remove Edge eye */
+::-ms-reveal {
+    display: none;
+}
+
+#text_input {
+    width: 190px;
+    display: none;
+}
+
+.ok_button {
+    width: 80px;
+}
+
+#show_password_container {
+    margin-top: 6.7px;
+    margin-bottom: 6.7px;
+}
+
+#wrong_password_error {
+    display: none;
+    color: #b4342a;
+}
+
+
+/*-- FAST UNLOCK LAYOUT -----------------------------------------------------*/
+
+#fast_unlock_input {
+    width: 266.7px;
+}
+
+#fast_unlock_prompt {
+    margin-bottom: 8px;
+    padding-bottom: 2.7px;
+}
+
+
+/*-- SELECT CARD LAYOUT -------------------------------------------------*/
+
+#card_list {
+    position: absolute;
+    top: 46.7px;
+    left: 26.7px;
+    right: 0px;
+    bottom: 53.3px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 186.9px;
+    padding-top: 13.3px;
+    padding-bottom: 13.3px;
+}
+
+.card_row {
+    white-space: nowrap;
+}
+
+input[type="radio"].card_row_radio {
+    vertical-align: top;
+    margin-top: 6.7px;
+}
+
+.card_row_label {
+    display: inline-block;
+    width: 230px;
+    padding-left: 6.7px;
+}
+
+.card_title {
+    display: block;
+    font-size: 110%;
+    font-weight: bolder;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 2.7px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.card_number {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.card_row_image {
+    display: inline-block;
+    width: 53.3px;
+}
+
+.card_row_icon {
+    display: inline-block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+    margin-right: 5px;
+    margin-top: 6.7px;
+}
+
+/*-- SELECT ACCOUNT LAYOUT -------------------------------------------------*/
+
+#account_list {
+    position: absolute;
+    top: 46.7px;
+    left: 26.7px;
+    right: 0px;
+    bottom: 53.3px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 186.9px;
+    padding-top: 13.3px;
+    padding-bottom: 13.3px;
+}
+
+.select_account_row {
+    white-space: nowrap;
+}
+
+input[type="radio"].account_row_radio {
+    vertical-align: top;
+    margin-top: 6.7px;
+}
+
+.account_row_label {
+    display: inline-block;
+    padding-left: 13.3px;
+}
+
+.account_title {
+    font-weight: bolder;
+    display: block;
+    font-size: 110%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 2.7px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.account_totp_login {
+    display: block;
+    padding-bottom: 1.3px;
+}
+
+.account_totp {
+    white-space: nowrap;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.account_login {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.account_row_icons {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    right: 9.3px;
+    margin-top: 6.7px;
+}
+
+.account_row_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 2.7px;
+}
+
+
+/*-- SHOW ACCOUNT/CARD LAYOUT -------------------------------------------------------*/
+
+#account_fields_container,
+#card_fields_container {
+    position: absolute;
+    top: 60px;
+    left: 26.7px;
+    right: 0px;
+    bottom: 53.3px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 193.9px;
+    padding-top: 13.3px;
+}
+
+#account_title_value,
+#card_title_value {
+    max-width: 286.9px;
+}
+
+.account_field,
+.card_field {
+    margin-bottom: 20px;
+}
+
+.account_field label,
+.card_field label {
+    font-weight: 600;
+}
+
+.account_field_value,
+.card_field_value {
+    display: inline-block;
+    max-width: 172.7px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    vertical-align: top;
+    margin-left: 20px;
+    padding-bottom: 1.3px;
+}
+
+.account_field_value#account_login_value {
+    max-width: 206.01px;
+}
+
+.account_field_button,
+.card_field_button {
+    float: right;
+    margin-top: -6.7px;
+}
+
+.account_field_button .image_button,
+.card_field_button .image_button {
+    margin-right: 13.3px;
+}
+
+.website_row {
+    margin-top: 9.3px;
+}
+
+.website_value {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: underline;
+    max-width: 340.4px;
+}
+
+.website_value:hover {
+    cursor: pointer;
+}
+
+.otp_icon {
+    margin-right: 17.3px;
+    margin-top: 1.3px;
+    border-radius: 50%;
+    background-color: rgb(70, 150, 240);
+    transform: rotate(-90deg);
+}
+
+#show_account_layout .password_prompt {
+    max-width: 78.7px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/*-- ADD ACCOUNT LAYOUT --------------------------------------------------------*/
+
+#add_account_layout .star_icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 13.3px;
+}
+
+#add_account_layout .title_bar {
+    margin-bottom: 20.7px;
+}
+
+#add_account_layout .account_field {
+    margin-top: 6.7px;
+    margin-bottom: 13.3px;
+    margin-left: 26.7px;
+}
+
+#title_prompt {
+    display: block;
+    margin-bottom: 2.7px;
+}
+
+#add_account_layout .login_prompt {
+    display: block;
+    margin-bottom: 2.7px;
+}
+
+#add_account_layout .password_prompt {
+    display: block;
+    margin-bottom: 2.7px;
+}
+
+#add_account_layout .account_field_button {
+    margin-top: -1.3px;
+}
+
+.account_field_input {
+    width: 293.9px;
+    height: 24px;
+}
+
+#insert_login_popup {
+    display: none;
+    position: absolute;
+    left: -4px;
+    top: 46.7px;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+#login_list {
+    position: absolute;
+    right: 26.7px;
+    top: 113.1px;
+    background-color: #eeeeee;
+    border-radius: 5.3px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.08);
+    padding-top: 5.3px;
+    padding-bottom: 5.3px;
+}
+
+.login_row {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 2.7px;
+    padding-bottom: 2.7px;
+    cursor: default;
+}
+
+.login_row:hover {
+    background-color: #2196f3;
+    color: white;
+}
+
+#last_login_row {
+    display: none;
+}
+
+
+/*-- ERROR LAYOUT -----------------------------------------------------------*/
+
+.error_icon {
+    display: block;
+    margin-top: 26.7px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 55px;
+    height: 55px;
+}
+
+.error_text {
+    position: absolute;
+    left: 0px;
+    top: 140.4px;
+    right: 0px;
+    bottom: 53.3px;
+    padding-left: 26.7px;
+    padding-right: 26.7px;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.report_problem_link {
+    color: #b4342a;
+    float: right;
+    margin-top: 4px;
+    margin-right: 66.7px;
+    cursor: pointer;
+}
+
+.help_button {
+    position: absolute;
+    right: 13.3px;
+}
+
+
+/*-- SELECT ACTION LAYOUT -----------------------------------------------------------*/
+
+.action_button_container {
+    width: 326.3px;
+    position: absolute;
+    top: 106.01px;
+    margin-left: 26.7px;
+}
+
+.select_action_button {
+    width: 100%;
+    margin-bottom: 20px !important;
+}
+
+.select_action_button_text {
+    vertical-align: 1.3px;
+}
+
+
+/*-- NOT FOUND LAYOUT -----------------------------------------------------------*/
+
+#not_found_button_container {
+    width: 326.3px;
+    position: absolute;
+    top: 133.3px;
+    margin-left: 26.7px;
+}
+
+#search_account_button {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#add_account_button {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#not_found_error {
+    color: #b4342a;
+    margin-left: 26.7px;
+    margin-right: 13.3px;
+    margin-top: 26.7px;
+}
+
+
+/*-- SEARCH ACCOUNT LAYOUT -----------------------------------------------------------*/
+
+#search_account_list {
+    position: absolute;
+    top: 46.7px;
+    left: 26.7px;
+    right: 0px;
+    bottom: 53.3px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 186.9px;
+    padding-top: 13.3px;
+    padding-bottom: 13.3px;
+}
+
+#search_box {
+    width: 80%;
+    height: 26.7px;
+    margin-left: 13.3px;
+}
+
+#not_found_text {
+    display: flex;
+    justify-content: center;
+    margin-top: 106.01px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.search_account_row {
+    white-space: nowrap;
+}
+
+
+/*-- QUERY LAYOUT -----------------------------------------------------------*/
+
+.question_icon {
+    display: block;
+    margin-top: 26.7px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 55px;
+    height: 55px;
+}
+
+.query {
+    position: absolute;
+    left: 0px;
+    top: 126.3px;
+    right: 0px;
+    bottom: 53.3px;
+    padding-left: 26.7px;
+    padding-right: 26.7px;
+    text-align: center;
+    overflow-y: auto;
+}
+
+
+/*-- CHANGE PASSWORD LAYOUT -----------------------------------------------------------*/
+
+#change_password_layout .account_field {
+    margin-top: 17.3px;
+    margin-left: 26.7px;
+    margin-bottom: 0;
+}
+
+#change_password_layout label {
+    display: block;
+    margin-bottom: 6.7px;
+}
+
+#new_password_input {
+    width: 260.6px;
+    height: 24px;
+}
+
+#change_password_layout .account_field_button {
+    margin-top: -1.3px;
+}
+
+#change_password_layout .account_field_value {
+    margin: 0;
+}
+
+
+/*-- GENERATE PASSWORD LAYOUT -----------------------------------------------------------*/
+
+#generated_password {
+    margin-left: 26.7px;
+    margin-top: 20px;
+    margin-bottom: 1.3px;
+    width: 293.9px;
+    height: 24px;
+}
+
+#generate_password_layout .password_strength_container {
+    margin-left: 26.7px;
+}
+
+#password_length_container,
+#password_types_container {
+    margin-left: 26.7px;
+}
+
+#password_types_container {
+    margin-top: 6.7px;
+}
+
+#password_length_slider {
+    margin-top: 10.7px;
+    width: 90%;
+}
+
+#password_length_label {
+    margin-top: 1.3px;
+    margin-left: -26.7px;
+    text-align: center;
+}
+
+#password_types_container input {
+    vertical-align: middle;
+}
+
+#password_types_container label {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.refresh_button {
+    margin-top: -4px;
+    margin-left: 9.3px;
+    vertical-align: middle;
+}
+
+
+/*-- PASSWORD OPTIONS LAYOUT -----------------------------------------------------------*/
+
+.fieldset {
+    margin: 13.3px 26.7px 0 26.7px;
+    border: 1px solid #bfbfbf;
+}
+
+#memorable_fieldset {
+    height: 66.7px;
+}
+
+#random_fieldset {
+    height: 86.7px;
+}
+
+#separators_prompt {
+    display: inline-block;
+    margin-top: 4px;
+}
+
+#separator_input {
+    margin-top: 5.3px;
+    width: 226.3px;
+}
+
+#symbols_prompt {
+    display: inline-block;
+    margin-top: 4px;
+}
+
+#symbols_input {
+    margin-top: 5.3px;
+    margin-bottom: 9.3px;
+    width: 226.3px;
+}
+
+#exclude_similar_characters_prompt {
+    display: inline-block;
+    max-width: 186.9px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    text-align: center;
+}
+
+
+/*-- START APP LAYOUT -----------------------------------------------------------*/
+
+#start_app_layout .app_logo {
+    margin-top: 26.7px;
+}
+
+#app_not_running_error {
+    margin-top: 13.3px;
+    margin-left: 26.7px;
+    margin-right: 13.3px;
+    text-align: center;
+}
+
+#start_app_button {
+    margin-left: 26.7px;
+    margin-top: 26.7px;
+    width: 326.3px;
+}

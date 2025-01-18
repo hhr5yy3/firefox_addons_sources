@@ -1,0 +1,96 @@
+{
+  "author": "Michel Gutierrez",
+  "default_locale": "en_US",
+  "description": "__MSG_appDesc__",
+  "version": "9.1.2.0",
+  "permissions": [
+    "tabs",
+    "webRequest",
+    "downloads",
+    "webNavigation",
+    "notifications",
+    "scripting",
+    "storage",
+    "<all_urls>",
+    "webRequestBlocking",
+    "menus",
+    "contextMenus",
+    "nativeMessaging"
+  ],
+  "optional_permissions": [
+    "downloads.open"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.downloadhelper.net/*"
+      ],
+      "js": [
+        "injected/downloadhelper.net.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://*.downloadhelper.net/changelog/mozilla/*"
+      ],
+      "js": [
+        "injected/changelog.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://*.downloadhelper.net/debugger"
+      ],
+      "js": [
+        "injected/debugger.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "commands": {
+    "default-action": {
+      "description": "Execute default action",
+      "suggested_key": {
+        "default": "Alt+Down",
+        "mac": "Ctrl+Shift+Down"
+      }
+    },
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+Up",
+        "mac": "Ctrl+Shift+Up"
+      }
+    }
+  },
+  "manifest_version": 2,
+  "background": {
+    "scripts": [
+      "background/main.js"
+    ],
+    "persistent": true
+  },
+  "applications": {
+    "gecko": {
+      "strict_min_version": "115.0",
+      "id": "{b9db16a4-6edc-47ec-a1f4-b86292ed211d}"
+    }
+  },
+  "sidebar_action": {
+    "default_panel": "/content2/sidebar.html",
+    "default_icon": "/content2/icons/stable-color.png",
+    "browser_style": false,
+    "open_at_install": false
+  },
+  "name": "Video DownloadHelper",
+  "icons": {
+    "128": "/content2/icons/stable-color.png"
+  },
+  "browser_action": {
+    "default_title": "Video DownloadHelper",
+    "default_icon": {
+      "128": "/content2/icons/stable-color.png"
+    }
+  }
+}

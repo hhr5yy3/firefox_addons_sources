@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/data/css/main.css" />
+    <script src="/data/js/jquery-3.6.0.slim.js"></script>
+  </head>
+
+  <body class="h-full overflow-hidden bg-gray-200 font-sans antialiased">
+    <div class="h-full bg-gray-100">
+      <main class="mx-auto max-w-7xl pb-10 lg:py-12 lg:px-8">
+        <div
+          class="space-y-6 bg-white py-6 px-4 shadow sm:overflow-hidden sm:rounded-md sm:p-6 lg:grid lg:grid-cols-8 lg:gap-x-5"
+        >
+          <section class="lg:col-span-8">
+            <h2 class="text-lg font-medium leading-6 text-gray-900">
+              Print & PDF Margin
+            </h2>
+            <div class="mt-6 grid w-1/2 grid-cols-4 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700"
+                  >Top</label
+                >
+                <input
+                  name="top-margin"
+                  type="number"
+                  class="peer mt-1 block w-3/4 rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm"
+                />
+                <p
+                  class="invisible mt-0 text-sm text-gray-500 peer-focus:visible"
+                >
+                  mm
+                </p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700"
+                  >Bottom</label
+                >
+                <input
+                  name="bottom-margin"
+                  type="number"
+                  class="peer mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm"
+                />
+                <p
+                  class="invisible mt-0 text-sm text-gray-500 peer-focus:visible"
+                >
+                  mm
+                </p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700"
+                  >Left</label
+                >
+                <input
+                  name="left-margin"
+                  type="number"
+                  class="peer mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm"
+                />
+                <p
+                  class="invisible mt-0 text-sm text-gray-500 peer-focus:visible"
+                >
+                  mm
+                </p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700"
+                  >Right</label
+                >
+                <input
+                  name="right-margin"
+                  type="number"
+                  class="peer mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-gray-900 focus:outline-none focus:ring-gray-900 sm:text-sm"
+                />
+                <p
+                  class="invisible mt-0 text-sm text-gray-500 peer-focus:visible"
+                >
+                  mm
+                </p>
+              </div>
+            </div>
+          </section>
+          <button
+            id="save"
+            type="button"
+            class="mt-4 inline-flex w-24 items-center justify-center rounded-md border border-transparent bg-emerald-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-emerald-700"
+          >
+            Save
+          </button>
+        </div>
+      </main>
+      <button
+        id="reset"
+        title="Reset all settings to the factory values"
+        class="hidden"
+      >
+        Reset
+      </button>
+      <span id="status"></span>
+    </div>
+    <div
+      id="notification"
+      aria-live="assertive"
+      class="pointer-events-none fixed inset-0 flex hidden items-end px-4 py-6 sm:items-start sm:p-6"
+    >
+      <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
+        <!--
+        Notification panel, dynamically insert this into the live region when it needs to be displayed
+  
+        Entering: "transform ease-out duration-300 transition"
+          From: "translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
+          To: "translate-y-0 opacity-100 sm:translate-x-0"
+        Leaving: "transition ease-in duration-100"
+          From: "opacity-100"
+          To: "opacity-0"
+      -->
+        <div
+          class="pointer-events-auto w-80 overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+        >
+          <div class="p-4">
+            <div class="flex items-start">
+              <div class="flex-shrink-0">
+                <!-- Heroicon name: outline/check-circle -->
+                <svg
+                  class="h-6 w-6 text-green-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div class="ml-3 w-0 flex-1 pt-0.5">
+                <p class="text-sm font-medium text-gray-900">
+                  Successfully saved!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/config.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

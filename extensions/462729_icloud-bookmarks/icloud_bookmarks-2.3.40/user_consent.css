@@ -1,0 +1,138 @@
+:root {
+    --background-color: #fff;
+    --text-color: #000;
+    --separator-color: rgba(0, 0, 0, 0.1);
+    --table-cell-hover-color: rgb(229, 229, 229);
+}
+
+@media (prefers-color-scheme: dark) {
+    a {
+        color:lightblue;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: rgb(41, 42, 45);
+        --text-color: #fff;
+        --separator-color: #444;
+        --table-cell-hover-color: rgb(63, 64, 66);
+
+        --scroll-track-background-color: rgba(35, 35, 35, 0.8);
+        --scroll-thumb-background-color: #6B6B6B;
+        --scroll-thumb-border-color: #2C2C2C;
+        --scroll-thumb-background-color-on-hover: #848383;
+    }
+
+    .dismiss, li.credential img {
+        /* Lighten the image. */
+        filter: invert(100%) sepia(7%) saturate(79%) hue-rotate(171deg) brightness(117%) contrast(87%);
+    }
+}
+
+body {
+    position: relative;
+    padding: 8px 8px 0 8px;
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100px;
+    margin-bottom: 0;
+}
+body.popup {
+     max-width: 500px;
+     margin: auto;
+}
+
+.titleline {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.25em;
+    margin-bottom: 0;
+    padding-inline-end: 10px;
+}
+.messageline {
+    opacity: 0.8;
+    font-size: 16px;
+    line-height: 17px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+#divMessageBoardMessage:last-child {
+    padding-bottom: 16px;
+}
+.buttonline {
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    line-height: 20px;
+    background-color: #0078D7;
+}
+
+/* Insides */
+.box {
+    user-select: none;
+    cursor: default;
+    justify-content: center;
+}
+
+.box.logo-is-present {
+    padding-inline-start: 62px;
+}
+
+.box *:first-child {
+    margin-top: 0;
+}
+.box *:last-child {
+    margin-bottom: 0;
+}
+
+[dir="rtl"] img {
+    float: right;
+}
+.consent-btn-div *:first-child {
+    margin-top: 20px;
+}
+.consent-btn-div *:last-child {
+    margin-bottom: 20px;
+}
+.consent-primary-button, .consent-secondary-button {
+    display: block;
+    padding: 5px 13px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #315aad;
+    border-radius: 3px;
+    max-width: 344px;
+    margin: auto;
+}
+.consent-primary-button {
+    margin-top: 10px;
+    color: #fff;
+    background-color: #4988d6;
+    background-image: linear-gradient(to bottom, #5593da, #4988d6);
+    width: 100%
+}
+.consent-secondary-button {
+    color: #000;
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, #ffffff, #edf4fb);
+    width: 100%
+}
+.dismiss img {
+    width: 9px;
+    height: 9px;
+}
+img.iCloudIcon {
+    float: left;
+}
+[dir="rtl"] img.iCloudIcon {
+    float: right;
+}
+div, #iCloudIconId {
+    animation: fadein 0.25s;
+    -moz-animation: fadein 0.25s;
+    -webkit-animation: fadein 0.25s;
+}

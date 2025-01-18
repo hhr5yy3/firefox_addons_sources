@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script src="/common/jquery-3.2.1.min.js"></script>
+        <title>Tabsbook extension</title>
+        <script src="popup.js"></script>
+        <link href="popup.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body style="width: 610px; height: 430px;">
+        <div id="b-popup-loader" class="b-popup-loader"><img src="loader_32_32_white.gif"><span>Загрузка...</span></div>
+        <div id="b-popup-content" class="b-popup-content">
+            <iframe scrolling="no" id="z_main_frame" style="border: 0px; width: 610px; height: 430px;"></iframe>
+        </div>
+        
+        
+        <style>
+            .b-server-error-message {
+                font-family: Tahoma;
+                position: absolute;
+                z-index: 100;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: #ffffff;
+            }
+
+            .b-server-error-message__content h1 {font-size: 35px;}
+            
+            .b-server-error-message__content {
+                width: 400px;
+                margin: 50px auto 0 auto;
+            }
+        </style>
+        <div id="b-error-message" class="b-server-error-message" style="display: none;">
+            <div id="b-server-error-message__content" class="b-server-error-message__content">
+                <h1>Связь с сервером Tabsbook отсутствует</h1>
+                <iframe id="z_connection_frame" zsrc="http://www.tabsbook.de/connection_error/" style="border: 2px solid #cccccc; width: 430px; height: 270px; margin: 10px 0 0 0;"></iframe>
+            </div>
+            
+        </div>
+        
+        <script src="/server-error-message.js"></script>
+        
+        
+    </body>
+</html>
+

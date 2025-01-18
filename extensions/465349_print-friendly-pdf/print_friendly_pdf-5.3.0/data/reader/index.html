@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html class="h-full w-full">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Loading...</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="/data/css/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body data-speech="false" class="h-full w-full">
+    <div class="grid h-full w-full grid-cols-[auto_1fr]">
+      <div
+        id="toolbar"
+        class="relative w-48 border-r border-r-stone-400/20 pt-8 pl-2"
+      >
+        <div class="flex h-full flex-col">
+          <div class="flex-grow">
+            <button
+              id="printing-button"
+              title="Print"
+              class="group flex items-center border-l border-transparent py-2 px-3 text-sm font-medium tracking-wide opacity-80 hover:border-emerald-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="mr-3 h-6 w-6 flex-shrink-0"
+                viewBox="0 0 16 16"
+              >
+                <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+                <path
+                  d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"
+                />
+              </svg>
+              Print
+            </button>
+
+            <button
+              id="pdf-button"
+              title="PDF"
+              class="group flex items-center border-l border-transparent py-2 px-3 text-sm font-medium tracking-wide opacity-80 hover:border-emerald-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="mr-3 h-6 w-6 flex-shrink-0"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"
+                />
+                <path
+                  d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"
+                />
+              </svg>
+              PDF
+            </button>
+            <div class="relative">
+              <div
+                id="font-utils"
+                tabindex="-1"
+                class="absolute top-0 left-[120px] z-10 hidden w-[320px] rounded-2xl bg-stone-50"
+              >
+                <table border="0" cellpadding="0" cellspacing="0">
+                  <colgroup>
+                    <col
+                      style="border-right: solid 1px var(--border-color)"
+                      width="50%"
+                    />
+                    <col />
+                  </colgroup>
+                  <tr id="font-details">
+                    <td colspan="2">
+                      <div id="">
+                        <span>Font: <span data-id="font-size"></span></span>
+                        <span>Width: <span data-id="screen-width"></span></span>
+                        <span>Height: <span data-id="line-height"></span></span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <div class="mt-2 flex flex-row">
+                        <span data-cmd="font-type-sans-serif" class="basis-1/2"
+                          ><span class="font-sans text-4xl">Aa</span><br /><span
+                            class="text-sm"
+                            >Sans-serif</span
+                          ></span
+                        >
+                        <span data-cmd="font-type-serif" class="basis-1/2"
+                          ><span class="font-serif text-4xl">Aa</span
+                          ><br /><span class="text-sm">Serif</span></span
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="pl-8 text-left text-base">Font Size</td>
+                    <td>
+                      <div class="flex flex-row justify-around">
+                        <span data-cmd="font-decrease" class="basis-1/2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="inline h-8 w-8"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                            />
+                          </svg>
+                        </span>
+                        <span data-cmd="font-increase" class="basis-1/2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="inline h-8 w-8"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="pl-8 text-left text-base">Width</td>
+                    <td>
+                      <div class="flex flex-row justify-around">
+                        <span data-cmd="width-decrease" class="basis-1/2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="inline h-8 w-8"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                            />
+                          </svg>
+                        </span>
+                        <span data-cmd="width-increase" class="basis-1/2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="inline h-8 w-8"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="pl-8 text-left text-base">Text Align</td>
+                    <td>
+                      <div class="flex flex-row justify-around">
+                        <span class="basis-1/2" data-cmd="text-align-start">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="inline h-8 w-8"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+                            />
+                          </svg>
+                        </span>
+                        <span class="basis-1/2" data-cmd="text-align-justify">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="inline h-8 w-8"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="pl-8 text-left text-base">Line Height</td>
+                    <td>
+                      <div class="flex flex-row justify-around">
+                        <span class="basis-1/2" data-cmd="line-height-type-1">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="inline h-8 w-8"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"
+                            />
+                          </svg>
+                        </span>
+                        <span class="basis-1/2" data-cmd="line-height-type-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="inline h-8 w-8"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" data-id="color">
+                      <div>
+                        <span data-cmd="color-mode-light">Light</span>
+                        <span data-cmd="color-mode-nord-light">Nord</span>
+                        <span data-cmd="color-mode-sepia">Sepia</span>
+                        <span data-cmd="color-mode-solarized-light"
+                          >Solarized</span
+                        >
+                      </div>
+                      <div>
+                        <span data-cmd="color-mode-dark">Dark</span>
+                        <span data-cmd="color-mode-nord-dark">Nord</span>
+                        <span data-cmd="color-mode-groove-dark">Groove</span>
+                        <span data-cmd="color-mode-solarized-dark"
+                          >Solarized</span
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <button
+                data-cmd="open-font-utils"
+                title="Style controls"
+                class="group flex items-end border-l border-transparent py-2 px-3 text-sm font-medium tracking-wide opacity-80 hover:border-emerald-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  class="mr-3 h-6 w-6 flex-shrink-0"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="m2.244 13.081.943-2.803H6.66l.944 2.803H8.86L5.54 3.75H4.322L1 13.081h1.244zm2.7-7.923L6.34 9.314H3.51l1.4-4.156h.034zm9.146 7.027h.035v.896h1.128V8.125c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.464v.731H12.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525z"
+                  />
+                </svg>
+                Style
+              </button>
+            </div>
+            <div class="relative">
+              <div
+                id="image-utils"
+                tabindex="-1"
+                class="absolute top-0 left-[120px] z-10 hidden w-[320px] rounded-2xl bg-neutral-50"
+              >
+                <table border="0" cellpadding="0" cellspacing="0">
+                  <colgroup>
+                    <col
+                      style="border-right: solid 1px var(--border-color)"
+                      width="50%"
+                    />
+                    <col />
+                  </colgroup>
+                  <tr>
+                    <td class="pl-8 text-left text-base">Size</td>
+                    <td>
+                      <div class="flex flex-row justify-around">
+                        <span data-cmd="image-decrease" class="basis-1/2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="inline h-8 w-8"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"
+                            />
+                          </svg>
+                        </span>
+                        <span data-cmd="image-increase" class="basis-1/2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="inline h-8 w-8"
+                            viewBox="0 0 16 16"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="pl-8 text-left text-base">Show</td>
+                    <td>
+                      <span
+                        id="toggle-images-button"
+                        data-cmd="toggle-images"
+                        data-active="true"
+                        type="button"
+                        class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-emerald-600 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 sm:ml-auto"
+                        role="switch"
+                      >
+                        <span
+                          class="inline-block h-5 w-5 translate-x-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
+                        ></span>
+                      </span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <button
+                id="images-button"
+                title="Images"
+                data-cmd="open-image-utils"
+                class="group flex items-center border-l border-transparent py-2 px-3 text-sm font-medium tracking-wide opacity-80 hover:border-emerald-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  class="mr-3 h-6 w-6 flex-shrink-0"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                  <path
+                    d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"
+                  />
+                </svg>
+                Images
+              </button>
+            </div>
+            <hr class="my-2 border-t-current opacity-10" />
+            <button
+              id="design-mode-button"
+              data-cmd="toggle-design-mode"
+              class="group toggle flex items-center border-l border-transparent py-2 px-3 text-sm font-medium tracking-wide opacity-80 hover:border-emerald-300"
+              title="Toggle design mode (command)
+
+        When active, you can edit the document or delete elements like MS word
+        
+        Ctrl/Command + B: Toggles bold on/off for the selection or at the insertion point.
+        Ctrl/Command + I: Toggles italics on/off for the selection or at the insertion point.
+        Ctrl/Command + U: Toggles underline on/off for the selection or at the insertion point."
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="mr-3 h-6 w-6 flex-shrink-0"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                />
+              </svg>
+              Edit
+            </button>
+            <button
+              id="highlight-button"
+              title="Toggle Highlight"
+              data-cmd="toggle-highlight"
+              data-disabled="true"
+              class="toggle group flex items-center border-l border-transparent py-2 px-3 text-sm font-medium tracking-wide opacity-80 hover:border-emerald-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="mr-3 h-6 w-6 flex-shrink-0"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"
+                />
+              </svg>
+              Highlight
+            </button>
+            <button
+              id="click-to-delete"
+              title="Toggle Click To Delete"
+              data-cmd="toggle-click-to-delete"
+              class="toggle group flex items-center border-l border-transparent py-2 px-3 text-sm font-medium tracking-wide opacity-80 hover:border-emerald-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="mr-3 h-6 w-6 flex-shrink-0"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                />
+              </svg>
+              Delete
+            </button>
+            <button
+              id="undo-delete"
+              title="Undo Delete"
+              data-cmd="undo-delete"
+              data-disabled="true"
+              class="toggle group flex items-center border-l border-transparent py-2 px-3 text-sm font-medium tracking-wide opacity-80 hover:border-emerald-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="mr-3 h-6 w-6 flex-shrink-0"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"
+                />
+                <path
+                  d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"
+                />
+              </svg>
+              Undo
+            </button>
+            <hr class="my-2 border-t-current opacity-10" />
+            <button
+              id="close-button"
+              title="Close"
+              data-cmd="close"
+              class="toggle group flex cursor-pointer items-center border-l border-transparent py-2 px-3 text-sm font-medium tracking-wide opacity-80 hover:border-emerald-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="mr-3 h-6 w-6 flex-shrink-0"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+              Close
+            </button>
+          </div>
+          <div class="flex-shrink pb-5">
+            <button
+              id="settings-button"
+              title="Settings"
+              class="group flex cursor-pointer items-center border-l border-transparent py-2 px-3 text-sm font-medium tracking-wide opacity-80 hover:border-emerald-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                class="mr-3 h-6 w-6 flex-shrink-0"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"
+                />
+                <path
+                  d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"
+                />
+              </svg>
+              Settings
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="content" class="flex flex-1 flex-col">
+        <iframe></iframe>
+      </div>
+    </div>
+    <div id="tips" class="absolute inset-x-0 top-0">
+      <template>
+        <div class="mx-auto w-3/4 max-w-2xl rounded-md bg-yellow-50 p-4">
+          <div class="flex items-start justify-between">
+            <div class="message pl-2 text-center text-base text-yellow-700">
+              <p></p>
+            </div>
+            <button
+              class="inline-flex rounded-md text-gray-500 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+              <span class="sr-only">Close</span>
+              <!-- Heroicon name: solid/x -->
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </template>
+    </div>
+    <div
+      id="pdf-dialog"
+      class="fixed inset-0 z-10 hidden overflow-y-auto"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="flex min-h-screen items-end justify-center px-4 pt-4 pb-20 text-center sm:block sm:p-0"
+      >
+        <!--
+          Background overlay, show/hide based on modal state.
+    
+          Entering: "ease-out duration-300"
+            From: "opacity-0"
+            To: "opacity-100"
+          Leaving: "ease-in duration-200"
+            From: "opacity-100"
+            To: "opacity-0"
+        -->
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          aria-hidden="true"
+        ></div>
+
+        <!-- This element is to trick the browser into centering the modal contents. -->
+        <span
+          class="hidden sm:inline-block sm:h-screen sm:align-middle"
+          aria-hidden="true"
+          >&#8203;</span
+        >
+
+        <!--
+          Modal panel, show/hide based on modal state.
+    
+          Entering: "ease-out duration-300"
+            From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            To: "opacity-100 translate-y-0 sm:scale-100"
+          Leaving: "ease-in duration-200"
+            From: "opacity-100 translate-y-0 sm:scale-100"
+            To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        -->
+        <div
+          class="inline-block transform overflow-hidden rounded-lg bg-white text-left align-bottom shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:align-middle"
+        >
+          <div class="absolute top-0 right-0 pt-4 pr-4 sm:block">
+            <button
+              data-cmd="pdf-dialog-close"
+              type="button"
+              class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            >
+              <span class="sr-only">Close</span>
+              <!-- Heroicon name: outline/x -->
+              <svg
+                class="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
+            id="pdf-iframe-container"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <form
+      id="pdf-form"
+      method="post"
+      action="https://www.printfriendly.com/pdfs/make"
+      target="pdf-iframe"
+      accept-charset="UTF-8"
+    >
+      <input type="hidden" name="hostname" value="" />
+      <input type="hidden" name="url" value="" />
+      <input type="hidden" name="source" value="extension" />
+      <input type="hidden" name="code" value="" />
+      <input type="hidden" name="title" value="" />
+      <input type="hidden" name="dir" value="" />
+    </form>
+    <script src="/config.js"></script>
+    <script src="index.js"></script>
+    <script async src="plugins.js"></script>
+  </body>
+</html>

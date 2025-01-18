@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/popup.css">
+    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,500">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">-->
+</head>
+<body>
+<div class="popup">
+    <ul class="menu">
+        <li class="menu__item" data-bind="click: newPost">
+            <span class="menu__caption">Выбрать картинки</span>
+            <span class="menu__hotkey">Ctrl+Shift+A</span>
+        </li>
+        <li class="menu__item" data-bind="
+            click: makeScreenshot,
+            css: {
+                'menu__item-disabled': !screenshotEnabled(),
+                'menu__item-process': screenshotProcessing()
+            }
+        ">
+            <span class="menu__caption">Снимок части экрана</span>
+            <span class="menu__progress"></span>
+            <span class="menu__hotkey">Ctrl+Shift+C</span>
+        </li>
+        <li class="menu__item menu__separator"></li>
+        <li class="menu__item" data-bind="click: gotoSite">
+            <span class="menu__caption">
+                <!-- ko if: eventsCount() > 0 -->
+                Новое в моих подписках <strong>(<!-- ko text: eventsCount --><!-- /ko -->)</strong>
+                <!-- /ko -->
+                <!-- ko if: eventsCount() == 0 -->
+                Перейти на <span class="logo">Постилу</span>
+                <!-- /ko -->
+            </span>
+            <span class="menu__hotkey">Ctrl+Shift+P</span>
+        </li>
+    </ul>
+</div>
+<script src="js/raven.min.js"></script>
+<script src="js/knockout-3.0.0.js"></script>
+<script src="js/popup.js"></script>
+</body>
+</html>

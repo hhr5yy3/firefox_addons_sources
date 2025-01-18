@@ -1,0 +1,389 @@
+body{
+  width: 550px;
+  font-family: Arial;
+  font-size: 12px;
+  color: #303942;
+    
+    background-color: #f6f6f6;
+  
+}
+
+#syncMustLoginMessage{
+    border-top: 1px solid rgba(50, 50, 50, 0.1);
+    margin-top: 0;
+    /*padding-top: 5x; // Task #858 */
+    padding-top: 10px;
+    text-align: center;
+}
+
+#syncMustLoginMessage .message{
+  margin-bottom: 10px;
+}
+
+#syncMustLoginMessage .buttons a{
+  margin: 3px;
+}
+
+#driversList{
+  
+}
+
+#driversList .driver{
+  
+  padding: 5px;
+  padding-left: 30px;
+  
+  -webkit-filter: grayscale(1);
+}
+
+
+#driversList .driver div.textDesc{
+  text-align: left;
+  width: 300px;
+  margin-top: 10px;
+}
+
+#driversList .driver div.buttonBlock{
+  text-align: right;
+  display: inline-block;
+  width: 140px;
+  float: right;
+}
+
+#driversList .driver div.buttonBlock .syncing{
+  display: none;
+}
+
+#driversList .driver[syncing="1"] div.buttonBlock button{
+  display: none !important;
+}
+
+#driversList .driver[syncing="1"] div.buttonBlock .syncing{
+  display: inline-block;
+}
+
+#driversList .driver div.buttonBlock button{
+  display: none;
+}
+
+#driversList .driver .active{
+  display: none;
+}
+
+#driversList .driver .passive{
+  display: inline-block;
+}
+  
+
+#driversList .driver[active="1"]{
+  -webkit-filter: none;
+}
+
+#driversList .driver[active="1"] .active{
+  display: inline-block;
+}
+
+#driversList .driver[active="1"] .passive{
+  display: none;
+}
+
+#driversList .driver[active="1"] div.buttonBlock button{
+  display: inline-block;
+}
+
+#driversList .driver.speedDial{
+  
+  /*background: url( /images/sd_24x24.png ) no-repeat;*/
+  background: url( /images/icons/24x24_sync.png ) no-repeat;
+  background-position: center left;
+  
+}
+
+#driversList .driver.bookmarks{
+  
+  background: url( /images/bookmarks_24x24.png ) no-repeat;
+  background-position: center left;
+  
+}
+
+
+/* popupContents */
+
+#syncingContent{
+  text-align: center;
+}
+
+
+#syncingContent .textDesc{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#applyUpdatesConfirm{
+  text-align: center;
+}
+
+
+/* bottom menu */
+.bottomMenu{
+  padding: 7px;
+  padding-left: 0px;
+  text-align: right;
+  margin-top: 7px;
+  margin-bottom: 30px;
+    display: none;
+}
+
+.syncAdditinalMessage{
+  text-align: left;
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  color: #666;
+}
+
+/* progress */
+
+.popupContent.simpleSync{
+  text-align: center;
+}
+
+.popupContent .progressBar{
+  background: url( /images/progressbar.gif ) no-repeat;
+  background-position: center;
+  height: 20px;
+}
+
+.popupContent .textDesc{
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.progressElements{
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #efefef;
+  
+  box-shadow: 0px 0px 5px 0px #ccc;
+}
+
+.progressElements > div{
+  text-align: left;
+  height: 20px;
+}
+
+
+/* sync speed dial */
+#syncingContent_Speeddial{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#syncingContent_Speeddial .syncAdditinalMessage{
+  bottom: 45px;
+}
+
+#syncingContent_Speeddial button{
+  margin-top: 10px;
+}
+
+
+
+.bottomMenu > a{
+  float: right;
+  margin-right: 7px;
+}
+
+.bottomMenu > a.nomargin{
+  margin-right: 2px;
+}
+
+.bottomMenu > a.left{
+  float: left;
+}
+
+.bottomMenu > a.goToEverhelper,
+.bottomMenu > a.getPro {
+  line-height: 16px;
+}
+
+.bottomMenu > a.getPro {
+  opacity: 0;
+  -webkit-transition: opacity 200ms ease;
+}
+
+.bottomMenu > a.getPro[appear="1"] {
+  opacity: 1;
+}
+
+.bottomMenu > a.goToEverhelper i {
+  background-image: url( /images/everhelper_16x16.png );
+  background-repeat: no-repeat;
+  background-position: left center;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  float: left;
+  margin-right: 3px;
+}
+
+.bottomMenu > a.getPro i {
+  background-image: url( /images/star.png );
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 16px 16px;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  float: left;
+  margin-right: 3px;
+}
+
+.initialization{
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 5px;
+  background: url(/images/loading.svg) no-repeat left center; 
+    background-size: 18px 18px;
+  display: none;
+    background-size: contain;
+}
+
+*[initialization="1"] .initialization{
+  display: inline-block;
+}
+
+.syncing{
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 5px;
+  background: url(/images/loading.svg) no-repeat left center; 
+    background-size: 18px 18px;
+    background-size: contain;
+}
+
+#manualSyncCompleted{
+  
+  margin-top: 50px;
+  padding-left: 38px;
+  background: left center url( /images/alert_blue.png ) no-repeat;
+  
+}
+
+#warning-unsorted {
+  text-align: left;
+  background-color: #FBF7DB;
+}
+
+#bookmarks-older-chrome-message {
+  text-align: left;
+  background-color: #EFD6D6;
+  margin-bottom: 2px;
+}
+
+#openSpeedDial {
+    background: url(/images/sd_24x24.png ) no-repeat;
+    background-position: 3px center;
+}
+
+#addSiteToSpeedDial {
+    /*display: none;*/
+    
+    /*
+    background: url(/images/plus-g.png ) no-repeat;
+    background-position: 3px center;
+    */
+}
+
+#openSpeedDial a, #addSiteToSpeedDial a{
+    padding: 1px 0 0 35px;
+}
+
+.popup_item .link {
+    font-size: 110%;
+    line-height: 30px;
+    font-weight: bold;
+    padding: 1px 0 5px 30px;
+    display: block;
+    cursor: pointer;
+}
+
+.popup_item .link:hover{
+    text-decoration: underline;
+    /*background-color: rgba(50,50,50,0.05); // Task #858 */
+}
+
+.popup-item-inline{/*outline: 1px solid dashed;*/
+    display: inline-block;
+    min-width: 33%;
+}
+
+.popup-item-inline-right{
+    float: right;
+    text-align: left;
+    width: auto;
+    min-width: auto;
+}
+.popup-item-inline-right a{
+    margin-right: 9px;
+    /*padding-left: 24px;*/
+}
+
+.plus-img{
+    display: inline-block!important;
+    background: url(/images/plus-g.png ) no-repeat;
+    background-position: 3px center;
+    width: auto;
+}
+
+.restore-img{
+    display: inline-block!important;
+    background: url(/images/restore.png ) no-repeat;
+    background-size: 24px 24px;
+    background-position: 0 center;
+    width: auto;
+}
+
+.popup-item-inline a{
+    /*
+    margin-left: -2%;
+    padding-left: -2%;
+    */
+}
+
+.link-block{outline: 1px solid red;
+    display: block;
+}
+
+.popup-item-full2{
+    display: block;
+    width: 100%;
+    
+}
+
+.clear{
+    clear: both;
+    height: 3px;
+}
+
+#popupFooter{
+    text-align: right;
+    font-size: 12px;
+    margin-top: 5px;
+    line-height: 20px;
+    padding-right: 10px;
+}
+
+#popupFooter input{
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+
+

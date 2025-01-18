@@ -1,0 +1,495 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title label="extension_name :: options.label"></title>
+		<link rel="shortcut icon" href="/skin/logo16.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="/skin/options.css" />
+		<script type="text/javascript" src="/content/options.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/utils.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/i18n.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/prefs.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/locale/supported.js" charset="utf-8"></script>
+
+		<script type="text/javascript" src="/content/viewer.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/contextmenu.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/action.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/hotkeys.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/date.toLocaleFormat.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/content/downbar.js" charset="utf-8"></script>
+
+		<link rel="stylesheet" type="text/css" href="/content/tabs/tabs.css" />
+		<script type="text/javascript" src="/content/tabs/tabs.js" charset="utf-8"></script>
+	</head>
+<body>
+<form id="s3dm_form" action="#">
+<center>
+<table align="center" border="0" cellpadding="0" cellspacing="0" id="tabsBox">
+	<tr valign="bottom">
+		<td>
+			<span style="font-size: 1.5em;"><span label="extension_name"></span><span> - </span><span label="options.label"></span></span><br/>
+		</td>
+		<td align="right"><div id="addon_version"></div><div style="margin-bottom: 5px;"><span id="settings_saved" is_hidden="true" label="message.settings_saved"></span></div></td>
+	</tr>
+	<tr>
+		<td class="tabsBox" colspan="2">
+			<div style="float: right; width: 200px; text-align: right;"><select id="current_locale" name="current_locale"></select></div>
+			<ul id="tabs"  class="tabs">
+				<li><a href="#generalTab" label="options.general.title"></a></li>
+				<li><a href="#appearanceTab" label="options.appearance.title"></a></li>
+				<li><a href="#virusScanTab" id="virusScanTabLink" label="action.av_scan.label"></a></li>
+				<li><a href="#download_historyTab" label="options.history.title"></a></li>
+			</ul>
+
+<!-- generalTab -->
+<div class="tabContent" id="generalTab">
+	<!-- ============================== -->
+	<ul id="tabs-generalTab" class="tabs tabs_mini">
+		<li><a href="#generalTab--features" label="options.tab_features.label"></a></li>
+		<li><a href="#generalTab--statusMode" label="options.tab_downloadbar.label"></a></li>
+		<li><a href="#generalTab--queue" label="options.tab_queue.label"></a></li>
+		<li><a href="#generalTab--contextMenu" label="options.context_menu.label"></a></li>
+	</ul>
+	<!-- ============================== -->
+	<div class="tabContent" is_mini="true" id="generalTab--features">
+		<!-- ----------------------------------------------- -->
+		<input type="checkbox" name="function.askOnDelete" label="options.confirm_delete_file.label"/><br/>
+		<input type="checkbox" name="function.clearFinishedAfterCloseBrowser" label="options.clear_finished.label"/><br/>
+		<input type="checkbox" name="function.removeOnOpen" label="options.remove_after_open.label"/><br/>
+		<input type="checkbox" name="function.removeOnShow" label="options.remove_after_show.label"/><br/>
+		<input type="checkbox" name="function.autoOpenFolder" label="options.auto_open_folder.label"/><br/>
+		<input type="checkbox" name="function.dblclickClearPanel" label="options.dblclick_clear_panel.label"/><br/>
+		<input type="checkbox" name="function.showTooltip" id="options_show_tooltip" label="options.show_tooltip.label"/><br/>
+		<div id="options_show_tooltip_hint" style="padding-left: 25px;"><input type="checkbox" name="function.showTooltip_hint" label="options.show_tooltip_hint.label"/></div>
+		<br/>
+		<!-- ----------------------------------------------- -->
+		<div class="groupbox">
+			<div style="display: flex;"><div label="options.filetypes_ignore.label"></div><input type="text" style="flex-grow: 1; margin-left: 5px;" name="function.ignoreFiletypes"/></div>
+			<div style="text-align: right;" label="options.filetypes_help.label"></div>
+		</div>
+		<!-- ----------------------------------------------- -->
+		<div class="groupbox">
+			<div style="display: flex; white-space: nowrap;">
+				<div label="options.auto_clear.label"></div>
+				<input type="text" style="flex-grow: 1; margin-left: 5px; margin-right: 5px;" name="function.clearFiletypes"/>
+				<div label="options.after.label"></div>
+				<input type="number" style="margin-left: 5px; margin-right: 5px; width: 55px;" step="1" size="4" maxlength="4" min="0" max="9999" name="function.timeToClear"/>
+				<div label="options.seconds.label"></div>
+			</div>
+			<div style="text-align: right;" label="options.filetypes_help.label"></div>
+			<div style="text-align: right;">
+				<label for="clearFiletypesKeepHistory">
+					<input type="checkbox" name="function.clearFiletypesKeepHistory" id="clearFiletypesKeepHistory"/>
+					<span label="options.history_keep.label" id="clearFiletypesKeepHistory_label"></span>
+				</label>
+			</div>
+		</div>
+		<!-- ----------------------------------------------- -->
+		<div class="groupbox">
+			<div><input type="checkbox" id="popupNotification" name="function.popupNotification" label="options.popup_notification.label"/></div>
+			<!-- ----------------------------------------- -->
+			<div id="popupNotification_addbox" style="margin-top: 10px; padding-left: 25px; border-top: 1px #ABADB3 dotted; padding-top: 10px;">
+				<div style="display: flex;">
+					<div label="options.complete_filesize.label"></div>
+					<input type="number" style="margin-left: 5px; margin-right: 5px; width: 55px;" step="1" size="4" maxlength="4" min="0" max="9999" name="function.popupNotification_filesize"/>
+					<div label="options.queue_kb.label"></div>
+				</div>
+				<!-- ----------------------------------------- -->
+				<div style="display: flex; margin-top: 5px;">
+					<div label="options.complete_timesize.label"></div>
+					<input type="number" style="margin-left: 5px; margin-right: 5px; width: 55px;" step="1" size="4" maxlength="4" min="0" max="9999" name="function.popupNotification_timesize"/>
+					<div label="options.seconds.label"></div>
+				</div>
+			</div>
+			<!-- ----------------------------------------- -->
+			<div id="popupNotification_ignore_box" style="padding-left: 25px;border-top: 1px #ABADB3 dotted; padding-top: 10px; margin-top: 10px; margin-bottom: 5px;">
+				<div id="popupNotification_ignore" style="display: flex;">
+					<div label="options.filetypes_ignore.label"></div>
+					<input type="text" style="flex-grow: 1; margin-left: 5px;" name="function.popupNotification_ignore"/>
+				</div>
+			</div>
+		</div>
+		<!-- ----------------------------------------------- -->
+		<div class="groupbox">
+			<div><input type="checkbox" id="playSound" name="function.soundComplete" label="options.sound_complete.label"/></div>
+			<!-- ----------------------------------------- -->
+			<div id="soundOptions" style="margin-left:30px;display: flex; margin-top: 10px;">
+				<input type="button" id="soundPlay"/>
+				<select id="soundSelect">
+					<option id="defaultSound" value="defaultSound" label="options.sound_checkmark.label"></option>
+					<option id="customSound" value="customSound" label="options.sound_custom.label"></option>
+				</select>
+				<div id="soundExcludeLabel" label="options.sound_except_filetypes.label" style="margin-left: 10px; margin-right: 10px;"></div>
+				<input id="soundIgnoreFiletypes" type="text" style="flex-grow: 1;" name="function.soundCompleteIgnore"/>
+			</div>
+			<!-- ----------------------------------------- -->
+			<input id="soundFile" style="display: none" type="file"/>
+			<!-- ----------------------------------------- -->
+			<div id="soundComplete_addbox" style="margin-top: 10px; padding-left: 25px; border-top: 1px #ABADB3 dotted; padding-top: 10px;">
+				<div style="display: flex;">
+					<div label="options.complete_filesize.label"></div>
+					<input type="number" style="margin-left: 5px; margin-right: 5px; width: 55px;" step="1" size="4" maxlength="4" min="0" max="9999" name="function.soundComplete_filesize"/>
+					<div label="options.queue_kb.label"></div>
+				</div>
+				<!-- ----------------------------------------- -->
+				<div style="display: flex; margin-top: 5px;margin-bottom: 5px;">
+					<div label="options.complete_timesize.label"></div>
+					<input type="number" style="margin-left: 5px; margin-right: 5px; width: 55px;" step="1" size="4" maxlength="4" min="0" max="9999" name="function.soundComplete_timesize"/>
+					<div label="options.seconds.label"></div>
+				</div>
+			</div>
+		</div>
+		<!-- ----------------------------------------------- -->
+		<div class="groupbox" caption="true">
+			<div class="caption"><div style="float: left; border: none; background-color: #FFFFFF"><div id="hotkey_button_plus" class="prefs_button_plus"></div></div><span style="margin-left: 5px;" label="options.hotkey.label"/></span></div>
+			<div id="hotkeys_template" hidden="true">
+				<div id="hotkeys_box">
+					<div id="hotkey_button_minus" class="prefs_button_minus"></div>
+					<input type="text" id="hotkeys_textbox" width="200"/>
+					<select id="hotkeys_list_method">
+						<option value="open_downloads" label="display.download_history.label"></option>
+						<option value="hide_downbar" label="options.hotkey_hide_downloadbar.label"></option>
+						<option value="clear_last" label="options.hotkey_clear_last.label"></option>
+						<option value="undo_clear" label="options.hotkey_undo_clear_last.label"></option>
+						<option value="open_last_file" label="options.hotkey_open_last_file.label"></option>
+						<option value="show_last_file" label="options.hotkey_show_last_dir.label"></option>
+					</select>
+				</div>
+			</div>
+			<table id="hotkeys_list" cellpadding="0" cellspacing="0"></table>
+		</div>
+	</div>
+	<!-- ============================== -->
+	<div class="tabContent" is_mini="true" id="generalTab--statusMode">
+		<!-- ----------------------------------------------- -->
+		<div class="groupbox">
+			<div style="font-weight: bold; color: #009900;"><input type="checkbox" name="downbar_show" label="options.downloadbar_enable.label" id="enableDownbar"/></div>
+			<div style="padding-bottom: 10px; padding-top: 10px;" id="hideStatusbarAfterAllFinished_box">
+				<input type="checkbox" name="function.hideStatusbarAfterAllFinished" label="options.downloadbar_hide_after_all_finished.label" id="hideStatusbarAfterAllFinished"/><br/>
+				<div id="soundOptions" style="margin-left:30px;display: flex; margin-top: 2px;">
+					<div id="hideStatusbarAfterAllFinishedTimeDesc" label="options.after.label"></div>
+					<input name="function.hideStatusbarAfterAllFinishedTime" id="hideStatusbarAfterAllFinishedTime" type="number" style="margin-left: 5px; margin-right: 5px; width: 55px;" step="1" size="4" maxlength="4" min="0" max="9999"/>
+					<div id="hideStatusbarAfterAllFinishedTimeSec" label="options.seconds.label"></div>
+				</div>
+			</div>
+		</div>
+		<!-- ----------------------------------------------- -->
+		<div class="groupbox" caption="true" id="exclude_links_box">
+			<div class="caption"><span label="options.downloadbar_exclude_links.label"></span><input type="button" id="exclude_links_save" style="float: right;" label="options.save_changes"/></div>
+			<div style="position: relative;display: flex;">
+				<textarea required="required" wrap="off" id="exclude_links" rows="6"></textarea>
+				<div id="exclude_links_placeholder">
+				<div style="padding-top: 4px;" label="options.downloadbar_exclude_links.example1"></div>
+				<div label="options.downloadbar_exclude_links.example2"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ============================== -->
+	<div class="tabContent" is_mini="true" id="generalTab--queue">
+		<div class="groupbox">
+			<input type="checkbox" id="queEnable" name="function.queueMode" label="options.queue_enable.label"/>
+			<div id="queEnable_box" style="padding-top: 10px;">
+				<div style="display: flex; padding-left: 20px;">
+					<div label="options.queue_download.label"></div>
+					<input name="function.queueNum" type="number" style="margin-left: 5px; margin-right: 5px; width: 100px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+					<div label="options.queue_files.label"></div>
+				</div>
+				<div style="display: flex; padding-left: 20px; padding-top: 5px;">
+					<div label="options.queue_ignore.label"></div>
+					<input name="function.queueIgnoreSizeKB" type="number" style="margin-left: 5px; margin-right: 5px; width: 100px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+					<div label="options.queue_kb.label"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ============================== -->
+	<div class="tabContent" is_mini="true" id="generalTab--contextMenu">
+		<div class="groupbox">
+			<input type="checkbox" name="context_menu.downloadbar_show" label="action.downloadbar_show.label"/>
+		</div>
+	</div>
+</div>
+
+<!-- appearanceTab -->
+<div class="tabContent" id="appearanceTab">
+	<!-- ============================== -->
+	<ul id="tabs-appearanceTab" class="tabs tabs_mini">
+		<li><a href="#appearanceTab--style" label="options.tab_style.label"></a></li>
+		<li><a href="#appearanceTab--layout" label="options.tab_layout.label"></a></li>
+	</ul>
+	<!-- ============================== -->
+	<div class="tabContent" is_mini="true" id="appearanceTab--style">
+		<div class="groupbox">
+			<div><input type="radio" name="style.default" id="defaultStyle" label="options.style_default.label" value="true"/></div>
+			<div style="display: flex;">
+				<input type="radio" name="style.default" id="customStyle" label="options.style_custom.label" value="false"/>
+				<div style="flex-grow: 1;"></div>
+				<input type="button" id="resetCustom" label="options.reset_custom.label"/>
+			</div>
+			<!-- ----------------------------------------------- -->
+			<div style="display: flex;" id="customStyle_form">
+				<div class="groupbox" caption="true" style="flex-grow: 1">
+					<div class="caption"><span label="options.style_colors.label"></span></div>
+					<table width="100%" class="table_colors nowrap">
+						<tr><td><div label="options.style_downloadbar_background.label"></div></td><td align="right"><input type="color" name="style.downbar_color"/></td></tr>
+						<tr><td><div label="options.style_progress_bar.label"></div></td><td align="right"><input type="color" name="style.progressbar_color"/></td></tr>
+						<tr><td><div label="options.style_progress_remainder.label"></div></td><td align="right"><input type="color" name="style.progressremainder_color"/></td></tr>
+						<tr><td><div label="options.style_finished_box.label"></div></td><td align="right"><input type="color" name="style.finishedHbox_color"/></td></tr>
+						<tr><td><div label="options.style_stopped_box.label"></div></td><td align="right"><input type="color" name="style.notdoneHbox_color"/></td></tr>
+						<tr><td><div label="options.style_paused_outline.label"></div></td><td align="right"><input type="color" name="style.pausedHbox_border_color"/></td></tr>
+						<tr><td><div label="options.style_text_color.label"></div></td><td align="right"><input type="color" name="style.filenameLabel_color"/></td></tr>
+						<tr><td><div label="options.style_button_text_color.label"></div></td><td align="right"><input type="color" name="style.button_text_color"/></td></tr>
+						<tr><td><div label="options.style_contextmenu_bgcolor.label"></div></td><td align="right"><input type="color" name="style.contextmenu_bgcolor"/></td></tr>
+						<tr><td><div label="options.style_contextmenu_text_color.label"></div></td><td align="right"><input type="color" name="style.contextmenu_text_color"/></td></tr>
+					</table>
+				</div>
+				<div style="padding-left: 10px; display: flex; flex-direction: column;">
+					<div class="groupbox" caption="true" style="flex-grow: 1">
+						<div class="caption"><span label="options.style_text_size.label"></span></div>
+						<table style="margin-left: auto;" class="nowrap">
+							<tr><td><div label="options.style_filename_size.label"></div></td><td align="right"><input name="style.filenameLabel_size" type="number" style="width: 100px;" step="1" size="7" maxlength="4" min="1" max="9999999"/></td></tr>
+							<tr><td><div label="options.style_progress_notification_size.label"></div></td><td align="right"><input name="style.progressIndicator_size" type="number" style="width: 100px;" step="1" size="7" maxlength="4" min="1" max="9999999"/></td></tr>
+							<tr><td><div label="options.style_tooltip_text_size.label"></div></td><td align="right"><input name="style.tooltipFontSize" type="number" style="width: 100px;" step="1" size="7" maxlength="4" min="1" max="9999999"/></td></tr>
+							<tr><td><div label="options.style_button_text_size.label"></div></td><td align="right"><input name="style.button_text_size" type="number" style="width: 100px;" step="1" size="7" maxlength="4" min="1" max="9999999"/></td></tr>
+							<tr><td><div label="options.style_contextmenu_text_size.label"></div></td><td align="right"><input name="style.contextmenu_text_size" type="number" style="width: 100px;" step="1" size="7" maxlength="4" min="1" max="9999999"/></td></tr>
+						</table>
+					</div>
+					<div class="groupbox" caption="true" style="flex-grow: 1">
+						<div class="caption"><span label="options.style_download_item_size.label"></span></div>
+						<table style="margin-left: auto;" class="nowrap">
+							<tr><td><div label="options.style_width.label"></div></td><td align="right"><input name="style.hbox_width" type="number" style="width: 100px;" step="1" size="7" maxlength="4" min="1" max="9999999"/></td></tr>
+							<tr><td><div label="options.style_height.label"></div></td><td align="right"><input name="style.hbox_height" type="number" style="width: 100px;" step="1" size="7" maxlength="4" min="1" max="9999999"/></td></tr>
+						</table>
+					</div>
+					<div class="groupbox" caption="true" style="flex-grow: 1">
+						<div class="caption"><span label="options.style_download_bar_size.label"></span></div>
+						<table style="margin-left: auto;" class="nowrap">
+							<tr><td><div label="options.style_max_height.label"></div></td><td align="right"><input id="style_downbar_height" no_auto_disable="true" disabled="true" type="number" style="width: 100px;" step="1" size="7" maxlength="4" min="1" max="9999999"/></td></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div><input type="checkbox" name="function.useAnimation" label="options.use_animation.label"/></div>
+		<div><input type="checkbox" name="style.useGradients" label="options.use_gradients.label"/></div>
+	</div>
+	<!-- ============================== -->
+	<div class="tabContent" is_mini="true" id="appearanceTab--layout">
+		<div style="display: flex;">
+			<div>
+				<div class="groupbox" caption="true">
+					<div class="caption"><span label="options.show_buttons.label"></span></div>
+					<div style="display: flex;margin-top:5px;">
+						<div id="showMainButton_pos" style="padding-right: 5px; white-space: nowrap;">
+							<input type="radio" name="display.mainButtonFromLeft" label="options.left.label" value="true"/>
+							<input type="radio" name="display.mainButtonFromLeft" label="options.right.label" value="false"/>
+						</div>
+						<input type="checkbox" id="showMainButton" name="display.mainButton" label="options.bar_main_button.label"/>
+					</div>
+					<div style="display: flex;margin-top:5px;">
+						<div id="showClearButton_pos" style="padding-right: 5px; white-space: nowrap;">
+							<input type="radio" name="display.clearButtonFromLeft" label="options.left.label" value="true"/>
+							<input type="radio" name="display.clearButtonFromLeft" label="options.right.label" value="false"/>
+						</div>
+						<input type="checkbox" id="showClearButton" name="display.clearButton" label="options.bar_clear_button.label"/>
+					</div>
+					<div style="display: flex;margin-top:5px;">
+						<div id="showHideButton_pos" style="padding-right: 5px; white-space: nowrap;">
+							<input type="radio" name="display.hideButtonFromLeft" label="options.left.label" value="true"/>
+							<input type="radio" name="display.hideButtonFromLeft" label="options.right.label" value="false"/>
+						</div>
+						<input type="checkbox" id="showHideButton" name="display.hideButton" label="options.bar_hide_button.label"/>
+					</div>
+					<div style="display: flex;margin-top:5px;">
+						<div id="showSummaryProgress_pos" style="padding-right: 5px; white-space: nowrap;">
+							<input type="radio" name="display.summaryProgressFromLeft" label="options.left.label" value="true"/>
+							<input type="radio" name="display.summaryProgressFromLeft" label="options.right.label" value="false"/>
+						</div>
+						<input type="checkbox" id="showSummaryProgress" name="display.summaryProgress" label="options.bar_summary_progress.label"/>
+					</div>
+				</div>
+				<!-- ----------------------------------------------- -->
+				<div class="groupbox" caption="true">
+					<div class="caption"><span label="options.speed_colors.label"></span></div>
+					<div style="display: flex;">
+						<input type="checkbox" id="speedColorsEnabled" name="style.speedColorsEnabled" label="options.speed_colors_enable.label"/>
+						<div style="flex-grow: 1;"></div>
+						<input type="button" id="resetCustom_speed" label="options.reset_custom.label"/>
+					</div>
+					<div id="speedColorBox">
+						<div style="display: flex;align-items: center;margin-top:20px;">
+							<div style="flex-grow:1;"></div>
+							<div label="options.speed_colors_between.label"></div>
+							<input id="speedColorKB0" no_auto_disable="true" disabled="true" value="0" type="number" style="margin-left: 5px; margin-right: 5px; width: 60px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+							<div label="options.speed_colors_and.label"></div>
+							<input id="speedColorKB1" name="style.speedColorKB1" type="number" style="margin-left: 5px; margin-right: 5px; width: 60px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+							<div label="options.speed_colors_kb_sec.label" style="margin-right: 5px;"></div>
+							<input type="color" name="style.speedColor0"/>
+						</div>
+						<div style="display: flex;align-items: center;margin-top:5px;">
+							<div style="flex-grow:1;"></div>
+							<div label="options.speed_colors_between.label"></div>
+							<input id="speedColorKB1_from" no_auto_disable="true" disabled="true" value="0" type="number" style="margin-left: 5px; margin-right: 5px; width: 60px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+							<div label="options.speed_colors_and.label"></div>
+							<input id="speedColorKB2" name="style.speedColorKB2" type="number" style="margin-left: 5px; margin-right: 5px; width: 60px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+							<div label="options.speed_colors_kb_sec.label" style="margin-right: 5px;"></div>
+							<input type="color" name="style.speedColor1"/>
+						</div>
+						<div style="display: flex;align-items: center;margin-top:5px;">
+							<div style="flex-grow:1;"></div>
+							<div label="options.speed_colors_between.label"></div>
+							<input id="speedColorKB2_from" no_auto_disable="true" disabled="true" value="0" type="number" style="margin-left: 5px; margin-right: 5px; width: 60px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+							<div label="options.speed_colors_and.label"></div>
+							<input id="speedColorKB3" name="style.speedColorKB3" type="number" style="margin-left: 5px; margin-right: 5px; width: 60px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+							<div label="options.speed_colors_kb_sec.label" style="margin-right: 5px;"></div>
+							<input type="color" name="style.speedColor2"/>
+						</div>
+						<div style="display: flex;align-items: center;margin-top:5px;">
+							<div style="flex-grow:1;"></div>
+							<div label="options.speed_colors_more_than.label"></div>
+							<input id="speedColorKB3_from" no_auto_disable="true" disabled="true" value="0" type="number" style="margin-left: 5px; margin-right: 5px; width: 60px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+							<div label="options.speed_colors_kb_sec.label" style="margin-right: 5px;"></div>
+							<input type="color" name="style.speedColor3"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ----------------------------------------------- -->
+			<div style="flex-grow: 1; margin-left: 10px; display: flex; flex-direction: column;">
+				<div class="groupbox" caption="true" style="flex-grow: 1;">
+					<div class="caption"><span label="options.progress_notification.label"></span></div>
+					<div style="padding-bottom: 10px;">
+						<input type="checkbox" name="display.percent" label="options.display_percent.label"/><br/>
+						<input type="checkbox" name="display.time" label="options.display_time.label"/><br/>
+						<input type="checkbox" name="display.size" label="options.display_size.label"/><br/>
+						<input type="checkbox" name="display.speed" label="options.display_speed.label"/><br/>
+					</div>
+				</div>
+				<!-- ----------------------------------------------- -->
+				<div class="groupbox" caption="true" style="flex-grow: 1;">
+					<div class="caption"><span label="options.download_bar_location.label"></span></div>
+					<div><input type="radio" name="downbar_position" label="options.download_bar_location_top.label" value="top"/></div>
+					<div><input type="radio" name="downbar_position" label="options.download_bar_location_bottom.label" value="bottom"/></div>
+				</div>
+				<div class="groupbox" caption="true" style="flex-grow: 1;">
+					<div class="caption"><span label="options.downloads_place.label"></span></div>
+					<div>
+						<input type="radio" name="function.placeDownloadsFromRight" label="options.left.label" value="false"/>
+						<input type="radio" name="function.placeDownloadsFromRight" label="options.right.label" value="true"/>
+					</div>
+					<input type="checkbox" name="function.placeDownloadsScrollToNew" label="options.downloads_scroll.label"/>
+				</div>
+			</div>
+		</div>
+		<!-- ----------------------------------------------- -->
+		<div class="groupbox" caption="true">
+			<div class="caption"><span label="options.download_items.label"></span></div>
+			<div style="display: flex;">
+				<div label="options.num_show_completed.label"></div>
+				<input name="function.numToShowCompleted" type="number" style="margin-left: 5px; margin-right: 5px; width: 100px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+				<div label="options.num_show_completed_items.label"></div>
+			</div>
+		</div>
+		<!-- ----------------------------------------------- -->
+		<div class="groupbox">
+			<span label="options.datetime_format.label"></span>
+			<select name="display.dateTimeFormat" id="dateTimeFormat">
+				<option value="%Y.%m.%d - %H:%M:%S"></option>
+				<option value="%d.%m.%Y - %H:%M:%S"></option>
+				<option value="%d/%m/%Y - %H:%M:%S"></option>
+				<option value="%Y/%m/%d - %H:%M:%S"></option>
+				<option value="%H:%M:%S - %d.%m.%Y"></option>
+				<option value="%H:%M:%S - %Y.%m.%d"></option>
+				<option value="%H:%M:%S - %d/%m/%Y"></option>
+				<option value="%H:%M:%S - %Y/%m/%d"></option>
+				<option value="%H:%M:%S - %m/%d/%Y"></option>
+			</select>
+		</div>
+	</div>
+</div>
+
+<!-- virusScanTab -->
+<div class="tabContent" id="virusScanTab">
+	<div class="groupbox" caption="true">
+		<div class="caption"><input type="checkbox" label="action.av_scan.label" id="virusScan"/></div>
+		<div id="virusScan_prop">
+			<div label="options.av_text1.label"></div>
+			<div><a href="https://www.virustotal.com/" target="_blank">https://www.virustotal.com/</a></div>
+			<div label="options.av_text2.label" style="font-size: 0.8em;padding-top:10px;"></div>
+			<div label="options.av_text3.label" style="font-size: 0.8em;padding-top:10px;"></div>
+			<table style="margin-top:20px;">
+				<tr><td align="right"><div label="options.av_mode.label"></div></td><td>
+					<input style="margin-left: 10px;" type="radio" name_off="function.virusMode" value="checksum" checked="true" label="options.av_mode_checksum.label"/>
+				</td></tr>
+				<tr><td align="right"><div label="options.av_should_scan.label"></div></td><td><input style="margin-left: 10px;" id="virusAutoScan" type="checkbox" name="function.virusAutoScan"/></td></tr>
+				<tr id="virusAutoScan_exclude"><td align="right"><div label="options.av_exclude.label"></div></td><td><input style="margin-left: 10px;" type="text" name="function.virusExclude"/></td></tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<!-- download_historyTab -->
+<div class="tabContent" id="download_historyTab">
+	<div class="groupbox" caption="true">
+		<div class="caption"><span label="options.show_buttons.label"></span></div>
+		<div>
+			<input type="checkbox" label="action.create_new_downloads.label" name="DL.showCreateNewButton"/><br/>
+			<input type="checkbox" label="action.pause_all.label" name="DL.showPauseButton"/><br/>
+			<input type="checkbox" label="action.resume_all.label" name="DL.showResumeButton"/><br/>
+			<input type="checkbox" label="action.cancel_all.label" name="DL.showCancelButton"/><br/>
+			<input type="checkbox" label="action.remove_all.label" name="DL.showRemoveButton"/><br/>
+		</div>
+	</div><br/>
+
+	<div class="groupbox">
+		<input type="checkbox" id="keepHistory" name="function.keepHistory" label="options.history_keep.label"/>
+		<div style="display: flex; padding-left: 20px;">
+			<input type="checkbox" id="trimHistory" name="function.trimHistory"/>
+			<div id="trimHistoryDes" label="options.history_trim.label"></div>
+			<input name="function.numToTrim" id="trimNum" type="number" style="margin-left: 5px; margin-right: 5px; width: 100px;" step="1" size="7" maxlength="4" min="0" max="9999999"/>
+			<div id="itemsDes" label="options.history_trim_downloads.label"></div>
+		</div>
+	</div><br/>
+
+	<input type="checkbox" label="options.history_switch_tab.label" name="DL.switchDownloadsTab"/><br/>
+	<input type="checkbox" label="options.confirm_delete_file.label" name="DL.confirmDeleteSystem"/><br/>
+	<input type="checkbox" label="options.dl_confirm_history.label" name="DL.confirmDeleteHistory"/><br/>
+	<input type="checkbox" label="options.history_open_in_window.label" name="DL.openInWindow"/><br/>
+	<input type="checkbox" label="options.show_tooltip.label" id="DL_show_tooltip" name="DL.showTooltip"/><br/>
+	<div id="DL_show_tooltip_hint" style="padding-left: 25px;"><input type="checkbox" name="DL.showTooltip_hint" label="options.show_tooltip_hint.label"/></div>
+	<br/>
+
+
+	<span label="options.datetime_format.label"></span>
+	<select name="DL.dateTimeFormat" id="dateTimeFormatDL">
+		<option value="%Y.%m.%d - %H:%M:%S"></option>
+		<option value="%d.%m.%Y - %H:%M:%S"></option>
+		<option value="%d/%m/%Y - %H:%M:%S"></option>
+		<option value="%Y/%m/%d - %H:%M:%S"></option>
+		<option value="%H:%M:%S - %d.%m.%Y"></option>
+		<option value="%H:%M:%S - %Y.%m.%d"></option>
+		<option value="%H:%M:%S - %d/%m/%Y"></option>
+		<option value="%H:%M:%S - %Y/%m/%d"></option>
+		<option value="%H:%M:%S - %m/%d/%Y"></option>
+	</select>
+</div>
+
+
+<table width="100%"><tr>
+	<td style="white-space: nowrap;">
+	<input type="button" id="save_settings" label="options.save.label"/>
+	<input type="button" id="copy_settings" label="options.copy.label"/>
+	<input type="button" id="load_settings" label="options.load.label"/>
+	<input id="load_settings_file" type="file" style="display: none"/>
+	</td><td align="right">
+	<input type="button" id="reset_settings" label="options.default.label"/>
+	</td>
+</tr></table>
+
+		</td>
+	</tr>
+</table>
+</form></center>
+</body>
+</html>

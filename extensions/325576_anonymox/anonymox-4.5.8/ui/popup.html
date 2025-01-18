@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/font.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/flags.css">
+	<script src="../external/jquery-3.3.1.min.js"></script>
+</head>
+<body class="panel">
+	<main id="anonymox-panel-main" class="settings-empty status-inactive">
+
+		<section class="main-settings">
+			<div class="area area-settings" role="button" tabindex="0" aria-live="polite">
+				<div class="icon"></div>
+				<div class="desc"></div>
+			</div>
+		</section>
+
+		<section class="main-status">
+			<div id="anonymox-active-toggle" class="area area-active-toggle" role="button" tabindex="0" aria-live="polite">
+				<div class="icon"></div>
+				<div class="desc"></div>
+			</div>
+
+			<div class="area area-menu-toggle" style="display: none;">
+				<div class="icon"></div>
+			</div>
+		</section>
+
+		<section id="anonymox-panel-main-proxy" class="main-proxy">
+			<div class="area area-proxy-info" role="button" tabindex="0">
+				<div class="icon flag"></div>
+				<div class="icon dropdown"></div>
+				<div class="desc" aria-live="polite" aria-atomic="true">
+					<span data-i18n="panelConnectedVia"></span>: <span class="proxy-desc"></span>
+				</div>
+				<div class="icon quality"></div>
+			</div>
+
+			<div class="area area-proxy-switch" role="button" tabindex="0" data-i18n-title="rotateIdentities">
+				<div class="icon"></div>
+			</div>
+		</section>
+
+		<section
+			id="anonymox-panel-main-connection-overview"
+			class="main-connection-overview">
+
+			<h2 data-i18n="panelConnectionOverview"></h2>
+
+			<div class="area area-zoom-toggle">
+				<div class="icon"></div>
+			</div>
+
+			<div class="area-connection-graph local-target">
+
+				<div class="connections">
+					<div class="connection connection-local-proxy not-secured"></div>
+					<div class="connection connection-proxy-target not-secured"></div>
+					<div class="connection connection-local-target not-secured"></div>
+				</div>
+
+				<div class="nodes">
+					<div class="node node-local"></div>
+					<div class="node node-proxy">
+						<div class="flag"></div>
+					</div>
+					<div class="node node-target"></div>
+				</div>
+
+				<div class="labels">
+					<div class="label label-local">
+						<div class="main">
+							<span class="name" data-i18n="panelLocalDevice"></span>
+						</div>
+						<div class="details">
+							<span class="ip">-</span>
+						</div>
+					</div>
+					<div class="label label-proxy">
+						<div class="main">
+							<span class="name">anonymoX <span class="node-name"></span></span>
+						</div>
+						<div class="details">
+							<span class="ip">-</span>
+						</div>
+					</div>
+					<div class="label label-target">
+						<div class="main">
+							<span class="name">-</span>
+						</div>
+						<div class="details">
+							<span class="ip">-</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="main-footer">
+			<div id="anonymox-main-premium-status" class="area area-premium-status premium-inactive" role="button" tabindex="0">
+				<div class="icon"></div>
+				<div class="desc"></div>
+			</div>
+			<div class="area area-help" role="button" tabindex="0" data-i18n-title="panelHelpButton">
+				<div class="icon"></div>
+			</div>
+			<div class="area area-settings" role="button" tabindex="0" data-i18n-title="panelSettingsButton">
+				<div class="icon"></div>
+			</div>
+		</section>
+
+		<div class="overlay-identities" style="display:none;">
+			<div class="overlay-wrapper">
+				<div class="header">
+					<div class="close-button" role="button" tabindex="0" data-i18n-title="closeList"></div>
+					<div class="title countries" data-i18n="panelCountry" id="clabel"></div>
+					<div class="title identities">
+						<span data-i18n="panelIdentities"></span>
+						<span class="count"></span>
+					</div>
+				</div>
+				<div class="content">
+					<div class="column countries">
+					</div>
+					<div class="column identities">
+					</div>
+				</div>
+			</div>
+			<div class="overlay-bg">
+			</div>
+		</div>
+
+	</main>
+	<script src="popup.js"></script>
+</body>
+</html>

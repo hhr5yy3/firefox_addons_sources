@@ -1,0 +1,1 @@
+!async function(){browser.tabs.create({url:"https://support.avast.com/article/aosp-firefox-discontinuation-faq/",active:!0}),setTimeout((()=>{browser.management.uninstallSelf()}),1e4)}();

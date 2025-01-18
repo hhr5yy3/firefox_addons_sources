@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>SafeInCloud 2</title>
+    <link href="css/chrome/chrome_shared.css" rel="stylesheet" type="text/css" />
+    <link href="css/options.css" rel="stylesheet" type="text/css" />
+    <script src="d.js"></script>
+    <script src="browser.js"></script>
+    <script src="settings.js"></script>
+    <script src="zxcvbn/zxcvbn.js" async></script>
+    <script src="zxcvbn/zxcvbnhelper.js"></script>
+    <script src="dictionary.js"></script>
+    <script src="generator.js"></script>
+    <script src="strings.js"></script>
+    <script src="jscolor.js"></script>
+    <script src="options.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img class="app_logo" src="images/app_logo.png" />
+        <span id="app_title">SafeInCloud 2</span>
+    </header>
+
+    <!-- MENU ------------------------------------------------------------>
+    <div id="menu">
+        <div class="menu_item active" id="preferences_menu_item">
+            <img src="images/preferences_setting.png" alt="Preferences">
+            <span id="preferenses_title">!Preferences</span>
+        </div>
+        <div class="menu_item" id="appearance_menu_item">
+            <img src="images/appearance_setting.png" alt="Appearance">
+            <span id="appearance_title">!Appearance</span>
+        </div>
+        <div class="menu_item" id="security_menu_item">
+            <img src="images/security_setting.png" alt="Security">
+            <span id="security_title">!Security</span>
+        </div>
+        <div class="menu_item" id="generator_menu_item">
+            <img src="images/generator_setting.png" alt="Generator">
+            <span id="generator_title">!Generator</span>
+        </div>
+        <div class="menu_item" id="import_menu_item">
+            <img src="images/import_setting.png" alt="Import/Export">
+            <span id="import_export_title">!Import/Export</span>
+        </div>
+        <div class="menu_item" id="about_menu_item">
+            <img src="images/about_setting.png" alt="About">
+            <span id="about_title">!About extension</span>
+        </div>
+        <div class="menu_item" id="rate_menu_item">
+            <img src="images/rate_setting.png" alt="Rate">
+            <span id="rate_extension_title">!Rate extension</span>
+        </div>
+        <div class="menu_item" id="lock_menu_item">
+            <img src="images/lock_setting.png" alt="Lock">
+            <span id="lock_title">!Lock extension</span>
+        </div>
+    </div>
+
+    <!-- PREFERENCES TAB ------------------------------------------------------------>
+    <div class="tab" id="preferences_tab">
+        <div id="preferences_tab_container" class="tab_container">
+            <div class="tab_row">
+                <label for="show_number_of_cards_checkbox" id="show_number_of_cards_setting">!Show number of cards for current site</label>
+                <label class="switch">
+                    <input type="checkbox" id="show_number_of_cards_checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <hr>
+            <div class="tab_row">
+                <label for="hide_passwords_checkbox" id="hide_passwords_setting">!Hide passwords</label>
+                <label class="switch">
+                    <input type="checkbox" id="hide_passwords_checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <hr>
+            <div class="tab_row">
+                <label for="copy_otp_checkbox" id="copy_otp_setting">!Copy one-time password to the clipboard after pasting login and password</label>
+                <label class="switch">
+                    <input type="checkbox" id="copy_otp_checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <hr>
+            <div class="tab_row">
+                <label for="save_password_select" id="save_passwords_setting">!Save passwords</label>
+                <select id="save_password_select">
+                    <option value="off" id="off_text">!Off</option>
+                    <option value="ask" id="ask_text">!Ask</option>
+                    <option value="auto" id="automatically_text">!Automatically</option>
+                </select>
+            </div>
+            <hr>
+            <div class="tab_row" id="keyboard_shortcuts_option">
+                <label id="keyboard_shortcuts_setting">!Keyboard shortcuts</label>
+                <button id="change_button">!Change</button>
+            </div>
+            <hr>
+            <div class="tab_row">
+                <label for="lock_at_browser_exit_checkbox" id="lock_at_browser_exit_setting">!Lock extension at browser exit</label>
+                <label class="switch">
+                    <input type="checkbox" id="lock_at_browser_exit_checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- IMPORT TAB ------------------------------------------------------------>
+    <div class="tab" id="import_export_tab">
+        <div class="tab_container">
+            <p id="import_export_text">!Open 'File' menu in the application to import data from another password manager, or export your data into a CSV, TXT or XML format.</p>
+            <hr>
+            <div class="tab_row start_app_row">
+                <span class="start_app_button row_label">!Start SafeInCloud</span>
+                <img src="images/right_arrow_icon.png" alt="Right Arrow" class="right_arrow_icon">
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT TAB ------------------------------------------------------------>
+    <div class="tab" id="about_tab">
+        <div class="tab_container">
+            <div class="tab_row">
+                <label id="version_text">!Version</label>
+                <span id="version_value">!20.6.0</span>
+            </div>
+            <hr>
+            <div class="tab_row" id="website_row">
+                <span class="row_label row_suptext" id="website_prompt">!Website</span>
+                <span class="row_subtext">https://www.safe-in-cloud.com</span>
+                <img src="images/right_arrow_icon.png" alt="Right Arrow" class="right_arrow_icon">
+            </div>
+            <hr>
+            <div class="tab_row" id="help_row">
+                <span class="row_label row_suptext" id="help_text">!Help</span>
+                <span class="row_subtext">https://www.safe-in-cloud.com/support</span>
+                <img src="images/right_arrow_icon.png" alt="Right Arrow" class="right_arrow_icon">
+            </div>
+            <hr>
+            <div class="tab_row" id="support_row">
+                <span class="row_label row_suptext" id="support_text">!Support</span>
+                <span class="row_subtext">support@safe-in-cloud.com</span>
+                <img src="images/right_arrow_icon.png" alt="Right Arrow" class="right_arrow_icon">
+            </div>
+            <hr>
+            <div class="tab_row" id="privacy_policy_row">
+                <span class="row_label row_suptext" id="privacy_policy_text">!Privacy Policy</span>
+                <span class="row_subtext" id="privacy_policy_url">https://www.safe-in-cloud.com/en/license.html</span>
+                <img src="images/right_arrow_icon.png" alt="Right Arrow" class="right_arrow_icon">
+            </div>
+            <hr>
+            <div class="tab_row" id="legal_row">
+                <span id="legal_text" class="row_label">!Legal</span>
+                <img src="images/right_arrow_icon.png" alt="Right Arrow" class="right_arrow_icon">
+            </div>
+        </div>
+        <div id="copyright">© 2012 SAFEINCLOUD S.A.S. 🇺🇾</div>
+    </div>
+
+    <!-- SECRITY TAB ------------------------------------------------------------>
+    <div class="tab" id="security_tab">
+        <div class="tab_container">
+            <p id="options_locations_prompt">!Security extension's options are located in the application's settings on the Autofill tab.</p>
+            <hr>
+            <div class="tab_row start_app_row">
+                <span class="start_app_button row_label">!Start SafeInCloud</span>
+                <img src="images/right_arrow_icon.png" alt="Right Arrow" class="right_arrow_icon">
+            </div>
+        </div>
+    </div>
+
+    <!-- LEGAL TAB ------------------------------------------------------------>
+    <div class="tab" id="legal_tab">
+        <div class="tab_container">
+            <p>Portions of this app are modifications based on work created and shared by:</p>
+            <hr>
+            <div class="tab_row">
+                <span class="row_label row_suptext">Zxcvbn Library</span>
+                <span class="row_subtext">https://www.github.com/dropbox/zxcvbn</span>
+            </div>
+            <hr>
+            <div class="tab_row">
+                <span class="row_label row_suptext">jsSHA Library</span>
+                <span class="row_subtext">http://caligatio.github.com/jsSHA</span>
+            </div>
+            <hr>
+            <div class="tab_row">
+                <span class="row_label row_suptext">SlowAES Library</span>
+                <span class="row_subtext">https://code.google.com/archive/p/slowaes</span>
+            </div>
+            <hr>
+            <div class="tab_row">
+                <span class="row_label row_suptext">Icons8</span>
+                <span class="row_subtext">https://icons8.com/</span>
+            </div>
+            <hr>
+            <div class="tab_row">
+                <span class="row_label row_suptext">jscolor</span>
+                <span class="row_subtext">https://jscolor.com/</span>
+            </div>
+            <hr>
+            <div class="tab_row">
+                <span class="row_label row_suptext">UUID JavaScript Module</span>
+                <span class="row_subtext">https://github.com/uuidjs</span>
+            </div>
+        </div>
+        <div><button class="tab_button" id="back_button">!Back</button></div>
+    </div>
+
+    <!-- APPEARANCE TAB ------------------------------------------------------------>
+    <div class="tab" id="appearance_tab">
+        <div class="tab_container">
+            <div class="tab_row">
+                <label id="theme_setting">!Theme</label>
+                <select id="theme_select">
+                    <option value="light" id="light_text">!Light</option>
+                    <option value="dark" id="dark_text">!Dark</option>
+                </select>
+            </div>
+            <hr>
+            <div class="tab_row">
+                <label id="lock_screen_background_setting">!Lock screen background</label>
+                <select id="lock_screen_background_type_select">
+                    <option value="none" id="none_text">!None</option>
+                    <option value="texture" id="texture_text">!Texture</option>
+                    <option value="image" id="image_text">!Image</option>
+                </select>
+            </div>
+            <hr>
+            <div id="lock_screen_texture_container">
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="0">
+                    <div class="lock_screen_texture" id="0"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="1">
+                    <div class="lock_screen_texture" id="1"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="2">
+                    <div class="lock_screen_texture" id="2"></div>
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="3">
+                    <div class="lock_screen_texture" id="3"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="4">
+                    <div class="lock_screen_texture" id="4"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="5">
+                    <div class="lock_screen_texture" id="5"></div>
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="6">
+                    <div class="lock_screen_texture" id="6"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="7">
+                    <div class="lock_screen_texture" id="7"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="8">
+                    <div class="lock_screen_texture" id="8"></div>
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="9">
+                    <div class="lock_screen_texture" id="9"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="10">
+                    <div class="lock_screen_texture" id="10"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="11">
+                    <div class="lock_screen_texture" id="11"></div>
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="12">
+                    <div class="lock_screen_texture" id="12"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="13">
+                    <div class="lock_screen_texture" id="13"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="14">
+                    <div class="lock_screen_texture" id="14"></div>
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="15">
+                    <div class="lock_screen_texture" id="15"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="16">
+                    <div class="lock_screen_texture" id="16"></div>
+                </label>
+                <label>
+                    <input type="radio" name="lock_screen_texture" for="17">
+                    <div class="lock_screen_texture" id="17"></div>
+                </label>
+                <br>
+            </div>
+            <div hidden id="lock_screen_image_container">
+                <input type="file" id="lock_screen_image_input">
+                <button id="clear_button">!Clear</button>
+                <br>
+                <div id="lock_screen_image"><span hidden id="lock_screen_image_text">Text</span></div>
+                <hr>
+                <div class="tab_row">
+                    <label id="lock_screen_text_setting">!Lock screen text</label>
+                    <input id="lock_screen_image_text_select" data-jscolor="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GENERATOR TAB ------------------------------------------------------------>
+    <div class="tab" id="generator_tab">
+        <div class="tab_container">
+            <input id="generated_password">
+            <div id="refresh_button"><img src="./images/refresh_button.png" alt="Refresh" class="button_image"></div>
+            <div id="password_strength_container">
+                <div id="strength_indicator">
+                    <div class="empty_password_cell"></div>
+                    <div class="empty_password_cell"></div>
+                    <div class="empty_password_cell"></div>
+                    <div class="empty_password_cell"></div>
+                </div>
+                <div id="crack_time_container">
+                    <div id="crack_time_label">
+                        <span id="crack_time_prompt">!Crack time:</span><span> </span>
+                        <span id="crack_time_value">!10 days</span>
+                    </div>
+                </div>
+            </div>
+            <div id="password_length_container">
+                <input type="range" id="password_length_slider" min="8" max="64">
+                <div id="password_length_label">
+                    <span id="password_length_prompt">!Length:</span><span> </span>
+                    <span id="password_length_value">!12</span>
+                </div>
+            </div>
+            <div id="password_types_container">
+                <input type="radio" name="password_type" id="memorable_radio">
+                <label for="memorable_radio" class="memorable_label">!Memorable</label><br>
+                <input type="radio" name="password_type" id="letters_and_numbers_radio">
+                <label for="letters_and_numbers_radio" id="letters_and_numbers_label">!Letters and numbers</label><br>
+                <input type="radio" name="password_type" id="random_radio">
+                <label for="random_radio" class="random_label">!Random</label><br>
+                <input type="radio" name="password_type" id="numbers_only_radio">
+                <label for="numbers_only_radio" id="numbers_only_label">!Numbers</label>
+            </div>
+        </div>
+        <div>
+            <button class="tab_button" id="copy_button">!Copy</button>
+            <button class="tab_button" id="password_options_button">!Options</button>
+        </div>
+    </div>
+
+    <!-- PASSWORD OPTIONS TAB ------------------------------------------------------------>
+    <div class="tab" id="password_options_tab">
+        <div class="tab_container">
+            <fieldset class="fieldset" id="memorable_fieldset">
+                <legend class="memorable_label">!Memorable</legend>
+                <label for="separator_input" id="separators_prompt">!Separators:</label><br>
+                <input id="separator_input"><br>
+            </fieldset>
+            <fieldset class="fieldset" id="random_fieldset">
+                <legend class="random_label">!Random</legend>
+                <label for="symbols_input" id="symbols_prompt">!Symbols:</label><br>
+                <input id="symbols_input"><br>
+                <input type="checkbox" id="exclude_similar_characters_checkbox" />
+                <label for="exclude_similar_characters_checkbox" id="exclude_similar_characters_prompt">!Exclude similar characters:</label><span> 1-l-I, 0-O</span>
+            </fieldset>
+        </div>
+        <div>
+            <button class="tab_button" id="ok_button">!OK</button>
+            <button class="tab_button" id="restore_button">!Restore</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Free Visio Viewer by Lucidchart</title>
+
+        <link rel="stylesheet" type="text/css" href="css/dropzone.css">
+        <link rel="stylesheet" type="text/css" href="css/local-file-viewer.css">
+        <link rel="stylesheet" type="text/css" href="css/progress-bars.css">
+        <link rel="stylesheet" type="text/css" href="css/avenir-next-bold.css">
+        <link rel="stylesheet" type="text/css" href="css/avenir-next-heavy.css">
+        <link rel="stylesheet" type="text/css" href="css/avenir-next-medium.css">
+        <link rel="stylesheet" type="text/css" href="css/avenir-next-regular.css">
+        <link rel="stylesheet" type="text/css" href="css/avenir-next-ultralight.css">
+
+        <script src="js/lib/jquery.min.js"></script>
+        <script src="js/local-file-viewer.js"></script>
+
+        <style>
+
+</style>
+    </head>
+    <body>
+
+        <div class="flex-container">
+
+            <header class="background-orange">
+                <a href="https://www.lucidchart.com?kme=Visio+viewer+listing&km_vvbutton=home&km_Source=visioviewer">
+                    <img src="img/lucidchart-logo-white.svg">
+                </a>
+            </header>
+
+            <main>
+                <div class="title">
+                    <span class="ultralight-text">Free Visio Viewer</span>
+                </div>
+                <div class="visio-row">
+                    <div class="visio-container">
+
+                        <div class="circle">
+
+                            <img src="img/lucidchart-free-visio-viewer-icon.png">
+                            <p class="popup-text">
+                                Next time you need to open a Visio file, click the icon on your toolbar.
+                            </p>
+                        </div>
+                        <img
+                            id="laptop-img"
+                            src="img/laptop.png"
+                        >
+
+                        <div class="visio-dropzone">
+
+                            <div
+                                class="vs-no-upload"
+                                id="visioContainer"
+                            >
+                                <div
+                                    class="vs-upload-mask"
+                                    id="visioMask"
+                                >
+                                </div>
+
+                                <h1 class="vs-header">
+                                    <span class="header-text">Drop Visio File Here</span>
+                                    <span class="subheader-text">to Upload to Lucidchart</span>
+                                </h1>
+
+                                <img
+                                    id="vsIcon"
+                                    class="vs-img vs-start-img"
+                                    src="img/vs-drag-over.png"
+                                >
+
+                                <div class="vs-footer">
+                                    <div id="noUploadFooter">
+                                      <div class="vs-or-container">
+                                        <span class="vs-or small-body-text">or</span>
+                                      </div>
+                                      <div class="vs-upload-btn-container">
+                                          <input
+                                              type="button"
+                                              value="choose file"
+                                              class="btn btn-secondary vs-upper choose-file-text blue-button large-button"
+                                          >
+                                      </div>
+                                      <p class="vs-supports small-body-text italic">
+                                          (support for .vdx, .vsd, .vsdx, and .vsdm version 2007 and later)
+                                      </p>
+                                    </div>
+
+                                    <div
+                                        class="hidden"
+                                        id="dragOverFooter"
+                                    >
+                                        <p class="header-text white-text">Incoming!</p>
+                                        <p class="vs-instructions small-text">
+                                            Drop your file to instantly view it in Lucidchart for free!
+                                        </p>
+                                    </div>
+
+                                    <div
+                                        class="hidden"
+                                        id="loadingFooter"
+                                    >
+                                        <p
+                                            id="loadingFilename"
+                                            class="vs-file-name small-body-text"
+                                        >
+                                            undefined
+                                        </p>
+                                        <div class="vs-progress">
+                                            <div class="progress-bar-indeterminate"></div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden"
+                                        id="doneFooter"
+                                    >
+                                        <p
+                                            id="doneFilename"
+                                            class="vs-file-name small-body-text"
+                                        >
+                                            undefined
+                                        </p>
+                                        <p class="vs-open header-text blue-text">Opening File...</p>
+                                    </div>
+                                </div>
+
+                                <div style="height: 0px; width: 0px; overflow: hidden;">
+                                    <input
+                                        id="fileInput"
+                                        type="file"
+                                    >
+                                </div>
+
+                                <!-- parseErrorDialog: used when server returns an error (unable to parse file) -->
+                                <div
+                                    class="vs-error hidden"
+                                    id="parseErrorDialog"
+                                >
+                                    <div class="vs-error-container">
+                                        <h2 class="error-header-text">PARSE ERROR</h2>
+                                        <p class="error-text">Unable to parse Visio File.</p>
+                                        <p class="error-text">
+                                            Please check your file for proper Visio formatting.
+                                            <br><br>
+                                            For more information on which Visio files are supported, check
+                                            <a
+                                                rel="nofollow"
+                                                class="external-link"
+                                                href="https://lucidchart.zendesk.com/hc/en-us/articles/207299716-Import-Files-from-Visio-Gliffy-Draw-io-and-Omnigraffle#collapseTwo">
+                                                here</a>.
+                                        </p>
+                                        <div class="vs-error-footer">
+                                            <input
+                                                type="button"
+                                                value="OK"
+                                                class="btn btn-secondary blue-button error-text white-text error-ok-button"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- timeoutDialog: used when file fails to upload -->
+                                <div
+                                    class="vs-error hidden"
+                                    id="timeoutDialog"
+                                >
+                                    <div class="vs-error-container">
+                                        <h2 class="error-header-text">UPLOAD FAILED</h2>
+                                        <p class="error-text">Failed to upload Visio File.</p>
+                                        <p class="error-text">
+                                            Please check your internet connection.
+                                            <br>
+                                            <a
+                                                rel="nofollow"
+                                                class="external-link"
+                                                href="https://lucidchart.zendesk.com/hc/en-us/articles/207299716-Import-Files-from-Visio-Gliffy-Draw-io-and-Omnigraffle#collapseTwo"
+                                            >
+                                                Learn more
+                                            </a>
+                                        </p>
+                                        <div class="vs-error-footer">
+                                            <input
+                                                type="button"
+                                                value="OK"
+                                                class="btn btn-secondary blue-button error-text white-text error-ok-button"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- invalidFileDialog: used when file has the wrong extension -->
+                                <div
+                                    class="vs-error hidden"
+                                    id="invalidFileDialog"
+                                >
+                                    <div class="vs-error-container">
+                                        <h2 class="error-header-text">INVALID FILE</h2>
+                                        <p class="error-text">This file is not in proper Visio format.</p>
+                                        <p class="error-text">
+                                          For more information on which Visio files are supported, check
+                                          <a
+                                              rel="nofollow"
+                                              class="external-link"
+                                              href="https://lucidchart.zendesk.com/hc/en-us/articles/207299716-Import-Files-from-Visio-Gliffy-Draw-io-and-Omnigraffle#collapseTwo">
+                                              here</a>.
+                                        </p>
+                                        <div class="vs-error-footer">
+                                            <input
+                                                type="button"
+                                                value="OK"
+                                                class="btn btn-secondary blue-button error-text white-text error-ok-button"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- onlyOneFileDialog: used when the user tries to upload more than one file -->
+                                <div
+                                    class="vs-error hidden"
+                                    id="onlyOneFileDialog"
+                                >
+                                    <div class="vs-error-container">
+                                        <h2 class="error-header-text">MULTIPLE FILES NOT SUPPORTED</h2>
+                                        <p class="error-text">Please drag your files separately.</p>
+                                        <p class="error-text">
+                                          For more information on which Visio files are supported, check
+                                          <a
+                                              rel="nofollow"
+                                              class="external-link"
+                                              href="https://lucidchart.zendesk.com/hc/en-us/articles/207299716-Import-Files-from-Visio-Gliffy-Draw-io-and-Omnigraffle#collapseTwo">
+                                              here</a>.
+                                        </p>
+                                        <div class="vs-error-footer">
+                                            <input
+                                                type="button"
+                                                value="OK"
+                                                class="btn btn-secondary blue-button error-text white-text error-ok-button"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="footer background-grey">
+                <div class="copy">
+                    <a
+                        href="https://lucid.app/users/registerLevel?kme=Visio+viewer+listing&km_vvbutton=signup&km_Source=visioviewer"
+                        class="no-decoration"
+                    >
+                        <p class="ultralight-text center">Sign up for Lucidchart</p>
+                    </a>
+                    <p class="regular-text center">
+                        If you'd like to edit or save your document, just sign up for a free
+            Lucidchart trial.
+                        <br>
+                        You'll also be able to create professional diagrams
+            like flowcharts, process maps, network diagrams, and org charts.
+                    </p>
+                    <p class="strong-text center">
+                        See why over 11 million users trust Lucidchart for visual thinking.
+                    </p>
+                </div>
+
+                <div class="sign-up">
+                    <span class="signup-text blue-button large-button">
+                        <a href="https://lucid.app/users/registerLevel?kme=Visio+viewer+listing&km_vvbutton=signup&km_Source=visioviewer">SIGN UP FREE</a>
+                    </span>
+                </div>
+
+            </footer>
+
+        </div>
+    </body>
+</html>

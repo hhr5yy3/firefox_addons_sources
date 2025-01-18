@@ -1,0 +1,150 @@
+.url-provider {
+  display: flex;
+  flex-direction: column;
+}
+.address-input {
+  flex: 1;
+  resize: none;
+  font-family: monospace;
+  font-size: inherit;
+  white-space: pre;
+  padding: 0.4ch;
+  margin: 0 1px;
+}
+.convert-options {
+  padding: 4px 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.url-list-filter-row {
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+}
+.url-list-filter-icon {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.6ch;
+}
+.url-list-filter-container {
+  flex: 1;
+  position: relative;
+  display: flex;
+  margin-right: 0.6ch;
+}
+.url-list-filter {
+  flex: 1;
+  padding-right: 1.6em;
+}
+.url-list-filter-clear {
+  width: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  cursor: pointer;
+  color: #808080;
+}
+.url-list-filter-clear:hover {
+  color: #000;
+}
+.url-list-filter-clear .icon {
+  width: 1em;
+  height: 1em;
+}
+.url-list-outer {
+  flex: 1;
+  position: relative;
+  border: 1px solid #d3d3d3;
+}
+.url-list-inner {
+  flex: 1;
+  overflow: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+.url-list {
+  display: grid;
+  grid-template-columns: max-content 1fr 2fr;
+}
+.url-list thead,
+.url-list tbody,
+.url-list tr {
+  display: contents;
+}
+.url-list th,
+.url-list td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.url-list th {
+  font-weight: normal;
+  text-align: start;
+  border-bottom: 1px solid #d3d3d3;
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
+.url-list td {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.url-list th:not(:first-of-type),
+.url-list td:not(:first-of-type) {
+  border-left: 1px solid #d3d3d3;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.url-list td:not(:first-of-type) {
+  border-left-color: transparent;
+}
+.url-list-loading {
+  height: 3px;
+  overflow: hidden;
+}
+.url-list-loading-indicator {
+  height: 100%;
+  width: 40%;
+  background: #808080;
+  position: relative;
+  animation: url-list-loading-indicator 2s linear infinite;
+}
+@-moz-keyframes url-list-loading-indicator {
+  from {
+    left: -40%;
+  }
+  to {
+    left: 100%;
+  }
+}
+@-webkit-keyframes url-list-loading-indicator {
+  from {
+    left: -40%;
+  }
+  to {
+    left: 100%;
+  }
+}
+@-o-keyframes url-list-loading-indicator {
+  from {
+    left: -40%;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes url-list-loading-indicator {
+  from {
+    left: -40%;
+  }
+  to {
+    left: 100%;
+  }
+}
+

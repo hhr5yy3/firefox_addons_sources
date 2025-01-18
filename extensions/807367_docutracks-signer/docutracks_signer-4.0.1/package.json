@@ -1,0 +1,15 @@
+{
+  "name": "docutracks-signer-addon",
+  "private": true,
+  "version": "3.0.0",
+  "description": "Docutracks Signer AddOn",
+  "main": "index.js",
+  "scripts": {
+    "start": "web-ext run",
+    "build": "rm web-ext-artifacts/*; web-ext build --overwrite-dest",
+    "sign": "source .keys && web-ext sign --api-key=$WEB_EXT_API_KEY --api-secret=$WEB_EXT_API_SECRET"
+  },
+  "devDependencies": {
+    "web-ext": "^2.7.0"
+  }
+}

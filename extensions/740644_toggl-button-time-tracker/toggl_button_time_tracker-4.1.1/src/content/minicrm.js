@@ -1,0 +1,1 @@
+togglbutton.render(".task-header .meta:not(.toggl)",{},function(e){const n=$(".title h1",e).textContent.trim();let t=$('[data-contexttype="deal"]',e);t=t?t.textContent.trim():"";const o=togglbutton.createTimerLink({className:"agenocrm",description:n,projectName:t});e.appendChild(o)});

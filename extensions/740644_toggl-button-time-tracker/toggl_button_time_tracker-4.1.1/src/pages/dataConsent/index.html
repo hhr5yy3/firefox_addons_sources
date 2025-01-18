@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Toggl Track Browser Extension</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script type="module" crossorigin src="/dataConsent.js"></script>
+  <link rel="modulepreload" href="/assets/modulepreload-polyfill.js">
+  <link rel="modulepreload" href="/assets/browser-polyfill.js">
+  <link rel="modulepreload" href="/assets/constants.js">
+  <link rel="modulepreload" href="/assets/errorReport.js">
+  <link rel="stylesheet" href="/assets/dataConsent.css">
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@300;400;500;700&display=swap');
+</style>
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+</style>
+
+
+
+<body>
+  <div class="root">
+    <div class="container">
+      <img src="/assets/large-logo.svg" alt="Toggl Track Logo" />
+      <h1>Data collection consent</h1>
+      <div class="list-container">
+        <div class="setting">
+          <label for="usage-statistics">
+            <h2>Send usage statistics</h2>
+            <p>
+              Help us understand how Toggl Track Browser Extension is used by
+              sending usage statistics
+            </p>
+          </label>
+          <input id="usage-statistics" name="usage-statistics" type="checkbox" />
+          <div></div>
+        </div>
+        <div class="setting">
+          <label for="error-reports">
+            <h2>Send error reports</h2>
+            <p>
+              Submit error reports to help us fix issues with Toggl Track
+              Browser extension
+            </p>
+          </label>
+          <input id="error-reports" name="error-reports" type="checkbox" />
+          <div></div>
+        </div>
+      </div>
+      <h3>
+        You can revert that decision later in the Track Extension's Settings
+        page, on the Telemetry section.
+      </h3>
+      <div id="privacy-info">
+        <h3>Privacy & Data Processing</h3>
+        <ul>
+          <li>
+            You are not obliged to send us data described above. If you choose
+            not to do it, we will not be able to achieve the data processing
+            purposes described above.
+          </li>
+          <li>
+            You can always withdraw your consent at any time, but this will
+            not affect the lawfulness of any processing activities carried out
+            based on your consent before its withdrawal.
+          </li>
+        </ul>
+        <h3>
+          Read our
+          <a href="https://toggl.com/legal/track/privacy/" target="_blank">Privacy Policy</a>
+          and
+          <a href="https://toggl.com/legal/track/terms/" target="_blank">Terms of Service</a>
+        </h3>
+      </div>
+      <footer>
+        <button id="request-permissions-btn">Save settings</button>
+        <div id="settings-submitted-msg">Settings saved</div>
+      </footer>
+    </div>
+  </div>
+</body>
+
+</html>

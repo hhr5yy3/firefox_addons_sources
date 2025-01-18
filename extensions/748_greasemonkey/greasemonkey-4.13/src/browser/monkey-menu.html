@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/third-party/shoelace/shoelace.css">
+<link rel="stylesheet" href="/third-party/font_awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="monkey-menu.css">
+<meta name="viewport" content="width=300, initial-scale=1.75">
+</head>
+<body class="rendering">
+
+<div id="mobile-wrapper">
+<section class="main-menu" tabindex="-1" role="dialog">
+  <menu>
+    <menuitem id="toggle-global-enabled" tabindex="0" role="button">
+      <i class="icon fa" rv-class-fa-check="enabled"></i>
+      <span class="text i18n">
+        {enabled|i18nBool 'greasemonkey_is_active' 'greasemonkey_is_disabled'}
+      </span>
+    </menuitem>
+    <menuitem id="open-options" tabindex="0" role="button">
+      <i class="icon fa fa-fw fa-cogs"></i>
+      <span class="text">{'greasemonkey_options'|i18n}</span>
+      <span class="arrow"></span>
+    </menuitem>
+
+    <hr rv-if="menuCommands | empty | not">
+    <menuitem id="open-menu-commands" tabindex="0" role="button"
+        rv-if="menuCommands | empty | not">
+      <i class="icon fa fa-fw fa-list-alt"></i>
+      <span class="text">{'user_script_commands_button'|i18n}</span>
+      <span class="arrow"></span>
+    </menuitem>
+
+    <hr rv-if="userScripts.active | bothArraysEmpty userScripts.inactive | not">
+
+    <div id="script-list-scroll" tabindex="-1">
+      <div rv-if="userScripts.active | empty | not">
+        <heading role="heading" aria-level="1">
+          {'user_scripts_for_this_tab'|i18n}
+        </heading>
+        <menuitem rv-each-script="userScripts.active"
+            class="user-script"
+            rv-enabled="script.enabled"
+            rv-class-disabled="script.enabled | not"
+            rv-data-uuid="script.uuid"
+            tabindex="0"
+            role="button">
+          <i class="icon"><img rv-src="script.icon"></i>
+          <span class="text">{'name'|i18nUserScript script}</span>
+          <span class="arrow"></span>
+        </menuitem>
+      </div>
+      <!-- TODO: Don't duplicate the above and below sections. -->
+      <div rv-if="userScripts.inactive | empty | not">
+        <hr rv-if="userScripts.active | empty | not">
+        <heading role="heading" aria-level="1">
+          {'other_user_scripts'|i18n}
+        </heading>
+        <menuitem rv-each-script="userScripts.inactive"
+            class="user-script"
+            rv-enabled="script.enabled"
+            rv-class-disabled="script.enabled | not"
+            rv-data-uuid="script.uuid"
+            tabindex="0"
+            role="button">
+          <i class="icon"><img rv-src="script.icon"></i>
+          <span class="text">{'name'|i18nUserScript script}</span>
+          <span class="arrow"></span>
+        </menuitem>
+      </div>
+    </div>
+
+    <hr>
+
+    <menuitem id="new-user-script" tabindex="0" role="button">
+      <i class="icon fa fa-file-text-o"></i>
+      <span class="text">{'new_user_script'|i18n}</span>
+    </menuitem>
+    <menuitem id="backup-export" tabindex="0" role="button">
+      <i class="icon fa fa-upload"></i>
+      <span class="text">{'backup_export'|i18n}</span>
+    </menuitem>
+    <menuitem id="backup-import" tabindex="0" role="button">
+      <i class="icon fa fa-download"></i>
+      <span class="text">{'backup_import'|i18n}</span>
+    </menuitem>
+
+    <hr>
+
+    <menuitem tabindex="0" data-url="https://www.greasespot.net/"
+        role="button">
+      <i class="icon fa fa-link"></i>
+      <span class="text">{'greasemonkey_home_page'|i18n}</span>
+    </menuitem>
+    <menuitem tabindex="0" data-url="https://wiki.greasespot.net/"
+        role="button">
+      <i class="icon fa fa-link"></i>
+      <span class="text">{'greasemonkey_wiki'|i18n}</span>
+    </menuitem>
+    <menuitem data-url="https://wiki.greasespot.net/User_Script_Hosting"
+        tabindex="0" role="button">
+      <i class="icon fa fa-link"></i>
+      <span class="text">{'get_user_scripts'|i18n}</span>
+    </menuitem>
+  </menu>
+</section>
+
+
+<section class="options"  tabindex="-1" role="dialog">
+  <header>
+    <menuitem tabindex="0" class="go-back" role="button"
+        rv-aria-label="'back'|i18n"></menuitem>
+    <span role="heading" aria-level="1">{'greasemonkey_options'|i18n}</span>
+  </header>
+
+  <hr>
+
+  <menu>
+    <h2>
+      <a href="https://wiki.greasespot.net/Include_and_exclude_rules">
+        <i class="icon fa fa-question-circle" rv-aria-label="'help' | i18n"></i>
+      </a>
+      {'global_excludes'|i18n}
+    </h2>
+    <p class="explain">
+      {'global_excludes_explain'|i18n}
+    </p>
+    <p>
+      <textarea rows="5" rv-value="options.globalExcludesStr"
+          rv-title="'global_excludes'|i18n">
+      </textarea>
+      <menuitem id="add-global-exclude-current" role="button"
+          rv-if="options.globalExcludesStr | canAddOrigin">
+        <i class="icon fa fa-plus"></i>
+        {'exclude'|i18n} {originGlob}
+      </menuitem>
+    </p>
+
+    <h2>{'editor'|i18n}</h2>
+    <p>
+      <label>
+        <input type="checkbox" rv-checked="options.useCodeMirror">
+          {'use_enhanced_editor'|i18n}
+      </label>
+      <br>
+      {'use_enhanced_editor_explain'|i18n}
+    </p>
+  </menu>
+</section>
+
+
+<section class="menu-commands"  tabindex="-1" role="dialog">
+  <header>
+    <menuitem tabindex="0" class="go-back" role="button"
+        rv-aria-label="'back'|i18n"></menuitem>
+    <span role="heading" aria-level="1">{'user_script_commands'|i18n}</span>
+  </header>
+
+  <hr>
+
+  <menu>
+    <menuitem rv-each-command="menuCommands"
+        rv-command="command.id | mmUuidMenu"
+        rv-aria-keyshortcuts="command.accessKey"
+        tabindex="0"
+        role="button">
+      <i class="icon"><img rv-src="command.icon"></i>
+      <span class="text">
+        {command.caption}<span rv-if="command.accessKey">(<span class="access-key">{command.accessKey}</span>)</span>
+      </span>
+    </menuitem>
+  </menu>
+</section>
+
+
+<section class="user-script"  tabindex="-1" role="dialog">
+  <header>
+    <menuitem tabindex="0" class="go-back" role="button"
+        rv-aria-label="'back'|i18n"></menuitem>
+    <span role="heading" aria-level="1">{'name'|i18nUserScript activeScript}</span>
+  </header>
+
+  <hr>
+
+  <menu>
+    <menuitem tabindex="0" id="user-script-toggle-enabled" role="button">
+      <i class="icon fa" rv-class-fa-check="activeScript.enabled"></i>
+      <span class="text">{activeScript.enabled|i18nBool 'enabled' 'disabled'}</span>
+    </menuitem>
+    <menuitem tabindex="0" id="user-script-edit" role="button">
+      <i class="icon fa fa-pencil-square-o"></i>
+      <span class="text">{'edit'|i18n}</span>
+    </menuitem>
+    <menuitem tabindex="0" id="user-script-uninstall" role="button"
+        rv-if="pendingUninstall | not"
+    >
+      <i class="icon fa fa-trash-o"></i>
+      <span class="text">{'uninstall'|i18n}</span>
+    </menuitem>
+    <menuitem tabindex="0" id="user-script-undo-uninstall" role="button"
+        rv-if="pendingUninstall"
+    >
+      <i class="icon fa fa-trash-o"></i>
+      <span class="text">{'undo_uninstall'|i18n} ({ pendingUninstall })</span>
+    </menuitem>
+    <menuitem tabindex="0" id="open-user-script-options" role="button">
+      <i class="icon fa fa-fw fa-cogs"></i>
+      <span class="text">{'user_script_options'|i18n}</span>
+      <span class="arrow"></span>
+    </menuitem>
+
+    <hr>
+
+    <p rv-if="activeScript.description">
+      <b>{'description'|i18n}</b> {'description'|i18nUserScript activeScript}
+    </p>
+    <p rv-if="activeScript.version">
+      <b>{'version'|i18n}</b> {activeScript.version}
+    </p>
+    <p rv-if="activeScript.homePageUrl">
+      <a rv-href="activeScript.homePageUrl">{'homepage'|i18n}</a>
+    </p>
+    <p rv-if="activeScript.installTime">
+      <b>{'last_updated'|i18n}</b> {activeScript.installTime|timeToLocaleString}
+    </p>
+  </menu>
+</section>
+
+
+<section class="user-script-options"  tabindex="-1" role="dialog">
+  <header>
+    <menuitem tabindex="0" class="go-back" role="button"
+        rv-aria-label="'back'|i18n"></menuitem>
+    <span role="heading" aria-level="1">
+      {'options'|i18n} {'name'|i18nUserScript activeScript}
+    </span>
+  </header>
+
+  <hr>
+
+  <menu>
+    <menuitem tabindex="0" id="user-script-toggle-update" role="button"
+        rv-enabled="activeScript.downloadUrl"
+        rv-class-disabled="activeScript.downloadUrl | not"
+    >
+      <i class="icon fa" rv-class-fa-check="activeScript.autoUpdate"></i>
+      <span class="text">
+        {activeScript.autoUpdate|i18nBool 'auto_update_enabled' 'auto_update_disabled'}
+      </span>
+    </menuitem>
+
+    <menuitem tabindex="0" id="user-script-update-now" role="button"
+        rv-enabled="activeScript.downloadUrl"
+        rv-class-disabled="activeScript.downloadUrl | not"
+    >
+      <i class="icon fa fa-refresh" rv-class-fa-spin="activeScript.updating"></i>
+      <span class="text">{'update_now'|i18n}</span>
+      <div rv-if="activeScript.updateMessage">
+        <i class="icon fa"></i>
+        {activeScript.updateMessage}
+      </div>
+    </menuitem>
+
+    <h2>
+      <a href="https://wiki.greasespot.net/Greasemonkey_Manual:Monkey_Menu#The_Script_Options">
+        <i class="icon fa fa-question-circle" rv-aria-label="'help' | i18n"></i>
+      </a>
+      {'user_includes'|i18n}
+    </h2>
+    <p>
+      <textarea rows="3" rv-value="activeScript.userIncludes"
+          rv-title="'user_includes'|i18n">
+      </textarea>
+      <menuitem id="add-user-include-current" role="button"
+          rv-if="activeScript.userIncludes|canAddOrigin">
+        <i class="icon fa fa-plus"></i>
+        {originGlob}
+      </menuitem>
+      <label>
+        <input type="checkbox" rv-checked="activeScript.userIncludesExclusive">
+        {'only_use_these'|i18n}
+      </label>
+    </p>
+
+    <h2>
+      <a href="https://wiki.greasespot.net/Greasemonkey_Manual:Monkey_Menu#The_Script_Options">
+        <i class="icon fa fa-question-circle" rv-aria-label="'help' | i18n"></i>
+      </a>
+      {'user_excludes'|i18n}
+    </h2>
+    <p>
+      <textarea rows="3" rv-value="activeScript.userExcludes"
+          rv-title="'user_excludes'|i18n">
+      </textarea>
+      <menuitem id="add-user-exclude-current" role="button"
+          rv-if="activeScript.userExcludes|canAddOrigin">
+        <i class="icon fa fa-plus"></i>
+        {originGlob}
+      </menuitem>
+      <label>
+        <input type="checkbox" rv-checked="activeScript.userExcludesExclusive">
+        {'only_use_these'|i18n}
+      </label>
+    </p>
+
+    <h2>
+      <a href="https://wiki.greasespot.net/Greasemonkey_Manual:Monkey_Menu#The_Script_Options">
+        <i class="icon fa fa-question-circle" rv-aria-label="'help' | i18n"></i>
+      </a>
+      {'user_matches'|i18n}
+    </h2>
+    <p>
+      <textarea rows="3" rv-value="activeScript.userMatches"
+          rv-title="'user_matches'|i18n">
+      </textarea>
+      <menuitem id="add-user-match-current" role="button"
+          rv-if="activeScript.userMatches|canAddOrigin">
+        <i class="icon fa fa-plus"></i>
+        {originGlob}
+      </menuitem>
+      <label>
+        <input type="checkbox" rv-checked="activeScript.userMatchesExclusive">
+        {'only_use_these'|i18n}
+      </label>
+    </p>
+  </menu>
+</section>
+</div>
+
+
+<script src="/src/i18n.js"></script>
+<script src="/third-party/tinybind/tinybind.min.js"></script>
+<script src="/third-party/convert2RegExp.js"></script>
+<script src="/third-party/MatchPattern.js"></script>
+<script src="/src/util/get-best-locale-match.js"></script>
+<script src="/src/util/i18n-user-script.js"></script>
+<script src="/src/util/iconUrl.js"></script>
+<script src="/src/util/log-unhandled-error.js"></script>
+<script src="/src/util/open-editor.js"></script>
+<script src="/src/util/rivets-formatters.js"></script>
+<script src="/src/downloader.js"></script>
+<script src="/src/parse-meta-line.js"></script>
+<script src="/src/parse-user-script.js"></script>
+<script src="/src/user-script-obj.js"></script>
+<script src="./monkey-menu.js"></script>
+<script src="./monkey-menu.run.js"></script>
+
+</body>
+</html>

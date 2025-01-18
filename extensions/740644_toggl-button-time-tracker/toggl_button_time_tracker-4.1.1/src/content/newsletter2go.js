@@ -1,0 +1,1 @@
+togglbutton.render("#submenu:not(.toggl)",{observe:!0},function(){const n=$("#mailing-name"),e=document.createElement("li"),t=n.value,l=togglbutton.createTimerLink({className:"newsletter2go",description:t});e.className="sm submenu center",e.appendChild(l),$("#submenu").appendChild(e)});

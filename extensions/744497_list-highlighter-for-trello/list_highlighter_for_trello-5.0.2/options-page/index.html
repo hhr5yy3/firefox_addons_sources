@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>List Highlighter for Trello Settings</title>
+	<link rel="stylesheet" href="/css/options.css">
+	<link rel="icon" href="/img/buttonIcon.png">
+	<meta name="google" content="notranslate">
+</head>
+
+<body class="preload">
+
+	<header id="MainHeader">
+		<div>
+			<img src="/img/256.png" alt="" width="40" height="40">
+			<h1>List Highlighter for Trello — Settings</h1>
+			<p>Change list background colours</p>
+			<details class="version-5">
+				<summary>Where are the other sections?</summary>
+				<p>
+					With profound apologies for the inconvenience, the other sections of this extension have been permanently removed.
+					For more information, and better ways to get the same effects, please visit:
+				</p>
+				<p><a href="https://beingmrkenny.co.uk/web-extensions/list-highlighter-trello/version-5">https://beingmrkenny.co.uk/web-extensions/list-highlighter-trello/version-5</a></p>
+			</details>
+
+
+		</div>
+	</header>
+
+	<main>
+		<section id="Highlighting" class="active">
+		
+			<h2>Highlighting</h2>
+		
+			<p>Create rules based on your list titles, and apply the effects you want. For example, you could turn a list red if its title is “Things to do today”. Or you could make it faded if the title contains the words “done” or “trash”.</p>
+		
+			<header id="RulesTableHeader">
+				<h3>Rules</h3>
+				<button class="mod-primary" id="NewRuleButton">Add Rule</button>
+			</header>
+		
+			<table class="highlighting-table">
+				<thead>
+					<tr>
+						<th colspan="2">Rule</th>
+						<th>List title</th>
+						<th>Colour</th>
+						<th colspan="2">More options</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		
+			<details>
+				<summary>Notes</summary>
+				<dl>
+					<dt>Text matching</dt>
+					<dd>All text matching is case-insensitive, e.g. TODO is the same as todo. Only whole words are matched, e.g. “doing” will only match the whole word “doing”. It will not match “undoing” or “#doing”.</dd>
+					<dt>Order</dt>
+					<dd>Rules are applied in the order they appear above, from top to bottom. The first matching rule will be applied. Once a rule matches a list, processing stops. You can reorder the rules by dragging them using the left hand side.</dd>
+					<dt>List title <b><i>is</i></b></dt>
+					<dd>This field should contain entire titles. The rule will be applied if the <strong>entire</strong> title text matches one of these titles.</dd>
+					<dt>List title <b><i>contains</i></b></dt>
+					<dd>This field should contain parts of titles. The rule will be applied if <strong>part of</strong> the title text matches, i.e. if the title text contains this. This is useful if you want to match lists with similar names, e.g. “Things to do”, “To do list”, “Things to do this week”.</dd>
+					<dt>More options: <b>strikethrough</b></dt>
+					<dd>This option puts a line through all text on the list</dd>
+					<dt>More options: <b>greyscale</b></dt>
+					<dd>This option turns all colour on lists to grey</dd>
+					<dt>More options: <b>other lists</b></dt>
+					<dd>When a list matches a rule with the “Other list” options turned on, List Highlighter will look for any lists on the board that do not match any rules. It will then apply the rule you specify to these lists. For example, you could have “To do” lists highlighted red, then apply a “Low importance” rule to the other lists on the board.</dd>
+				</dl>
+			</details>
+		
+			<h3>Other options</h3>
+		
+			<div class="standard-options">
+				<div>
+					<h4>Hide hashtags in list headers</h4>
+					<p>With apologies, it has not been possible to restore this option after Trello’s latest update.</p>
+				</div>
+				<option-widget>
+					<input type="checkbox" disabled="disabled" class="options-input" id="HighlightHideHashtagsDisabled" name="HighlightHideHashtagsDisabled">
+					<label for="HighlightHideHashtagsDisabled">
+						Hide hashtags
+					</label>
+				</option-widget>
+			</div>
+		
+			<div class="standard-options">
+				<div>
+					<h4>Change text colour to contrast with background</h4>
+					<p>If this is enabled, list titles and heading cards will change colour to ensure good contrast between text and background colour.</p>
+					<p>Default: on</p>
+				</div>
+				<option-widget>
+					<input type="checkbox" class="options-input" id="HighlightChangeTextColor" name="HighlightChangeTextColor">
+					<label for="HighlightChangeTextColor">
+						Change text colour
+					</label>
+				</option-widget>
+			</div>
+		
+			<div class="standard-options">
+				<div>
+					<h4>Un-dim dimmed lists on mouse over</h4>
+					<p>If you’ve made lists less visible (more transparent) as part of a highlighting rule, switching this setting on will un-dim them when the mouse cursor hovers over.</p>
+					<p>Default: on</p>
+				</div>
+				<option-widget>
+					<input type="checkbox" class="options-input" id="HighlightUndimOnHover" name="HighlightUndimOnHover">
+					<label for="HighlightUndimOnHover">
+						Un-dim on hover
+					</label>
+				</option-widget>
+			</div>
+		
+		</section>	</main>
+
+	<footer>
+		<p>
+			<a href="/options-page/index.html" target="_blank">View this options page in a new tab</a>
+		</p>
+		<p>
+			For more information visit the
+			<a href="http://beingmrkenny.co.uk/web-extensions/list-highlighter-trello">List Highlighter for Trello</a>
+			homepage
+		</p>
+		<p>
+			Color Picker based on <a href="https://github.com/DavidDurman/FlexiColorPicker">FlexiColorPicker by David Durman</a>
+				<br>
+			<a href="http://www.jacklmoore.com/autosize/">Autosize</a> by <a href="http://www.jacklmoore.com/">Jack Moore</a>
+				&middot;
+			<a href="https://sortablejs.github.io/Sortable/">Sortable.js</a> by <a href="https://github.com/RubaXa">RubaXa</a> and <a href="https://github.com/SortableJS">SortableJS</a>
+		</p>
+	</footer>
+
+	<dialog></dialog>
+
+
+	<template id="RuleTrTemplate">
+		<tr data-rule="">
+			<td class="dragger-mcswagger">
+				<span class="grippy"></span>
+			</td>
+			<th class="highlighting-enable-column" scope="row">
+				<strong class="highlighting-modal-trigger" data-form="RuleName" data-key="name"></strong>
+				<option-widget class="highlighting-option-widget">
+					<input type="checkbox" id="" name="" >
+					<label for=""></label>
+				</option-widget>
+			</th>
+			<td class="highlighting-title-text">
+				<div>
+					<table class="highlighting-is-contains">
+						<tr>
+							<th scope="row">is:</th>
+							<td class="highlighting-modal-trigger" data-form="TitleTextIs" data-key="is"></td>
+						</tr>
+						<tr>
+							<th scope="row">contains:</th>
+							<td class="highlighting-modal-trigger" data-form="TitleTextContains" data-key="contains"></td>
+						</tr>
+					</table>
+				</div>
+			</td>
+			<td class="highlighting-style-column">
+				<div>
+					<color-chooser class="highlighting-modal-trigger" data-form="ListHighlightColor">
+						<color-indicator></color-indicator>
+					</color-chooser>
+				</div>
+			</td>
+			<td class="highlighting-more-options highlighting-modal-trigger" data-form="MoreOptions">
+				<div>
+					<span class="highlighting-more-options-icon highlighting-more-options-strikethrough" title="Strikethrough">S</span>
+					<span class="highlighting-more-options-icon highlighting-more-options-grayscale" title="Grayscale">G</span>
+					<span class="highlighting-more-options-icon highlighting-more-options-unmatched" title="Other lists">O</span>
+				</div>
+			</td>
+			<td class="highlighting-delete-column">
+				<button class="link-appearance mod-delete">Delete</button>
+			</td>
+		</tr>
+	</template>
+	
+	
+	<template id="NewRuleTemplate">
+	
+		<h2>Create New Rule</h2>
+	
+		<p class="intro">You will be able to edit this, and specify more options, once the rule is created</p>
+	
+		<fieldset name="name-group">
+			<h3>Name</h3>
+			<input type="text" name="name" size="60" autocomplete="off" class="js-check-changed">
+			<p class="error" data-name="name" data-value="empty">Please enter a name for this rule</p>
+			<p class="error" data-name="name" data-value="exists">This name is in use, please choose another</p>
+		</fieldset>
+	
+		<fieldset name="title-is" class="these-ones-have-help-buttons">
+			<h3>List title is &hellip;</h3>
+			<button type="button" id="ListTitleIsHelper" class="helper">?</button>
+			<div class="form-field-note">
+				<p>This field is for <strong>whole</strong> titles.</p>
+				<p>E.g. if you enter “Team meeting agenda items”, this rule will match lists with that exact title.</p>
+				<p>Put each title on a new line.</p>
+			</div>
+			<textarea name="is" cols="60" rows="2" class="js-check-changed"></textarea>
+			<p class="error" data-name="criteria" data-value="empty">Please fill out this field or the one below.</p>
+			<p class="error" data-name="is" data-value="exists">These titles have been used in other rules:</p>
+			<ul class="error" data-name="isAlreadyUsed"></ul>
+		</fieldset>
+	
+		<fieldset name="title-contains" class="these-ones-have-help-buttons">
+			<h3>List title contains &hellip;</h3>
+			<button type="button" id="ListTitleContainsHelper" class="helper">?</button>
+			<div class="form-field-note">
+				<p>This field is for <strong>snippets</strong> of titles.</p>
+				<p>E.g. if you enter “To do”, this rule will match lists with titles like “Things to do”, “To do list”, “What to do in Paris”, “Someone else is going to do these things”, etc.</p>
+				<p>Put each snippet on a new line.</p>
+			</div>
+			<textarea name="contains" cols="60" rows="2" class="js-check-changed"></textarea>
+			<p class="error" data-name="criteria" data-value="empty">Please fill out this field or the one above.</p>
+			<p class="error" data-name="contains" data-value="exists">These snippets have been used in other rules:</p>
+			<ul class="error" data-name="containsAlreadyUsed"></ul>
+		</fieldset>
+	
+		<p class="error" data-name="criteria" data-value="exists">These titles/snippets appear in both the is and contains fields:</p>
+		<ul class="error" data-name="criteriaAlreadyUsed"></ul>
+	
+		<fieldset name="highlightColor-group">
+			<h3>Highlight colour</h3>
+			<color-select class="js-check-changed mod-inline" data-name="highlightColor" data-value="#ebecf0">
+						<button type="button" value="#ec2f2f" title="red"
+							class="fill-red ">red </button>
+						<button type="button" value="#ffab4a" title="orange"
+							class="fill-orange mod-light-background">orange </button>
+						<button type="button" value="#f2d600" title="yellow"
+							class="fill-yellow mod-light-background">yellow </button>
+						<button type="button" value="#61bd4f" title="green"
+							class="fill-green mod-light-background">green </button>
+						<button type="button" value="#0ed4f3" title="cyan"
+							class="fill-cyan mod-light-background">cyan </button>
+						<button type="button" value="#00a2ff" title="blue"
+							class="fill-blue mod-light-background">blue </button>
+						<button type="button" value="#30458a" title="indigo"
+							class="fill-indigo ">indigo </button>
+						<button type="button" value="#ba55e2" title="violet"
+							class="fill-violet ">violet </button>
+						<button type="button" value="#ff80ce" title="pink"
+							class="fill-pink mod-light-background">pink </button>
+						<button type="button" value="#000000" title="black"
+							class="fill-black ">black </button>
+						<button type="button" value="" title="normal"
+								data-selected
+							class="fill-normal ">normal </button>
+			</color-select>
+		</fieldset>
+	
+	</template>
+	
+	<template id="RuleNameTemplate">
+		<h2>Name this rule</h2>
+		<p>Names must be unique</p>
+		<input type="text" name="name" size="30" autofocus>
+		<p class="error" data-name="name" data-value="empty">Please enter a name for this rule</p>
+		<p class="error" data-name="name" data-value="exists">This name is in use, please choose another</p>
+	</template>
+	
+	<template id="TitleTextIsTemplate">
+		<fieldset class="these-ones-have-help-buttons">
+			<h2>When the list title is &hellip;</h2>
+			<button type="button" id="ListTitleIsHelper" class="helper">?</button>
+			<div class="form-field-note">
+				<p>This field is for <strong>whole</strong> titles.</p>
+				<p>E.g. if you enter “Team meeting agenda items”, this rule will match lists with that exact title.</p>
+				<p>Put each title on a new line.</p>
+			</div>
+			<textarea id="TitleTextIs" class="title-text-textarea js-check-changed" name="is" rows="5" autofocus></textarea>
+			<p class="error" data-name="is" data-value="empty">This field cannot be empty because this rule has nothing in the “contains” field</p>
+			<p class="error" data-name="is" data-value="exists">These titles have been used in other rules:</p>
+			<ul class="error" data-name="isAlreadyUsed"></ul>
+		</fieldset>
+	</template>
+	
+	<template id="TitleTextContainsTemplate">
+		<fieldset class="these-ones-have-help-buttons">
+			<h2>When the list title contains &hellip;</h2>
+			<button type="button" id="ListTitleIsHelper" class="helper">?</button>
+			<div class="form-field-note">
+				<p>This field is for <strong>snippets</strong> of titles.</p>
+				<p>E.g. if you enter “To do”, this rule will match lists with titles like “Things to do”, “To do list”, “What to do in Paris”, “Someone else is going to do these things”, etc.</p>
+				<p>Put each snippet on a new line.</p>
+			</div>
+			<textarea id="TitleTextContains" class="title-text-textarea js-check-changed" name="contains" rows="5" autofocus></textarea>
+			<p class="error" data-name="is" data-value="empty">This field cannot be empty because this rule has nothing in the “is” field</p>
+			<p class="error" data-name="contains" data-value="exists">These snippets have been used in other rules:</p>
+			<ul class="error" data-name="containsAlreadyUsed"></ul>
+		</fieldset>
+	</template>
+	
+	<template id="MoreOptionsTemplate">
+	
+		<h2>More options</h2>
+	
+		<label for="Strikethrough">
+			<h3>Strikethrough</h3>
+			<p>
+				<input type="checkbox" id="Strikethrough" name="strikethrough" class="js-check-changed"> <span>Apply <s>strikethrough</s> to cards</span>
+			</p>
+		</label>
+	
+		<label for="Grayscale">
+			<h3>Greyscale</h3>
+			<p>
+				<input type="checkbox" id="Grayscale" name="grayscale" class="js-check-changed"> Turn colours on list to grey
+			</p>
+		</label>
+	
+		<label for="UnmatchedLists">
+			<h3>Other lists</h3>
+			<p>
+				Apply a rule to other lists on the board which do not match any rules
+			</p>
+			<p>
+				<select id="UnmatchedLists" name="unmatchedLists" class="js-check-changed">
+					<option>(none)</option>
+				</select>
+			</p>
+		</label>
+	
+	</template>
+	
+	<template id="FormDialogTemplate">
+		<dialog-contents>
+			<form method="dialog">
+				<div class="form-dialog-body"></div>
+				<p class="form-dialog-buttons">
+					<button id="Cancel" type="button">Cancel</button>
+					<button id="OK" type="submit" class="mod-primary">Save</button>
+				</p>
+			</form>
+		</dialog-contents>
+	</template>
+	
+	<template id="ColorTile">
+		<li>
+			<input type="radio" name="color" class="color-tile-input">
+			<label class="color-tile-label"></label>
+		</li>
+	</template>
+	
+	<template id="ColorPickerButton">
+		<button type="button" class="custom-color-picker-button recent-color-button" value="" style=""></button>
+	</template>
+	
+	<template id="ImportRulesConflictsTableTemplate">
+		CONFLICTS
+		<table>
+		</table>
+	</template>	<template id="ListHighlightColorTemplate">
+	
+		<h2>List highlight colour</h2>
+	
+		<ul class="color-tile-bar" data-default="true">
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-red" class="js-check-changed"
+								value="#ec2f2f"
+							>
+						<label for="ColorTile-red" class="fill-red ">
+							red
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-orange" class="js-check-changed"
+								value="#ffab4a"
+							>
+						<label for="ColorTile-orange" class="fill-orange mod-light-background">
+							orange
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-yellow" class="js-check-changed"
+								value="#f2d600"
+							>
+						<label for="ColorTile-yellow" class="fill-yellow mod-light-background">
+							yellow
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-green" class="js-check-changed"
+								value="#61bd4f"
+							>
+						<label for="ColorTile-green" class="fill-green mod-light-background">
+							green
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-cyan" class="js-check-changed"
+								value="#0ed4f3"
+							>
+						<label for="ColorTile-cyan" class="fill-cyan mod-light-background">
+							cyan
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-blue" class="js-check-changed"
+								value="#00a2ff"
+							>
+						<label for="ColorTile-blue" class="fill-blue mod-light-background">
+							blue
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-indigo" class="js-check-changed"
+								value="#30458a"
+							>
+						<label for="ColorTile-indigo" class="fill-indigo ">
+							indigo
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-violet" class="js-check-changed"
+								value="#ba55e2"
+							>
+						<label for="ColorTile-violet" class="fill-violet ">
+							violet
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-pink" class="js-check-changed"
+								value="#ff80ce"
+							>
+						<label for="ColorTile-pink" class="fill-pink mod-light-background">
+							pink
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-black" class="js-check-changed"
+								value="#000000"
+							>
+						<label for="ColorTile-black" class="fill-black ">
+							black
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-normal" class="js-check-changed"
+								value=""
+							>
+						<label for="ColorTile-normal" class="fill-normal ">
+							normal
+						</label>
+					</li>
+					<li>
+						<input type="radio" name="ColorTile" id="ColorTile-custom" class="js-check-changed"
+								value=""
+							>
+						<label for="ColorTile-custom" class="fill-custom ">
+								<button type="button" class="color-tile-edit-color">Edit</button>
+							custom
+						</label>
+					</li>
+		</ul>
+	
+		<label for="Opacity" class="opacity-input-label">
+			<span>Opacity</span>
+			<input type="range" name="Opacity" id="Opacity" min="0" max="1" step="0.01" class="js-check-changed">
+			<output name="opacity-value"></output>
+		</label>
+	
+		<div class="dummy-board fill-trello-blue">
+	
+			<div class="dummy-board_body">
+	
+				<div class="dummy-board_list fill-normal">
+					<p class="dummy-board_list-header">Normal list</p>
+					<p class="dummy-board_card">Lorem ipsum dolor sit amet.</p>
+					<p class="dummy-board_card">Vivamus id ipsum faucibus, maximus tellus a, placerat urna consequat.</p>
+					<p class="dummy-board_card">Nunc vitae odio quis nunc.</p>
+					<p class="dummy-board_card">Etiam volutpat sapien at eleifend dignissim consectetur adipiscing elit.</p>
+					<p class="dummy-board_card">Phasellus placerat mauris quis mi.</p>
+					<p class="dummy-board_add-card"><svg width="16" height="16" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C11.4477 3 11 3.44772 11 4V11L4 11C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13H11V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11L13 11V4C13 3.44772 12.5523 3 12 3Z" fill="currentColor"></path></svg>Add a card</p>
+				</div>
+	
+				<div class="dummy-board_list dummy-board_demo-list fill-normal">
+					<p class="dummy-board_list-header">Highlighted list</p>
+					<p class="dummy-board_card">Sit amet sapien feugiat, vestibulum ipsum in, congue leo.</p>
+					<p class="dummy-board_card">Aliquam egestas orci at dui.</p>
+					<p class="dummy-board_card">Sed maximus massa sed augue condimentum blandit.</p>
+					<p class="dummy-board_card">Vivamus quis metus lacinia ante.</p>
+					<p class="dummy-board_add-card"><svg width="16" height="16" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C11.4477 3 11 3.44772 11 4V11L4 11C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13H11V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11L13 11V4C13 3.44772 12.5523 3 12 3Z" fill="currentColor"></path></svg>Add a card</p>
+				</div>
+	
+				<div class="dummy-board_list fill-normal">
+					<p class="dummy-board_list-header">Another list</p>
+					<p class="dummy-board_card">Vivamus quis metus lacinia ante auctor malesuada eu quis metus.</p>
+					<p class="dummy-board_card">Duis sed neque sollicitudin, sagittis purus a, suscipit felis hendrerit.</p>
+					<p class="dummy-board_card">Nunc vitae odio quis nunc.</p>
+					<p class="dummy-board_card">Id massa dignissim, varius nisi nec, pharetra lorem.</p>
+					<p class="dummy-board_card">Pellentesque vel mi ut felis euismod.</p>
+					<p class="dummy-board_card">Cras dapibus massa eu magna porta placerat.</p>
+					<p class="dummy-board_add-card"><svg width="16" height="16" role="presentation" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3C11.4477 3 11 3.44772 11 4V11L4 11C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13H11V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11L13 11V4C13 3.44772 12.5523 3 12 3Z" fill="currentColor"></path></svg>Add a card</p>
+				</div>
+	
+			</div>
+	
+		</div>
+	
+	</template>
+	<template id="ColorPicker">
+		<dialog class="color-picker">
+			<dialog-contents>
+				<component-picker class="sv-picker">
+					<range-display class="sv-range">
+						<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" id="Picker">
+							<defs>
+								<linearGradient id="GradientBlack" x1="0%" y1="100%" x2="0%" y2="0%">
+									<stop offset="0%"   stop-color="#000000" stop-opacity="1"></stop>
+									<stop offset="100%" stop-color="#CC9A81" stop-opacity="0"></stop>
+								</linearGradient>
+								<linearGradient id="GradientWhite" x1="0%" y1="100%" x2="100%" y2="100%">
+									<stop offset="0%"   stop-color="#FFFFFF" stop-opacity="1"></stop>
+									<stop offset="100%" stop-color="#CC9A81" stop-opacity="0"></stop>
+								</linearGradient>
+							</defs>
+							<rect x="0" y="0" width="100%" height="100%" fill="url(#GradientWhite)"></rect>
+							<rect x="0" y="0" width="100%" height="100%" fill="url(#GradientBlack)"></rect>
+						</svg>
+					</range-display>
+					<position-indicator class="sv-indicator" style="top: 0; left: 100%; background-color: white;"></position-indicator>
+				</component-picker>
+				<component-picker class="hue-picker">
+					<range-display class="hue-range">
+						<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" id="Slide">
+							<defs>
+								<linearGradient id="GradientHSV" x1="100%" y1="0%" x2="0%" y2="0%">
+									<stop offset="0%"   stop-color="#FF0000" stop-opacity="1"></stop>
+									<stop offset="13%"  stop-color="#FF00FF" stop-opacity="1"></stop>
+									<stop offset="25%"  stop-color="#8000FF" stop-opacity="1"></stop>
+									<stop offset="38%"  stop-color="#0040FF" stop-opacity="1"></stop>
+									<stop offset="50%"  stop-color="#00FFFF" stop-opacity="1"></stop>
+									<stop offset="63%"  stop-color="#00FF40" stop-opacity="1"></stop>
+									<stop offset="75%"  stop-color="#0BED00" stop-opacity="1"></stop>
+									<stop offset="88%"  stop-color="#FFFF00" stop-opacity="1"></stop>
+									<stop offset="100%" stop-color="#FF0000" stop-opacity="1"></stop>
+								</linearGradient>
+							</defs>
+							<rect x="0" y="0" width="100%" height="100%" fill="url(#GradientHSV)"></rect>
+						</svg>
+					</range-display>
+					<position-indicator class="hue-indicator" style="left: 0;"></position-indicator>
+				</component-picker>
+				<div class="custom-color-picker-button-container">
+						<button type="button" class="custom-color-picker-button" title="Red" value="#ec2f2f" style="background-color: #ec2f2f;"></button>
+						<button type="button" class="custom-color-picker-button" title="Orange" value="#ffab4a" style="background-color: #ffab4a;"></button>
+						<button type="button" class="custom-color-picker-button" title="Yellow" value="#f2d600" style="background-color: #f2d600;"></button>
+						<button type="button" class="custom-color-picker-button" title="Green" value="#61bd4f" style="background-color: #61bd4f;"></button>
+						<button type="button" class="custom-color-picker-button" title="Cyan" value="#0ed4f3" style="background-color: #0ed4f3;"></button>
+						<button type="button" class="custom-color-picker-button" title="Blue" value="#00a2ff" style="background-color: #00a2ff;"></button>
+						<button type="button" class="custom-color-picker-button" title="Indigo" value="#30458a" style="background-color: #30458a;"></button>
+						<button type="button" class="custom-color-picker-button" title="Violet" value="#ba55e2" style="background-color: #ba55e2;"></button>
+						<button type="button" class="custom-color-picker-button" title="Pink" value="#ff80ce" style="background-color: #ff80ce;"></button>
+						<button type="button" class="custom-color-picker-button" title="Black" value="#000000" style="background-color: #000000;"></button>
+						<button type="button" class="custom-color-picker-button" title="Trello red" value="#b04632" style="background-color: #b04632;"></button>
+						<button type="button" class="custom-color-picker-button" title="Trello orange" value="#d29034" style="background-color: #d29034;"></button>
+						<button type="button" class="custom-color-picker-button" title="Trello normal list color" value="#ebecf0" style="background-color: #ebecf0;"></button>
+						<button type="button" class="custom-color-picker-button" title="Trello lime" value="#4bbf6b" style="background-color: #4bbf6b;"></button>
+						<button type="button" class="custom-color-picker-button" title="Trello green" value="#519839" style="background-color: #519839;"></button>
+						<button type="button" class="custom-color-picker-button" title="Trello sky" value="#00aecc" style="background-color: #00aecc;"></button>
+						<button type="button" class="custom-color-picker-button" title="Trello blue" value="#0779bf" style="background-color: #0779bf;"></button>
+						<button type="button" class="custom-color-picker-button" title="Trello purple" value="#89609e" style="background-color: #89609e;"></button>
+						<button type="button" class="custom-color-picker-button" title="Trello pink" value="#cd5a91" style="background-color: #cd5a91;"></button>
+						<button type="button" class="custom-color-picker-button" title="Trello gray" value="#838c91" style="background-color: #838c91;"></button>
+				</div>
+				<output id="ColorHexDisplay" class="show-as-input"></output>
+				<input type="text" id="ColorHex" pattern="^#?[a-fA-F0-9]{3}(?:[a-fA-F0-9]{3})?$" class="remove">
+				<hr class="spacer">
+				<button type="button" id="CancelColor">Cancel</button>
+				<button type="button" class="mod-primary" id="SaveColor">OK</button>
+			</dialog-contents>
+		</dialog>
+	</template>
+
+
+	<script src="/js/functions.js"></script>
+
+	<script src="/js/classes/Global.js"></script>
+	<script src="/js/classes/DataStorage.js"></script>
+	<script src="/js/classes/StorageLegacy.js"></script>
+	<script src="/js/classes/Color.js"></script>
+	<script src="/js/classes/Options.js"></script>
+	<script src="/js/classes/Rule.js"></script>
+	<script src="/js/classes/Rules.js"></script>
+
+	<script src="/js/third/colorpicker.js"></script>
+	<script src="/js/third/Sortable.js"></script>
+	<script src="/js/third/autosize.js"></script>
+	<script src="/js/third/saveAs.js"></script>
+
+	<script src="/js/options-page/Dialogue.js"></script>
+	<script src="/js/options-page/DataSection.js"></script>
+	<script src="/js/options-page/Export.js"></script>
+	<script src="/js/options-page/Import.js"></script>
+	<script src="/js/options-page/ColorSelect.js"></script>
+	<script src="/js/options-page/LHCDColorSelect.js"></script>
+	<script src="/js/options-page/ColorDialog.js"></script>
+	<script src="/js/options-page/ListHighlightColorDialog.js"></script>
+	<script src="/js/options-page/ColorPickerWrapper.js"></script>
+	<script src="/js/options-page/RulesTable.js"></script>
+	<script src="/js/options-page/RulesTableTR.js"></script>
+	<script src="/js/options-page/OptionsPage.js"></script>
+
+	<script src="/js/optionsPageInit.js"></script>
+
+</body>
+</html>

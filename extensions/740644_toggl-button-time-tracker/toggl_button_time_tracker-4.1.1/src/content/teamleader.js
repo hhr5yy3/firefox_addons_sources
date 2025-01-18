@@ -1,0 +1,1 @@
+togglbutton.render(".container:not(.toggl)",{observe:!0},function(e){const n=$("#title",e),i=$(".content_t",e);let t;t="",i!==null&&(t+=i.textContent.trim()),n!==null&&(t.length>0&&(t+=": "),t+=n.textContent.trim());const l=togglbutton.createTimerLink({className:"teamleader",description:t});e.getElementsByClassName("widgettitle")[0].appendChild(l)});

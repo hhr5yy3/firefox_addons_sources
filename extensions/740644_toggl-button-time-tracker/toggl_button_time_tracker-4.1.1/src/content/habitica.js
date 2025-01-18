@@ -1,0 +1,1 @@
+togglbutton.render(".daily .tasks-list .task:not(.toggl), .habit .tasks-list .task:not(.toggl), .todo .tasks-list .task:not(.toggl)",{observe:!0},function(t){const n=$(".task-title",t).textContent.trim(),o=$(".icons-right",t),s=togglbutton.createTimerLink({className:"habitica",description:n,buttonType:"minimal"});o.prepend(s)});

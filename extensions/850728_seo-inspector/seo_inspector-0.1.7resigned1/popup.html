@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<!-- Website CSS style -->
+        <link href="../style/bootstrap.min.css" rel="stylesheet">
+		<link href="../style/style.css" rel="stylesheet">
+		<link href="../style/toastr.min.css" rel="stylesheet">
+		<title>Admin</title>
+	</head>
+	<body class="grey-color">
+		<div class="container"><h3>Dashboard</h3></div>
+		
+		<div id="exTab2" class="container">	
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a  href="#1" data-toggle="tab">Overview</a>
+				</li>
+				<li>
+					<a href="#2" data-toggle="tab">Settings</a>
+				</li>
+			</ul>
+			
+			<div id="seo-content" class="tab-content ">
+				<div class="tab-pane active" id="1">
+					<ul class="list-group" style="padding-top:10px;color: black;">
+						<li id="title-li" class="list-group-item">
+							Title (<span id="title-count"></span>)<span class="glyphicon glyphicon-plus expand-icon" aria-hidden="true"></span>
+							<ul class="item-list" id="title-list"></ul>
+						</li>
+						<li id="meta-li" class="list-group-item">
+							Meta Fields (<span id="meta-count"></span>) <span class="glyphicon glyphicon-plus expand-icon" aria-hidden="true"></span>
+							<ul class="item-list" id="meta-list"></ul>
+						</li>
+						<li id="h1-tags-li" class="list-group-item">
+							h1 Tags (<span id="h1-count"></span>) <span class="glyphicon glyphicon-plus expand-icon" aria-hidden="true"></span>
+							<ul class="item-list" id="h1-list"></ul>
+						</li>
+					</ul>
+				</div>
+				<div class="tab-pane" id="2">
+					<div style="padding-top:10px;">
+						<hr>
+						<h4 class="settings-header">HTML Tag Settings</h4>
+						<h5>Highlight Tags On Page: </h5>
+						<div class="checkbox">
+							<label><input id="highlight-h1" type="checkbox" value="">h1</label>
+						</div>
+						<div class="form-group">
+							<label for="sel1">Desired number of h1 tags on page: </label>
+							<select class="form-control" id="desired-h1-num">
+								<option>any</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+								<option>8</option>
+								<option>9</option>
+								<option>10</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="h1-comment">Comment to display if number of h1 tags do not match desired number:</label>
+							<textarea class="form-control" rows="3" id="h1-comment" maxlength="500"></textarea>
+						</div>
+						<hr>
+						<h4 class="settings-header">Meta Field Settings</h4>
+						<div class="checkbox">
+							<label><input id="description-required" type="checkbox" value="">Meta Description Required</label>
+						</div>
+						<div class="checkbox">
+							<label><input id="keywords-required" type="checkbox" value="">Meta Keywords Required</label>
+						</div>
+						<div class="checkbox">
+							<label><input id="author-required" type="checkbox" value="">Meta Author Required</label>
+						</div>
+						<div class="checkbox">
+							<label><input id="viewport-required" type="checkbox" value="">Meta Viewport Required</label>
+						</div>
+						<button id="save-settings-btn" type="button" class="btn btn-primary" style="float:right;">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="script/lib/jquery-3.2.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="script/lib/bootstrap.min.js"></script>
+	<script src="script/lib/toastr.min.js"></script>
+	<script src="popup.js"></script>
+	</body>
+</html>

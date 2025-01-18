@@ -1,0 +1,1 @@
+var ClassWorkerContentScriptOIDCSAML=function(t,e,r){"use strict";function i(e){e.defaultView.location.href.startsWith("https://psono.com/redirect")&&t.emit("oidc-saml-redirect-detected",{url:e.defaultView.location.href})}t.ready((function(){t.registerObserver(i)}))};

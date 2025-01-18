@@ -1,0 +1,23 @@
+var bsu=
+[
+"facebook",
+"twitter",
+"instagram",
+"pinterest",
+"google-plus",
+"googleplus",
+"-gplus",
+"linkedin",
+"tumblr",
+"flickr",
+"stumbleupon",
+"addthis",
+"tweet",
+"digg",
+"myspace",
+"vkontakte",
+"vk_button",
+"plusone/",
+"widgets.wp.com/likes/",
+"apis.google.com/js/plusone.js"
+];

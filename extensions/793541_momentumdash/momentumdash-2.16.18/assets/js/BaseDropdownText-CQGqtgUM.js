@@ -1,0 +1,1 @@
+import{o as t}from"./icon-alert-mvI7iJMO.js";const e=t({name:"BaseDropdownText",props:{isTitle:{type:Boolean,default:!1}}},(function(){var t=this;return(0,t._self._c)("p",{class:["base-dropdown-text",{title:t.isTitle}]},[t._t("default")],2)}),[],!1,null,"f8c33574").exports;export{e as B};

@@ -1,0 +1,1 @@
+togglbutton.render(".lp-item-panel__header-actions:not(.toggl)",{observe:!0},function(t){const e=document.querySelector(".breadcrumb > a").textContent,n=document.querySelector(".breadcrumb :nth-child(3)").textContent.slice(0,-1),o=togglbutton.createTimerLink({description:e,buttonType:"minimal",projectName:n});t.append(o)});

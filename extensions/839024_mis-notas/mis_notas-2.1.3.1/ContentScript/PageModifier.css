@@ -1,0 +1,243 @@
+.MyNotes .textBox {
+    position: absolute;
+    z-index: 10000000;
+    border: none;
+}
+
+.MyNotes .textBoxText {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+    resize: none;
+    background: transparent !important;
+    margin: 4;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 12px;
+}
+
+.MyNotes .mediaPlayer {
+    position: absolute;
+    z-index: 10000001;
+    border: none;
+}
+
+.MyNotes .mediaButton {
+    font-size: 32px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.MyNotes .mediaControl {
+    content: '';
+    display: block;
+    height: 32px;
+    width: 32px;
+}
+
+.MyNotes .player {
+    margin-top: 25px;
+    z-index: 10000001;
+}
+
+.MyNotes .hideBtn {
+    float: left;
+    margin-top: -32px;
+}
+
+.MyNotes .mediaIcon {
+    padding: 3px;
+}
+
+.MyNotes .controlBar {
+    margin-top: -10px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.MyNotes .progressBar {
+    width: 90%;
+    font-size: 12px;
+    height: 5px;
+    border: solid 1px;
+    background-color: transparent;
+    margin-top: 5px;
+    margin-left: 5%;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.MyNotes .progressBar::-moz-progress-bar {
+    height: 5px;
+}
+
+.MyNotes .volume {
+    width: 100px;
+    float: right;
+    margin-top: 5px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.MyNotes .volume::-moz-range-thumb {
+    border: none;
+    cursor: pointer;
+    width: 10px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.MyNotes .leftMediaButton {
+    float: right;
+    font-size: 24px;
+    margin-top: 3px;
+}
+
+.MyNotes.selection {
+    display: inline;
+    border: none;
+}
+
+.MyNotes.underline {
+    text-decoration: underline;
+}
+
+.MyNotes.url {
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.MyNotes.url.BrokenLink {
+    cursor: default;
+}
+
+.MyNotes.crossout {
+    text-decoration: line-through;
+}
+
+.MyNotes .changeText_Selection {
+    display: inline;
+    text-decoration: line-through;
+}
+
+.MyNotes .highlightElem,
+.MyNotes.highlightElem {
+    border: 2px solid rgba(255, 0, 0, 1);
+}
+
+
+/*******************************************************************/
+
+.MyNotes.contextMenu {
+    position: absolute;
+    /*width: 150px;*/
+    padding: 2px;
+    margin: 0;
+    border: 1px solid #bbb;
+    background: #eee;
+    z-index: 10000001;
+    border-radius: 3px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, .2);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.MyNotes .contextMenu-item {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.MyNotes .contextMenu-btn {
+    display: block;
+    color: #444;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 1px 1px;
+    border-radius: 3px;
+    color: #4d4d4d;
+}
+
+.MyNotes button.contextMenu-btn {
+    background: none;
+    line-height: normal;
+    overflow: visible;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    width: 100%;
+    text-align: left;
+}
+
+.MyNotes .contextMenu-text {
+    margin-left: 12px;
+}
+
+.MyNotes .contextMenu-btn .fa {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.MyNotes .contextMenu-item:hover>.contextMenu-btn {
+    color: #f4f4f4;
+    outline: none;
+    background-color: #2E3940;
+    border: 1px solid #2E3940;
+}
+
+.MyNotes .contextMenu-item-disabled {
+    opacity: .5;
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.MyNotes .contextMenu-item-disabled .contextMenu-btn {
+    cursor: default;
+    pointer-events: none;
+}
+
+.MyNotes .contextMenu-separator {
+    display: block;
+    margin: 7px 5px;
+    height: 1px;
+    border-bottom: 1px solid #7c7c7c;
+    background-color: #aaa;
+}
+
+.MyNotes .contextMenu-item.submenu::after {
+    content: "";
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-left-color: #808080;
+}
+
+.MyNotes .contextMenu-item.submenu:hover::after {
+    border-left-color: #fff;
+}
+
+.MyNotes.contextMenu .MyNotescontextMenu {
+    top: 4px;
+    left: 99%;
+}
+
+.MyNotes.show-contextMenu,
+.MyNotes .contextMenu-item:hover>.contextMenu {
+    opacity: 1;
+    pointer-events: auto;
+}

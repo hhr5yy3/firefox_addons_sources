@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html { width: 400px; min-width: 400px; max-height: 600px;}
+        body { margin: 0; min-width: 400px; width: 100%; height: 100%; }
+        iframe {
+            background-color: transparent;
+            position: fixed;
+            visibility: hidden;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            max-height: 600px;
+            border: 0;
+            z-index: 100500;
+        }
+        .logo {
+            width: 123px;
+            height: 37px;
+            background: url('./logo.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: inline-block;
+            margin-left: 20px;
+            flex: 0 0 auto;
+        }
+        .header {
+            height: 59px;
+            width: 100%;
+            border-bottom: 1px solid #cbd1d4;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 25px;
+            box-sizing: border-box;
+        }
+        .loader-wrapper{
+            margin-top: 50px;
+        }
+        .loader {
+            width: 34px;
+            height: 34px;
+            background: url(./loader.svg) 0 0 no-repeat;
+            animation-name: loader-spin;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(.21, .64, .8, .41);
+            animation-fill-mode: forwards;
+            margin: auto;
+            transform-origin: 50% 50%;
+            display: block;
+        }
+
+        @keyframes loader-spin {
+            from {
+                transform: rotate(60deg);
+            }
+
+            to {
+                transform: rotate(2220deg);
+            }
+        }
+
+        .content {
+            width: 100%;
+            height: 200px;
+        }
+        .global-failure {
+          display: none;
+          padding: 40px;
+          text-align: center;
+        }
+        .global-failure__header {
+          color: rgb(188, 38, 54);
+          font-weight: bold;
+          margin: 20px 0px;
+          font-size: 14px;
+          line-height: 1.57;
+        }
+        .global-failure__message {
+          color: #4a4a4a;
+          line-height: 1.57;
+          font-size: 14px;
+          font-family: Arial,sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="js-content content">
+        <div class="header">
+            <span class="logo"></span>
+        </div>
+        <div class="js-loader loader-wrapper">
+            <div class="loader"></div>
+        </div>
+        <div class="js-global-failure global-failure">
+          <img src="./global-failure.svg" alt="Extension init failed" >
+          <h3 class="global-failure__header">Отключите другие плагины</h3>
+          <p class="global-failure__message">
+            Сторонние плагины мешают работе Талантикс, отключите их на время сохранения кадидатов.
+          </p>
+        </div>
+    </div>
+<script src="index.js"></script>
+</body>
+</html>

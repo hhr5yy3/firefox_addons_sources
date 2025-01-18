@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- Copyright (c) 2016-2022 Pearl Crescent, LLC.  All Rights Reserved. -->
+<!-- vim: set sw=2 sts=2 ts=8 et syntax=html: -->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title i18n-msg="windowTitle"></title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <div id="pagesaver-menu">
+    <ul id="savewhat-menu">
+      <li id="saveVisible"><span i18n-msg="saveVisible" shortcut="V"></span></li>
+      <li id="saveEntire"><span i18n-msg="saveEntire" shortcut="E"></span></li>
+<!--
+      <li id="saveFrame" class="disabled" i18n-msg="saveFrame"></li>
+      <li id="saveRegion" class="disabled" i18n-msg="saveRegion"></li>
+-->
+    </ul>
+
+    <div class="line"></div>
+
+    <form id="saveto-menu">
+      <input name="saveto" type="radio" value="file" id="file">
+      <label for="file" i18n-msg="toFile"></label>
+      <input name="saveto" type="radio" value="clipboard" id="clipboard">
+      <label for="clipboard" i18n-msg="toClipboard"></label>
+<!--
+      <input name="saveto" type="radio" value="server" id="server" disabled="disabled">
+      <label for="server" i18n-msg="toServer"></label>
+-->
+    </form>
+
+    <div class="line" id="saveto-line"></div>
+
+    <ul id="other-menu">
+      <li id="openOptions" i18n-msg="pageSaverOptions" shortcut="O"></li>
+    </ul>
+    <div class="line"></div>
+    <button id="sendFeedback" type="button" i18n-msg="sendFeedback"></button>
+    <button id="makeDonation" type="button"><span class="red">&#x2665;</span>
+<span i18n-msg="donate"></span></button>
+    </div>
+    <div id="pagesaver-status">
+      <div i18n-msg="capturingPage"></div>
+      <div id="progress-container" progress="0">
+        <div id="progress-spinner"></div>
+        <progress id="progress-bar" value="0"></progress>
+      </div><br>
+      <button id="cancelButton" type="button" i18n-msg="cancel"></button>
+    </div>
+    <div id="pagesaver-error">
+      <div i18n-msg="unableToCapture"></div>
+      <div id="error-details"></div>
+      <button id="okButton" type="button" i18n-msg="ok"></button>
+    </div>
+    <button id="hiddenButton" type="button" tabindex="-1"></button>
+
+    <script src="../util.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+import React from '../npm/dom-chef.js';
+import { isDashboard, hasComments } from '../npm/github-url-detection.js';
+import batchedFunction from '../npm/batched-function.js';
+import features from '../feature-manager.js';
+import api from '../github-helpers/api.js';
+import { getUsername, isUsernameAlreadyFullName } from '../github-helpers/index.js';
+import observe from '../helpers/selector-observer.js';
+import { removeTextNodeContaining } from '../helpers/dom-utils.js';
+import { usernameLinksSelector } from '../github-helpers/selectors.js';
+import { expectToken } from '../github-helpers/github-token.js';
+
+async function dropExtraCopy(link) {
+	// Drop 'commented' label to shorten the copy
+	const commentedNode = link.parentNode.nextSibling;
+	if (link.closest('.timeline-comment-header') && commentedNode) {
+		// "left a comment" appears in the main comment of reviews
+		removeTextNodeContaining(commentedNode, /commented|left a comment/);
+	}
+}
+
+function appendName(element, fullName) {
+	// If it's a regular comment author, add it outside <strong> otherwise it's something like "User added some commits"
+	const {parentElement} = element;
+	const insertionPoint = parentElement.tagName === 'STRONG' ? parentElement : element;
+	const nameElement = (
+		React.createElement('span', { className: "color-fg-muted css-truncate d-inline-block ml-1"   ,}
+/* .css-truncate-target sets display: inline-block and confines bidi overrides #8191 */, "("
+, React.createElement('span', { className: "css-truncate-target", style: {maxWidth: '200px'},}, fullName), ")"
+)
+	);
+
+	if (insertionPoint.parentElement.className.startsWith('Box-')) {
+		insertionPoint.after(nameElement, ' ');
+	} else {
+		// TODO: Drop condition in May 2025
+		nameElement.classList.remove('ml-1');
+		insertionPoint.after(' ', nameElement, ' ');
+	}
+}
+
+async function updateLinks(found) {
+	const users = Map.groupBy(found, element => element.textContent.trim());
+	users.delete(getUsername());
+	users.delete('ghost'); // Consider using `github-reserved-names` if more exclusions are needed
+
+	if (users.size === 0) {
+		return;
+	}
+
+	const names = await api.v4(
+		[...users.keys()].map(username =>
+			api.escapeKey(username) + `: user(login: "${username}") {name}`,
+		).join(','),
+	);
+
+	for (const [username, elements] of users) {
+		const userKey = api.escapeKey(username);
+		const {name: fullName} = names[userKey];
+
+		// Could be `null` if not set
+		if (!fullName) {
+			continue;
+		}
+
+		for (const element of elements) {
+			if (isUsernameAlreadyFullName(username, fullName)) {
+				element.textContent = fullName;
+			} else {
+				appendName(element, fullName);
+			}
+		}
+	}
+}
+
+const updateLink = batchedFunction(updateLinks, {delay: 200});
+
+function updateDom(link) {
+	// `dropExtraCopy` is async so that errors in this part don't break the entire feature
+	void dropExtraCopy(link);
+
+	updateLink(link);
+}
+
+async function init(signal) {
+	await expectToken();
+	document.body.classList.add('rgh-show-names');
+	observe(usernameLinksSelector, updateDom, {signal});
+}
+
+void features.add(import.meta.url, {
+	include: [
+		isDashboard,
+		hasComments,
+	],
+	init,
+});
+
+/*
+
+Test URLs:
+
+- issue: https://github.com/isaacs/github/issues/297
+- PR with reviews: https://github.com/rust-lang/rfcs/pull/2544
+- mannequins: https://togithub.com/python/cpython/issues/67591
+- newsfeed: https://github.com
+
+Special cases:
+
+- RTL: https://github.com/refined-github/refined-github/issues/8191
+- Bidi override case 1: https://togithub.com/FortAwesome/Font-Awesome/issues/2465
+- Bidi override case 2: https://togithub.com/w3c/webdriver/issues/385#issuecomment-598407238
+
+*/

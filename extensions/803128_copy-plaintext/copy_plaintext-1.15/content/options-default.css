@@ -1,0 +1,221 @@
+/* ----- Dark Theme ----- */
+:root,
+body.dark {
+  --shadow: #fff8;
+  --selected-bg: #555;
+  --btn-bg: #666;
+  --btn-hover: #444;
+  --fieldset-color: #0cf;
+  --img-filter: invert(1) grayscale(1);
+}
+
+/* ----- Light Theme ----- */
+@media screen and (prefers-color-scheme: light) {
+  :root {
+    --shadow: #0004;
+    --selected-bg: #eeea;
+    --btn-bg: #eee;
+    --btn-hover: #ddd;
+    --fieldset-color: #066;
+    --img-filter: none;
+  }
+}
+
+:root {
+  --nav-height: 2.5rem;
+}
+
+/* ----- navigation ----- */
+nav {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+  align-content: center;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9em;
+  padding: 0 0.2em;
+}
+
+nav > label {
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid transparent;
+  padding: 0.5em;
+  transition: 0.5s;
+  user-select: none;
+}
+
+nav > label:hover {
+  background: var(--hover);
+}
+
+nav > label img {
+  width: 1.1em;
+}
+
+nav label a {
+  color: inherit;
+}
+
+#nav1:checked ~ article section:nth-of-type(1),
+#nav2:checked ~ article section:nth-of-type(2),
+#nav3:checked ~ article section:nth-of-type(3),
+#nav4:checked ~ article section:nth-of-type(4),
+#nav5:checked ~ article section:nth-of-type(5),
+#nav6:checked ~ article section:nth-of-type(6),
+#nav7:checked ~ article section:nth-of-type(7),
+#nav8:checked ~ article section:nth-of-type(8) {
+  display: block;
+  animation: sect 0.5s ease-in-out;
+}
+
+#nav1:checked ~ nav label[for="nav1"],
+#nav2:checked ~ nav label[for="nav2"],
+#nav3:checked ~ nav label[for="nav3"],
+#nav4:checked ~ nav label[for="nav4"],
+#nav5:checked ~ nav label[for="nav5"],
+#nav6:checked ~ nav label[for="nav6"],
+#nav7:checked ~ nav label[for="nav7"],
+#nav8:checked ~ nav label[for="nav8"] {
+  background-color: var(--selected-bg);
+  border-bottom-color: var(--highlight);
+}
+
+@keyframes sect {
+    0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* About & Help */
+#nav1:checked ~ article,
+#nav2:checked ~ article {
+  background-color: var(--bg);
+}
+/* ----- /navigation ----- */
+
+/* ----- import/export ----- */
+input[type="file"] {
+  display: none;
+}
+
+label[data-i18n^="import"]::before,
+button[data-i18n^="import"]::before {
+  content: '📥';
+  margin-right: 0.3em;
+}
+
+button[data-i18n^="export"]::before {
+  content: '📤';
+  margin-right: 0.3em;
+}
+/* ----- /import/export ----- */
+
+/* ----- submit button ----- */
+button[type="submit"] {
+  color: #fff;
+  font-weight: bold;
+  background-color: #09f;
+  border: none;
+}
+
+button[type="submit"]:hover {
+  background-color: #07c;
+}
+/* ----- /submit button ----- */
+
+/* ----- general ----- */
+body {
+  opacity: 0;
+  transition: opacity 0.5s;
+  overflow: hidden;
+}
+
+nav label img {
+  filter: var(--img-filter);
+}
+
+article {
+  background-color: var(--alt-bg);
+}
+
+section {
+  padding: 0.5em;
+  height: calc(100vh - var(--nav-height));
+  display: none;
+  overflow: auto;
+}
+
+iframe {
+  border: none;
+  margin: 0;
+  width: 100%;
+  height: 99%;
+}
+
+img {
+  vertical-align: text-bottom;
+}
+
+label[for],
+input[type="checkbox"],
+summary,
+.pointer {
+  cursor: pointer;
+}
+
+label > input[type="checkbox"] {
+  margin-right: 0.5em;
+}
+
+
+input[type="number"] {
+  width: 4em;
+}
+
+fieldset {
+  background: var(--bg);
+  margin-bottom: 1em;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+fieldset label img {
+  width: 1em;
+}
+
+legend {
+  color: var(--fieldset-color);
+  background: var(--bg);
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+  padding: 0.2em 1em;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.description {
+  border-left: 2px solid #abc;
+  color: var(--fieldset-color);
+  font-size: 0.9em;
+  font-style: italic;
+  margin-left: 0.5em;
+  margin-top: 0;
+  padding-left: 0.3em;
+}
+
+/* ----- button bin ----- */
+button.bin{
+  font-size: 1em;
+  width: 1.5em;
+  justify-self: center;
+}
+
+button.bin::before {
+  content: '';
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: text-bottom;
+  background: url('../image/bin.svg') no-repeat center / contain;
+}
+/* ----- /button bin ----- */

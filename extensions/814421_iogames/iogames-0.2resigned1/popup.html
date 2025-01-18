@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.IO Games Google Chrome Extension</title>
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/isotope.js"></script>
+    <script type="text/javascript" src="./js/custom-masonry.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <!--<script type="text/javascript" src="popup.js"></script>-->
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Thambi" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+<header class="logo">
+    <div class = "logo col-xs-4">
+        <a href="http://iogames.land" target="_blank">
+            <span class="text_yellow">IO</span>Games<span class="text_yellow">.land</span>
+            <span class="underLogo">Unblocked & Unlocked</span>
+        </a>
+
+    </div>
+    <ul class="horizontal pull-left social-buttons mtop5 col-xs-6">
+        <li class="facebook">
+            <a class="flat-button left-edge bg_facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fiogames.land" target="_blank"><i aria-hidden="true" class="fa fa-facebook"></i></a>
+        </li>
+        <li class="google">
+            <a class="flat-button edge bg_google" href="https://plus.google.com/share?url=http%3A%2F%2Fiogames.land" target="_blank"><i aria-hidden="true" class="fa fa-google-plus"></i></a>
+        </li>
+        <li class="twitter">
+            <a class="flat-button edge bg_twitter" href="https://twitter.com/intent/tweet?text=IO Games&amp;url=http%3A%2F%2Fiogames.land&amp;via=iogames_land" target="_blank"><i aria-hidden="true" class="fa fa-twitter"></i></a>
+        </li>
+        <li class="youtube">
+            <a class="flat-button right-edge bg_youtube" href="https://www.youtube.com/channel/UCWB6PEEzk_x8TWF-P-t0GQw?sub_confirmation=1" target="_blank"><i aria-hidden="true" class="fa fa-youtube-play"></i> Subscribe</a>
+        </li>
+    </ul>
+    <div class="favourite col-xs-1">
+        <a href="https://chrome.google.com/webstore/detail/io-games-unblocked-and-un/bijgehhppcpjlpcjeanhemonehpbkgjf/reviews?hl=en-US&gl=GB" target="_blank">
+            <i aria-hidden="true" class="fa fa-star orange"></i>
+        </a>
+    </div>
+    <div style="clear:both;"></div>
+</header>
+
+<main class="container">
+    <div class="row">
+        <div id="games">
+            <div class="sort-by-button-group col-xs-12 sort-buttons">
+                <span class="sort">Sort:</span>
+                <a class="flat-button small bg_purple" data-sort-value="name"><i class="fa fa-gamepad" aria-hidden="true"></i> Name</a>
+                <a class="flat-button small bg_green" data-sort-value="likes"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Likes</a>
+                <a class="flat-button small bg_red" data-sort-value="plays"><i class="fa fa-fire" aria-hidden="true"></i> Most Played</a>
+                <a class="flat-button small bg_blue" data-sort-value="new"><i class="fa fa-plus" aria-hidden="true"></i> New</a>
+            </div>
+            <div style="clear:both;"></div>
+            <div id="loading">
+                <svg width="120px" height="120px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-hourglass"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><g transform="rotate(0)"><path fill="none" stroke="#253040" stroke-width="5" stroke-miterlimit="10" d="M58.4,51.7c-0.9-0.9-1.4-2-1.4-2.3s0.5-0.4,1.4-1.4 C70.8,43.8,79.8,30.5,80,15.5H70H30H20c0.2,15,9.2,28.1,21.6,32.3c0.9,0.9,1.4,1.2,1.4,1.5s-0.5,1.6-1.4,2.5 C29.2,56.1,20.2,69.5,20,85.5h10h40h10C79.8,69.5,70.8,55.9,58.4,51.7z" class="glass"></path><clipPath id="uil-hourglass-clip1"><rect x="15" y="31.2484" width="70" height="13.7516" class="clip"><animate attributeName="height" from="25" to="0" dur="1s" repeatCount="indefinite" vlaues="25;0;0" keyTimes="0;0.5;1"></animate><animate attributeName="y" from="20" to="45" dur="1s" repeatCount="indefinite" vlaues="20;45;45" keyTimes="0;0.5;1"></animate></rect></clipPath><clipPath id="uil-hourglass-clip2"><rect x="15" y="68.7516" width="70" height="11.2484" class="clip"><animate attributeName="height" from="0" to="25" dur="1s" repeatCount="indefinite" vlaues="0;25;25" keyTimes="0;0.5;1"></animate><animate attributeName="y" from="80" to="55" dur="1s" repeatCount="indefinite" vlaues="80;55;55" keyTimes="0;0.5;1"></animate></rect></clipPath><path d="M29,23c3.1,11.4,11.3,19.5,21,19.5S67.9,34.4,71,23H29z" clip-path="url(#uil-hourglass-clip1)" fill="#f1c40f" class="sand"></path><path d="M71.6,78c-3-11.6-11.5-20-21.5-20s-18.5,8.4-21.5,20H71.6z" clip-path="url(#uil-hourglass-clip2)" fill="#f1c40f" class="sand"></path><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="180 50 50" repeatCount="indefinite" dur="1s" values="0 50 50;0 50 50;180 50 50" keyTimes="0;0.7;1"></animateTransform></g></svg>
+                <p><h2 class="text_blue">Loading...</h2></p>
+            </div>
+            <div style="clear:both;"></div>
+            <div id="ms-container-app">
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div id="videos">
+            <div class="sort-by-button-group buttons col-xs-12">
+                <a class="flat-button small bg_green back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="showVids"></div>
+        </div>
+    </div>
+</main>
+<footer>
+    <span>Copyright 2016 - 2017 <a href="http://iogames.land" class="text_yellow">iogames.land</a> All Rights Reserved</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!--
+/*
+*	Telephone Number Detection
+*	Source © CTI Telephony
+*	CTITelephony@GMail.com
+*/
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Telephone Number Detection - Options</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   
+		<script type="text/javascript" src="../js/contentScriptsAPIBridge.js"></script>
+        <script type="text/javascript" src="options.js"></script>
+	</head>
+	
+	<body style='width: 500px; background: linear-gradient(to bottom, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 30%,rgba(213,235,251,1) 100%);'>
+			<h1 align="center" style='margin-top: -5px'>Telephone Number Detection <img src="../images/Icon32.png" /></h1>
+			<h5 align="center" id="verHeader" style='margin-top: -10px'>x.x.x © CTI Telephony</h5>
+			<hr style='margin-top: -10px'>
+			
+			<h2 style='margin-top: -5px'>Options:</h2>
+
+			<div style='margin-left: 20px; margin-top: -10px'>
+				<h3>Protocol Selection:</h3>
+				<div style='margin-top: -10px; margin-left: 10px;'>Protocol: <select id='protocol'>
+					  <option value="tel">Tel:</option>
+					  <option value="dial">Dial:</option>
+					  <option value="callto">CallTo:</option>
+					  <option value="ucdial">UCDial:</option>
+					  <option value="sip">SIP:</option>
+					  <option value="skype">Skype:</option>
+					</select>
+				</div>
+			</div>
+			
+			<div style='margin-left: 20px;'>
+				<h3>Protocol Replacement:</h3>
+				<p style='margin-top: -10px;'>Replace existing protocols with protocol defined above:</p>
+				<input type="checkbox" id="r_enable" style='margin-top: -10px; margin-left: 10px;'>Enable Protocol Replacement<br><br>
+				<h4 style='margin-top: -10px; margin-left: 10px;'>Replace:</h4>
+				<div style='margin-top: -10px; margin-left: 10px;'>
+					<input type="checkbox" id="r_tel"/>tel:<div class='slashClass' style='display: inline;'></div> with <div class='protClass' style='display: inline;'>x:</div><div class='slashClass' style='display: inline;'></div>
+					<br>
+					<input type="checkbox" id="r_dial"/>dial:<div class='slashClass' style='display: inline;'></div> with <div class='protClass' style='display: inline;'>x:</div><div class='slashClass' style='display: inline;'></div>
+					<br>
+					<input type="checkbox" id="r_callto"/>callto:<div class='slashClass' style='display: inline;'></div> with <div class='protClass' style='display: inline;'>x:</div><div class='slashClass' style='display: inline;'></div>
+					<br>
+					<input type="checkbox" id="r_ucdial"/>ucdial:<div class='slashClass' style='display: inline;'></div> with <div class='protClass' style='display: inline;'>x:</div><div class='slashClass' style='display: inline;'></div>
+					<br>
+					<input type="checkbox" id="r_sip"/>sip:<div class='slashClass' style='display: inline;'></div> with <div class='protClass' style='display: inline;'>x:</div><div class='slashClass' style='display: inline;'></div>
+					<br>
+					<input type="checkbox" id="r_skype"/>skype:<div class='slashClass' style='display: inline;'></div> with <div class='protClass' style='display: inline;'>x:</div><div class='slashClass' style='display: inline;'></div>
+				</div>
+			</div>
+			
+			<div style='margin-left: 20px;'>
+				<h3>Misc:</h3>
+				<div style='margin-top: -10px; margin-left: 10px;'>
+					<input type="checkbox" id="r_slashes">Insert '//' notation</div><br>
+				</div>
+			</div>
+			<div style='margin-left: 20px;'>
+				<h3>Valid Telephone number length:</h3>
+				<div style='margin-top: -10px; margin-left: 10px;'>
+					Min: <input type='text' id='minTel' style='margin-left: 2px; width: 30px;' maxlength='2'/><br/>
+					Max: <input type='text' id='maxTel' style='width: 30px;' maxlength='2'/><br/>
+				</div>
+			</div>
+			
+			<h3 align='center' id='errorStr' style='color: red;'></h3>
+			<br />
+			<hr>
+			<div>
+				<button id='saveBtn' style='width: 83%;'>Save</button>
+				<button id='eraseBtn' style='width: 15%; float: right;'>Defaults</button>
+			</div>
+	</body>
+</html>

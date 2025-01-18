@@ -1,0 +1,1 @@
+import{_ as s,a as o,b as c}from"./clocks-DjzskNOU.js";const l={countdowns:{type:"countdowns",icon:s,upsellId:"UPSELL_COUNTDOWNS"},metrics:{type:"metrics",icon:o,upsellId:"UPSELL_METRICS"},clocks:{type:"clocks",names:{fullLowerCasePlural:"world clocks"},icon:c,upsellId:"UPSELL_WORLD_CLOCKS"}};export{l as m};

@@ -1,0 +1,95 @@
+:root {
+  --viewport-width: 2000px;
+  --detail-view-width: 32vw;
+}
+
+body.better-jira {
+
+  #ghx-column-headers .ghx-column {
+    padding:5px 17px !important;
+
+    h2, .ghx-qty, .ghx-limits {
+      font-size:1em !important;
+      font-weight:700 !important;
+    }
+
+  }
+  
+  #gh #ghx-work #ghx-pool-column.ghx-flexible-board .ghx-swimlane .ghx-swimlane-header {
+    top:30px !important;
+  }
+  /* horizontal scroll on kanban boards */
+  #ghx-pool-column {
+    overflow-y: auto;
+  }
+  #ghx-pool,
+  #jira-board {
+    width: var(--viewport-width);
+  }
+
+  #ghx-pool-wrapper {
+    display:grid;
+  }
+
+  /* horizontal scroll on board settings -> columns option */
+  .ghx-page-panel-content-item {
+    overflow-y: hidden;
+  }
+  #ghx-mapping {
+    width: var(--viewport-width) !important;
+  }
+
+  /* story detail view coulmn */
+  #ghx-detail-view:not(.ui-resizable) {
+    width: var(--detail-view-width) !important;
+    position: relative;
+    z-index: 3;
+  }
+
+  /* Prevent column headers from overlapping when scrolling vertically */
+  .aui-sidebar {
+    z-index: 2;
+  }
+
+  #ghx-pool-column {
+    display: block !important;
+    overflow-x: scroll !important;
+  }
+
+  .better-resize {
+    z-index: 90;
+    width: 7px;
+    position: absolute;
+    top: 0;
+    left: -2px;
+    cursor: col-resize;
+    height: 100%;
+  }
+}
+
+body.screenshot {
+  #js-work-quickfilters dd,
+  .ghx-key-group,
+  .ghx-group {
+    filter: blur(3px);
+  }
+
+  #ghx-view-selector {
+    filter: blur(5px);
+  }
+
+  .ghx-detail-summary,
+  #js-detail-nav-content {
+    filter: blur(4px);
+  }
+
+  //-- Cards
+  .ghx-wrap-issue {
+    section {
+      filter: blur(4px);
+    }
+    .ghx-grabber {
+      filter: blur(3px);
+    }
+  }
+}

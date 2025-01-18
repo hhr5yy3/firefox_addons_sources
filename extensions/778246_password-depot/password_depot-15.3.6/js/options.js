@@ -1,0 +1,1 @@
+var Options={set(t){return this.get().then(e=>{for(var r in t)e[r]=t[r];chrome.storage.local.set(e,function(){return!0})})},get(){return new Promise(function(r,e){chrome.storage.local.get({debugUseDevUrl:!1,socketPortNumber:"25109",isAutoFill:!1,ignoredUrls:[]},function(e){r(e)})})}};

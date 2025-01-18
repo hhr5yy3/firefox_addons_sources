@@ -1,0 +1,1 @@
+togglbutton.render(".entryHeader:not(.toggl)",{observe:!0},function(e){const t=document.createTextNode("\xA0//\xA0 "),n=$(".entryTitle",e).textContent,r=togglbutton.createTimerLink({className:"feedly",description:n});e.querySelector(".entryHeader > .metadata").appendChild(t),e.querySelector(".entryHeader > .metadata").appendChild(r)});

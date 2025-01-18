@@ -1,0 +1,1 @@
+!function(t,r){"use strict";var e=ClassWorkerContentScriptBase(t,r);ClassWorkerContentScript(e,t,r),ClassWorkerContentScriptOIDCSAML(e,t,r),ClassWorkerContentScriptElster(e,t,r),ClassWorkerContentScriptFido2(e,t,r),ClassWorkerContentScriptPGP(e,t,r),ClassWorkerContentScriptNotificationBar(e,t,r)}(browser,setTimeout);

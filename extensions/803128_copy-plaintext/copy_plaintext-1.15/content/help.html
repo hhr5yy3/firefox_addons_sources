@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Help</title>
+    <link href="help.css" rel="stylesheet">
+  </head>
+  <body>
+
+
+  <nav>
+    <a href="#Preamble">Preamble</a>
+    <a href="#How-to-Use">How to Use</a>
+    <a href="#Options">Options</a>
+    <a href="#Support">Support</a>
+  </nav>
+
+  <article>
+
+  <h1 id="Preamble">Preamble</h1>
+
+  <h3>Default function</h3>
+  <ul>
+    <li>Covert the selection to plain text</li>
+    <li>Trim the starting and ending spaces</li>
+    <li>Convert multiple new lines to a single new line</li>
+    <li>Convert all white spaces to plain space</li>
+    <li>Convert multiple white spaces to a single plain space</li>
+    <li>Convert windows <code>\r\n</code> to <code>\n</code> (standard for Linux and Mac (after Mac OS 9)</li>
+  </ul>
+
+  <h3 id="Script-InJection">Script InJection</h3>
+  <p>In some cases, in order to get the selected text, it is necessary to inject a script into the webpage.</p>
+  <ul>
+    <li>Sites with strict <a href="https://developer.mozilla.org/docs/Web/HTTP/CSP" target="_blank">Content Security Policy (CSP)</a> prevent <a href="#Script-InJection">Script InJection</a> e.g. <i>github.com, gitee.com, twitter.com, mail.google.com</i> (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1411641" title="CSP 'sandbox' directive prevents content scripts from matching, due to unique origin, breaking also browser features" target="_blank">Bug 1411641</a>)</li>
+    <li>Firefox prevents script injection into certain <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#restricted_domains" target="_blank">restricted domains</a></li>
+    <li>Injection into some <code>iframe</code> fails due to a Firefox bug (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1841483" title="tabs.executeScript with activeTab fails to inject in a nested iframe" target="_blank">Bug 1841483</a>) (See: <a href="#Optional_Permissions" target="_blank">Optional Permissions</a>)</li>
+  </ul>
+
+  <h3>Light/Dark Theme</h3>
+  <p>Default scheme is based on <a href="https://developer.mozilla.org/docs/Web/CSS/@media/prefers-color-scheme" target="_blank">prefers-color-scheme</a>.</p>
+
+
+  <h1 id="How-to-Use">How to Use</h1>
+
+  <h2 id="toolbar">Toolbar Icon</h2>
+
+  <p>Click to open the Options Page.</p>
+
+  <h2>Context Menu</h2>
+
+  <dl>
+    <dt>Copy PlainText</dt>
+    <dd>Copy the selection to the clipboard as plain text</dd>
+    <dd>Preferred Keyboard Shortcut can be set</dd>
+    <dd>Works on all sites</dd>
+    <dd>Firefox truncates text to 16,384 characters</dd>
+    <dd>If the selection is longer than 16,384 characters, extension attempts to get the selected text by <a href="#Script-InJection">Script InJection</a></dd>
+    <dd>Special pattern is available when a link is selected</dd>
+
+    <dt>Paste PlainText</dt>
+    <dd>Paste the plain text contents of the clipboard in <code>input</code>, <code>textarea</code></dd>
+    <dd>Preferred Keyboard Shortcut can be set</dd>
+    <dd class="note">Paste can fail under certain circumstances (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1695659" title="Inconsistent document.execCommand('paste') behaviour in tabs with iframes" target="_blank">Bug 1695659</a>) but clipboard is already updated with the prepared test and you can use normal browser paste (<kbd>Ctrl + V</kbd>) to paste the text.</dd>
+  </dl>
+
+  <h2>Keyboard Shortcut</h2>
+  <ul>
+    <li>Attempts to get the selected text by <a href="#Script-InJection">Script InJection</a>, which may not work on some sites</li>
+    <li>Setting process was removed in v1.12 since the feature is available directly from Firefox (66+).
+
+      <blockquote><h3>Manage extension shortcuts in Firefox</h3>
+
+      You can now change your extensions' keyboard shortcuts on the add-ons page.
+
+      <ol>
+        <li>Click the menu button ☰, click <code>Add-ons and Themes</code> and select <code>Extensions</code>.</li>
+        <li>Click the <i>Tools</i> for all <i>add-ons</i> cogwheel.</li>
+        <li>Click <code>Manage Extension Shortcuts</code> in the menu.</li>
+        <li>You will see the shortcut options (if available) for your installed add-ons.</li>
+      </ol>
+
+      <cite><a href="https://support.mozilla.org/kb/manage-extension-shortcuts-firefox" target="_blank">Manage extension shortcuts in Firefox</a></cite>
+    </blockquote></li>
+  </ul>
+
+  <h1 id="Options">Options</h1>
+
+  <h2 id="Optional_Permissions">Optional Permissions</h2>
+  <p>Add or remove additional optional permissions</p>
+  <dl>
+    <dt>All URLs</dt>
+    <dd>Enable if it fails to get the text in some <code>iframe</code></dd>
+    <dd>Injection into some <code>iframe</code> fails due to a Firefox bug (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1841483" title="tabs.executeScript with activeTab fails to inject in a nested iframe" target="_blank">Bug 1841483</a>)</dd>
+    <dd>"&lt;all_urls&gt;" permission was added as a workaround in v1.14</dd>
+    <dd>"&lt;all_urls&gt;" permission was changed to an optional permission in v1.15</dd>
+
+
+    <dd>"&lt;all_urls&gt;" belongs to <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/manifest.json/host_permissions" target="_blank">host_permissions</a> and its use depends on other APIs, which often require their own permissions. It is used for:
+      <blockquote>
+        the ability to inject scripts programmatically (using <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/tabs/executeScript">tabs.executeScript()</a>) into pages served from those origins.
+      </blockquote>
+    </dd>
+
+    <dd>Once above bug is resolved, "&lt;all_urls&gt;" permission will be removed</dd>
+    <dd>The bug should not be an issue in Firefox manifest v3, once it is fully implemented (<a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/scripting" target="_blank">scripting</a> support from Firefox 102)</dd>
+    <dd>See also: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1839200" target="_blank">activeTab does not enable scripting.executeScript to execute in iframe with different origin</a></dd>
+
+
+    <dt>Downloads</dt>
+    <dd>Export preferences uses <a href="https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/downloads" target="_blank">downloads</a> API which requires "downloads" permission</dd>
+    <dd>It is possible to save files without "downloads" API but it will have fewer capabilities e.g. no "Save as" dialogue</dd>
+    <dd>"downloads" permission was added in v1.13</dd>
+    <dd>"downloads" permission was changed to an optional permission in v1.15</dd>
+  </dl>
+
+  <h2>Custom Rules</h2>
+  <p>Click Add to enter new custom Find & Replace. You can enter <i>text</i> (global & case-insensitive), or <i>Regular Expression</i> in the Find box. Invalid patterns are marked when saving. Duplicates are removed when saving.</p>
+
+  <dl>
+    <dt>Add</dt>
+    <dd>Click Add button to add a new entry</dd>
+
+    <dt>Quick Add</dt>
+    <dd>Ready-made patterns/replacements</dd>
+
+    <dt>Pattern</dt>
+    <dd>String or Regular Expression</dd>
+    <dd>String will be treated as global & case-insensitive for replacement</dd>
+    <dd>Empty patterns will be removed when saving</dd>
+
+    <dt>Special Pattern <code>(linkUrl)(linkText)</code></dt>
+    <dd>Available after context-menu click, if the selection is a link</dd>
+    <dd>Only the first special pattern is applied</dd>
+    <dd>If selections is link and special pattern is set, only special pattern is applied (other patterns are ignored)</dd>
+
+    <dt>Replacement</dt>
+    <dd>Empty entry results in removing the matched pattern</dd>
+    <dd>Capturing groups can be used</dd>
+
+    <dt>Delete</dt>
+    <dd>Clear the Find entry and it will be removed when saved</dd>
+  </dl>
+
+  <table>
+    <caption>Examples</caption>
+    <thead>
+      <tr>
+        <th>Text</th>
+        <th>Pattern</th>
+        <th>Replacement</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody class="code">
+      <tr>
+        <td>The color blue is my favourite color</td>
+        <td>blue</td>
+        <td>red</td>
+        <td>The color <strong>red</strong> is my favourite color</td>
+      </tr>
+      <tr>
+        <td>The color blue is my favourite color</td>
+        <td>color</td>
+        <td>colour</td>
+        <td>The <strong>colour</strong> blue is my favourite <strong>colour</strong></td>
+      </tr>
+
+      <tr>
+        <td>The color blue is my favourite color</td>
+        <td>/color/</td>
+        <td>colour</td>
+        <td>The <strong>colour</strong> blue is my favourite color</td>
+      </tr>
+      <tr>
+        <td>The color blue is my favourite color</td>
+        <td>/color/g</td>
+        <td>colour</td>
+        <td>The <strong>colour</strong> blue is my favourite <strong>colour</strong></td>
+      </tr>
+
+      <tr>
+        <td>The color blue is my favourite color</td>
+        <td>/color\s+(\S+)/i</td>
+        <td>colour $1</td>
+        <td>The <strong>colour blue</strong> is my favourite color</td>
+      </tr>
+      <tr>
+        <td>select a link</td>
+        <td>(linkUrl)(linkText)</td>
+        <td>[$2]($1)</td>
+        <td>[<strong>linkText</strong>](<strong>linkUrl</strong>)</td>
+      </tr>
+      <tr>
+        <td>select a link</td>
+        <td>(linkUrl)(linkText)</td>
+        <td>&lt;a href="$1"&gt;$2&lt;/a&gt;</td>
+        <td>&lt;a href="<strong>linkUrl</strong>"&gt;<strong>linkText</strong>&lt;/a&gt;</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+  <h2 id="import-export">Preferences: Import/Export</h2>
+  <p>You can import/export Preferences (for backup or share) from/to a local file on your computer.</p>
+  <p class="note">Import is non-destructive. Click <b>Save</b> to apply the changes.</p>
+
+
+  <h2 id="save">Save</h2>
+  <p>Please note that changes will not take effect until they are saved.</p>
+
+
+  <h1 id="Support"><img src="../image/help.svg" alt=""> Support</h1>
+  <p>Please use the GitHub Community <a href="https://github.com/erosman/support" target="_blank">Support</a>.</p>
+
+
+    </article>
+  </body>
+</html>

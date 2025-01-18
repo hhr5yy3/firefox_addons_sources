@@ -1,0 +1,57 @@
+// Attempt at threaded rendering
+const webext = typeof browser === 'undefined' ? chrome : browser;
+
+importScript(webext.extension.getURL('lib/markdown-it/dist/markdown-it.min.js'))
+importScript(webext.extension.getURL('lib/markdown-it-checkbox/dist/markdown-it-checkbox.min.js'))
+importScript(webext.extension.getURL('lib/markdown-it-emoji/dist/markdown-it-emoji.min.js'))
+importScript(webext.extension.getURL('lib/markdown-it-footnote/dist/markdown-it-footnote.min.js'))
+importScript(webext.extension.getURL('lib/markdown-it-fancy-lists/markdown-it-fancy-lists.js'))
+importScript(webext.extension.getURL('lib/highlightjs/build/highlight.min.js'))
+
+
+function highlightCodeBlock(str, lang)
+{
+	// Shameless copypasta https://github.com/markdown-it/markdown-it#syntax-highlighting
+	if (lang && hljs.getLanguage(lang)) {
+		try {
+			return hljs.highlight(lang, str).value;
+		} catch (e) {}
+	}
+
+	try {
+		return hljs.highlightAuto(str).value;
+	} catch (e) {}
+	return ''; // use external default escaping
+}
+
+const pluginDefaults = {'hljs': true, 'checkbox': true, 'emojis': true, 'footnotes': false, 'fancy-lists': false};
+
+const mdPromise = webext.storage.sync.get({'plugins': {}}).then(storage => ({...pluginDefaults, ...storage.plugins})).then(plugins => {
+	const md = self.markdownit({
+		html: true,
+		linkify: true,
+		...plugins.hljs ? {highlight: highlightCodeBlock} : {},
+	})
+
+	if (plugins.checkbox) {
+		md.use(self.markdownitCheckbox);
+	}
+	if (plugins.emojis) {
+		md.use(self.markdownitEmoji);
+	}
+	if (plugins.footnotes) {
+		md.use(self.markdownitFootnote);
+	}
+	if (plugins['fancy-lists']) {
+		md.block.ruler.at('list', fancyList, { alt: [ 'paragraph', 'reference', 'blockquote' ] });
+	}
+
+	return md;
+}
+
+onmessage = function(e) {
+	mdPromise.then(mdRenderer => {
+		const rendered = mdRenderer.render(e.data);
+		postMessage(rendered);
+	})
+}

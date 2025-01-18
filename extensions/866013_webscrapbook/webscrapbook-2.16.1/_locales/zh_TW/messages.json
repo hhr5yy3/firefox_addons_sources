@@ -1,0 +1,1794 @@
+{
+  "AdvancedCaptureTasksLabel": {
+    "message": "擷取工作:"
+  },
+  "AdvancedCaptureTasksTooltip": {
+    "message": "輸入擷取工作，格式為一個 JSON 物件，包括以下屬性：\n• bookId: 儲存至後端伺服器時，把擷取項目儲存至此 ID 的剪貼簿。省略時儲存至目前剪貼簿。\n• parentId: 儲存至後端伺服器時，把擷取項目插入此 ID 的項目下。省略時插入至根項目。\n• index: 儲存至後端伺服器時，擷取項目的插入位置（從 0 開始）。null 值或省略時插入至最後面。\n• delay: 執行下個擷取工作前的延遲時間（毫秒）。\n• autoClose: 擷取完成時自動關閉對話視窗的設定，覆寫預設選項。可用「none」、「nowarn」、「noerror」、「nofailure」、「always」等值。\n• mode: 擷取模式。「tab」為擷取分頁（擷取網址時自動開新分頁），「source」為擷取原貌，「bookmark」為擷取書籤。省略時指定 tabId 者預設為「tab」，指定 url 者預設為「source」。\n• options: 覆寫擷取選項的 JSON 物件，格式同匯出選項（限「capture.*」）。\n• tasks: 擷取工作列表，為 JSON 物件陣列，其中每個物件包括以下屬性：\n  • tabId: 待擷取的分頁 ID。省略時擷取 url。\n  • frameId: 待擷取分頁的框架頁 ID。省略時擷取主框架頁。\n  • fullPage: 屬真時擷取全頁，否則擷取選取範圍。\n  • url: 待擷取的網址。\n  • mode: 覆寫此擷取工作的擷取模式。\n  • options: 覆寫此擷取工作的擷取選項。\n  • title: 自訂項目標題。（儲存至後端伺服器時）（勾選「忽略標題」時無效）\n  • comment: 自訂項目評註。（儲存至後端伺服器時）\n  • favIconUrl: 自訂項目圖示。（儲存至後端伺服器時）\n  • recaptureInfo: 重新擷取設定，為含有 bookId 及 itemId 屬性的 JSON 物件。（儲存至後端伺服器時）\n  • mergeCaptureInfo: 合併擷取設定，為含有 bookId 及 itemId 屬性的 JSON 物件。（儲存至後端伺服器時）"
+  },
+  "AdvancedCaptureTitle": {
+    "message": "進階擷取"
+  },
+  "BatchCapture": {
+    "message": "批次擷取所有分頁"
+  },
+  "BatchCaptureAbortLabel": {
+    "message": "取消"
+  },
+  "BatchCaptureAdvancedLabel": {
+    "message": "進階設定"
+  },
+  "BatchCaptureCaptureLabel": {
+    "message": "擷取"
+  },
+  "BatchCaptureLinks": {
+    "message": "批次擷取選取的超連結"
+  },
+  "BatchCaptureOptionIgnoreTitleLabel": {
+    "message": "忽略標題"
+  },
+  "BatchCaptureOptionUniquifyLabel": {
+    "message": "略過重複網址"
+  },
+  "BatchCaptureTitle": {
+    "message": "批次擷取網頁"
+  },
+  "BatchCaptureUrlsLabel": {
+    "message": "網頁列表:"
+  },
+  "BatchCaptureUrlsTooltip": {
+    "message": "輸入欲擷取的網頁列表。格式為每行一個網址，網址後可加上網頁標題，以空白字元分隔。"
+  },
+  "Cancel": {
+    "message": "取消"
+  },
+  "CaptureDetailsCaptureInfoTypeLabel": {
+    "message": "擷取方式:"
+  },
+  "CaptureDetailsCaptureInfoTypeMergeCaptureLabel": {
+    "message": "合併擷取"
+  },
+  "CaptureDetailsCaptureInfoTypeNormalLabel": {
+    "message": "一般擷取"
+  },
+  "CaptureDetailsCaptureInfoTypeRecaptureLabel": {
+    "message": "重新擷取"
+  },
+  "CaptureDetailsCaptureInfoTypeTooltip": {
+    "message": "設定如何處理擷取的內容：\n• 一般擷取: 擷取為新項目並置於目標項目下。\n• 重新擷取: 取代目標項目的內容，更新項目類型、索引檔、修改時間、來源網址、最愛圖示、標題、評註，並嘗試複製原網頁的註記。\n• 合併擷取: 把擷取的網頁合併至目標項目，並重建交互連結。目標項目必須為 site 類型（擷取連結頁面深度為 0 以上）且儲存為資料夾。"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilter": {
+    "message": "帶入規則"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterAllLinks": {
+    "message": "頁面中所有超連結"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterDir": {
+    "message": "相同目錄"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterDomain": {
+    "message": "相同網域"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterExclude": {
+    "message": "以排除條件過濾"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterExcludeTooltip": {
+    "message": "輸入字串或正規表示式字串（/表示式/標幟）作為過濾現有網址規則的排除條件，符合條件的會轉換為註解。"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterInclude": {
+    "message": "以列入條件過濾"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterIncludeTooltip": {
+    "message": "輸入字串或正規表示式字串（/表示式/標幟）作為過濾現有網址規則的列入條件，不符合條件的會轉換為註解。"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterOrigin": {
+    "message": "相同網站"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterPath": {
+    "message": "相同路徑"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterSelectedLinks": {
+    "message": "頁面中選取的超連結"
+  },
+  "CaptureDetailsFillParentId": {
+    "message": "選擇"
+  },
+  "CaptureDetailsOptionCommentLabel": {
+    "message": "評註:"
+  },
+  "CaptureDetailsOptionCommentRecapturePlaceholder": {
+    "message": "留空以維持原值"
+  },
+  "CaptureDetailsOptionIndexLabel": {
+    "message": "目標位置:"
+  },
+  "CaptureDetailsOptionIndexTooltip": {
+    "message": "擷取項目的插入位置（從 0 開始）。留空時插入至最後面。"
+  },
+  "CaptureDetailsOptionModeBookmarkLabel": {
+    "message": "書籤"
+  },
+  "CaptureDetailsOptionModeLabel": {
+    "message": "擷取模式:"
+  },
+  "CaptureDetailsOptionModeNormalLabel": {
+    "message": "一般"
+  },
+  "CaptureDetailsOptionModeSourceLabel": {
+    "message": "原貌"
+  },
+  "CaptureDetailsOptionTargetLabel": {
+    "message": "目標項目:"
+  },
+  "CaptureDetailsOptionTitleLabel": {
+    "message": "標題:"
+  },
+  "CaptureDetailsOptionTitleRecapturePlaceholder": {
+    "message": "留空以維持原值"
+  },
+  "CaptureDetailsTitle": {
+    "message": "擷取網頁"
+  },
+  "CaptureDetailsTitleForSource": {
+    "message": "擷取網頁: $SOURCE$",
+    "placeholders": {
+      "source": {
+        "content": "$1"
+      }
+    }
+  },
+  "CaptureFrame": {
+    "message": "擷取框架頁"
+  },
+  "CaptureFrameAs": {
+    "message": "擷取框架頁為"
+  },
+  "CaptureFrameBookmark": {
+    "message": "擷取框架頁 (書籤)"
+  },
+  "CaptureFrameSource": {
+    "message": "擷取框架頁 (原貌)"
+  },
+  "CaptureLink": {
+    "message": "擷取連結頁面 (新分頁)"
+  },
+  "CaptureLinkAs": {
+    "message": "擷取連結頁面為"
+  },
+  "CaptureLinkBookmark": {
+    "message": "擷取連結頁面 (書籤)"
+  },
+  "CaptureLinkSource": {
+    "message": "擷取連結頁面 (原貌)"
+  },
+  "CaptureMedia": {
+    "message": "擷取多媒體"
+  },
+  "CaptureMediaAs": {
+    "message": "擷取多媒體為"
+  },
+  "CapturePage": {
+    "message": "擷取頁面"
+  },
+  "CapturePageAs": {
+    "message": "擷取頁面為"
+  },
+  "CapturePageBookmark": {
+    "message": "擷取頁面 (書籤)"
+  },
+  "CapturePageSource": {
+    "message": "擷取頁面 (原貌)"
+  },
+  "CaptureSelection": {
+    "message": "擷取選取範圍"
+  },
+  "CaptureSelectionAs": {
+    "message": "擷取選取範圍為"
+  },
+  "CaptureTab": {
+    "message": "擷取分頁"
+  },
+  "CaptureTabAs": {
+    "message": "擷取分頁為"
+  },
+  "CaptureTabBookmark": {
+    "message": "擷取分頁 (書籤)"
+  },
+  "CaptureTabBookmarkTooltip": {
+    "message": "將選取的分頁擷取為書籤網頁或剪貼簿項目。\n\n__MSG_CaptureTabDnDTooltip__"
+  },
+  "CaptureTabDnDTooltip": {
+    "message": "提示：拖放此項目至剪貼簿以擷取至特定位置。按住 Shift 以擷取原貌。按住 Alt 以擷取為書籤。按住 Ctrl 以設定擷取細節。"
+  },
+  "CaptureTabSource": {
+    "message": "擷取分頁 (原貌)"
+  },
+  "CaptureTabSourceTooltip": {
+    "message": "擷取選取的分頁的原始狀態（未經過腳本處理）。\n\n__MSG_CaptureTabDnDTooltip__"
+  },
+  "CaptureTabTooltip": {
+    "message": "擷取選取的分頁的目前狀態。若分頁中有選取內容則只擷取選取範圍。\n\n__MSG_CaptureTabDnDTooltip__"
+  },
+  "CapturerTitle": {
+    "message": "擷取頁面"
+  },
+  "CheckerTitle": {
+    "message": "檢測資料"
+  },
+  "EditConfirmScriptedDocument": {
+    "message": "此頁面含有腳本，可能與編輯工具衝突，造成永久的資訊遺失。確定要儲存嗎？"
+  },
+  "EditExitLabel": {
+    "message": "離開"
+  },
+  "EditLocateLabel": {
+    "message": "定位"
+  },
+  "EditPage": {
+    "message": "編輯頁面"
+  },
+  "EditSaveLabel": {
+    "message": "儲存"
+  },
+  "EditTab": {
+    "message": "編輯分頁"
+  },
+  "EditTitle": {
+    "message": "編輯 $ID$",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditTitleWithFile": {
+    "message": "編輯 $ID$ :: $FILE$",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      },
+      "file": {
+        "content": "$2"
+      }
+    }
+  },
+  "EditorButtonAnnotation": {
+    "message": "批註工具 - 點擊建立便利貼批註。"
+  },
+  "EditorButtonAnnotationLink": {
+    "message": "附加超連結"
+  },
+  "EditorButtonAnnotationLinkPrompt": {
+    "message": "請輸入要附加的超連結網址："
+  },
+  "EditorButtonAnnotationNext": {
+    "message": "尋找下一個註記"
+  },
+  "EditorButtonAnnotationPrev": {
+    "message": "尋找上一個註記"
+  },
+  "EditorButtonAnnotationSticky": {
+    "message": "建立便利貼"
+  },
+  "EditorButtonAnnotationStickyRichText": {
+    "message": "建立便利貼（富文本）"
+  },
+  "EditorButtonClose": {
+    "message": "關閉工具列"
+  },
+  "EditorButtonDOMEraser": {
+    "message": "元素橡皮擦工具 - 開啟後點擊可擦除目標元素；Ctrl 或中鍵點擊擦除目標以外的元素。（擦除的內容可還原）"
+  },
+  "EditorButtonDOMEraserErase": {
+    "message": "擦除選取範圍 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonDOMEraserExpand": {
+    "message": "擴大選取範圍 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonDOMEraserIsolate": {
+    "message": "析離選取範圍 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonDOMEraserRemoveEdit": {
+    "message": "移除這個剪貼簿註記"
+  },
+  "EditorButtonDOMEraserShrink": {
+    "message": "縮小選取範圍 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonEraser": {
+    "message": "橡皮擦工具 - 點擊擦除選取範圍的內容；Ctrl 或中鍵點擊移除選取範圍的剪貼簿註記。（擦除的內容可還原）"
+  },
+  "EditorButtonEraserRevertAll": {
+    "message": "還原所有擦除內容（所有框架頁）"
+  },
+  "EditorButtonEraserRevertSelection": {
+    "message": "還原選取範圍的擦除內容"
+  },
+  "EditorButtonEraserSelection": {
+    "message": "擦除選取範圍的內容"
+  },
+  "EditorButtonEraserSelector": {
+    "message": "透過 CSS 選擇器擦除內容"
+  },
+  "EditorButtonEraserSelectorAll": {
+    "message": "透過 CSS 選擇器擦除內容（所有框架頁）"
+  },
+  "EditorButtonEraserSelectorPrompt": {
+    "message": "請輸入用於擦除內容的 CSS 選擇器："
+  },
+  "EditorButtonEraserXpath": {
+    "message": "透過 XPath 擦除內容"
+  },
+  "EditorButtonEraserXpathAll": {
+    "message": "透過 XPath 擦除內容（所有框架頁）"
+  },
+  "EditorButtonEraserXpathPrompt": {
+    "message": "請輸入用於擦除內容的 XPath："
+  },
+  "EditorButtonHtmlEditor": {
+    "message": "HTML 編輯工具 - 點擊開啟或關閉。開啟後可自由編輯頁面內容。（儲存後無法復原）"
+  },
+  "EditorButtonHtmlEditorBgColor": {
+    "message": "設定背景顏色"
+  },
+  "EditorButtonHtmlEditorBgColorPrompt": {
+    "message": "請輸入要設定的背景顏色（使用 CSS 顏色語法）："
+  },
+  "EditorButtonHtmlEditorCreateLink": {
+    "message": "建立超連結"
+  },
+  "EditorButtonHtmlEditorCreateLinkPrompt": {
+    "message": "請輸入要建立的超連結網址："
+  },
+  "EditorButtonHtmlEditorEm": {
+    "message": "切換斜體"
+  },
+  "EditorButtonHtmlEditorFgColor": {
+    "message": "設定文字顏色"
+  },
+  "EditorButtonHtmlEditorFgColorPrompt": {
+    "message": "請輸入要設定的文字顏色（使用 CSS 顏色語法）："
+  },
+  "EditorButtonHtmlEditorFormatBlockDiv": {
+    "message": "設定為 DIV 區塊"
+  },
+  "EditorButtonHtmlEditorFormatBlockH": {
+    "message": "設定為 $LEVEL$ 級標題",
+    "placeholders": {
+      "level": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonHtmlEditorFormatBlockP": {
+    "message": "設定為一般段落"
+  },
+  "EditorButtonHtmlEditorFormatBlockPre": {
+    "message": "設定為 PRE 區塊"
+  },
+  "EditorButtonHtmlEditorHr": {
+    "message": "插入水平線"
+  },
+  "EditorButtonHtmlEditorIndent": {
+    "message": "增加縮排"
+  },
+  "EditorButtonHtmlEditorInsertDate": {
+    "message": "插入日期"
+  },
+  "EditorButtonHtmlEditorInsertHtml": {
+    "message": "插入 HTML"
+  },
+  "EditorButtonHtmlEditorInsertHtmlPrompt": {
+    "message": "請輸入要插入的 HTML："
+  },
+  "EditorButtonHtmlEditorJustifyCenter": {
+    "message": "置中對齊"
+  },
+  "EditorButtonHtmlEditorJustifyFull": {
+    "message": "左右對齊"
+  },
+  "EditorButtonHtmlEditorJustifyLeft": {
+    "message": "靠左對齊"
+  },
+  "EditorButtonHtmlEditorJustifyRight": {
+    "message": "靠右對齊"
+  },
+  "EditorButtonHtmlEditorListOrdered": {
+    "message": "設定為有序列表"
+  },
+  "EditorButtonHtmlEditorListUnordered": {
+    "message": "設定為無序列表"
+  },
+  "EditorButtonHtmlEditorOutdent": {
+    "message": "減少縮排"
+  },
+  "EditorButtonHtmlEditorRemoveFormat": {
+    "message": "清除格式"
+  },
+  "EditorButtonHtmlEditorStrike": {
+    "message": "切換刪除線"
+  },
+  "EditorButtonHtmlEditorStrong": {
+    "message": "切換粗體"
+  },
+  "EditorButtonHtmlEditorSubscript": {
+    "message": "切換下標"
+  },
+  "EditorButtonHtmlEditorSuperscript": {
+    "message": "切換上標"
+  },
+  "EditorButtonHtmlEditorTodo": {
+    "message": "插入核取方塊"
+  },
+  "EditorButtonHtmlEditorUnderline": {
+    "message": "切換底線"
+  },
+  "EditorButtonHtmlEditorUnlink": {
+    "message": "移除超連結"
+  },
+  "EditorButtonLocate": {
+    "message": "定位工具 - 在剪貼簿顯示此項目的位置。"
+  },
+  "EditorButtonLocateViewDirectory": {
+    "message": "檢視頁面所在目錄"
+  },
+  "EditorButtonLocateViewSitemap": {
+    "message": "檢視站台地圖"
+  },
+  "EditorButtonLocateViewSource": {
+    "message": "檢視原始頁面"
+  },
+  "EditorButtonMarker": {
+    "message": "標示工具 - 點擊以標示選取的文字。點擊標示可建立或編輯批註。"
+  },
+  "EditorButtonMarkerItem": {
+    "message": "標示 $INDEX$",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonRemoveEditsAll": {
+    "message": "移除所有剪貼簿註記（所有框架頁）"
+  },
+  "EditorButtonRemoveEditsSelection": {
+    "message": "移除選取範圍的剪貼簿註記"
+  },
+  "EditorButtonSave": {
+    "message": "儲存頁面"
+  },
+  "EditorButtonSaveCreateSubPage": {
+    "message": "建立子頁面"
+  },
+  "EditorButtonSaveCreateSubPagePrompt": {
+    "message": "請輸入子頁面名稱（不含 .html）"
+  },
+  "EditorButtonSaveDeleteErased": {
+    "message": "永久刪除所有擦除內容（所有框架頁）"
+  },
+  "EditorButtonSaveEditTitle": {
+    "message": "修改頁面標題"
+  },
+  "EditorButtonSaveEditTitlePrompt": {
+    "message": "請輸入新標題"
+  },
+  "EditorButtonSaveInternalize": {
+    "message": "儲存內嵌的外部資源"
+  },
+  "EditorButtonSavePinTop": {
+    "message": "工具欄置頂"
+  },
+  "EditorButtonSaveSetViewport": {
+    "message": "修改頁面視圖"
+  },
+  "EditorButtonSaveSetViewportPromptCreate": {
+    "message": "建立頁面視圖為"
+  },
+  "EditorButtonSaveSetViewportPromptModify": {
+    "message": "修改頁面視圖為"
+  },
+  "EditorButtonUndo": {
+    "message": "復原"
+  },
+  "EditorButtonUndoToggle": {
+    "message": "啟用復原功能"
+  },
+  "EditorDeleteAnnotationConfirm": {
+    "message": "刪除這個批註嗎？"
+  },
+  "EditorEditAnnotation": {
+    "message": "編輯批註內容："
+  },
+  "EditorEditAnnotationPrompt": {
+    "message": "編輯批註內容（行尾輸入兩個空白可加入新行）：\n$TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorLineMarkerCancel": {
+    "message": "取消编辑 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorLineMarkerSave": {
+    "message": "儲存變更 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorStickyDelete": {
+    "message": "刪除這個便利貼"
+  },
+  "EditorStickySave": {
+    "message": "儲存變更 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorContentScriptExecute": {
+    "message": "無法執行內容處理腳本 ($SOURCE$): $REASON$",
+    "placeholders": {
+      "source": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "ErrorEditorButtonEraserSelectorInvalid": {
+    "message": "'$SELECTOR$' 不是有效的 CSS 選擇器。",
+    "placeholders": {
+      "selector": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorEditorButtonEraserXpathInvalid": {
+    "message": "'$SELECTOR$' 不是有效的 XPath。",
+    "placeholders": {
+      "selector": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorFileDownloadError": {
+    "message": "下載檔案錯誤 ($URL$): $REASON$",
+    "placeholders": {
+      "url": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "ErrorFileSaveError": {
+    "message": "儲存檔案錯誤 ($FILENAME$ <= $URL$): $REASON$",
+    "placeholders": {
+      "url": {
+        "content": "$1"
+      },
+      "filename": {
+        "content": "$2"
+      },
+      "reason": {
+        "content": "$3"
+      }
+    }
+  },
+  "ErrorImportOptions": {
+    "message": "匯入選項失敗: $REASON$",
+    "placeholders": {
+      "reason": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorLocateNotFound": {
+    "message": "找不到本頁面所屬的剪貼簿項目。"
+  },
+  "ErrorLocateSidebarNotOpened": {
+    "message": "剪貼簿尚未開啟，無法執行定位。"
+  },
+  "ErrorSaveBookNoTree": {
+    "message": "剪貼簿停用了資料樹功能。"
+  },
+  "ErrorSaveLockedItem": {
+    "message": "此項目已鎖定，無法儲存。"
+  },
+  "ErrorSaveNonHtml": {
+    "message": "無法儲存非 HTML 檔案 ($URL$)。",
+    "placeholders": {
+      "url": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSaveNonUTF8": {
+    "message": "無法儲存非 UTF-8 編碼的檔案 ($URL$)。",
+    "placeholders": {
+      "url": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSaveNotUnderDataDir": {
+    "message": "無法儲存非資料目錄下的檔案 ($URL$)。",
+    "placeholders": {
+      "url": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSaveUnknownItem": {
+    "message": "找不到此頁面的所屬項目。"
+  },
+  "ErrorSaveUploadFailure": {
+    "message": "無法上傳至後端伺服器 ($SOURCE$): $REASON$",
+    "placeholders": {
+      "source": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "ErrorSearch": {
+    "message": "錯誤: $REASON$",
+    "placeholders": {
+      "reason": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSearchInvalidDate": {
+    "message": "日期格式錯誤: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSearchInvalidLimit": {
+    "message": "筆數限制格式錯誤: $LIMIT$",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSearchInvalidRegExp": {
+    "message": "正規表示式格式錯誤: $REGEX$",
+    "placeholders": {
+      "regex": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSearchInvalidSort": {
+    "message": "排序格式錯誤: $SORT$",
+    "placeholders": {
+      "sort": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorTabDiscarded": {
+    "message": "分頁已卸載，請重新載入再嘗試。"
+  },
+  "ExtensionDescription": {
+    "description": "Description of the extension as it's visible to the outside world",
+    "message": "擷取網頁至本地或後端伺服器供檢索、組織、加註、編輯。"
+  },
+  "ExtensionName": {
+    "description": "Name of the extension as it's visible to the outside world",
+    "message": "網頁剪貼簿"
+  },
+  "IndexerHeader": {
+    "message": "選擇網頁剪貼簿資料夾或其 ZIP 壓縮檔。你可以拖放它們至此頁，或使用以下按鈕："
+  },
+  "IndexerLoadServer": {
+    "message": "索引伺服器資料"
+  },
+  "IndexerPickDir": {
+    "message": "選擇資料夾"
+  },
+  "IndexerPickDirTooltip": {
+    "message": "用此方式選擇資料夾時，若根目錄下只有單一資料夾，會無法正確辨識根目錄。用拖放方式選擇資料夾或在根目錄下增加檔案或含有檔案的資料夾可避免此問題。"
+  },
+  "IndexerPickFiles": {
+    "message": "選擇 ZIP 壓縮檔"
+  },
+  "IndexerTitle": {
+    "message": "建立站台索引"
+  },
+  "ItemPickerTitle": {
+    "message": "選擇項目"
+  },
+  "OK": {
+    "message": "確定"
+  },
+  "OpenChecker": {
+    "message": "執行檢測器"
+  },
+  "OpenIndexer": {
+    "message": "執行索引器"
+  },
+  "OpenOptions": {
+    "message": "選項"
+  },
+  "OpenScrapBook": {
+    "message": "開啟剪貼簿"
+  },
+  "OpenScrapBookTooltip": {
+    "message": "本功能需要架設後端伺服器並做好相關設定才能運作。"
+  },
+  "OpenSearch": {
+    "message": "搜尋剪貼簿"
+  },
+  "OpenViewer": {
+    "message": "檢視封存網頁"
+  },
+  "OptionAutocaptureLabel": {
+    "message": "啟用自動擷取:"
+  },
+  "OptionAutocaptureTooltip": {
+    "message": "自動擷取使用 JSON 定義，格式如下：\n\n  [\n   {\n    \"name\": \"Example#1\",\n    \"description\": \"Auto-capture example.com\",\n    \"pattern\": \"/^https?://example\\\\.com//i\",\n    \"delay\": 5000,\n    ...\n   },\n   ...\n  ]\n\n• name: 字串，標示此設定的名稱及用於除錯識別，可省略。\n• description: 字串，註記此設定的功能，可省略。\n• disabled: 屬真時將停用此設定，可省略。\n• tabId: 用於限定此設定作用的分頁 ID。省略此項則作用於任意分頁。\n• pattern: 為正規表示式字串（「/表示式/標幟」）或其陣列，網址匹配任一項即納入此設定的自動擷取。省略則納入任意網頁。\n• exclude: 為正規表示式字串（「/表示式/標幟」）或其陣列，網址匹配任一項即排除此設定的自動擷取。可省略。\n• delay: 網頁載入完成至開始自動擷取前的延遲時間（毫秒）。省略或不大於 0 則無延遲。\n• repeat: 自動擷取開始後重複擷取的間隔時間（毫秒）。省略或不大於 0 則不重複擷取。\n• allowDuplicate: 屬真時將允許重複自動擷取相同網頁，可省略。\n• taskInfo: 覆寫擷取工作的 JSON 物件，格式同「擷取分頁為...」的主要 JSON 物件，可省略。\n• eachTaskInfo: 覆寫單一擷取工作的 JSON 物件，格式同「擷取分頁為...」tasks 陣列中的物件，可省略。"
+  },
+  "OptionCaptureAdoptedStyleSheetLabel": {
+    "message": "構造式樣式表:"
+  },
+  "OptionCaptureAdoptedStyleSheetTooltip": {
+    "message": "此選項決定構造式樣式表的處理方式。構造式樣式表是由頁面腳本動態產生並直接依附於頁面的樣式表。\n\n• 儲存：將構造式樣式表記錄於特殊屬性，並產生相應的初始化腳本，在網頁載入時重建樣式表。\n• 移除：不記錄構造式樣式表。"
+  },
+  "OptionCaptureAppletLabel": {
+    "message": "APPLET 元素:"
+  },
+  "OptionCaptureAppletTooltip": {
+    "message": "此選項決定 APPLET 元素的處理方式。APPLET 元素是用於嵌入 JAVA 小程式，新瀏覽器大多已不再支援。注意：JAVA 小程式脫離原伺服器環境可能無法正常運作，且可能造成安全風險。\n\n• 儲存：將 APPLET 元素參照的檔案儲存至本地。\n• 連結：將 APPLET 元素連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將 APPLET 元素無效化。\n• 移除：將 APPLET 元素移除。注意這可能會影響網頁排版。"
+  },
+  "OptionCaptureAudioLabel": {
+    "message": "音訊:"
+  },
+  "OptionCaptureAudioTooltip": {
+    "message": "此選項決定音訊（AUDIO 元素）的處理方式。\n\n• 儲存：將音訊儲存至本地。\n• 儲存現用：將目前播放的音訊儲存至本地，忽略供其他瀏覽器使用的備用音訊。這可以有效縮小容量，但在其他平台可能無法播放。若擷取的頁面並未顯示於瀏覽器（例如擷取原貌），則仍儲存所有音訊。\n• 連結：將音訊元素連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將音訊無效化。\n• 移除：將音訊元素移除。注意這可能會影響網頁排版。"
+  },
+  "OptionCaptureCanvasBlankLabel": {
+    "message": "清空"
+  },
+  "OptionCaptureCanvasLabel": {
+    "message": "畫布:"
+  },
+  "OptionCaptureCanvasSaveLabel": {
+    "message": "儲存"
+  },
+  "OptionCaptureCanvasTooltip": {
+    "message": "此選項決定畫布（CANVAS 元素）的處理方式。畫布初始為空白狀態而後由網頁腳本動態繪製。\n\n• 儲存：記錄畫布的目前狀態並產生相應的初始化腳本，在網頁載入時重繪。注意：使用某些特殊技術繪製的畫布無法如實記錄目前狀態。\n• 清空：儲存空白畫布。\n• 移除：將畫布元素移除。"
+  },
+  "OptionCaptureCommonBlankLabel": {
+    "message": "清空"
+  },
+  "OptionCaptureCommonLinkLabel": {
+    "message": "連結"
+  },
+  "OptionCaptureCommonRemoveLabel": {
+    "message": "移除"
+  },
+  "OptionCaptureCommonSaveCurrentLabel": {
+    "message": "儲存現用"
+  },
+  "OptionCaptureCommonSaveLabel": {
+    "message": "儲存"
+  },
+  "OptionCaptureCommonSaveUsedLabel": {
+    "message": "儲存使用"
+  },
+  "OptionCaptureDeleteErasedOnCaptureLabel": {
+    "message": "擷取頁面時自動刪除所有擦除內容"
+  },
+  "OptionCaptureDeleteErasedOnCaptureTooltip": {
+    "message": "注意：即使擷取了擦除內容，其引用的外部資源及部分腳本相關互動要素仍無法完整保留及事後還原。一般建議擷取頁面後再擦除內容，較能保留完整資訊。"
+  },
+  "OptionCaptureDeleteErasedOnSaveLabel": {
+    "message": "儲存頁面時自動刪除所有擦除內容"
+  },
+  "OptionCaptureDownLinkDocDelayLabel": {
+    "message": "擷取連結頁面延遲 (ms):"
+  },
+  "OptionCaptureDownLinkDocDepthLabel": {
+    "message": "擷取連結頁面深度:"
+  },
+  "OptionCaptureDownLinkDocDepthTooltip": {
+    "message": "擷取深度未超過此值的連結頁面（A 或 AREA 元素或 META 重導向指向的目標），並建立交互連結及記錄資源列表。主頁面為深度 0，深度 0 連結的頁面為深度 1，深度 1 連結的頁面為深度 2，……依此類推。\n\n• 深度設為 0 時仍會記錄資源列表。留空表示不擷取連結頁面也不記錄資源列表。\n• 注意：深層擷取可能會下載大量資料，宜設定儲存擷取資料為資料夾，以避免潛在的效能問題或錯誤。此功能不支援儲存為單一 HTML 檔案。"
+  },
+  "OptionCaptureDownLinkDocUrlFilterLabel": {
+    "message": "擷取連結頁面列入網址:"
+  },
+  "OptionCaptureDownLinkDocUrlFilterTooltip": {
+    "message": "此過濾器根據網址篩選要擷取的連結頁面。\n\n• 以下每行為一個完整網址（「#」以後的部分會自動去除）或一個正規表示式（如「/^http://example\\.com//」）。\n• 連結的完整網址（去除「#」以後的部分）符合任何一行的規則即列入下載。例如連結「http://example.com/subpage#h2」符合完整網址規則「http://example.com/subpage」或正規表示式規則「/^http://example\\.com/SubPage\\d*/i」。若每行皆無規則，則任何網址皆列入下載。\n• 以「#」開頭的行皆視為註解，執行時會略過。\n• 每行空白字元以後的部分皆視為註解，執行時會自動忽略。例如「http://example.com/ 註解」視同「http://example.com/」；「/^https:/ 註解」視同「/^https:/」。"
+  },
+  "OptionCaptureDownLinkFileExtFilterLabel": {
+    "message": "下載連結檔案列入檔案類型:"
+  },
+  "OptionCaptureDownLinkFileExtFilterTooltip": {
+    "message": "此過濾器根據副檔名或 MIME 類型篩選要下載的連結檔案。\n\n• 以下每行為一條規則，超連結的副檔名或 MIME 類型符合任何一條規則即列入下載。規則可為以下格式：\n  • 以「,」、「;」或空白分隔的副檔名列表，不分大小寫。如「jpg, jpeg; gif; png」會列入「jpg」、「jPEG」、「Gif」、或「PNG」，而不會列入「jp」或「jpgx」。\n  • 正規表示式字串，格式為「/表示式/標幟」。如「/jpe?g|gif|png/i」可列入與前項相同的副檔名。若要列入無副檔名的檔案，可用「//」。\n  • 以「mime:」開頭的字串，不分大小寫。如「mime:text/plain」會列入 MIME 類型為「text/plain」的檔案。\n  • 以「mime:」開頭的正規表示式。如「mime:/text/.*/i」會列入 MIME 類型為「text/plain」、「text/css」、「text/html」等檔案。\n• 以「#」開頭的行皆視為註解，執行時會略過。"
+  },
+  "OptionCaptureDownLinkFileModeHeaderLabel": {
+    "message": "比對 HTTP 標頭及網址副檔名"
+  },
+  "OptionCaptureDownLinkFileModeLabel": {
+    "message": "下載連結檔案:"
+  },
+  "OptionCaptureDownLinkFileModeNoneLabel": {
+    "message": "停用下載連結檔案"
+  },
+  "OptionCaptureDownLinkFileModeTooltip": {
+    "message": "此選項決定是否下載連結的檔案（A 或 AREA 元素或 META 重導向指向的目標）。\n\n• 停用下載連結檔案：不下載連結的檔案。\n• 比對網址副檔名：根據網址副檔名決定是否下載。效能較佳，但無法有效區分動態網頁的類型。例如網址「http://example.com/api.php?id=123#sec1」的副檔名為「php」，但實際輸出的檔案可能是 html、doc、pdf 或其他格式。\n• 比對 HTTP 標頭及網址副檔名：走訪每個連結，根據 HTTP 標頭指定的 MIME 類型與實際輸出副檔名和網址副檔名決定是否下載。\n  • 副檔名：如有 Content-Type 標頭，取其對應的副檔名，例如「application/javascript」取副檔名「js」。（若此標頭不對應任何副檔名，則不符合任何副檔名篩選規則。）其次如有 Content-Disposition 標頭且 filename 參數非空值，則取該參數值的副檔名，如「Content-Disposition: attachment; filename=\"fname.ext\"」取「ext」。否則取網址副檔名。\n  • MIME 類型：取 Content-Type 標頭的值（忽略參數部分），如「Content-Type: text/html; charset=utf-8」取「text/html」。（若無此標頭，則不符合任何 MIME 類型篩選規則。）"
+  },
+  "OptionCaptureDownLinkFileModeUrlLabel": {
+    "message": "比對網址副檔名"
+  },
+  "OptionCaptureDownLinkUrlExtraLabel": {
+    "message": "額外網址:"
+  },
+  "OptionCaptureDownLinkUrlExtraTooltip": {
+    "message": "列出額外擷取（「擷取連結頁面深度」必須為 0 以上）或下載（「下載連結檔案」必須非停用）的網址，無論是否有交互連結或其他過濾規則。\n\n• 以下每行為一個完整網址（「#」以後的部分會自動去除）。\n• 以「#」開頭的行皆視為註解，執行時會略過。\n• 每行空白字元以後的部分皆視為註解，執行時會自動忽略。例如「http://example.com/ 註解」視同「http://example.com/」。"
+  },
+  "OptionCaptureDownLinkUrlFilterLabel": {
+    "message": "排除網址:"
+  },
+  "OptionCaptureDownLinkUrlFilterTooltip": {
+    "message": "此過濾器根據網址篩選禁止下載或擷取的連結，優先於其他過濾器。注意：有些網站會把操作指令做成一般的超連結，導致走訪連結時誤觸而導致登出網站等後果，此時可設定此過濾器防止走訪。\n\n• 以下每行為一個完整網址（「#」以後的部分會自動去除）或一個正規表示式（如「/[/=]logout\\b/i」）。\n• 連結的完整網址（去除「#」以後的部分）符合任何一行的規則即禁止下載。例如連結「http://example.com/logout」和「http://example.com/?a=LOGOUT」都符合正規表示式規則「/[/=]logout\\b/i」。\n• 以「#」開頭的行皆視為註解，執行時會略過。\n• 每行空白字元以後的部分皆視為註解，執行時會自動忽略。例如「http://example.com/ 註解」視同「http://example.com/」；「/^https:/ 註解」視同「/^https:/」。"
+  },
+  "OptionCaptureEmbedLabel": {
+    "message": "EMBED 元素:"
+  },
+  "OptionCaptureEmbedTooltip": {
+    "message": "此選項決定 EMBED 元素的處理方式。EMBED 元素多用於嵌入外掛程式，也可嵌入圖片、多媒體、或框架頁。注意：外掛程式脫離原伺服器環境可能無法正常運作，且可能造成安全風險。\n\n• 儲存：將 EMBED 元素參照的檔案儲存至本地。\n• 連結：將 EMBED 元素連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將 EMBED 元素無效化。\n• 移除：將 EMBED 元素移除。注意這可能會影響網頁排版。"
+  },
+  "OptionCaptureFaviconLabel": {
+    "message": "最愛圖示:"
+  },
+  "OptionCaptureFaviconTooltip": {
+    "message": "此選項決定最愛圖示的處理方式。最愛圖示（favicon）是網頁在分頁、書籤、我的最愛中呈現的代表圖示。\n\n• 儲存：將最愛圖示儲存至本地。\n• 連結：將最愛圖示連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將最愛圖示無效化。\n• 移除：將最愛圖示元素移除。"
+  },
+  "OptionCaptureFontLabel": {
+    "message": "字體:"
+  },
+  "OptionCaptureFontTooltip": {
+    "message": "此選項決定字體的處理方式。\n\n• 儲存：將所有字體儲存至本地。\n• 儲存使用：只將擷取區域的網頁元素使用的字體儲存至本地。若擷取的頁面並未顯示於瀏覽器（例如擷取原貌），則仍儲存所有字體。注意：此功能需要複雜的追蹤運算，在複雜網頁可能出錯或消耗大量資源。\n• 連結：將字體連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。注意：跨網域載入字體受同源政策限制，若字體來自未設定跨來源資源共享（CORS）的伺服器，擷取的頁面將無法載入。\n• 清空：將字體從樣式表中清除。"
+  },
+  "OptionCaptureFormStatusHtmlAllLabel": {
+    "message": "保留全部 HTML"
+  },
+  "OptionCaptureFormStatusHtmlLabel": {
+    "message": "保留 HTML"
+  },
+  "OptionCaptureFormStatusKeepAllLabel": {
+    "message": "保留全部"
+  },
+  "OptionCaptureFormStatusKeepLabel": {
+    "message": "保留"
+  },
+  "OptionCaptureFormStatusLabel": {
+    "message": "表單狀態:"
+  },
+  "OptionCaptureFormStatusResetLabel": {
+    "message": "重設"
+  },
+  "OptionCaptureFormStatusSaveAllLabel": {
+    "message": "儲存全部"
+  },
+  "OptionCaptureFormStatusSaveLabel": {
+    "message": "儲存"
+  },
+  "OptionCaptureFormStatusTooltip": {
+    "message": "此選項決定目前表單狀態的處理方式。\n\n• 儲存全部：產生特殊屬性值和初始化腳本記錄目前狀態，以免破壞重設等功能的運作。\n• 儲存：產生特殊屬性值和初始化腳本記錄目前狀態（不包括密碼等敏感資訊），以免破壞重設等功能的運作。\n• 保留全部：將目前狀態改寫為對應的 HTML 屬性，無法以 HTML 表達的狀態會產生特殊屬性值和初始化腳本處理。\n• 保留：將目前狀態（不包括密碼等敏感資訊）改寫為對應的 HTML 屬性，無法以 HTML 表達的狀態會產生特殊屬性值和初始化腳本處理。\n• 保留全部 HTML：將目前狀態改寫為對應的 HTML 屬性，忽略無法以 HTML 表達的狀態。\n• 保留 HTML：將目前狀態（不包括密碼等敏感資訊）改寫為對應的 HTML 屬性，忽略無法以 HTML 表達的狀態。\n• 重設：忽略目前狀態。"
+  },
+  "OptionCaptureFrameLabel": {
+    "message": "框架頁:"
+  },
+  "OptionCaptureFrameTooltip": {
+    "message": "此選項決定框架頁（FRAME 及 IFRAME 元素）的處理方式。\n\n• 儲存：將框架頁儲存至本地。\n• 連結：將框架頁連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將框架頁無效化。\n• 移除：將框架頁元素移除。注意這可能會影響網頁排版。"
+  },
+  "OptionCaptureHelpersLabel": {
+    "message": "啟用擷取助手"
+  },
+  "OptionCaptureHelpersTooltip": {
+    "message": "擷取助手可在擷取前對網頁內容做預先處理，以改善擷取效果。擷取助手使用 JSON 定義，格式如下：\n\n  [\n    {\n      \"name\": \"AdsRemover\",\n      \"description\": \"Remove unwanted content\",\n      \"pattern\": \"/^https?://example\\\\.com//i\",\n      \"commands\": [\n        [\"remove\", \"#ad-by-xxx\"],\n        [\"unwrap\", \"#i-want-to-strip-this\"],\n        ...\n      ]\n    },\n    {\n      \"name\": \"DeferredImageFixer\",\n      \"description\": \"Save deferred images defined by data-*\",\n      \"commands\": [\n        [\"attr\", {\"css\": \"img[data-src]\"}, \"src\", [\"get_attr\", null, \"data-src\"]],\n        [\"attr\", {\"css\": \"img[data-srcset]\"}, \"srcset\", [\"get_attr\", null, \"data-srcset\"]],\n        ...\n      ]\n    },\n    {\n      \"description\": \"Don't capture images on this site\",\n      \"pattern\": \"/^https?://example\\\\.com//i\",\n      \"options\": {\n        \"capture.image\": \"blank\",\n        \"capture.imageBackground\": \"blank\"\n      }\n    },\n    ...\n  ]\n\n• name: 字串，標示此助手的名稱及用於除錯識別，可省略。\n• description: 字串，註記此助手的功能，可省略。\n• disabled: 屬真時將停用此助手，可省略。\n• debug: 屬真時此助手會啟用除錯模式，可省略。\n• pattern: 字串，為正規表示式字串（「/表示式/標幟」，下同），用於限定此助手作用的網址。若省略此項則作用於所有網頁。\n• options: 覆寫擷取選項，格式同匯出選項（限「capture.*」）。\n• commands: 要依序執行的指令列表。\n  • 可用的指令如下：\n    • [\"html\", selector, htmlText, isOuter]: 對匹配 selector 的元素設定 HTML 內容為 htmlText。若 isOuter 屬真則設定外部 HTML。\n    • [\"text\", selector, text]: 對匹配 selector 的元素設定文字內容為 text。\n    • [\"attr\", selector, name, value]: 對匹配 selector 的元素設定屬性 name 的值為 value（可用 null 表示刪除屬性）。\n    • [\"attr\", selector, [[name1, value1], [name2, value2], ...]]: 對匹配 selector 的元素設定多個屬性。\n    • [\"attr\", selector, {name1: value1, name2: value2, ...}]: 對匹配 selector 的元素設定多個屬性。\n    • [\"css\", selector, name, value, priority]: 對匹配 selector 的元素設定 CSS 屬性 name 的值為 value（可用 null 表示刪除屬性）、優先權為 priority（\"important\" 或 \"\" 或省略）。\n    • [\"css\", selector, [[name1, value1, priority1], [name2, value2, priority2], ...]]: 對匹配 selector 的元素設定多個 CSS 屬性。\n    • [\"css\", selector, {name1: value1, name2: value2, ...}]: 對匹配 selector 的元素設定多個 CSS 屬性。\n    • [\"remove\", selector]: 移除匹配 selector 的節點。\n    • [\"unwrap\", selector]: 移除匹配 selector 的節點，但保留子節點。\n    • [\"insert\", selector, nodeData, mode, index]: 逐個以匹配 selector 的節點為參照插入由 nodeData 定義的新節點，以 mode 和 index 指定插入方式。\n      • nodeData 的值可為字串（插入字串節點）或 selector（JSON 物件），或為含有以下屬性的 JSON 物件：\n        • name: 元素節點名稱（如「span」），或用「#text」插入字串節點，或用「#comment」插入註解節點。\n        • value: 節點的文字內容。\n        • attrs: 元素節點的屬性，格式為 [[name1, value1], [name2, value2], ...] 或 {name1: value1, name2: value2, ...}。\n        • children: 元素節點的子節點，格式為 [nodeData1, nodeData2, ...]。\n      • mode 的值可為：\n        • \"before\": 插入參照節點前。\n        • \"after\": 插入參照節點後。\n        • \"insert\": 插入為參照元素節點的第 index 個子節點（從 0 開始）。\n        • \"append\"（預設）: 插入為參照元素節點的最後一個子節點。\n        • \"replace\": 取代參照節點。\n    • [\"isolate\", selector]: 移除匹配 selector 的節點及其上下層節點以外的節點。對於 HTML 文件，不會移除 BODY 元素以外的節點，如 HEAD 元素。\n    • [\"for\", selector, command1, command2, ...]: 對匹配 selector 的節點依序執行 command# 指令。\n  • 指令的參數也可以是指令，可用以下指令取得相關值：\n    • [\"has_node\", selector]: selector 是否匹配至少一個節點。\n    • [\"has_attr\", selector, name]: selector 匹配的第一個元素是否有 name 屬性。\n    • [\"get_html\", selector, isOuter]: selector 匹配的第一個元素的 HTML 內容。若 isOuter 屬真則取外部 HTML。\n    • [\"get_text\", selector]: selector 匹配的第一個元素的文字內容。\n    • [\"get_attr\", selector, name]: selector 匹配的第一個元素的 name 屬性值。\n    • [\"get_css\", selector, name, getPriority]: selector 匹配的第一個元素的 name 樣式值。若 getPriority 屬真則讀取樣式優先權。\n    • [\"match\", text, pattern, group]: 字串 text 是否匹配正規表示式字串 pattern。若 group 為整數或字串則傳回相應的匹配字串子群組（0 為匹配字串）。\n    • [\"replace\", text, pattern, replacement]: 將字串 text 以正規表示式字串 pattern 替換為字串 replacement 的結果。\n    • [\"if\", cond, thenValue, elseValue]: 若 cond 屬真則傳回 thenValue，否則傳回 elseValue。\n    • [\"equal\", value1, value2, strict]: value1 與 value2 是否相等。若 strict 屬真則型態也必須相同。\n    • [\"and\", value1, value2, ...]: 傳回 value# 中第一個屬假的值，或最後一個值。\n    • [\"or\", value1, value2, ...]: 傳回 value# 中第一個屬真的值，或最後一個值。\n    • [\"concat\", value1, value2, ...]: 連接多個字串值。\n    • [\"slice\", text, beginIndex, endIndex]: 擷取字串 text 從 beginIndex 到 endIndex 的子字串值。\n    • [\"upper\", text]: 將 text 之中的字母轉為大寫。\n    • [\"lower\", text]: 將 text 之中的字母轉為小寫。\n    • [\"encode_uri\", text, safe]: 將字串 text 做百分號編碼，以便用於網址。字串 safe 中的每個字元視為安全而不予編碼。\n    • [\"decode_uri\", text]: 還原百分號編碼的字串 text。\n    • [\"add\", value1, value2, ...]: 算術加法運算 value1 + value2 + ...。\n    • [\"subtract\", value1, value2, ...]: 算術減法運算 value1 - value2 - ...。\n    • [\"multiply\", value1, value2, ...]: 算術乘法運算 value1 * value2 * ...。\n    • [\"divide\", value1, value2, ...]: 算術除法運算 value1 / value2 / ...。\n    • [\"mod\", value1, value2, ...]: 算術取餘運算 value1 % value2 % ...。\n    • [\"power\", value1, value2, ...]: 算術乘冪運算 value1 ^ value2 ^ ...。\n  • 許多指令可用 selector 根據目前的參照節點選擇節點。commands 下的指令初始參照節點為擷取頁面的根節點（通常為 HTML 元素）。指令透過 selector 匹配的節點會逐個成為 selector 之後參數的指令的參照節點。selector 的值可為：\n    • 含有以下屬性的 JSON 物件：\n      • base: 字串，更改選擇器的參照節點。可使用以下數值：\n        • \"self\": 目前參照節點。\n        • \"root\": 目前參照節點的根節點。\n        • \"parent\": 目前參照節點的父節點。\n        • \"previousSibling\": 目前參照節點的前一個同級節點。\n        • \"nextSibling\": 目前參照節點的後一個同級節點。\n        • \"firstChild\": 目前參照節點的第一個子節點。\n        • \"lastChild\": 目前參照節點的最後一個子節點。\n        • 以上數值可用「.」連接，例如「firstChild.nextSibling.nextSibling」表示第 3 個子節點。\n      • css: 字串，選擇此 CSS 選擇器匹配的節點集合。\n      • xpath: 字串，選擇此 XPath 選擇器匹配的節點集合。\n      • 若未指定 css、xpath 等選擇器，則傳回只包含參照節點的集合。\n    • 字串：值為上述有效 base 屬性時相當於 {\"base\": <字串值>}，否則相當於 {\"css\": <字串值>}。\n    • 其他值：傳回只包含目前參照節點的集合。\n  • 啟用除錯時，可在指令名稱前加上「*」以在控制台記錄執行情況。例如：[\"*get_attr\", null, \"data-src\"]\n\n發生錯誤或啟用除錯時，可開啟擷取的分頁（若為擷取原貌則在擷取視窗）的控制台檢視詳細資訊。"
+  },
+  "OptionCaptureImageBackgroundLabel": {
+    "message": "樣式圖片:"
+  },
+  "OptionCaptureImageBackgroundTooltip": {
+    "message": "此選項決定樣式圖片（包括樣式表使用的背景圖片、滑鼠指標圖示、項目符號圖示等，以及舊 HTML 標準的元素背景屬性）的處理方式。\n\n• 儲存：將所有樣式圖片儲存至本地。\n• 儲存使用：只將擷取區域的網頁元素使用的樣式圖片儲存至本地。若擷取的頁面並未顯示於瀏覽器（例如擷取原貌），則仍儲存所有樣式圖片。注意：此功能需要複雜的追蹤運算，在複雜網頁可能出錯或消耗大量資源。\n• 連結：將樣式圖片連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將樣式圖片從樣式表中清除。"
+  },
+  "OptionCaptureImageLabel": {
+    "message": "圖片:"
+  },
+  "OptionCaptureImageTooltip": {
+    "message": "此選項決定圖片（IMG、PICTURE、及一些 INPUT 元素）的處理方式。\n\n• 儲存：將圖片儲存至本地。\n• 儲存現用：將顯示的圖片儲存至本地，忽略其他螢幕大小或解析度的備用圖片。這可以有效縮小容量，但可能影響在其他設備的顯示效果。若擷取的頁面並未顯示於瀏覽器（例如擷取原貌），則仍儲存所有圖片。\n• 連結：將圖片連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將圖片無效化。\n• 移除：將圖片元素移除。注意這可能會影響網頁排版。"
+  },
+  "OptionCaptureInsertInfoBarLabel": {
+    "message": "擷取或儲存頁面時加入資訊條"
+  },
+  "OptionCaptureInsertInfoBarTooltip": {
+    "message": "勾選時會在擷取或儲存的頁面加入腳本，使瀏覽器在頁面頂部顯示資訊條（須啟用 JavaScript）。\n\n• 注意：封存頁面檢視器由於不支援 JavaScript，無法顯示資訊條。若要用於封存頁面，須改用支援 JavaScript 的檢視方法，例如解壓縮後開啟。"
+  },
+  "OptionCaptureLinkUnsavedUriLabel": {
+    "message": "將無法儲存的資源連往原始位址"
+  },
+  "OptionCaptureLinkUnsavedUriTooltip": {
+    "message": "勾選時無法儲存的資源將連往原始位址（這會導致瀏覽擷取頁面時觸發網路傳輸）；不勾選時則以「urn:scrapbook:*」的形式記錄。"
+  },
+  "OptionCaptureMergeCssResourcesLabel": {
+    "message": "合併樣式表重複引用的媒體"
+  },
+  "OptionCaptureMergeCssResourcesTooltip": {
+    "message": "以變數替換樣式表重複引用的媒體資源，可顯著縮小容量。此功能只有較新的瀏覽器支援，例如 Chromium ≥ 49、Firefox ≥ 31、Edge ≥ 15、Safari > 9.1、Opera ≥ 36，其他瀏覽器將無法呈現相關資源。"
+  },
+  "OptionCaptureNoscriptLabel": {
+    "message": "NOSCRIPT 元素:"
+  },
+  "OptionCaptureNoscriptTooltip": {
+    "message": "此選項決定 NOSCRIPT 元素的處理方式。NOSCRIPT 元素會在瀏覽器不支援或停用腳本時顯示，通常用於提示瀏覽器不支援腳本，或重導向至不使用腳本的頁面。不擷取腳本時可考慮移除這些內容。\n\n• 儲存：保留 NOSCRIPT 元素內容。\n• 清空：將 NOSCRIPT 元素清空。\n• 移除：將 NOSCRIPT 元素移除。"
+  },
+  "OptionCaptureObjectLabel": {
+    "message": "OBJECT 元素:"
+  },
+  "OptionCaptureObjectTooltip": {
+    "message": "此選項決定 OBJECT 元素的處理方式。OBJECT 元素多用於嵌入外掛程式，也可嵌入圖片、多媒體、或框架頁。注意：外掛程式脫離原伺服器環境可能無法正常運作，且可能造成安全風險。\n\n• 儲存：將 OBJECT 元素參照的檔案儲存至本地。\n• 連結：將 OBJECT 元素連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將 OBJECT 元素無效化。\n• 移除：將 OBJECT 元素移除。注意這可能會影響網頁排版。"
+  },
+  "OptionCaptureRecordRewritesLabel": {
+    "message": "記錄改寫的內容"
+  },
+  "OptionCaptureRecordRewritesTooltip": {
+    "message": "擷取網頁時若有改寫的元素、屬性或樣式表，則用 data-* 屬性、HTML 註解、CSS 註解等方式記錄原始內容。"
+  },
+  "OptionCaptureRemoteTabDelayLabel": {
+    "message": "擷取自動開啟的新分頁前延遲 (ms):"
+  },
+  "OptionCaptureRemoveHiddenLabel": {
+    "message": "移除隱藏元素:"
+  },
+  "OptionCaptureRemoveHiddenNoneLabel": {
+    "message": "停用"
+  },
+  "OptionCaptureRemoveHiddenTooltip": {
+    "message": "此選項決定隱藏元素的處理方式。\n\n• 停用：停用此功能。\n• 移除不顯示的元素：移除「display」樣式屬性計算值為「none」的元素。有些擋廣告工具會外掛樣式表隱藏廣告相關元素，此選項有助於真正移除這些廣告。注意這可能會影響網頁排版，例如改變「+」、「~」、「:nth-child」等 CSS 選擇器的作用對象。"
+  },
+  "OptionCaptureRemoveHiddenUndisplayedLabel": {
+    "message": "移除不顯示的元素"
+  },
+  "OptionCaptureResourceSizeLimitLabel": {
+    "message": "單個資源檔案的大小限制 (MiB):"
+  },
+  "OptionCaptureResourceSizeLimitTooltip": {
+    "message": "系統不會下載超出此限制的資源檔案。空白表示不設限制。"
+  },
+  "OptionCaptureRewriteCssLabel": {
+    "message": "改寫樣式表:"
+  },
+  "OptionCaptureRewriteCssMatchLabel": {
+    "message": "進階整理"
+  },
+  "OptionCaptureRewriteCssNoneLabel": {
+    "message": "不改寫"
+  },
+  "OptionCaptureRewriteCssTidyLabel": {
+    "message": "整理"
+  },
+  "OptionCaptureRewriteCssTooltip": {
+    "message": "此選項決定樣式表的改寫方式。\n\n• 不改寫：儲存原來的樣式表，不做任何改寫。\n• 改寫網址：改寫樣式表的網址，使之連結至擷取的資源。\n• 整理：改寫網址並整理樣式表，移除註解、多餘空白、及瀏覽器無法解讀的樣式。這有助於縮小容量，但可能導致在其他瀏覽器無法正常顯示。\n• 進階整理：改寫網址，整理樣式表，並移除擷取範圍未使用的樣式。這有助於進一步縮小容量，但可能導致在其他瀏覽器無法正常顯示，且可能與儲存腳本衝突。注意：此功能需要複雜的追蹤運算，在複雜網頁可能出錯或消耗大量資源。"
+  },
+  "OptionCaptureRewriteCssUrlLabel": {
+    "message": "改寫網址"
+  },
+  "OptionCaptureSaveAsFolderLabel": {
+    "message": "資料夾"
+  },
+  "OptionCaptureSaveAsLabel": {
+    "message": "儲存擷取資料為:"
+  },
+  "OptionCaptureSaveAsMaffLabel": {
+    "message": "MAFF 封存檔"
+  },
+  "OptionCaptureSaveAsSingleHtmlLabel": {
+    "message": "單一 HTML 檔案"
+  },
+  "OptionCaptureSaveAsTooltip": {
+    "message": "指定儲存網頁及參照檔案的格式。\n\n• 資料夾：建立一個資料夾並將網頁及資源檔案存入其中。Google Chrome（及部分 Chromium 系瀏覽器）注意：儲存擷取資料至剪貼簿資料夾時，建議到瀏覽器設定（進階 > 下載）取消勾選「下載每個檔案前先詢問儲存位置」，以免擷取時跳出大量下載視窗。有些檔案（如 *.js、*.py）可能會被瀏覽器阻擋，須逐個選擇「保留」才能下載。\n• HTZ 及 MAFF 封存檔：用 ZIP 演算法將網頁及資源檔案打包，可用「檢視封存網頁」功能檢視，或透過後端伺服器或用支援 ZIP 的工具解壓縮後檢視。\n• 單一 HTML 檔案：儲存為一個 HTML 檔案，資源檔案以 data URL 等技術嵌入，大部分現代瀏覽器皆能支援，例如 Chromium > 0、Firefox > 0、Edge > 0、Safari > 0、Opera ≥ 7.2、IE ≥ 8（IE 有更多限制）。注意：data URL 效能較差，且缺乏有效的去重複技術，可能使檔案容量明顯增加。此格式也可能無法保存一些較複雜的資料結構。"
+  },
+  "OptionCaptureSaveAsZipLabel": {
+    "message": "HTZ 封存檔"
+  },
+  "OptionCaptureSaveAsciiFilenameLabel": {
+    "message": "儲存為 ASCII 檔名"
+  },
+  "OptionCaptureSaveAsciiFilenameTooltip": {
+    "message": "檔名中所有非 ASCII 字元會以編碼形式儲存。"
+  },
+  "OptionCaptureSaveDataUriAsFileLabel": {
+    "message": "將 data URL 儲存為檔案"
+  },
+  "OptionCaptureSaveDataUriAsFileTooltip": {
+    "message": "會自動根據 data URL 資料的 MIME 類型及內容的 SHA-1 雜湊值產生適當的檔名。"
+  },
+  "OptionCaptureSaveFileAsHtmlLabel": {
+    "message": "將檔案儲存為 HTML"
+  },
+  "OptionCaptureSaveFileAsHtmlTooltip": {
+    "message": "將瀏覽器能檢視的非 HTML 檔案儲存為 HTML 網頁。"
+  },
+  "OptionCaptureSaveFilenameLabel": {
+    "message": "儲存檔名:"
+  },
+  "OptionCaptureSaveFilenameMaxLenUtf16Label": {
+    "message": "儲存檔名最大長度 (UTF-16 位元組):"
+  },
+  "OptionCaptureSaveFilenameMaxLenUtf16Tooltip": {
+    "message": "截短 UTF-16 編碼下位元組長度超過此值的檔名。\n\n• Windows 系統一般使用 UTF-16 編碼，檔名長度限制為 255 位元組，檔案路徑全長限制為 260 位元組。"
+  },
+  "OptionCaptureSaveFilenameMaxLenUtf8Label": {
+    "message": "儲存檔名最大長度 (UTF-8 位元組):"
+  },
+  "OptionCaptureSaveFilenameMaxLenUtf8Tooltip": {
+    "message": "截短 UTF-8 編碼下位元組長度超過此值的檔名。\n\n• Linux 系統一般使用 UTF-8 編碼，檔名長度限制為 255 位元組，檔案路徑全長限制為 4096 位元組。"
+  },
+  "OptionCaptureSaveFilenameTooltip": {
+    "message": "指定擷取資料的儲存檔名（不含副檔名）。可用斜線「/」指定子資料夾，例如「%create-Y%/%create-m%/%title%」。\n\n可用以下「%<參數>%」模版語法帶入資訊：\n• %% - 帶入「%」符號。\n• %id% - 擷取資料的唯一識別碼，如「20190301124533216」。\n• %id-legacy% - 舊版 ScrapBook 格式的識別碼，如「20190301204533」。\n• %uuid% - 產生一個亂數 UUID，如「941e4674-d6c7-4709-9703-a1b4359286c6」。\n• %title% - 頁面標題，若無頁面標題，則取網址最後一節作為標題。\n• %source% - 資料來源網址。\n• %create% - 建立時間。\n\n%source% 的 <參數> 可在尾端加上「-<子參數>」帶入網址局部資訊。以「https://example.com:8000/app/search.html?q=foo&page=1#results」為例：\n• file: 檔名，一般取網址最後一節，如「search.html」。\n• page: 頁面，一般取網址最後一節，並去除副檔名，如「search」。\n• protocol: 協定，如「https」。\n• host: 主機，含主機名稱與通訊埠，如「example.com:8000」。\n• hostname: 主機名稱，如「example.com」。\n• port: 通訊埠，如「8000」。\n• pathname: 路徑，如「app/search.html」。\n• search: 搜尋值，如「q=foo&page=1」。\n• search-<鍵名>: 搜尋值中 <鍵名> 對應的鍵值，如「search-page」可得到「1」。\n• hash: 雜湊值，如「results」。\n\n%create% 的 <參數> 可在尾端加上「-<時間格式>」指定時間格式（使用 POSIX strftime 格式），<時間格式> 可在尾端加上「-utc」使用世界協調時間。例如「%create-F-utc%」輸出如「2020-04-01」。以下列出一些較常用的 POSIX strftime 格式：\n• Y: 四位數年份\n• y: 二位數年份\n• m: 二位數月份（01 至 12）\n• d: 二位數月中日期（01 至 31）\n• H: 二位數小時數（00 至 23）\n• M: 二位數分鐘數（00 至 59）\n• S: 二位數秒數（00 至 59）\n• F: 日期（YYYY-MM-DD）\n• T: 時間（HH:MM:SS）"
+  },
+  "OptionCaptureSaveResourcesSequentiallyLabel": {
+    "message": "循序儲存資源檔案"
+  },
+  "OptionCaptureSaveResourcesSequentiallyTooltip": {
+    "message": "勾選時會按出現順序逐一儲存資源檔案，可節省運算資源及固定同名檔案的編號順序，但速度較慢。"
+  },
+  "OptionCaptureSaveToFileLabel": {
+    "message": "檔案"
+  },
+  "OptionCaptureSaveToFolderLabel": {
+    "message": "剪貼簿資料夾"
+  },
+  "OptionCaptureSaveToLabel": {
+    "message": "儲存擷取資料至:"
+  },
+  "OptionCaptureSaveToServerLabel": {
+    "message": "後端伺服器"
+  },
+  "OptionCaptureSaveToTooltip": {
+    "message": "指定管理儲存資料的方式。\n\n• 後端伺服器：將擷取頁面儲存於後端伺服器設定的剪貼簿資料目錄。\n• 剪貼簿資料夾：將擷取頁面儲存於 <預設下載資料夾> 下的剪貼簿資料夾。\n• 檔案：將擷取頁面儲存成檔案。"
+  },
+  "OptionCaptureScrapbookFolderLabel": {
+    "message": "剪貼簿資料夾:"
+  },
+  "OptionCaptureScrapbookFolderTooltip": {
+    "message": "指定儲存剪貼簿資料的頂層資料夾，為 <預設下載資料夾> 以下的路徑，例如「WebScrapBook/data」。\n\n• 瀏覽器擴充套件被限制只能下載檔案到 <預設下載資料夾>，如有需要可在 <預設下載資料夾> 下建立符號連結（或 Windows 系統的目錄連接）指向想要的資料夾。"
+  },
+  "OptionCaptureScriptLabel": {
+    "message": "腳本:"
+  },
+  "OptionCaptureScriptTooltip": {
+    "message": "此選項決定所有網頁腳本（包括 SCRIPT 元素、javascript: 協定的超連結、onclick 之類的動態屬性等等）的處理方式。\n\n• 儲存：將腳本儲存至本地。注意：擷取的頁面由於脫離了原伺服器環境且改寫了部分內容，儲存的腳本可能無法正常執行，且有機會造成隱私洩露或安全風險；此外基於安全性考量，腳本無法在封存網頁檢視器中執行。一般建議使用擷取原貌，並將各擷取選項設為「儲存」，「畫布」設為「清空」，「表單狀態」設為「重設」，「影子元素」設為「移除」，「構造式樣式表」設為「移除」，「移除隱藏元素」設為「停用」，「改寫樣式表」勿設為「進階整理」，以減低腳本衝突出錯的機會。\n• 連結：將腳本連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將腳本無效化。\n• 移除：將腳本元素移除。"
+  },
+  "OptionCaptureShadowDomLabel": {
+    "message": "影子物件:"
+  },
+  "OptionCaptureShadowDomTooltip": {
+    "message": "此選項決定影子物件（Shadow DOM）的處理方式。影子物件是依附於頁面元素的另一套物件，由頁面腳本動態產生。\n\n• 儲存：將影子物件記錄於特殊屬性，並產生相應的初始化腳本，在網頁載入時重建影子物件。\n• 移除：不記錄影子物件。"
+  },
+  "OptionCaptureStyleLabel": {
+    "message": "樣式:"
+  },
+  "OptionCaptureStyleTooltip": {
+    "message": "此選項決定樣式表（包括外部樣式表——一些 LINK 元素——及內部樣式表——STYLE 元素）的處理方式。\n\n• 儲存：將外部樣式表儲存至本地。\n• 連結：將外部樣式表連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將樣式表無效化。\n• 移除：將樣式表元素移除。"
+  },
+  "OptionCaptureVideoLabel": {
+    "message": "視訊:"
+  },
+  "OptionCaptureVideoTooltip": {
+    "message": "此選項決定視訊（VIDEO 元素）的處理方式。\n\n• 儲存：將視訊儲存至本地。\n• 儲存現用：將播放的視訊儲存至本地，忽略供其他瀏覽器使用的備用視訊。這可以有效縮小容量，但在其他平台可能無法播放。若擷取的頁面並未顯示於瀏覽器（例如擷取原貌），則仍儲存所有視訊。\n• 連結：將視訊連往原始位址。注意這會導致瀏覽擷取頁面時觸發網路傳輸。\n• 清空：將視訊無效化。\n• 移除：將視訊元素移除。注意這可能會影響網頁排版。"
+  },
+  "OptionCheckerMakeBackupLabel": {
+    "message": "更動檔案時建立備份"
+  },
+  "OptionCheckerResolveAbsoluteIconLabel": {
+    "message": "自動為使用絕對網址的圖示建立快取"
+  },
+  "OptionCheckerResolveInvalidIdLabel": {
+    "message": "自動移除含有錯誤 ID 的項目"
+  },
+  "OptionCheckerResolveMissingDateLabel": {
+    "message": "自動修正遺失建立與修改時間的項目"
+  },
+  "OptionCheckerResolveMissingIndexFileLabel": {
+    "message": "自動移除遺失索引檔的項目"
+  },
+  "OptionCheckerResolveMissingIndexLabel": {
+    "message": "自動移除遺失索引檔設定的項目"
+  },
+  "OptionCheckerResolveOlderMtimeLabel": {
+    "message": "索引檔修改時間晚於項目修改時間時，自動更新項目的修改時間"
+  },
+  "OptionCheckerResolveTocEmptySubtreeLabel": {
+    "message": "自動移除空的子目錄表"
+  },
+  "OptionCheckerResolveTocInvalidLabel": {
+    "message": "自動從目錄表移除錯誤的項目"
+  },
+  "OptionCheckerResolveTocUnreachableLabel": {
+    "message": "自動把未存在於目錄表的項目加入根目錄"
+  },
+  "OptionCheckerResolveUnindexedFilesLabel": {
+    "message": "自動為偵測到的新頁面建立項目並加入根目錄"
+  },
+  "OptionCheckerResolveUnusedIconLabel": {
+    "message": "自動移除未使用的圖示快取"
+  },
+  "OptionEditorAutoInit": {
+    "message": "瀏覽剪貼簿中的頁面時，自動載入編輯工具列"
+  },
+  "OptionEditorInsertDateFormatLabel": {
+    "message": "插入日期格式:"
+  },
+  "OptionEditorInsertDateFormatTooltip": {
+    "message": "插入本地的目前時間，使用 POSIX strftime 格式。\n\n以下列出一小部分較常用的格式：\n• %c: 本地日期時間\n• %x: 本地年月日\n• %Y: 四位數年份\n• %y: 二位數年份\n• %m: 二位數月份（01 至 12）\n• %B: 本地月份長名\n• %b: 本地月份短名\n• %d: 二位數月中日期（01 至 31）\n• %A: 本地星期幾長名\n• %a: 本地星期幾短名\n• %X: 本地時分秒\n• %H: 二位數小時數，24 時制（00 至 23）\n• %I: 二位數小時數，12 時制（00 至 12）\n• %p: AM 或 PM\n• %M: 二位數分鐘數（00 至 59）\n• %S: 二位數秒數（00 至 59）\n• %z: 本地時區偏移值\n• %Z: 本地時區名稱\n• %%: % 符號"
+  },
+  "OptionEditorLineMarkerStyleLabel": {
+    "message": "標示樣式"
+  },
+  "OptionEditorUseNativeTagsLabel": {
+    "message": "使用原生 HTML 標籤註記"
+  },
+  "OptionEditorUseNativeTagsTooltip": {
+    "message": "使用原生 HTML 標籤註記使之與舊瀏覽器（如 IE < 9）相容，但較易受原網頁干擾造成樣式異常。"
+  },
+  "OptionGroupAutocapture": {
+    "message": "自動擷取"
+  },
+  "OptionGroupCapture": {
+    "message": "擷取 - 內容"
+  },
+  "OptionGroupChecker": {
+    "message": "後端伺服器 - 檢測器"
+  },
+  "OptionGroupDownLink": {
+    "message": "擷取 - 擷取超連結"
+  },
+  "OptionGroupEditor": {
+    "message": "編輯器"
+  },
+  "OptionGroupHelpers": {
+    "message": "擷取 - 擷取助手"
+  },
+  "OptionGroupIndexer": {
+    "message": "後端伺服器 - 索引器"
+  },
+  "OptionGroupSave": {
+    "message": "擷取 - 儲存"
+  },
+  "OptionGroupScrapbook": {
+    "message": "後端伺服器 - 剪貼簿"
+  },
+  "OptionGroupServer": {
+    "message": "後端伺服器"
+  },
+  "OptionGroupUi": {
+    "message": "操作介面"
+  },
+  "OptionGroupViewer": {
+    "message": "檢視器"
+  },
+  "OptionIndexerCreateStaticSiteLabel": {
+    "message": "生成靜態站台頁面"
+  },
+  "OptionIndexerFulltextCacheLabel": {
+    "message": "生成全文搜尋快取"
+  },
+  "OptionIndexerFulltextCacheRecreateLabel": {
+    "message": "重建全文快取"
+  },
+  "OptionIndexerMakeBackupLabel": {
+    "message": "更動檔案時建立備份"
+  },
+  "OptionPageTitle": {
+    "message": "選項設定"
+  },
+  "OptionScrapbookBackupForRecaptureLabel": {
+    "message": "重新擷取時建立備份"
+  },
+  "OptionScrapbookBackupForRecaptureTooltip": {
+    "message": "重新擷取會在擷取成功後將舊版本移到後端伺服器設定的備份目錄，若取消勾選則刪除檔案不留備份。\n\n• 注意：重新擷取時會嘗試複製舊擷取頁面中的批註，但可能有批註無法順利複製或程式偵測不到，因此一般建議保留備份以防萬一。"
+  },
+  "OptionScrapbookCopyItemInfoFormatPlainLabel": {
+    "message": "複製資訊格式:"
+  },
+  "OptionScrapbookCopyItemInfoFormatPlainTooltip": {
+    "message": "設定複製資訊的格式。\n\n可用以下「%<參數>%」模版語法帶入資訊：\n• %% - 帶入「%」符號。\n• %id% - 項目 ID。\n• %title% - 項目標題。\n• %comment% - 項目評註。\n• %source% - 項目來源網址。\n• %url% - 項目網址。\n• %create% - 項目建立時間。\n• %modify% - 項目修改時間。\n• %folder% - 資料夾。\n• %path% - 資料夾及標題。\n\n%create% 和 %modify% 的 <參數> 可在尾端加上「-<時間格式>」指定時間格式（使用 POSIX strftime 格式），<時間格式> 可在尾端加上「-utc」使用世界協調時間。例如「%create-F-utc%」可輸出如「2020-04-01」格式的時間。以下列出一些較常用的 POSIX strftime 格式：\n• Y: 四位數年份\n• y: 二位數年份\n• m: 二位數月份（01 至 12）\n• d: 二位數月中日期（01 至 31）\n• H: 二位數小時數（00 至 23）\n• M: 二位數分鐘數（00 至 59）\n• S: 二位數秒數（00 至 59）\n• F: 日期（YYYY-MM-DD）\n• T: 時間（HH:MM:SS）\n\n<參數> 可在尾端加上一或多次「:<格式>」轉換輸出格式，例如「%title:oneline:escape_html%」。<格式> 可用的值如下：\n• oneline: 截去換行字元及之後的內容。\n• collapse: 壓縮 ASCII 空白字元。\n• url: 脫義處理 URL 特殊字元。\n• escape_html: 脫義處理 HTML 特殊字元，包括「<」、「&」、「>」、「\"」。\n• escape_html_space: 脫義處理 HTML 特殊字元並將連續的半形空白轉為「&nbsp;」。\n• escape_css: 脫義處理 CSS 特殊字元。\n• json: 轉為 JSON 字串。"
+  },
+  "OptionScrapbookDefaultSearchLabel": {
+    "message": "預設搜尋條件:"
+  },
+  "OptionScrapbookDefaultSearchTooltip": {
+    "message": "設定搜尋欄位預先填入的搜尋條件，例如設定為「-type:separator」，則在搜尋欄位填入「keyword」相當於搜尋「-type:separator keyword」。\n\n• 除一般搜尋指令以外，還可用「default:」指令設定預設指令，例如設定為「default:title」，則在搜尋欄位填入「keyword」相當於搜尋「title:keyword」。（預設為 default:tcc）"
+  },
+  "OptionScrapbookExportNonSingletonLabel": {
+    "message": "匯出: 允許重複匯出不同位置的同一項目"
+  },
+  "OptionScrapbookExportRecursiveLabel": {
+    "message": "匯出: 一併匯出下層項目"
+  },
+  "OptionScrapbookImportRebuildFoldersLabel": {
+    "message": "匯入: 重建資料夾結構"
+  },
+  "OptionScrapbookImportResolveItemUsedNewLabel": {
+    "message": "匯入: 為重複項目產生新項目"
+  },
+  "OptionScrapbookScrapbookSearchCommentLengthLabel": {
+    "message": "搜尋結果顯示評註長度:"
+  },
+  "OptionScrapbookScrapbookSearchContextLengthLabel": {
+    "message": "搜尋結果顯示摘要長度:"
+  },
+  "OptionScrapbookScrapbookSearchSourceLengthLabel": {
+    "message": "搜尋結果顯示來源長度:"
+  },
+  "OptionScrapbookSidebarEditNoteInNewTabLabel": {
+    "message": "編輯筆記"
+  },
+  "OptionScrapbookSidebarEditPostitInNewTabLabel": {
+    "message": "編輯便利貼"
+  },
+  "OptionScrapbookSidebarInNewTabLabel": {
+    "message": "開啟於新分頁的側欄操作:"
+  },
+  "OptionScrapbookSidebarOpenInNewTabLabel": {
+    "message": "開啟"
+  },
+  "OptionScrapbookSidebarSearchInNewTabLabel": {
+    "message": "搜尋"
+  },
+  "OptionScrapbookSidebarSourceInNewTabLabel": {
+    "message": "開啟原始網址"
+  },
+  "OptionScrapbookSidebarViewTextInNewTabLabel": {
+    "message": "檢視文字"
+  },
+  "OptionServerPasswordLabel": {
+    "message": "密碼:"
+  },
+  "OptionServerPasswordTooltip": {
+    "message": "若後端伺服器有設定 HTTP 認證機制，可在這裡填入認證所需的密碼，以免瀏覽器反覆詢問；或用於更換使用者。\n\n• 注意：儲存在瀏覽器套件的認證資訊未受保護且有遭竊風險，一般建議優先使用有密碼保護機制的瀏覽器內建密碼儲存功能。"
+  },
+  "OptionServerUrlLabel": {
+    "message": "網址:"
+  },
+  "OptionServerUrlTooltip": {
+    "message": "後端伺服器程式的網址根目錄（必須以「/」結尾），例如「https://example.com/wsb/」。\n\n• 後端伺服器可用 PyWebScrapBook 套件（最低相容版本：$BACKEND_VERSION$）架設，安裝細節參見 https://pypi.org/project/webscrapbook/。\n• 若未特別設定，本地架設的 PyWebScrapBook 後端伺服器預設網址為「http://localhost:8080/」。",
+    "placeholders": {
+      "backend_version": {
+        "content": "$1"
+      }
+    }
+  },
+  "OptionServerUserLabel": {
+    "message": "使用者:"
+  },
+  "OptionServerUserTooltip": {
+    "message": "若後端伺服器有設定 HTTP 認證機制，可在這裡填入認證所需的使用者名稱，以免瀏覽器反覆詢問；或用於更換使用者。\n\n• 注意：儲存在瀏覽器套件的認證資訊未受保護且有遭竊風險，一般建議優先使用有密碼保護機制的瀏覽器內建密碼儲存功能。"
+  },
+  "OptionUiAutoCloseCaptureDialogAlwaysLabel": {
+    "message": "總是"
+  },
+  "OptionUiAutoCloseCaptureDialogLabel": {
+    "message": "擷取完成時自動關閉對話視窗:"
+  },
+  "OptionUiAutoCloseCaptureDialogNoErrorLabel": {
+    "message": "無錯誤或擷取失敗時"
+  },
+  "OptionUiAutoCloseCaptureDialogNoFailureLabel": {
+    "message": "無擷取失敗時"
+  },
+  "OptionUiAutoCloseCaptureDialogNoWarnLabel": {
+    "message": "無警告、錯誤、或擷取失敗時"
+  },
+  "OptionUiAutoCloseCaptureDialogNoneLabel": {
+    "message": "停用"
+  },
+  "OptionUiNotifyPageCapturedLabel": {
+    "message": "瀏覽擷取過的頁面時顯示提示"
+  },
+  "OptionUiNotifyPageCapturedTooltip": {
+    "message": "勾選後會在工具列按鈕顯示與目前瀏覽頁面相符的項目數，以不同顏色區分相符程度：\n• 紅色：相同網址（去除 # 以後的部分）\n• 黃色：相同路徑（去除 ? 及 # 以後的部分）\n• 綠色：相同網站（相同協定、網域、通訊埠）\n• 藍色：相同網域（如 https: 與 http: 或 www.example.com 與 example.com 皆視為相同）\n• 灰色：目前瀏覽階段擷取過的相同網址"
+  },
+  "OptionUiShowContextMenuLabel": {
+    "message": "啟用右鍵選單"
+  },
+  "OptionUiToolbarButtonsLabel": {
+    "message": "顯示工具列按鈕指令:"
+  },
+  "OptionViewerViewAttachmentsLabel": {
+    "message": "強制檢視附件檔案"
+  },
+  "OptionViewerViewAttachmentsTooltip": {
+    "message": "附件檔案（含有 HTTP 標頭「Content-Disposition: attachment」的檔案）瀏覽器一般會直接下載而不嘗試開啟。如果想強制用封存頁面檢視器開啟附件檔案形式的封存頁面檔案，可勾選此選項。"
+  },
+  "OptionViewerViewHtzLabel": {
+    "message": "檢視 HTZ 檔案"
+  },
+  "OptionViewerViewHtzTooltip": {
+    "message": "瀏覽器載入 HTZ 檔案時，自動以檢視器檢視。在支援的瀏覽器勾選「允許存取檔案網址」即可用瀏覽器直接開啟此類檔案。"
+  },
+  "OptionViewerViewMaffLabel": {
+    "message": "檢視 MAFF 檔案"
+  },
+  "OptionViewerViewMaffTooltip": {
+    "message": "瀏覽器載入 MAFF 檔案時，自動以檢視器檢視。在支援的瀏覽器勾選「允許存取檔案網址」即可用瀏覽器直接開啟此類檔案。"
+  },
+  "OptionsExportLabel": {
+    "message": "匯出"
+  },
+  "OptionsImportLabel": {
+    "message": "匯入"
+  },
+  "OptionsImportSuccess": {
+    "message": "匯入選項成功"
+  },
+  "OptionsResetLabel": {
+    "message": "重設"
+  },
+  "OptionsSaveLabel": {
+    "message": "儲存"
+  },
+  "ScrapBookCommandBrowse": {
+    "message": "在檔案管理員檢視"
+  },
+  "ScrapBookCommandClean": {
+    "message": "清空回收筒"
+  },
+  "ScrapBookCommandCopyDialogAdvanced": {
+    "message": "進階:"
+  },
+  "ScrapBookCommandCopyDialogBook": {
+    "message": "複製到剪貼簿:"
+  },
+  "ScrapBookCommandCopyDialogIndex": {
+    "message": "位置 (從 0 開始，留空則置於最後):"
+  },
+  "ScrapBookCommandCopyDialogRecursive": {
+    "message": "一併複製下層項目"
+  },
+  "ScrapBookCommandCopyDialogRoot": {
+    "message": "複製到這個 ID 的項目下:"
+  },
+  "ScrapBookCommandCopyInfo": {
+    "message": "複製資訊"
+  },
+  "ScrapBookCommandCopyTo": {
+    "message": "複製到"
+  },
+  "ScrapBookCommandCreateFolder": {
+    "message": "新增資料夾"
+  },
+  "ScrapBookCommandCreateFolderDialogTitle": {
+    "message": "資料夾標題:"
+  },
+  "ScrapBookCommandCreateNote": {
+    "message": "新增筆記"
+  },
+  "ScrapBookCommandCreateNoteDialogTitle": {
+    "message": "筆記標題:"
+  },
+  "ScrapBookCommandCreateNoteDialogType": {
+    "message": "筆記格式:"
+  },
+  "ScrapBookCommandCreatePostit": {
+    "message": "新增便利貼"
+  },
+  "ScrapBookCommandCreateSeparator": {
+    "message": "新增分隔線"
+  },
+  "ScrapBookCommandDelete": {
+    "message": "刪除"
+  },
+  "ScrapBookCommandDeleteConfirm": {
+    "message": "確定要永久刪除這 $NUM$ 個項目嗎？",
+    "placeholders": {
+      "num": {
+        "content": "$1"
+      }
+    }
+  },
+  "ScrapBookCommandEdit": {
+    "message": "編輯"
+  },
+  "ScrapBookCommandExec": {
+    "message": "用預設程式開啟"
+  },
+  "ScrapBookCommandExecBook": {
+    "message": "在檔案管理員檢視主目錄"
+  },
+  "ScrapBookCommandExport": {
+    "message": "匯出"
+  },
+  "ScrapBookCommandImport": {
+    "message": "匯入"
+  },
+  "ScrapBookCommandIndex": {
+    "message": "檢視主頁"
+  },
+  "ScrapBookCommandManage": {
+    "message": "管理"
+  },
+  "ScrapBookCommandMeta": {
+    "message": "屬性"
+  },
+  "ScrapBookCommandMetaDialogCharset": {
+    "message": "字集:"
+  },
+  "ScrapBookCommandMetaDialogComment": {
+    "message": "評註:"
+  },
+  "ScrapBookCommandMetaDialogCreate": {
+    "message": "建立時間:"
+  },
+  "ScrapBookCommandMetaDialogIcon": {
+    "message": "圖示:"
+  },
+  "ScrapBookCommandMetaDialogId": {
+    "message": "ID:"
+  },
+  "ScrapBookCommandMetaDialogIndex": {
+    "message": "索引檔:"
+  },
+  "ScrapBookCommandMetaDialogLocation": {
+    "message": "地理位置:"
+  },
+  "ScrapBookCommandMetaDialogLocked": {
+    "message": "鎖定:"
+  },
+  "ScrapBookCommandMetaDialogMarked": {
+    "message": "強調標示:"
+  },
+  "ScrapBookCommandMetaDialogModify": {
+    "message": "修改時間:"
+  },
+  "ScrapBookCommandMetaDialogParent": {
+    "message": "移除自:"
+  },
+  "ScrapBookCommandMetaDialogRecycled": {
+    "message": "移除時間:"
+  },
+  "ScrapBookCommandMetaDialogSource": {
+    "message": "來源:"
+  },
+  "ScrapBookCommandMetaDialogTitle": {
+    "message": "標題:"
+  },
+  "ScrapBookCommandMetaDialogType": {
+    "message": "類型:"
+  },
+  "ScrapBookCommandMoveDialogId": {
+    "message": "移動到這個 ID 的項目下:"
+  },
+  "ScrapBookCommandMoveDialogIndex": {
+    "message": "位置 (從 0 開始，留空則置於最後):"
+  },
+  "ScrapBookCommandMoveDialogMode": {
+    "message": "模式:"
+  },
+  "ScrapBookCommandMoveDialogModeLink": {
+    "message": "連結"
+  },
+  "ScrapBookCommandMoveDialogModeMove": {
+    "message": "移動"
+  },
+  "ScrapBookCommandMoveDown": {
+    "message": "下移"
+  },
+  "ScrapBookCommandMoveTo": {
+    "message": "移動到"
+  },
+  "ScrapBookCommandMoveUp": {
+    "message": "上移"
+  },
+  "ScrapBookCommandOpenTab": {
+    "message": "開啟於新分頁"
+  },
+  "ScrapBookCommandRecapture": {
+    "message": "重新擷取"
+  },
+  "ScrapBookCommandRecover": {
+    "message": "還原"
+  },
+  "ScrapBookCommandRecycle": {
+    "message": "移除"
+  },
+  "ScrapBookCommandSearch": {
+    "message": "搜尋"
+  },
+  "ScrapBookCommandSearchIn": {
+    "message": "搜尋下層項目"
+  },
+  "ScrapBookCommandSort": {
+    "message": "排序"
+  },
+  "ScrapBookCommandSortDialogAdvanced": {
+    "message": "進階:"
+  },
+  "ScrapBookCommandSortDialogDirection": {
+    "message": "排序方向:"
+  },
+  "ScrapBookCommandSortDialogDirectionAsc": {
+    "message": "遞增"
+  },
+  "ScrapBookCommandSortDialogDirectionDesc": {
+    "message": "遞減"
+  },
+  "ScrapBookCommandSortDialogKey": {
+    "message": "排序方式:"
+  },
+  "ScrapBookCommandSortDialogKeyCreate": {
+    "message": "建立時間"
+  },
+  "ScrapBookCommandSortDialogKeyId": {
+    "message": "ID"
+  },
+  "ScrapBookCommandSortDialogKeyIndex": {
+    "message": "索引檔"
+  },
+  "ScrapBookCommandSortDialogKeyMarked": {
+    "message": "強調標示"
+  },
+  "ScrapBookCommandSortDialogKeyModify": {
+    "message": "修改時間"
+  },
+  "ScrapBookCommandSortDialogKeyReverse": {
+    "message": "反序"
+  },
+  "ScrapBookCommandSortDialogKeySource": {
+    "message": "來源"
+  },
+  "ScrapBookCommandSortDialogKeyTitle": {
+    "message": "標題"
+  },
+  "ScrapBookCommandSortDialogKeyType": {
+    "message": "類型"
+  },
+  "ScrapBookCommandSortDialogRecursive": {
+    "message": "一併排序下層項目"
+  },
+  "ScrapBookCommandSource": {
+    "message": "開啟原始網址"
+  },
+  "ScrapBookCommandUpload": {
+    "message": "上傳檔案"
+  },
+  "ScrapBookCommandViewRecycle": {
+    "message": "檢視回收筒"
+  },
+  "ScrapBookCommandViewText": {
+    "message": "檢視文字"
+  },
+  "ScrapBookErrorBookNotExist": {
+    "message": "剪貼簿 $NAME$ 不存在，重設為預設剪貼簿",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "ScrapBookErrorInitTree": {
+    "message": "無法初始化目錄樹: $REASON$",
+    "placeholders": {
+      "reason": {
+        "content": "$1"
+      }
+    }
+  },
+  "ScrapBookErrorServerInit": {
+    "message": "後端伺服器初始化錯誤: $REASON$",
+    "placeholders": {
+      "reason": {
+        "content": "$1"
+      }
+    }
+  },
+  "ScrapBookErrorServerNotConfigured": {
+    "message": "未設定後端伺服器。"
+  },
+  "ScrapBookErrorServerTreeChanged": {
+    "message": "伺服器的目錄樹資料已變更，請重新整理此頁面再嘗試。"
+  },
+  "ScrapBookErrorSourceTreeOutdated": {
+    "message": "來源頁面的目錄樹資料已過時，請重新整理該頁面再嘗試。"
+  },
+  "ScrapBookNewFolderName": {
+    "description": "Default name of a new folder",
+    "message": "新資料夾"
+  },
+  "ScrapBookNewNoteName": {
+    "description": "Default name of a new note",
+    "message": "新筆記"
+  },
+  "ScrapBookNoTree": {
+    "message": "此剪貼簿已設定為不使用目錄樹。使用「檢視主頁」命令檢視主頁，用檔案管理器或後端伺服器的網頁介面管理資料。"
+  },
+  "SearchCaptures": {
+    "message": "檢視已擷取的頁面"
+  },
+  "SearchCapturesFoundFull": {
+    "message": "相同網址："
+  },
+  "SearchCapturesFoundOrigin": {
+    "message": "相同網站："
+  },
+  "SearchCapturesFoundPath": {
+    "message": "相同網站路徑："
+  },
+  "SearchCapturesFoundSimilar": {
+    "message": "相同網域："
+  },
+  "SearchCapturesNotFound": {
+    "message": "找不到相符的頁面"
+  },
+  "SearchCapturesTitle": {
+    "message": "尋找已擷取的頁面"
+  },
+  "SearchFound": {
+    "message": "【$BOOK$】找到 $RESULTS$ 筆結果：",
+    "placeholders": {
+      "book": {
+        "content": "$1"
+      },
+      "results": {
+        "content": "$2"
+      }
+    }
+  },
+  "SearchHelpDesc": {
+    "message": "• 輸入的關鍵詞會在標題、內文、評註中查找。\n• 可用半形空白分隔要檢索的多個關鍵詞。例如「w3c organization」表示搜尋含有「w3c」及「organization」的項目 。\n• 可用半形雙引號檢索完整關鍵詞，若關鍵詞包含半形雙引號，可用連續兩個半形雙引號表示。例如「\"Tom \"\"loves\"\" Mary.\"」表示搜尋含有「Tom \"loves\" Mary.」的項目。\n• 可用負號排除關鍵詞。例如「-virus」表示搜尋不含「virus」的項目。\n• 可用「<命令>:<關鍵詞>」指定特殊的檢索條件，命令前可加負號表示排除或反向。可用命令如下：\n  • mc：之後的關鍵詞皆比對大小寫。加負號則反之。例如「mc: CIA FBI -mc: president」表示搜尋含有區分大小寫的「CIA」、「FBI」及不分大小寫的「president」的項目。\n  • re：之後的關鍵詞皆視為正規表示式。加負號則反之。例如「re: \\bcolou?r\\b -re: 1+1=2」表示搜尋匹配正規表示式「\\bcolou?r\\b」且含有關鍵詞「1+1=2」的項目。\n  • id：搜尋 ID 等同關鍵詞（或與正規表示式匹配）的項目。多次指定時以「或」連接。例如「id:2020 id:2021」表示搜尋 ID 為「2020」或「2021」的項目；「-id:2020」表示搜尋 ID 不為「2020」的項目。\n  • type：搜尋類型等同關鍵詞（或與正規表示式匹配）的項目。多次指定時以「或」連接。可用的類型有「」（網頁）、「bookmark」（書籤）、「file」（檔案）、「note」（筆記）等等。例如「type: type:bookmark」表示搜尋類型為網頁或書籤的項目。\n  • title：搜尋標題含有關鍵詞的項目。\n  • content：搜尋全文含有關鍵詞的項目。\n  • comment：搜尋評註含有關鍵詞的項目。\n  • tc：搜尋標題或評註含有關鍵詞的項目。\n  • tcc：搜尋標題、全文或評註含有關鍵詞的項目。\n  • index：搜尋索引檔含有關鍵詞的項目。\n  • source：搜尋原始網址含有關鍵詞的項目。\n  • icon：搜尋圖示網址含有關鍵詞的項目。\n  • charset：搜尋字集含有關鍵詞的項目。\n  • create：搜尋建立時間符合條件的項目。多次指定時以「或」連接。時間格式為 0-17 位數字，後面接負號（可略），再接 0-17 位數字，表示時間範圍的起始與結束。兩個 17 位數字表示本地時間的年（4 位數）、月（01-12）、日（01-31）、時（00-59）、分（00-59）、秒（00-59）、毫秒（000-999），省略的部分視為 0，唯結束時間全省略時視為「999...」。例如「create:2014-2015」表示 2014 年到 2015 年，「create:-201309」表示 2013 年九月以前，「create:20110825」表示 2011 年八月 25 日以後。\n  • modify：搜尋修改時間符合條件的項目。多次指定時以「或」連接。時間格式同 create。\n  • marked：搜尋強調標示的項目。\n  • locked：搜尋鎖定的項目。\n  • location：搜尋含有地理位置資訊的項目。\n  • file：搜尋檔名含有關鍵詞的項目。\n  • root：搜尋此 ID 項目下的子項目。多次指定時以「或」連接。例如可用「root:recycle」搜尋回收筒中的項目。\n  • book：搜尋指定剪貼簿（依 ID）中的項目。多次指定時以「或」連接。\n  • sort：將搜尋結果按指定方式排序，負號表示倒序。可填入 id、title、comment、file、content、source、type、create、modify。例如「sort:id -sort:modify」表示先按 ID 遞增排序再按修改時間遞減排序。\n  • limit：設定搜尋結果筆數限制。例如「limit:10」表示只呈現前 10 筆搜尋結果。「-limit:」表示移除之前設定的限制。"
+  },
+  "SearchHelpSummary": {
+    "message": "搜尋語法說明"
+  },
+  "SearchLocateTitle": {
+    "message": "在剪貼簿顯示此項目的位置"
+  },
+  "SearchNotFound": {
+    "message": "找不到相符的結果"
+  },
+  "SearchSortId": {
+    "message": "ID 排序"
+  },
+  "SearchSortLastCreated": {
+    "message": "最後建立"
+  },
+  "SearchSortLastModified": {
+    "message": "最後修改"
+  },
+  "SearchSortTitle": {
+    "message": "標題排序"
+  },
+  "SearchTitle": {
+    "message": "搜尋 $BOOK$",
+    "placeholders": {
+      "book": {
+        "content": "$1"
+      }
+    }
+  },
+  "SearchTitleWithRoot": {
+    "message": "搜尋 $BOOK$ :: $ROOT$",
+    "placeholders": {
+      "book": {
+        "content": "$1"
+      },
+      "root": {
+        "content": "$2"
+      }
+    }
+  },
+  "SidebarTitle": {
+    "message": "$BOOK$ | $APP$",
+    "placeholders": {
+      "app": {
+        "content": "$1"
+      },
+      "book": {
+        "content": "$2"
+      }
+    }
+  },
+  "SidebarTitleWithRoot": {
+    "message": "$BOOK$ :: $ROOT$ | $APP$",
+    "placeholders": {
+      "app": {
+        "content": "$1"
+      },
+      "book": {
+        "content": "$2"
+      },
+      "root": {
+        "content": "$3"
+      }
+    }
+  },
+  "SiteMapTitle": {
+    "message": "站台地圖 $ID$",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "ViewerDesc": {
+    "message": "選擇 HTZ 或 MAFF 封存檔以開啟之。你可以拖放它們至此視窗，或使用以下按鈕："
+  },
+  "ViewerPickFiles": {
+    "message": "選擇 ZIP 壓縮檔"
+  },
+  "ViewerTitle": {
+    "message": "檢視封存頁面"
+  },
+  "WarnCaptureCircular": {
+    "message": "資源 '$SOURCE$' 循環參照至 '$TARGET$'，由於目前的擷取設定不支援循環參照，參照目標將轉向至空值。",
+    "placeholders": {
+      "source": {
+        "content": "$1"
+      },
+      "target": {
+        "content": "$2"
+      }
+    }
+  },
+  "WarnSearchCacheMissing": {
+    "message": "剪貼簿「$BOOK$」尚未建立全文搜尋快取，請點我建立再重新整理此頁。",
+    "placeholders": {
+      "book": {
+        "content": "$1"
+      }
+    }
+  },
+  "WarnSearchCacheOutdated": {
+    "message": "剪貼簿「$BOOK$」的全文搜尋快取似乎已過時，請點我更新再重新整理此頁。",
+    "placeholders": {
+      "book": {
+        "content": "$1"
+      }
+    }
+  },
+  "WarnSidebarLoginPromptMissing": {
+    "message": "如果瀏覽器未跳出登入對話框，請點擊我登入再重新整理此頁。"
+  }
+}

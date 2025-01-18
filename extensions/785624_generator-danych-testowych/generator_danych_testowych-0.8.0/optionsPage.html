@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8">
+	<link href="css/OpenSans-Regular.ttf" rel="stylesheet" type="text/css">
+	<link href="css/stylePage.css" rel="stylesheet">
+	<link href="css/tagify.css" rel="stylesheet">
+	<title>Generator danych testowych - Ustawienia</title>
+</head>
+
+<body>
+	<form id="testDataGeneratorSettingsForm">
+		<div class="tableWrapper">
+			<div class="tableLeft">
+				<i style="color: gray;">BETA</i>
+				<img id="projectManagement" alt="Zarządzanie projektami" src="icons/settings.png" title="Zarządzanie projektami" />
+
+				<select id="project">
+				</select>&nbsp;
+				<a id="settingsRestore" tabindex="0" title="Powrót do ustawień domyślnych projektu">resetuj ustawienia</a>
+			</div>
+			<div class="tableRight">
+				<a id="manual" href="https://docs.google.com/document/d/1EViAXhJoK7qPN7qRMJOGFzj2HJwtMIBlgsC39W4bmd8/edit" target="_blank" title="Instrukcja użytkownika">instrukcja użytkownika</a>
+			</div>
+		</div>
+
+		<div class="container main">
+			<h1>USTAWIENIA DODATKU</h1>
+			<div class="tableWrapper">
+				<div class="tableLeft">
+					<label class="bold">
+						Metoda wprowadzania danych do pola:
+					</label>
+					<br/>
+					<label title="Dane będą wprowadzane do pola za pomocą wartości atrybutu 'value'">
+						<input name="typeMethod" type="radio" value="value">Zmiana wartości</label>
+					<br/>
+					<label title="Dane będą wprowadzane do pola za pomocą metody 'sendkeys' z biblioteki jQuery">
+						<input name="typeMethod" type="radio" value="keys" checked>Symulacja wpisywanych znaków</label>
+					<br/>
+					<br/>
+
+					<label class="bold">
+						Obsługa danych w polu:
+					</label>
+					<br/>
+					<label title="Dane wprowadzane do pola będą zastępować obecną wartość">
+						<input name="fillType" type="radio" value="new" checked>Zastąp</label>
+					<label title="Dane wprowadzane do pola będą dopisywane do obecnej wartości w miejscu obecności kursora (opcja niedostępna dla wprowadzania danych za pomocą zmiany wartości/funkcjonalność niedostępna podczas autouzupełniania wszystkich pól)">
+						<input name="fillType" type="radio" value="add">Dopisz</label>
+					<br/>
+					<br/>
+
+					<label class="bold">
+						Wklejanie danych do schowka:
+					</label>
+					<br/>
+					<label title="Dane wprowadzane do pola będą wstawiane do schowka (opcja niedostępna dla danych dopisywanych oraz funkcji autouzupełniania wszystkich pól)">
+						<input name="clipboard" type="radio" value="yes">Tak</label>
+					<label title="Dane wprowadzane do pola nie będą wstawiane do schowka">
+						<input name="clipboard" type="radio" value="no" checked>Nie</label>
+					<br/>
+					<br/>
+					<label class="bold">
+						Typ danych do autouzupełniania:
+					</label>
+					<br/>
+					<label title="Dane będą wprowadzane do pola w oparciu o generowane poprawne dane">
+						<input name="autofillType" type="radio" value="generated" checked>Generowane</label>
+					<label title="Dane będą wprowadzane do pola w oparciu o zdefiniowane dane">
+						<input name="autofillType" type="radio" value="defined">Zdefiniowane</label>
+					<br/>
+					<br/>
+	
+					<label class="bold">
+						Typ rozpoznawania wartości atrybutów:
+					</label>
+					<br/>
+					<label title="Rozpoznanie wartości atrybutów pól poprzez 'równość' względem wprowadzonych wartości atrybutów pól dla funkcji autouzupełniania">
+						<input name="matchType" type="radio" value="equals" checked>Równe</label>
+					<label title="Rozpoznanie wartości atrybutów pól poprzez 'zawieranie' względem wprowadzonych wartości atrybutów pól dla funkcji autouzupełniania">
+						<input name="matchType" type="radio" value="contains">Zawiera</label>
+				</div>
+				<div class="tableRight">
+					<label class="bold">
+						Skróty klawiszowe:
+					</label>
+					<br/> Autouzupełnienie wszystkich pól:
+					<br/>
+
+					<div class="shortKeys">
+
+						<select id="autofillFormMainKey" class="autofillForm">
+							<option value="18" title="Lewy ALT">L-ALT</option>
+							<option value="17" title="Lewy lub prawy CTRL">CTRL</option>
+						</select> +
+
+						<select id="autofillFormAdditionalKey" class="autofillForm">
+							<option value="65">A</option>
+							<option value="66">B</option>
+							<option value="67">C</option>
+							<option value="68">D</option>
+							<option value="69">E</option>
+							<option value="70">F</option>
+							<option value="71">G</option>
+							<option value="72">H</option>
+							<option value="73">I</option>
+							<option value="74">J</option>
+							<option value="75">K</option>
+							<option value="76">L</option>
+							<option value="77">M</option>
+							<option value="78">N</option>
+							<option value="79">O</option>
+							<option value="80">P</option>
+							<option value="81">Q</option>
+							<option value="82">R</option>
+							<option value="83">S</option>
+							<option value="84">T</option>
+							<option value="85">U</option>
+							<option value="86">V</option>
+							<option value="87">W</option>
+							<option value="88">X</option>
+							<option value="89">Y</option>
+							<option value="90">Z</option>
+						</select>
+					</div>
+					<img alt="info" src="icons/info_16.png" title="Każdy zdefiniowany skrót klawiszowy w zależności od konfiguracji i wersji może powodować niepożądane zachowanie w przeglądarce lub systemie operacyjnym." /> 
+					<br/>
+					
+					<span id="autofillFormErrorLabel"  class="errorLabel errorLabelSmall">Wybrany skrót klawiszowy wykorzystywany jest dla innej akcji<br/><br/></span>
+						
+					
+					Autouzupełnienie wybranego pola:<br/>
+
+					<div class="shortKeys">
+
+						<select id="autofillFieldMainKey" class="autofillField">
+							<option value="18" title="Lewy ALT">L-ALT</option>
+							<option value="17" title="Lewy lub prawy CTRL">CTRL</option>
+						</select> +
+
+						<select id="autofillFieldAdditionalKey" class="autofillField">
+							<option value="65">A</option>
+							<option value="66">B</option>
+							<option value="67">C</option>
+							<option value="68">D</option>
+							<option value="69">E</option>
+							<option value="70">F</option>
+							<option value="71">G</option>
+							<option value="72">H</option>
+							<option value="73">I</option>
+							<option value="74">J</option>
+							<option value="75">K</option>
+							<option value="76">L</option>
+							<option value="77">M</option>
+							<option value="78">N</option>
+							<option value="79">O</option>
+							<option value="80">P</option>
+							<option value="81">Q</option>
+							<option value="82">R</option>
+							<option value="83">S</option>
+							<option value="84">T</option>
+							<option value="85">U</option>
+							<option value="86">V</option>
+							<option value="87">W</option>
+							<option value="88">X</option>
+							<option value="89">Y</option>
+							<option value="90">Z</option>
+						</select>
+					</div>
+					<img alt="info" src="icons/info_16.png" title="Każdy zdefiniowany skrót klawiszowy w zależności od konfiguracji i wersji może powodować niepożądane zachowanie w przeglądarce lub systemie operacyjnym." />
+					<br/>
+					
+					<label id="autofillFieldErrorLabel" class="errorLabel errorLabelSmall">Wybrany skrót klawiszowy wykorzystywany jest dla innej akcji<br/><br/></label>
+										
+					Resetowanie formularza z aktywnym polem:<br/>
+
+					<div class="shortKeys">
+
+						<select id="resetFormMainKey" class="resetForm">
+							<option value="18" title="Lewy ALT">L-ALT</option>
+							<option value="17" title="Lewy lub prawy CTRL">CTRL</option>
+						</select> +
+
+						<select id="resetFormAdditionalKey" class="resetForm">
+							<option value="65">A</option>
+							<option value="66">B</option>
+							<option value="67">C</option>
+							<option value="68">D</option>
+							<option value="69">E</option>
+							<option value="70">F</option>
+							<option value="71">G</option>
+							<option value="72">H</option>
+							<option value="73">I</option>
+							<option value="74">J</option>
+							<option value="75">K</option>
+							<option value="76">L</option>
+							<option value="77">M</option>
+							<option value="78">N</option>
+							<option value="79">O</option>
+							<option value="80">P</option>
+							<option value="81">Q</option>
+							<option value="82">R</option>
+							<option value="83">S</option>
+							<option value="84">T</option>
+							<option value="85">U</option>
+							<option value="86">V</option>
+							<option value="87">W</option>
+							<option value="88">X</option>
+							<option value="89">Y</option>
+							<option value="90">Z</option>
+						</select>
+					</div>
+					<img alt="info" src="icons/info_16.png" title="Każdy zdefiniowany skrót klawiszowy w zależności od konfiguracji i wersji może powodować niepożądane zachowanie w przeglądarce lub systemie operacyjnym." />
+					<br/>
+					<label id="resetFormErrorLabel" class="errorLabel errorLabelSmall">Wybrany skrót klawiszowy wykorzystywany jest dla innej akcji<br/><br/></label>
+					
+				</div>
+			</div>
+
+			<div class="container main">
+				<h1>USTAWIENIA DANYCH</h1>
+			</div>
+
+
+			<div class="saveAllButtonDiv">
+
+				<button id="saveAll" type="button" title="Zapisz wszystkie ustawienia"> &darr; ZAPISZ WSZYSTKIE USTAWIENIA DANYCH &darr; </button>
+				<br/>
+				<br/>
+
+				<label class="bold">
+					<input id="menuItems" type="checkbox" checked>Pokazuj wszystko w menu kontekstowym
+				</label>
+				<br/>
+				<br/>
+
+				<span id="allSettingsButton" tabindex="0" class="settingsButton">Pokaż wszystkie ustawienia</span>
+
+			</div>
+
+			<div class="container">
+				<h2>NIP
+					<span id="nipSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemNip" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="nipSettings">
+					<div>
+						<span class="bold">Dane zdefiniowane:</span>
+						<div id="definedNipDiv" class="margin-t-5">
+							<input type="text" class="enable" id="definedNip" size="36" maxlength="255" title="Dane zdefiniowane - długość minimalna: 1 znak / długość maksymalna: 255 znaków, niedozwolone znaki '{' lub '}'">
+							<img alt="info" src="icons/info_16.png" title="Dane zdefiniowane - dane wykorzystywane podczas uzupełniania pól, np. 5564943707"
+							/>
+							<br/>
+							<label id="definedNipErrorLabel" class="errorLabel"></label>
+						</div>
+						<span class="bold">Wartości atrybutów pól:</span>
+						<div id="attributesNipDiv" class="margin-t-5">
+							<div style="overflow: auto">
+								<div style="width: 95%; float: left;">
+									<input name="tags" class="enable" id="attributesNip" size="36" maxlength="255" title="Wartości atrybutów pól - długość minimalna: 1 znak / długość maksymalna: 255 znaków">
+								</div>
+								<img style="margin-left: 5px; margin-top: 10px" alt="info" src="icons/info_16.png" title="Wartości atrybutów pól - wartości (rozdzielone przecinkami) umożliwiające rozpoznanie pól dla funkcji autouzupełniania, np.: nip,numer_nip" />
+							</div>
+							<label id="attributesNipErrorLabel" class="errorLabel"></label>
+						</div>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="nipSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>REGON
+					<span id="regonSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemRegon" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="regonSettings">
+					<div>
+						<span class="bold">Dane zdefiniowane:</span>
+						<div id="definedRegonDiv" class="margin-t-5">
+							<input type="text" class="enable" id="definedRegon" size="36" maxlength="255" title="Dane zdefiniowane - długość minimalna: 1 znak / długość maksymalna: 255 znaków, niedozwolone znaki '{' lub '}'">
+							<img alt="info" src="icons/info_16.png" title="Dane zdefiniowane - dane wykorzystywane podczas uzupełniania pól, np. 451187704"
+							/>
+							<br/>
+							<label id="definedRegonErrorLabel" class="errorLabel"></label>
+						</div>
+						<span class="bold">Wartości atrybutów pól:</span>
+						<div id="attributesRegonDiv" class="margin-t-5">
+							<div style="overflow: auto">
+								<div style="width: 95%; float: left;">
+									<input name="tags" type="text" class="enable" id="attributesRegon" size="36" maxlength="255" title="Wartości atrybutów pól - długość minimalna: 1 znak / długość maksymalna: 255 znaków">
+								</div>
+								<img style="margin-left: 5px; margin-top: 10px" alt="info" src="icons/info_16.png" title="Wartości atrybutów pól - wartości (rozdzielone przecinkami) umożliwiające rozpoznanie pól dla funkcji autouzupełniania, np.: regon,numer_regon"/>
+							</div>
+							<label id="attributesRegonErrorLabel" class="errorLabel"></label>
+						</div>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="regonSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>PESEL
+					<span id="peselSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemPesel" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="peselSettings">
+					<div>
+						<span class="bold">Dane określone parametrami:</span>
+						<div id="peselDiv" class="margin-t-10 margin-b-10">
+							<label>
+								<input type="radio" name="peselGenderType" value="random" checked>Losowa płeć</label>
+							<label>
+								<input type="radio" name="peselGenderType" value="male">Mężczyzna</label>
+							<label>
+								<input type="radio" name="peselGenderType" value="female">Kobieta</label>
+							<br/>
+							<div style="margin-left: 10px; margin-top: 10px">
+
+								<label><input type="radio" name="peselDateType" value="random">
+									Losowa data</label><br/>
+
+								<label><input type="radio" name="peselDateType" value="date">
+								Data urodzenia:</label>
+								<input type="date" min="1900-01-01" value="1985-11-27" class="enable" id="peselBornDate" title="Data urodzenia - data minimalna: 1900-01-01 / data maksymalna: dzisiejsza">
+								<img alt="info" src="icons/info_16.png" title="Data urodzenia - np. 1985-11-27" />
+								<br/>
+
+								<label><input type="radio" name="peselDateType" value="range">
+								Przedział dat:</label>
+								<input type="date" min="1900-01-01" value="1985-11-27" class="enable" id="peselBornStartDate" title="Data początkowa - data minimalna: 1900-01-01 / data maksymalna: dzisiejsza">
+								-
+								<input type="date" min="1900-01-01" value="1992-06-04" class="enable" id="peselBornEndDate" title="Data końcowa - data minimalna: 1900-01-01 / data maksymalna: dzisiejsza">
+								<img alt="info" src="icons/info_16.png" title="Data początkowa / końcowa - np. 1985-11-27" />
+								<br/>
+							</div>
+							<label id="parameterizedPeselErrorLabel" class="errorLabel"></label>
+						</div>
+						<span class="bold">Dane zdefiniowane:</span>
+						<div id="definedPeselDiv" class="margin-t-5">
+							<input type="text" class="enable" id="definedPesel" size="36" maxlength="255" title="Dane zdefiniowane - długość minimalna: 1 znak / długość maksymalna: 255 znaków, niedozwolone znaki '{' lub '}'">
+							<img alt="info" src="icons/info_16.png" title="Dane zdefiniowane - dane wykorzystywane podczas uzupełniania pól, np. 87060301030"
+							/>
+							<br/>
+							<label id="definedPeselErrorLabel" class="errorLabel"></label>
+						</div>
+						<span class="bold">Wartości atrybutów pól:</span>
+						<div id="attributesPeselDiv" class="margin-t-5">
+							<div style="overflow: auto">
+								<div style="width: 95%; float: left;">
+									<input name="tags" type="text" class="enable" id="attributesPesel" size="36" maxlength="255" title="Wartości atrybutów pól - długość minimalna: 1 znak / długość maksymalna: 255 znaków">
+								</div>
+								<img style="margin-left: 5px; margin-top: 10px" alt="info" src="icons/info_16.png" title="Wartości atrybutów pól - wartości (rozdzielone przecinkami) umożliwiające rozpoznanie pól dla funkcji autouzupełniania, np.: pesel,numer_pesel"/>
+							</div>
+							<label id="attributesPeselErrorLabel" class="errorLabel"></label>
+						</div>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="peselSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>Dowód osobisty
+					<span id="identityCardSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemIdentityCard" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="identityCardSettings">
+					<div>
+						<span class="bold">Dane zdefiniowane:</span>
+						<div id="definedIdentityCardDiv" class="margin-t-5">
+							<input type="text" class="enable" id="definedIdentityCard" size="36" maxlength="255" title="Dane zdefiniowane - długość minimalna: 1 znak / długość maksymalna: 255 znaków, niedozwolone znaki '{' lub '}'">
+							<img alt="info" src="icons/info_16.png" title="Dane zdefiniowane - dane wykorzystywane podczas uzupełniania pól, np. ATI610961"
+							/>
+							<br/>
+							<label id="definedIdentityCardErrorLabel" class="errorLabel"></label>
+						</div>
+						<span class="bold">Wartości atrybutów pól:</span>
+						<div id="attributesIdentityCardDiv" class="margin-t-5">
+							<div style="overflow: auto">
+								<div style="width: 95%; float: left;">
+									<input name="tags" type="text" class="enable" id="attributesIdentityCard" size="36" maxlength="255" title="Wartości atrybutów pól - długość minimalna: 1 znak / długość maksymalna: 255 znaków">
+								</div>
+								<img style="margin-left: 5px; margin-top: 10px" alt="info" src="icons/info_16.png" title="Wartości atrybutów pól - wartości (rozdzielone przecinkami) umożliwiające rozpoznanie pól dla funkcji autouzupełniania, np.: dowod,dowod_osobisty"/>
+							</div>
+							<label id="attributesIdentityCardErrorLabel" class="errorLabel"></label>
+						</div>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="identityCardSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>IBAN
+					<span id="ibanSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemIban" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="ibanSettings">
+					<div>
+						<input id="ibanWithPrefix" type="checkbox" checked>Generuj numery IBAN z prefixem PL<br/><br/>
+						<span>Wybierz bank:</span>
+						<select id="bankType" name="bankType" title="Wybierz bank">
+							<option value="1000">Losowy bank</option>
+							<option value="1010">Narodowy Bank Polski</option>
+							<option value="1020">PKO BP</option>
+							<option value="1030">Bank Handlowy (Citi Handlowy)</option>
+							<option value="1050">ING</option>
+							<option value="1060">BPH</option>
+							<option value="1090">Santander Bank Polska</option>
+							<option value="1130">BGK</option>
+							<option value="1140">mBank</option>
+							<option value="1160">Bank Millennium</option>
+							<option value="1240">Pekao</option>
+							<option value="1280">HSBC</option>
+							<option value="1320">Bank Pocztowy</option>
+							<option value="1470">Eurobank</option>
+							<option value="1540">BOŚ</option>
+							<option value="1580">Mercedes-Benz Bank Polska</option>
+							<option value="1610">SGB - Bank Polska</option>
+							<option value="1670">RBS Bank Polska</option>
+							<option value="1680">Plus Bank</option>
+							<option value="1750">Raiffeisen Bank</option>
+							<option value="1840">Societe Generale</option>
+							<option value="1870">Nest Bank</option>
+							<option value="1910">Deutsche Bank Polska</option>
+							<option value="1930">Bank Polskiej Spółdzielczości</option>
+							<option value="1940">Credit Agricole Bank Polska</option>
+							<option value="1950">Idea Bank</option>
+							<option value="2030">BNP Paribas</option>
+							<option value="2070">FCE Bank Polska</option>
+							<option value="2120">Santander Consumer Bank</option>
+							<option value="2130">Volkswagen Bank</option>
+							<option value="2140">FCA-Group Bank Polska</option>
+							<option value="2160">Toyota Bank Polska</option>
+							<option value="2190">DNB Bank Polska</option>
+							<option value="2480">Getin Noble Bank</option>
+							<option value="2490">Alior Bank</option>
+						</select><br/><br/>
+						<span class="bold">Dane zdefiniowane:</span>
+						<div id="definedIbanDiv" class="margin-t-5">
+							<input type="text" class="enable" id="definedIban" size="36" maxlength="255" title="Dane zdefiniowane - długość minimalna: 1 znak / długość maksymalna: 255 znaków, niedozwolone znaki '{' lub '}'">
+							<img alt="info" src="icons/info_16.png" title="Dane zdefiniowane - dane wykorzystywane podczas uzupełniania pól, np. PL89249000053591078401160741"
+							/>
+							<br/>
+							<label id="definedIbanErrorLabel" class="errorLabel"></label>
+						</div>
+						<span class="bold">Wartości atrybutów pól:</span>
+						<div id="attributesIbanDiv" class="margin-t-5">
+							<div style="overflow: auto">
+								<div style="width: 95%; float: left;">
+									<input name="tags" type="text" class="enable" id="attributesIban" size="36" maxlength="255" title="Wartości atrybutów pól - długość minimalna: 1 znak / długość maksymalna: 255 znaków">
+								</div>
+								<img style="margin-left: 5px; margin-top: 10px" alt="info" src="icons/info_16.png" title="Wartości atrybutów pól - wartości (rozdzielone przecinkami) umożliwiające rozpoznanie pól dla funkcji autouzupełniania, np.: iban,numer_konta"/>
+							</div>
+							<label id="attributesIbanErrorLabel" class="errorLabel"></label>
+						</div>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="ibanSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>Karta kredytowa
+					<span id="cardSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemCard" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="cardSettings">
+					<div>
+						<span class="bold">Dane zdefiniowane:</span>
+						<div id="definedCardDiv" class="margin-t-5">
+							<input type="text" class="enable" id="definedCard" size="36" maxlength="255" title="Dane zdefiniowane - długość minimalna: 1 znak / długość maksymalna: 255 znaków, niedozwolone znaki '{' lub '}'">
+							<img alt="info" src="icons/info_16.png" title="Dane zdefiniowane - dane wykorzystywane podczas uzupełniania pól, np. 5377223617291234"
+							/>
+							<br/>
+							<label id="definedCardErrorLabel" class="errorLabel"></label>
+						</div>
+						<span class="bold">Wartości atrybutów pól:</span>
+						<div id="attributesCardDiv" class="margin-t-5">
+							<div style="overflow: auto">
+								<div style="width: 95%; float: left;">
+									<input name="tags" type="text" class="enable" id="attributesCard" size="36" maxlength="255" title="Wartości atrybutów pól - długość minimalna: 1 znak / długość maksymalna: 255 znaków">
+								</div>	
+								<img style="margin-left: 5px; margin-top: 10px" alt="info" src="icons/info_16.png" title="Wartości atrybutów pól - wartości (rozdzielone przecinkami) umożliwiające rozpoznanie pól dla funkcji autouzupełniania, np.: karta,karta_kredytowa"/>
+							</div>
+							<label id="attributesCardErrorLabel" class="errorLabel"></label>
+						</div>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="cardSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>KRS
+					<span id="krsSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemKrs" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="krsSettings">
+					<div>
+						<span class="bold">Dane zdefiniowane:</span>
+						<div id="definedKrsDiv" class="margin-t-5">
+							<input type="text" class="enable" id="definedKrs" size="36" maxlength="255" title="Dane zdefiniowane - długość minimalna: 1 znak / długość maksymalna: 255 znaków, niedozwolone znaki '{' lub '}'">
+							<img alt="info" src="icons/info_16.png" title="Dane zdefiniowane - dane wykorzystywane podczas uzupełniania pól, np. 0000133156"
+							/>
+							<br/>
+							<label id="definedKrsErrorLabel" class="errorLabel"></label>
+						</div>
+						<span class="bold">Wartości atrybutów pól:</span>
+						<div id="attributesKrsDiv" class="margin-t-5">
+							<div style="overflow: auto">
+								<div style="width: 95%; float: left;">
+									<input name="tags" type="text" class="enable" id="attributesKrs" size="36" maxlength="255" title="Wartości atrybutów pól - długość minimalna: 1 znak / długość maksymalna: 255 znaków">
+								</div>
+								<img style="margin-left: 5px; margin-top: 10px" alt="info" src="icons/info_16.png" title="Wartości atrybutów pól - wartości (rozdzielone przecinkami) umożliwiające rozpoznanie pól dla funkcji autouzupełniania, np.: krs,numer_krs"/>
+							</div>
+							<label id="attributesKrsErrorLabel" class="errorLabel"></label>
+						</div>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="krsSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>EAN
+					<span id="eanSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemEan" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="eanSettings">
+					<div>
+						<span class="bold">Dane zdefiniowane:</span>
+						<div id="definedEanDiv" class="margin-t-5">
+							<input type="text" class="enable" id="definedEan" size="36" maxlength="255" title="Dane zdefiniowane - długość minimalna: 1 znak / długość maksymalna: 255 znaków, niedozwolone znaki '{' lub '}'">
+							<img alt="info" src="icons/info_16.png" title="Dane zdefiniowane - dane wykorzystywane podczas uzupełniania pól, np. 4006381333931"
+							/>
+							<br/>
+							<label id="definedEanErrorLabel" class="errorLabel"></label>
+						</div>
+						<span class="bold">Wartości atrybutów pól:</span>
+						<div name="tags" id="attributesEanDiv" class="margin-t-5">
+							<div style="overflow: auto">
+								<div style="width: 95%; float: left;">
+									<input type="text" class="enable" id="attributesEan" size="36" maxlength="255" title="Wartości atrybutów pól - długość minimalna: 1 znak / długość maksymalna: 255 znaków">
+								</div>
+								<img style="margin-left: 5px; margin-top: 10px" alt="info" src="icons/info_16.png" title="Wartości atrybutów pól - wartości (rozdzielone przecinkami) umożliwiające rozpoznanie pól dla funkcji autouzupełniania, np.: ean,numer_ean"/>
+							</div>
+							<label id="attributesEanErrorLabel" class="errorLabel"></label>
+						</div>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="eanSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>Tekst domyślny o określonej długości
+					<span id="textSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemText" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="textSettings">
+					<div>
+						<label>Długość tekstu dla 'TEKST 1':</label>
+						<input type="number" class="enable" id="text1Length" min="1" max="5000" title="Długość tekstu - wartość minimalna: 1 / wartość maksymalna: 5000">
+						<img alt="info" src="icons/info_16.png" title="Długość tekstu - np. 100" />
+						<label id="text1ErrorLabel" class="errorLabel"></label>
+					</div>
+					<div class="margin-t-10">
+						<label>Długość tekstu dla 'TEKST 2':</label>
+						<input type="number" class="enable" id="text2Length" min="1" max="5000" title="Długość tekstu - wartość minimalna: 1 / wartość maksymalna: 5000">
+						<img alt="info" src="icons/info_16.png" title="Długość tekstu - np. 200" />
+						<label id="text2ErrorLabel" class="errorLabel"></label>
+					</div>
+					<div class="margin-t-10">
+						<label>Długość tekstu dla 'TEKST 3':</label>
+						<input type="number" class="enable" id="text3Length" min="1" max="5000" title="Długość tekstu - wartość minimalna: 1 / wartość maksymalna: 5000">
+						<img alt="info" src="icons/info_16.png" title="Długość tekstu - np. 300" />
+						<label id="text3ErrorLabel" class="errorLabel"></label>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="textSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>Ciąg składający się z określonych znaków
+					<span id="signsSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemSigns" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="signsSettings">
+					<div>
+						<label>Liczba generowanych znaków:</label>
+						<input type="number" id="lengthSigns" class="enable" min="1" max="5000" title="Liczba generowanych znaków - wartość minimalna: 1 / wartość maksymalna: 5000, liczba generowanych znaków musi być większa lub równa liczbie wybranych opcji">
+						<img alt="info" src="icons/info_16.png" title="Liczba generowanych znaków - np. 100" />
+						<br/>
+						<label id="lengthSignsErrorLabel" class="errorLabel"></label>
+						<div id="signsType" class="margin-t-15">
+							<label>
+								<input id="smallLettersSigns" type="checkbox" checked>Małe litery (a-z)</label>
+							<label>
+								<input id="bigLettersSigns" type="checkbox" class="margin-l-15" checked>Duże litery (A-Z)</label>
+							<br/>
+							<label>
+								<input id="polishSmallLettersSigns" type="checkbox" checked>Polskie małe litery (ęóąśłżźćń)</label>
+							<label>
+								<input id="polishBigLettersSigns" type="checkbox" class="margin-l-15" checked>Polskie duże litery (ĘÓĄŚŁŻŹĆŃ)</label>
+							<br/>
+							<label>
+								<input id="digitsSigns" type="checkbox" checked>Cyfry (0-9)</label>
+							<label>
+								<input id="spacesSigns" type="checkbox" class="margin-l-15" checked>Spacje ( )</label>
+							<br/>
+							<label>
+								<input id="specialsSigns" type="checkbox" checked>Znaki specjalne (?!@#$%^&amp;*()-_.,=+~/\|:; &lt;&gt;`[]')
+							</label>
+							<br/>
+						</div>
+						<label id="signsTypeErrorLabel" class="errorLabel"></label>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="signsSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>Dane z pliku CSV
+					<span id="csvSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemCsv" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="csvSettings">
+					<div id="readedFile" class="margin-b-10">
+						<label>Wczytany plik: </label>
+						<label id="dataFile"></label>
+						<button id="clear" type="button">Wyczyść</button>
+						<br/>
+
+						<label>Dane w pliku:</label>
+						<div id="dataOptions"></div>
+						<br/>
+
+						<label>Liczba wierszy: </label>
+						<label id="dataCount"></label> /
+						<label>Aktualny wiersz: </label>
+						<label id="csvOffsetActualValueLabel"></label>
+						<br/>
+
+						<label>Czytaj dane od wiersza:</label>
+						<select id="csvOffsetStart"></select>
+						<label>do wiersza:</label>
+						<select id="csvOffsetEnd"></select>
+						<label>
+							<input id="csvEOF" type="checkbox" checked>Czytać od początku w przypadku EOF?</label>
+						<br/>
+
+						<input id="csvFileName" type="hidden">
+						<input id="csvFileContent" type="hidden">
+						<input id="csvOffsetActual" type="hidden">
+						<input id="csvOffsetActualValue" type="hidden">
+					</div>
+					<div>
+						<label>Wybierz plik CSV: </label><img alt="info" src="icons/info_16.png" title="Maksymalny rozmiar pliku CSV to 250KB.&#013;Akceptowany separator danych to przecinek lub średnik.&#013;Akceptowany separator danych końca linii to znak końca linii.&#013;Liczba danych dla każdego wiersza musi być taka sama.&#013;Dozwolone kodowanie pliku to UTF-8.&#013;Zalecamy nieużywanie znaków '{' oraz '}' jako danych ze względu na ich wykorzystanie w metodach biblioteki jQuery przez co mogą powodować problemy podczas wstawiania danych do pola." />
+						<div class="box2" style="display: block">
+							<label>Separator danych: </label>
+							<select id="csvFileSeparator">
+								<option value="coma" selected="selected">Przecinek</option>
+								<option value="semicolon">Średnik</option>
+							</select>
+							<br/>			
+							<input type="file" accept=".csv,.txt" name="csvFile" id="csvFile">
+							<br/>
+							<label id="csvErrorLabel" class="errorLabel"></label>
+							<span>
+								<a href="csv/przykladowy_plik.csv" download="przykladowy_plik.csv">Przykładowy plik CSV</a>
+							</span>
+						</div>
+					</div>
+
+					<div class="defaultButtonDiv">
+						<button id="csvSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>Dane użytkownika
+					<span id="dataSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					<input id="menuItemData" type="checkbox" checked>Pokazuj w menu kontekstowym
+				</label>
+				<div class="box" id="dataSettings">
+					<span id="userDataOptionsButton" tabindex="0" class="optionsButton">Pokaż dostępne opcje dla danych użytkownika</span>
+
+					<div class="box2" id="userDataOptions">
+						<!-- <div class="tab">
+							<span class="tablinks" id="showBaseGeneratedData">Podstawowe</span>
+						</div>
+						<div id = "baseGeneratedData" class="tabcontent"> -->
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%randomNumber:n%</span> - generuje losowy ciąg cyfr o podanej długości (np. n = 5)</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%randomString:n%</span> - generuje losowy ciąg liter o podanej długości (np. n = 5)</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%randomNumberString:n%</span> - generuje losowy ciąg cyfr i liter o podanej długości (np. n = 5)</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%randomHexadecimal:n%</span> - generuje losową wartość w systemie szesnastkowym o podanej długości (np. n = 5)</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%timestamp%</span> - wstawia aktualny znacznik czasowy</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%randomFirstname%</span> - wstawia losowe imię</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%maleFirstname%</span> - wstawia losowe imię męskie</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%femaleFirstname%</span> - wstawia losowe imię żeńskie</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%randomSurname%</span> - wstawia losowe nazwisko</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%maleSurname%</span> - wstawia losowe nazwisko męskie</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%femaleSurname%</span> - wstawia losowe nazwisko żeńskie</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%city%</span> - wstawia losowe miasto</p>
+							<p>
+								<span class="code" draggable="true" title="Przeciągnij i upuść w polu 'Dane użytkownika'">%street%</span> - wstawia losową ulicę</p>
+						<!-- </div> -->
+					</div>
+
+					<div id="dataElements" class="margin-t-15">
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="dataAdd" class="add" type="button" title="Dodaj nowy element">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="dataSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<h2>Dodatkowe elementy formularzy
+					<i style="color: gray;">BETA</i>
+					<span id="elementsSettingsButton" tabindex="0" class="settingsButton">Pokaż ustawienia</span>
+				</h2>
+				<label class="bold">
+					Ustawienia dostępne tylko dla funkcji autouzupełniania formularzy
+				</label>
+				<div class="box" id="elementsSettings">
+					<div id="elements" class="margin-t-15">
+
+					</div>
+					<div class="defaultButtonDiv">
+						<select id="elementTypeChooser" class="data" title="Typ dodawanego elementu">
+							<option value="checkbox">checkbox</option>
+							<!-- <option value="radio">radio</option> -->
+							<option value="select">select</option>
+						</select>
+						<button id="elementAdd" class="add" type="button" title="Dodaj nowy element">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					</div>
+					<div class="defaultButtonDiv">
+						<button id="elementsSave" type="button" title="Zapisz ustawienia z tego modułu">ZAPISZ</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="saveAllButtonDiv">
+				<label class="bold">
+					<input id="menuItemsBottom" type="checkbox" checked>Pokazuj wszystko w menu kontekstowym
+				</label>
+				<br/>
+				<br/>
+
+				<span id="allSettingsButtonBottom" tabindex="0" class="settingsButton">Pokaż wszystkie ustawienia</span>
+				<br/>
+				<br/>
+
+				<button id="saveAllBottom" type="button" title="Zapisz wszystkie ustawienia"> &uarr; ZAPISZ WSZYSTKIE USTAWIENIA DANYCH &uarr; </button>
+			</div>
+		</div>
+	</form>
+
+	<a href="#" id="topButton" class="buttonTop" tabindex="0">do góry</a>
+
+	<div id="mainModal" class="modal">
+		<div class="modal-content">
+			<label id="mainErrorLabel" class="mainFailLabel"></label>
+			<label id="mainLabel" class="mainSuccessLabel"></label>
+			<div class="modalButtonDiv"></div>
+			<button id="closeButton">OK</button>
+		</div>
+	</div>
+
+	<div id="resetModal" class="modal">
+		<div class="modal-content">
+			<h1>RESETOWANIE USTAWIEŃ</h1>
+			<span class="criticalNotice">Wszystkie ustawienia tego projektu zostaną nadpisane!
+				<br/>Czy na pewno przywrócić ustawienia domyślne?</span>
+			<div class="modalButtonDiv">
+				<button id="resetModalYes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tak&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button id="resetModalNo" class="abort">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="deleteElementModal" class="modal">
+		<div class="modal-content">
+			<h1>USUWANIE ELEMENTU</h1>
+			<label>Czy jesteś pewien że chcesz usunąć wskazany element?</label>
+			<br/>
+			<input type="text" name="deletedChoosenElementId" id="deletedChoosenElementId" hidden>
+			<br/>
+			<div class="modalButtonDiv">
+				<button id="deleteElementYes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tak&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button id="deleteElementNo" class="abort">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="projectManagementModal" class="modal">
+		<div class="modal-content modal-main">
+			<h1>PROJEKTY</h1>
+			<div id="projectElements" class="margin-t-15">
+			</div>
+			<div class="defaultButtonDiv center">
+				<button id="projectAdd" class="add" type="button" title="Dodaj nowy projekt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button id="projectImport" type="button" title="Import ustawień z pliku">&nbsp;&nbsp;Import&nbsp;&nbsp;</button>
+			</div>
+			<div class="modalButtonDiv">
+				<button id="projectManagementClose">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zamknij&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="deleteProjectModal" class="modal">
+		<div class="modal-content">
+			<h1>USUWANIE PROJEKTU</h1>
+			<label>Czy jesteś pewien że chcesz usunąć wskazany projekt?</label>
+			<br/>
+			<input type="text" name="deletedProjectId" id="deletedProjectId" hidden>
+			<input type="text" name="deletedElementId" id="deletedElementId" hidden>
+			<br/>
+			<div class="modalButtonDiv">
+				<button id="deleteProjectYes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tak&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button id="deleteProjectNo" class="abort">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="addProjectModal" class="modal">
+		<div class="modal-content">
+			<h1>DODAWANIE PROJEKTU</h1>
+			<label>Wprowadź nazwę projektu: </label>
+			<br/>
+			<input type="text" name="addProjectName" id="addProjectName" class="enable" size="64" maxlength="32" title="Nazwa projektu"
+			 placeholder="Nazwa projektu">
+			<img alt="info" src="icons/info_16.png" title="Minimalna długość nazwy projektu to 1 znak, maksymalna to 32 znaki. Dozwolone znaki to litery małe i duże, cyfry oraz znaki specjalne _ i -"
+			/>
+			<br/>
+			<label id="addProjectNameErrorLabel" class="errorLabel center"></label>
+			<br/>
+			<div class="modalButtonDiv">
+				<button id="addProject">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dodaj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button id="abortAddProject" class="abort">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anuluj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="editProjectModal" class="modal">
+		<div class="modal-content">
+			<h1>EDYCJA PROJEKTU</h1>
+			<label>Wprowadź nazwę projektu: </label>
+			<br/>
+			<input type="text" name="editProjectName" id="editProjectName" class="enable" size="64" maxlength="32" title="Nazwa projektu"
+			 placeholder="Nazwa projektu">
+			<input type="text" name="editProjectOldName" id="editProjectOldName" hidden>
+			<input type="text" name="editProjectId" id="editProjectId" hidden>
+			<img alt="info" src="icons/info_16.png" title="Minimalna długość nazwy projektu to 1 znak, maksymalna to 32 znaki. Dozwolone znaki to litery małe i duże, cyfry oraz znaki specjalne _ i -"
+			/>
+			<br/>
+			<label id="editProjectNameErrorLabel" class="errorLabel center"></label>
+			<br/>
+			<div class="modalButtonDiv">
+				<button id="editProject">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zapisz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button id="abortEditProject" class="abort">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anuluj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="importProjectModal" class="modal">
+		<div class="modal-content">
+			<h1>IMPORT PROJEKTU</h1>
+			<label>Wprowadź nazwę projektu: </label>
+			<br/>
+			<input type="text" name="importProjectName" id="importProjectName" class="enable" size="32" maxlength="32" title="Nazwa projektu"
+			 placeholder="Nazwa projektu">
+			<img alt="info" src="icons/info_16.png" title="Minimalna długość nazwy projektu to 1 znak, maksymalna to 32 znaki. Dozwolone znaki to litery małe i duże, cyfry oraz znaki specjalne _ i -"
+			/>
+			<br/>
+			<label id="importProjectNameErrorLabel" class="errorLabel center"></label>
+			<br/>
+			<label>Wybierz plik ustawień projektu: </label>
+			<img alt="info" src="icons/info_16.png" title="Maksymalny rozmiar pliku to 500KB, dozwolone kodowanie pliku to UTF-8."
+			/>
+			<br/>
+			<input type="file" accept=".settings" name="settingsFile" id="settingsFile">
+			<br/>
+			<label id="importProjectErrorLabel" class="errorLabel center"></label>
+			<div class="modalButtonDiv">
+				<button id="importProject">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wczytaj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				<button id="abortImportProject" class="abort">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anuluj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</div>
+	<script src="utils.js"></script>
+	<script src="dbStore.js"></script>
+	<script src="validators/baseValidator.js"></script>
+	<script src="lib/tagify.js"></script>
+	<script src="optionsPage.js"></script>
+</body>
+
+</html>

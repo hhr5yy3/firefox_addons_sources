@@ -1,0 +1,164 @@
+/* Copyright (c) 2016-2022 Pearl Crescent, LLC.  All Rights Reserved. */
+/* vim: set sw=2 sts=2 ts=8 et syntax=css: */
+
+body {
+  color: MenuText;
+  min-width: 320px; /* avoid flash of scrollbar during mode transition */
+/* TODO: Is this needed for Chrome?
+  cursor: default;
+  font: menu;
+  white-space: nowrap;
+*/
+}
+
+
+body:not([mode = "menu"]) #pagesaver-menu {
+  display: none;
+}
+
+body:not([mode = "status"]) #pagesaver-status {
+  display: none;
+}
+
+body:not([mode = "error"]) #pagesaver-error {
+  display: none;
+}
+
+/* On Windows, when transitioning from one mode to another, the previously
+ * displayed div is not erased. We work around this bug by adding a
+ * transparent background image; this seems to force a repaint.  For the
+ * same reason, we use a border instead of margin in the #pagesaver-status
+ * and #pagesaver-error rules.
+ * See https://bugzilla.mozilla.org/show_bug.cgi?id=1420865
+ */
+body > div { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=); }
+
+#hiddenButton { position: absolute; left: -100px; }
+
+/* Styles for mode="menu" */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.line {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  border-bottom: 1px solid GrayText;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+#saveto-menu input[type="radio"][checked="checked"] + label {
+  padding-left: 0px;  /* remove margin so there is room for checkmark */
+}
+
+input[type="radio"][checked="checked"] + label::before {
+  content: '\2713'; /* checkmark */
+  display: inline-block;
+  text-align: center;
+  font-family: monospace;
+  line-height: 1em;
+  width: 1.2em;
+  height: 1em;
+  margin-right: 0.1em;
+}
+
+ul,
+#saveto-menu {
+  margin: 5px;
+}
+
+ul>li,
+#saveto-menu>label {
+  display: block;
+  padding-left: 1.3em;  /* room for optional checkmark */
+  padding-right: 8px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border: 1px solid transparent; /* for spacing */
+  margin: 0;
+}
+
+.disabled,
+#saveto-menu>input:disabled + label {
+  color: GrayText;
+}
+
+ul>li:hover,
+#saveto-menu>label:hover {
+  color: HighlightText;
+  background-color: Highlight;
+}
+
+ul>li.disabled:hover,
+#saveto-menu>input:disabled + label:hover {
+  color: GrayText;
+  background-color: transparent;
+}
+
+#sendFeedback,
+#makeDonation {
+  font-size: 90%;
+  margin: 8px;
+}
+
+#makeDonation {
+  float: right;
+}
+
+.red {
+  color: red;
+}
+
+/* Styles for mode="status" */
+#pagesaver-status { border: 20px solid rgba(0,0,0,0); }
+
+#progress-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  width: 240px;
+  height: 30px;
+}
+
+#progress-bar {
+  width: 200px;
+}
+
+/* Credit to https://www.w3schools.com/howto/howto_css_loader.asp */
+#progress-spinner {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid lightgray;
+  border-top: 3px solid black;
+  border-radius: 50%;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#progress-container[progress="0"] #progress-bar {
+  display: none;
+}
+
+#progress-container:not([progress="0"]) #progress-spinner {
+  display: none;
+}
+
+/* Styles for mode="error" */
+#pagesaver-error { border: 20px solid rgba(0,0,0,0); }
+
+#okButton {
+  float: right;
+  margin-top: 40px;
+  padding: 0px 25px;
+}

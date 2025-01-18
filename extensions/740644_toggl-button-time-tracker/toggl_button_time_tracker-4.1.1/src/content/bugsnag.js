@@ -1,0 +1,1 @@
+togglbutton.render(".ErrorShowHeadline:not(.toggl)",{observe:!0},e=>{const t=togglbutton.createTimerLink({className:"bugsnag",description:n});$(".ErrorShowHeadline-errorClassContext .ExpandableLine-content",e).appendChild(t)});const n=e=>[".EventText-errorClass",".EventText-errorLocation"].map(t=>$(t,e).textContent.trim()).join(" ");

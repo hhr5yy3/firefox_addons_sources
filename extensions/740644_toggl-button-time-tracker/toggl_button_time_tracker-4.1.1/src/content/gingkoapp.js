@@ -1,0 +1,1 @@
+togglbutton.render("#navbar:not(.toggl)",{observe:!0},function(n){const e=$(".navbar-tree-name",n),o="",r=function(){return e.textContent.trim()},t=togglbutton.createTimerLink({className:"gingko-toggl-btn",description:r,projectName:o,buttonType:"minimal"});t.style.margin="9px",$(".right-block").appendChild(t)});

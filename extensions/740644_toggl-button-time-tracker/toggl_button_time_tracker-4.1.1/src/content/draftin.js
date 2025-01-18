@@ -1,0 +1,1 @@
+togglbutton.render("#edit_menu_group:not(.toggl)",{observe:!0},function(t){const e=$("title").textContent.trim(),n=togglbutton.createTimerLink({className:"draftin",description:e});t.parentNode.insertBefore(n,t)});

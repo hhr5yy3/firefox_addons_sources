@@ -1,0 +1,358 @@
+#Scholarscope_AssistantFrame {
+    position: fixed;
+    left: 10px;
+    min-width: 300px;
+    background-color: #039BE5;
+    border: 1px solid #039BE5;
+    z-index: 200;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    transition: top 0.5s, max-width 0.5s;
+    resize: vertical;
+}
+
+@media screen and (max-width: 1940px) {
+    #Scholarscope_AssistantFrame {
+        left: 10px;
+        right: auto;
+    }
+}
+
+@media screen and (min-width: 1941px) {
+    #Scholarscope_AssistantFrame {
+        left: auto;
+        right: calc(50vw + 400px - 20px);
+    }
+}
+
+@media screen and (max-width: 759px) {
+    #Scholarscope_AssistantFrame {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    #Scholarscope_AssistantFrame {
+        height: calc(82vh + 40px);
+        width: calc(50vw - 400px);
+        max-width: 600px;
+    }
+}
+
+@media screen and (max-width: 1399px) {
+    #Scholarscope_AssistantFrame {
+        height: calc(32vh + 40px);
+        width: calc(100vw - 35px);
+        max-width: calc(100vw - 35px);
+    }
+}
+
+#Scholarscope_AssistantImgFrame {
+    float: left;
+    padding: 1px;
+}
+
+#Scholarscope_AssistantImg {
+    float: left;
+    width: 28px;
+    height: 28px;
+    margin: 5px;
+}
+
+#Scholarscope_AssistantTitle {
+    float: left;
+    width: max-content;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 5px;
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+    user-select: none;
+}
+
+#Scholarscope_AssistantMinimizeFrame {
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#Scholarscope_AssistantMinimizeFrame:hover {
+    background-color: #3F5185;
+}
+
+
+#Scholarscope_AssistantMinimizeImg {
+    width: 16px;
+    height: 17.6px;
+    margin-left: 7px;
+    margin-right: 7px;
+    margin-top: 6.2px;
+    margin-bottom: 6.2px;
+}
+
+#Scholarscope_AssistantCloseFrame {
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#Scholarscope_AssistantCloseFrame:hover {
+    background-color: #3F5185;
+}
+
+#Scholarscope_AssistantCloseImg {
+    width: 16px;
+    height: 16px;
+    margin: 7px;
+}
+
+/* AssistantMainFrame */
+#Scholarscope_AssistantMainFrame {
+    float: left;
+    width: 100%;
+    height: calc(100% - 40px);
+    background-color: white;
+}
+
+#Scholarscope_AssistantConversationFrame {
+    width: 100%;
+    height: 85%;
+}
+
+#Scholarscope_AssistantConversationListFrame {
+    height: calc(100% - 25px);
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-top: 10px;
+    padding-left: 5px;
+    scroll-behavior: smooth;
+}
+
+#Scholarscope_AssistantConversationListFrame::-webkit-scrollbar {
+    width: 14px;
+}
+
+#Scholarscope_AssistantConversationListFrame::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+#Scholarscope_AssistantConversationListFrame::-webkit-scrollbar-thumb {
+    background-color: #616161;
+    border-radius: 14px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+}
+
+#Scholarscope_AssistantConversationListFrame::-webkit-scrollbar-thumb:hover {
+    background-color: #424242;
+    cursor: pointer;
+}
+
+#Scholarscope_AssistantConversationTip {
+    width: 100%;
+    height: 25px;
+    line-height: 20px;
+    padding-top: 5px;
+    font-size: 12px;
+    color: #7D7D7D;
+    text-align: center;
+    user-select: none;
+}
+
+.Scholarscope_AssistantConversationContentFrame,
+.Scholarscope_UserConversationContentFrame {
+    float: left;
+    width: 100%;
+    height: min-content;
+    min-height: 30px;
+    margin-bottom: 10px;
+}
+
+.Scholarscope_AssistantConversationIconFrame,
+.Scholarscope_UserConversationIconFrame {
+    width: 30px;
+    height: 30px;
+    padding: 5px 4.2px;
+    line-height: 20px;
+    border: 1px solid #EDEDED;
+    border-radius: 15px;
+}
+
+.Scholarscope_AssistantConversationIconFrame {
+    float: left;
+}
+
+.Scholarscope_UserConversationIconFrame {
+    float: right;
+}
+
+.Scholarscope_AssistantConversationIcon,
+.Scholarscope_UserConversationIcon {
+    position: relative;
+    top: -1.5px;
+    width: 20px;
+    height: 20px;
+}
+
+.Scholarscope_AssistantConversationContent,
+.Scholarscope_UserConversationContent {
+    width: max-content;
+    max-width: calc(100% - 70px);
+    padding: 5px 10px;
+    background-color: #E4E4E4;
+    border-radius: 5px;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.Scholarscope_AssistantConversationContent {
+    float: left;
+    margin-left: 5px;
+}
+
+.Scholarscope_UserConversationContent {
+    float: right;
+    background-color: #A4CFF5;
+    margin-right: 5px;
+}
+
+/*---------- Question Buttons ----------*/
+#Scholarscope_AssistantQuestionFrame {
+    width: 100%;
+    height: calc(15% - 1px);
+    padding: 8px 5px 2px 5px;
+    border-top: 2px solid #E2E2E2;
+    background-color: #F2F2F2;
+    overflow-y: scroll;
+}
+
+#Scholarscope_AssistantQuestionFrame::-webkit-scrollbar {
+    width: 14px;
+}
+
+#Scholarscope_AssistantQuestionFrame::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+#Scholarscope_AssistantQuestionFrame::-webkit-scrollbar-thumb {
+    background-color: #616161;
+    border-radius: 14px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+}
+
+#Scholarscope_AssistantQuestionFrame::-webkit-scrollbar-thumb:hover {
+    background-color: #424242;
+    cursor: pointer;
+}
+
+.Scholarscope_AssistantButtons {
+    float: left;
+    height: 28px;
+    padding: 5px 8px 5px 8px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 18px;
+    color: white;
+    background-color: #303030;
+    cursor: pointer;
+    user-select: none;
+}
+
+/*----- Keyword -----*/
+.Scholarscope_AssistantKeywordButton {
+    float: left;
+    height: min-content;
+    width: max-content;
+    padding: 5px 10px;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    background-color: #b5d7c1;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Scholarscope_AssistantKeywordButton:hover {
+    background-color: #6ed191;
+}
+
+#Scholarscope_AssistantKeywordSelectedFrame {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    line-height: 24px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #D50000;
+    color: white;
+    transition: height 0.3s ease;
+    user-select: none;
+}
+
+.Scholarscope_AssistantKRPButton {
+    float: left;
+    height: min-content;
+    width: 100%;
+    padding: 5px 10px;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    text-align: left;
+    background-color: #b5d7c1;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Scholarscope_AssistantKRPButton:hover {
+    background-color: #6ed191;
+}
+
+/*----- Loading -----*/
+#Scholarscope_UserConversationLoadingFrame {
+    float: right;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+}
+
+#Scholarscope_UserConversationLoadingGIF {
+    width: 20px;
+    height: 20px;
+}
+
+/*----- Translation -----*/
+.Scholarscope_TranslationSpanFather {
+    cursor: text;
+}
+
+.Scholarscope_TranslationSpan {
+    line-height: 17px;
+    padding: 1px 0;
+    transition: background-color 0.3s;
+}
+
+.Scholarscope_TranslationSpan:hover {
+    background-color: #C7CBEA;
+}
+
+.Scholarscope_AssistantHighlight {
+    background-color: #C7CBEA;
+    transition: background-color 0.3s;
+}

@@ -1,0 +1,122 @@
+body {
+  --list-bg: #ebecf0;
+  --list-fg: #474747;
+}
+
+body {
+  margin: 0;
+  background: white;
+  line-height: 1.6em;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+}
+body.trello-page {
+  width: 250px;
+}
+
+#ListHighlighter {
+  margin: 10px;
+  padding: 10px 20px 20px;
+  color: #4d4d4d;
+  background: #edeff0;
+  border-radius: 4px;
+}
+#ListHighlighter.dark-background {
+  color: white;
+}
+
+h1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+h1,
+h2 {
+  margin-top: 4px;
+  font-size: 16px;
+}
+
+div {
+  margin: 20px 0 0;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button,
+.button,
+#HighlightIndicator {
+  color: #4d4d4d;
+  font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dark-background #HighlightIndicator {
+  color: white;
+}
+
+button,
+.button {
+  position: relative;
+  height: 34px;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-top: 6px;
+  padding: 7px;
+  background: linear-gradient(to bottom, #fff 0, #f8f9f9 100%);
+  border: 1px solid #ebecf0;
+  border-bottom-color: #cdd2d4;
+  border-radius: 3px;
+  line-height: 18px;
+  cursor: pointer;
+  user-select: none;
+}
+button:hover,
+.button:hover {
+  color: #fff;
+  background: #298fca;
+  border-color: #298fca #298fca #026aa7;
+}
+button .gear::before,
+.button .gear::before {
+  display: block;
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  width: 18px;
+  height: 18px;
+  content: " ";
+  background: url("/img/cog.svg") no-repeat;
+}
+button:hover .gear::before,
+.button:hover .gear::before {
+  background: url("/img/cog-white.svg") no-repeat;
+}
+
+#Settings {
+  padding-left: 32px;
+}
+
+#HighlightIndicator::before {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  content: " ";
+  background: url("/img/256off.svg") no-repeat;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+#HighlightIndicator.on::before {
+  background: url("/img/256.svg") no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}

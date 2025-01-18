@@ -1,0 +1,30 @@
+const DEV = 1;
+const VERSION = chrome.runtime.getManifest().version;
+var CFG = {
+  URL: {
+    AUTH      : 'http://accounts.distill.local',
+    API       : 'http://api.distill.local/v1',
+    APP       : 'http://monitor.distill.local',
+    BROADCAST : 'http://broadcast.distill.local',
+    STATIC    : 'http://accounts.distill.local/static_files',
+    WEBSITE   : 'http://distill.local',
+    ANALYTICS : 'http://analytics.distill.local',
+    UTILITIES : 'http://utilities.distill.local',
+    WATCHLIST :  chrome.runtime.getURL('') + 'ui/inbox.html',
+    LOGIN     : 'http://accounts.distill.local/service-login?redirect=app://ui/inbox.html#inbox',
+    ROOT      : 'http://distill.local',
+  },
+  SENTRY: {
+    dsn:"https://38211476396d4e64a1a4e585277e431a@o985892.ingest.sentry.io/5942324",
+    tracesSampleRate: 1,
+    environment: "ext",
+    release: VERSION,
+  },
+  SIGNAL: {
+    WS_URL: 'signalling-server.distill.local',
+    WS_PORT: 9000,
+    SECURE: false,
+  },
+  VERSION,
+};
+

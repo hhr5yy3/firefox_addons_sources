@@ -1,0 +1,1 @@
+togglbutton.render(".work-packages--show-view:not(.toggl)",{observe:!0},function(t){const e=$(".work-packages--info-row > span:first-of-type").textContent.trim(),o=$(".toolbar-items",t),n="[OP"+e+"] "+$(".subject").textContent.trim(),r=$("#projects-menu").title.trim(),c=togglbutton.createTimerLink({className:"openproject",description:n,projectName:r});o.prepend(c)});

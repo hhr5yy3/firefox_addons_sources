@@ -1,0 +1,1794 @@
+{
+  "AdvancedCaptureTasksLabel": {
+    "message": "获取工作:"
+  },
+  "AdvancedCaptureTasksTooltip": {
+    "message": "输入获取工作，格式为一个 JSON 对象，包括以下属性：\n• bookId: 保存至后端服务器时，把获取项目保存至此 ID 的剪贴簿。省略时保存至目前剪贴簿。\n• parentId: 保存至后端服务器时，把获取项目插入此 ID 的项目下。省略时插入至根项目。\n• index: 保存至后端服务器时，获取项目的插入位置（从 0 开始）。null 值或省略时插入至最后面。\n• delay: 执行下个获取工作前的延迟时间（毫秒）。\n• autoClose: 获取完成时自动关闭对话窗口的设置，覆写默认项。可用“none”、“nowarn”、“noerror”、“nofailure”、“always”等值。\n• mode: 获取模式。“tab”为获取分页（获取网址时自动开新分页），“source”为获取原貌，“bookmark”为获取书签。省略时指定 tabId 者默认为“tab”，指定 url 者默认为“source”。\n• options: 覆写获取选项的 JSON 对象，格式同汇出选项（限“capture.*”）。\n• tasks: 获取工作列表，为 JSON 对象数组，其中每个对象包括以下属性：\n  • tabId: 待获取的分页 ID。省略时获取 url。\n  • frameId: 待获取分页的框架页 ID。省略时获取主框架页。\n  • fullPage: 属真时获取全页，否则获取选择范围。\n  • url: 待获取的网址。\n  • mode: 覆写此获取工作的获取模式。\n  • options: 覆写此获取工作的获取选项。\n  • title: 自订项目标题。（保存至后端服务器时）（勾选“忽略标题”时无效）\n  • comment: 自订项目评注。（保存至后端服务器时）\n  • favIconUrl: 自订项目图标。（保存至后端服务器时）\n  • recaptureInfo: 重新获取设置，为含有 bookId 及 itemId 属性的 JSON 对象。（保存至后端服务器时）\n  • mergeCaptureInfo: 合并获取设置，为含有 bookId 及 itemId 属性的 JSON 对象。（保存至后端服务器时）"
+  },
+  "AdvancedCaptureTitle": {
+    "message": "高级获取"
+  },
+  "BatchCapture": {
+    "message": "批量获取所有分页"
+  },
+  "BatchCaptureAbortLabel": {
+    "message": "取消"
+  },
+  "BatchCaptureAdvancedLabel": {
+    "message": "高级设定"
+  },
+  "BatchCaptureCaptureLabel": {
+    "message": "获取"
+  },
+  "BatchCaptureLinks": {
+    "message": "批量获取选择的链接"
+  },
+  "BatchCaptureOptionIgnoreTitleLabel": {
+    "message": "忽略标题"
+  },
+  "BatchCaptureOptionUniquifyLabel": {
+    "message": "忽略重复网址"
+  },
+  "BatchCaptureTitle": {
+    "message": "批量获取网页"
+  },
+  "BatchCaptureUrlsLabel": {
+    "message": "网页列表:"
+  },
+  "BatchCaptureUrlsTooltip": {
+    "message": "输入欲获取的网页列表。格式为每行一个网址，网址后可加上网页标题，以空白字符分隔。"
+  },
+  "Cancel": {
+    "message": "取消"
+  },
+  "CaptureDetailsCaptureInfoTypeLabel": {
+    "message": "获取方式:"
+  },
+  "CaptureDetailsCaptureInfoTypeMergeCaptureLabel": {
+    "message": "合并获取"
+  },
+  "CaptureDetailsCaptureInfoTypeNormalLabel": {
+    "message": "一般获取"
+  },
+  "CaptureDetailsCaptureInfoTypeRecaptureLabel": {
+    "message": "重新获取"
+  },
+  "CaptureDetailsCaptureInfoTypeTooltip": {
+    "message": "设定如何处理获取的内容：\n• 一般获取: 获取为新项目并置于目标项目下。\n• 重新获取: 取代目标项目的内容，更新项目类型、索引档、修改时间、来源网址、最爱图示、标题、评注，并尝试复制原网页的注记。\n• 合并获取: 把获取的网页合并至目标项目，并重建交互链接。目标项目必须为 site 类型（获取链接页面深度为 0 以上）且保存为文件夹。"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilter": {
+    "message": "带入规则"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterAllLinks": {
+    "message": "页面中所有链接"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterDir": {
+    "message": "相同目录"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterDomain": {
+    "message": "相同网域"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterExclude": {
+    "message": "以排除条件过滤"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterExcludeTooltip": {
+    "message": "输入字符串或正则表达式字符串（/表达式/标帜）作为过滤现有网址规则的排除条件，匹配条件的会转换为注解。"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterInclude": {
+    "message": "以列入条件过滤"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterIncludeTooltip": {
+    "message": "输入字符串或正则表达式字符串（/表达式/标帜）作为过滤现有网址规则的列入条件，不匹配条件的会转换为注解。"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterOrigin": {
+    "message": "相同网站"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterPath": {
+    "message": "相同路径"
+  },
+  "CaptureDetailsFillDownLinkDocUrlFilterSelectedLinks": {
+    "message": "页面中选取的链接"
+  },
+  "CaptureDetailsFillParentId": {
+    "message": "选择"
+  },
+  "CaptureDetailsOptionCommentLabel": {
+    "message": "评注:"
+  },
+  "CaptureDetailsOptionCommentRecapturePlaceholder": {
+    "message": "留空以维持原值"
+  },
+  "CaptureDetailsOptionIndexLabel": {
+    "message": "目标位置:"
+  },
+  "CaptureDetailsOptionIndexTooltip": {
+    "message": "获取项目的插入位置（从 0 开始）。留空时插入至最后面。"
+  },
+  "CaptureDetailsOptionModeBookmarkLabel": {
+    "message": "书签"
+  },
+  "CaptureDetailsOptionModeLabel": {
+    "message": "获取模式:"
+  },
+  "CaptureDetailsOptionModeNormalLabel": {
+    "message": "一般"
+  },
+  "CaptureDetailsOptionModeSourceLabel": {
+    "message": "原貌"
+  },
+  "CaptureDetailsOptionTargetLabel": {
+    "message": "目标项目:"
+  },
+  "CaptureDetailsOptionTitleLabel": {
+    "message": "标题:"
+  },
+  "CaptureDetailsOptionTitleRecapturePlaceholder": {
+    "message": "留空以维持原值"
+  },
+  "CaptureDetailsTitle": {
+    "message": "获取网页"
+  },
+  "CaptureDetailsTitleForSource": {
+    "message": "获取网页: $SOURCE$",
+    "placeholders": {
+      "source": {
+        "content": "$1"
+      }
+    }
+  },
+  "CaptureFrame": {
+    "message": "获取框架"
+  },
+  "CaptureFrameAs": {
+    "message": "获取框架为"
+  },
+  "CaptureFrameBookmark": {
+    "message": "获取框架 (书签)"
+  },
+  "CaptureFrameSource": {
+    "message": "获取框架 (原貌)"
+  },
+  "CaptureLink": {
+    "message": "获取链接页面 (新分页)"
+  },
+  "CaptureLinkAs": {
+    "message": "获取链接页面为"
+  },
+  "CaptureLinkBookmark": {
+    "message": "获取链接页面 (书签)"
+  },
+  "CaptureLinkSource": {
+    "message": "获取链接页面 (原貌)"
+  },
+  "CaptureMedia": {
+    "message": "获取多媒体"
+  },
+  "CaptureMediaAs": {
+    "message": "获取多媒体为"
+  },
+  "CapturePage": {
+    "message": "获取页面"
+  },
+  "CapturePageAs": {
+    "message": "获取页面为"
+  },
+  "CapturePageBookmark": {
+    "message": "获取页面 (书签)"
+  },
+  "CapturePageSource": {
+    "message": "获取页面 (原貌)"
+  },
+  "CaptureSelection": {
+    "message": "获取选择范围"
+  },
+  "CaptureSelectionAs": {
+    "message": "获取选择范围为"
+  },
+  "CaptureTab": {
+    "message": "获取分页"
+  },
+  "CaptureTabAs": {
+    "message": "获取分页为"
+  },
+  "CaptureTabBookmark": {
+    "message": "获取分页 (书签)"
+  },
+  "CaptureTabBookmarkTooltip": {
+    "message": "将㧥择的分页获取为书签网页或剪贴簿项目。\n\n__MSG_CaptureTabDnDTooltip__"
+  },
+  "CaptureTabDnDTooltip": {
+    "message": "提示：拖放此项目至剪贴簿以获取至特定位置。按住 Shift 以获取原貌。按住 Alt 以获取为书签。按住 Ctrl 以设定获取细节。"
+  },
+  "CaptureTabSource": {
+    "message": "获取分页 (原貌)"
+  },
+  "CaptureTabSourceTooltip": {
+    "message": "获取㧥择的分页的原始状态（未经过脚本处理）。\n\n__MSG_CaptureTabDnDTooltip__"
+  },
+  "CaptureTabTooltip": {
+    "message": "获取㧥择的分页的当前状态。若分页中有选择内容则只获取选择范围。\n\n__MSG_CaptureTabDnDTooltip__"
+  },
+  "CapturerTitle": {
+    "message": "获取页面"
+  },
+  "CheckerTitle": {
+    "message": "检测数据"
+  },
+  "EditConfirmScriptedDocument": {
+    "message": "此页面含有脚本，可能与编辑工具冲突，造成永久的信息遗失。确定要保存吗？"
+  },
+  "EditExitLabel": {
+    "message": "离开"
+  },
+  "EditLocateLabel": {
+    "message": "定位"
+  },
+  "EditPage": {
+    "message": "编辑页面"
+  },
+  "EditSaveLabel": {
+    "message": "保存"
+  },
+  "EditTab": {
+    "message": "编辑分页"
+  },
+  "EditTitle": {
+    "message": "编辑 $ID$",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditTitleWithFile": {
+    "message": "编辑 $ID$ :: $FILE$",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      },
+      "file": {
+        "content": "$2"
+      }
+    }
+  },
+  "EditorButtonAnnotation": {
+    "message": "批注工具 - 点击创建便利贴批注。"
+  },
+  "EditorButtonAnnotationLink": {
+    "message": "附加链接"
+  },
+  "EditorButtonAnnotationLinkPrompt": {
+    "message": "请输入要附加的链接网址："
+  },
+  "EditorButtonAnnotationNext": {
+    "message": "寻找下一个注记"
+  },
+  "EditorButtonAnnotationPrev": {
+    "message": "寻找上一个注记"
+  },
+  "EditorButtonAnnotationSticky": {
+    "message": "创建便利贴"
+  },
+  "EditorButtonAnnotationStickyRichText": {
+    "message": "创建便利贴（富文本）"
+  },
+  "EditorButtonClose": {
+    "message": "关闭工具栏"
+  },
+  "EditorButtonDOMEraser": {
+    "message": "元素橡皮擦工具 - 开启后点击可擦除目标元素；Ctrl 或中键点击擦除目标以外的元素。（擦除的内容可还原）"
+  },
+  "EditorButtonDOMEraserErase": {
+    "message": "擦除选择范围 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonDOMEraserExpand": {
+    "message": "扩大选择范围 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonDOMEraserIsolate": {
+    "message": "析离选择范围 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonDOMEraserRemoveEdit": {
+    "message": "移除这个剪贴簿注记"
+  },
+  "EditorButtonDOMEraserShrink": {
+    "message": "缩小选择范围 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonEraser": {
+    "message": "橡皮擦工具 - 点击擦除选取范围的内容；Ctrl 或中键点击移除选取范围的剪贴簿注记。（擦除的内容可还原）"
+  },
+  "EditorButtonEraserRevertAll": {
+    "message": "还原所有擦除内容（所有框架页）"
+  },
+  "EditorButtonEraserRevertSelection": {
+    "message": "还原选取范围的擦除内容"
+  },
+  "EditorButtonEraserSelection": {
+    "message": "擦除选取范围的内容"
+  },
+  "EditorButtonEraserSelector": {
+    "message": "透过 CSS 选择器擦除内容"
+  },
+  "EditorButtonEraserSelectorAll": {
+    "message": "透过 CSS 选择器擦除内容（所有框架页）"
+  },
+  "EditorButtonEraserSelectorPrompt": {
+    "message": "请输入用于擦除内容的 CSS 选择器："
+  },
+  "EditorButtonEraserXpath": {
+    "message": "透过 XPath 擦除内容"
+  },
+  "EditorButtonEraserXpathAll": {
+    "message": "透过 XPath 擦除内容（所有框架页）"
+  },
+  "EditorButtonEraserXpathPrompt": {
+    "message": "请输入用于擦除内容的 XPath："
+  },
+  "EditorButtonHtmlEditor": {
+    "message": "HTML 编辑工具 - 点击开启或关闭。开启后可自由编辑页面内容。（保存后无法复原）"
+  },
+  "EditorButtonHtmlEditorBgColor": {
+    "message": "设置背景颜色"
+  },
+  "EditorButtonHtmlEditorBgColorPrompt": {
+    "message": "请输入要设置的背景颜色（使用 CSS 颜色语法）："
+  },
+  "EditorButtonHtmlEditorCreateLink": {
+    "message": "创建链接"
+  },
+  "EditorButtonHtmlEditorCreateLinkPrompt": {
+    "message": "请输入要创建的链接网址："
+  },
+  "EditorButtonHtmlEditorEm": {
+    "message": "切换斜体"
+  },
+  "EditorButtonHtmlEditorFgColor": {
+    "message": "设置文本颜色"
+  },
+  "EditorButtonHtmlEditorFgColorPrompt": {
+    "message": "请输入要设置的文本颜色（使用 CSS 颜色语法）："
+  },
+  "EditorButtonHtmlEditorFormatBlockDiv": {
+    "message": "设置为 DIV 区块"
+  },
+  "EditorButtonHtmlEditorFormatBlockH": {
+    "message": "设置为 $LEVEL$ 级标题",
+    "placeholders": {
+      "level": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonHtmlEditorFormatBlockP": {
+    "message": "设置为一般段落"
+  },
+  "EditorButtonHtmlEditorFormatBlockPre": {
+    "message": "设置为 PRE 区块"
+  },
+  "EditorButtonHtmlEditorHr": {
+    "message": "插入水平线"
+  },
+  "EditorButtonHtmlEditorIndent": {
+    "message": "增加缩排"
+  },
+  "EditorButtonHtmlEditorInsertDate": {
+    "message": "插入日期"
+  },
+  "EditorButtonHtmlEditorInsertHtml": {
+    "message": "插入 HTML"
+  },
+  "EditorButtonHtmlEditorInsertHtmlPrompt": {
+    "message": "请输入要插入的 HTML："
+  },
+  "EditorButtonHtmlEditorJustifyCenter": {
+    "message": "置中对齐"
+  },
+  "EditorButtonHtmlEditorJustifyFull": {
+    "message": "左右对齐"
+  },
+  "EditorButtonHtmlEditorJustifyLeft": {
+    "message": "靠左对齐"
+  },
+  "EditorButtonHtmlEditorJustifyRight": {
+    "message": "靠右对齐"
+  },
+  "EditorButtonHtmlEditorListOrdered": {
+    "message": "设置为有序列表"
+  },
+  "EditorButtonHtmlEditorListUnordered": {
+    "message": "设置为无序列表"
+  },
+  "EditorButtonHtmlEditorOutdent": {
+    "message": "减少缩排"
+  },
+  "EditorButtonHtmlEditorRemoveFormat": {
+    "message": "清除格式"
+  },
+  "EditorButtonHtmlEditorStrike": {
+    "message": "切换删除线"
+  },
+  "EditorButtonHtmlEditorStrong": {
+    "message": "切换粗体"
+  },
+  "EditorButtonHtmlEditorSubscript": {
+    "message": "切换下标"
+  },
+  "EditorButtonHtmlEditorSuperscript": {
+    "message": "切换上标"
+  },
+  "EditorButtonHtmlEditorTodo": {
+    "message": "插入复选框"
+  },
+  "EditorButtonHtmlEditorUnderline": {
+    "message": "切换底线"
+  },
+  "EditorButtonHtmlEditorUnlink": {
+    "message": "移除链接"
+  },
+  "EditorButtonLocate": {
+    "message": "定位工具 - 在剪贴簿显示此项目的位置。"
+  },
+  "EditorButtonLocateViewDirectory": {
+    "message": "检视页面所在目录"
+  },
+  "EditorButtonLocateViewSitemap": {
+    "message": "检视站台地图"
+  },
+  "EditorButtonLocateViewSource": {
+    "message": "检视原始页面"
+  },
+  "EditorButtonMarker": {
+    "message": "标示工具 - 点击以标示选取的文本。点击标示可创建或编辑批注。"
+  },
+  "EditorButtonMarkerItem": {
+    "message": "标示 $INDEX$",
+    "placeholders": {
+      "index": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorButtonRemoveEditsAll": {
+    "message": "移除所有剪贴簿注记（所有框架页）"
+  },
+  "EditorButtonRemoveEditsSelection": {
+    "message": "移除选取范围的剪贴簿注记"
+  },
+  "EditorButtonSave": {
+    "message": "保存页面"
+  },
+  "EditorButtonSaveCreateSubPage": {
+    "message": "创建子页面"
+  },
+  "EditorButtonSaveCreateSubPagePrompt": {
+    "message": "请输入子页面名称（不含 .html）"
+  },
+  "EditorButtonSaveDeleteErased": {
+    "message": "永久删除所有擦除内容（所有框架页）"
+  },
+  "EditorButtonSaveEditTitle": {
+    "message": "修改页面标题"
+  },
+  "EditorButtonSaveEditTitlePrompt": {
+    "message": "请输入新标题"
+  },
+  "EditorButtonSaveInternalize": {
+    "message": "保存内嵌的外部资源"
+  },
+  "EditorButtonSavePinTop": {
+    "message": "工具栏置顶"
+  },
+  "EditorButtonSaveSetViewport": {
+    "message": "修改页面视图"
+  },
+  "EditorButtonSaveSetViewportPromptCreate": {
+    "message": "创建页面视图为"
+  },
+  "EditorButtonSaveSetViewportPromptModify": {
+    "message": "修改页面视图为"
+  },
+  "EditorButtonUndo": {
+    "message": "复原"
+  },
+  "EditorButtonUndoToggle": {
+    "message": "启用复原功能"
+  },
+  "EditorDeleteAnnotationConfirm": {
+    "message": "删除这个批注吗？"
+  },
+  "EditorEditAnnotation": {
+    "message": "编辑批注内容："
+  },
+  "EditorEditAnnotationPrompt": {
+    "message": "编辑批注内容（行尾输入两个空白可添加新行）：\n$TEXT$",
+    "placeholders": {
+      "text": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorLineMarkerCancel": {
+    "message": "取消修改 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorLineMarkerSave": {
+    "message": "保存变更 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "EditorStickyDelete": {
+    "message": "删除这个便利贴"
+  },
+  "EditorStickySave": {
+    "message": "保存变更 [$KEY$]",
+    "placeholders": {
+      "key": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorContentScriptExecute": {
+    "message": "无法执行内容处理脚本 ($SOURCE$): $REASON$",
+    "placeholders": {
+      "source": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "ErrorEditorButtonEraserSelectorInvalid": {
+    "message": "'$SELECTOR$' 不是有效的 CSS 选择器。",
+    "placeholders": {
+      "selector": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorEditorButtonEraserXpathInvalid": {
+    "message": "'$SELECTOR$' 不是有效的 XPath。",
+    "placeholders": {
+      "selector": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorFileDownloadError": {
+    "message": "下载文件错误 ($URL$): $REASON$",
+    "placeholders": {
+      "url": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "ErrorFileSaveError": {
+    "message": "保存文件错误 ($FILENAME$ <= $URL$): $REASON$",
+    "placeholders": {
+      "url": {
+        "content": "$1"
+      },
+      "filename": {
+        "content": "$2"
+      },
+      "reason": {
+        "content": "$3"
+      }
+    }
+  },
+  "ErrorImportOptions": {
+    "message": "导入选项失败: $REASON$",
+    "placeholders": {
+      "reason": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorLocateNotFound": {
+    "message": "找不到本页面所属的剪贴簿项目。"
+  },
+  "ErrorLocateSidebarNotOpened": {
+    "message": "剪贴簿尚未开启，无法执行定位。"
+  },
+  "ErrorSaveBookNoTree": {
+    "message": "剪贴簿禁用了数据树功能。"
+  },
+  "ErrorSaveLockedItem": {
+    "message": "此项目已锁定，无法保存。"
+  },
+  "ErrorSaveNonHtml": {
+    "message": "无法保存非 HTML 文件 ($URL$)。",
+    "placeholders": {
+      "url": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSaveNonUTF8": {
+    "message": "无法保存非 UTF-8 编码的文件 ($URL$)。",
+    "placeholders": {
+      "url": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSaveNotUnderDataDir": {
+    "message": "无法保存非数据目录下的文件 ($URL$)。",
+    "placeholders": {
+      "url": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSaveUnknownItem": {
+    "message": "找不到此页面的所属项目。"
+  },
+  "ErrorSaveUploadFailure": {
+    "message": "无法上传至后端服务器 ($SOURCE$): $REASON$",
+    "placeholders": {
+      "source": {
+        "content": "$1"
+      },
+      "reason": {
+        "content": "$2"
+      }
+    }
+  },
+  "ErrorSearch": {
+    "message": "错误: $REASON$",
+    "placeholders": {
+      "reason": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSearchInvalidDate": {
+    "message": "日期格式错误: $DATE$",
+    "placeholders": {
+      "date": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSearchInvalidLimit": {
+    "message": "笔数限制格式错误: $LIMIT$",
+    "placeholders": {
+      "limit": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSearchInvalidRegExp": {
+    "message": "正则表达式格式错误: $REGEX$",
+    "placeholders": {
+      "regex": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorSearchInvalidSort": {
+    "message": "排序格式错误: $SORT$",
+    "placeholders": {
+      "sort": {
+        "content": "$1"
+      }
+    }
+  },
+  "ErrorTabDiscarded": {
+    "message": "分页已卸载，请重新载入再尝试。"
+  },
+  "ExtensionDescription": {
+    "description": "Description of the extension as it's visible to the outside world",
+    "message": "获取网页至本地或后端服务器供检索、组织、加注、编辑。"
+  },
+  "ExtensionName": {
+    "description": "Name of the extension as it's visible to the outside world",
+    "message": "网页剪贴簿"
+  },
+  "IndexerHeader": {
+    "message": "选择网页剪贴簿文件夹或其 ZIP 压缩文件。你可以拖放它们至此页，或使用以下按钮："
+  },
+  "IndexerLoadServer": {
+    "message": "索引服务器数据"
+  },
+  "IndexerPickDir": {
+    "message": "选择文件夹"
+  },
+  "IndexerPickDirTooltip": {
+    "message": "用此方式选择文件夹时，若根目录下只有单一文件夹，会无法正确辨识根目录。用拖放方式选择文件夹或在根目录下增加文件或含有文件的文件夹可避免此问题。"
+  },
+  "IndexerPickFiles": {
+    "message": "选择 ZIP 压缩文件"
+  },
+  "IndexerTitle": {
+    "message": "创建网站索引"
+  },
+  "ItemPickerTitle": {
+    "message": "选择项目"
+  },
+  "OK": {
+    "message": "确定"
+  },
+  "OpenChecker": {
+    "message": "运行检测器"
+  },
+  "OpenIndexer": {
+    "message": "运行索引器"
+  },
+  "OpenOptions": {
+    "message": "选项"
+  },
+  "OpenScrapBook": {
+    "message": "打开剪贴簿"
+  },
+  "OpenScrapBookTooltip": {
+    "message": "本功能需要架设后端服务器并做好相关设置才能运作。"
+  },
+  "OpenSearch": {
+    "message": "搜索剪贴簿"
+  },
+  "OpenViewer": {
+    "message": "检视封存网页"
+  },
+  "OptionAutocaptureLabel": {
+    "message": "启用自动获取:"
+  },
+  "OptionAutocaptureTooltip": {
+    "message": "自动获取使用 JSON 定义，格式如下：\n\n  [\n   {\n    \"name\": \"Example#1\",\n    \"description\": \"Auto-capture example.com\",\n    \"pattern\": \"/^https?://example\\\\.com//i\",\n    \"delay\": 5000,\n    ...\n   },\n   ...\n  ]\n\n• name: 字符串，标示此设置的名称及用于除错识别，可省略。\n• description: 字符串，注记此设置的功能，可省略。\n• disabled: 属真时将禁用此设置，可省略。\n• tabId: 用于限定此设置作用的分页 ID。省略此项则作用于任意分页。\n• pattern: 为正则表达式字符串（「/表达式/标帜」）或其数组，网址匹配任一项即纳入此设置的自动获取。省略则作用于任意网页。\n• exclude: 为正则表达式字符串（「/表达式/标帜」）或其数组，网址匹配任一项即排除此设置的自动获取。可省略。\n• delay: 网页载入完成至开始自动获取前的延迟时间（毫秒）。省略或不大于 0 则无延迟。\n• repeat: 自动获取开始后重复获取的间隔时间（毫秒）。省略或不大于 0 则不重复获取。\n• allowDuplicate: 属真时将允许重复自动获取相同网页，可省略。\n• taskInfo: 覆写获取工作的 JSON 对象，格式同「获取分页为...」的主要 JSON 对象，可省略。\n• eachTaskInfo: 覆写单一获取工作的 JSON 对象，格式同「获取分页为...」tasks 数组中的对象，可省略。"
+  },
+  "OptionCaptureAdoptedStyleSheetLabel": {
+    "message": "构造式样式表:"
+  },
+  "OptionCaptureAdoptedStyleSheetTooltip": {
+    "message": "此选项决定构造式样式表的处理方式。构造式样式表是由页面脚本动态产生并直接依附于页面的样式表。\n\n• 保存：将构造式样式表记录于特殊属性，并产生相应的初始化脚本，在网页载入时重建样式表。\n• 移除：不记录构造式样式表。"
+  },
+  "OptionCaptureAppletLabel": {
+    "message": "APPLET 元素:"
+  },
+  "OptionCaptureAppletTooltip": {
+    "message": "此选项决定 APPLET 元素的处理方式。APPLET 元素是用于嵌入 JAVA 小程序，新浏览器大多已不再支持。注意：JAVA 小程序脱离原服务器环境可能无法正常运作，且可能造成安全风险。\n\n• 保存：将 APPLET 元素参照的文件保存至本地。\n• 链接：将 APPLET 元素连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将 APPLET 元素无效化。\n• 移除：将 APPLET 元素移除。注意这可能会影响网页排版。"
+  },
+  "OptionCaptureAudioLabel": {
+    "message": "音频:"
+  },
+  "OptionCaptureAudioTooltip": {
+    "message": "此选项决定音频（AUDIO 元素）的处理方式。\n\n• 保存：将音频保存至本地。\n• 保存现用：将目前播放的音频保存至本地，忽略供其他浏览器使用的备用音频。这可以有效缩小容量，但在其他平台可能无法播放。若获取的页面并未显示于浏览器（例如获取原貌），则仍保存所有音频。\n• 链接：将音频连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将音频无效化。\n• 移除：将音频元素移除。注意这可能会影响网页排版。"
+  },
+  "OptionCaptureCanvasBlankLabel": {
+    "message": "清空"
+  },
+  "OptionCaptureCanvasLabel": {
+    "message": "画布:"
+  },
+  "OptionCaptureCanvasSaveLabel": {
+    "message": "保存"
+  },
+  "OptionCaptureCanvasTooltip": {
+    "message": "此选项决定画布（CANVAS 元素）的处理方式。画布初始为空白状态而后由网页脚本动态绘制。\n\n• 保存：记录画布的当前状态并产生相应的初始化脚本，在网页载入时重绘。注意：使用某些特殊技术绘制的画布无法如实记录目前状态。\n• 清空：保存空白画布。\n• 移除：将画布元素移除。"
+  },
+  "OptionCaptureCommonBlankLabel": {
+    "message": "清空"
+  },
+  "OptionCaptureCommonLinkLabel": {
+    "message": "链接"
+  },
+  "OptionCaptureCommonRemoveLabel": {
+    "message": "移除"
+  },
+  "OptionCaptureCommonSaveCurrentLabel": {
+    "message": "保存现用"
+  },
+  "OptionCaptureCommonSaveLabel": {
+    "message": "保存"
+  },
+  "OptionCaptureCommonSaveUsedLabel": {
+    "message": "保存使用"
+  },
+  "OptionCaptureDeleteErasedOnCaptureLabel": {
+    "message": "获取页面时自动删除所有擦除内容"
+  },
+  "OptionCaptureDeleteErasedOnCaptureTooltip": {
+    "message": "注意：即使获取了擦除内容，其引用的外部资源及部分脚本相关交互要素仍无法完整保留及事后还原。一般建议获取页面后再擦除内容，较能保留完整信息。"
+  },
+  "OptionCaptureDeleteErasedOnSaveLabel": {
+    "message": "保存页面时自动删除所有擦除内容"
+  },
+  "OptionCaptureDownLinkDocDelayLabel": {
+    "message": "获取链接页面延迟 (ms):"
+  },
+  "OptionCaptureDownLinkDocDepthLabel": {
+    "message": "获取链接页面深度:"
+  },
+  "OptionCaptureDownLinkDocDepthTooltip": {
+    "message": "获取深度未超过此值的链接页面，并创建交互链接及记录资源列表。主页面为深度 0，深度 0 链接的页面为深度 1，深度 1 链接的页面为深度 2，……依此类推。\n\n• 深度设为 0 时仍会记录资源列表。留空表示不获取链接页面也不记录资源列表。\n• 注意：深层获取可能会下载大量资料，宜设置保存获取数据为文件夹，以避免潜在的效能问题或错误。此功能不支持保存为单一 HTML 文件。"
+  },
+  "OptionCaptureDownLinkDocUrlFilterLabel": {
+    "message": "获取链接页面列入网址:"
+  },
+  "OptionCaptureDownLinkDocUrlFilterTooltip": {
+    "message": "此过滤器根据网址筛选要获取的链接页面（A 或 AREA 元素或 META 重导向指向的目标）。\n\n• 以下每行为一个完整网址（“#”以后的部分会自动去除）或一个正则表达式（如“/^http://example\\.com//”）。\n• 链接的完整网址（去除“#”以后的部分）匹配任何一行的规则即列入下载。例如链接“http://example.com/subpage#h2”匹配完整网址规则“http://example.com/subpage”或正则表达式规则“/^http://example\\.com/SubPage\\d*/i”。若每行皆无规则，则任何网址皆列入下载。\n• 以“#”开头的行皆视为注解，执行时会略过。\n• 每行空白字符以后的部分皆视为注解，执行时会自动忽略。例如“http://example.com/ 注解”视同“http://example.com/”；“/^https:/ 注解”视同“/^https:/”。"
+  },
+  "OptionCaptureDownLinkFileExtFilterLabel": {
+    "message": "下载链接文件列入文件类型:"
+  },
+  "OptionCaptureDownLinkFileExtFilterTooltip": {
+    "message": "此过滤器根据扩展名或 MIME 类型筛选要下载的链接文件。\n\n• 以下每行为一条规则，链接的扩展名或 MIME 类型匹配任何一条规则即列入下载。规则可为以下格式：\n  • 以“,”、“;”或空白分隔的扩展名列表，不分大小写。如“jpg, jpeg; gif; png”会列入“jpg”、“jPEG”、“Gif”、或“PNG”，而不会列入“jp”或“jpgx”。\n  • 正规表达式字符串，格式为“/表达式/标帜”。如“/jpe?g|gif|png/i”可列入与前项相同的扩展名。若要列入无扩展名的文件，可用“//”。\n  • 以“mime:”开头的字符串，不分大小写。如“mime:text/plain”会列入 MIME 类型为“text/plain”的文件。\n  • 以“mime:”开头的正规表达式。如“mime:/text/.*/i”会列入 MIME 类型为“text/plain”、“text/css”、“text/html”等文件。\n• 以“#”开头的行皆视为注解，执行时会略过。"
+  },
+  "OptionCaptureDownLinkFileModeHeaderLabel": {
+    "message": "匹配 HTTP 标头及网址扩展名"
+  },
+  "OptionCaptureDownLinkFileModeLabel": {
+    "message": "下载链接文件:"
+  },
+  "OptionCaptureDownLinkFileModeNoneLabel": {
+    "message": "禁用下载链接文件"
+  },
+  "OptionCaptureDownLinkFileModeTooltip": {
+    "message": "此选项决定是否下载链接的文件（A 或 AREA 元素或 META 重导向指向的目标）。\n\n• 禁用下载链接文件：不下载链接的文件。\n• 匹配网址扩展名：根据网址扩展名决定是否下载。效能较佳，但无法有效区分动态网页的类型。例如网址“http://example.com/api.php?id=123#sec1”的扩展名为“php”，但实际输出的文件可能是 html、doc、pdf 或其他格式。\n• 匹配 HTTP 标头及网址扩展名：走访每个链接，根据 HTTP 标头指定的 MIME 类型与实际输出扩展名和网址扩展名决定是否下载。\n  • 扩展名：如有 Content-Type 标头，取其对应的扩展名，例如“application/javascript”取扩展名“js”。（若此标头不对应任何扩展名，则不匹配任何扩展名筛选规则。）其次如有 Content-Disposition 标头且 filename 参数非空值，则取该参数值的扩展名，如“Content-Disposition: attachment; filename=\"fname.ext\"”取“ext”。否则取网址扩展名。\n  • MIME 类型：取 Content-Type 标头的值（忽略参数部分），如“Content-Type: text/html; charset=utf-8”取“text/html”。（若无此标头，则不匹配任何 MIME 类型筛选规则。）"
+  },
+  "OptionCaptureDownLinkFileModeUrlLabel": {
+    "message": "匹配网址扩展名"
+  },
+  "OptionCaptureDownLinkUrlExtraLabel": {
+    "message": "额外网址:"
+  },
+  "OptionCaptureDownLinkUrlExtraTooltip": {
+    "message": "列出额外获取（“获取链接页面深度”必须为 0 以上）或下载（“下载链接文件”必须非禁用）的网址，无论是否有交互链接或其他过滤规则。\n\n• 以下每行为一个完整网址（“#”以后的部分会自动去除）。\n• 以“#”开头的行皆视为注解，执行时会略过。\n• 每行空白字符以后的部分皆视为注解，执行时会自动忽略。例如“http://example.com/ 注解”视同“http://example.com/”。"
+  },
+  "OptionCaptureDownLinkUrlFilterLabel": {
+    "message": "排除网址:"
+  },
+  "OptionCaptureDownLinkUrlFilterTooltip": {
+    "message": "此过滤器根据网址筛选禁止下载或获取的链接，优先于其他过滤器。注意：有些网站会把操作指令做成一般的链接，导致走访链接时误触而导致注销网站等后果，此时可设置此过滤器防止走访。\n\n• 以下每行为一个完整网址（“#”以后的部分会自动去除）或一个正则表达式（如“/[/=]logout\\b/i”）。\n• 链接的完整网址（去除“#”以后的部分）匹配任何一行的规则即禁止下载。例如链接“http://example.com/logout”和“http://example.com/?a=LOGOUT”都匹配正则表达式规则“/[/=]logout\\b/i”。\n• 以“#”开头的行皆视为注解，执行时会略过。\n• 每行空白字符以后的部分皆视为注解，执行时会自动忽略。例如“http://example.com/ 注解”视同“http://example.com/”；“/^https:/ 注解”视同“/^https:/”。"
+  },
+  "OptionCaptureEmbedLabel": {
+    "message": "EMBED 元素:"
+  },
+  "OptionCaptureEmbedTooltip": {
+    "message": "此选项决定 EMBED 元素的处理方式。EMBED 元素多用于嵌入外挂程式，也可嵌入图片、多媒体、或框架页。注意：外挂程式脱离原服务器环境可能无法正常运作，且可能造成安全风险。\n\n• 保存：将 EMBED 元素参照的文件保存至本地。\n• 链接：将 EMBED 元素连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将 EMBED 元素无效化。\n• 移除：将 EMBED 元素移除。注意这可能会影响网页排版。"
+  },
+  "OptionCaptureFaviconLabel": {
+    "message": "最爱图示:"
+  },
+  "OptionCaptureFaviconTooltip": {
+    "message": "此选项决定最爱图示的处理方式。最爱图示（favicon）是网页在分页、书签、我的最爱中呈现的代表图示。\n\n• 保存：将最爱图示保存至本地。\n• 链接：将最爱图示连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将最爱图示无效化。\n• 移除：将最爱图示元素移除。"
+  },
+  "OptionCaptureFontLabel": {
+    "message": "字体:"
+  },
+  "OptionCaptureFontTooltip": {
+    "message": "此选项决定字体的处理方式。\n\n• 保存：将所有字体保存至本地。\n• 保存使用：只将获取区域的网页元素使用的字体保存至本地。若获取的页面并未显示于浏览器（例如获取原貌），则仍保存所有字体。注意：此功能需要复杂的追踪运算，在复杂网页可能出错或消耗大量资源。\n• 链接：将字体连往原始位址。注意这会导致浏览获取页面时触发网路传输。注意：跨网域载入字体受同源政策限制，若字体来自未设置跨来源资源共享（CORS）的服务器，获取的页面将无法载入。\n• 清空：将字体从样式表中清除。"
+  },
+  "OptionCaptureFormStatusHtmlAllLabel": {
+    "message": "保留全部 HTML"
+  },
+  "OptionCaptureFormStatusHtmlLabel": {
+    "message": "保留 HTML"
+  },
+  "OptionCaptureFormStatusKeepAllLabel": {
+    "message": "保留全部"
+  },
+  "OptionCaptureFormStatusKeepLabel": {
+    "message": "保留"
+  },
+  "OptionCaptureFormStatusLabel": {
+    "message": "表单状态:"
+  },
+  "OptionCaptureFormStatusResetLabel": {
+    "message": "重置"
+  },
+  "OptionCaptureFormStatusSaveAllLabel": {
+    "message": "保存全部"
+  },
+  "OptionCaptureFormStatusSaveLabel": {
+    "message": "保存"
+  },
+  "OptionCaptureFormStatusTooltip": {
+    "message": "此选项决定目前表单状态的处理方式。\n\n• 保存全部：产生特殊属性值和初始化脚本记录目前状态，以免破坏重置等功能的运作。\n• 保存：产生特殊属性值和初始化脚本记录目前状态（不包括密码等敏感资讯），以免破坏重置等功能的运作。\n• 保留全部：将目前状态改写为对应的 HTML 属性，无法以 HTML 表达的状态会产生特殊属性值和初始化脚本处理。\n• 保留：将目前状态（不包括密码等敏感资讯）改写为对应的 HTML 属性，无法以 HTML 表达的状态会产生特殊属性值和初始化脚本处理。\n• 保留全部 HTML：将目前状态改写为对应的 HTML 属性，忽略无法以 HTML 表达的状态。\n• 保留 HTML：将目前状态（不包括密码等敏感资讯）改写为对应的 HTML 属性，忽略无法以 HTML 表达的状态。\n• 重置：忽略目前状态。"
+  },
+  "OptionCaptureFrameLabel": {
+    "message": "框架页:"
+  },
+  "OptionCaptureFrameTooltip": {
+    "message": "此选项决定框架页（FRAME 及 IFRAME 元素）的处理方式。\n\n• 保存：将框架页保存至本地。\n• 链接：将框架页连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将框架页无效化。\n• 移除：将框架页元素移除。注意这可能会影响网页排版。"
+  },
+  "OptionCaptureHelpersLabel": {
+    "message": "启用获取助手"
+  },
+  "OptionCaptureHelpersTooltip": {
+    "message": "获取助手可在获取前对网页内容做预先处理，以改善获取效果。获取助手使用 JSON 定义，格式如下：\n\n  [\n    {\n      \"name\": \"AdsRemover\",\n      \"description\": \"Remove unwanted content\",\n      \"pattern\": \"/^https?://example\\\\.com//i\",\n      \"commands\": [\n        [\"remove\", \"#ad-by-xxx\"],\n        [\"unwrap\", \"#i-want-to-strip-this\"],\n        ...\n      ]\n    },\n    {\n      \"name\": \"DeferredImageFixer\",\n      \"description\": \"Save deferred images defined by data-*\",\n      \"commands\": [\n        [\"attr\", {\"css\": \"img[data-src]\"}, \"src\", [\"get_attr\", null, \"data-src\"]],\n        [\"attr\", {\"css\": \"img[data-srcset]\"}, \"srcset\", [\"get_attr\", null, \"data-srcset\"]],\n        ...\n      ]\n    },\n    {\n      \"description\": \"Don't capture images on this site\",\n      \"pattern\": \"/^https?://example\\\\.com//i\",\n      \"options\": {\n        \"capture.image\": \"blank\",\n        \"capture.imageBackground\": \"blank\"\n      }\n    },\n    ...\n  ]\n\n• name: 字符串，标示此助手的名称及用于除错识别，可省略。\n• description: 字符串，注记此助手的功能，可省略。\n• disabled: 属真时将禁用此助手，可省略。\n• debug: 属真时此助手会启用除错模式，可省略。\n• pattern: 字符串，为正则表达式字符串（“/表达式/标帜”，下同），用于限定此助手作用的网址。若省略此项则作用于所有网页。\n• options: 覆写获取选项，格式同汇出选项（限“capture.*”）。\n• commands: 要依序执行的指令列表。\n  • 可用的指令如下：\n    • [\"html\", selector, htmlText, isOuter]: 对匹配 selector 的元素设置 HTML 内容为 htmlText。若 isOuter 属真则设置外部 HTML。\n    • [\"text\", selector, text]: 对匹配 selector 的元素设置文本内容为 text。\n    • [\"attr\", selector, name, value]: 对匹配 selector 的元素设置属性 name 的值为 value（可用 null 表示删除属性）。\n    • [\"attr\", selector, [[name1, value1], [name2, value2], ...]]: 对匹配 selector 的元素设置多个属性。\n    • [\"attr\", selector, {name1: value1, name2: value2, ...}]: 对匹配 selector 的元素设置多个属性。\n    • [\"css\", selector, name, value, priority]: 对匹配 selector 的元素设置 CSS 属性 name 的值为 value（可用 null 表示删除属性）、优先权为 priority（\"important\" 或 \"\" 或省略）。\n    • [\"css\", selector, [[name1, value1, priority1], [name2, value2, priority2], ...]]: 对匹配 selector 的元素设置多个 CSS 属性。\n    • [\"css\", selector, {name1: value1, name2: value2, ...}]: 对匹配 selector 的元素设置多个 CSS 属性。\n    • [\"remove\", selector]: 移除匹配 selector 的节点。\n    • [\"unwrap\", selector]: 移除匹配 selector 的节点，但保留子节点。\n    • [\"insert\", selector, nodeData, mode, index]: 逐个以匹配 selector 的节点为参照插入由 nodeData 定义的新节点，以 mode 和 index 指定插入方式。\n      • nodeData 的值可为字符串（插入字符串节点）或 selector（JSON 物件），或为含有以下属性的 JSON 物件：\n        • name: 元素节点名称（如“span”），或用“#text”插入字符串节点，或用“#comment”插入注解节点。\n        • value: 节点的文本内容。\n        • attrs: 元素节点的属性，格式为 [[name1, value1], [name2, value2], ...] 或 {name1: value1, name2: value2, ...}。\n        • children: 元素节点的子节点，格式为 [nodeData1, nodeData2, ...]。\n      • mode 的值可为：\n        • \"before\": 插入参照节点前。\n        • \"after\": 插入参照节点后。\n        • \"insert\": 插入为参照元素节点的第 index 个子节点（从 0 开始）。\n        • \"append\"（默认）: 插入为参照元素节点的最后一个子节点。\n        • \"replace\": 取代参照节点。\n    • [\"isolate\", selector]: 移除匹配 selector 的节点及其上下层节点以外的节点。对于 HTML 文件，不会移除 BODY 元素以外的节点，如 HEAD 元素。\n    • [\"for\", selector, command1, command2, ...]: 对匹配 selector 的节点依序执行 command# 指令。\n  • 指令的参数也可以是指令，可用以下指令取得相关值：\n    • [\"has_node\", selector]: selector 是否匹配至少一个节点。\n    • [\"has_attr\", selector, name]: selector 匹配的第一个元素是否有 name 属性。\n    • [\"get_html\", selector, isOuter]: selector 匹配的第一个元素的 HTML 内容。若 isOuter 属真则取外部 HTML。\n    • [\"get_text\", selector]: selector 匹配的第一个元素的文本内容。\n    • [\"get_attr\", selector, name]: selector 匹配的第一个元素的 name 属性值。\n    • [\"get_css\", selector, name, getPriority]: selector 匹配的第一个元素的 name 样式值。若 getPriority 属真则读取样式优先权。\n    • [\"match\", text, pattern, group]: 字符串 text 是否匹配正则表达式字符串 pattern。若 group 为整数或字符串则传回相应的匹配字符串子群组（0 为匹配字符串）。\n    • [\"replace\", text, pattern, replacement]: 将字符串 text 以正则表达式字符串 pattern 替换为字符串 replacement 的结果。\n    • [\"if\", cond, thenValue, elseValue]: 若 cond 属真则传回 thenValue，否则传回 elseValue。\n    • [\"equal\", value1, value2, strict]: value1 与 value2 是否相等。若 strict 属真则型态也必须相同。\n    • [\"and\", value1, value2, ...]: 传回 value# 中第一个属假的值，或最后一个值。\n    • [\"or\", value1, value2, ...]: 传回 value# 中第一个属真的值，或最后一个值。\n    • [\"concat\", value1, value2, ...]: 连接多个字符串值。\n    • [\"slice\", text, beginIndex, endIndex]: 获取字符串 text 从 beginIndex 到 endIndex 的子字符串值。\n    • [\"upper\", text]: 将 text 之中的字母转为大写。\n    • [\"lower\", text]: 将 text 之中的字母转为小写。\n    • [\"encode_uri\", text, safe]: 将字符串 text 做百分号编码，以便用于网址。字符串 safe 中的每个字符视为安全而不予编码。\n    • [\"decode_uri\", text]: 还原百分号编码的字符串 text。\n    • [\"add\", value1, value2, ...]: 算术加法运算 value1 + value2 + ...。\n    • [\"subtract\", value1, value2, ...]: 算术减法运算 value1 - value2 - ...。\n    • [\"multiply\", value1, value2, ...]: 算术乘法运算 value1 * value2 * ...。\n    • [\"divide\", value1, value2, ...]: 算术除法运算 value1 / value2 / ...。\n    • [\"mod\", value1, value2, ...]: 算术取余运算 value1 % value2 % ...。\n    • [\"power\", value1, value2, ...]: 算术乘幂运算 value1 ^ value2 ^ ...。\n  • 许多指令可用 selector 根据目前的参照节点选择节点。commands 下的指令初始参照节点为获取页面的根节点（通常为 HTML 元素）。指令透过 selector 匹配的节点会逐个成为 selector 之后参数的指令的参照节点。selector 的值可为：\n    • 含有以下属性的 JSON 物件：\n      • base: 字符串，更改选择器的参照节点。可使用以下数值：\n        • \"self\": 目前参照节点。\n        • \"root\": 目前参照节点的根节点。\n        • \"parent\": 目前参照节点的父节点。\n        • \"previousSibling\": 目前参照节点的前一个同级节点。\n        • \"nextSibling\": 目前参照节点的后一个同级节点。\n        • \"firstChild\": 目前参照节点的第一个子节点。\n        • \"lastChild\": 目前参照节点的最后一个子节点。\n        • 以上数值可用「.」连接，例如「firstChild.nextSibling.nextSibling」表示第 3 个子节点。\n      • css: 字符串，选择此 CSS 选择器匹配的节点集合。\n      • xpath: 字符串，选择此 XPath 选择器匹配的节点集合。\n      • 若未指定 css、xpath 等选择器，则传回只包含参照节点的集合。\n    • 字符串：值为上述有效 base 属性时相当于 {\"base\": <字符串值>}，否则相当于 {\"css\": <字符串值>}。\n    • 其他值：传回只包含目前参照节点的集合。\n  • 启用除错时，可在指令名称前加上“*”以在控制台记录执行情况。例如：[\"*get_attr\", null, \"data-src\"]\n\n发生错误或启用除错时，可开启获取的分页（若为获取原貌则在获取视窗）的控制台检视详细信息。"
+  },
+  "OptionCaptureImageBackgroundLabel": {
+    "message": "样式图片:"
+  },
+  "OptionCaptureImageBackgroundTooltip": {
+    "message": "此选项决定样式图片（包括样式表使用的背景图片、鼠标图示、项目符号图示等，以及旧 HTML 标准的元素背景属性）的处理方式。\n\n• 保存：将所有样式图片保存至本地。\n• 保存使用：只将获取区域的网页元素使用的样式图片保存至本地。若获取的页面并未显示于浏览器（例如获取原貌），则仍保存所有样式图片。注意：此功能需要复杂的追踪运算，在复杂网页可能出错或消耗大量资源。\n• 链接：将样式图片连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将样式图片从样式表中清除。"
+  },
+  "OptionCaptureImageLabel": {
+    "message": "图片:"
+  },
+  "OptionCaptureImageTooltip": {
+    "message": "此选项决定图片（IMG、PICTURE、及一些 INPUT 元素）的处理方式。\n\n• 保存：将图片保存至本地。\n• 保存现用：将显示的图片保存至本地，忽略其他萤幕大小或分辨率的备用图片。这可以有效缩小容量，但可能影响在其他设备的显示效果。若获取的页面并未显示于浏览器（例如获取原貌），则仍保存所有图片。\n• 链接：将图片连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将图片无效化。\n• 移除：将图片元素移除。注意这可能会影响网页排版。"
+  },
+  "OptionCaptureInsertInfoBarLabel": {
+    "message": "获取或保存页面时加入网页信息条"
+  },
+  "OptionCaptureInsertInfoBarTooltip": {
+    "message": "勾选时会在获取或保存的页面加入脚本，使浏览器在页面顶部显示信息条（须启用 JavaScript）。\n\n• 注意：封存页面检视器由于不支持 JavaScript，无法显示信息条。若要用于封存页面，须改用支持 JavaScript 的检视方法，例如解压缩后开启。"
+  },
+  "OptionCaptureLinkUnsavedUriLabel": {
+    "message": "将无法储存的资源连往原始位址"
+  },
+  "OptionCaptureLinkUnsavedUriTooltip": {
+    "message": "勾选时无法保存的资源将连往原始位址（这会导致浏览获取页面时触发网路传输）；不勾选时则以“urn:scrapbook:*”的形式记录。"
+  },
+  "OptionCaptureMergeCssResourcesLabel": {
+    "message": "合并样式表重复引用的媒体"
+  },
+  "OptionCaptureMergeCssResourcesTooltip": {
+    "message": "以变量替换样式表重复引用的媒体资源，可显着缩小容量。此功能只能支持较新的浏览器，例如 Chromium ≥ 49、Firefox ≥ 31、Edge ≥ 15、Safari > 9.1、Opera ≥ 36，不支持的浏览器将无法呈现相关资源。"
+  },
+  "OptionCaptureNoscriptLabel": {
+    "message": "NOSCRIPT 元素:"
+  },
+  "OptionCaptureNoscriptTooltip": {
+    "message": "此选项决定 NOSCRIPT 元素的处理方式。NOSCRIPT 元素会在浏览器不支持或禁用脚本时显示，通常用于提示浏览器不支持脚本，或重导向至不使用脚本的页面。不获取脚本时可考虑移除这些内容。\n\n• 保存：保留 NOSCRIPT 元素内容。\n• 清空：将 NOSCRIPT 元素清空。\n• 移除：将 NOSCRIPT 元素移除。"
+  },
+  "OptionCaptureObjectLabel": {
+    "message": "OBJECT 元素:"
+  },
+  "OptionCaptureObjectTooltip": {
+    "message": "此选项决定 OBJECT 元素的处理方式。OBJECT 元素多用于嵌入外挂程式，也可嵌入图片、多媒体、或框架页。注意：外挂程式脱离原服务器环境可能无法正常运作，且可能造成安全风险。\n\n• 保存：将 OBJECT 元素参照的文件保存至本地。\n• 链接：将 OBJECT 元素连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将 OBJECT 元素无效化。\n• 移除：将 OBJECT 元素移除。注意这可能会影响网页排版。"
+  },
+  "OptionCaptureRecordRewritesLabel": {
+    "message": "记录改写的内容"
+  },
+  "OptionCaptureRecordRewritesTooltip": {
+    "message": "获取网页时若有改写的元素、属性或样式表，则用 data-* 属性、HTML 注解、CSS 注解等方式记录原始内容。"
+  },
+  "OptionCaptureRemoteTabDelayLabel": {
+    "message": "获取自动开启的新分页前延迟 (ms):"
+  },
+  "OptionCaptureRemoveHiddenLabel": {
+    "message": "移除隐藏元素:"
+  },
+  "OptionCaptureRemoveHiddenNoneLabel": {
+    "message": "禁用"
+  },
+  "OptionCaptureRemoveHiddenTooltip": {
+    "message": "此选项决定隐藏元素的处理方式。\n\n• 禁用：禁用此功能。\n• 移除不显示的元素：移除“display”样式属性计算值为“none”的元素。有些挡广告工具会外挂样式表隐藏广告相关元素，此选项有助于真正移除这些广告。注意这可能会影响网页排版，例如改变“+”、“~”、“:nth-child”等 CSS 选择器的作用对象。"
+  },
+  "OptionCaptureRemoveHiddenUndisplayedLabel": {
+    "message": "移除不显示的元素"
+  },
+  "OptionCaptureResourceSizeLimitLabel": {
+    "message": "单个资源文件的大小限制 (MiB):"
+  },
+  "OptionCaptureResourceSizeLimitTooltip": {
+    "message": "系统不会下载超出此限制的资源文件。空白表示不设限制。"
+  },
+  "OptionCaptureRewriteCssLabel": {
+    "message": "改写样式表:"
+  },
+  "OptionCaptureRewriteCssMatchLabel": {
+    "message": "高级整理"
+  },
+  "OptionCaptureRewriteCssNoneLabel": {
+    "message": "不改写"
+  },
+  "OptionCaptureRewriteCssTidyLabel": {
+    "message": "整理"
+  },
+  "OptionCaptureRewriteCssTooltip": {
+    "message": "此选项决定样式表的改写方式。\n\n• 不改写：保存原来的样式表，不做任何改写。\n• 改写网址：改写样式表的网址，使之链接至获取的资源。\n• 整理：改写网址并整理样式表，移除注解、多余空白、及浏览器无法解读的样式。这有助于缩小容量，但可能导致在其他浏览器无法正常显示。\n• 进阶整理：改写网址，整理样式表，并移除获取范围未使用的样式。这有助于进一步缩小容量，但可能导致在其他浏览器无法正常显示，且可能与保存脚本冲突。注意：此功能需要复杂的追踪运算，在复杂网页可能出错或消耗大量资源。"
+  },
+  "OptionCaptureRewriteCssUrlLabel": {
+    "message": "改写网址"
+  },
+  "OptionCaptureSaveAsFolderLabel": {
+    "message": "文件夹"
+  },
+  "OptionCaptureSaveAsLabel": {
+    "message": "保存获取数据为:"
+  },
+  "OptionCaptureSaveAsMaffLabel": {
+    "message": "MAFF 封存文件"
+  },
+  "OptionCaptureSaveAsSingleHtmlLabel": {
+    "message": "单一 HTML 文件"
+  },
+  "OptionCaptureSaveAsTooltip": {
+    "message": "指定保存网页及参照文件的格式。\n\n• 文件夹：创建一个文件夹并将网页及资源文件存入其中。Google Chrome（及部分 Chromium 系浏览器）注意：保存获取数据至剪贴簿文件夹时，建议浏览器设置（高级 > 下载内容）不勾选“下载前询问每个文件的保存位置”，以免获取时跳出大量窗口。有些文件（如 *.js、*.py）可能会被浏览器阻挡，须逐个选择“保留”才能下载。\n• HTZ 及 MAFF 封存文件：用 ZIP 算法将网页及资源文件打包，可用“检视封存网页”功能检视，或透过后端服务器或用支持 ZIP 的工具解压缩后检视。\n• 单一 HTML 文件：保存为一个 HTML 文件，资源文件以 data URL 等技术嵌入，大部分现代浏览器皆能支持，例如 Chromium > 0、Firefox > 0、Edge > 0、Safari > 0、Opera ≥ 7.2、IE ≥ 8（IE 有更多限制）。注意：data URL 效能较差，且缺乏有效的去重复技术，可能使文件容量明显增加。此格式也可能无法保存一些较复杂的数据结构。"
+  },
+  "OptionCaptureSaveAsZipLabel": {
+    "message": "HTZ 封存文件"
+  },
+  "OptionCaptureSaveAsciiFilenameLabel": {
+    "message": "保存为 ASCII 文件名"
+  },
+  "OptionCaptureSaveAsciiFilenameTooltip": {
+    "message": "文件名中所有非 ASCII 字符会以编码形式保存。"
+  },
+  "OptionCaptureSaveDataUriAsFileLabel": {
+    "message": "将 data URL 保存为文件"
+  },
+  "OptionCaptureSaveDataUriAsFileTooltip": {
+    "message": "会自动根据 data URL 数据的 MIME 类型及内容的 SHA-1 哈希值产生适当的文件名。"
+  },
+  "OptionCaptureSaveFileAsHtmlLabel": {
+    "message": "将文件保存为 HTML"
+  },
+  "OptionCaptureSaveFileAsHtmlTooltip": {
+    "message": "将浏览器能检视的非 HTML 文件保存为 HTML 网页。"
+  },
+  "OptionCaptureSaveFilenameLabel": {
+    "message": "保存文件名:"
+  },
+  "OptionCaptureSaveFilenameMaxLenUtf16Label": {
+    "message": "保存文件名最大长度 (UTF-16 字节):"
+  },
+  "OptionCaptureSaveFilenameMaxLenUtf16Tooltip": {
+    "message": "截短 UTF-16 编码下字节长度超过此值的文件名。\n\n• Windows 系统一般使用 UTF-16 编码，文件名长度限制为 255 字节，文件路径全长限制为 260 字节。"
+  },
+  "OptionCaptureSaveFilenameMaxLenUtf8Label": {
+    "message": "保存文件名最大长度 (UTF-8 字节):"
+  },
+  "OptionCaptureSaveFilenameMaxLenUtf8Tooltip": {
+    "message": "截短 UTF-8 编码下字节长度超过此值的文件名。\n\n• Linux 系统一般使用 UTF-8 编码，文件名长度限制为 255 字节，文件路径全长限制为 4096 字节。"
+  },
+  "OptionCaptureSaveFilenameTooltip": {
+    "message": "指定获取数据的保存文件名（不含扩展名）。可用斜线“/”指定子文件夹，例如“%create-Y%/%create-m%/%title%”。\n\n可用以下“%<参数>%”模版语法带入信息：\n• %% - 带入“%”符号。\n• %id% - 获取数据的唯一识别码，如“20190301124533216”。\n• %id-legacy% - 旧版 ScrapBook 格式的识别码，如“20190301204533”。\n• %uuid% - 产生一个乱数 UUID，如“941e4674-d6c7-4709-9703-a1b4359286c6”。\n• %title% - 页面标题，若无页面标题，会取网址最后一节作为标题。\n• %source% - 数据来源网址。\n• %create% - 创建时间。\n\n%source% 的 <参数> 可在尾端加上“-<子参数>”带入网址局部资讯。以“https://example.com:8000/app/search.html?q=foo&page=1#results”为例：\n• file: 文件名，一般取网址最后一节，如“search.html”。\n• page: 页面，一般取网址最后一节，并去除扩展名，如“search”。\n• protocol: 协定，如“https”。\n• host: 主机，含主机名称与端口，如“example.com:8000”。\n• hostname: 主机名称，如“example.com”。\n• port: 端口，如“8000”。\n• pathname: 路径，如“app/search.html”。\n• search: 搜索值，如“q=foo&page=1”。\n• search-<键名>: 搜索值中 <键名> 对应的键值，如“search-page”可得到“1”。\n• hash: 哈希值，如“results”。\n\n%create% 的 <参数> 可在尾端加上“-<时间格式>”指定时间格式（使用 POSIX strftime 格式），<时间格式> 可在尾端加上“-utc”使用世界协调时间。例如“%create-F-utc%”输出如“2020-04-01”。以下列出一些较常用的 POSIX strftime 格式：\n• Y: 四位数年份\n• y: 二位数年份\n• m: 二位数月份（01 至 12）\n• d: 二位数月中日期（01 至 31）\n• H: 二位数小时数（00 至 23）\n• M: 二位数分钟数（00 至 59）\n• S: 二位数秒数（00 至 59）\n• F: 日期（YYYY-MM-DD）\n• T: 时间（HH:MM:SS）"
+  },
+  "OptionCaptureSaveResourcesSequentiallyLabel": {
+    "message": "循序保存资源文件"
+  },
+  "OptionCaptureSaveResourcesSequentiallyTooltip": {
+    "message": "勾选时会按出现顺序逐一保存资源文件，可节省运算资源及固定同名文件的编号顺序，但速度较慢。"
+  },
+  "OptionCaptureSaveToFileLabel": {
+    "message": "文件"
+  },
+  "OptionCaptureSaveToFolderLabel": {
+    "message": "剪贴簿文件夹"
+  },
+  "OptionCaptureSaveToLabel": {
+    "message": "保存获取数据至:"
+  },
+  "OptionCaptureSaveToServerLabel": {
+    "message": "后端服务器"
+  },
+  "OptionCaptureSaveToTooltip": {
+    "message": "指定管理保存数据的方式。\n\n• 后端服务器：将获取页面保存于后端服务器设置的剪贴簿数据目录。\n• 剪贴簿文件夹：将获取页面保存于 <默认下载文件夹> 下的剪贴簿文件夹。\n• 文件：将获取页面保存成文件。"
+  },
+  "OptionCaptureScrapbookFolderLabel": {
+    "message": "剪贴簿文件夹:"
+  },
+  "OptionCaptureScrapbookFolderTooltip": {
+    "message": "指定保存剪贴簿数据的顶层文件夹，为 <默认下载文件夹> 以下的路径，例如“WebScrapBook/data”。\n\n• 浏览器扩展被限制只能下载文件到 <默认下载文件夹> ，如有需要可在 <默认下载文件夹> 下创建符号链接（或 Windows 系统的目录连接）指向想要的文件夹。"
+  },
+  "OptionCaptureScriptLabel": {
+    "message": "脚本:"
+  },
+  "OptionCaptureScriptTooltip": {
+    "message": "此选项决定所有网页脚本（包括 SCRIPT 元素、javascript: 协定的链接、onclick 之类的动态属性等等）的处理方式。\n\n• 保存：将脚本保存至本地。注意：获取的页面由于离开了原服务器环境且改写了部分内容，保存的脚本可能无法正常执行，且有机会造成隐私泄露或安全风险；此外基于安全性考量，脚本无法在封存网页检视器中执行。一般建议使用获取原貌，并将各获取选项设为“保存”，“画布”设为“清空”，“表单状态”设为“重设”，“影子元素”设为“移除”，“构造式样式表”设为“移除”，“移除隐藏元素”设为“禁用”，“改写样式表”勿设为“进阶整理”，以减低脚本冲突出错的机会。\n• 链接：将脚本连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将脚本无效化。\n• 移除：将脚本元素移除。"
+  },
+  "OptionCaptureShadowDomLabel": {
+    "message": "影子对象:"
+  },
+  "OptionCaptureShadowDomTooltip": {
+    "message": "此选项决定影子对象（Shadow DOM）的处理方式。影子对象是依附于页面元素的另一套对象，由页面脚本动态产生。\n\n• 储存：将影子对象记录于特殊属性，并产生相应的初始化脚本，在网页载入时重建影子对象。\n• 移除：不记录影子对象。"
+  },
+  "OptionCaptureStyleLabel": {
+    "message": "样式:"
+  },
+  "OptionCaptureStyleTooltip": {
+    "message": "此选项决定样式表的处理方式（包括外部样式表——一些 LINK 元素——及内部样式表——STYLE 元素）。\n\n• 保存：将外部样式表保存至本地。\n• 链接：将外部样式表连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将外部样式表无效化。\n• 移除：将外部样式表元素移除。"
+  },
+  "OptionCaptureVideoLabel": {
+    "message": "视频:"
+  },
+  "OptionCaptureVideoTooltip": {
+    "message": "此选项决定视频（VIDEO 元素）的处理方式。\n\n• 保存：将视频保存至本地。\n• 保存现用：将播放的视频保存至本地，忽略供其他浏览器使用的备用视频。这可以有效缩小容量，但在其他平台可能无法播放。若获取的页面并未显示于浏览器（例如获取原貌），则仍保存所有视频。\n• 链接：将视频连往原始位址。注意这会导致浏览获取页面时触发网路传输。\n• 清空：将视频无效化。\n• 移除：将视频元素移除。注意这可能会影响网页排版。"
+  },
+  "OptionCheckerMakeBackupLabel": {
+    "message": "更动文件时创建备份"
+  },
+  "OptionCheckerResolveAbsoluteIconLabel": {
+    "message": "自动为使用绝对网址的图示创建缓存"
+  },
+  "OptionCheckerResolveInvalidIdLabel": {
+    "message": "自动移除含有错误 ID 的项目"
+  },
+  "OptionCheckerResolveMissingDateLabel": {
+    "message": "自动修正遗失创建与修改时间的项目"
+  },
+  "OptionCheckerResolveMissingIndexFileLabel": {
+    "message": "自动移除遗失索引文件的项目"
+  },
+  "OptionCheckerResolveMissingIndexLabel": {
+    "message": "自动移除遗失索引文件设置的项目"
+  },
+  "OptionCheckerResolveOlderMtimeLabel": {
+    "message": "索引文件修改时间晚于项目修改时间时，自动更新项目的修改时间"
+  },
+  "OptionCheckerResolveTocEmptySubtreeLabel": {
+    "message": "自动移除空的子目录表"
+  },
+  "OptionCheckerResolveTocInvalidLabel": {
+    "message": "自动从目录表移除错误的项目"
+  },
+  "OptionCheckerResolveTocUnreachableLabel": {
+    "message": "自动把未存在于目录表的项目加入根目录"
+  },
+  "OptionCheckerResolveUnindexedFilesLabel": {
+    "message": "自动为侦测到的新页面创建项目并加入根目录"
+  },
+  "OptionCheckerResolveUnusedIconLabel": {
+    "message": "自动移除未使用的图示缓存"
+  },
+  "OptionEditorAutoInit": {
+    "message": "浏览剪贴簿中的页面时，自动载入编辑工具栏"
+  },
+  "OptionEditorInsertDateFormatLabel": {
+    "message": "插入日期格式:"
+  },
+  "OptionEditorInsertDateFormatTooltip": {
+    "message": "插入本地的目前时间，使用 POSIX strftime 格式。\n\n以下列出一小部分较常用的格式：\n• %c: 本地日期时间\n• %x: 本地年月日\n• %Y: 四位数年份\n• %y: 二位数年份\n• %m: 二位数月份（01 至 12）\n• %B: 本地月份长名\n• %b: 本地月份短名\n• %d: 二位数月中日期（01 至 31）\n• %A: 本地星期几长名\n• %a: 本地星期几短名\n• %X: 本地时分秒\n• %H: 二位数小时数，24 时制（00 至 23）\n• %I: 二位数小时数，12 时制（00 至 12）\n• %p: AM 或 PM\n• %M: 二位数分钟数（00 至 59）\n• %S: 二位数秒数（00 至 59）\n• %z: 本地时区偏移值\n• %Z: 本地时区名称\n• %%: % 符号"
+  },
+  "OptionEditorLineMarkerStyleLabel": {
+    "message": "标示样式"
+  },
+  "OptionEditorUseNativeTagsLabel": {
+    "message": "使用原生 HTML 标签注记"
+  },
+  "OptionEditorUseNativeTagsTooltip": {
+    "message": "使用原生 HTML 标签注记使之与旧浏览器（如 IE < 9）兼容，但较易受原网页干扰造成样式异常。"
+  },
+  "OptionGroupAutocapture": {
+    "message": "自动获取"
+  },
+  "OptionGroupCapture": {
+    "message": "获取 - 内容"
+  },
+  "OptionGroupChecker": {
+    "message": "后端服务器 - 检测器"
+  },
+  "OptionGroupDownLink": {
+    "message": "获取 - 获取链接"
+  },
+  "OptionGroupEditor": {
+    "message": "编辑器"
+  },
+  "OptionGroupHelpers": {
+    "message": "获取 - 获取助手"
+  },
+  "OptionGroupIndexer": {
+    "message": "后端服务器 - 索引器"
+  },
+  "OptionGroupSave": {
+    "message": "获取 - 保存"
+  },
+  "OptionGroupScrapbook": {
+    "message": "后端服务器 - 剪贴簿"
+  },
+  "OptionGroupServer": {
+    "message": "后端服务器"
+  },
+  "OptionGroupUi": {
+    "message": "操作界面"
+  },
+  "OptionGroupViewer": {
+    "message": "检视器"
+  },
+  "OptionIndexerCreateStaticSiteLabel": {
+    "message": "产生静态站台页面"
+  },
+  "OptionIndexerFulltextCacheLabel": {
+    "message": "产生全文搜索缓存"
+  },
+  "OptionIndexerFulltextCacheRecreateLabel": {
+    "message": "重建全文缓存"
+  },
+  "OptionIndexerMakeBackupLabel": {
+    "message": "更动文件时创建备份"
+  },
+  "OptionPageTitle": {
+    "message": "选项设置"
+  },
+  "OptionScrapbookBackupForRecaptureLabel": {
+    "message": "重新获取时创建备份"
+  },
+  "OptionScrapbookBackupForRecaptureTooltip": {
+    "message": "重新获取会在获取成功后将旧版本移到后端服务器设置的备份目录，若取消勾选则删除文件不留备份。\n\n• 注意：重新获取时会尝试复制旧获取页面中的批注，但可能有批注无法顺利复制或程序侦测不到，因此一般建议保留备份以防万一。"
+  },
+  "OptionScrapbookCopyItemInfoFormatPlainLabel": {
+    "message": "复制信息格式:"
+  },
+  "OptionScrapbookCopyItemInfoFormatPlainTooltip": {
+    "message": "设定复制信息的格式。\n\n可用以下“%<参数>%”模版语法带入信息：\n• %% - 带入“%”符号。\n• %id% - 项目 ID。\n• %title% - 项目标题。\n• %comment% - 项目评注。\n• %source% - 项目来源网址。\n• %url% - 项目网址。\n• %create-#% - 项目创建时间。\n• %modify-#% - 项目修改时间。\n• %folder% - 文件夹。\n• %path% - 文件夹及标题。\n\n%create% 和 %modify% 的 <参数> 可在尾端加上“-<时间格式>”指定时间格式（使用 POSIX strftime 格式），<时间格式> 可在尾端加上“-utc”使用世界协调时间。例如“%create-F-utc%”可输出如“2020-04-01”格式的时间。以下列出一些较常用的 POSIX strftime 格式：\n• Y: 四位数年份\n• y: 二位数年份\n• m: 二位数月份（01 至 12）\n• d: 二位数月中日期（01 至 31）\n• H: 二位数小时数（00 至 23）\n• M: 二位数分钟数（00 至 59）\n• S: 二位数秒数（00 至 59）\n• F: 日期（YYYY-MM-DD）\n• T: 时间（HH:MM:SS）\n\n<参数> 可在尾端加上一或多次“:<格式>”转换输出格式，例如“%title:oneline:escape_html%”。<格式> 可用的值如下：\n• oneline: 截去换行字符及之后的内容。\n• collapse: 压缩 ASCII 空白字符。\n• url: 转义处理 URL 特殊字符。\n• escape_html: 转义处理 HTML 特殊字符，包括“<”、“&”、“>”、“\"”。\n• escape_html_space: 转义处理 HTML 特殊字符并将连续的半角空白转为“&nbsp;”。\n• escape_css: 转义处理 CSS 特殊字符。\n• json: 转为 JSON 字符串。"
+  },
+  "OptionScrapbookDefaultSearchLabel": {
+    "message": "默认搜索条件:"
+  },
+  "OptionScrapbookDefaultSearchTooltip": {
+    "message": "设置搜索栏位默认填入的搜索条件，例如设置为“-type:separator”，则在搜索栏位填入“keyword”相当于搜索“-type:separator keyword”。\n\n• 除一般搜索指令以外，还可用“default:”指令设置默认指令，例如设置为“default:title”，则在搜索栏位填入“keyword”相当于搜索“title:keyword”。（默认为 default:tcc）"
+  },
+  "OptionScrapbookExportNonSingletonLabel": {
+    "message": "导出: 允许重复导出不同位置的同一项目"
+  },
+  "OptionScrapbookExportRecursiveLabel": {
+    "message": "导出: 一并导出下层项目"
+  },
+  "OptionScrapbookImportRebuildFoldersLabel": {
+    "message": "导入: 重建文件夹结构"
+  },
+  "OptionScrapbookImportResolveItemUsedNewLabel": {
+    "message": "导入: 为重复项目产生新项目"
+  },
+  "OptionScrapbookScrapbookSearchCommentLengthLabel": {
+    "message": "搜索结果显示评注长度:"
+  },
+  "OptionScrapbookScrapbookSearchContextLengthLabel": {
+    "message": "搜索结果显示摘要长度:"
+  },
+  "OptionScrapbookScrapbookSearchSourceLengthLabel": {
+    "message": "搜索结果显示来源长度:"
+  },
+  "OptionScrapbookSidebarEditNoteInNewTabLabel": {
+    "message": "编辑笔记"
+  },
+  "OptionScrapbookSidebarEditPostitInNewTabLabel": {
+    "message": "编辑便签"
+  },
+  "OptionScrapbookSidebarInNewTabLabel": {
+    "message": "开启于新分页的侧栏操作:"
+  },
+  "OptionScrapbookSidebarOpenInNewTabLabel": {
+    "message": "开启"
+  },
+  "OptionScrapbookSidebarSearchInNewTabLabel": {
+    "message": "搜索"
+  },
+  "OptionScrapbookSidebarSourceInNewTabLabel": {
+    "message": "开启原始网址"
+  },
+  "OptionScrapbookSidebarViewTextInNewTabLabel": {
+    "message": "检视文本"
+  },
+  "OptionServerPasswordLabel": {
+    "message": "密码:"
+  },
+  "OptionServerPasswordTooltip": {
+    "message": "若后端服务器有设置 HTTP 认证机制，可在这里填入认证所需的密码，以免浏览器反覆询问；或用于更换用户。\n\n• 注意：保存在浏览器套件的认证资讯未受保护且有遭窃风险，一般建议优先使用有密码保护机制的浏览器内置密码保存功能。"
+  },
+  "OptionServerUrlLabel": {
+    "message": "网址:"
+  },
+  "OptionServerUrlTooltip": {
+    "message": "后端服务器程序的网址根目录（必须以“/”结尾），例如“https://example.com/wsb/”。\n\n• 后端服务器可用 PyWebScrapBook 套件（最低兼容版本：$BACKEND_VERSION$）架设，安装细节参见 https://pypi.org/project/webscrapbook/。\n• 若未特别设定，本地架设的 PyWebScrapBook 后端服务器默认网址为“http://localhost:8080/”。",
+    "placeholders": {
+      "backend_version": {
+        "content": "$1"
+      }
+    }
+  },
+  "OptionServerUserLabel": {
+    "message": "用户:"
+  },
+  "OptionServerUserTooltip": {
+    "message": "若后端服务器有设置 HTTP 认证机制，可在这里填入认证所需的用户名，以免浏览器反覆询问；或用于更换用户。\n\n• 注意：保存在浏览器套件的认证资讯未受保护且有遭窃风险，一般建议优先使用有密码保护机制的浏览器内置密码保存功能。"
+  },
+  "OptionUiAutoCloseCaptureDialogAlwaysLabel": {
+    "message": "总是"
+  },
+  "OptionUiAutoCloseCaptureDialogLabel": {
+    "message": "获取完成时自动关闭对话窗口:"
+  },
+  "OptionUiAutoCloseCaptureDialogNoErrorLabel": {
+    "message": "无错误或获取失败时"
+  },
+  "OptionUiAutoCloseCaptureDialogNoFailureLabel": {
+    "message": "无获取失败时"
+  },
+  "OptionUiAutoCloseCaptureDialogNoWarnLabel": {
+    "message": "无警告、错误、或获取失败时"
+  },
+  "OptionUiAutoCloseCaptureDialogNoneLabel": {
+    "message": "禁用"
+  },
+  "OptionUiNotifyPageCapturedLabel": {
+    "message": "浏览获取过的页面时显示提示"
+  },
+  "OptionUiNotifyPageCapturedTooltip": {
+    "message": "勾选后会在工具栏按钮显示与目前浏览页面匹配的项目数，以不同颜色区分匹配程度：\n• 红色：相同网址（去除 # 以后的部分）\n• 黄色：相同路径（去除 ? 及 # 以后的部分）\n• 绿色：相同网站（相同协定、网域、通讯埠）\n• 蓝色：相同网域（如 https: 与 http: 或 www.example.com 与 example.com 皆视为相同）\n• 灰色：目前浏览阶段获取过的相同网址"
+  },
+  "OptionUiShowContextMenuLabel": {
+    "message": "启用右键菜单"
+  },
+  "OptionUiToolbarButtonsLabel": {
+    "message": "显示工具栏按钮命令:"
+  },
+  "OptionViewerViewAttachmentsLabel": {
+    "message": "强制检视附加文件"
+  },
+  "OptionViewerViewAttachmentsTooltip": {
+    "message": "附加文件（含有 HTTP 标头“Content-Disposition: attachment”的文件）浏览器一般会直接下载而不尝试开启。如果想强制用封存页面检视器开启附加文件形式的封存页面文件，可勾选此选项。"
+  },
+  "OptionViewerViewHtzLabel": {
+    "message": "检视 HTZ 文件"
+  },
+  "OptionViewerViewHtzTooltip": {
+    "message": "浏览器载入 HTZ 文件时，自动以检视器检视。在支持的浏览器勾选“允许访问文件网址”即可用浏览器直接开启此类文件。"
+  },
+  "OptionViewerViewMaffLabel": {
+    "message": "检视 MAFF"
+  },
+  "OptionViewerViewMaffTooltip": {
+    "message": "浏览器载入 MAFF 文件时，自动以检视器检视。在支持的浏览器勾选“允许访问文件网址”即可用浏览器直接开启此类文件。"
+  },
+  "OptionsExportLabel": {
+    "message": "导出"
+  },
+  "OptionsImportLabel": {
+    "message": "导入"
+  },
+  "OptionsImportSuccess": {
+    "message": "导入选项成功"
+  },
+  "OptionsResetLabel": {
+    "message": "重设"
+  },
+  "OptionsSaveLabel": {
+    "message": "保存"
+  },
+  "ScrapBookCommandBrowse": {
+    "message": "在文件管理员检视"
+  },
+  "ScrapBookCommandClean": {
+    "message": "清空回收筒"
+  },
+  "ScrapBookCommandCopyDialogAdvanced": {
+    "message": "高级:"
+  },
+  "ScrapBookCommandCopyDialogBook": {
+    "message": "复制到剪贴簿:"
+  },
+  "ScrapBookCommandCopyDialogIndex": {
+    "message": "位置 (从 0 开始，留空则置于最后):"
+  },
+  "ScrapBookCommandCopyDialogRecursive": {
+    "message": "一并复制下层项目"
+  },
+  "ScrapBookCommandCopyDialogRoot": {
+    "message": "复制到这个 ID 的项目下:"
+  },
+  "ScrapBookCommandCopyInfo": {
+    "message": "复制信息"
+  },
+  "ScrapBookCommandCopyTo": {
+    "message": "复制到"
+  },
+  "ScrapBookCommandCreateFolder": {
+    "message": "添加文件夹"
+  },
+  "ScrapBookCommandCreateFolderDialogTitle": {
+    "message": "文件夹标题:"
+  },
+  "ScrapBookCommandCreateNote": {
+    "message": "添加笔记"
+  },
+  "ScrapBookCommandCreateNoteDialogTitle": {
+    "message": "笔记标题:"
+  },
+  "ScrapBookCommandCreateNoteDialogType": {
+    "message": "笔记格式:"
+  },
+  "ScrapBookCommandCreatePostit": {
+    "message": "添加便签"
+  },
+  "ScrapBookCommandCreateSeparator": {
+    "message": "添加分隔线"
+  },
+  "ScrapBookCommandDelete": {
+    "message": "删除"
+  },
+  "ScrapBookCommandDeleteConfirm": {
+    "message": "确定要永久删除这 $NUM$ 个项目吗？",
+    "placeholders": {
+      "num": {
+        "content": "$1"
+      }
+    }
+  },
+  "ScrapBookCommandEdit": {
+    "message": "编辑"
+  },
+  "ScrapBookCommandExec": {
+    "message": "用默认程序开启"
+  },
+  "ScrapBookCommandExecBook": {
+    "message": "在文件管理员检视主目录"
+  },
+  "ScrapBookCommandExport": {
+    "message": "导出"
+  },
+  "ScrapBookCommandImport": {
+    "message": "导入"
+  },
+  "ScrapBookCommandIndex": {
+    "message": "检视主页"
+  },
+  "ScrapBookCommandManage": {
+    "message": "管理"
+  },
+  "ScrapBookCommandMeta": {
+    "message": "属性"
+  },
+  "ScrapBookCommandMetaDialogCharset": {
+    "message": "字符集:"
+  },
+  "ScrapBookCommandMetaDialogComment": {
+    "message": "评注:"
+  },
+  "ScrapBookCommandMetaDialogCreate": {
+    "message": "创建时间:"
+  },
+  "ScrapBookCommandMetaDialogIcon": {
+    "message": "图示:"
+  },
+  "ScrapBookCommandMetaDialogId": {
+    "message": "ID:"
+  },
+  "ScrapBookCommandMetaDialogIndex": {
+    "message": "索引文件:"
+  },
+  "ScrapBookCommandMetaDialogLocation": {
+    "message": "地理位置:"
+  },
+  "ScrapBookCommandMetaDialogLocked": {
+    "message": "锁定:"
+  },
+  "ScrapBookCommandMetaDialogMarked": {
+    "message": "强调标示:"
+  },
+  "ScrapBookCommandMetaDialogModify": {
+    "message": "修改时间:"
+  },
+  "ScrapBookCommandMetaDialogParent": {
+    "message": "移除自:"
+  },
+  "ScrapBookCommandMetaDialogRecycled": {
+    "message": "移除时间:"
+  },
+  "ScrapBookCommandMetaDialogSource": {
+    "message": "来源:"
+  },
+  "ScrapBookCommandMetaDialogTitle": {
+    "message": "标题:"
+  },
+  "ScrapBookCommandMetaDialogType": {
+    "message": "类型:"
+  },
+  "ScrapBookCommandMoveDialogId": {
+    "message": "移动到这个 ID 的项目下:"
+  },
+  "ScrapBookCommandMoveDialogIndex": {
+    "message": "位置 (从 0 开始，留空则置于最后):"
+  },
+  "ScrapBookCommandMoveDialogMode": {
+    "message": "模式:"
+  },
+  "ScrapBookCommandMoveDialogModeLink": {
+    "message": "链接"
+  },
+  "ScrapBookCommandMoveDialogModeMove": {
+    "message": "移动"
+  },
+  "ScrapBookCommandMoveDown": {
+    "message": "下移"
+  },
+  "ScrapBookCommandMoveTo": {
+    "message": "移动到"
+  },
+  "ScrapBookCommandMoveUp": {
+    "message": "上移"
+  },
+  "ScrapBookCommandOpenTab": {
+    "message": "开启在新分页"
+  },
+  "ScrapBookCommandRecapture": {
+    "message": "重新获取"
+  },
+  "ScrapBookCommandRecover": {
+    "message": "还原"
+  },
+  "ScrapBookCommandRecycle": {
+    "message": "移除"
+  },
+  "ScrapBookCommandSearch": {
+    "message": "搜索"
+  },
+  "ScrapBookCommandSearchIn": {
+    "message": "搜索下层项目"
+  },
+  "ScrapBookCommandSort": {
+    "message": "排序"
+  },
+  "ScrapBookCommandSortDialogAdvanced": {
+    "message": "高级:"
+  },
+  "ScrapBookCommandSortDialogDirection": {
+    "message": "排序方向:"
+  },
+  "ScrapBookCommandSortDialogDirectionAsc": {
+    "message": "递增"
+  },
+  "ScrapBookCommandSortDialogDirectionDesc": {
+    "message": "递减"
+  },
+  "ScrapBookCommandSortDialogKey": {
+    "message": "排序方式:"
+  },
+  "ScrapBookCommandSortDialogKeyCreate": {
+    "message": "创建时间"
+  },
+  "ScrapBookCommandSortDialogKeyId": {
+    "message": "ID"
+  },
+  "ScrapBookCommandSortDialogKeyIndex": {
+    "message": "索引文件"
+  },
+  "ScrapBookCommandSortDialogKeyMarked": {
+    "message": "强调标示"
+  },
+  "ScrapBookCommandSortDialogKeyModify": {
+    "message": "修改时间"
+  },
+  "ScrapBookCommandSortDialogKeyReverse": {
+    "message": "反序"
+  },
+  "ScrapBookCommandSortDialogKeySource": {
+    "message": "来源"
+  },
+  "ScrapBookCommandSortDialogKeyTitle": {
+    "message": "标题"
+  },
+  "ScrapBookCommandSortDialogKeyType": {
+    "message": "类型"
+  },
+  "ScrapBookCommandSortDialogRecursive": {
+    "message": "一并排序下层项目"
+  },
+  "ScrapBookCommandSource": {
+    "message": "开启原始网址"
+  },
+  "ScrapBookCommandUpload": {
+    "message": "上载文件"
+  },
+  "ScrapBookCommandViewRecycle": {
+    "message": "检视回收筒"
+  },
+  "ScrapBookCommandViewText": {
+    "message": "检视文本"
+  },
+  "ScrapBookErrorBookNotExist": {
+    "message": "剪贴簿 $NAME$ 不存在，重设为默认剪贴簿",
+    "placeholders": {
+      "name": {
+        "content": "$1"
+      }
+    }
+  },
+  "ScrapBookErrorInitTree": {
+    "message": "无法初始化目录树: $REASON$",
+    "placeholders": {
+      "reason": {
+        "content": "$1"
+      }
+    }
+  },
+  "ScrapBookErrorServerInit": {
+    "message": "后端服务器初始化错误: $REASON$",
+    "placeholders": {
+      "reason": {
+        "content": "$1"
+      }
+    }
+  },
+  "ScrapBookErrorServerNotConfigured": {
+    "message": "未设置后端服务器。"
+  },
+  "ScrapBookErrorServerTreeChanged": {
+    "message": "服务器的目录树数据已变更，请刷新此页面再尝试。"
+  },
+  "ScrapBookErrorSourceTreeOutdated": {
+    "message": "来源页面的目录树资料已过时，请刷新该页面再尝试。"
+  },
+  "ScrapBookNewFolderName": {
+    "description": "Default name of a new folder",
+    "message": "新文件夹"
+  },
+  "ScrapBookNewNoteName": {
+    "description": "Default name of a new note",
+    "message": "新笔记"
+  },
+  "ScrapBookNoTree": {
+    "message": "此剪贴簿已设置为不使用目录树。使用「检视主页」命令检视主页，用文件管理器或后端服务器的网页界面管理数据。"
+  },
+  "SearchCaptures": {
+    "message": "检视已获取的页面"
+  },
+  "SearchCapturesFoundFull": {
+    "message": "相同网址："
+  },
+  "SearchCapturesFoundOrigin": {
+    "message": "相同网站："
+  },
+  "SearchCapturesFoundPath": {
+    "message": "相同网站路径："
+  },
+  "SearchCapturesFoundSimilar": {
+    "message": "相同网域："
+  },
+  "SearchCapturesNotFound": {
+    "message": "找不到匹配页面"
+  },
+  "SearchCapturesTitle": {
+    "message": "寻找已获取的页面"
+  },
+  "SearchFound": {
+    "message": "【$BOOK$】找到 $RESULTS$ 笔结果：",
+    "placeholders": {
+      "book": {
+        "content": "$1"
+      },
+      "results": {
+        "content": "$2"
+      }
+    }
+  },
+  "SearchHelpDesc": {
+    "message": "• 输入的关键词会在标题、内文、评注中查找。\n• 可用半角空白分隔要检索的多个关键词。例如“w3c organization”表示搜索含有“w3c”及“organization”的项目 。\n• 可用半角双引号检索完整关键词，若关键词包含半角双引号，可用连续两个半角双引号表示。例如“\"Tom \"\"loves\"\" Mary.\"”表示搜索含有“Tom \"loves\" Mary.”的项目。\n• 可用负号排除关键词。例如“-virus”表示搜索不含“virus”的项目。\n• 可用“<命令>:<关键词>”指定特殊的检索条件，命令前可加负号表示排除或反向。可用命令如下：\n  • mc：之后的关键词皆比对大小写。加负号则反之。例如“mc: CIA FBI -mc: president”表示搜索含有区分大小写的“CIA”、“FBI”及不分大小写的“president”的项目。\n  • re：之后的关键词皆视为正则表达式。加负号则反之。例如“re: \\bcolou?r\\b -re: 1+1=2”表示搜索匹配正则表达式“\\bcolou?r\\b”且含有关键词“1+1=2”的项目。\n  • id：搜索 ID 等同关键词（或与正则表达式匹配）的项目。多次指定时以“或”连接。例如“id:2020 id:2021”表示搜索 ID 为“2020”或“2021”的项目；“-id:2020”表示搜索 ID 不为“2020”的项目。\n  • type：搜索类型等同关键词（或与正则表达式匹配）的项目。多次指定时以“或”连接。可用的类型有“”（网页）、“bookmark”（书签）、“file”（文件）、“note”（笔记）等等。例如“type: type:bookmark”表示搜索类型为网页或书签的项目。\n  • title：搜索标题含有关键词的项目。\n  • content：搜索全文含有关键词的项目。\n  • comment：搜索评注含有关键词的项目。\n  • tc：搜索标题或评注含有关键词的项目。\n  • tcc：搜索标题、全文或评注含有关键词的项目。\n  • index：搜索索引文件含有关键词的项目。\n  • source：搜索原始网址含有关键词的项目。\n  • icon：搜索图示网址含有关键词的项目。\n  • charset：搜索字符集含有关键词的项目。\n  • create：搜索创建时间匹配条件的项目。多次指定时以“或”连接。时间格式为 0-17 位数字，后面接负号（可略），再接 0-17 位数字，表示时间范围的起始与结束。两个 17 位数字表示本地时间的年（4 位数）、月（01-12）、日（01-31）、时（00-59）、分（00-59）、秒（00-59）、毫秒（000-999），省略的部分视为补 0，唯结束时间全省略时视为“999...”。例如“create:2014-2015”表示 2014 年到 2015 年，“create:-201309”表示 2013 年九月以前，“create:20110825”表示 2011 年八月 25 日以后。\n  • modify：搜索修改时间匹配条件的项目。多次指定时以“或”连接。时间格式同 create。\n  • marked：搜索强调标示的项目。\n  • locked：搜索锁定的项目。\n  • location：搜索含有地理位置信息的项目。\n  • file：搜索文件名含有关键词的项目。\n  • root：搜索此 ID 项目下的子项目。多次指定时以“或”连接。例如可用“root:recycle”搜索回收筒中的项目。\n  • book：搜索指定剪贴簿（依 ID）中的项目。多次指定时以“或”连接。\n  • sort：将搜索结果按指定方式排序，负号表示倒序。可填入 id、title、comment、file、content、source、type、create、modify。例如“sort:id -sort:modify”表示先按 ID 递增排序再按修改时间递减排序。\n  • limit：设置搜索结果笔数限制。例如“limit:10”表示只呈现前 10 笔搜索结果。“-limit:”表示移除之前设置的限制。"
+  },
+  "SearchHelpSummary": {
+    "message": "搜索语法说明"
+  },
+  "SearchLocateTitle": {
+    "message": "在剪贴簿显示此项目的位置"
+  },
+  "SearchNotFound": {
+    "message": "找不到匹配结果"
+  },
+  "SearchSortId": {
+    "message": "ID 排序"
+  },
+  "SearchSortLastCreated": {
+    "message": "最后创建"
+  },
+  "SearchSortLastModified": {
+    "message": "最后修改"
+  },
+  "SearchSortTitle": {
+    "message": "标题排序"
+  },
+  "SearchTitle": {
+    "message": "搜索 $BOOK$",
+    "placeholders": {
+      "book": {
+        "content": "$1"
+      }
+    }
+  },
+  "SearchTitleWithRoot": {
+    "message": "搜索 $BOOK$ :: $ROOT$",
+    "placeholders": {
+      "book": {
+        "content": "$1"
+      },
+      "root": {
+        "content": "$2"
+      }
+    }
+  },
+  "SidebarTitle": {
+    "message": "$BOOK$ | $APP$",
+    "placeholders": {
+      "app": {
+        "content": "$1"
+      },
+      "book": {
+        "content": "$2"
+      }
+    }
+  },
+  "SidebarTitleWithRoot": {
+    "message": "$BOOK$ :: $ROOT$ | $APP$",
+    "placeholders": {
+      "app": {
+        "content": "$1"
+      },
+      "book": {
+        "content": "$2"
+      },
+      "root": {
+        "content": "$3"
+      }
+    }
+  },
+  "SiteMapTitle": {
+    "message": "站台地图 $ID$",
+    "placeholders": {
+      "id": {
+        "content": "$1"
+      }
+    }
+  },
+  "ViewerDesc": {
+    "message": "选择 HTZ 或 MAFF 封存文件以开启之。你可以拖放它们至此窗口，或使用以下按钮："
+  },
+  "ViewerPickFiles": {
+    "message": "选择 ZIP 压缩文件"
+  },
+  "ViewerTitle": {
+    "message": "检视封存页面"
+  },
+  "WarnCaptureCircular": {
+    "message": "资源 '$SOURCE$' 循环参照至 '$TARGET$'，由于当前的获取设置不支持循环参照，参照目标将转向至空值。",
+    "placeholders": {
+      "source": {
+        "content": "$1"
+      },
+      "target": {
+        "content": "$2"
+      }
+    }
+  },
+  "WarnSearchCacheMissing": {
+    "message": "剪贴簿“$BOOK$”尚未创建全文搜索缓存，请点我创建再刷新本页。",
+    "placeholders": {
+      "book": {
+        "content": "$1"
+      }
+    }
+  },
+  "WarnSearchCacheOutdated": {
+    "message": "剪贴簿“$BOOK$”的全文搜索缓存似乎已过时，请点我更新再刷新本页。",
+    "placeholders": {
+      "book": {
+        "content": "$1"
+      }
+    }
+  },
+  "WarnSidebarLoginPromptMissing": {
+    "message": "如果浏览器未跳出登入对话框，请点击我登入再重新整理此页。"
+  }
+}

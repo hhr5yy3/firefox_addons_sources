@@ -1,0 +1,115 @@
+﻿@import 'default.css';
+@import 'options-default.css';
+@import 'progress-bar.css';
+
+/* ----- General ----- */
+
+
+/* ----- Options ----- */
+div.permissions {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.5em;
+}
+
+div.add {
+  display: grid;
+  grid-template-columns: 8em 1fr auto auto;
+  gap: 0.2em;
+}
+
+div.add label {
+  align-self: center;
+  margin-right: 0.5em
+}
+
+.customHead {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2em 2em;
+  gap: 0.2em;
+  margin-top: 0.5em;
+  background-color: var(--hover);
+  padding: 0.5em;
+}
+
+.custom {
+  background-color: var(--alt-bg);
+  padding: 0.5em;
+
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2em 2em;
+  gap: 0.2em;
+  margin-top: 0.2em;
+}
+
+.row input[type="text"] {
+  font-size: 1em;
+  padding: 0.2em 0.5em;
+  background-color: var(--bg);
+}
+
+.row input[data-id="pattern"],
+.row input[data-id="replacement"] {
+  font-size: 1.2em;
+  font-family: monospace;
+}
+
+.row input[data-id="pattern"]:not(:placeholder-shown),
+.row input[data-id="replacement"]:not(:placeholder-shown) {
+  text-decoration: underline var(--dim);
+}
+
+.row input.toggle {
+  align-self: center;
+}
+/* ----- /Options ----- */
+
+/* ----- Toggle Switch ----- */
+.toggle {
+  appearance: none;
+  width: 31px;
+  height: 16px;
+  position: relative;
+  border-radius: 50px;
+  background-color: #ccc;
+  transition: background-color 0.5s;
+}
+
+.toggle:before {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 2;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  left: 1px;
+  top: 1px;
+  border-radius: 50%;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.toggle:checked {
+  background-color: var(--highlight);
+}
+
+.toggle:checked:before {
+  left: 16px;
+}
+/* ----- /Toggle Switch ----- */
+
+
+div.buttons {
+  grid-template-columns: minmax(min-content, 8em) 1fr minmax(min-content, 8em) minmax(min-content, 8em);
+  column-gap: 0.5em;
+  padding: 0 0.5em;
+}
+
+div.buttons button:not([type="submit"]),
+div.buttons label {
+  border: 1px solid var(--border);
+}

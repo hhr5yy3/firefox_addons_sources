@@ -1,0 +1,1 @@
+(function inject(document){"use strict";let s=document.createElement("script");s.src=chrome.extension.getURL("main.js");s.onload=function onload(){this.parentNode.removeChild(this);s=undefined};document.documentElement.appendChild(s)})(window.document);

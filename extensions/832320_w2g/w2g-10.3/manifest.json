@@ -1,0 +1,68 @@
+{
+  "manifest_version": 3,
+  "name": "Watch2Gether",
+  "short_name": "W2G",
+  "description": "The official Watch2Gether (W2G) extension - Watch videos together with your friends.",
+  "homepage_url": "https://w2g.tv",
+  "version": "10.3",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{6ea0a676-b3ef-48aa-b23d-24c8876945fb}"
+    }
+  },
+  "background": {
+    "scripts": [
+      "w2gbundle.a0d46a13.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://stage.watch2gether.com/rooms/*",
+        "https://w2g.tv/*",
+        "https://rooms.w2g.tv/*",
+        "https://stage-rooms.w2g.tv/*",
+        "https://stage.w2g.tv/*",
+        "https://staging.w2g.tv/*"
+      ],
+      "js": [
+        "w2gbundle.04e26fec.js"
+      ],
+      "all_frames": false,
+      "run_at": "document_end",
+      "css": []
+    }
+  ],
+  "options_ui": {
+    "page": "options.baaf7017.html"
+  },
+  "action": {
+    "default_icon": "icon.154ef202.png",
+    "default_popup": "popup.dac5a650.html",
+    "default_title": "Share on Watch2Gether"
+  },
+  "icons": {
+    "48": "icon_48.bcbbec0a.png",
+    "128": "icon_128.125169a4.png"
+  },
+  "permissions": [
+    "activeTab",
+    "webNavigation",
+    "scripting",
+    "storage"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "javascript/adapter/w2g_netflix_adapter.js",
+        "controls.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}

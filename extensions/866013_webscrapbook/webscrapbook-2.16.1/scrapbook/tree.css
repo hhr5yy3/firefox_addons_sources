@@ -1,0 +1,148 @@
+.tree {
+  position: relative;
+  width: -moz-fit-content; /* older Firefox (known for 52-74) */
+  width: fit-content;
+  min-width: 100%;
+  line-height: 1;
+}
+
+.tree:focus {
+  outline: none;
+}
+
+.tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tree ul li {
+  display: block;
+  box-sizing: border-box;
+  padding-top: .25em;
+  padding-bottom: .25em;
+}
+
+.tree ul li ul {
+  margin-top: .25em;
+  margin-bottom: -.25em;
+  padding-__MSG_@@bidi_start_edge__: 1em;
+}
+
+.tree li > div {
+  box-sizing: border-box;
+  margin: -2px 0;
+  border: solid transparent;
+  border-width: 2px;
+  padding-__MSG_@@bidi_start_edge__: 1em;
+  white-space: nowrap;
+}
+
+.tree.selectable li > div {
+  cursor: cell;
+}
+
+.tree.selectable li > div::before {
+  position: absolute;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
+  margin-top: -.25em;
+  height: 1.5em;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  content: "";
+}
+
+.tree.selectable li > div:hover::before {
+  border-color: rgba(125, 162, 206, .3);
+  background: linear-gradient(rgba(235, 244, 253, .2), rgba(196, 221, 252, .2));
+}
+
+.tree a {
+  position: relative;
+  z-index: 1;
+  text-decoration: unset;
+  color: unset;
+}
+
+.tree a > img {
+  display: inline-block;
+  margin: 0 .2em;
+  border: none;
+  width: 1em;
+  height: 1em;
+}
+
+.tree.keynav a {
+  outline: none;
+}
+
+.tree [data-type="bookmark"] > div > a {
+  color: rgb(32,192,32);
+}
+
+.tree [data-type="note"] > div > a {
+  color: rgb(80,0,32);
+}
+
+.tree [data-type="combine"] > div > a {
+  color: blue;
+}
+
+.tree [data-type="separator"] > div {
+  display: flex;
+}
+
+.tree [data-type="separator"] > div > fieldset {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  margin: 0;
+  border: none;
+  border-top: 1px solid #aaa;
+  padding: 0 0 0 1em;
+  height: 1em;
+  text-indent: 0;
+}
+
+.tree [data-type="separator"] > div > fieldset > legend {
+  padding: 0;
+  height: 1em;
+}
+
+.tree [data-marked] > div > a {
+  font-weight: bold;
+}
+
+.tree.selectable li > div.highlight::before {
+  border: 1px solid rgba(125, 162, 206, .7);
+  background: linear-gradient(rgba(235, 244, 253, .3), rgba(196, 221, 252, .3));
+}
+
+.tree.selectable li > div.anchor::before {
+  border: 1px solid rgba(125, 162, 206, .7);
+}
+
+.tree.selectable li > div.highlight:hover::before,
+.tree.selectable li > div.highlight.anchor::before {
+  border: 1px solid rgba(125, 162, 206, .7);
+  background: linear-gradient(rgba(235, 244, 253, .5), rgba(196, 221, 252, .5));
+}
+
+.tree.moving li.dragged {
+  opacity: 0.5;
+}
+
+.tree li > div.dragover.above {
+  border-top-color: #FF3333;
+}
+
+.tree li > div.dragover.below {
+  border-bottom-color: #FF3333;
+}
+
+.tree li > div.dragover.within {
+  border-style: dashed;
+  border-color: #FF3333;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="utils/options.css"/>
+    <link rel="stylesheet" type="text/css" href="options.css"/>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <form>
+      <h1 data-i18n-id="general_headline">General settings</h1>
+      <div class="checkbox">
+        <input type="checkbox" id="image_comment_checkbox"/>
+        <label for="image_comment_checkbox" data-i18n-id="image_comment_label">Save metadata as comment into the image file (date/time, title and URL)</label>
+      </div>
+      <div class="checkbox" data-hide-on-android>
+        <input type="checkbox" id="show_contextmenu_checkbox"/>
+        <label for="show_contextmenu_checkbox" data-i18n-id="show_contextmenu_label">Add entry to the page context menu</label>
+      </div>
+      <label for="filenameformat" data-i18n-id="filenameformat_label">Filename Format:</label>
+      <input id="filenameformat" type="text" value=""></input>
+      <img class="info_button" src="icons/info.svg"/>
+      <span class="info_popup">
+        <span data-i18n-id="filenameformat_description001">%Y - year | %m  - month | %d - day | %H - hour | %M - minute | %S - second </span><br/>
+        <span data-i18n-id="filenameformat_description002">%h - host name | %u - URL | %t - page title </span><br/>
+        <span data-i18n-id="filenameformat_description003">Example: %Y%m%d_%H%M%S_%h -&gt; 20181224_123805_www.abc.de</span>
+      </span>
+      <br/>
+      <div data-hide-on-android>
+        <label data-i18n-id="targetdir_label" for="targetdir">Target directory name:</label>
+        <input id="targetdir" type="text" pattern="^[a-zA-Z0-9_-]*$" value=""></input>
+        <img class="info_button" src="icons/info.svg"/>
+        <span class="info_popup">
+          <span data-i18n-id="targetdir_description">You can enter a directory name here, if you want your screenshots to be placed into a subdirectory of your configured downloads directory. Allowed characters are:</span> <span>A-Z,a-z,0-9,_,-</span>
+        </span>
+      </div>
+
+      <h1 data-i18n-id="imageformat_headline">Image format</h1>
+      <div class="checkbox">
+        <input type="checkbox" name="format_options" id="format_png_option"/>
+        <label for="format_png_option">PNG</label>
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" name="format_options" id="format_jpg_option"/>
+        <label for="format_jpg_option">JPEG</label>
+      </div>
+      <div class="input_flexbox indent">
+        <input id="jpegquality" type="number" min="0" max="100" style="width: 5em; order: 2"/>
+        <label for="jpegquality" data-i18n-id="jpegquality_label" style="order: 1;">JPEG quality</label>
+        <label for="jpegquality" style="order: 3">%</label>
+      </div>
+      <div class="checkbox" data-hide-on-android>
+        <input type="checkbox" name="format_options" id="format_copy_option"/>
+        <label for="format_copy_option" data-i18n-id="format_copy_label">Copy to clipboard</label>
+      </div>
+      <div class="checkbox indent" data-hide-on-android>
+        <input type="checkbox" id="copynotification_checkbox"/>
+        <label for="copynotification_checkbox" data-i18n-id="copynotification_label">Show notification after copying</label>
+      </div>
+
+      <h1 data-i18n-id="region_headline">Screenshot region</h1>
+      <div class="checkbox">
+        <input type="checkbox" name="region_options" id="region_full_option"/>
+        <label for="region_full_option" data-i18n-id="region_full_label">Full page</label>
+      </div>
+      <div class="checkbox indent">
+        <input type="checkbox" id="fullpage_scrollpos_checkbox"/>
+        <label for="fullpage_scrollpos_checkbox" data-i18n-id="fullpage_scrollpos_label">Start full page screenshots at the current scroll position</label>
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" name="region_options" id="region_viewport_option"/>
+        <label for="region_viewport_option" data-i18n-id="region_viewport_label">Viewport</label>
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" name="region_options" id="region_selection_option"/>
+        <label for="region_selection_option" data-i18n-id="region_selection_label">Selection</label>
+      </div>
+
+      <div data-hide-on-android>
+        <h1 data-i18n-id="savemethod_headline">Save method</h1>
+        <div class="radio">
+          <input type="radio" name="savemethod_options" id="savemethod_open_option"/>
+          <label for="savemethod_open_option" data-i18n-id="savemethod_open_label">Offer to open the image file directly</label>
+        </div>
+        <div class="radio">
+          <input type="radio" name="savemethod_options" id="savemethod_saveas_option"/>
+          <label for="savemethod_saveas_option" data-i18n-id="savemethod_saveas_label">Display "Save As" dialog</label>
+        </div>
+        <div class="radio">
+          <input type="radio" name="savemethod_options" id="savemethod_save_option"/>
+          <label for="savemethod_save_option" data-i18n-id="savemethod_save_label">Directly save to "Downloads" directory without prompting</label>
+        </div>
+        <div class="checkbox indent">
+          <input type="checkbox" id="savenotification_checkbox"/>
+          <label for="savenotification_checkbox" data-i18n-id="savenotification_label">Show notification after saving</label>
+        </div>
+      </div>
+    </form>
+
+    <script src="utils/html-i18n.js"></script>
+    <script src="utils/storage.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

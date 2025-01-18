@@ -1,0 +1,1 @@
+togglbutton.render("#viewTask-infoSummary:not(.toggl)",{observe:!0},function(t){const o=t.querySelector("dd").textContent,e=$("#viewTask-projectName",t).textContent,n=$("h2",t).textContent,r=o+" - "+e+" : "+n,c=togglbutton.createTimerLink({className:"proworkflow",description:r,projectName:o+" - "+e});t.appendChild(c)});

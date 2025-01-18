@@ -1,0 +1,56 @@
+:root {
+  --info-border-color: #0a84ff;
+  --info-bg-color: #cee6ff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --info-border-color: #00ddff;
+    --info-bg-color: #16424e;
+  }
+}
+
+input:disabled+label,
+input:disabled+label+label {
+  color: GrayText;
+}
+
+.input_flexbox {
+  display: flex;
+  flex-direction: row;
+}
+.input_flexbox > label {
+  display: flex;
+  align-items: center;
+}
+
+
+input[type="text"], input[type="number"] {
+  margin: 0.2em;
+}
+
+input:invalid {
+  border-color: red;
+}
+
+
+/*
+ * Info button and message
+ */
+img.info_button {
+  height: 1.2em;
+  width: 1.2em;
+  vertical-align: text-bottom;
+}
+span.info_popup {
+  position: absolute;
+  border-radius: 4px;
+  border: 1px solid var(--info-border-color);
+  background-color: var(--info-bg-color);
+  padding: 0.5em;
+  margin-top: 0.2em;
+  display: none;
+}
+img.info_button:hover+span.info_popup {
+  display: block;
+}

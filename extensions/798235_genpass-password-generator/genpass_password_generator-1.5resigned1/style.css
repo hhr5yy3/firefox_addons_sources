@@ -1,0 +1,497 @@
+/* CSS Document */
+*{
+     margin: 0;
+     padding: 0;
+     border: 0;
+     border-collapse: collapse;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*======================================================*/
+/*======================================================*/
+      /*    С Т И Л И   Г Е Н Е Р А Т О Р А      */
+/*======================================================*/
+/*======================================================*/
+
+
+
+
+
+@charset "UTF-8";
+.genWrapper{
+	width: 615px;
+	min-height: 314px;
+	padding: 3px;
+	margin: 0 auto;
+    position: relative;
+    font: 16px Arial, Helvetica, sans-serif;
+	 background: #fff;
+	 
+	 	  -moz-border-radius: 5px; 
+	  -webkit-border-radius: 5px;
+	  -khtml-border-radius: 5px;
+	  border-radius: 5px;
+	
+}
+/*Блок генератор*/
+.genPass{
+    position: absolute;
+	 padding-bottom: 10px;
+    display: inline-block;
+    border: 1px solid #bbb;
+    border-right: 1px dashed #bbb;
+    border-radius: 4px;
+    width: 360px;
+    /*height: 100%;*/
+    /*height: 340px;*/
+    box-sizing: border-box;
+    z-index: 123;
+    background-color: #fff;
+
+}
+.genPass .top {
+    padding: 5px 10px;
+    background-color: #38a8df;
+    color: #fff;
+}
+.genPass:hover{
+    background-color: #FCFCFC;
+}
+/*.genPass:hover + #genOutput, #genOutput:hover, #genOutput:active{*/
+.genPass:hover ~ .resPass, .resPass:hover, .resPass:active{
+    left: 360px;
+}
+.genPass:hover{
+    border-right: 1px dashed #ccc;
+}
+.genPass ul li{
+    line-height: 1.5;
+    padding: 2px 0;
+ }
+/*Блок вывода результата*/
+.resPass{
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    margin: 2px 0;
+    padding:0 5px;
+    left: 360px;
+    z-index: 121;
+    width: 260px;
+}
+
+.download{
+    margin: 2px 0px;
+    padding-bottom: 1px;
+    z-index: 122;
+    transition: left 1s;
+    -webkit-transition: left 1s;
+    -moz-transition: left 1s;
+}
+.download input[type="button"]{
+    box-sizing: border-box;
+    width: 100%;
+    height: 24px;
+    padding: 2px 10px;
+    background-color: #38a8df;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #78B6F0;
+}
+.download input[type="button"]:hover {
+    background-color: #78B6F0;
+}
+.download input[type="button"]:active {
+    background-color: #D2E0EE;
+}
+.download input:disabled {
+    opacity: 0.5;
+    cursor: wait; 
+}
+#genOutput {
+	min-height: 281px;
+    border: 1px #ccc solid;
+    border-radius: 4px;
+    border-left: 0;
+    padding-left: 5px;
+    padding-right: 10px;
+    position: relative;
+}
+#genOutput ul, .genPass ul{
+    list-style: none;
+    padding: 0px 10px;
+}
+#genOutput ol {
+	padding-top: 10px;
+    /*list-style: none;*/
+    /*padding-left: 5px;*/
+} 
+#genOutput ol li {
+    margin: 0 0 9px 0;
+    font: 16px "Courier New", Courier, monospace;
+}
+#genOutput ol li::after {
+    content: attr(data-tooltips) '';
+    font-size: 0.8em;
+    background: yellow;
+    border: 1px solid #ccc;
+    position: absolute;
+    margin: 5px;
+    padding: 1px 2px;
+    visibility: hidden;
+}
+#genOutput ol li.view::after {
+    /*padding: 10px;*/
+    /*content: none;*/
+    visibility: visible;
+}
+#genOutput ol li.hide::after {
+    /*padding: 10px;*/
+    content: none;
+    visibility: hidden;
+}
+
+/*===========================*/
+/*Стили формы*/
+/*===========================*/
+ .form-genPassword  {
+   z-index: 999;
+}
+ .form-genPassword span[id*=count_] {
+    display:inline-block;
+    max-width:25px;
+    width:25px;/*чтоб ползунок н дергался, но дает отступ*/
+    overflow:hidden;
+    white-space:nowrap;
+    vertical-align:top;
+    box-sizing:border-box;
+}
+ .form-genPassword input[name="gp_phrase"] {
+
+ }
+ .form-genPassword button[type="button"] {
+    cursor: pointer;
+    height: 30px;
+    padding: 2px 10px;
+    width: 100%;
+    background-color: #38a8df;
+    color: #fff;
+    border: 1px solid white;
+    outline: 1px solid #38a8df;
+    margin-top: 10px;
+}
+ .form-genPassword button[type="button"]:hover {
+    /*background-color: #44A047;*/
+    background-color: #78B6F0;
+    color: #fff;
+    transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;    
+}
+ .form-genPassword button[type="button"]:active {
+    /*background-color: green;*/
+    background-color: #9BC0E1;
+    color: #fff;
+    transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;    
+}
+
+.form-genPassword .input input {
+    display: inline-block;/*ранее block*/
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /*width: 100%;*/
+    /*height: 39px;*/
+    padding: 4px 6px;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0;
+    background: #fff;
+    font: 15px/19px 'Open Sans', Helvetica, Arial, sans-serif;
+    color: #404040;
+    appearance: normal;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+.form-genPassword .input input,
+.form-genPassword input{
+    border-color: #e5e5e5;
+    -ms-transition: border-color 0.3s;
+    -moz-transition: border-color 0.3s;
+    -o-transition: border-color 0.3s;
+    -webkit-transition: border-color 0.3s;
+}
+.form-genPassword .input:hover input{
+    border-color: #44A047;
+}
+.form-genPassword .input input:disabled {
+        border-color: #f2f2f2;
+        opacity: 0.8;
+        cursor: wait; 
+}
+
+/*чекбоксы*/
+.form-genPassword input + label{
+    cursor: pointer;
+    outline: none;/*убираем след от tabindex*/
+ }
+.form-genPassword input[type="radio"], input[type="checkbox"]  {
+  /*opacity: 0;*/
+  /*position: absolute;*/
+  display: none;
+}
+/*рисуем чекбокс*/
+.form-genPassword input[type="checkbox"]+label>span,
+.form-genPassword input[type="radio"]+label>span  {
+/*.form-genPassword input[type="checkbox"] + span  {*/
+  position: relative;
+  border-radius: 12px;
+  width: 14px;
+  height: 14px;
+  background-color: #FFFFFF;
+  border: 1px solid #bcbcbc;
+  margin: 2px .5em 6px 0;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: auto;
+}
+
+/*нажатый чекбокс*/
+.form-genPassword input[type="checkbox"]:checked + label > span span,
+.form-genPassword input[type="radio"]:checked + label > span span {
+/*.form-calc input[type="checkbox"]:checked + span span {*/
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    border-radius: 4px;
+    border: none;
+    background: #38a8df;
+    /*background: orange;*/
+}
+/*плавность для точки чекбокса*/
+.form-genPassword input:checked + label  > span span{
+/*.form-calc input:checked + span span{*/
+    transition: background-color 1s;
+    -ms-transition: background-color 1s;
+    -moz-transition: background-color 1s;
+    -o-transition: background-color 1s;
+    -webkit-transition: background-color 1s;
+}
+.form-genPassword input:disabled+label {
+        border-color: #f2f2f2;
+        opacity: 0.5;
+}
+
+/* стили ползунка */
+.form-genPassword input[type="range"]{
+    appearance: none;
+    width: 150px;
+    border-radius: 8px;
+    /*    height: 10px;*/
+    /*height: 2px;*/
+    /*border: 1px solid #bcbcbc;*/
+    background-color: #fff;
+    margin: 0;
+    margin-left: 5px;
+    outline: none;
+    opacity: 0.8;
+    cursor: hand;
+    padding: 0;/*IE*/
+    vertical-align: middle;/*fix*/
+}
+.form-genPassword input[type="range"]{
+    -webkit-appearance: none;
+    -webkit-appearance: none !important;
+}
+.form-genPassword input[type="range"]::-moz-range-track {
+    -moz-appearance: none;
+    background-color: #fff;
+    opacity: 1;
+    height: 10px;
+    border-radius: 8px;
+    border: 1px solid #bcbcbc;
+}
+
+.form-genPassword input[type="range"]::-ms-track{
+    -ms-appearance: none;
+    background-color: #fff;
+    opacity: 1; 
+    margin: 5px 0;/*fix*/
+    /*padding: 1px;*/
+}
+.form-genPassword input[type="range"]::-ms-fill-lower,
+.form-genPassword input[type="range"]::-ms-fill-upper {
+    /*background: transparent;*/
+    /*background: #367ebd;*/
+    border-radius: 8px;/*fix*/
+}
+.form-genPassword input[type="range"]:focus::-ms-fill-upper {/*после выделенного ползунка*/
+    /*background: #367ebd;*/
+}
+
+.form-genPassword input[type="range"]::-ms-track {
+    -ms-appearance: none;
+    background-color: #fff;
+    opacity: 1; 
+    border-color: transparent;
+    background: transparent;
+    color: transparent;
+    border: 1px solid #bcbcbc;
+    border-radius: 8px;
+    /*border-width: 14px 0;*/
+}
+
+.form-genPassword input[type="range"]::-moz-range-progress {
+    height: 10px;
+    border-radius: 8px;
+    background-color: #5CADFF; 
+}
+.form-genPassword input[type="range"]::-moz-range-track {  
+  /*background-color: transparent;*/
+}
+/* стили бегунка */
+.form-genPassword input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    box-sizing: content-box;
+    background-color: #ecf0f1;
+    border: 1px solid #bcbcbc;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+        margin-top: -7px;/*fix*/
+}
+.form-genPassword input[type="range"]::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+    height: 10px;/*fix*/
+    border: 1px solid #bcbcbc;
+    border-radius: 8px;
+}
+.form-genPassword input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+    box-sizing: content-box;
+    background-color: #ecf0f1;
+    border: 1px solid #bcbcbc;
+    width: 18px;
+    height: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.form-genPassword input[type="range"]::-ms-thumb {
+    -ms-appearance: none;
+    box-sizing: content-box;
+    background-color: #ecf0f1;
+    border: 1px solid #bcbcbc;
+    width: 18px;
+    height: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    /*vertical-align: middle;*/
+}
+.form-genPassword input[type="range"]:hover::-webkit-slider-thumb{
+    background-color: #bcbcbc;
+}
+.form-genPassword input[type="range"]:hover::-moz-range-thumb{
+    background-color: #bcbcbc;
+}
+.form-genPassword input[type="range"]:hover::-ms-thumb{
+    background-color: #bcbcbc;
+}
+.form-genPassword input[type="range"]:active::-webkit-slider-thumb{
+    background-color: #5CADFF;
+}
+.form-genPassword input[type=range]:active::-moz-range-thumb{
+    background-color: #5CADFF;
+}
+.form-genPassword input[type="range"]:active::-ms-thumb{
+    background-color: #5CADFF;
+}
+/*плавность для указателя ползунка*/
+.form-genPassword input[type="range"]::-webkit-slider-thumb{
+    transition: background-color 0.5s;
+    -ms-transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s;
+    -o-transition: background-color 0.5s;
+    -webkit-transition: background-color 0.5s;
+}
+.form-genPassword input[type="range"]::-moz-range-thumb{
+    transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s;
+}
+.form-genPassword input[type="range"]::-ms-thumb{
+    transition: background-color 0.5s;
+    -ms-transition: background-color 0.5s;
+}
+
+.form-genPassword input[type="range"]::-ms-thumb{
+    transition: all 0.5s;
+    -ms-transition: all 0.5s;
+}
+
+
+
+
+.genWrapper_arrow {
+	position: relative;
+	margin-top: 110px;
+}
+
+.genWrapper_arrow:before {
+	content: "";
+	position: absolute;
+    top: -88px;
+    left: -114px;
+	width: 305px;
+	height: 169px;
+	background: url(images/arrow_top.png) no-repeat  left top ;
+}
+.genWrapper_arrow:after {
+	content: "";
+	position: absolute;
+   bottom: -130px;
+   right: -114px;
+	width: 338px;
+	height: 204px;
+	background: url(images/arrow_bot.png) no-repeat  left top ;
+}
+
+
+
+
+
+
+h3.h3_a {color:#000;padding:5px 10px; cursor:pointer; }
+h3.h3_a:hover s {text-decoration: underline;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

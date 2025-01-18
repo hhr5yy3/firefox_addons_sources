@@ -1,0 +1,1 @@
+togglbutton.render(".vs-c-modal--task:not(.toggl)",{observe:!0},function(t){const n=$(".vs-c-modal__actions",t),o=function(){return $(".vs-c-task__title > .vue-simple-markdown",t).innerText},e=togglbutton.createTimerLink({description:o,buttonType:"minimal"});n.prepend(e)});

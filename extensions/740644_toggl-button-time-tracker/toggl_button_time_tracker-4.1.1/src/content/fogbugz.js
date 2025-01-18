@@ -1,0 +1,1 @@
+togglbutton.render("section.case:not(.toggl)",{observe:!0},function(e){const t=createTag("div","control"),o=$(".top h1",e),n=$(".top .case-header-info a"),c=$(".top .left a.case"),a=$("nav .controls"),s=togglbutton.createTimerLink({className:"fogbugz",description:"["+c.textContent+"] "+o.textContent,projectName:n.textContent});t.appendChild(s),a.appendChild(t)});

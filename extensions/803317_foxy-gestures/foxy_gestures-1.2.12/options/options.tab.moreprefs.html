@@ -1,0 +1,164 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="well">
+      <i class="fa fa-2x fa-info-circle"></i>
+      <span i18n="'optionsMorePrefsWellHelp'"></span>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <h4 i18n="'optionsHeadingTabAndWindow'"></h4>
+
+        <!-- Insert related tab -->
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"
+                     ng-model="settings.insertRelatedTab"></input>
+              <span i18n="'optionsMorePrefsInsertRelatedTab'"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Next/previous tab wraps -->
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"
+                     ng-model="settings.nextTabWrap"></input>
+              <span i18n="'optionsMorePrefsNextTabWrap'"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Active tab after close -->
+        <div class="form-group">
+          <label class="control-label" i18n="'optionsActiveTabAfterClose'"></label>
+          <select class="form-control"
+                  ng-model="settings.activeTabAfterClose">
+            <option ng-value="'default'" i18n="'optionsActiveTabAfterCloseFirefox'"></option>
+            <option ng-value="'right'" i18n="'optionsActiveTabAfterCloseRight'"></option>
+            <option ng-value="'left'" i18n="'optionsActiveTabAfterCloseLeft'"></option>
+            <option ng-value="'recent'" i18n="'optionsActiveTabAfterCloseRecent'"></option>
+          </select>
+          <p class="help-block" i18n="'optionsActiveTabAfterCloseHelp'"></p>
+        </div>
+
+        <!-- New tab default URL -->
+        <div class="form-group">
+          <label class="control-label" i18n="'optionsMorePrefsNewTabUrl'"></label>
+          <input class="form-control" type="text"
+                 ng-model="settings.newTabUrl"></input>
+          <p class="help-block" i18n="'optionsMorePrefsNewTabOrWindowHelp'"></p>
+        </div>
+
+        <!-- New window default URL -->
+        <div class="form-group">
+          <label class="control-label" i18n="'optionsMorePrefsNewWindowUrl'"></label>
+          <input class="form-control" type="text"
+                 ng-model="settings.newWindowUrl"></input>
+          <p class="help-block" i18n="'optionsMorePrefsNewTabOrWindowHelp'"></p>
+        </div>
+
+        <!-- New private window default URL -->
+        <div class="form-group">
+          <label class="control-label" i18n="'optionsMorePrefsNewPrivateWindowUrl'"></label>
+          <input class="form-control" type="text"
+                 ng-model="settings.newPrivateWindowUrl"></input>
+          <p class="help-block" i18n="'optionsMorePrefsNewTabOrWindowHelp'"></p>
+        </div>
+
+      </div><!-- /.col-md-6 -->
+      <div class="col-md-6">
+
+        <h4 i18n="'optionsHeadingNavigationAndScrolling'"></h4>
+
+        <!-- Use link rel next or prev -->
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"
+                     ng-model="settings.useRelPrevNext"></input>
+              <span i18n="'optionsMorePrefsUseRelPrevNext'"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Scroll duration -->
+        <div class="form-group" ng-class="{'has-error':controls.optionsForm.scrollDuration.$invalid}">
+          <label class="control-label" i18n="'optionsMorePrefsScrollDuration'"></label>
+          <div class="input-group">
+            <input class="form-control" type="number" name="scrollDuration"
+                   min="0" max="10000"
+                   ng-model="settings.scrollDuration"></input>
+            <span class="input-group-addon" i18n="'millisecondsAddon'"></span>
+          </div>
+          <p class="help-block" i18n="'optionsMorePrefsScrollDurationHelp'"></p>
+        </div>
+
+        <!-- Scroll amount -->
+        <div class="form-group" ng-class="{'has-error':controls.optionsForm.scrollAmount.$invalid}">
+          <label class="control-label" i18n="'optionsMorePrefsScrollAmount'"></label>
+          <div class="input-group">
+            <input class="form-control" type="number" name="scrollAmount"
+                   min="1" max="1000" step="1"
+                   ng-model="settings.scrollAmount"></input>
+            <span class="input-group-addon">vh</span>
+          </div>
+          <p class="help-block" i18n="'optionsMorePrefsScrollAmountHelp'"></p>
+        </div>
+
+        <h4 i18n="'optionsHeadingOtherCommands'"></h4>
+
+        <!-- Zoom step amount -->
+        <div class="form-group" ng-class="{'has-error':controls.optionsForm.zoomStep.$invalid}">
+          <label class="control-label" i18n="'optionsMorePrefsZoomStep'"></label>
+          <div class="input-group">
+            <input class="form-control" type="number" name="zoomStep"
+                   ng-model="settings.zoomStep" fg-percent-input=""></input>
+            <span class="input-group-addon" i18n="'percentAddon'"></span>
+          </div>
+        </div>
+
+      </div><!-- /.col-md-6 -->
+    </div><!-- /.row -->
+    
+    <div class="row">
+      <div class="col-md-6">
+
+        <h4 i18n="'optionsHeadingOptionalPermissions'"></h4>
+
+        <span i18n="'optionsOptionalPermissionsHelp'"></span>
+
+        <table class="table table-striped table-hover optional-permissions">
+          <thead>
+            <th>Permission</th>
+            <th>Granted</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <tr ng-repeat="(permission, granted) in optionalPermissions">
+              <td>{{permission}}</td>
+              <td>
+                <i class="fa fa-check" ng-show="granted"></i>
+              </td>
+              <td ng-show="granted">
+                <a href="" 
+                   ng-click="revokePermission(permission)"
+                   i18n="'buttonRevoke'"></a>
+              </td>
+              <td ng-hide="granted">
+                <a href=""
+                   ng-click="requestPermission(permission)"
+                   i18n="'buttonRequest'"></a>                
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- /.col-md-6 -->
+    </div><!-- /.row -->
+
+  </div>
+</div>

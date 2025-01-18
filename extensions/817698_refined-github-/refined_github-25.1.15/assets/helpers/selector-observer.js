@@ -1,0 +1,91 @@
+import React from '../npm/dom-chef.js';
+import { any } from '../npm/code-tag.js';
+import domLoaded from '../npm/dom-loaded.js';
+import { signalFromPromise } from '../npm/abort-utils-signal-from-promise.js';
+import delay from './delay.js';
+import onetime from './onetime.js';
+import optionsStorage from '../options-storage.js';
+import getCallerID from './caller-id.js';
+import { parseFeatureNameFromStack } from './errors.js';
+
+const animation = 'rgh-selector-observer';
+
+const registerAnimation = onetime(() => {
+	document.head.append(React.createElement('style', null, `@keyframes ${animation} {}`));
+});
+
+function observe
+
+
+(
+	selectors,
+	listener,
+	{signal, stopOnDomReady, once, ancestor} = {},
+) {
+	if (signal?.aborted) {
+		return;
+	}
+
+	if (stopOnDomReady) {
+		const delayedDomReady = signalFromPromise((async () => {
+			await domLoaded;
+			await delay(100); // Allow the animation and events to complete; Also adds support for ajaxed pages
+		})());
+
+		signal = signal ? AbortSignal.any([signal, delayedDomReady]) : delayedDomReady;
+	}
+
+	const selector = typeof selectors === 'string' ? selectors : selectors.join(',\n');
+	const seenMark = 'rgh-seen-' + getCallerID(ancestor);
+
+	registerAnimation();
+
+	const rule = document.createElement('style');
+	// Enable when/if needed
+	// if (isDevelopmentVersion()) {
+	// 	// For debuggability
+	// 	rule.setAttribute('s', selector);
+	// }
+
+	rule.textContent = any`
+		:where(${String(selector)}):not(.${seenMark}) {
+			animation: 1ms ${animation};
+		}
+	`;
+	document.body.prepend(rule);
+	signal?.addEventListener('abort', () => {
+		rule.remove();
+	});
+
+	let called = false;
+	// Capture stack outside
+	const currentFeature = parseFeatureNameFromStack();
+	(async () => {
+		const {logging} = await optionsStorage.getAll();
+		if (!logging) {
+			return;
+		}
+
+		await domLoaded;
+		await delay(1000);
+		if (!called && !signal?.aborted) {
+			console.warn(currentFeature, '→ Selector not found on page:', selector);
+		}
+	})();
+	globalThis.addEventListener('animationstart', (event) => {
+		const target = event.target ;
+		// The target can match a selector even if the animation actually happened on a ::before pseudo-element, so it needs an explicit exclusion here
+		if (target.classList.contains(seenMark) || !target.matches(selector)) {
+			return;
+		}
+
+		called = true;
+
+		// Removes this specific selector’s animation once it was seen
+		target.classList.add(seenMark);
+
+		listener(target, {signal});
+	}, {once, signal});
+}
+
+export { observe as default };

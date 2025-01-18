@@ -1,0 +1,95 @@
+<!DOCTYPE html> <html> <head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> <title>Web Page Report</title>
+ <link rel="stylesheet" href="./dev-ui.css"> <script src="0.js"></script> <script src="1.js"></script> <script src="dev-ui.js">
+</script> </head> <body> <section class="top-container flex-container horizontal"> <section 
+class="history-container flex-container vertical"> <header class="header"> <div class="line"> <span id="load-report" 
+class="clickable" title="Load from file"> <svg width="16" height="16" viewbox="0 0 16 16" fill="none" 
+xmlns="http://www.w3.org/2000/svg"> <path 
+d="M7.64645 3.35355L7.79289 3.5H8H14C14.8284 3.5 15.5 4.17157 15.5 5V12.7059C15.5 13.6757 14.6708 14.5 13.6 14.5H2.4C1.32915 14.5 0.5 13.6757 0.5 12.7059V3C0.5 2.17158 1.17157 1.5 2 1.5L5.79289 1.5L7.64645 3.35355Z" 
+fill="#7E8C99" fill-opacity="0.24" stroke="#7E8C99"/> <path 
+d="M0.5 7.5H15.5V13C15.5 13.8284 14.8284 14.5 14 14.5H2C1.17157 14.5 0.5 13.8284 0.5 13V7.5Z" fill="white" stroke="#7E8C99"/> 
+</svg> </span> <span class="separator"></span> <span id="save-report" class="clickable" title="Save to file"> <svg width="16" 
+height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"> <path 
+d="M15.5 3.82843V14C15.5 14.8284 14.8284 15.5 14 15.5H2C1.17157 15.5 0.5 14.8284 0.5 14V2C0.5 1.17157 1.17157 0.5 2 0.5H12.1716C12.5694 0.5 12.9509 0.658035 13.2322 0.93934L15.0607 2.76777C15.342 3.04907 15.5 3.4306 15.5 3.82843Z" 
+fill="white" stroke="#7F8C98"/> <circle cx="8" cy="10" r="2.5" fill="#D1D6DC" stroke="#7E8C99"/> <circle cx="8" cy="10" r="1" 
+fill="#7E8C99"/> <rect x="3" width="9" height="5" fill="#2979FF"/> <rect x="8" width="2" height="5" fill="#7F8C98"/> <rect 
+x="8" y="1" width="2" height="3" fill="#D1D6DC"/> </svg> </span> <span class="separator"></span> <span>HISTORY</span> <span 
+class="separator"></span> <span id="copy-webpagedata" class="clickable" title="Copy Web Page Data"> <svg width="16" height="16" 
+viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" clip-rule="evenodd" 
+d="M12.99 1H5C4.47005 1.00158 3.96225 1.21279 3.58752 1.58752C3.21279 1.96225 3.00158 2.47005 3 3V13H5V3H12.99V1ZM15.99 5H9C8.47005 5.00158 7.96225 5.21279 7.58752 5.58752C7.21279 5.96225 7.00158 6.47005 7 7V17C7.00158 17.5299 7.21279 18.0377 7.58752 18.4125C7.96225 18.7872 8.47005 18.9984 9 19H15.99C16.5199 18.9984 17.0277 18.7872 17.4025 18.4125C17.7772 18.0377 17.9884 17.5299 17.99 17V7C17.9884 6.47005 17.7772 5.96225 17.4025 5.58752C17.0277 5.21279 16.5199 5.00158 15.99 5ZM15.99 17H9V7H15.99V17Z" 
+fill="black" fill-opacity="0.54"/> </svg> </span> <span id="close-history" class="clickable right" title="Close HISTORY">&times;
+</span> </div> </header> <div class="current-page item-row selectable"> <div class="item"> <div class="info"> <span 
+class="time">NOW</span> <span class="url-container"> <image class="url-icon"></image> <a class="url" target="_blank"></a> 
+</span> </div> <div> <span class="details"></span> </div> </div> </div> <div class="items-view flex scrollable"> <table 
+class="items"> <tbody> </tbody> <template class="item-row"> <tr class="item-row"> <td> <div class="item"> <div class="info"> 
+<span class="time"></span> <span class="url-container"> <image class="url-icon"></image> <a class="url" target="_blank"></a> 
+</span> </div> <div> <span class="event"></span> <span class="details"></span> </div> </div> </td> </tr> </template> </table> 
+</div> </section> <section class="data-view-container flex flex-container vertical"> <header class="header"> <section 
+class="summary"> <table> <tr> <td rowspan="3"> <image class="icon-image"></image> </td> <td class="ellipsis-text-overflow"> <div
+ class="url-container"> <a class="url" target="_blank"></a> </div> </td> </tr> <tr> <td class="ellipsis-text-overflow"> <div 
+class="title"></div> </td> </tr> </table> </section> <section class="controls"> <span>View mode:</span> <label 
+class="view-mode layout-view"> <input type="radio" name="view_mode" class="set-mode" value="layout" checked="checked">
+GEOMETRY LAYOUT</label> <label class="view-mode list-view"> <input type="radio" name="view_mode" class="set-mode" value="list">
+FIELDS LIST (TABLE)</label> <label class="view-mode text-json-view"> <input type="radio" name="view_mode" class="set-mode" 
+value="json">RAW DATA (JSON)</label> <label class="view-mode details-view"> <input type="radio" name="view_mode" 
+class="set-mode" value="details">MISC DETAILS</label> </section> </header> <section 
+class="content flex flex-container vertical"> <div class="view flex flex-container vertical"> Something went wrong... </div> 
+<template class="text-json-view"> <div class="flex flex-container vertical"> <div 
+class="text-json-view data-view flex scrollable"> <pre class="text-json"></pre> </div> </div> </template> <template 
+class="layout-view"> <div class="flex flex-container vertical"> <div class="controls"> <span class="filters"> <label 
+class="filter"> <input type="checkbox" class="captions" checked="checked">Captions</label> <label class="filter"> <input 
+type="checkbox" class="labels">Labels</label> <label class="filter"> <input type="checkbox" class="search-rects">Search Areas
+</label> <label class="filter"> <input type="checkbox" class="screenshot">Screenshot</label> <label class="filter">Forms: 
+<select id="autofill_forms"> <option value="">-- not selected --</option> </select> </label> </span> </div> <div 
+class="layout-view flex flex-container horizontal"> <div class="flex flex-container vertical"> <div 
+class="flex flex-container horizontal"> <div class="data-view labels-hidden search-rects-hidden flex scrollable"> <div 
+class="document-area"> <div class="visible-area"> </div> </div> </div> </div> <div 
+class="data-legend flex-container horizontal"> <div class="title flex-container horizontal"> <div>LEGEND</div> </div> <div 
+class="items legend flex"> <div class="item"> <div class="unchanged rect">Unchanged Field</div> </div> <div class="item"> <div 
+class="changed rect">Changed Field</div> </div> <div class="item"> <div class="changed simulated rect">Changed by RF</div> 
+</div> <div class="item"> <div class="focused rect">Focused Field</div> </div> <div class="item"> <div class="selected rect">
+Selected Field</div> </div> <div class="item"> <div class="overlapped rect">Overlapped Field</div> </div> <div class="item"> 
+<div class="caption-for-field rect">Field Caption</div> </div> <div class="item"> <div class="label-for-field rect">Field Label
+</div> </div> </div> </div> </div> <div class="side-bar right flex-container vertical"> <div 
+class="overview-map flex flex-container vertical"> <div class="title">OVERVIEW MAP</div> <div 
+class="container flex flex-container vertical"> <div class="content flex"> <div class="document-area"> <div 
+class="visible-area"> </div> </div> <div class="viewport-frame"> </div> </div> </div> <div class="legend"> <div class="title">
+LEGEND</div> <table> <tr> <td> <div class="viewport-frame rect"></div> </td> <td> <span>Fragment shown</span> </td> </tr> <tr> 
+<td> <div class="visible-area rect"></div> </td> <td> <span>Visible area in browser</span> </td> </tr> <tr> <td> <div 
+class="document-area rect"></div> </td> <td> <span>Full document area</span> </td> </tr> <tr> <td> <div 
+class="external-area rect"></div> </td> <td> <span>Outer space</span> </td> </tr> </table> </div> </div> </div> </div> <template
+ class="field"> <div class="field input-container ellipsis-text-overflow"> </div> </template> <template class="field_name"> <div
+ class="form-field-name-hidden"></div> </template> <template class="caption"> <div 
+class="field caption-container ellipsis-text-overflow"> </div> </template> <template class="search-rect"> <div 
+class="field search-rect"> </div> </template> <template class="adjacent-area"> <div class="field adjacent-area"> </div> 
+</template> <template class="empty"> <div class="empty">NO FIELDS</div> </template> <template class="non-html"> <div 
+class="non-html">NO DOCUMENT</div> </template> <template class="bug"> <div class="bug"></div> </template> </div> </template> 
+<template class="list-view"> <div class="flex flex-container vertical"> <div class="list-view data-view flex scrollable"> <table
+ class="items"> <thead> <tr> <th>INFO</th> <th>INPUT &amp; CAPTIONS</th> <th>HTML ATTRS</th> </tr> </thead> <tbody> </tbody> 
+</table> </div> <template class="empty"> <tr> <td colspan="3">NO FIELDS</td> </tr> </template> <template class="item"> <tr 
+class="field item"> <td> <table class="field-info"> <tr> <td>ID: <span class="field-id"></span> </td> </tr> <tr> <td>
+Index in DOM: <span class="field-index"></span> </td> </tr> <tr> <td>Type: <span class="field-type"></span> </td> </tr> <tr> 
+<td> <span class="field-visibility"></span> </td> </tr> <tr> <td> <span class="field-frame"></span> </td> </tr> <tr> <td> <span 
+class="field-analyzer-info"></span> </td> </tr> </table> </td> <td class="ellipsis-text-overflow"> <table> <tr> <td> <div 
+class="left-top-info"></div> </td> <td> <div class="caption-top caption-text ellipsis-text-overflow"></div> </td> <td></td> 
+</tr> <tr> <td> <div class="caption-left caption-text ellipsis-text-overflow"></div> </td> <td> <div 
+class="input-container ellipsis-text-overflow"> </div> </td> <td> <div 
+class="caption-right caption-text ellipsis-text-overflow"></div> </td> </tr> <tr> <td></td> <td> <div 
+class="caption-bottom caption-text ellipsis-text-overflow"></div> </td> <td> <div class="right-bottom-info"></div> </td> </tr> 
+</table> </td><td> <div class="html-info"> <table> </table> </div> </td>  </tr> </template> </div> </template> <template 
+class="details-view"> <div class="flex"> <div class="details"> <table> <tr> <td>Web Site Icon URL</td> <td> <span class="icon">
+</span> </td> </tr> <tr> <td>Browser Window ID</td> <td> <span class="app-window-id"></span> </td> </tr> <tr> <td>Browser Tab ID
+</td> <td> <span class="tab-id"></span> </td> </tr> <tr> <td>Browser Window Type</td> <td> <span class="app-window-type"></span>
+ </td> </tr> <tr> <td>Window Status</td> <td> <span class="app-window-state"></span> </td> </tr> </table> <table> <tr> <td>
+Application Window Position</td> <td> <span class="app-window-pos"></span> </td> <td> <span>[left, top, width, height]</span> 
+</td> <td> <span>(Screen Pixels)</span> </td> </tr> <tr> <td>Browser Window Position</td> <td> <span class="browser-window-pos">
+</span> </td> <td> <span>[left, top, width, height]</span> </td> <td> <span>(Screen Pixels)</span> </td> </tr> <tr> <td>
+Browser Client Area Position</td> <td> <span class="browser-client-pos"></span> </td> <td> <span>[left, top, width, height]
+</span> </td> <td> <span>(Screen Pixels)</span> </td> </tr> <tr> <td>Web Page Client Area</td> <td> <span 
+class="web-page-client-width"></span>, <span class="web-page-client-height"></span> </td> <td> <span>[width, height]</span> 
+</td> <td> <span>(Document Pixels)</span> </td> </tr> <tr> <td>Web Page Client Scroll Offset</td> <td> <span 
+class="web-page-scroll-x"></span>, <span class="web-page-scroll-y"></span> </td> <td> <span>[left, top]</span> </td> <td> <span>
+(Document Pixels)</span> </td> </tr> </table> <table> <tr> <td>Extension version</td> <td> <span class="extension-version">
+</span> </td> </tr> <tr> <td>OS</td> <td> <span class="os"></span> </td> </tr> <tr> <td>Browser</td> <td> <span class="browser">
+</span> </td> </tr> <tr> <td>Browser version</td> <td> <span class="browser-version"></span> </td> </tr> <tr> <td>
+Browser language</td> <td> <span class="browser-language"></span> </td> </tr> </table> </div> </div> </template> </section> 
+</section> </section> </body> </html> 

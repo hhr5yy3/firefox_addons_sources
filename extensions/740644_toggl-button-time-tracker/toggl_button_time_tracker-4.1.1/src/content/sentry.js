@@ -1,0 +1,1 @@
+togglbutton.render(".group-detail:not(.toggl)",{observe:!0},function(){const t=$("h3 > span > span").textContent.trim(),e=$(".message").textContent.trim(),n=$(".project-select").textContent.trim(),o=t+": "+e,r=togglbutton.createTimerLink({className:"sentry",description:o,projectName:n});$(".group-detail .nav-tabs").appendChild(r)});

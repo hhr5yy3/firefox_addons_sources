@@ -1,0 +1,3 @@
+(()=>{(globalThis.ffzWebpackJsonp=globalThis.ffzWebpackJsonp||[]).push([[427],{22039:function(e){(function(_,a){e.exports=a()})(this,function(){"use strict";return{name:"en",weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_")}})}}]);})();
+
+//# sourceMappingURL=i18n-38.js.map

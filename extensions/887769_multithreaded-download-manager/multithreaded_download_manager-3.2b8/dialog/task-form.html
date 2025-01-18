@@ -1,0 +1,47 @@
+
+<form class="task-form" is="task-form">
+  <div class="input-grid">
+    <label class="input-label"><span data-i18n="editURL"></span>
+      <input type="url" data-key="url" required="required" pattern="https?:.+"/>
+    </label>
+    <div class="warning-text if-editing if-not-readonly" data-i18n="editURLWarning"></div>
+    <div class="warning-text if-no-range" data-i18n="linkWithoutRangeWarning"></div>
+    <label class="input-label"><span data-i18n="editFilename"></span>
+      <input type="text" data-key="filenameTemplate" data-i18n-placeholder="filenamePlaceholder"/><a class="filename-template-help" href="undefinedwiki/Filename-template" target="_blank" rel="noopener noreferrer" data-i18n-title="help">
+        <svg class="icon">
+          <use href="../icons/photon-icons.svg#help"></use>
+        </svg></a>
+    </label>
+    <label class="input-label file-size-label" hidden="hidden"><span data-i18n="editFileSize"></span><span class="file-size-span"><span class="file-size-value"></span><span data-i18n="byteSymbol"></span></span></label>
+    <label class="input-label"><span data-i18n="editReferrer"></span>
+      <input type="url" data-key="referrer" pattern="https?:.+"/>
+    </label>
+    <label class="input-label"><span data-i18n="editChecksum"></span>
+      <input type="text" data-key="checksum" pattern="[0-9A-Fa-f]{40}|[0-9A-Fa-f]{64}" placeholder="SHA-1 / SHA-256"/>
+    </label>
+  </div>
+  <details class="network-options">
+    <summary data-i18n="networkOptions"></summary>
+    <div class="network-options-labels">
+      <label class="input-label"><span data-i18n="maxThreads"></span>
+        <input data-key="maxThreads" type="number" required="required" min="1"/>
+      </label>
+      <label class="input-label"><span data-i18n="minChunkSize"></span><span>
+          <input data-key="minChunkSize" type="number" required="required" min="0"/><span class="input-unit"><span>K</span><span data-i18n="byteSymbol"></span></span></span></label>
+      <label class="input-label"><span data-i18n="maxRetries"></span>
+        <input data-key="maxRetries" type="number" min="0" data-i18n-placeholder="unlimited"/>
+      </label>
+    </div>
+  </details>
+  <div class="spacer"></div>
+  <div class="actions">
+    <button class="copy-address dialog-button" type="button" data-i18n="copyAddress"></button>
+    <button class="continue-default dialog-button if-monitor" data-i18n="continueInBrowser" type="button"></button>
+    <button class="continue-open dialog-button if-monitor" data-i18n="open" type="button"></button>
+    <button class="continue-save dialog-button if-monitor" data-i18n="save" type="button"></button>
+    <div class="spacer"></div>
+    <button class="cancel dialog-button" type="button"><span class="if-not-readonly" data-i18n="cancel"></span><span class="if-readonly" data-i18n="close"></span></button>
+    <button class="add-paused dialog-button if-not-editing" type="button" hidden="hidden" data-i18n="addPaused"></button>
+    <button class="submit dialog-button if-not-readonly" type="submit"><span class="if-not-editing" data-i18n="download"></span><span class="if-editing" data-i18n="OK"></span></button>
+  </div>
+</form>

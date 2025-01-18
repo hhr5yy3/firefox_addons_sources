@@ -1,0 +1,1 @@
+window.sbisPluginExtensionInfo=!0,window.sbisPluginExtensionPort=!0,window.sbisPluginExtensionActions=!0;

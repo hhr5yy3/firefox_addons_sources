@@ -1,0 +1,251 @@
+:root {
+  --focus-color: rgba(0, 0, 0, 0.15);
+}
+
+
+html, body, #mobile-wrapper {
+  margin: 0;
+  overflow: hidden;  /* Only scroll <section>s individually. */
+  padding: 0;
+  width: 25em;
+}
+/* On mobile, viewport weirdness forces the "hidden" sections to become visible,
+ * by allowing the viewport/expanding the document to scroll to it (despite
+ * declaring the width, above).  This forces the document (since this contains
+ * everything but is not the <body>) to the size we want.
+ */
+#mobile-wrapper {
+  min-height: 40em;
+  overflow: hidden;
+  position: relative;
+  width: 25em;
+}
+/* On desktop the above sets the popup size.  On mobile there is no popup, so
+ * allow growth to the whole screen size.  (Otherwise things, <hr> especially,
+ * just don't look right, filling only part of the screen.)
+ */
+html.mobile, html.mobile body, html.mobile #mobile-wrapper {
+  width: 100vw;
+}
+
+
+body {
+  cursor: default;
+  font: caption;
+}
+body.rendering { visibility: hidden; }
+
+hr {
+  margin: 6px 0;
+}
+
+textarea {
+  font-family: monospace;
+  font-size: 90%;
+  white-space: pre;
+}
+
+/******************************** SECTIONS ***********************************/
+
+/* The active section gets focus so screen readers report the switch to a new
+ * section like a dialog. We don't want the whole section to get a focus
+ * outline visually.
+ */
+section:focus {
+  outline: none;
+}
+
+/* "Hide" every section (off to the right) by default. */
+section {
+  position: absolute;
+  left: 100vw;
+  top: 0;
+  transition-duration: 0.15s;
+  transition-property: left;
+  width: 100vw;
+}
+
+/* Slide in (counteract the `left` offset) when active. */
+body#main-menu section.main-menu,
+body#options section.options,
+body#menu-commands section.menu-commands,
+body#user-script section.user-script,
+body#user-script-options section.user-script-options
+{ left: 0; }
+/* Slide the main menu left when switching to any other section. */
+body:not(#main-menu) section.main-menu
+{ left: -100vw; }
+
+/* When switching to a third-level, slide second-level further to the left. */
+body#user-script-options section.user-script
+{ left: -100vw; }
+
+
+/* Cause each section's content (its <menu>) to scroll when necessary. */
+section {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+section menu {
+  overflow-y: auto;
+}
+
+section header {
+  color: -moz-fieldText;
+  flex-shrink: 0;  /* Make sure a large <menu> doesn't shrink the header. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+section p {
+  margin: 0;
+  padding: 4px 12px 4px 10px;
+}
+
+section h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 7px 12px 1px 10px;
+}
+
+section h2 a {
+  color: black;
+  float: right;
+}
+
+
+section menuitem.go-back {
+  box-sizing: content-box;
+  color: inherit;
+  display: inline-block;
+  height: 16px;
+  margin: 4px 4px 0 4px;
+  padding: 8px;
+  vertical-align: -10px;  /* Relative to text, after padding. */
+  width: 16px;
+}
+section menuitem.go-back:hover {
+  background-color: var(--focus-color);
+}
+section menuitem.go-back::before {
+  content: url(/skin/back.svg);
+}
+
+/********************************** MENUS ************************************/
+
+menu {
+  margin: 0;
+  padding: 0;
+}
+menuitem {
+  display: block;
+  overflow-x: hidden;
+  padding: 4px 12px 4px 10px;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+menuitem:focus {
+  background-color: var(--focus-color);
+  outline: none;
+}
+menuitem.disabled {
+  opacity: 0.65;
+}
+menuitem .arrow {
+  background: url(/skin/next.svg) center center no-repeat;
+  display: inline-block;
+  height: 100%;
+  opacity: 1.0;
+  position: absolute;
+  right: 12px;
+  top: 0;
+  transform: rotate(180deg);
+  width: 12px;
+}
+
+p menuitem {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+menuitem .icon {
+  font-size: 14px;
+  margin-right: 3px;
+  text-align: center;
+  width: 16px;
+}
+menuitem .icon img {
+  object-fit: contain;
+  max-height: 16px;
+  width: 16px;
+}
+
+menuitem.user-script {
+  padding-right: 24px;
+}
+
+menu heading {
+  color: #333;
+  font-style: italic;
+  padding-left: 21px;
+}
+
+/********************************* MAIN MENU *********************************/
+
+section.main-menu {
+  display: block;
+}
+
+section.main-menu menu {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+section.main-menu menu > * {
+  flex-shrink: 0;
+}
+
+section.main-menu menu #script-list-scroll {
+  flex-shrink: 1;
+  overflow-y: auto;
+}
+
+/**************************** SCRIPT OPTIONS *********************************/
+
+section.user-script-options textarea {
+  margin-bottom: 3px;
+}
+section.user-script-options input[type=checkbox] {
+  vertical-align: text-top;
+}
+
+/******************************** OPTIONS ************************************/
+
+section.options .explain a {
+  color: black;
+  float: right;
+}
+
+section.options #add-exclude-current {
+  cursor: pointer;
+  display: block;
+  margin-top: 4px;
+  padding: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 90vw;
+}
+
+/***************************** MENU COMMANDS *********************************/
+
+section.menu-commands .access-key {
+  text-decoration: underline;
+  text-transform: uppercase;
+}

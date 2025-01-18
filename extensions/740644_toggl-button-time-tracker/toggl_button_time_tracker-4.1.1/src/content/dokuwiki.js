@@ -1,0 +1,1 @@
+togglbutton.render("#dokuwiki__content",{observe:!1},function(p){const t=$(".pageId span"),e=t.textContent.split(":")[0].trim(),n=$(".wrapper.group")||$(".pageId"),o=t.textContent.split(" ").pop().trim(),i=togglbutton.createTimerLink({className:"wiki",description:o,projectName:e});n.prepend(i)});

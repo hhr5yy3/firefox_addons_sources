@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html dir="__MSG_@@bidi_dir__">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>__MSG_ExtensionName__</title>
+<base target="webscrapbook">
+<link rel="stylesheet" href="tree.css">
+<link rel="stylesheet" href="bookTree.css">
+<link rel="stylesheet" href="sidebar.css">
+<script src="../lib/strftime.js"></script>
+<script src="../lib/browser-polyfill.js"></script>
+<script src="../core/common.js"></script>
+<script src="../core/optionsAuto.js"></script>
+<script src="../core/extension.js"></script>
+<script src="server.js"></script>
+<script src="tree.js"></script>
+<script src="bookTree.js"></script>
+<script src="sidebar.js"></script>
+<script src="manage.js"></script>
+</head>
+<body>
+<iframe id="downloader"></iframe>
+<div id="wrapper">
+  <form id="toolbar">
+    <select id="book" autocomplete="off" hidden></select>
+    <div>
+      <button id="search" type="button">🔍</button>
+      <button id="refresh" type="button">↻</button>
+      <button id="command" type="button" disabled>☰</button>
+    </div>
+    <input type="file" id="upload-file-selector" multiple hidden>
+    <input type="file" id="import-file-selector" multiple hidden accept=".wsba">
+  </form>
+  <pre id="logger"></pre>
+  <div id="tree">
+    <div id="items"></div>
+  </div>
+</div>
+
+<div id="command-popup-book" tabindex="-1" hidden>
+  <button value="index" hidden>__MSG_ScrapBookCommandIndex__</button>
+  <button value="exec_book" hidden>__MSG_ScrapBookCommandExecBook__</button>
+  <button value="manage" hidden>__MSG_ScrapBookCommandManage__</button>
+  <button value="sort" hidden>__MSG_ScrapBookCommandSort__...</button>
+  <hr>
+  <button value="mkfolder" hidden>__MSG_ScrapBookCommandCreateFolder__</button>
+  <button value="mksep" hidden>__MSG_ScrapBookCommandCreateSeparator__</button>
+  <button value="mkpostit" hidden>__MSG_ScrapBookCommandCreatePostit__</button>
+  <button value="mknote" hidden>__MSG_ScrapBookCommandCreateNote__...</button>
+  <button value="upload" hidden>__MSG_ScrapBookCommandUpload__...</button>
+  <button value="import" hidden>__MSG_ScrapBookCommandImport__...</button>
+  <hr>
+  <button value="view_recycle" hidden>__MSG_ScrapBookCommandViewRecycle__</button>
+  <button value="clean" hidden>__MSG_ScrapBookCommandClean__</button>
+</div>
+
+<div id="command-popup" tabindex="-1" hidden>
+  <button value="opentab" hidden>__MSG_ScrapBookCommandOpenTab__</button>
+  <button value="view_text" hidden disabled>__MSG_ScrapBookCommandViewText__</button>
+  <button value="exec" hidden disabled>__MSG_ScrapBookCommandExec__</button>
+  <button value="browse" hidden disabled>__MSG_ScrapBookCommandBrowse__</button>
+  <button value="source" hidden>__MSG_ScrapBookCommandSource__</button>
+  <button value="manage" hidden>__MSG_ScrapBookCommandManage__</button>
+  <button value="search_in" hidden>__MSG_ScrapBookCommandSearchIn__...</button>
+  <button value="sort" hidden>__MSG_ScrapBookCommandSort__...</button>
+  <hr>
+  <button value="mkfolder" hidden>__MSG_ScrapBookCommandCreateFolder__</button>
+  <button value="mksep" hidden>__MSG_ScrapBookCommandCreateSeparator__</button>
+  <button value="mkpostit" hidden>__MSG_ScrapBookCommandCreatePostit__</button>
+  <button value="mknote" hidden>__MSG_ScrapBookCommandCreateNote__...</button>
+  <button value="upload" hidden>__MSG_ScrapBookCommandUpload__...</button>
+  <button value="import" hidden>__MSG_ScrapBookCommandImport__...</button>
+  <hr>
+  <button value="edit" hidden>__MSG_ScrapBookCommandEdit__</button>
+  <button value="recover" hidden>__MSG_ScrapBookCommandRecover__</button>
+  <button value="move_up" hidden>__MSG_ScrapBookCommandMoveUp__</button>
+  <button value="move_down" hidden>__MSG_ScrapBookCommandMoveDown__</button>
+  <button value="move_into" hidden>__MSG_ScrapBookCommandMoveTo__...</button>
+  <button value="copy_into" hidden>__MSG_ScrapBookCommandCopyTo__...</button>
+  <button value="drag" hidden></button>
+  <button value="export" hidden>__MSG_ScrapBookCommandExport__</button>
+  <button value="recycle" hidden>__MSG_ScrapBookCommandRecycle__</button>
+  <button value="delete" hidden>__MSG_ScrapBookCommandDelete__</button>
+  <hr>
+  <button value="recapture" hidden>__MSG_ScrapBookCommandRecapture__...</button>
+  <button value="copyinfo" hidden>__MSG_ScrapBookCommandCopyInfo__</button>
+  <button value="meta" hidden>__MSG_ScrapBookCommandMeta__</button>
+</div>
+
+<template id="tpl-meta">
+<form class="meta">
+  <dl>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogId__</dt>
+      <dd><input type="text" name="id" readonly></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogParent__</dt>
+      <dd><input type="text" name="parent" readonly></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogRecycled__</dt>
+      <dd><input type="text" name="recycled" readonly></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogCreate__</dt>
+      <dd><input type="text" name="create"></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogModify__</dt>
+      <dd><input type="text" name="modify"></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogType__</dt>
+      <dd><input type="text" name="type" readonly></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogTitle__</dt>
+      <dd><input type="text" name="title"></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogIndex__</dt>
+      <dd><input type="text" name="index"></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogSource__</dt>
+      <dd><input type="text" name="source" autocomplete="url"></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogIcon__</dt>
+      <dd><input type="text" name="icon"></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogCharset__</dt>
+      <dd><input type="text" name="charset"></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogComment__</dt>
+      <dd><textarea name="comment"></textarea></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogLocation__</dt>
+      <dd><input type="text" name="location"><button type="button" name="location-view">🔎</button><button type="button" name="location-reset">📌</button>
+      </dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogMarked__</dt>
+      <dd class="short"><input type="checkbox" name="marked"></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMetaDialogLocked__</dt>
+      <dd class="short"><input type="checkbox" name="locked"></dd>
+    </div>
+  </dl>
+  <div class="buttons">
+    <input type="submit" value="__MSG_OK__">
+    <input type="button" class="cancel" value="__MSG_Cancel__">
+  </div>
+</form>
+</template>
+
+<template id="tpl-mkfolder">
+<form>
+  <dl>
+    <div>
+      <dt>__MSG_ScrapBookCommandCreateFolderDialogTitle__</dt>
+      <dd>
+        <label><input type="text" name="title" value=""></label>
+      </dd>
+    </div>
+  </dl>
+  <div class="buttons">
+    <input type="submit" value="__MSG_OK__">
+    <input type="button" class="cancel" value="__MSG_Cancel__">
+  </div>
+</form>
+</template>
+
+<template id="tpl-mknote">
+<form>
+  <dl>
+    <div>
+      <dt>__MSG_ScrapBookCommandCreateNoteDialogTitle__</dt>
+      <dd>
+        <label><input type="text" name="title" value=""></label>
+      </dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandCreateNoteDialogType__</dt>
+      <dd>
+        <label><input type="radio" name="format" value="html" checked><span>HTML</span></label>
+        <label><input type="radio" name="format" value="markdown"><span>Markdown</span></label>
+      </dd>
+    </div>
+  </dl>
+  <div class="buttons">
+    <input type="submit" value="__MSG_OK__">
+    <input type="button" class="cancel" value="__MSG_Cancel__">
+  </div>
+</form>
+</template>
+
+<template id="tpl-move-into">
+<form>
+  <dl>
+    <div>
+      <dt>__MSG_ScrapBookCommandMoveDialogId__</dt>
+      <dd><input type="text" name="id" value="root"></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMoveDialogIndex__</dt>
+      <dd><input type="number" name="index" min="0" value=""></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandMoveDialogMode__</dt>
+      <dd>
+        <label><input type="radio" name="mode" value="move" checked><span>__MSG_ScrapBookCommandMoveDialogModeMove__</span></label>
+        <label><input type="radio" name="mode" value="link"><span>__MSG_ScrapBookCommandMoveDialogModeLink__</span></label>
+      </dd>
+    </div>
+  </dl>
+  <div class="buttons">
+    <input type="submit" value="__MSG_OK__">
+    <input type="button" class="cancel" value="__MSG_Cancel__">
+  </div>
+</form>
+</template>
+
+<template id="tpl-copy-into">
+<form>
+  <dl>
+    <div>
+      <dt>__MSG_ScrapBookCommandCopyDialogBook__</dt>
+      <dd><select name="book"></select></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandCopyDialogRoot__</dt>
+      <dd><input type="text" name="id" value="root"></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandCopyDialogIndex__</dt>
+      <dd><input type="number" name="index" min="0" value=""></dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandCopyDialogAdvanced__</dt>
+      <dd>
+        <label><input type="checkbox" name="recursive" checked><span>__MSG_ScrapBookCommandCopyDialogRecursive__</span></label>
+      </dd>
+    </div>
+  </dl>
+  <div class="buttons">
+    <input type="submit" value="__MSG_OK__">
+    <input type="button" class="cancel" value="__MSG_Cancel__">
+  </div>
+</form>
+</template>
+
+<template id="tpl-sort">
+<form class="sort">
+  <dl>
+    <div>
+      <dt>__MSG_ScrapBookCommandSortDialogKey__</dt>
+      <dd>
+        <label><input type="radio" name="key" value="reverse"><span>__MSG_ScrapBookCommandSortDialogKeyReverse__</span></label>
+        <label><input type="radio" name="key" value="id" checked><span>__MSG_ScrapBookCommandSortDialogKeyId__</span></label>
+        <label><input type="radio" name="key" value="title"><span>__MSG_ScrapBookCommandSortDialogKeyTitle__</span></label>
+        <label><input type="radio" name="key" value="index"><span>__MSG_ScrapBookCommandSortDialogKeyIndex__</span></label>
+        <label><input type="radio" name="key" value="source"><span>__MSG_ScrapBookCommandSortDialogKeySource__</span></label>
+        <label><input type="radio" name="key" value="create"><span>__MSG_ScrapBookCommandSortDialogKeyCreate__</span></label>
+        <label><input type="radio" name="key" value="modify"><span>__MSG_ScrapBookCommandSortDialogKeyModify__</span></label>
+        <label><input type="radio" name="key" value="type"><span>__MSG_ScrapBookCommandSortDialogKeyType__</span></label>
+        <label><input type="radio" name="key" value="marked"><span>__MSG_ScrapBookCommandSortDialogKeyMarked__</span></label>
+      </dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandSortDialogDirection__</dt>
+      <dd>
+        <label><input type="radio" name="direction" value="asc" checked><span>__MSG_ScrapBookCommandSortDialogDirectionAsc__</span></label>
+        <label><input type="radio" name="direction" value="desc"><span>__MSG_ScrapBookCommandSortDialogDirectionDesc__</span></label>
+      </dd>
+    </div>
+    <div>
+      <dt>__MSG_ScrapBookCommandSortDialogAdvanced__</dt>
+      <dd>
+        <label><input type="checkbox" name="recursive"><span>__MSG_ScrapBookCommandSortDialogRecursive__</span></label>
+      </dd>
+    </div>
+  </dl>
+  <div class="buttons">
+    <input type="submit" value="__MSG_OK__">
+    <input type="button" class="cancel" value="__MSG_Cancel__">
+  </div>
+</form>
+</template>
+
+</body>
+</html>

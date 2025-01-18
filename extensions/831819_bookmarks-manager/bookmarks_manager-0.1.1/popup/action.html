@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="action.css" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="ext_name">
+      Bookmarks Manager
+      <sup class="ext_version" id="ext_version">0.1.0</sup>
+    </header>
+    <section class="changelog" id="changelog">
+      <table>
+        <tr>
+          <td class="ext-version">0.1.0</td>
+          <td>Added sort option.</td>
+        </tr>
+        <tr>
+          <td class="ext-version">0.0.2-0.0.6</td>
+          <td>Added new design. Added excluding folders. Minor fixes.</td>
+        </tr>
+        <tr>
+          <td class="ext-version">0.0.1</td>
+          <td>Added removing folders.</td>
+        </tr>
+      </table>
+    </section>
+    <section class="actions" id="actions">
+      <button class="btn btn-default hide" id="backup_and_restore_btn" data-target="option_backup_and_restore">Backup and restore</button>
+      <div class="option backup_and_restore hide" id="option_backup_and_restore">
+        <div>
+          <button class="btn btn-primary btn-s" id="backup_btn">Backup</button>
+          <button class="btn btn-primary btn-s" id="restore_btn">Restore</button>
+        </div>
+      </div>
+      <button class="btn btn-default" id="sort_btn" data-target="option_sort">Sort</button>
+      <div class="option sort hide" id="option_sort">
+        <div>
+          <span class="select">
+            <select name="sortFirst">
+              <option value="Folders first" checked>Folders first</option>
+              <option value="Bookmarks first">Bookmarks first</option>
+            </select>
+          </span>
+          <span class="select">
+            <select name="sortBy">
+              <option value="By titles" checked>By titles</option>
+              <option value="By links">By links</option>
+            </select>
+          </span>
+          <span class="select">
+            <select name="orderBy">
+              <option value="Asc" checked>Asc</option>
+              <option value="Desc">Desc</option>
+            </select>
+          </span>
+          <button class="btn btn-primary btn-s" id="sortBtn">Sort</button>
+        </div>
+      </div>
+      <button class="btn btn-default" id="remove_empty_folders_btn" data-target="option_remove_empty_folders">Remove empty folders</button>
+      <div class="option remove_empty_folders hide" id="option_remove_empty_folders">
+        <label for="exclude_folders_input">Exclude folders:</label>
+        <input type="text" class="exclude_folders_input" id="exclude_folders_input" placeholder="Live Bookmark; My Favorite Folder;">
+        <div>
+          <button class="btn btn-primary btn-s" id="rm_ef_btn">Remove</button>
+        </div>
+      </div>
+      <button class="btn btn-default" id="about_btn" data-target="option_about">About</button>
+      <div class="option about hide" id="option_about">
+          Developer: Vitaliy <a href="mailto:tertiumnon@gmail.com">Tertiumnon</a> Balabanov<br>
+          Add-on page: <a href="https://addons.mozilla.org/en-US/firefox/addon/bookmarks-manager">addons.mozilla.org/...</a><br>
+          Developer site: <a href="https://tertiumnon.github.io/">tertiumnon.github.io</a><br>
+          License: <a href="http://www.opensource.org/licenses/mit-license.php">MIT/X11</a>
+      </div>
+    </section>
+    <div class="delimiter"></div>
+    <section class="log" id="log"></section>
+    <footer></footer>
+  </div>
+
+  <script src="action.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+import{p as t}from"./reactiveCustomization-OmNBH0KE.js";const o=(o,s)=>{const r=structuredClone(t[o]);s(r),t[o]=r};export{o as m};

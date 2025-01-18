@@ -1,0 +1,1 @@
+togglbutton.render(".tkt-quick-action:not(.toggl)",{observe:!0},function(t){const e=$(".summary-content .subject-text"),n=$(".ticket-details-breadcrumb h3").textContent.replace("#","").trim()+" "+e.textContent.trim(),i=togglbutton.createTimerLink({className:"freshservice",description:n,projectname:""});t.prepend(i)});

@@ -1,0 +1,804 @@
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Print Edit WE - Generic WebExtension - Format Panel             */
+/*                                                                      */
+/*      HTML for Format Panel                                           */
+/*                                                                      */
+/*      Last Edit - 03 Dec 2021                                         */
+/*                                                                      */
+/*      Copyright (C) 2013-2021 DW-dev                                  */
+/*                                                                      */
+/*      Distributed under the GNU General Public License version 2      */
+/*      See LICENCE.txt file and http://www.gnu.org/licenses/           */
+/*                                                                      */
+/************************************************************************/
+-->
+
+<html>
+    
+    <div id="printedit-format-panel">
+        
+        <div id="printedit-format-header">
+            <span id="printedit-format-label"><b>Format</b></span>
+            <span id="printedit-format-element"></span>
+            <span id="printedit-format-spacer-1"></span>
+            <span id="printedit-format-close">
+                <svg width="18" height="18">
+                   <circle cx="8" cy="8" r="7"/>
+                   <line x1="5.5" y1="5.5" x2="12.5" y2="12.5" width="2"/>
+                   <line x1="5.5" y1="12.5" x2="12.5" y2="5.5" width="2"/>
+                </svg>
+            </span>
+        </div>
+        
+        <form>
+            <fieldset id="printedit-format-quickstyles">
+                <legend>&nbsp;Quick Styles&nbsp;</legend>
+                <div>
+                    <div id="printedit-format-quick-1">
+                        <span id="printedit-format-textstyle">Text Style</span>
+                        <span id="printedit-format-decoration">Decoration</span>
+                    </div>
+                    <div id="printedit-format-quick-2">
+                        <span id="printedit-format-margins">Margins</span>
+                        <span id="printedit-format-dimensions">Dimensions</span>
+                    </div>
+                    <div id="printedit-format-quick-3">
+                        <span id="printedit-format-blocklayout">Block Layout</span>
+                        <div>
+                            <span id="printedit-format-setall">All</span>
+                            <span id="printedit-format-clearall">None</span>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        
+        <form>
+            <fieldset id="printedit-format-properties">
+                <legend>&nbsp;Properties&nbsp;</legend>
+                <div>
+                    <div id="printedit-format-props-1">
+                        <div><input id="printedit-format-position" type="checkbox"/><label for="printedit-format-position">Position:</label></div>
+                        <div><input id="printedit-format-left" type="checkbox"/><label for="printedit-format-left">Left:</label></div>
+                        <div><input id="printedit-format-top" type="checkbox"/><label for="printedit-format-top">Top:</label></div>
+                        <div><input id="printedit-format-width" type="checkbox"/><label for="printedit-format-width">Width:</label></div>
+                        <div><input id="printedit-format-height" type="checkbox"/><label for="printedit-format-height">Height:</label></div>
+                        <div><input id="printedit-format-margin-l" type="checkbox"/><label for="printedit-format-margin-l">Margin L:</label></div>
+                        <div><input id="printedit-format-margin-r" type="checkbox"/><label for="printedit-format-margin-r">Margin R:</label></div>
+                        <div><input id="printedit-format-margin-t" type="checkbox"/><label for="printedit-format-margin-t">Margin T:</label></div>
+                        <div><input id="printedit-format-margin-b" type="checkbox"/><label for="printedit-format-margin-b">Margin B:</label></div>
+                        <div><input id="printedit-format-padding-l" type="checkbox"/><label for="printedit-format-padding-l">Padding L:</label></div>
+                        <div><input id="printedit-format-padding-r" type="checkbox"/><label for="printedit-format-padding-r">Padding R:</label></div>
+                        <div><input id="printedit-format-padding-t" type="checkbox"/><label for="printedit-format-padding-t">Padding T:</label></div>
+                        <div><input id="printedit-format-padding-b" type="checkbox"/><label for="printedit-format-padding-b">Padding B:</label></div>
+                        <div><input id="printedit-format-float" type="checkbox"/><label for="printedit-format-float">Float:</label></div>
+                        <div><input id="printedit-format-clear" type="checkbox"/><label for="printedit-format-clear">Clear:</label></div>
+                        <div><input id="printedit-format-pagebreak" type="checkbox"/><label for="printedit-format-pagebreak">Page Break:</label></div>
+                    </div>
+                    <div id="printedit-format-props-2">
+                        <div><span id="printedit-format-position-value">static</span></div>
+                        <div><span id="printedit-format-left-value">auto</span></div>
+                        <div><span id="printedit-format-top-value">auto</span></div>
+                        <div><span id="printedit-format-width-value">auto</span></div>
+                        <div><span id="printedit-format-height-value">auto</span></div>
+                        <div><span id="printedit-format-margin-l-value">0px</span></div>
+                        <div><span id="printedit-format-margin-r-value">0px</span></div>
+                        <div><span id="printedit-format-margin-t-value">0px</span></div>
+                        <div><span id="printedit-format-margin-b-value">0px</span></div>
+                        <div><span id="printedit-format-padding-l-value">0px</span></div>
+                        <div><span id="printedit-format-padding-r-value">0px</span></div>
+                        <div><span id="printedit-format-padding-t-value">0px</span></div>
+                        <div><span id="printedit-format-padding-b-value">0px</span></div>
+                        <div><span id="printedit-format-float-value">none</span></div>
+                        <div><span id="printedit-format-clear-value">none</span></div>
+                        <div><span id="printedit-format-pagebreak-value">auto</span></div>
+                    </div>
+                    <div id="printedit-format-props-3">
+                        <div>
+                            <span id="printedit-format-position-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-position-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-left-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-left-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-top-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-top-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-width-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-width-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-height-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-height-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-margin-l-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-margin-l-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-margin-r-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-margin-r-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-margin-t-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-margin-t-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-margin-b-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-margin-b-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-padding-l-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-padding-l-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-padding-r-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-padding-r-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-padding-t-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-padding-t-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-padding-b-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-padding-b-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-float-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-float-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-clear-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-clear-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-pagebreak-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-pagebreak-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="printedit-format-props-4">
+                        <div><input id="printedit-format-color" type="checkbox"/><label for="printedit-format-color">Color:</label></div>
+                        <div><input id="printedit-format-background" type="checkbox"/><label for="printedit-format-background">Background:</label></div>
+                        <div><input id="printedit-format-fontfamily" type="checkbox"/><label for="printedit-format-fontfamily">Font Family:</label></div>
+                        <div><input id="printedit-format-fontstyle" type="checkbox"/><label for="printedit-format-fontstyle">Font Style:</label></div>
+                        <div><input id="printedit-format-fontsize" type="checkbox"/><label for="printedit-format-fontsize">Font Size:</label></div>
+                        <div><input id="printedit-format-lineheight" type="checkbox"/><label for="printedit-format-lineheight">Line Height:</label></div>
+                        <div><input id="printedit-format-verticalalign" type="checkbox"/><label for="printedit-format-verticalalign">Vertical Align:</label></div>
+                        <div><input id="printedit-format-textalign" type="checkbox"/><label for="printedit-format-textalign">Text Align:</label></div>
+                        <div><input id="printedit-format-textdecoration" type="checkbox"/><label for="printedit-format-textdecoration">Text Decoration:</label></div>
+                        <div><input id="printedit-format-texttransform" type="checkbox"/><label for="printedit-format-texttransform">Text Transform:</label></div>
+                        <div><input id="printedit-format-liststyle" type="checkbox"/><label for="printedit-format-liststyle">List Style:</label></div>
+                        <div><input id="printedit-format-tableborder" type="checkbox"/><label for="printedit-format-tableborder">Table Border:</label></div>
+                        <div><input id="printedit-format-whitespace" type="checkbox"/><label for="printedit-format-whitespace">White Space:</label></div>
+                        <div><input id="printedit-format-border" type="checkbox"/><label for="printedit-format-border">Border:</label></div>
+                        <div><input id="printedit-format-outline" type="checkbox"/><label for="printedit-format-outline">Outline:</label></div>
+                        <div><input id="printedit-format-overflow" type="checkbox"/><label for="printedit-format-overflow">Overflow:</label></div>
+                    </div>
+                    <div id="printedit-format-props-5">
+                        <div><span id="printedit-format-color-value">black</span></div>
+                        <div><span id="printedit-format-background-value">transparent</span></div>
+                        <div><span id="printedit-format-fontfamily-value">Arial</span></div>
+                        <div><span id="printedit-format-fontstyle-value">normal</span></div>
+                        <div><span id="printedit-format-fontsize-value">10px</span></div>
+                        <div><span id="printedit-format-lineheight-value">1.0</span></div>
+                        <div><span id="printedit-format-verticalalign-value">baseline</span></div>
+                        <div><span id="printedit-format-textalign-value">left</span></div>
+                        <div><span id="printedit-format-textdecoration-value">none</span></div>
+                        <div><span id="printedit-format-texttransform-value">none</span></div>
+                        <div><span id="printedit-format-liststyle-value">none</span></div>
+                        <div><span id="printedit-format-tableborder-value">collapse</span></div>
+                        <div><span id="printedit-format-whitespace-value">normal</span></div>
+                        <div><span id="printedit-format-border-value">0px</span></div>
+                        <div><span id="printedit-format-outline-value">0px</span></div>
+                        <div><span id="printedit-format-overflow-value">visible</span></div>
+                    </div>
+                    <div id="printedit-format-props-6">
+                        <div>
+                            <span id="printedit-format-color-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-color-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-background-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-background-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-fontfamily-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-fontfamily-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-fontstyle-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-fontstyle-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-fontsize-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-fontsize-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-lineheight-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-lineheight-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-verticalalign-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-verticalalign-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-textalign-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-textalign-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-textdecoration-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-textdecoration-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-texttransform-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-texttransform-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-liststyle-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-liststyle-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-tableborder-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-tableborder-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-whitespace-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-whitespace-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-border-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-border-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-outline-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-outline-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                        <div>
+                            <span id="printedit-format-overflow-prevvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="1.5,6.5 7.5,12.5 7.5,0.5"/>
+                                    <polygon class="printedit-shape1" points="2.5,6.5 8.5,12.5 9.5,12.5 9.5,0.5 8.5,0.5"/>
+                                    <polygon class="printedit-antialias" points="4.5,6.5 7.5,9.5 7.5,3.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 7.5,8.5 7.5,4.5"/>
+                                </svg>
+                            </span>
+                            <span id="printedit-format-overflow-nextvalue">
+                                <svg width="11" height="13">
+                                    <polygon class="printedit-antialias" points="9.5,6.5 3.5,0.5 3.5,12.5"/>
+                                    <polygon class="printedit-shape1" points="8.5,6.5 2.5,0.5 1.5,0.5 1.5,12.5 2.5,12.5"/>
+                                    <polygon class="printedit-antialias" points="6.5,6.5 3.5,3.5 3.5,9.5"/>
+                                    <polygon class="printedit-shape2" points="5.5,6.5 3.5,4.5 3.5,8.5"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        
+        <form>
+            <fieldset id="printedit-format-controls">
+                <legend>&nbsp;Controls&nbsp;</legend>
+                <div>
+                    <div id="printedit-format-controls-1">
+                        <input id="printedit-format-subelements" type="checkbox"/><label for="printedit-format-subelements">Apply to sub-elements</label>
+                        <input id="printedit-format-important" type="checkbox"/><label for="printedit-format-important">High priority</label>
+                    </div>
+                    <div id="printedit-format-controls-2">
+                        <input id="printedit-format-restrict"  type="checkbox"/>
+                        <select id="printedit-format-restrict-mode">
+                            <option value="only">Only</option>
+                            <option value="except">Except</option>
+                        </select>
+                        <select id="printedit-format-restrict-type">
+                            <option value="div">Blocks: &lt;div&gt;</option>
+                            <option value="span">Spans: &lt;span&gt;</option>
+                            <option value="h1">Headings 1: &lt;h1&gt;</option>
+                            <option value="h2">Headings 2: &lt;h2&gt;</option>
+                            <option value="h3">Headings 3: &lt;h3&gt;</option>
+                            <option value="p">Paragraphs: &lt;p&gt;</option>
+                            <option value="ol">Ordered Lists: &lt;ol&gt;</option>
+                            <option value="ul">Bullet Lists: &lt;ul&gt;</option>
+                            <option value="li">List Items: &lt;li&gt;</option>
+                            <option value="table">Tables: &lt;table&gt;</option>
+                            <option value="td">Table Cells: &lt;td&gt;</option>
+                            <option value="code">Code Pieces: &lt;code&gt;</option>
+                            <option value="img">Images: &lt;img&gt;</option>
+                            <option value="a">Links: &lt;a&gt;</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        
+        <div id="printedit-format-footer">
+            <span id="printedit-format-showprops" title="Show Properties">
+                <svg width="29" height="21">
+                    <polygon class="printedit-antialias" points="14.5,16.5 4.5,6.5 4.5,5.5 11.5,5.5 14.5,8.5 17.5,5.5 24.5,5.5 24.5,6.5"/>
+                    <polygon class="printedit-shape" points="14.5,15.5 4.5,5.5 10.5,5.5 14.5,9.5 18.5,5.5 24.5,5.5"/>
+                    <polygon class="printedit-antialias" points="14.5,13.5 8.5,7.5 10.5,7.5 14.5,11.5 18.5,7.5 20.5,7.5"/>
+                    <line x1="15" y1="13" x2="9" y2="7"/>
+                    <line x1="14" y1="13" x2="20" y2="7"/>
+                </svg>
+            </span>
+            <span id="printedit-format-hideprops" title="Hide Properties">
+                <svg width="29" height="21">
+                    <polygon class="printedit-antialias" points="14.5,4.5 4.5,14.5 4.5,15.5 11.5,15.5 14.5,12.5 17.5,15.5 24.5,15.5 24.5,14.5"/>
+                    <polygon class="printedit-shape" points="14.5,5.5 4.5,15.5 10.5,15.5 14.5,11.5 18.5,15.5 24.5,15.5"/>
+                    <polygon class="printedit-antialias" points="14.5,7.5 8.5,13.5 10.5,13.5 14.5,9.5 18.5,13.5 20.5,13.5"/>
+                    <line x1="15" y1="8" x2="9" y2="14"/>
+                    <line x1="14" y1="8" x2="20" y2="14"/>
+                </svg>
+            </span>
+            <span id="printedit-format-resetvalues" title="Reset Values">
+                <svg width="29" height="21">
+                    <polygon class="printedit-antialias" points="3.5,10.5 9.5,16.5 9.5,4.5"/>
+                    <polygon class="printedit-shape1" points="4.5,10.5 10.5,16.5 11.5,16.5 11.5,4.5 10.5,4.5"/>
+                    <polygon class="printedit-antialias" points="6.5,10.5 9.5,13.5 9.5,7.5"/>
+                    <polygon class="printedit-shape2" points="7.5,10.5 9.5,12.5 9.5,8.5"/>
+                    <polygon class="printedit-antialias" points="25.5,10.5 19.5,16.5 19.5,4.5"/>
+                    <polygon class="printedit-shape1" points="24.5,10.5 18.5,16.5 17.5,16.5 17.5,4.5 18.5,4.5"/>
+                    <polygon class="printedit-antialias" points="22.5,10.5 19.5,13.5 19.5,7.5"/>
+                    <polygon class="printedit-shape2" points="21.5,10.5 19.5,12.5 19.5,8.5"/>
+                    <circle cx="14.5" cy="10.5" r="2"/>
+                </svg>
+            </span>
+            <span id="printedit-format-pagebreaks" title="Page Break Before">
+                <svg width="29" height="21">
+                    <polygon class="printedit-shape1" points="5.5,8.5 5.5,3.5 23.5,3.5 23.5,8.5"/>
+                    <polygon class="printedit-shape2" points="6.5,7.5 6.5,3.5 22.5,3.5 22.5,7.5"/>
+                    <line x1="8" y1="4.5" x2="21" y2="4.5"/>
+                    <line x1="8" y1="6.5" x2="21" y2="6.5"/>
+                    <polygon class="printedit-shape1" points="5.5,17.5 5.5,12.5 23.5,12.5 23.5,17.5"/>
+                    <polygon class="printedit-shape2" points="6.5,17.5 6.5,13.5 22.5,13.5 22.5,17.5"/>
+                    <line x1="8" y1="14.5" x2="21" y2="14.5"/>
+                    <line x1="8" y1="16.5" x2="21" y2="16.5"/>
+                </svg>
+            </span>
+            <span id="printedit-text-spacer-2"></span>
+            <span id="printedit-format-apply">Apply</span>
+            <span id="printedit-format-okay">OK</span>
+        </div>
+        
+    </div>
+    
+</html>

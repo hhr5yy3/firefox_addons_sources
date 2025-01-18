@@ -1,0 +1,209 @@
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8"/>
+
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Tile Tabs WE - Generic WebExtension - Default Layout Page       */
+/*                                                                      */
+/*      HTML and CSS for Default Layout Page                            */
+/*                                                                      */
+/*      Last Edit - 02 Sep 2021                                         */
+/*                                                                      */
+/*      Copyright (C) 2015-2021 DW-dev                                  */
+/*                                                                      */
+/*      Distributed under the GNU General Public License version 2      */
+/*      See LICENCE.txt file and http://www.gnu.org/licenses/           */
+/*                                                                      */
+/************************************************************************/
+-->
+
+        <title>Default Layout</title>
+        
+        <script src="defaultlayout.js"></script>
+        
+		<style type="text/css">
+            
+			body
+            {
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                font-family: "Segoe UI","Helvetica Neue",Ubuntu,Arial;
+                font-size: 12px;
+                line-height: normal;
+                white-space: nowrap;
+				color: black;
+				background-color: #F0F0F0;
+			}
+            
+            #default-title
+            {
+                padding: 4px 0px 6px;
+                font-size: 14px;
+                color: #404040;
+                text-align: center;
+            }
+            
+            form
+            {
+				position: absolute;
+                left: 50%;
+                margin-left: -206px;
+            }
+            
+            #default-header-names
+            {
+                width: 239px;
+                border: 1px solid #676774;
+                border-right: 0px none;
+            }
+            
+            #default-header-tiles
+            {
+                width: 42px;
+                border: 1px solid #676774;
+                border-right: 0px none;
+            }
+            
+            #default-header-tabs
+            {
+                width: 35px;
+                border: 1px solid #676774;
+                border-right: 0px none;
+            }
+            
+            #default-header-scroll
+            {
+                width: 35px;
+                border: 1px solid #676774;
+                border-right: 0px none;
+            }
+            
+            #default-header-zoom
+            {
+                width: 35px;
+                border: 1px solid #676774;
+                border-right: 0px none;
+                letter-spacing: -1px;
+            }
+            
+            #default-header-end
+            {
+                width: 19px;
+                border: 1px solid #676774;
+            }
+            
+            #default-header-names,
+            #default-header-tiles,
+            #default-header-tabs,
+            #default-header-scroll,
+            #default-header-zoom,
+            #default-header-end
+            {
+                float: left;
+                padding-top: 1px;
+                padding-bottom: 2px;
+                border-bottom: 0px none;
+                text-align: center;
+                background-color: #F8F8F8;
+            }
+            
+            #default-layoutlist-box
+            {
+                clear: both;
+            }
+            
+            #default-layoutlist-select
+            {
+                width: 412px;
+                height: 214px;
+                padding: 4px;
+            }
+            
+            body[platformos="win"] #default-layoutlist-select option
+            {
+                min-height: 0px;
+                padding-top: 4px;
+                padding-bottom: 2px;
+                font: 12px "Lucida Console","Courier New";
+            }
+            
+            body[platformos="linux"] #default-layoutlist-select option
+            {
+                min-height: 0px;
+                padding-top: 3px;
+                padding-bottom: 1px;
+                font: 12px "Courier New";
+            }
+            
+            body[platformos="mac"] #default-layoutlist-select option
+            {
+                min-height: 0px;
+                padding-top: 1px;
+                padding-bottom: 1px;
+                font: 12px Monaco,"Courier New";
+            }
+            
+            #default-message-box
+            {
+                height: 12px;
+                margin: 6px 0px 1px 0px;
+                color: red;
+                text-align: center;
+            }
+            
+            #default-message-1
+            {
+                display: none;
+            }
+            
+            #default-buttons-box
+            {
+                float: right;
+                margin-top: 10px;
+            }
+            
+            #default-buttons-default,
+            #default-buttons-cancel
+            {
+                width: 70px;
+                margin-left: 7px;
+            }
+            
+		</style>
+        
+    </head>
+    
+    <body>
+        
+        <div id="default-title">Default Layout</div>
+        
+        <form>
+            <div id="default-header-box">
+                <div id="default-header-names">Layout Name</div>
+                <div id="default-header-tiles">Tiles</div>
+                <div id="default-header-tabs">Tabs</div>
+                <div id="default-header-scroll">Scroll</div>
+                <div id="default-header-zoom">Zoom</div>
+                <div id="default-header-end">&nbsp;</div>
+            </div>
+            <div id="default-layoutlist-box">
+                <select id="default-layoutlist-select" size="10">
+                </select>
+            </div>
+            <div id="default-message-box">
+                <span id="default-message-1">No layout name selected</span>
+            </div>
+            <div id="default-buttons-box">
+                <button id="default-buttons-default">Default</button>
+                <button id="default-buttons-cancel">Cancel</button>
+            </div>
+        </form>
+        
+    </body>
+    
+</html>

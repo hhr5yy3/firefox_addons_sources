@@ -1,0 +1,299 @@
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8"/>
+
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Tile Tabs WE - Generic WebExtension - Save Layout Page          */
+/*                                                                      */
+/*      HTML and CSS for Save Layout Page                               */
+/*                                                                      */
+/*      Last Edit - 15 Oct 2022                                         */
+/*                                                                      */
+/*      Copyright (C) 2015-2022 DW-dev                                  */
+/*                                                                      */
+/*      Distributed under the GNU General Public License version 2      */
+/*      See LICENCE.txt file and http://www.gnu.org/licenses/           */
+/*                                                                      */
+/************************************************************************/
+-->
+
+        <title>Save Layout</title>
+        
+        <script src="savelayout.js"></script>
+        
+		<style type="text/css">
+            
+			body
+            {
+                width: 100%;
+                height: 100%;
+                margin: 0px;
+                font-family: "Segoe UI","Helvetica Neue",Ubuntu,Arial;
+                font-size: 12px;
+                line-height: normal;
+                white-space: nowrap;
+				color: black;
+				background-color: #F0F0F0;
+			}
+            
+            #save-title
+            {
+                padding: 4px 0px 6px;
+                font-size: 14px;
+                color: #404040;
+                text-align: center;
+            }
+            
+            form
+            {
+				position: absolute;
+                left: 50%;
+                margin-left: -206px;
+            }
+            
+            #save-header-names
+            {
+                width: 239px;
+                border: 1px solid #676774;
+                border-right: 0px none;
+            }
+            
+            #save-header-tiles
+            {
+                width: 42px;
+                border: 1px solid #676774;
+                border-right: 0px none;
+            }
+            
+            #save-header-tabs
+            {
+                width: 35px;
+                border: 1px solid #676774;
+                border-right: 0px none;
+            }
+            
+            #save-header-scroll
+            {
+                width: 35px;
+                border: 1px solid #676774;
+                border-right: 0px none;
+            }
+            
+            #save-header-zoom
+            {
+                width: 35px;
+                border: 1px solid #676774;
+                border-right: 0px none;
+                letter-spacing: -1px;
+            }
+            
+            #save-header-end
+            {
+                width: 19px;
+                border: 1px solid #676774;
+            }
+            
+            #save-header-names,
+            #save-header-tiles,
+            #save-header-tabs,
+            #save-header-scroll,
+            #save-header-zoom,
+            #save-header-end
+            {
+                float: left;
+                padding-top: 1px;
+                padding-bottom: 2px;
+                border-bottom: 0px none;
+                text-align: center;
+                background-color: #F8F8F8;
+            }
+            
+            #save-layoutlist-box
+            {
+                clear: both;
+            }
+            
+            #save-layoutlist-select
+            {
+                width: 412px;
+                height: 214px;
+                padding: 4px;
+            }
+            
+            body[platformos="win"] #save-layoutlist-select option
+            {
+                min-height: 0px;
+                padding-top: 4px;
+                padding-bottom: 2px;
+                font: 12px "Lucida Console","Courier New";
+            }
+            
+            body[platformos="linux"] #save-layoutlist-select option
+            {
+                min-height: 0px;
+                padding-top: 3px;
+                padding-bottom: 1px;
+                font: 12px "Courier New";
+            }
+            
+            body[platformos="mac"] #save-layoutlist-select option
+            {
+                min-height: 0px;
+                padding-top: 1px;
+                padding-bottom: 1px;
+                font: 12px Monaco,"Courier New";
+            }
+            
+            #save-saveas-box
+            {
+                float: left;
+                margin-top: 11px;
+            }
+            
+            #save-savetabs-box
+            {
+                float: right;
+                margin-top: 9px;
+                margin-right: 2px;
+            }
+            
+            body[platformos="win"] #save-savetabs-checkbox,
+            body[platformos="win"] #save-savescroll-checkbox,
+            body[platformos="win"] #save-savezoom-checkbox
+            {
+                margin-left : 20px;
+                vertical-align: 0px;
+            }
+            
+            body[platformos="linux"] #save-savetabs-checkbox,
+            body[platformos="linux"] #save-savescroll-checkbox,
+            body[platformos="linux"] #save-savezoom-checkbox
+            {
+                margin-left : 20px;
+                vertical-align: -2px;
+            }
+            
+            body[platformos="mac"] #save-savetabs-checkbox,
+            body[platformos="mac"] #save-savescroll-checkbox,
+            body[platformos="mac"] #save-savezoom-checkbox
+            {
+                margin-left : 20px;
+                vertical-align: 1px;
+            }
+            
+            #save-layoutname-box
+            {
+                clear: both;
+            }
+            
+            body[platformos="win"] #save-layoutname-input
+            {
+                width: 412px;
+                height: 22px;
+                margin: 5px 0px 3px 0px;
+                padding: 3px 6px 1px;
+                box-sizing: border-box;
+                font: 12px "Lucida Console","Courier New";
+            }
+            
+            body[platformos="linux"] #save-layoutname-input
+            {
+                width: 412px;
+                height: 22px;
+                margin-left: 0px;
+                padding: 3px 6px 1px;
+                box-sizing: border-box;
+                font: 12px "Courier New";
+            }
+            
+            body[platformos="mac"] #save-layoutname-input
+            {
+                width: 412px;
+                height: 22px;
+                margin-left: 0px;
+                padding: 3px 6px 1px;
+                box-sizing: border-box;
+                font: 12px Monaco,"Courier New";
+            }
+            
+            #save-message-box
+            {
+                height: 12px;
+                margin: 3px 0px 1px 0px;
+                color: red;
+                text-align: center;
+            }
+            
+            #save-message-1,
+            #save-message-2,
+            #save-message-3
+            {
+                display: none;
+            }
+            
+            #save-buttons-box
+            {
+                float: right;
+                margin-top: 10px;
+            }
+            
+            #save-buttons-save,
+            #save-buttons-cancel
+            {
+                width: 70px;
+                margin-left: 7px;
+            }
+            
+		</style>
+        
+    </head>
+    
+    <body>
+        
+        <div id="save-title">Save Layout</div>
+        
+        <form>
+            <div id="save-header-box">
+                <div id="save-header-names">Layout Name</div>
+                <div id="save-header-tiles">Tiles</div>
+                <div id="save-header-tabs">Tabs</div>
+                <div id="save-header-scroll">Scroll</div>
+                <div id="save-header-zoom">Zoom</div>
+                <div id="save-header-end">&nbsp;</div>
+            </div>
+            <div id="save-layoutlist-box">
+                <select id="save-layoutlist-select" size="10">
+                </select>
+            </div>
+            <div id="save-saveas-box">
+                <div id="save-layoutname-label">Save Layout As:</div>
+            </div>
+            <div id="save-savetabs-box">
+                <input id="save-savetabs-checkbox" type="checkbox"/>
+                <label for="save-savetabs-checkbox">Save Tabs</label>
+                <input id="save-savescroll-checkbox" type="checkbox"/>
+                <label for="save-savescroll-checkbox">Save Scroll</label>
+                <input id="save-savezoom-checkbox" type="checkbox"/>
+                <label for="save-savezoom-checkbox">Save Zoom</label>
+            </div>
+            <div id="save-layoutname-box">
+                <input id="save-layoutname-input" type="text" placeholder="Layout Name" autocomplete="off"/>
+            </div>
+            <div id="save-message-box">
+                <span id="save-message-1">Missing layout name</span>
+                <span id="save-message-2">Layout name may only contain: a-z A-Z 0-9 - _ SPACE</span>
+                <span id="save-message-3">Replace existing saved layout?</span>
+            </div>
+            <div id="save-buttons-box">
+                <button id="save-buttons-save">Save</button>
+                <button id="save-buttons-cancel">Cancel</button>
+            </div>
+        </form>
+        
+    </body>
+    
+</html>

@@ -1,0 +1,1 @@
+togglbutton.render("#left-panel:not(.toggl)",{},function(){const e=createTag("div"),t=$("#left-panel .ui-grid-a"),n=function(){return $("title").textContent},o=togglbutton.createTimerLink({className:"cloudes",description:n});e.appendChild(o),e.className="boxedDotted",t.parentNode.insertBefore(e,t.nextSibling)});

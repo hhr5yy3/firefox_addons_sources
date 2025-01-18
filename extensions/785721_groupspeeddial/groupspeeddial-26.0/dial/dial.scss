@@ -1,0 +1,1507 @@
+@use "./styles/groups_sepator";
+@use "./productivity_mode";
+@use "./in_iframe";
+:root {
+    --primary-color: 200, 100%; // the base color: #00abff
+    --primary-lightness: 50%;   // the initial lightness
+    --primary: hsl(var(--primary-color),var(--primary-lightness));
+    --primary-dark-1: hsl(var(--primary-color),calc(var(--primary-lightness) - 10%));
+    --primary-dark-2: hsl(var(--primary-color),calc(var(--primary-lightness) - 20%));
+    --primary-light-1: hsl(var(--primary-color),calc(var(--primary-lightness) + 10%));
+    --primary-opacity-50: hsla(var(--primary-color),var(--primary-lightness),0.5);
+
+    --text-white: hsl(0, 0%, 97%);
+    --text-black: hsl(0, 0%, 20%);
+    --hover-dark: rgba(255,255,255,0.3);
+    --hover-light: rgba(0,0,0,0.14);
+
+    --dial-highlight: 0 0 4px 4px var(--primary);
+
+    --border-color: 0, 0%;      // color: gray
+    --border-lightness: 50%;
+    --border: hsl(var(--border-color),var(--border-lightness));
+    --border-dark-1: hsl(var(--border-color),calc(var(--border-lightness) - 10%));
+    --border-dark-2: hsl(var(--border-color),calc(var(--border-lightness) - 20%));
+    --border-dark-3: hsl(var(--border-color),calc(var(--border-lightness) - 30%));
+    --border-dark-4: hsl(var(--border-color),calc(var(--border-lightness) - 40%));
+    --border-dark-5: hsl(var(--border-color),calc(var(--border-lightness) - 50%));
+    --border-light-1: hsl(var(--border-color),calc(var(--border-lightness) + 10%));
+    --border-light-2: hsl(var(--border-color),calc(var(--border-lightness) + 20%));
+    --border-light-3: hsl(var(--border-color),calc(var(--border-lightness) + 30%));
+    --border-light-4: hsl(var(--border-color),calc(var(--border-lightness) + 40%));
+    --border-light-5: hsl(var(--border-color),calc(var(--border-lightness) + 50%));
+
+    // --------------------------------------------------------------------------------
+    // Dark theme / defaults:
+    --invert-theme: invert(1);
+    --color-black-theme: black;
+    --color-white-theme: white;
+    --text-white-theme: var(--text-white);
+    --text-black-theme: var(--text-black);
+    --big-text-white-theme: #DDD;
+    --border-dark-1-theme: var(--border-dark-1);
+    --border-dark-2-theme: var(--border-dark-2);
+    --border-light-1-theme: var(--border-light-1);
+    --border-light-2-theme: var(--border-light-2);
+    --multi-dial-background-theme: hsl(0, 0%, 17%);
+    --hover-brightness-theme: brightness(130%);
+    --hover-background-theme: var(--hover-dark);
+    // legacy
+    --dial-head-background-legacy-theme: linear-gradient(#757575, #000000);
+    --group-list-background-legacy-theme: transparent;
+    --group-list-background-legacy-selected-theme: white;
+    // shadows
+    --shadow-color-theme: var(--border-light-1);
+    --shadow-hover-color-theme: var(--border-light-5);
+    --shadow-theme:         0 0 10px 0 var(--shadow-color-theme);
+    --shadow-hover-theme:   0 0 10px 1px var(--shadow-hover-color-theme);
+    // transparent layout
+    --border-theme: var(--border-dark-2);
+    // weather
+    --weather-icon-color-theme: brightness(150%);
+}
+.white {    // White theme:
+    --invert-theme: invert(0);
+    --color-black-theme: white;
+    --color-white-theme: black;
+    --text-white-theme: var(--text-black);
+    --text-black-theme: var(--text-white);
+    --big-text-white-theme: #222;
+    --border-dark-1-theme: var(--border-light-1);
+    --border-dark-2-theme: var(--border-light-2);
+    --border-light-1-theme: var(--border-dark-1);
+    --border-light-2-theme: var(--border-dark-2);
+    --multi-dial-background-theme: hsl(0, 0%, 100%);
+    --hover-brightness-theme: brightness(90%);
+    --hover-background-theme: var(--hover-light);
+    // legacy
+    --dial-head-background-legacy-theme: white;
+    --group-list-background-legacy-theme: rgba(255, 255, 255, 0.6);
+    --group-list-background-legacy-selected-theme: hsl(0, 0%, 83%);
+    // shadows
+    --shadow-color-theme: var(--border-light-2);
+    --shadow-hover-color-theme: var(--border);
+    --shadow-theme:         0 0 10px 0 var(--border-light-2);
+    --shadow-hover-theme:   0 0 10px 1px var(--border);
+    // transparent layout
+    --border-theme: var(--border-light-3);
+    // weather
+    --weather-icon-color-theme: brightness(90%);
+}
+
+*, *:before, *:after { box-sizing: border-box }
+html {
+    background-color: var(--color-black-theme);
+    color: var(--color-white-theme);
+}
+html, body {
+    height: 100%;
+    overflow: hidden !important;
+    font-size: 16px;
+    font-family: Verdana, system-ui, sans-serif, Helvetica;
+}
+.color_background {
+    position: fixed;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;       // allows scroll events to pass through (otherwise dynamic layout wouldn't be scrollable)
+}
+
+#quick-options {
+    align-items: center;
+    height: var(--groups-height);
+    color: var(--text-white-theme);
+    background: var(--group-list-background-legacy-theme);
+    float: right;
+    position: relative;
+    user-select: none;
+    z-index: 1;     // we need to lift it above group-list
+
+    a {
+        color: var(--text-white-theme);
+        text-decoration: none;
+    }
+
+    #login {
+        position: relative;
+        overflow: hidden;
+        min-height: 30px;
+        font-size: 0.75rem;
+        &:hover {
+            overflow: visible;
+            & > #sync_state {
+                opacity: 1;
+            }
+        }
+        & > a {
+            &.home-version {color: #0ff}
+            &.pro-version {color: deepskyblue!important}
+            &.enterprise-version {color: dodgerblue!important}
+            &.gold-version {color: gold!important}
+            &.platinum-version {color: silver!important}
+            &.diamond-version {color: white!important}
+        }
+
+        #sync_state {
+            position: absolute;
+            right: 0;
+            top: 30px;
+            /*padding: 75px 0 9px 9px;*/
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            /*border: 1px solid gray;*/
+            opacity: 0;
+            transition: all 150ms;
+            & > a {
+                padding: 8px 16px;
+                min-height: 40px;
+                &:hover {
+                    background: rgba(190, 190, 190, 0.35);
+                }
+            }
+        }
+    } // #login
+
+    #options {
+        /*padding: 5px 2px 8px 8px;*/
+        cursor: pointer;
+        height: 30px;
+        width: 30px;
+        //margin: 2px 4px 0 10px;
+        padding: 4px;
+    }
+}// #quick-options
+
+.message-box {
+    font-size: 0.75rem;
+    position: fixed;
+    right: 0;
+    top: calc((var(--groups-height) + 32px) / 2);   // this will place it right below the main menu button
+    z-index: 5;
+    max-height: calc(100% - 23px - 23px);
+    max-width: 100%;
+    overflow: auto;
+    color: black;
+    background-color: white;
+    margin-right: 10px;
+    box-shadow: 0 0 5px 0 var(--primary);
+    user-select: text;
+    & > div { // CONTAINER
+        padding: 15px;
+        max-width: 905px;
+    }
+
+    #message-title {
+        margin: 14px 45px 14px 0;
+    }
+    svg {
+        margin-left: 10px;
+        vertical-align: middle;
+    }
+    a {
+        color: black;
+        /*margin-left: 5px;*/
+    }
+    a:hover {color: var(--primary-dark-1)}
+    #message-text {
+        white-space: pre-line;
+        display: block;
+        margin-bottom: 5px;
+        line-height: 18px;
+        font-family: inherit;
+        select {
+            width: 100%;
+            max-width: 1000px;
+            border: 1px solid lightblue;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        & > p {
+            margin: 4px 0;
+        }
+        & > .info {
+            color: #5c5c5c;
+            margin-top: 10px;
+        }
+        & > ul {
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 38px;
+            padding-left: 20px;
+            list-style-type: disclosure-closed;     // Only in FF: https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type
+        }
+        & > ul img {
+            vertical-align: middle;
+            margin: 0 5px 0 0
+        }
+    }
+    .no-show-again {
+        float: right;
+        cursor: pointer;
+        padding: 10px;
+        font-style: italic;
+        text-decoration: none;
+    }
+    textarea {
+        width: 100%;
+        font-size: 0.75rem;
+        font-family: Consolas, "Courier New", monospace;
+        overflow-x: scroll;
+        white-space: pre;
+        border: 1px solid;
+        padding: 4px;
+    }
+    h1 {
+        font-size: 22px;
+    }
+}
+
+#groups {
+    height: var(--groups-height);
+    font-size: 13px;
+    line-height: 1;
+    color: white;
+    background: var(--group-list-background-legacy-theme);
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-flow: wrap;
+    max-height: 300px;
+
+    > a {
+        height: max-content;        // when using multi-row group list, this prevents items to be stretched when they fit in one row
+        padding: var(--group-padding);
+        min-height: var(--group-min-height);    // using "min-height" is better than fixed "height" because it will allow it to grow across multiple lines if the window is wide enough
+        &:hover {
+            background-color: var(--hover-background-theme);
+        }
+        // todo: this is a way to make "hover" effect when group has already a container color.
+        //       But to match the container color, we would need to set a container color as a CSS variable (if it's even possible).
+        //&.ff_c:hover > * { box-shadow: 0 3px 0 !important; }
+        &:not(.ff_c):hover { text-decoration: underline }   // don't show underline for Firefox Containers (which already has underline-like colored border)
+        &.selected {
+            //background-color: var(--group-list-background-legacy-selected-theme);
+            //color: black;
+            background-color: var(--hover-background-theme);
+            box-shadow: 0 3px 0 0 var(--primary) inset; // same color as Firefox is using on active tabs
+        }
+        > img {
+            height: 1em;
+            width: 1em;
+            margin: 0 4px;
+        }
+        .dials_count {
+            margin-left: 4px;
+            opacity: 0.6;
+        }
+    }
+    > a.group_icon {
+        &::before {// we use pseudo node with background, this way we can have "max-height" and "contain"
+            content: "";
+            filter: var(--invert-theme);
+            background-position-x: center;
+            background-position-y: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 1em;
+            width: 1em;
+            min-height: 1em;
+            min-width: 1em;     // on Android the width is limited so we have to prevent shrinking
+            margin: 0 4px;
+        }
+        &.topSites::before             {background-image: url('../svg/list-with-dots.svg')}
+        &.lockedGroup::before          {background-image: url('../svg/locked (1).svg')}
+        &.lockedGroup.unlocked::before {background-image: url('../svg/unlocked (1).svg')}
+    }
+
+    &.vertical {
+        z-index: 1;         // when dial-title is at bottom, it has z-index=1, so above vertical groups
+        height: auto !important;
+        flex-direction: column;
+        background: var(--color-black-theme);
+        border: 1px solid var(--border-theme);
+        float: right;
+        max-height: 100%;
+        overflow-y: auto;
+        flex-wrap: nowrap;
+
+        & > a {
+            width: 100%;
+            max-width: none;        // this helps in Android where max-width is limited in normal view
+            padding-right: 20px;    // todo: this is a hotfix to prevent text behind scrollbar
+            flex-shrink: 0;
+            white-space: nowrap;
+
+            // style ".group_name" if there isn't "img" before it (so it's a first child)
+            .group_name:first-child { margin-left: calc(8px + 1em); }
+            .dial-checkmark {
+                margin-left: auto;
+            }
+        }
+    }
+
+    // Archive box in the front:
+    & > a.groups_prefix_box {
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 4px 0 #777 inset;
+        background: #fff;
+        //background: linear-gradient(150deg, #00abff 0%, white 100%) !important;
+        color: black;
+        margin-right: 8px;
+        padding: 3px 12px;
+        text-decoration: none !important;
+        &:hover {
+            background: #e7e7e7;
+        }
+        & > img {
+            height: 1rem;
+            width: 1rem;
+            margin-right: 5px;
+            transition: transform 100ms;
+        }
+        &:hover img {
+            transform: scale(1.2, 1.2);
+        }
+    }
+}
+#show_groups {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    margin-right: 4px;
+    /*animation: 3s linear 0s infinite normal none running slidein;*/
+    transition: transform 100ms;
+}
+.icon-button:hover        {box-shadow:       0 0 4px 0 var(--border-dark-1-theme);}       // NOTE: color will be inverted by ".invert"
+.icon-button:hover:active {box-shadow: inset 0 0 4px 0 var(--border-dark-1-theme);}
+
+#groups > a, .group_link {      // .group_link is used for search results
+    display: flex;
+    align-items: center;
+    overflow: hidden;           // hotfix for overflow of lock/checkmark shadow (outline)
+    user-select: none;
+    color: var(--color-white-theme);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    // Used to fix inconsistency between group padding on sides and in height
+    /*border-right: 2px solid transparent;*/
+    /*border-left: 2px solid transparent;*/
+}
+
+.group_name {
+    padding: 0 2px;
+}
+
+html.drag_and_drop {    // highlight dial/group when dragging
+    #groups > a:hover,
+    .dials > a:not(.small_dials):hover .border_target {
+        outline: 1px solid var(--primary);
+    }
+}
+
+.empty_grid_help {      // shows "Right click / Create new dial" message
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    pointer-events: none;
+    background: #444;
+    padding: 10px 20px;
+    color: white;
+    white-space: nowrap;
+}
+
+html:is(.drag_and_drop, .add_current_mode, .edit_group) .dials-container.grid > .dials::before {   // shows grid overlay (rows/columns as real grid)
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    box-shadow: inset 0 0 0 1px #888A;      // Border around the grid
+    background: linear-gradient(to right,  #888A 1px, transparent 1px),
+                linear-gradient(to bottom, #888A 1px, transparent 1px);
+    background-size: calc(100% / var(--grid-cols)) calc(100% / var(--grid-rows));
+    pointer-events: none;       // Allows clicking through the overlay
+}
+
+// Last "+" dial hiding (except when dragging / adding / editing a dial)
+html:not(.drag_and_drop, .add_current_mode, .edit_dial, .edit_group) {  // watch out to target ONLY the last "+" dial AND only in dynamic layout AND not in small dials!
+  .hide_dial_plus.dynamic > .dials > .is_plus:last-of-type {visibility: hidden} // WARNING: using "display: none" can change layout change in dynamic layout!
+}
+
+html.add_current_mode {
+    .dials {
+        a.dial:is(.is_url_dial, .is_multi_dial, .is_empty_dial):not(.is_group)                    .border_target { box-shadow: 0 0 3px 3px var(--primary) }
+        a.dial:is(.is_url_dial, .is_multi_dial, .is_empty_dial):not(.is_group):is(:hover, :focus) .border_target { box-shadow: 0 0 3px 5px var(--primary) }
+        a.dial.is_duplicate.is_url_dial       .border_target {box-shadow: 0 0 3px 3px #e30000 }
+        a.dial.is_duplicate.is_url_dial:hover .border_target {box-shadow: 0 0 3px 5px #cd0000 }
+    }
+    .dials-container.grid > .dials {
+        //cursor: cell;
+    }
+}
+// highlight of the selected dial (when "Edit dial" is opened, or search)
+#dials .dial:is(.dial-highlight-animated, .dial-highlight, .search-dial-highlight) .border_target {
+    box-shadow: var(--dial-highlight) !important;
+}
+
+@keyframes highlight_pulse {
+    0%      {transform: scale(1.0);}
+    100%    {transform: scale(1.2);}
+}
+html.add_current_mode #dials a.is_duplicate,
+#dials .dial-highlight-animated {
+    position: relative;     // this is needed for the z-index to work
+    z-index: 1;
+    animation: highlight_pulse 0.4s ease-in-out 0.4s 2 alternate;
+}
+
+.dial-highlight-opacity {
+    animation: fade_opacity 5s linear 0s 1;
+}
+@keyframes fade_opacity {
+    0%      {opacity: 0.6;}
+    100%    {opacity: 1;}
+}
+
+.is_cut {opacity: 0.6;}
+
+#dials-container, #dials-container2 {
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+    height: calc(100% - var(--groups-height));
+    margin-top: var(--groups-height);
+    width: 100%;
+    position: absolute;
+    font-size: 0.75rem;
+
+    // Styles set from Options page:
+    &.hover_zoom       .dial:hover > .dial_container                { transform: scale(1.05) }
+    &.hover_bold       .dial:hover > .dial_container > .dial_head   { font-weight: bold }
+    &.solid_head                                       .dial_head   { background: var(--dial-header-background) }
+    &.hide_empty_dials:not(.dynamic) .dials > a.dial:is(.is_empty_dial, .is_empty_dial:hover) .border_target {
+        box-shadow: none;
+        border: none;
+    }
+    &.titles_down              .dial_head { order: 1 }
+    &.no_favicons              .dial_head > img { display: none }
+    &.no_title:not(.list) .dial_head { display: none }
+    // list view shouldn't center
+    &.titles_center:not(.list) .dial_head {
+        justify-content: center;
+        .dial_name { flex-grow: 0 }     // make sure name won't grow to full-width
+    }
+
+    &.scrollable_thumbnails {
+        .dial_body {
+            overflow-y: auto;
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+        }
+    }
+    &.transparent_head {
+        // ".dial_head" has different rules in "list layout"
+        &:not(.dynamic.list) {
+            .dial_head {
+                background: transparent;
+            }
+            // all empty dials/small_dials in the transparent layout needs to have "invisible" head (but not hidden!)
+            .dials > a.dial:is(.is_empty_dial, .no_dial_title) > .dial_container > .dial_head {
+                display: block;
+                visibility: hidden;
+            }
+        }
+        .dial_container {
+            overflow: visible;
+            border-radius: unset;
+            ul.dial_list_container {
+                padding: 4px 0;
+            }
+        }
+        // list view looks better with sharp edges
+        &:not(.list) .dial_container > .dial_body {
+            border-radius: var(--dial-border-radius);
+        }
+    }
+
+    // Fixed layout:     // https://stackoverflow.com/questions/20590239/maintain-aspect-ratio-of-div-but-fill-screen-width-and-height-in-css
+    &.fixed > .dials {
+        margin: auto;
+        top:0;bottom:0; // vertical center
+        left:0;right:0; // horizontal center
+    }
+}
+
+.dials-container {
+    .dials {
+        // special style for the last (empty) dial - the "+" button
+        > a.is_empty_dial.is_plus {
+            &:not(:hover) {opacity: 0.7;}
+            &:hover {
+                cursor: pointer;
+                ::before {      // zoom only image
+                    transform: scale(1.1);
+                }
+            }
+            // hide head to "center" the plus button
+            .dial_head {
+                display: none;
+            }
+            > .dial_container > .dial_body {     // this is more-less a copy of the code for productivity "lock"
+                padding: 8px 0;
+                display: flex;          // we have to use flex to center (vertically) image if it doesn't fill dial (due to "max-height" below)
+                flex-direction: row;
+                align-items: center;
+
+                &::before {         // we use pseudo node with background, this way we can have "max-height" and "contain"
+                    content: "";
+                    filter: grayscale(1);
+                    opacity: 0.6;
+                    max-height: 50px;
+                    background: url('../svg/plus(4).svg') no-repeat center;
+                    background-size: contain;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    // Dynamic layout
+    &.dynamic {
+        // dynamic layout doesn't support advanced drop (unless stopped)
+        &:not(.stopped_moving) {
+            :is(.drag_drop_advanced, .drag_group_hover) {
+                display: none;
+            }
+        }
+        > .dials {
+            display: grid;
+            justify-content: center;
+            grid-gap: calc(2 * var(--dial-padding));
+            padding:  calc(2 * var(--dial-padding));
+            height: fit-content;        // NOTE: ".dials" doesn't have overflow (parent "dials-container" has), so it needs to grow with content
+            max-height: fit-content;
+            left: auto;
+            > a.dial {       // we will setup correct size for each grid item in the JS
+                width: 100%;
+                height: 100%;
+                transition: transform 400ms;
+                padding: 0;     // handled by grid-gap
+            }
+        }
+    }
+    // Dynamic "list" layout - extends "dynamic" layout above (although not using grid)
+    &.dynamic.list {
+        //transition: all 100ms;
+        //scroll-behavior: smooth;
+        //scroll-snap-type: x mandatory;
+    }
+    &.dynamic.list > .dials {
+        max-width: 90%;
+        max-height: 90%;
+        height: 90%;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: block;
+        > a {
+            break-inside: avoid-column;     // this prevents padding overflow to next column: https://bugzilla.mozilla.org/show_bug.cgi?id=1913900
+            height: 3rem;
+            padding: 0.3rem;
+            ul > li {
+                height: 3rem;
+            }
+            // we use fixed height (above) but we let list-like dials to grow (but not text dial)
+            &:is(.has_list, .is_live_dial):not(.distraction) {
+                height: auto;
+                .dial_head {
+                    min-height: 2.4rem;
+                }
+            }
+            // List layout will use softer shadow:
+                                 .border_target { box-shadow: var(--list-shadow) }
+            &:is(:focus, :hover) .border_target { box-shadow: var(--list-shadow-active) }
+            > .dial_container {
+                border-radius: unset;
+                .dial_head {
+                    height: 100% !important;
+                }
+                .dial_head, .dial_list_container {      // make all favicons bigger (in title / search dial / multi-dial)
+                    .dial_icon, .dial_tag, .list_item_icon {
+                        height: 1.5rem;
+                        width:  1.5rem;
+                        margin: 0.3rem;
+                    }
+                    background: var(--multi-dial-background-theme);
+                }
+                .dial_list_container {
+                    max-height: calc(90vh - 6em);
+                }
+                > img {     // hide images
+                    display: none;
+                }
+                // fix position of floating buttons / replace button
+                > .dial_float_label {
+                    top: 0;
+                }
+                > .replace_dial {
+                    left: auto;
+                    right: 0;
+                    transform-origin: top right;
+                }
+            }
+        }
+        // making the "+" symbol bigger by reducing border:
+        a.is_empty_dial:last-of-type > .dial_container {
+            > .dial_head {
+                display: none;
+            }
+            > .dial_body {
+                padding: 4px 0;
+            }
+        }
+        // fix dials selection icon position (moving it right)
+        .dial-checkmark {
+            left: auto;
+            top: 4px;
+            right: 4px;
+            height: 2.1rem;
+            width: 2.1rem;
+            > img {     // this will make inner image bigger
+                padding: 5px;
+            }
+        }
+    }
+    // Grid layout
+    &.grid:not(.stopped_moving) :is(.drag_drop_advanced, .drag_group_hover) { display: none }   // grid layout doesn't support advanced drop (unless stopped)
+    &.grid:not(.show_empty)     .dial.is_empty_dial { display: none }   // last empty dial is hidden (unless special inserting mode is active)
+    &.grid > .dials {
+        display: grid;
+        grid-gap: calc(2 * var(--dial-padding));
+        padding: var(--dial-padding);
+        grid-template-areas: var(--grid-template-areas);
+        grid-auto-columns: minmax(0, 1fr);     // equal columns (and rows): https://stackoverflow.com/a/53884813/1376947
+        grid-auto-rows:    minmax(0, 1fr);
+
+        > a.dial {
+            width:  100%;
+            height: 100%;
+            padding: 0;     // handled by grid-gap
+        }
+    }
+    // Resize corner (when not locked AND when dial is not empty)
+    &.grid:not(.grid_locked) > .dials > a.dial:hover:not(.is_empty_dial) > .dial_container::after {
+        content: "";
+        cursor: nwse-resize;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 1rem;
+        height: 1rem;
+        background: url('../svg/resize-corner.svg') no-repeat center;
+        background-size: contain;
+    }
+} // .dials-container
+
+// don't change this to #dials, nested small dials are using this class!
+.dials {
+    background-clip: content-box!important;   // prevent coloring of padding area
+    position: absolute;
+    top: 0;
+    left: 0;        // missing "left" was causing the phone issues where I could not see left dials
+    width: 100%;
+    height: 100%;
+    max-height: 100%;       // both of these are required for Fixed ratio (so why are they not there?)
+    max-width: 100%;
+    //color: white;
+    user-select: none;
+    display: grid;
+    grid-gap: calc(2 * var(--dial-padding));
+    padding:  var(--dial-padding);
+    // create grid of --group-cols X --group-rows, each cell should have a equal size, and items should fit the screen
+    grid-template-columns: repeat(var(--group-cols), minmax(0, 1fr));
+    grid-template-rows:    repeat(var(--group-rows), minmax(0, 1fr));
+
+    & > a.dial {
+        display: block;
+        width:  100%;
+        height: 100%;
+        outline: none;
+        vertical-align: middle;
+        //overflow: hidden;
+        text-decoration: none;
+        // the "border_target" is dynamically set in JS to the correct element: (isListGroup ? mainDiv : isTransparentHead ? dialBody : mainDiv)
+        .border_target {
+            border:     var(--dial-border);
+            box-shadow: var(--dial-shadow);
+        }
+        // hover/focus style should NOT be triggered for the "small_dials" parent container
+        &:is(:focus, :hover):not(.small_dials) .border_target {
+            border:     var(--dial-border-active);
+            box-shadow: var(--dial-shadow-active);
+        }
+        &.is_empty_dial {
+            cursor: default;
+            .dial_head {    // we hide it but keep the space so that "dial_body" has correct shape
+                visibility: hidden;
+            }
+        }
+        &.no_dial_title {
+            .dial_head {    // when title is hidden, hide head completely (except in ".transparent_head"
+                display: none;
+            }
+        }
+
+        &.with_color::before {  // used by "column/row" color feature
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            background-color: inherit;
+            top:  calc(var(--dial-padding) * -1);
+            left: calc(var(--dial-padding) * -1);
+            height: calc(100% + var(--dial-padding) * 2);
+            width:  calc(100% + var(--dial-padding) * 2);
+        }
+
+        &.reloading {
+            .dial_reload { display: none }      // hide "Create thumbnail" button during reload
+            .dial_container::before {
+                content: "";
+                display: block;
+                width:  2rem;
+                height: 2rem;
+                background-color: var(--primary);
+                -webkit-mask: url('../svg/spin.svg') center center / contain no-repeat;
+                        mask: url('../svg/spin.svg') center center / contain no-repeat;
+                margin: 8px;
+                border-radius: 50%;     // todo: remove this when Firefox 128 is released, this fixes: https://bugzilla.mozilla.org/show_bug.cgi?id=1671784
+                animation: spin 1s linear infinite;
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 1;
+            }
+        }
+    }
+
+    .is_session_dial {
+        .dial_head {cursor: text}   // clicking dial head will swap it with search input
+        ul.dial_list_container > li.list_item_container {   // "li" that hosts "ul"
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+    }
+    .is_multi_dial, .is_session_dial, .is_top_sites_dial {
+        li.multi_dial_item {
+            padding: 0;
+        }
+        li.multi_dial_item > a {
+            width: 100%;
+        }
+    }
+    .dial:is(.is_session_dial, .is_top_sites_dial) > .dial_container {
+        ul.dial_list_container > li:not(.list_item_container) {
+            &.session_in_this_window {
+                // todo: in the future I could somehow highlight tabs from current window
+            }
+            max-height: 50px;
+            // todo: I could introduce higher spacing as some "compact/dense" switch
+            //min-height: 40px;
+        }
+    }
+    .is_timer_dial.dial {
+        ul.dial_list_container > li {
+            color: var(--big-text-white-theme);
+            min-height: min-content;
+            min-width: min-content;     // this is needed for the "li" to be as wide as the content inside (which may overflow)
+            white-space: nowrap;
+            > * {
+                margin: 6px;
+            }
+            &.timer_alarm {
+                color: var(--primary);
+            }
+            &.timer_active {
+                color: var(--primary);
+                .timer_actions {
+                    //filter: drop-shadow(0 0 1px var(--primary));
+                }
+            }
+            .timer_head {
+                display: flex;
+                flex-wrap: wrap;
+                font-size: 1rem;
+                label {
+                    margin-right: 4px;
+                }
+                .timer_time {
+                    font-size: 1.1rem;
+                }
+                .timer_time > span.zeros:not(:last-child) {
+                    opacity: 0.5;       // preceding zeros will be less visible
+                }
+            }
+            .timer_body {
+                margin: 4px 0;
+                font-size: 1.5rem;
+            }
+            .timer_actions {
+                display: flex;
+                align-items: center;
+                margin-left: auto;
+                img {
+                    height: 2.6rem;
+                    width:  2.6rem;
+                    //max-width: 100%;      // this would enable scaling when too small, but each row would scale at different width, so not consistent = bad!
+                    //min-width: 24px;
+                    margin: 4px;
+                }
+
+            }
+            .timer_time {
+                font-family: Consolas, "Courier New", monospace;
+            }
+        }
+    }
+    .is_weather_dial.dial {
+        > .dial_container {
+            > .dial_body {
+                .w_weather_icon {
+                    width: 3rem;
+                    height: 3rem;
+                }
+                .small_layout .multi_dial_item {
+                    .w_basic {
+                        grid-template-areas:
+                            "icon   temp"
+                            "clouds temp_max"
+                            "wind   temp_min"
+                        ;
+                        .w_detail {
+                            justify-self: center;
+                            min-width: 4rem;
+                            > span {
+                                margin: 4px 0 4px auto;
+                            }
+                        }
+                    }
+                }
+                .multi_dial_item {
+                    height: 100%;
+                    min-height: auto;
+                    min-width: min-content;     // this is needed for the "li" to be as wide as the content inside (which may overflow)
+                    padding: 0 16px;
+                    .w_basic {
+                        display: grid;
+                        width: 100%;
+                        font-size: 1rem;
+                        margin-bottom: 4px;
+                        grid-column-gap: 12px;
+                        place-items: center;
+                        grid-template-areas:
+                                "icon temp temp_max clouds"
+                                "icon temp temp_min wind"
+                        ;
+                        > * {
+                            white-space: nowrap;
+                        }
+
+                        .w_weather_icon {
+                            width:  4rem;
+                            height: 4rem;
+                            filter: var(--weather-icon-color-theme);
+                        }
+                        .w_s_icon {
+                            width:  1rem;
+                            height: 1rem;
+                            filter: var(--invert-theme);
+                            margin-right: 6px;
+                        }
+                        .w_temp {
+                            grid-area: temp;
+                            font-size: 2rem;
+                        }
+                        .w_detail {
+                            justify-self: left;
+                            display: flex;
+                            align-items: center;
+                        }
+                        .w_clouds_progress {
+                            display: none;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                        }
+                        .w_ms {
+                            margin-right: 0;
+                        }
+                        .w_icon     {grid-area: icon; position: relative}
+                        .w_day      {grid-area: day; display: none}
+                        .w_temp_max {grid-area: temp_max}
+                        .w_temp_min {grid-area: temp_min; opacity: 75%;}
+                        .w_wind     {grid-area: wind}
+                        .w_clouds   {grid-area: clouds}
+                        .w_humidity {grid-area: humidity}
+                        &.w_forecast {
+                            justify-items: right;
+                            .w_weather_icon {
+                                width:  2.7rem;
+                                height: 2.7rem;
+                                padding: 2px;
+                            }
+                            grid-template-columns: 42px repeat(4, minmax(46px, 100px));
+                            grid-template-areas: "day icon temp_max temp_min wind";
+                            .w_detail {
+                                justify-self: right;
+                                img {display: none}
+                                .w_ms {display: block}
+                            }
+                            .w_day {
+                                display: block;
+                                justify-self: left;
+                            }
+                            .w_temp {display: none}
+                            .w_clouds {display: none}
+                            .w_clouds_progress {display: block}
+
+                        }
+                    } // w_basic
+                }
+            }
+        }
+    }
+
+
+    // Resized dials container (don't forget ".dial" to override padding set in JS)
+    &.small_dials.dial {
+        display: grid;
+        position: initial;
+        cursor: default;    // it's anchor, so it has pointer
+        padding: 0;         // instead of padding, we will use "border". This is needed for "Row/Column color" feature to work (in grid the padding doesn't have a color).
+        grid-gap: var(--small-dials-gap);
+        // setup values for "DialSize" enum:
+        &.small_ds_1 { grid-template-columns: 1fr 1fr;        grid-template-rows: 1fr 1fr;         } // SMALL 2x2
+        &.small_ds_2 { grid-template-columns: 1fr 1fr 1fr;    grid-template-rows: 1fr 1fr 1fr;     } // TINY 3x3
+        &.small_ds_3 { grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr);  } // MICRO 4x4
+        &.small_ds_4 { grid-template-columns: 2fr 2fr;        grid-template-rows: 1fr;             } // V_HALF 2x1
+        &.small_ds_5 { grid-template-columns: 1fr;            grid-template-rows: 2fr 2fr;         } // H_HALF 1x2
+        &.small_ds_6 { grid-template-columns: 1fr 1fr 1fr;    grid-template-rows: 1fr;             } // V_THIRD 3x1
+        &.small_ds_7 { grid-template-columns: 1fr;            grid-template-rows: 1fr 1fr 1fr;     } // H_THIRD 1x3
+        &.small_ds_8 { grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr;             } // V_FOURTH 4x1
+        &.small_ds_9 { grid-template-columns: 1fr;            grid-template-rows: repeat(4, 1fr);  } // H_FOURTH 1x4
+
+        a.dial {
+            width: 100%;
+            height: 100%;
+            min-width: 0;   // this prevents grid from "blowing up" when content is too big, see: https://css-tricks.com/preventing-a-grid-blowout/
+            min-height: 0;
+            padding: 0;     // disable default padding (we'll use grid-gap)
+        }
+    }
+
+    & > h2 {margin-bottom: 0;}
+    & > h1 {border-bottom: 1px solid}
+
+    .dial_container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        border-radius: var(--dial-border-radius);
+        transition: transform 70ms; // used by optional "Zoom on hover" effect
+        overflow: hidden;       // this is needed for the broder-radius to work!
+        position: relative;
+        & > .dial_head {
+            flex-shrink: 0;     // header should not shrink!
+            display: flex;
+            align-items: center;
+            background: var(--dial-head-background-legacy-theme);
+            color: var(--color-white-theme);    // pitch black/white
+            font-family: var(--dial-font-family);
+            padding: 0 5px;
+            overflow: hidden;
+            height: 1.5rem;
+
+            .dial_icon, .dial_tag {  // heading icon - NOTE - all Favicons MUST be square!
+                flex-shrink: 0;
+                height: calc(4px + 0.75rem);
+                min-height: calc(4px + 0.75rem);
+                width: calc(4px + 0.75rem);
+                min-width: calc(4px + 0.75rem);
+                //margin-top: -1px;     // this helps center icon more - by default 23px is container which translates to 4 + 16 + 3 but we want 3 + 16 + 4
+                + .dial_name {
+                    margin-left: 5px;       // add space between icon and name
+                }
+            }
+            .dial_icon {margin-left: var(--dial-icon-offset)}
+            .dial_name {
+                /*margin: 0 5px;*/
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                flex-grow: 1;           // name should take full width (for the "Firefox Container" color)
+                font-size: 0.75rem;
+                min-height: 0.75rem;       // we need to specify height explicitly, else it's gonna be 15px and it can shift image if favicon is not present
+                //margin-top: -1px;     // this helps center name more
+            }
+            .dial_number {
+                margin: 0 4px;
+                color: #aaa;
+            }
+            .dial_tag {
+                margin: 0 var(--dial-icon-offset) 0 5px;
+            }
+        }
+        & > .dial_body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+
+            .dial_thumbnail {
+                width: 100%;
+                &.reflection {
+                    // Inspired by: https://www.codesdope.com/blog/article/add-impressive-reflection-effects-using-only-css/
+                    // See also:    https://css-tricks.com/state-css-reflections/
+                    margin-top: -1px;   // even though parent is "flex-column", there is some "rounding error" which may cause 1px gap between images
+                    transform: scaleY(-1);
+                    -webkit-mask-image: -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(0%, transparent), to(rgba(255, 255, 255, 0.8)));
+                }
+                &.thumbnail_position_0 {    // center
+                    height: 100%;
+                    object-fit: contain;
+                }
+                &.thumbnail_position_1 {    // full width
+                    height: unset;
+                    object-fit: unset;
+                }
+                &.thumbnail_position_2 {    // cover
+                    height: 100%;
+                    object-fit: cover;
+                }
+                &.thumbnail_position_3 {    // fill
+                    height: 100%;
+                    object-fit: fill;
+                }
+            }
+
+            // live dial
+            iframe {
+                border: none;
+                position: relative;
+                transform-origin: top left;
+                background-color: white;
+                width: 100%;
+                height: 100%;
+            }
+            .text_dial {
+                /*pointer-events: none;*/
+                cursor: pointer;
+                padding: 4px 8px;
+                resize: none;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+                border: none;
+                outline: none;
+                font-family: inherit;
+                font-size: inherit;
+            }
+            .dial_list_container {      // the "ul", but don't add it
+                display: flex;
+                flex-direction: column;
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                /*justify-content: space-evenly;*/      /*NOTE: this doesn't work with overflow because of this: https://stackoverflow.com/questions/33454533/cant-scroll-to-top-of-flex-item-that-is-overflowing-container/33455342 */
+                overflow-y: auto;
+                height: 100%;
+                background: white;
+                > li {
+                    &:hover {
+                        background: #88888820 !important;
+                    }
+                    height: 100%;
+                    min-height: 34px;
+                    padding: 0 7px;
+                    .list_item_container_name {
+                        padding: 8px 0px;
+                    }
+                    > ul {
+                        background: transparent !important;     // nested container will follow parent background
+                    }
+                }
+                > li:hover {
+                    background: #88888830;
+                }
+                * {
+                    background: transparent;        // background will be handled by "ul"
+                }
+                > li > a {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                }
+                .list_item_icon {
+                    width: 24px;
+                    height: 24px;
+                    flex-shrink: 0;
+                }
+                .list_item_name {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    flex-grow: 1;
+                }
+                .open_search_icon {
+                    width: 30px;
+                    height: 30px;
+                    flex-shrink: 0;
+                    padding: 1px;
+                    border-radius: 2px;
+                }
+                .open_search_icon:hover {
+                    background-color: rgba(0, 0, 0, 0.2);
+                    opacity: 0.7 !important;
+                }
+                > li > input {
+                    font-size: calc(0.75rem + 2px);
+                    font-family: Verdana, system-ui, sans-serif, Helvetica;
+                    min-width: 25px;
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0 8px;
+                    border: none;
+                    outline: none;
+                }
+            } //.dial_list_container
+            .dial_reload {
+                // we use JavaScript to change parent container to flexbox
+                justify-content: center;
+                flex-grow: 1;
+                overflow-y: auto;
+                margin: 5px;
+                & > button {
+                    height: 50%;
+                    max-height: 50px;
+                    min-height: 20px;
+                    justify-content: center;
+                    & > span {
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+                    & > img {
+                        max-height: 100%;
+                        flex-shrink: 0;
+                    }
+                }
+                .create-thumbnail-btn {
+                    border-radius: 0;
+                    background-color: var(--multi-dial-background-theme);
+                    color: var(--text-white-theme);
+                    border: 1px solid #7778;
+                    cursor: default;
+                    &:hover {
+                        filter: var(--hover-brightness-theme);
+                    }
+                }
+            }
+        } // .dial_body
+        .is_online {        // this will draw small "blue dot"
+            width: 0.5rem;
+            height: 0.5rem;
+            margin: 4px;
+            background: var(--primary) !important;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+    } //.dial_container
+
+    // common style for dial action icons/labels
+    .dial_float_label {
+        position: absolute;
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        font-size: 0.85rem;
+        left: 0;
+        top: 24px;
+        color: white;
+        max-width: calc(100% - 10px);
+        //border: 1px solid var(--primary-dark-1);
+        padding: 6px 12px;
+        margin: 5px;
+        cursor: pointer;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        transition: max-width 100ms;
+        z-index: 1;     // needs to be above ".dial_body" which comes later in the HTML
+        &:hover {
+            box-shadow: 0 0 5px 0 var(--primary);
+            filter: brightness(1.1);
+        }
+    }
+    // adjust top position when titles are down / empty dials / no titles
+    .titles_down & .dial_float_label,
+    .dial:is(.is_empty_dial, .no_dial_title) .dial_float_label {
+        top: 0;
+    }
+    .drag_group_hover {
+        left: unset;    // override default from ".dial_float_label"
+        right: 0;
+        width: 40px;
+        padding: 8px;
+        background: var(--primary);
+        filter: invert(100%) hue-rotate(180deg);    // invert black SVG to white while keeping background color (more-less)
+    }
+    .replace_dial {
+        background: var(--primary-dark-2);
+        &:not(:hover) {
+            max-width: 40px;
+        }
+        > img {
+            width: 28px;
+            height: 28px;
+            filter: invert(1);
+            margin: 0 6px 0 -6px;
+        }
+    }
+    .replace_dial + .replace_dial {
+        margin-top: 52px;
+    }
+    .is_duplicate .replace_dial     {background: #e30000;}
+    .is_empty_dial .replace_dial {       // Multi-Dials
+        background: var(--primary-dark-1);
+        position: initial;      // disable "absolute" position, we want to center it
+        align-self: center;
+        height: 40px;
+        max-height: 50%;
+        max-width: calc(100% - 10px) !important;
+    }
+    .replace_image {
+        max-width: calc(100% - 10px) !important;
+    }
+    .text_dial_copied {
+        background: var(--primary);
+        text-align: center;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, 0);
+    }
+    img.drag_drop_advanced {
+        max-width: 40px;
+        background-color: var(--primary-light-1);
+        filter: invert(100%) hue-rotate(180deg);
+        padding: 8px;
+        transition: transform, filter 100ms;
+        z-index: 1;    // putting it ABOVE the "replace_dial" button (so that user can use advanced drop while in "Add page to dial" state)
+    }
+} //.dials
+
+
+.refresh-all select {
+    margin-left: 7px;
+    padding: 2px 8px;
+}
+
+i.icon {
+    cursor: pointer;
+    padding: 4px;
+    margin: 1px;
+    display: inline-flex;
+    /*border-radius: 4px;*/
+}
+i.icon > path {fill: gray;}
+i.icon:hover > path {fill: black;}
+i.icon:hover {box-shadow: 0 0 4px 0 gray;}
+i.icon:hover:active {box-shadow: inset 0 0 4px 0 gray;}
+
+.close-box:before {
+    content: url('data:image/svg+xml; utf8, <svg width="22" height="22" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path fill="darkgray" d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"/></svg>');
+}
+.close-box {
+    display: inline-flex;
+    float: right;
+    cursor: pointer;
+    line-height: 1;
+    margin: 2px !important;
+    padding: 0 2px !important;
+    user-select: none;
+}
+.hidden {display: none!important;}
+
+html.bing_hide_dials > body > * {
+    opacity: 0;
+    transition: all 0.1s ease-in;
+}
+html.bing_hide_dials:hover > body > * {
+    opacity: 1;
+    transition: all 0.1s;
+}
+html.hide_top_bar {
+    #groups { display: none }
+    #quick-options, #options { margin-top: -90px }      // this is some legacy workaround (I think it's because of the main menu that can be opened through the Popup window)
+}
+
+// WHITE TEMPLATE
+html.white {
+  a.home-version {color: #00E6E6 !important}
+  a.diamond-version {color: #00d2ff!important}
+  a.platinum-version {color: gray!important}
+}
+
+// Selection rectangle
+.selection_rect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background:       var(--hover-background-theme);
+    border: 1px solid var(--hover-background-theme);
+    pointer-events: none;
+}
+
+.dials {
+    .dial-selected > .dial_container {
+        outline: 5px solid var(--primary);
+    }
+
+    .dial-checkmark {
+        position: absolute;
+        left: 4px;
+        top: 26px;
+        height: 50px;
+        width: 50px;
+        border-radius: 100%;
+        box-shadow: 0 0 3px 0 gray;
+        transition: all 100ms;
+        background: #eaeaea66;
+    }
+    .dial-selected .dial-checkmark {
+        background: var(--primary);
+    }
+    .dial-checkmark > img {
+        width: 100%;
+        padding: 9px;
+        opacity: 0;
+        position: absolute;
+    }
+    :not(.dial-selected) > .dial_container .dial-checkmark > img.dial_selected_state_0 {
+        opacity: 0.5;
+    }
+    .dial-selected .dial-checkmark > img.dial_selected_state_1 {
+        opacity: 1;
+    }
+}
+
+#groups {
+    .dial-selected {
+    }
+
+    .dial-checkmark {
+        position: relative;     // so that child can be absolute
+        height: 18px;       // todo: fix me!!!
+        width: 18px;
+        margin-left: 6px;
+        transition: all 100ms;
+        background: #eaeaea66;
+        outline: 4px solid #eaeaea66;
+    }
+    .dial-selected .dial-checkmark {
+        background: var(--primary);
+        outline: 4px solid var(--primary);
+    }
+    .dial-checkmark > img {
+        width: 100%;
+        //padding: 2px;
+        opacity: 0;
+        position: absolute;
+    }
+    .dial-checkmark > img.dial_selected_state_0 {
+        opacity: 0.5;
+    }
+    .dial-selected .dial-checkmark > img.dial_selected_state_1 {
+        opacity: 1;
+    }
+}
+
+.vue_modal_container {
+    .v-overlay__scrim {
+        background: rgba(0, 0, 0, 0.3) !important;  // this will make the background overlay consitent with other modal dialogs
+        opacity: 1 !important;
+    }
+}
+
+.search_dials {
+    grid-template-columns: repeat(auto-fill, 302px);
+    grid-template-rows: repeat(auto-fill, minmax(0, 227px));
+    grid-auto-rows: 227px;
+    align-items: end;
+    h1, h2 {    // each "h1/2" should be on a new line and next item should be on the following line
+        grid-column: 1 / -1;
+        grid-row: auto;
+        height: fit-content;
+    }
+}
+
+// Firefox thumbnails generation inside the iframe (which loads "reload.html" page, which loads the target page inside iframe):
+.reloading_iframe {
+    position: fixed;
+    left: 0;
+    width:  30000px;
+    height: 30000px;
+    border: none;
+    z-index: 99000;
+    pointer-events: none;
+    background-color: black;
+    top: calc(100% - 200px);     // while iframes are loading, we make them "somewhat" visible to allow page animations / intersection observers to fire
+    opacity: 1%;
+    &.is_shooting {     // while shooting, we make them fully visible, but below the screen
+        top: 100%;
+        opacity: 1;
+    }
+}
+
+// Dials multi-selection mode allows selecting multiple dials
+// To allow selecting live dials, we lock iframes:
+html.dials_selection_mode .dials iframe {
+    pointer-events: none;
+}
+
+// browser specific rules:
+html{
+    &.safari {
+        #login {display: none}      // hide login button on safari (until we add OAuth for Apple)
+    }
+    &:is(.chrome) {     // Chrome is using ugly and thick scrollbars, so hide them by default
+        #dials .dial_container .dial_list_container:not(:hover) { overflow: hidden }
+    }
+    &:is(.chrome, .edge) {
+        //#dials img { image-rendering: -webkit-optimize-contrast; }
+    }
+    &.web {
+        // hide the "+" dial at the end of dynamic layout
+        #dials-container.dynamic > .dials > a.is_empty_dial:last-of-type {
+            display: none;
+        }
+    }
+}
+
+.btn-ok { background-color: var(--primary-dark-1); }
+.btn-ok:hover { background-color: var(--primary-dark-2); }

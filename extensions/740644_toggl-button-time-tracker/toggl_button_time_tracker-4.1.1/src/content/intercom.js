@@ -1,0 +1,2 @@
+togglbutton.render('[data-conversation-id] > * [data-intercom-target="conversation-card-header"]:not(.toggl)',{observe:!0},e=>{const r=()=>{const n=e.querySelector(".conversation__card__title__text"),t=n.querySelector("input");return t&&t.value?t.value:n.textContent.replace(/\s\s+/g," ").replaceAll(`
+`,"").trim()},o=togglbutton.createTimerLink({className:"intercom",description:r,buttonType:"minimal"});e.appendChild(o)});

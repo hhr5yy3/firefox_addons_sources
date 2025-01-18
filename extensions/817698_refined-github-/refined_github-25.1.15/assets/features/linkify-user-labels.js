@@ -1,0 +1,62 @@
+import React from '../npm/dom-chef.js';
+import { isRepo, hasComments } from '../npm/github-url-detection.js';
+import { wrap } from '../helpers/dom-utils.js';
+import features from '../feature-manager.js';
+import { buildRepoURL } from '../github-helpers/index.js';
+import getCommentAuthor from '../github-helpers/get-comment-author.js';
+import observe from '../helpers/selector-observer.js';
+
+function linkify(label) {
+	if (label.closest('a')) {
+		throw new Error('Already linkified, feature needs to be updated');
+	}
+
+	const url = new URL(buildRepoURL('commits'));
+	url.searchParams.set('author', getCommentAuthor(label));
+	wrap(label, React.createElement('a', { className: "Link--secondary", href: url.href,} ));
+}
+
+function init(signal) {
+	observe([
+		'span[data-testid="comment-author-association"][aria-label*="a member of the"]',
+		'span[data-testid="comment-author-association"][aria-label^="This user has previously committed"]',
+		// PRs and pre-issue redesign 2024
+		'.tooltipped[aria-label*="a member of the"]',
+		'.tooltipped[aria-label^="This user has previously committed"]',
+	], linkify, {signal});
+}
+
+void features.add(import.meta.url, {
+	asLongAs: [
+		isRepo,
+	],
+	include: [
+		hasComments,
+	],
+	init,
+});
+
+/*
+Test URLs:
+
+Bot PR
+https://github.com/webpack/webpack/pull/15926#issue-1264092372
+
+Bot comment
+https://github.com/webpack/webpack/pull/15926#issuecomment-1149371743
+
+Bot commented on behalf of
+https://github.com/webpack/webpack/pull/15926#issuecomment-1170670173
+
+Member review
+https://github.com/refined-github/refined-github/pull/5721#pullrequestreview-1018226910
+
+Contributor review comment
+https://github.com/refined-github/refined-github/pull/5691#discussion_r895191327
+
+Contributor review second comment
+https://github.com/refined-github/refined-github/pull/5691#discussion_r895192800
+
+Contributor review second comment in Files tab
+https://github.com/refined-github/refined-github/pull/2667/files#r366433031
+*/

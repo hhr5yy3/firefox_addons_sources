@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="/icons/icon.svg">
+    <link rel="stylesheet" href="panel.css">
+  </head>
+  <body>
+    <script type="module" src="/common/base.js"></script>
+    <div id="panel-size-request"></div>
+    <div id="tasks-wrapper">
+      <div id="tasks"></div>
+      <div id="empty-tasks" data-i18n="emptyTasks"></div>
+    </div>
+    <div id="toolbar">
+      <button id="create" data-i18n-title="createDownload">
+        <svg class="icon">
+          <use href="../icons/photon-icons.svg#new"></use>
+        </svg>
+      </button>
+      <button id="import" data-i18n-title="importDownload">
+        <svg class="icon">
+          <use href="../icons/photon-icons.svg#import"></use>
+        </svg>
+      </button>
+      <button class="if-enable-selection" id="select-all" data-i18n-title="selectAll">
+        <svg class="icon">
+          <use href="../icons/extra-icons.svg#select-all"></use>
+        </svg>
+      </button>
+      <button class="selection-tool" id="start-selected" data-i18n-title="start" disabled>
+        <svg class="icon">
+          <use href="../icons/extra-icons.svg#play"></use>
+        </svg>
+        <div class="context-menu-disabler"></div>
+      </button>
+      <button class="selection-tool" id="pause-selected" data-i18n-title="pause" disabled>
+        <svg class="icon">
+          <use href="../icons/extra-icons.svg#pause"></use>
+        </svg>
+        <div class="context-menu-disabler"></div>
+      </button>
+      <button class="selection-tool" id="remove-selected" data-i18n-title="remove" disabled>
+        <svg class="icon">
+          <use href="../icons/photon-icons.svg#stop"></use>
+        </svg>
+        <div class="context-menu-disabler"></div>
+      </button>
+      <button class="selection-tool" id="search-filename" disabled>
+        <svg class="icon">
+          <use href="../icons/photon-icons.svg#search"></use>
+        </svg>
+        <div class="context-menu-disabler"></div>
+      </button>
+      <button id="clear-completed-tasks" data-i18n-title="clearCompletedTasks">
+        <svg class="icon">
+          <use href="../icons/extra-icons.svg#clear"></use>
+        </svg>
+      </button>
+      <button id="clear-failed-tasks" data-i18n-title="clearFailedTasks">
+        <svg class="icon">
+          <use href="../icons/extra-icons.svg#clear-failed"></use>
+        </svg>
+      </button>
+      <button id="options" data-i18n-title="options">
+        <svg class="icon">
+          <use href="../icons/photon-icons.svg#preferences"></use>
+        </svg>
+      </button>
+    </div>
+    <div id="info-bars">
+      <div class="error-bar icon-text" id="no-storage-access" hidden>
+        <svg class="icon">
+          <use href="../icons/photon-icons.svg#cancel"></use>
+        </svg><span data-i18n="noStorageAccess"></span><a href="https://github.com/jingyu9575/multithreaded-download-manager/wiki/About-%22Cannot-access-internal-storage%22" data-i18n="readMore" target="_blank" rel="noopener noreferrer"></a>
+      </div>
+      <div class="warning-bar icon-text" id="connection-api-unavailable" hidden>
+        <svg class="icon">
+          <use href="../icons/photon-icons.svg#warning"></use>
+        </svg><span data-i18n="connectionAPIUnavailable"></span><a href="https://github.com/jingyu9575/multithreaded-download-manager/wiki/Connection-API" data-i18n="readMore" target="_blank" rel="noopener noreferrer"></a>
+      </div>
+      <div class="warning-bar icon-text" id="firefox-75-warning" hidden>
+        <svg class="icon">
+          <use href="../icons/photon-icons.svg#warning"></use>
+        </svg><span data-i18n="importantChangesForFirefox75"></span><a href="https://github.com/jingyu9575/multithreaded-download-manager/wiki/Important-changes-for-Firefox-75" data-i18n="readMore" target="_blank" rel="noopener noreferrer"></a><span>&nbsp;</span><a id="firefox-75-warning-dismiss" href="javascript:;" data-i18n="dismiss"></a>
+      </div>
+    </div>
+    <template id="x-task-template">
+      <div class="task-row summary-row">
+        <svg class="state-icon icon">
+          <use></use>
+        </svg><span class="filename"></span>
+        <button class="task-action" data-action="start">
+          <svg class="icon">
+            <use href="../icons/extra-icons.svg#play"></use>
+          </svg>
+        </button>
+        <button class="task-action" data-action="pause">
+          <svg class="icon">
+            <use href="../icons/extra-icons.svg#pause"></use>
+          </svg>
+        </button>
+        <button class="task-action" data-action="stop">
+          <svg class="icon">
+            <use href="../icons/extra-icons.svg#stop"></use>
+          </svg>
+        </button>
+        <button class="task-action" data-action="openFile">
+          <svg class="icon">
+            <use href="../icons/extra-icons.svg#file"></use>
+          </svg>
+        </button>
+        <button class="task-action" data-action="copyLink">
+          <svg class="icon">
+            <use href="../icons/photon-icons.svg#link"></use>
+          </svg>
+        </button>
+        <button class="task-action" data-action="edit">
+          <svg class="icon">
+            <use href="../icons/photon-icons.svg#edit"></use>
+          </svg>
+        </button>
+        <button class="task-action" data-action="reset">
+          <svg class="icon">
+            <use href="../icons/extra-icons-mpl.svg#reset"></use>
+          </svg>
+        </button>
+        <button class="task-action" data-action="remove">
+          <svg class="icon">
+            <use href="../icons/photon-icons.svg#stop"></use>
+          </svg>
+        </button>
+        <button class="task-action" data-action="deleteFile">
+          <svg class="icon">
+            <use href="../icons/photon-icons.svg#delete"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="task-row progress-row">
+        <div class="progress-canvas-wrapper">
+          <canvas class="progress-canvas" width="1024" height="1"></canvas>
+        </div>
+      </div>
+      <div class="task-row detail-row"><span class="estimated-time">--:--</span><span class="current-size-container"><span class="current-size">0</span><span class="total-size">?</span><span class="percentage">--%</span></span><span class="other-details"><span class="average-speed"></span><span class="error"></span><span class="icon-text">
+            <svg class="icon">
+              <use href="../icons/extra-icons-mpl.svg#multithreaded-download-stroke"></use>
+            </svg><span class="current-threads">0</span><span class="max-threads">-</span></span></span></div>
+    </template>
+    <script type="module" src="panel.js"></script>
+  </body>
+</html>

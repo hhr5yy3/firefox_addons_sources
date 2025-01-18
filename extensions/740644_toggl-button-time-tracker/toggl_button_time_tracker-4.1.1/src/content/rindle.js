@@ -1,0 +1,1 @@
+togglbutton.render(".time__tracker .toggl__container:not(.toggl)",{observe:!0},function(t){const e=$(".navbar-default .dropdown .navbar-brand .ng-scope").textContent,o=function(){const n=$(".toggl__card-title",t);return n?n.textContent:null},r=togglbutton.createTimerLink({className:"rindle",description:o,projectName:e});t.appendChild(r)});

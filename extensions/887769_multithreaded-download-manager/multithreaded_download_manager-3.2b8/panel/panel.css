@@ -1,0 +1,244 @@
+@import '../common/common.css';
+body {
+  overflow: hidden;
+  background-color: #fff;
+}
+#panel-size-request {
+  width: 450px;
+}
+#tasks-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
+}
+#tasks,
+.task {
+  display: flex;
+  flex-direction: column;
+}
+#empty-tasks {
+  display: none;
+  padding: 1em 0;
+  text-align: center;
+}
+#tasks:empty + #empty-tasks {
+  display: unset;
+}
+.task {
+  padding: 0.4em 0.5em;
+  border-bottom: 1px solid #d3d3d3;
+}
+.task.selected {
+  background-color: #e8f2ff;
+}
+.task-row {
+  display: flex;
+  align-items: center;
+}
+.task-row:not(:nth-of-type(1)) {
+  margin-top: 0.2em;
+}
+.summary-row > button {
+  display: flex;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  padding: 0;
+  background: none;
+  padding: 0.25em;
+}
+.summary-row > button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.summary-row > button:not([disabled]):focus {
+  outline: 1px dotted #00f;
+}
+.summary-row > button:not([disabled]):hover {
+  background-color: rgba(0,0,0,0.1);
+}
+.summary-row > button > svg,
+.summary-row > button > img {
+  width: 1em;
+  height: 1em;
+}
+.summary-row > button[data-action='reset'],
+.summary-row > button[data-action='deleteFile'] {
+  display: none;
+}
+.state-icon {
+  margin-right: 0.2em;
+  width: 1em;
+  height: 1em;
+  padding: 0.1em;
+}
+.filename {
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: 0;
+  margin-right: 4px;
+}
+.filename:after {
+  content: '\FEFF';
+  visibility: hidden;
+}
+.progress-canvas-wrapper {
+  height: 1em;
+  flex: 1;
+  position: relative;
+}
+.progress-canvas {
+  background-color: #d3d3d3;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.detail-row > span:not(:last-child),
+.other-details > span:not(:last-child) {
+  margin-right: 0.8em;
+}
+.current-size:after {
+  content: ' / ';
+  white-space: pre-wrap;
+}
+.total-size:after {
+  content: ' (';
+  white-space: pre-wrap;
+}
+.percentage:after {
+  content: ')';
+}
+.other-details {
+  display: contents;
+}
+.task.has-error .average-speed {
+  display: none;
+}
+.task:not(.has-error) .error {
+  display: none;
+}
+.other-details > .icon-text {
+  display: flex;
+  align-items: center;
+}
+.other-details > .icon-text > .icon {
+  width: 1em;
+  height: 1em;
+  margin-inline-end: 0.4ch;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.task:not([data-state='downloading']):not([data-state='saving']) .current-threads {
+  display: none;
+}
+.current-threads:after {
+  content: '/';
+  white-space: pre-wrap;
+}
+#toolbar {
+  display: flex;
+  flex-flow: wrap;
+  background-color: #f1f2f3;
+  padding: 1px;
+}
+#toolbar > button {
+  display: flex;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  padding: 0;
+  background: none;
+  padding: 6px;
+  position: relative;
+}
+#toolbar > button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+#toolbar > button:not([disabled]):focus {
+  outline: 1px dotted #00f;
+}
+#toolbar > button:not([disabled]):hover {
+  background-color: rgba(0,0,0,0.1);
+}
+#toolbar > button > svg,
+#toolbar > button > img {
+  width: 16px;
+  height: 16px;
+}
+#toolbar > button[disabled] {
+  color: #aaa;
+}
+#toolbar > button .context-menu-disabler {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+:root:not(.enable-selection) #toolbar .if-enable-selection,
+:root:not(.enable-selection) #toolbar .selection-tool {
+  display: none;
+}
+.warning-bar,
+.error-bar {
+  padding: 4px 6px;
+  background-color: #fdf5e6;
+}
+.warning-bar > span:not(:last-child),
+.error-bar > span:not(:last-child) {
+  padding-right: 0.6ch;
+}
+.warning-bar:not(:last-of-type),
+.error-bar:not(:last-of-type) {
+  border-bottom: 1px solid #d3d3d3;
+}
+.error-bar {
+  background-color: #ffc0cb;
+}
+#webext-oop-desc-1 {
+  display: flex;
+  height: 1.8em;
+  align-items: center;
+}
+#webext-oop-url {
+  width: 32ch;
+  font-family: monospace;
+  margin-left: 1ch;
+}
+#webext-oop-url-copy {
+  width: 1.8em;
+  height: 1.8em;
+  padding: 0.2em;
+}
+#webext-oop-url-copy > svg {
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 449px) {
+  .detail-row {
+    display: grid;
+    grid-template-columns: max-content max-content max-content 1fr;
+    grid-row-gap: 0.1em;
+  }
+  .estimated-time,
+  .other-details {
+    display: flex;
+    grid-row: 2;
+  }
+  .current-size-container {
+    grid-row: 1;
+    grid-column: 1/-1;
+  }
+}
+

@@ -1,0 +1,168 @@
+{
+    "id": 870263,
+    "authors": [
+        {
+            "id": 13403255,
+            "name": "Martin V\u00e4th",
+            "url": "https://addons.mozilla.org/en-US/firefox/user/13403255/",
+            "username": "vaeth"
+        }
+    ],
+    "average_daily_users": 10354,
+    "categories": [
+        "bookmarks"
+    ],
+    "contributions_url": "",
+    "created": "2017-11-03T16:41:58Z",
+    "current_version": {
+        "id": 5444085,
+        "compatibility": {
+            "firefox": {
+                "min": "57.0",
+                "max": "*"
+            }
+        },
+        "edit_url": "https://addons.mozilla.org/en-US/developers/addon/bookmark-dupes/versions/5444085",
+        "file": {
+            "id": 3988430,
+            "created": "2022-08-13T05:47:53Z",
+            "hash": "sha256:55dfcd3d203716f432127bed09f1ea9c91da17a9fc49ea307e0012c7cf1c814a",
+            "is_mozilla_signed_extension": false,
+            "size": 77376,
+            "status": "public",
+            "url": "https://addons.mozilla.org/firefox/downloads/file/3988430/bookmark_dupes-6.6.xpi",
+            "permissions": [
+                "bookmarks",
+                "storage"
+            ],
+            "optional_permissions": [],
+            "host_permissions": []
+        },
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 13,
+            "is_custom": false,
+            "name": {
+                "en-US": "GNU General Public License v2.0 only"
+            },
+            "slug": "GPL-2.0-only",
+            "url": "https://spdx.org/licenses/GPL-2.0-only.html"
+        },
+        "release_notes": {
+            "en-US": "Swedish translation"
+        },
+        "reviewed": "2022-08-13T05:50:14Z",
+        "version": "6.6"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "After installing bookmarkdupes, the basic usage is rather simple:\n\nTo open bookmarkdupes, click the extension symbol (duplicate stars) or use the link in the options page of the extension.\n<strong>Do not enable expert mode</strong> (unless you know what you are doing, see separate section).\nThen select what you want to display:\n\n<ol><li>Bookmark duplicates</li><li>Empty folders</li><li>Non-duplicate bookmarks&lt;/&lt;li&gt;</li><li>All bookmarks</li></ol>\nAfter this, you will be offered the list of bookmarks with checkboxes; in case 1 the numbers indicate the order in which matching bookmarks were added according to the internally stored date.\nThere are also button to select/unselect convenient sets of checkboxes.\nFinally, there appear buttons to remove the selected bookmarks (or to move them to a \u201cDupes\u201d folder) in cases 1-3, or to strip the descriptions of the selected bookmarks in case 4. (The latter has some side effects, see section <i>Known Bugs</i>).\n\n<strong>Be aware that removing/moving bookmarks or stripping descriptions is irreversible!</strong>\n<em>It is recommended to make backups of your bookmarks first!</em>\n\nCurrently, there is no working version available for android (see section <i>Known Bugs</i>).\n\n<b>Important:</b> \nWhen you reorganized/added/removed bookmarks, make sure to update the\ndisplayed list (by pressing the corresponding button) before removing\nbookmarks or stripping descriptions!\nIn particular, stripping descriptions with an outdated list will move\nthe corresponding bookmarks to their previous location in the bookmark menu!\n\n<b>Permissions</b>\n\nThe extension requires the following permissions for these reasons:\n<ol><li>\u201cbookmarks\u201d to read/modify bookmarks</li><li>\u201cstorage\u201d to store/restore the customized rules in expert mode.\nUnfortunately, \u201cstorage\u201d is not one of the <i>optional_permissions</i> which might be required only if that feature is actually requested by the user, see <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/19c8d8b7dc0ee332ec83fe489375fa388bc2ec9493597169765dd35e4856fd2b/https%3A//developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/optional_permissions\" rel=\"nofollow\">https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/optional_permissions</a></li></ol>\n<b>Expert Mode</b>\n\nWhen selecting the checkbox for expert mode, details can be configured to\nignore certain bookmarks when calculating the list or under which cases\nbookmarks are considered to be dupes of each other.\n\nIn non-expert mode, two bookmarks are considered to be duplicates of each other if their URL coincides. In expert mode there are custom rules by which the URL which is actually used for comparison is to be modified. The details are as follows.\n\nFor every bookmark the rules are applied in the given order.\nThere are 2 types of rules: Filter rules and URL modification rules\n(there are also disabled rules which are only listed but have no effect).\n\nFor both types of rules 4 regular expressions can be specified which are used\nto determine if the rule applies: If the corresponding regular expression is\nnonempty, the corresponding condition must be satisfied or the rule will not\napply. (In the case of filter rules, at least one of these 4 regular\nexpressions must be nonempty or that filter rules will not apply either.)\n\nThe 4 regular expressions refer to the bookmark's name or url, respectively,\nand the regular expressions must either match or not match, respectively.\n\n<ul><li>The term \"regular expression\" refers to a javascript type regular expression\nas described e.g. in <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/2fecc8d11c005bcf86a8ae976df244d0095608d47eb66f34f3962253b2c46405/https%3A//wiki.selfhtml.org/wiki/JavaScript/Objekte/RegExp\" rel=\"nofollow\">https://wiki.selfhtml.org/wiki/JavaScript/Objekte/RegExp</a>\nor <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/d70f25e7d956fa62158e913819fdbfb5ec680ba88d12651062da4d997c5e9371/https%3A//developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions\" rel=\"nofollow\">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions</a></li><li>The bookmark's name refers to the full bookmark path as it appears in the\nbrowser with folder names separated by the null character.\nFor instance, if you have in \"Bookmark Menu\" a folder \"Collection\"\nwhich contains your bookmark \"Example\", the bookmark's name becomes\n\"Bookmark Menu\\0Collection\\0Example\" (where \\0 denotes the null character\nwhich can be matched by the regular expression with \\0 or \\x00).</li><li>The bookmark's url refers to the bookmark url after possible modifications\nby previous modifier rules.</li></ul>\nIf a filter rule applies, the corresponding bookmark is ignored, i.e.,\nit will not be considered as a duplicate and will neither appear in the\nlist of empty folders or of all bookmarks.\n\nIf a URL modification rule applies, a text replacement will occur:\nAll parts matching a specified regular expression are substituted by a\nreplacement text (which might be empty).\nThe rules for this correspond to the javascript String.prototype.replace function with the\nglobal modifier, see e.g. <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/ea5fcbd460db3c70d907c8221d877fa3f4b50aecee6498cc10a05f8bdbf6cd4d/https%3A//wiki.selfhtml.org/wiki/JavaScript/Objekte/String/replace\" rel=\"nofollow\">https://wiki.selfhtml.org/wiki/JavaScript/Objekte/String/replace</a>\nor <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/2e0c90f8379dcdeb12fea094a8b89ac24857e9e550e558587fb2fa68ea5c90dc/https%3A//developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/replace\" rel=\"nofollow\">https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/String/replace</a>\n\nIn particular, the replacement text can contain symbols like\n<code>$&amp;</code> or <code>$1</code>  to refer to the whole matched text or to the\nmatch of the first brace in the regular expression, respectively.\n\nThe following 5 replacement texts have a special meaning which goes beyond\nthe standard javascript replacement rules.\n\nNote that this special meaning is only active if this is the full replacement\ntext. In other words, to get the special meaning, the replacement text must not\ncontain anything else than these 4-6 characters.\n(This does not really restrict the functionality, because one can combine\nseveral rules to work around that limitation if necessary.)\n\n<ol><li>\u201c\\L$&amp;\u201d is the match in lower case.</li><li>\u201c\\U$&amp;\u201d is the match in upper case.</li><li>\u201c$URL\u201d is the url before any other rules have been applied.</li><li>\u201c$NAME\u201d is the bookmark's full name/path with folders separated by the null character, e.g. \u201cBookmark Menu\\0Collection\\0Example\u201d</li><li>\u201c$TITLE\u201d is the bookmark's title without the path; for instance, for the bookmark name \u201cBookmark Menu | Collection | Example\u201d it is \u201cExample\u201d.</li></ol>Cases 3-5 can be preceeded or followed by `$$&amp;` to prepend or append the match.\n\n<strong>Examples for special tasks which can be done in Expert Mode</strong>\n\n<ul><li><em>Task</em><ol><li>Consider two bookmarks as duplicate if their URL differs only in \u201chttps:\u201d vs. \u201chttp:\u201d at the beginnning.</li><li>Consider two bookmarks as duplicate if their URL matches up to the first \u201c?\u201d symbol, i.e. only their additional information differs.</li><li>Do not consider any bookmark from any folder named \u201cMr. Dupe\u201d as a duplicate.</li><li>Add all bookmarks to the list of duplicates, whether duplicate or not.</li><li>Add all bookmarks from the folder \u201cBookmark Menu | Remove\u201d to the list of duplicates (no matter whether they actually are duplicates).</li><li>Consider two bookmarks as duplicate if they have the same name (instead of the same URL).</li><li>Consider two bookmarks as duplicate if they reside in the same folder.</li></ol></li><li><em>How to do the above tasks in Expert Mode</em><ol><li>Use the replacement rule: \u201cReplace URL matches\u201d \u201c^http:\u201d \u201cby\u201d \u201c^https:\u201d</li><em>Explanation</em>: By replacing everywhere the URL beginnning with \u201chttp:\u201d\nby \u201chttps:\u201d, it does not matter whether the actual URL started with \u201chttp:\u201d\nor \u201chttps:\u201d. Of course, we could have exchanged the roles of \u201chttp\u201d\nand \u201chttps\u201d in our rule.<li>Use the replacement rule: \u201cReplace URL matches\u201d \u201c\\?.*\u201d \u201cby\u201d \u201c\u201d</li><em>Explanation</em>: Simply omit the ? symbol and all other symbols following it\nin all URLs.<li>Use the filter rule: \u201cName matches\u201d \u201c\\0Mr\\. Dupe\\0\u201d or \u201c\\0Mr[.] Dupe\\0\u201d</li><em>Explanation</em>: If a bookmark is in a folder named \u201cMr. Dupe\u201d, its full name (path) will contain the text \u201c\\0Mr. Dupe\\0\u201d; so match that text. Since the \u201c.\u201d symbol has a special meaning for regular expressions, we have to quote it. This can be done by either \u201c\\.\u201d or by looking for a character class \u201c[\u2026]\u201d which contains only the single symbol \u201c.\u201d.<li>Use the replacement rule: \u201cReplace URL matches\u201d \u201c.+\u201d \u201cby\u201d \u201chttp://dummy\u201d</li><em>Explanation</em>: Pretend that every bookmark has the URL \u201chttp://dummy\u201d by replacing all characters (\u201c.+\u201d) of the original URL by that text.<li>Use the replacement rule: \u201cName Matches\u201d \u201c^Bookmark Menu\\0Remove\\0\u201d \u201cReplace URL matches\u201d \u201c.+\u201d \u201cby\u201d \u201chttp://dummy\u201d</li><em>Explanation:</em> As in 4, but only for bookmarks whose full name starts with the matching path.\nThis works only if the folder contains at least 2 bookmarks (because otherwise \u201chttp://dummy\u201d is not a duplicate URL). Of course, one might use an actually duplicate URL instead of \u201chttp://dummy\u201d to work around this limitation.<li>Use the replacement rule: \u201cReplace URL matches\u201d \u201c.+\u201d \u201cby\u201d \u201c$TITLE\u201d</li><em>Explanation:</em> Replace all bookmark URLs by the corresponding bookmark title when looking for dupes.<li>Use the replacement rule \u201cReplace URL matches\u201d \u201c.+\u201d \u201cby\u201d \u201c$NAME\u201d followed by a further replacement rule \u201cReplace URL matches\u201d \u201c[^\\0]*$\u201d \u201cby\u201d \u201c\u201d.</li><em>Explanation:</em> First replace the URL by its full name path, and then omit the last component of this path by cutting of the longest sequence of non-\u201c\\0\u201d-symbols at the end.</ol></li></ul>\n<b>Supported Languages</b>\n\nDefault language: en\nComplete translations: ar, de, es, ru, sv_SE, uk\nMainly but not quite complete translation: zh_CN\n\n<b>Known Bugs</b>\n\n<ol><li>Live bookmarks are falsely recognized as empty folders. <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/67a81fc26527712a609d98b76455562337211dd2cc47bfd9a6c8540734468bb3/https%3A//github.com/vaeth/bookmarkdupes/issues/4\" rel=\"nofollow\">https://github.com/vaeth/bookmarkdupes/issues/4</a></li><li>Stripping of descriptions works by replacing the bookmark by a freshly created one. In particular, it updates the bookmark creation date.</li><li>Stripping of descriptions creates bookmarks in the place where it was when the displayed list was calculated, see <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/18232d5ad61f0522265b4de66920b2df2cd82cc3fe8388f1336ac8f22258e1b4/https%3A//github.com/vaeth/bookmarkdupes/issues/11\" rel=\"nofollow\">https://github.com/vaeth/bookmarkdupes/issues/11</a> and the second part of <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/885335f4db9c8aaa6804a5ea0ffc680ed947c4c1e9165f9098d1d277dac8c399/https%3A//github.com/vaeth/bookmarkdupes/issues/8\" rel=\"nofollow\">https://github.com/vaeth/bookmarkdupes/issues/8</a></li><li>In some firefox versions (e.g. 55.0.3) it has been reported that pressing the duplicate stars does not open a new tab. You can try to use the link in the options page of the extension instead if you have this problem. The reason for the problem is still unknown, see <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/a8274c4a2c3f0945b434c65c7e705cb9198a11ce81e726438a0f8c67dabd91b6/https%3A//github.com/vaeth/bookmarkdupes/issues/38\" rel=\"nofollow\">https://github.com/vaeth/bookmarkdupes/issues/38</a></li><li>Android lacks the bookmark API necessary for bookmarkdupes: <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/7a1d775e0d976991cb326c8913fe5dfce775af9782111cb738ad0b78bac588c1/https%3A//github.com/vaeth/bookmarkdupes/issues/53\" rel=\"nofollow\">https://github.com/vaeth/bookmarkdupes/issues/53</a></li></ol>\n<b>Contributors</b> (alphabetical order)\n\n<ul><li>Essam Ambr aka (JaMaYcKa) <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/dd7d4c10784564bee2eba8bbb2c0e8da5d42d4d72e145f6e26c1b238f98345e1/https%3A//github.com/JaMaYcKa2B1\" rel=\"nofollow\">https://github.com/JaMaYcKa2B1</a> (Arabic translation)</li><li>Henaro aka Ironwool <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/7cdec2aa4207cc25dae5430739a2df9a1225c9947748863761ffb98243759c3f/https%3A//github.com/perdolka\" rel=\"nofollow\">https://github.com/perdolka</a> (Russian and Ukrainian translation; redesign icon in svg; provide favicon)</li><li>Sopor <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/8f79f5af91f70757ae01ad02f6b744708109a8a77a7e0cce5049ed686b9371c9/https%3A//github.com/Sopor\" rel=\"nofollow\">https://github.com/Sopor</a> (Swedish translation)</li><li>Juan Salvador Aleixandre Talens <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/c759b19ceb3825720b8698374ec8cda926a2fe2ba4be2c8e11ff70f3e346b741/https%3A//github.com/juaalta\" rel=\"nofollow\">https://github.com/juaalta</a> (Spanish translation)</li><li>YFdyh000 <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/09cb4de957b7b1a7c0f6875b7c7bdcb4a89f7b58cead7c4b102203bd5f0ffe42/https%3A//github.com/yfdyh000\" rel=\"nofollow\">https://github.com/yfdyh000</a> (Simplified Chinese translation)</li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.mozilla.org/en-US/developers/addon/bookmark-dupes/edit",
+    "guid": "bookmarkdupes@martin-vaeth.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.mozilla.org/user-media/addon_icons/870/870263-64.png?modified=1660369859",
+    "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/870/870263-32.png?modified=1660369859",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/870/870263-64.png?modified=1660369859",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/870/870263-128.png?modified=1660369859"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "last_updated": "2022-08-13T05:50:14Z",
+    "name": {
+        "en-US": "Bookmark Dupes"
+    },
+    "previews": [
+        {
+            "id": 200436,
+            "caption": {
+                "en-US": "Plain session"
+            },
+            "image_size": [
+                720,
+                804
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/200/200436.png?modified=1622132840",
+            "position": 0,
+            "thumbnail_size": [
+                358,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/200/200436.jpg?modified=1622132840"
+        },
+        {
+            "id": 200437,
+            "caption": {
+                "en-US": "Session with copies in the same folder"
+            },
+            "image_size": [
+                708,
+                804
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/200/200437.png?modified=1622132842",
+            "position": 1,
+            "thumbnail_size": [
+                352,
+                400
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/200/200437.jpg?modified=1622132842"
+        },
+        {
+            "id": 200438,
+            "caption": {
+                "en-US": "Example with expert mode"
+            },
+            "image_size": [
+                1330,
+                840
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/200/200438.png?modified=1622132844",
+            "position": 2,
+            "thumbnail_size": [
+                533,
+                337
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/200/200438.jpg?modified=1622132844"
+        }
+    ],
+    "promoted": {
+        "apps": [
+            "firefox",
+            "android"
+        ],
+        "category": "notable"
+    },
+    "ratings": {
+        "average": 4.7305,
+        "bayesian_average": 4.717007177398734,
+        "count": 501,
+        "text_count": 238
+    },
+    "ratings_url": "https://addons.mozilla.org/en-US/firefox/addon/bookmark-dupes/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.mozilla.org/en-US/reviewers/review/870263",
+    "slug": "bookmark-dupes",
+    "status": "public",
+    "summary": {
+        "en-US": "Display/Remove duplicate bookmarks, empty folders or descriptions"
+    },
+    "support_email": null,
+    "support_url": {
+        "url": {
+            "en-US": "https://github.com/vaeth/bookmarkdupes/"
+        },
+        "outgoing": {
+            "en-US": "https://prod.outgoing.prod.webservices.mozgcp.net/v1/65da892577d6f5453cc2a832e55cda3466ccc0f05607ff16f2c4ee204fc49029/https%3A//github.com/vaeth/bookmarkdupes/"
+        }
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.mozilla.org/en-US/firefox/addon/bookmark-dupes/",
+    "versions_url": "https://addons.mozilla.org/en-US/firefox/addon/bookmark-dupes/versions/",
+    "weekly_downloads": 154,
+    "_score": null
+}

@@ -1,0 +1,2 @@
+var env005=function(){"use strict";return{I:"undefined"!=typeof chrome&&Boolean(chrome.app),g:function(){return pref002.b.runtime.getBrowserInfo?pref002.b.runtime.getBrowserInfo():new Promise((e=>{const r=[/(firefox|edg)\/([\d.]+)/i,/(chrome)\/([\d.]+)/i];let n;for(const e of r)if(n=navigator.userAgent.match(e),n)break;e(n?{name:n[1],version:n[2]}:null)}))}}}();
+//# sourceMappingURL=env-CBPEoOlM.js.map

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="mgOptionsApp" ng-strict-di>
+  <head>
+    <meta charset="utf-8">
+
+    <title i18n="'optionsTitle'"></title>
+
+    <link rel="stylesheet" href="lib/font-awesome.min.css">
+    <link rel="stylesheet" href="options.css">
+
+    <!-- WebExtension shared components -->
+    <script src="../common/Optional.js"></script>
+    <script src="../common/GestureDetector.js"></script>
+    <script src="../content/helpers.js"></script>
+    <script src="../background/settings.js"></script>
+    <script src="../background/helpers.js"></script>
+    <script src="../background/commands.js"></script>
+  </head>
+
+  <body ng-controller="OptionsCtrl">
+    <h1 i18n="'optionsTitle'"></h1>
+
+    <!-- Do not show until settings are loaded -->
+    <form class="form" name="controls.optionsForm" ng-if="commands.loaded && settings.loaded">
+
+      <uib-tabset active="controls.activeTab">
+
+        <uib-tab index="0" select="onActiveTabChanged($event, 0)">
+          <uib-tab-heading i18n="'tabGeneral'"></uib-tab-heading>
+          <div ng-include="'/options/options.tab.general.html'"></div>
+        </uib-tab>
+
+        <uib-tab index="1" select="onActiveTabChanged($event, 1)">
+          <uib-tab-heading i18n="'tabCommands'"></uib-tab-heading>
+          <div ng-include="'/options/options.tab.commands.html'"></div>
+        </uib-tab>
+
+        <uib-tab index="2" select="onActiveTabChanged($event, 2)">
+          <uib-tab-heading i18n="'tabOtherGestures'"></uib-tab-heading>
+          <div ng-include="'/options/options.tab.othergestures.html'"></div>
+        </uib-tab>
+
+        <uib-tab index="3" select="onActiveTabChanged($event, 3)">
+          <uib-tab-heading i18n="'tabUserScripts'"></uib-tab-heading>
+          <div ng-include="'/options/options.tab.userscripts.html'"></div>
+        </uib-tab>
+
+        <uib-tab index="4" select="onActiveTabChanged($event, 4) || updateOptionalPermissions()">
+          <uib-tab-heading i18n="'tabMorePrefs'"></uib-tab-heading>
+          <div ng-include="'/options/options.tab.moreprefs.html'"></div>
+        </uib-tab>
+
+        <uib-tab index="5" select="onActiveTabChanged($event, 5)">
+          <uib-tab-heading i18n="'tabBackupRestore'"></uib-tab-heading>
+          <div ng-include="'/options/options.tab.backup.html'"></div>
+        </uib-tab>
+
+      </uib-tabset>
+
+    </form><!-- ng-if loaded -->
+
+    <!--
+    <pre>{{settings | json}}</pre>
+    <pre>{{controls | json}}</pre>
+    <pre>{{mappable | json}}</pre>
+    -->
+
+    <!-- Library components -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="lib/ace/ace.js"></script>
+    <script src="lib/ui-ace.js"></script>
+
+    <!-- Application components -->
+    <script src="options.js"></script>
+    <script src="options.tab.general.js"></script>
+    <script src="options.tab.commands.js"></script>
+    <script src="options.tab.userscripts.js"></script>
+    <script src="options.tab.othergestures.js"></script>
+    <script src="options.tab.moreprefs.js"></script>
+    <script src="options.tab.backup.js"></script>
+
+  </body>
+
+</html>

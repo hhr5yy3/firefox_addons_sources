@@ -1,0 +1,53 @@
+html:not([rgh-OFF-clean-pinned-issues]) .js-pinned-issues-reorder-container .f4 {
+  display: none !important;
+}
+
+html:not([rgh-OFF-clean-pinned-issues]) .js-pinned-issues-reorder-list {
+  gap: 16px;
+}
+
+html:not([rgh-OFF-clean-pinned-issues]) .pinned-issue-item {
+  flex: 1;
+  width: auto !important;
+  margin-inline: 0 !important;
+}
+
+@media (width >= 700px) {
+  html:not([rgh-OFF-clean-pinned-issues]) .js-pinned-issues-reorder-list {
+    width: 100%;
+    box-shadow: 0 0 0 2px var(--rgh-border-color, fuchsia);
+    border-collapse: collapse;
+    border-style: hidden;
+    border-radius: 6px;
+    margin: 0 0 20px;
+    display: table !important;
+  }
+
+  html:not([rgh-OFF-clean-pinned-issues]) .pinned-issue-item {
+    border-color: var(--rgh-border-color, fuchsia) !important;
+    display: table-row !important;
+  }
+
+  html:not([rgh-OFF-clean-pinned-issues]) .pinned-issue-item > * {
+    vertical-align: middle;
+    white-space: nowrap;
+    padding: 6px 12px;
+    display: table-cell !important;
+  }
+
+  html:not([rgh-OFF-clean-pinned-issues]) .pinned-issue-item > :first-child {
+    white-space: normal;
+    display: flex !important;
+  }
+
+  html:not([rgh-OFF-clean-pinned-issues]) .pinned-issue-handle {
+    order: -1;
+    margin-top: -2px;
+  }
+
+  html:not([rgh-OFF-clean-pinned-issues]) .pinned-issue-item form button {
+    margin-left: -10px;
+    float: unset !important;
+    margin-right: 2px !important;
+  }
+}

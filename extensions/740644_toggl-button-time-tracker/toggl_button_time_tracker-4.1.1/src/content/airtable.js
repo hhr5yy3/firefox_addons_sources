@@ -1,0 +1,1 @@
+togglbutton.render(".DetailViewWithActivityFeed:not(.toggl)",{observe:!0},function(t){const n=t.querySelector('div[role="button"]:nth-of-type(5)'),o=()=>{const e=t.querySelector(".detailView .cellContainer textarea");return e?e.value:""},i=togglbutton.createTimerLink({className:"airtable",description:o});n.after(i)});

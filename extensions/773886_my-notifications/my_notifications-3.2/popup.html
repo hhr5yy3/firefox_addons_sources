@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html" charset="UTF-8"> 
+<head>
+	<title>My Notification popup window</title>
+	<link rel="stylesheet" type="text/css" href="popup.css" id="main-sheet">
+	<link rel="stylesheet" type="text/css" href="assets/iconselect.css">
+	<link rel="stylesheet" type="text/css" href="assets/coloris.css">
+	<script src="assets/muuri.js"></script>
+	<script src="assets/iconselect.js"></script>
+	<script src="assets/coloris.js"></script>
+	<script src="assets/autocomplete.js"></script>
+	<script src="popup.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="top">
+			<div class="r">
+				<a href="#" id="addSite" data-popup-trigger="addForm">➕</a>
+				<a href="#" id="settingLink" data-popup-trigger="settingsForm">⚙️</a>
+			</div>
+		</div>
+		<div class="grid"></div>
+	</div>
+	<div class="extender">
+		<div id="close-button">🗙</div>
+		<div class="form" data-popup-modal="addForm">
+			<div class="title">
+				<span data-lang="add_site" class="">Add site</span>
+			</div>
+			<div class="line">
+				<input type="text" name="url" data-lang="search" data-lang-attrib="placeholder" placeholder="https://gmail.com" autocomplete="off">
+			</div>
+			<!--button type="button" data-lang="add_button" name="add_button">Add</button-->
+		</div>
+		<div class="form" data-popup-modal="siteSettingsForm">
+			<div class="title">
+				<span data-lang="site_setting" class="">Site setting</span>
+			</div>
+			<div class="line">
+				<div class="spacer">
+					<label>
+						<input name="check" type="checkbox"/>
+					</label>
+				</div>
+				<span data-lang="check_messages">Check messages</span>
+			</div>
+			<div class="line">
+				<div class="spacer">
+					<select name="sound" data-role="setting">
+						<option value="" data-lang="default_dash">-default-</option>
+						<option value="off" data-lang="off_dash">-off-</option>
+					</select>
+				</div>
+				<span data-lang="sound">Звук уведомлений</span>
+			</div>
+		</div>
+		<div class="form" data-popup-modal="settingsForm">
+			<div class="title">
+				<span data-lang="settings">Settings</span>
+			</div>
+			<div class="line">
+				<div class="spacer">
+					<input type="text" name="windowBadgeColor" data-role="setting" data-coloris-my>
+				</div>
+				<span data-lang="window_color">Цвет счетчиков</span>
+			</div>
+
+			<div class="line">
+				<div class="spacer">
+					<input type="text" name="applicationBadgeColor" data-role="setting" data-coloris-my>
+				</div>
+				<span data-lang="badge_color">Цвет бейджа</span>
+			</div>
+
+			<div class="line">
+				<div class="spacer">
+					<select name="sound" data-role="setting">
+						<option value="off" data-lang="off_dash">-выкл-</option>
+					</select>
+				</div>
+				<span data-lang="sound">Звук уведомлений</span>
+			</div>
+
+			<div class="line">
+				<div class="spacer">
+					<input name="volume" type="range" min="0" max="1" step="0.01" data-role="setting"/><span class="range-hint">100</span>
+				</div>
+				<span data-lang="volume">Громкость уведомлений</span>
+			</div>
+
+			<div class="line">
+				<div class="spacer">
+					<div id="my-icon-select"></div>
+				</div>
+				<span data-lang="panel_icon">Иконка в браузере</span>
+			</div>
+
+			<div class="line">
+				<div class="spacer">
+					<select name="columns" data-role="setting">
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+					</select>
+				</div>
+				<span data-lang="columns_count">Ширина окна (колонок)</span>
+			</div>
+
+			<div class="footer">
+				<div class="links">
+					<a href="https://vk.com/mymessages" target="_blank">VK</a>
+					<div class="center">
+						<span id="name" data-lang="name"></span>
+						<span id="ver"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="helper">
+		<div class="item">
+			<div>
+				<div class="buttons">
+					<div class="button setting" data-action="setting">⚙</div>
+					<div class="button delete" data-action="delete">✖</div>
+				</div>
+				<div class="linked"></div>
+				<div class="icon-holder">
+					<div class="icon"></div>
+					<div class="icon-shadow"></div>
+				</div>
+				<div class="waves">
+					<span class="online-outer">
+						<span class="online-inner"></span>
+					</span>
+				</div>
+				<div class="count"></div>
+				<div class="site-name"></div>
+			</div>
+		</div>
+	</div>
+	<ul class="popup-menu">
+		<li data-action="setting" data-lang="settings_button">Settings</li>
+		<li data-action="delete" data-lang="delete_button">Delete</li>
+	</ul>
+</body>
+</html>

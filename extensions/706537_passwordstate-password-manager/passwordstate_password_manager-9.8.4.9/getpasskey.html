@@ -1,0 +1,551 @@
+<html>
+
+<head>
+    <style>
+        #SavePanelPopup div {
+            display: block !important;
+        }
+
+        .save-panel-popup {
+            width: 300px;
+            padding-bottom: 10px;
+            overflow-x: hidden;
+            font-family: "Segoe UI", Tahoma, arial, sans-serif;
+            font-size: 14px;
+            margin-left:10px;
+        }
+
+        .save-panel-popup.login_as {
+            background: #f3f4f7;
+            width: 320px;
+        }
+
+        .save-panel-popup.login_as2 {
+            width: 350px;
+        }
+
+        .save-panel-popup .psbe-main-menu {
+            width: 300px;
+            margin: -8px 0 0 0;
+            list-style: none;
+        }
+
+        .save-panel-popup.login_as .psbe-main-menu {
+            width: 320px;
+        }
+
+        .save-panel-popup.login_as2 .psbe-main-menu {
+            width: 350px;
+        }
+
+        .save-panel-popup .psbe-main-menu.generate_password {
+            margin-bottom: 70px;
+        }
+
+        .save-panel-popup .psbe-main-menu.preferences {
+            margin-bottom: 50px;
+        }
+
+        .save-panel-popup .psbe-main-menu.match-login {
+            margin-bottom: 20px;
+        }
+
+        .save-panel-popup .item-menus {
+            padding: 15px 0;
+        }
+
+        .save-panel-popup .item-menus:last-child {
+            padding: 10px 0;
+        }
+
+        .save-panel-popup .item-menu {
+            cursor: pointer;
+            display: block;
+            padding: 8px 14px;
+            color: Black;
+            text-decoration: none;
+            position: relative;
+            line-height: initial !important;
+        }
+
+        .save-panel-popup.add-site .item-menu {
+            padding: 5px 14px;
+        }
+
+        .save-panel-popup .item-menu.login-bg {
+            background: #fff;
+            margin: 0 14px 10px;
+            padding: 15px 14px;
+            border-radius: 5px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .save-panel-popup .item-menu span {
+            overflow: hidden;
+            font-size: 15px;
+            font-weight: 400;
+            color: #232324;
+        }
+
+        .save-panel-popup .item-menu span.main-title {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .save-panel-popup .item-menu span.sub-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .save-panel-popup .psbe-main-menu div:hover {
+            text-decoration: none;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            /* future proofing */
+            -khtml-border-radius: 2px;
+            /* for old Konqueror browsers */
+        }
+
+        .save-panel-popup #websiteLogins div:hover {
+            background-color: #eef0f5;
+            text-decoration: none;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -khtml-border-radius: 2px;
+        }
+
+        .save-panel-popup .psbe-main-menu div.save-btn:hover {
+            background: transparent;
+        }
+
+        .save-panel-popup .psbe-main-menu div:hover .link-image {
+            opacity: 1;
+        }
+
+        .save-panel-popup #websiteLogins div:hover .link-image {
+            opacity: 1;
+        }
+
+        .save-panel-popup .line {
+            position: relative;
+        }
+
+        .save-panel-popup .line::after {
+            content: "";
+            height: 1px;
+            width: 110%;
+            background: #E9EAF1;
+            position: absolute;
+            left: -15px;
+            margin: 0 auto;
+            text-align: center;
+            bottom: 0;
+        }
+
+        .save-panel-popup .item-menu .ico_img {
+            display: block;
+            width: 16px;
+            height: 16px;
+            float: left;
+            margin-right: 10px;
+            padding-top: 2px;
+        }
+
+        .save-panel-popup .item-menu .ico_img.main-img {
+            padding-top: 5px;
+        }
+
+        .save-panel-popup .ico_img_right {
+            display: block;
+            width: 16px;
+            height: 16px;
+            float: right;
+            margin-right: 5px;
+        }
+
+        .save-panel-popup .item-menu .ico_img img {
+            position: relative;
+            width: 16px;
+            height: 16px;
+        }
+
+        .title-description {
+            font-size: 13px;
+            color: #232324;
+        }
+
+        .save-panel-popup>.title {
+            display: block !important;
+            font-size: 15px;
+            background: #eef0f5;
+            padding: 15px 20px;
+            position: static !important;
+        }
+
+        .title.login {
+            background: none;
+        }
+
+        p.title {
+            background: none;
+            padding: 0;
+            color: #232324;
+            margin: 0;
+            font-size: initial !important;
+            position: static !important;
+        }
+
+        p.login-title {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .title .title-text>span {
+            color: #2f3137;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .title.back .title-text>span,
+        .title.login .title-text>span {
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .save-panel-popup .search-box {
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .save-panel-popup .search-box .ico_img {
+            position: absolute;
+            top: 36px;
+            left: 25px;
+        }
+
+        .save-panel-popup input {
+            padding: 5px;
+            width: 100%;
+            text-indent: 33px;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        .title input::placeholder {
+            color: #cccccc;
+        }
+
+        .build-info {
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .title-image {
+            vertical-align: middle;
+            margin-top: -4px;
+            padding-right: 3px;
+        }
+
+        .title-image2 {
+            float: right;
+            margin-top: 5px;
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .login-image {
+            width: 32px !important;
+            height: 32px !important;
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: middle;
+            border-radius: 3px;
+        }
+
+        .link-image {
+            position: absolute;
+            top: 36%;
+            right: 15px;
+            opacity: 0;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        .login-descrption {
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+
+        .prefs-build-info {
+            float: right;
+            font-size: 12px;
+        }
+
+        .save-panel-popup .select-input select,
+        .save-panel-popup .select-input input {
+            width: 100% !important;
+            height: 27px !important;
+            padding: 0px !important;
+            text-indent: 4px !important;
+            color: #78787b;
+            font-size: 13px;
+            border: 2px solid #b7b7b7;
+            ;
+            margin-bottom: 10px !important;
+            box-sizing: content-box;
+        }
+
+        .save-panel-popup .save-btn {
+            padding: 0px 0px;
+        }
+
+        .save-panel-popup .save-btn button {
+            padding: 3px 10px;
+            border: 1px;
+            border-style: solid;
+            border-color: #cccccc;
+            background-color: #f9f9f9;
+            white-space: nowrap !important;
+            color: #000000;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border-radius: 1px;
+            -khtml-border-radius: 3px;
+            cursor: pointer;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            padding: 5px 15px;
+            border: 1px;
+            border-style: solid;
+            border-color: #313439 !important;
+            background-color: #313439 !important;
+            background-image: none !important;
+            text-shadow: none !important;
+            white-space: nowrap !important;
+            color: #ffffff !important;
+            min-width: 0 !important;
+        }
+
+        .save-panel-popup .save-btn button:hover {
+            background-color: #0081AF !important;
+            border-color: #0081AF !important;
+            color: #fff;
+            font-size: inherit !important;
+            font-family: inherit !important;
+        }
+
+        .save-panel-popup .select-input.close-btn button {
+            background: transparent;
+            border: 0;
+            float: right;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        #SavePanelPopup.container {
+            display: inline-block;
+            position: relative;
+            padding-left: 21px;
+            vertical-align: middle;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        #SavePanelPopup.container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 2px;
+            left: 0;
+            height: 10px;
+            width: 10px;
+            background-color: #fff;
+            border: 2px solid #636369;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        #SavePanelPopup.container input:checked~.checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        #SavePanelPopup.container .checkmark:after {
+            left: 3px;
+            top: 0px;
+            width: 2px;
+            height: 7px;
+            border: solid #636369;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        input[type="search"]::-webkit-search-cancel-button {
+            -webkit-appearance: none;
+        }
+
+        .masthead-search-toggle {
+            width: 30px;
+            height: 30px;
+            float: right;
+            position: relative;
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        #masthead-search-toggle:checked+.masthead-search-indicator {
+            width: 16px;
+            height: 16px;
+            display: block;
+            position: absolute;
+            top: 0px;
+            right: 7px;
+            background: url("../images/close.png") no-repeat;
+        }
+
+        .masthead-search-indicator {
+            width: 16px;
+            height: 16px;
+            display: block;
+            position: absolute;
+            top: 0px;
+            right: 7px;
+            background: url("../images/search-2.png") no-repeat;
+        }
+
+        #masthead-search-search {
+            text-indent: 0;
+        }
+
+        .masthead-search-search {
+            opacity: 0;
+            top: -7px;
+            height: 30px;
+            width: 155px;
+            float: right;
+            z-index: 99;
+            position: relative;
+            transition: all .4s ease-in-out;
+        }
+
+        .login_as2 .masthead-search-search {
+            width: 185px;
+        }
+
+        #masthead-search-toggle:checked+.masthead-search-indicator+.masthead-search-search {
+            opacity: 1;
+        }
+
+        .isHidden {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            border: 0 !important;
+            margin: 0 !important;
+            clip: rect(1px 1px 1px 1px) !important;
+            clip: rect(1px, 1px, 1px, 1px) !important;
+            overflow: hidden !important;
+            opacity: 0;
+        }
+
+        .title-text {
+            position: relative;
+            cursor: pointer;
+        }
+
+        #SavePanelPopup {
+            animation: slide-up 0.4s ease;
+        }
+
+        @keyframes slide-up {
+            0% {
+                opacity: 0;
+                transform: translateX(15px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .save-panel-popup input {
+            background-color: #ffffff !important;
+        }
+
+        div#password img {
+            all: unset
+        }
+    </style>
+    <script src="js/getpasskey.min.js"></script>
+</head>
+
+<body>
+    <div class="save-panel-popup add-site" id="save-popup"> <span class="title" style="text-align:center">
+            <div class="title-text" style="margin-left:5% !important;"><img
+                    style="width:21px!important;margin-top: -4px;vertical-align: middle !important;padding-right: 5px;display:inline-block !important;position:unset !important"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUZGNjQzN0FGMTc0MTFFODkwRDJCRTY4NEFCMkU2QjgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUZGNjQzN0JGMTc0MTFFODkwRDJCRTY4NEFCMkU2QjgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRkY2NDM3OEYxNzQxMUU4OTBEMkJFNjg0QUIyRTZCOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxRkY2NDM3OUYxNzQxMUU4OTBEMkJFNjg0QUIyRTZCOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkxHx1cAAAJ9SURBVHjafFPtS1NRGP/du+vUSW5tMd2akJKUn9oEUyhNjLQMMtMkrMBPUR+KIoooCCGpD/0DBZYthpEVhYRgGAljrDSQXlC/2Idc5rDtXpu6F6en5xycDXx54FzOc+75/c7ze16ksvLKLgCNWDFZlhGJzEFRdMjOzsby8jI2sdcKfdpSniRJiEajsFi2gjGGhYUodDrdZgRtMn0iKY+DZmb+oONOOw7X1WJq6rcg5YtHsri4KPZpFuERrMYYDqsoLt6Jqsp9mJ+fRzwe57QEkpFMJpFIJEiaImTyxzhWTtfOX284dlT4pS4nCgocQkYoFILLuQe3bl6HqqqCdBWX2iyQ9vx8K1pONgk/L8+K8vIyAoeJOISqqv043XoKNpuNItX+E/AwVVXD2Og4ag8dhMOxHR7PMywtJdHc1EgVicBq3YbqA5UCUF9fh4mJHwITi8WgGI1G2O025OZuwYXz58Sl2+0dKCnZLQj1ej1KS10oLNwh/rU0n0BfXz+VOItylAAePOzUWJr19r7lAtnde/eFf6S+gT1xexhVgPW8eJV+lT3ueqrp8u2OG5SYrJGRL/D5/PB0P8fs3znESNrZM60oKipETU01/B+HcPHSVVHG0bFxfPv6nc4+xaVdJU5N1VRjKrEWixm5JCswOYmXPd2oqNgrzi9fuYbOR27k5BhWug4wmUyzCtfOV7oxahpevv53A4JgejqIgfcfRB649nST1+tP3iRmsxler0/4g4NeBAK/YDAY1tyVNyIxmYz4STKGhj/D5/eDV4uxNYMlSzSNbD0CnqwE9b6JgHzANppKPgtuWsfXk6HPyEAwGERmZiYtPZGseevNPwEGAMf2HJVsd9IcAAAAAElFTkSuQmCC"
+                    alt="" /> <span>Passwordstate</span></div>
+        </span>
+        <div class="line"></div>
+        <div class="psbe-main-menu">
+            <div class="top-div"
+                style="text-align:left;background: white;margin: 8px;box-shadow: 0px 0px 3px 0px #b7b7b7;border: 1px solid #b7b7b7;">
+                <div class="item-menu">
+                    <p class="title">Login with Passkey?</p>
+                </div>
+            </div>
+            <div class="bottom-div"
+                style="background: white;margin: 8px;box-shadow: 0px 0px 3px 0px #b7b7b7;border: 1px solid #b7b7b7;">
+                <div class="item-menu search-box">
+                    <span class="sub-title">Search</span>
+                    <div class="ico_img">
+                        <img src="images/search.png" id="imgSearch">
+                        <img src="images/close.png" id="imgErase">
+                    </div>
+                    <input type="text" placeholder="Search Records.." id="txtSearch_savepopup">
+                </div>
+                <div class="item-menu">
+                    <span class="sub-title">Password Record</span>
+                        <div class="select-input"> 
+                            <select id="passwordRecord" style="-webkit-appearance: menulist !important;background:none !important;"></select>
+                        </div>
+                        <span class="sub-title">Password List</span>
+                        <div id="passwordTreePath" style="margin-bottom: 5px;">None</div>
+                    </div>
+                <input type="hidden" id="pid">
+            </div>
+            <div class="save-btn" style="text-align: right;margin-right: 8px;margin-top: 12px;"><button type="button"
+                    id="close_savepopup" value="Close">Cancel</button> <button type="button" id="update_savepopup"
+                    value="Update">Login</button></div>
+        </div>
+    </div>
+</body>
+</html>

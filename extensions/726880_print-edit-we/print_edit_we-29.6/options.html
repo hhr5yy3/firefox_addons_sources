@@ -1,0 +1,708 @@
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8"/>
+
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Print Edit WE - Generic WebExtension - Options Page             */
+/*                                                                      */
+/*      HTML and CSS for Options Page                                   */
+/*                                                                      */
+/*      Last Edit - 26 Jul 2023                                         */
+/*                                                                      */
+/*      Copyright (C) 2013-2023 DW-dev                                  */
+/*                                                                      */
+/*      Distributed under the GNU General Public License version 2      */
+/*      See LICENCE.txt file and http://www.gnu.org/licenses/           */
+/*                                                                      */
+/************************************************************************/
+-->
+
+        <title>Print Edit WE Options</title>
+        
+        <script src="options.js"></script>
+        
+        <style>
+            
+            /* Chrome - maximum height to avoid scrolling is 531px */
+            
+            body
+            {
+                display: flex;
+                background-color: #F0F0F0;
+            }
+            
+            #options
+            {
+                min-width: 337px;
+                margin: auto;
+                padding: 5px;
+                border: 1px solid #808080;
+                font-family: "Segoe UI","Helvetica Neue",Ubuntu,Arial;
+                font-size: 12px;
+                background-color: white;
+                opacity: 0;
+            }
+            
+            #options *
+            {
+                font-family: "Segoe UI","Helvetica Neue",Ubuntu,Arial;
+                font-size: 12px;
+            }
+            
+            #options-title
+            {
+                font-size: 16px;
+                margin-bottom: 7px;
+            }
+            
+            #options-tabbar
+            {
+                margin: 0px 3px 4px 2px;
+                padding: 1px 1px 1px 2px;
+                border: 1px solid #C0C0C0;
+            }
+            
+            #options-tabbar button
+            {
+                display: inline-block;
+                margin: 0px -1px;
+                padding: 1px 6px;
+                background-color: #E0E0E0;
+                border: 1px solid #C0C0C0;
+                cursor: pointer;
+            }
+            
+            #options-tabbar button:not([selected]):hover
+            {
+                background-color: #F0F0F0;
+            }
+            
+            #options-tabbar button:not([selected]):active
+            {
+                background-color: #FFFFFF;
+            }
+            
+            #options-tabbar button[selected]
+            {
+                background-color: #FFFFFF;
+            }
+            
+            #options-tabbar-savehtml[notify]
+            {
+                color: #F00000;
+            }
+
+            #options-tab-general,
+            #options-tab-savehtml,
+            #options-tab-savemhtml,
+            #options-tab-savepdf,
+            #options-tab-shortcuts
+            {
+                /* display: block; - selected tab */
+                /* display: none; - other tabs */
+            }
+            
+            form
+            {
+                margin-bottom: 3px;
+            }
+            
+            fieldset > div
+            {
+                margin-bottom: 5px;
+            }
+            
+            fieldset > div:last-child
+            {
+                margin-bottom: 0px;
+            }
+            
+            fieldset input[type="checkbox"]
+            {
+                margin-right: 7px;
+                vertical-align: 0px;
+            }
+            
+            fieldset input[type="radio"]
+            {
+                margin-left: 4px;
+                margin-right: 7px;
+                vertical-align: 0px;
+            }
+            
+            fieldset input[type="text"]
+            {
+                margin-left: 10px;
+                padding: 1px 3px 1px 3px;
+                vertical-align: 2px;
+            }
+            
+            fieldset input[type="number"]
+            {
+                width: 4em;
+                margin-left: 4px;
+                margin-right: 8px;
+                padding: 1px 0px 1px 0px;
+                text-align: center;
+                vertical-align: 2px;
+            }
+            
+            fieldset label
+            {
+                vertical-align: 2px;
+            }
+            
+            fieldset label:first-child
+            {
+                margin-left: 3px;
+            }
+            
+            fieldset select
+            {
+                margin-left: 6px;
+                margin-top: -1px;
+                vertical-align: 2px;
+            }
+            
+            #options-savehtml-notification
+            {
+                display: none;
+            }
+            
+            #options-savehtml-notification[notify]
+            {
+                display: block;
+            }
+            
+            #options-savehtml-notification div
+            {
+                margin-left: 3px;
+                color: #F00000;
+            }
+            
+            #options-savemhtml-savedfilename
+            {
+                width: 25em;
+                margin-left: 4px;
+            }
+            
+            #options-savemhtml-replacechar
+            {
+                width: 2em;
+                margin-top: 3px;
+                margin-left: 10px;
+                margin-right: 9px;
+                text-align: center;
+            }
+            
+            #options-savemhtml-maxfilenamelength
+            {
+                margin-top: 3px;
+                margin-left: 10px;
+                margin-right: 0px;
+            }
+            
+            #options-savepdf-papersize
+            {
+                width: 7.0em;
+                margin-left: 8px;
+                margin-right: 10px;
+                margin-bottom: 3px;
+                vertical-align: 2px;
+            }
+            
+            #options-savepdf-orientation
+            {
+                width: 7.0em;
+                margin-left: 12px;
+                margin-bottom: 3px;
+                vertical-align: 2px;
+            }
+            
+            #options-savepdf-paperwidth
+            {
+                width: 4.5em;
+                margin-left: 6px;
+                margin-right: 10px;
+                margin-bottom: 3px;
+                padding: 1px 0px 1px 0px;
+                text-align: center;
+                vertical-align: 2px;
+            }
+            
+            #options-savepdf-paperheight
+            {
+                width: 4.5em;
+                margin-left: 6px;
+                padding: 1px 0px 1px 0px;
+                text-align: center;
+                vertical-align: 2px;
+            }
+            
+            #options-savepdf-scaling
+            {
+                width: 4.5em;
+                margin-left: 24px;
+                margin-bottom: 3px;
+                padding: 1px 0px 1px 3px;
+                text-align: center;
+                vertical-align: 2px;
+            }
+            
+            #options-savepdf-shrinktofit
+            {
+                margin-left: 2px;
+            }
+            
+            #options-savepdf-backgroundimages
+            {
+                margin-left: 54px;
+            }
+            
+            #options-savepdf-margins
+            {
+                display: flex;
+            }
+             
+            #options-savepdf-edges-in,
+            #options-savepdf-margins-in
+            {
+                position: absolute;
+            }
+             
+            #options-savepdf-margins fieldset
+            {
+                flex: 1;
+                padding-top: 3px;
+                padding-bottom: 7px;
+            }
+            
+            #options-savepdf-margins fieldset > div div
+            {
+                text-align: center;
+            }
+            
+            #options-savepdf-margins input
+            {
+                width: 4.5em;
+                margin: 4px;
+                padding: 1px 0px 1px 0px;
+                text-align: center;
+            }
+            
+            body:not([windows]) #options-savepdf-margins input
+            {
+                width: 5em;
+            }
+            
+            #options-savepdf-headersfooters div
+            {
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 3px;
+            }
+            
+            #options-savepdf-headersfooters div:nth-child(2)
+            {
+                margin-top: 3px;
+                margin-bottom: 8px;
+            }
+            
+            #options-savepdf-headersfooters input
+            {
+                flex: 1;
+                margin: 0px 4px;
+            }
+            
+            #options-savepdf-savedfilename
+            {
+                width: 25em;
+                margin-left: 4px;
+            }
+            
+            #options-savepdf-replacechar
+            {
+                width: 2em;
+                margin-top: 3px;
+                margin-left: 10px;
+                margin-right: 9px;
+                text-align: center;
+            }
+            
+            #options-savepdf-maxfilenamelength
+            {
+                margin-top: 3px;
+                margin-left: 10px;
+                margin-right: 0px;
+            }
+            
+            #options-availablekeys div
+            {
+                margin-left: 3px;
+                color: #606060;
+            }
+            
+            #options-configureshortcuts label
+            {
+                display: inline-block;
+                width: 11em;
+            }
+            
+            #options-configureshortcuts input
+            {
+                width: 13em;
+            }
+            
+            #options-save
+            {
+                display: flex;
+                margin-top: 10px;
+            }
+            
+            #options-save-button,
+            #options-resetall-button
+            {
+                width: 6em;
+                margin: 0px 10px 2px 2px;
+                padding: 1px 3px;
+                text-align: center;
+            }
+            
+            #options-spacer
+            {
+                flex: 1;
+            }
+            
+            /* Enable Save As MHTML in Chrome */
+            
+            body:not([savemhtml]) #options-tabbar-savemhtml
+            {
+                display: none;
+            }
+            
+            /* Enable Save As PDF in Firefox 56+ on Windows/Linux and in Firefox 81+ on Mac OS X */
+            
+            body:not([savepdf]) #options-tabbar-savepdf
+            {
+                display: none;
+            }
+            
+            /* Enable Header/Footer Edges in Firefox 59+ on Windows/Linux and in Firefox 81+ on Mac OS X */
+            
+            body:not([hfedges]) #options-savepdf-margins fieldset:first-child
+            {
+                display: none;
+            }
+            
+            /* Enable Shortcuts in Firefox 60+ */
+            
+            body:not([shortcuts]) #options-tabbar-shortcuts
+            {
+                display: none;
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <div id="options">
+            
+            <div>
+                
+                <div id="options-title">Print Edit WE Options</div>
+                
+                <div id="options-tabbar">
+                    <button id="options-tabbar-general">General</button>
+                    <button id="options-tabbar-savehtml">Save As HTML</button>
+                    <button id="options-tabbar-savemhtml">Save As MHTML</button>
+                    <button id="options-tabbar-savepdf">Save As PDF</button>
+                    <button id="options-tabbar-shortcuts">Shortcuts</button>
+                </div>
+                
+                <div id="options-tabs">
+                    
+                    <div id="options-tab-general">
+                        
+                        <form id="options-userinterface">
+                            <fieldset>
+                                <legend>&nbsp;User Interface&nbsp;</legend>
+                                <div>
+                                    <input id="options-button-doubleclose" type="checkbox"/><label for="options-doubleclose">Double-click to close editing session</label>
+                                </div>
+                                <div>
+                                    <input id="options-context-showsubmenu" type="checkbox"/><label for="options-context-showsubmenu">Show add-on submenu on context menu</label>
+                                </div>
+                                <div>
+                                    <input id="options-hide-select" type="checkbox"/><label for="options-hide-select">Make elements still selectable after Hide</label>
+                                </div>
+                                <div>
+                                    <input id="options-format-inspect" type="checkbox"/><label for="options-format-inspect">Allow Inspect when Format panel is open</label>
+                                </div>
+                                <div>
+                                    <input id="options-undo-reinstate" type="checkbox"/><label for="options-undo-reinstate">Reinstate select boxes after Undo</label>
+                                </div>
+                                <div>
+                                    <input id="options-textpieces-breaks" type="checkbox"/><label for="options-textpieces-breaks">Show line breaks when Text Pieces enabled</label>
+                                </div>
+                                <div>
+                                    <input id="options-textpieces-enable" type="checkbox"/><label for="options-textpieces-enable">Enable selection of Text Pieces (at start)</label>
+                                </div>
+                                <div>
+                                    <input id="options-viewmore-enable" type="checkbox"/><label for="options-viewmore-enable">Enable display with View More (at start)</label>
+                                </div>
+                                <div>
+                                    <input id="options-webstyle-enable" type="checkbox"/><label for="options-webstyle-enable">Enable display with Web Style (at start)</label>
+                                </div>
+                                <div>
+                                    <input id="options-graphics-delete" type="checkbox"/><label for="options-graphics-delete">Automatically delete graphics (at start)</label>
+                                </div>
+                                <div>
+                                    <input id="options-images-nobreaks" type="checkbox"/><label for="options-images-nobreaks">Prevent page breaks inside images (needs restart)</label>
+                                </div>
+                                <div>
+                                    <input id="options-fonts-noligatures" type="checkbox"/><label for="options-fonts-noligatures">Prevent font ligatures inside text (needs restart)</label>
+                                </div>
+                                <div>
+                                    <input id="options-links-hideshowurls"" type="checkbox"/><label for="options-links-hideshowurls">Visibility of link URLs (needs restart):</label>
+                                    <select id="options-links-urlsvisibility">
+                                        <option value="0">Hide</option>
+                                        <option value="1">Show</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <input id="options-preview-autoclose" type="checkbox"/><label for="options-preview-autoclose">Close automatically after exiting Preview</label>
+                                </div>
+                                <div>
+                                    <input id="options-close-donotask" type="checkbox"/><label for="options-close-donotask">Do not ask about saving edits on Close</label>
+                                </div>
+                                <div>
+                                    <input id="options-unload-askonly" type="checkbox"/><label for="options-unload-askonly">Ask about unloading page only if not saved</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form id="options-appearance">
+                            <fieldset>
+                                <legend>&nbsp;Boxes&nbsp;</legend>
+                                <div>
+                                    <input id="options-select-border" type="checkbox"/><label for="options-select-border">Wider border for highlight and select boxes</label>
+                                </div>
+                                <div>
+                                    <input id="options-select-area" type="checkbox"/><label for="options-select-area">Shaded background for select boxes</label>
+                                </div>
+                                <div>
+                                    <input id="options-capture-snap" type="checkbox"/><label for="options-capture-snap">Snap capture box start point to web page edge</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                    </div>
+                    
+                    <div id="options-tab-savehtml">
+                        
+                        <form id="options-savehtml-saveditems">
+                            <fieldset>
+                                <legend>&nbsp;Saved Items&nbsp;</legend>
+                                <div>
+                                    <input id="options-savehtml-basicitems" type="radio" name="items" value="0"/><label for="options-savehtml-basicitems">Basic Items</label>
+                                </div>
+                                <div>
+                                    <input id="options-savehtml-standarditems" type="radio" name="items" value="1"/><label for="options-savehtml-standarditems">Standard Items</label>
+                                </div>
+                                <div>
+                                    <input id="options-savehtml-customitems" type="radio" name="items" value="2"/><label for="options-savehtml-customitems">Custom Items</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form id="options-savehtml-notification">
+                            <fieldset>
+                                <legend>&nbsp;Notification&nbsp;</legend>
+                                <div>
+                                    To use the 'Save As HTML' feature, 'Save Page WE'<br>(version 14.0 or later) must be installed and enabled.
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                    </div>
+                    
+                    <div id="options-tab-savemhtml">
+                        
+                        <form id="options-savemhtml-filename">
+                            <fieldset>
+                                <legend>&nbsp;Saved File Name&nbsp;</legend>
+                                <div>
+                                    <input id="options-savemhtml-savedfilename" type="text" value="%TITLE%" placeholder="Enter file name  -  Hover for list of predefined fields" title="Predefined fields:&#10;%TITLE%&#10;%DATE(x)% %TIME(x)%&#10;%HOST% %HOSTW%&#10;%PATH% %PATHW%&#10;%FILE% %FILEW%&#10;%QUERY(p)%&#10;%FRAGMENT%"/>
+                                </div>
+                                <div>
+                                    <input id="options-savemhtml-replacespaces" type="checkbox"/><label for="options-savemhtml-replacespaces">Replace spaces:</label><input id="options-savemhtml-replacechar" type="text" value="-" maxlength="1"/>
+                                    <label for="options-savemhtml-maxfilenamelength">Maximum length:</label><input id="options-savemhtml-maxfilenamelength" type="number" min="50" max="500" value="150"/>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                    </div>
+                    
+                    <div id="options-tab-savepdf">
+                        
+                        <form id="options-savepdf-layout">
+                            <fieldset>
+                                <legend>&nbsp;Layout&nbsp;</legend>
+                                <div>
+                                    <label for="options-savepdf-papersize">Paper:</label>
+                                    <select id="options-savepdf-papersize">
+                                        <option value="0">A3</option> 
+                                        <option value="1">A4</option> 
+                                        <option value="2">A5</option> 
+                                        <option value="3">B5</option> 
+                                        <option value="4">Tabloid</option> 
+                                        <option value="5">Letter</option> 
+                                        <option value="6">Statement</option> 
+                                        <option value="7">Legal</option> 
+                                        <option value="8">Custom</option> 
+                                    </select>
+                                    <label for="options-savepdf-orientation">Orientation:</label>
+                                    <select id="options-savepdf-orientation">
+                                        <option value="0">Portrait</option> 
+                                        <option value="1">Landscape</option> 
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="options-savepdf-paperwidth">Paper Width:</label><input id="options-savepdf-paperwidth" type="number" min="1" max="1000" step="0.1"/>
+                                    <label for="options-savepdf-paperheight">Paper Height:</label><input id="options-savepdf-paperheight" type="number" min="1" max="1000" step="0.1"/>
+                                    <label>(in)</label>
+                                </div>
+                                <div>
+                                    <label for="options-savepdf-scaling">Scale (%):</label><input id="options-savepdf-scaling" type="number" min="10" max="500" step="1"/>
+                                    <input id="options-savepdf-shrinktofit" type="checkbox"/><label for="options-savepdf-shrinktofit">Shrink to fit page width</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form id="options-savepdf-background">
+                            <fieldset>
+                                <legend>&nbsp;Background&nbsp;</legend>
+                                <div>
+                                    <input id="options-savepdf-backgroundcolors" type="checkbox"/><label for="options-savepdf-backgroundcolors">Show colors</label>
+                                    <input id="options-savepdf-backgroundimages" type="checkbox"/><label for="options-savepdf-backgroundimages">Show images</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form id="options-savepdf-margins">
+                            <fieldset>
+                                <legend>&nbsp;Header/Footer Edges&nbsp;</legend>
+                                <div>
+                                    <div id="options-savepdf-edges-in">&nbsp;(in):</div>
+                                    <div>
+                                        <input id="options-savepdf-edgetop" type="number" size="10" min="0" max="8.5" step="0.1"/>
+                                    </div>
+                                    <div>
+                                        <input id="options-savepdf-edgeleft" type="number" size="10" min="0" max="8.5" step="0.1"/><input id="options-savepdf-edgeright" type="number" size="10" min="0" max="8.5" step="0.1"/>
+                                    </div>
+                                    <div>
+                                        <input id="options-savepdf-edgebottom" type="number" size="10" min="0" max="8.5" step="0.1"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>&nbsp;Content Margins&nbsp;</legend>
+                                <div>
+                                    <div id="options-savepdf-margins-in">&nbsp;(in):</div>
+                                    <div>
+                                        <input id="options-savepdf-margintop" type="number" size="10" min="0" max="8.5" step="0.1"/>
+                                    </div>
+                                    <div>
+                                        <input id="options-savepdf-marginleft" type="number" size="10" min="0" max="8.5" step="0.1"/><input id="options-savepdf-marginright" type="number" size="10" min="0" max="8.5" step="0.1"/>
+                                    </div>
+                                    <div>
+                                        <input id="options-savepdf-marginbottom" type="number" size="10" min="0" max="8.5" step="0.1"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form id="options-savepdf-headersfooters">
+                            <fieldset>
+                                <legend>&nbsp;Header/Footer Fields&nbsp;</legend>
+                                <div>
+                                    <input id="options-savepdf-headerleft" type="text" size="1"/>
+                                    <input id="options-savepdf-headercenter" type="text" size="1"/>
+                                    <input id="options-savepdf-headerright" type="text" size="1"/>
+                                </div>
+                                <div>
+                                    <input id="options-savepdf-footerleft" type="text" size="1"/>
+                                    <input id="options-savepdf-footercenter" type="text" size="1"/>
+                                    <input id="options-savepdf-footerright" type="text" size="1"/>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form id="options-savepdf-filename">
+                            <fieldset>
+                                <legend>&nbsp;Saved File Name&nbsp;</legend>
+                                <div>
+                                    <input id="options-savepdf-savedfilename" type="text" value="%TITLE%" placeholder="Enter file name  -  Hover for list of predefined fields" title="Predefined fields:&#10;%TITLE%&#10;%DATE(x)% %TIME(x)%&#10;%HOST% %HOSTW%&#10;%PATH% %PATHW%&#10;%FILE% %FILEW%&#10;%QUERY(p)%&#10;%FRAGMENT%"/>
+                                </div>
+                                <div>
+                                    <input id="options-savepdf-replacespaces" type="checkbox"/><label for="options-savepdf-replacespaces">Replace spaces:</label><input id="options-savepdf-replacechar" type="text" value="-" maxlength="1"/>
+                                    <label for="options-savepdf-maxfilenamelength">Maximum length:</label><input id="options-savepdf-maxfilenamelength" type="number" min="50" max="500" value="150"/>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                    </div>
+                    
+                    <div id="options-tab-shortcuts">
+                        
+                        <form id="options-availablekeys">
+                            <fieldset>
+                                <legend>&nbsp;Available Keys&nbsp;</legend>
+                                <div>
+                                    Shortcut must be one of the following:<br>
+                                    &nbsp;&nbsp;Alt+Key, Alt+Shift+Key, Ctrl+Key, Ctrl+Shift+Key,<br>
+                                    &nbsp;&nbsp;MacCtrl+Key, MacCtrl+Shift+Key (only on Mac)
+                                </div>
+                                <div>
+                                    Key must be one of the following:<br>
+                                    &nbsp;&nbsp;A-Z, 0-9, F1-F12, Comma, Period, Space, Insert, Delete,<br>
+                                    &nbsp;&nbsp;Home, End, PageUp, PageDown, Up, Down, Left, Right
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form id="options-configureshortcuts">
+                            <fieldset>
+                                <legend>&nbsp;Configure Shortcuts&nbsp;</legend>
+                                <div>
+                                    <label for="options-shortcuts-browseraction">Print Edit:</label><input id="options-shortcuts-browseraction" type="text" value=""/>
+                                </div>
+                                <div>
+                                    <label for="options-shortcuts-printpreview">Print Preview:</label><input id="options-shortcuts-printpreview" type="text" value=""/>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                    </div>
+                    
+                </div>
+                
+                <div id="options-save">
+                    <button id="options-save-button">Save</button>
+                    <button id="options-resetall-button">Reset All</button>
+                    <span id="options-spacer"></span>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </body>
+    
+</html>

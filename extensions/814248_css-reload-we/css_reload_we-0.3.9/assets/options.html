@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title data-l10n-text="title"></title>
+    <script src="l10n.js"></script>
+    <script src="internal-state.js"></script>
+    <style>
+      :root {
+        --bg-color: #fff;
+        --fg-color: #000;
+        --line-height: 1rem;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-color: #23222b;
+          --fg-color: #f9f9fa;
+        }
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--fg-color);
+        margin: 0;
+        padding: 0;
+      }
+      fieldset {
+        margin-top: 1rem;
+        padding: 1rem;
+
+        border: 1px solid --fg-color;
+        border-radius: 5px;
+
+        & div {
+          display: grid;
+          grid-template-columns: 25% repeat(2, 1fr);
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2 data-l10n-text="optionsIntegration"></h2>
+    <form>
+      <div>
+        <input type="checkbox" id="has-page-action" value="true">
+        <label for="has-page-action" data-l10n-text="optionsIntegrationPageAction"></label>
+      </div>
+      <div>
+        <input type="checkbox" id="has-context-menu" value="true">
+        <label for="has-context-menu" data-l10n-text="optionsIntegrationContextMenu"></label>
+      </div>
+      <div>
+        <input type="checkbox" id="has-hot-key" value="true">
+        <label for="has-hot-key" data-l10n-text="optionsIntegrationHotKey"></label>
+      </div>
+      <fieldset data-section="hot-key-change">
+        <legend data-l10n-text="optionsHotKeyChangeValue"></legend>
+        <div>
+          <input type="text" id="hot-key-value">
+          <button id="hot-key-change" type="button" data-l10n-text="optionsHotKeyChangeChange"/>
+          <button id="hot-key-reset" type="button" data-l10n-text="optionsHotKeyChangeReset"/>
+        </div>
+      </fieldset>
+    </form>
+    <script src="options.js"></script>
+  </body>
+</html>

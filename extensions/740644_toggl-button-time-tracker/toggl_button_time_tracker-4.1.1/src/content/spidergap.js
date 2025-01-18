@@ -1,0 +1,1 @@
+togglbutton.render(".section-header:not(.toggl)",{observe:!0},function(){const t=$(".section-header h1").textContent.trim(),e=$("#navbar-project-link").textContent.trim(),n=togglbutton.createTimerLink({className:"spidergap",description:t,projectName:e});$(".nav-tabs").appendChild(n)});

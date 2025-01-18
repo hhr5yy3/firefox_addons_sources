@@ -1,0 +1,1 @@
+const n=()=>{togglbutton.render("div.ObjectEditor:not(.toggl)",{observe:!0},e=>{const o=()=>{const t=$(".HeaderLayout textarea",e);return t?t.textContent.trim():""},r=togglbutton.createTimerLink({className:"fibery",description:o});$("div.ObjectEditorHeader > .HeaderLayout").appendChild(r)})};n();

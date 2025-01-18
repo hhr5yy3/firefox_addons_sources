@@ -1,0 +1,78 @@
+.task-form {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+}
+.task-form > *:not(:last-child):not(.spacer) {
+  margin-block-end: 8px;
+}
+.task-form .input-grid {
+  grid-template-columns: auto 1fr auto;
+}
+.task-form .input-grid .input-label input {
+  flex: 1;
+}
+.task-form .input-grid .input-label :first-child {
+  grid-column: 1;
+  text-align: end;
+}
+.task-form .warning-text {
+  grid-column: 2;
+}
+.task-form .filename-template-help {
+  height: 1.2em;
+  width: 1.2em;
+  display: inline-flex;
+  margin-left: 4px;
+  color: #000;
+}
+.task-form .file-size-span.obsolete {
+  color: #a9a9a9;
+}
+.task-form .network-options-labels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.task-form .network-options-labels .input-label {
+  display: inline-flex;
+  align-items: center;
+  margin-inline-end: 8px;
+  margin-block-start: 4px;
+}
+.task-form .network-options-labels .input-label input[type='number'] {
+  width: 8ch;
+}
+.task-form .network-options-labels .input-label input[type='number'][data-i18n-placeholder] {
+  width: 12ch;
+}
+.task-form .network-options-labels .input-label .input-unit {
+  margin-left: 0.5ch;
+}
+.task-form .actions {
+  display: flex;
+}
+.task-form .actions > button:not(:last-child) {
+  margin-inline-end: 8px;
+}
+.task-form .continue-open,
+.task-form .continue-save {
+  min-width: 8ch;
+}
+.task-form:not(.editing) .if-editing,
+.task-form.editing .if-not-editing {
+  display: none;
+}
+.task-form:not(.readonly) .if-readonly,
+.task-form.readonly .if-not-readonly {
+  display: none;
+}
+.task-form:not(.no-range) .if-no-range,
+.task-form.no-range .if-not-no-range {
+  display: none;
+}
+.task-form:not(.monitor) .if-monitor,
+.task-form.monitor .if-not-monitor {
+  display: none;
+}
+

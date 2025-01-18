@@ -1,0 +1,1 @@
+togglbutton.render("#issue-title:not(.toggl)",{observe:!0},function(i){let t=$("#issue-title").textContent.trim();const e=$(".issue .header .breadcrumb a:last-child");t=$(".index").textContent+" "+t;const n=e.textContent.split(" / ").pop(),o=togglbutton.createTimerLink({className:"gogs",description:t,projectName:n});$(".title h1").appendChild(o)});

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Cookie Manager</title>
+<link rel="stylesheet" type="text/css" href="cookie-manager.css">
+</head>
+<body>
+<form id="searchform">
+    <input type="text" id=".url" placeholder="filter by url or domain (* = wildcard)" title="Filters the cookies by website. Supported formats:
+- Full URL ( http://example.com/path )
+- Domain ( example.com, *.example.com, *example* )
+- partition:&lt;top-level-site-here&lt; ( partition:https://example.com )
+">
+    <input type="text" id=".name" placeholder="filter by name" title="Filters the cookies by name.">
+    <input type="text" id=".value" placeholder="filter by value" title="Filters the cookies by value.">
+    <div class="flex-grid">
+        <select id=".secure" title="Filters secure cookies (which are only sent over encrypted connections).">
+            <option value="" selected>Secure = any</option>
+            <option value="true">Secure = yes</option>
+            <option value="false">Secure = no</option>
+        </select>
+        <select id=".httpOnly" title="Filters httpOnly cookies (which are only readable by web servers, not web pages).">
+            <option value="" selected>httpOnly = any</option>
+            <option value="true">httpOnly = yes</option>
+            <option value="false">httpOnly = no</option>
+        </select>
+        <select id=".sameSite" title="Filters SameSite cookies">
+            <option value="" selected>SameSite = any</option>
+            <option value="no_restriction">SameSite = unset</option>
+            <option value="strict">SameSite = strict</option>
+            <option value="lax">SameSite = lax</option>
+        </select>
+        <select id=".session" title="Filters session cookies">
+            <option value="" selected>Session = any</option>
+            <option value="true">Session cookies</option>
+            <option value="false">Non-session cookies</option>
+        </select>
+        <input type="datetime-local" step="1" id=".expiry.min" placeholder="min expiry date" title="Minimal expiry date">
+        <input type="datetime-local" step="1" id=".expiry.max" placeholder="max expiry date" title="Maximal expiry date">
+    </div>
+    <div class="flex-grid">
+        <select id=".storeId">
+        </select>
+        <select id=".whitelist">
+            <option value="" selected>Whitelist = any</option>
+            <option value="true">Whitelist = yes</option>
+            <option value="false">Whitelist = no</option>
+        </select>
+        <input type="submit" id="search-button" value="Search cookies">
+    </div>
+</form>
+
+<template id="cookie_row_template">
+<td><div class="cell-content name_"></div></td>
+<td><div class="cell-content valu_"></div></td>
+<td><div class="cell-content doma_"></div></td>
+<td><div class="cell-content fpdo_"></div></td>
+<td><div class="cell-content pkey_"></div></td>
+<td><div class="cell-content flag_"></div></td>
+<td><div class="cell-content expi_"></div></td>
+<td class="action-buttons"><button class="edit-single-cookie">Edit</button></td>
+</template>
+
+<table id="result" class="no-results">
+    <thead>
+        <tr>
+            <th class="col_name"><span>Name</span></th>
+            <th class="col_valu"><span>Value</span></th>
+            <th class="col_doma"><span>Domain</span></th>
+            <th class="col_fpdo"><span title="First-Party domain for First-Party Isolation">First-Party Domain</span></th>
+            <th class="col_pkey"><span title="Top-level site of cookie partition.
+Input a URL or add partition: to the search box to look up cookies in specific partitions.">Partition</span></th>
+            <th class="col_flag"><span>Flags</span></th>
+            <th class="col_expi"><span>Expiry date</span></th>
+            <th class="col_butt"><!-- Action buttons --></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="7">
+Search for cookies in the above form.
+Select results and use the buttons at the bottom of this window to manage them.
+
+<a href="https://github.com/Rob--W/cookie-manager">Documentation and project page</a>
+By <a href="https://robwu.nl">Rob Wu</a>.
+
+<label>
+    <input type="checkbox" id="autostart"> Open the Cookie Manager when the extension starts up.
+</label>
+            </td>
+        </tr>
+        <tr id="show-more-results-row">
+            <td colspan="7">
+                <button id="show-more-results-button" title="Ctrl-Shift-click to show all cookies">
+                    Show <span id="show-more-count"></span> more rows (out of <span id="show-more-remaining-count"></span>)
+                    <span id="show-more-whitelist-info"></span>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="multi-selection-tool" hidden>
+    <button id="multi-selection-select">Select <span class="count"></span> rows</button>
+    <button id="multi-selection-invert">Invert selection</button>
+    <button id="multi-selection-cancel">Cancel</button>
+</div>
+
+<form id="editform">
+    <fieldset>
+        <legend>URL</legend>
+        <input type="url" id="editform.url" required>
+    </fieldset>
+    <fieldset>
+        <legend>Name</legend>
+        <input type="text" id="editform.name">
+    </fieldset>
+    <fieldset>
+        <legend>Value</legend>
+        <input type="text" id="editform.value">
+    </fieldset>
+    <fieldset>
+        <legend>Domain</legend>
+        <label><input type="radio" name="domain" id="editform.hostOnlyTrue" checked>Host-only cookie for given URL</label>
+        <label><input type="radio" name="domain" id="editform.hostOnlyFalseDefault">(Sub)domains of given URL</label>
+        <label for="editform.domain">
+            <input type="radio" name="domain" id="editform.hostOnlyFalseCustom">
+            <span>(Sub)domains of:</span>
+            <input type="text" id="editform.domain">
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Path</legend>
+        <label><input type="radio" name="path" id="editform.pathIsSlash" checked>/ (default)</label>
+        <label><input type="radio" name="path" id="editform.pathIsDefault">Path of given URL</label>
+        <label for="editform.path">
+            <input type="radio" name="path" id="editform.pathIsCustom">
+            <span>Custom path:</span>
+            <input type="text" id="editform.path">
+        </label>
+    </fieldset>
+    <fieldset>
+        <legend>Expiration</legend>
+        <label><input type="radio" name="expires" id="editform.sessionTrue" checked>At end of session</label>
+        <label for="editform.expiry">
+            <input type="radio" name="expires" id="editform.sessionFalse">
+            <span>Expiry date:</span>
+            <input type="datetime-local" step="1" id="editform.expiry">
+        </label>
+        <label><input type="radio" name="expires" id="editform.sessionFalseExpired"><span>Marked for deletion (already expired)</span></label>
+    </fieldset>
+    <fieldset>
+        <legend>Flags</legend>
+        <!-- This flag is not here because the "whitelist" flag cannot uniquely be set for a cookie.
+        <label><input type="checkbox" id="editform.whitelist"> Whitelisted</label>
+        -->
+        <label><input type="checkbox" id="editform.secure"> Secure</label>
+        <label><input type="checkbox" id="editform.httpOnly"> httpOnly</label>
+    </fieldset>
+    <fieldset id="editform.sameSiteBox">
+        <legend>Same-site status</legend>
+        <select id="editform.sameSite">
+            <option value="unspecified" selected>Unspecified (default)</option>
+            <option value="no_restriction">No restriction</option>
+            <option value="lax">Lax</option>
+            <option value="strict">Strict</option>
+        </select>
+    </fieldset>
+    <fieldset>
+        <legend>Cookie jar</legend>
+        <select id="editform.storeId" required></select>
+    </fieldset>
+    <fieldset id="editform.firstPartyDomain.container">
+        <legend>First-Party domain for First-Party Isolation</legend>
+        <input type="text" id="editform.firstPartyDomain">
+    </fieldset>
+    <fieldset id="editform.partitionKey.container">
+        <legend>Top level site for cookie partitioning</legend>
+        <input type="text" id="editform.partitionKey">
+    </fieldset>
+    <br> <!-- Work-around for bugzil.la/1498552 - force a gap of 1em. -->
+</form>
+
+<form id="exportform">
+    <div class="stretched-textarea-container flexible-fieldset">
+        <legend>Export cookies</legend>
+        <div>
+            Choose the export format and click on the "Export" button to
+            export <span id="export-cookie-count">cookies</span>.
+            <p>
+            Use the JSON format if you would like to restore cookies later while
+            preserving all metadata (storeId, sameSite, firstPartyDomain).
+            Use the Netscape format if you would like to use the cookies with
+            other tools such as curl. Either format can be imported later.
+            <p>
+            When exported as a file, the exported data is downloaded as
+            "cookies.json" or "cookies.txt".<br>
+            When exported as text, the exported data is shown in a text field.
+        </div>
+
+        <div>
+            Output format:
+        </div>
+        <div>
+            <label>
+                <input type="radio" name="export-format" value="json" required checked>
+                JSON (full backup that preserves all metadata)
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="radio" name="export-format" value="netscape" required>
+                Netscape (for use with tools like curl)
+            </label>
+        </div>
+
+        <div>
+            Export as:
+        </div>
+        <div>
+            <label>
+                <input type="radio" name="export-type" value="file" required checked>
+                Export as file
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="radio" name="export-type" value="text" required>
+                Export as text
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="radio" name="export-type" value="copy_import" required>
+                Copy to "Import cookies" form (prepare copy to different cookie jar)
+            </label>
+        </div>
+        <textarea id="export-text" hidden></textarea>
+        <div id="export-before-import" hidden>
+            <p>
+            Copied cookies to "Import cookies" form.
+            <p>
+            <button id="shortcut-to-import-form">
+                Click here to switch to the "Import cookies" form
+            </button>
+            <p>
+            In the "Import cookies" form, the "Destination cookie jar" option
+            can be changed to effectively copy the cookies to a different
+            cookie jar.
+        </div>
+    </div>
+</form>
+
+<form id="importform">
+    <div class="stretched-textarea-container flexible-fieldset">
+        <legend>Import cookies</legend>
+        <div>
+            Select a file or paste the exported data (JSON) or Netscape HTTP
+            Cookie file in the input field.
+            <p>
+            When you click on the "Import" button, the cookies will be validated
+            and overwrite existing cookies, without confirmation
+            (except for whitelisted cookies).
+        </div>
+        <div>
+            Destination cookie jar:
+            <select id="import-store">
+                <option value="">As specified in the imported file</option>
+            </select>
+        </div>
+        <output></output>
+        <progress hidden></progress>
+        <div>
+            Import file: <input type="file" id="import-file"> or select text:
+        </div>
+        <textarea id="import-text"></textarea>
+        <textarea id="import-log" readonly hidden></textarea>
+    </div>
+</form>
+
+<div id="whitelist-unlock-prompt" hidden>
+    <div class="whitelist-unlocker-description">
+        You are trying to modify a whitelisted cookie.
+        By default, whitelisted cookies cannot be modified by the Cookie Manager.
+        <p>
+        To modify the cookie, you can either remove the cookie from the whitelist
+        (via the "More actions" menu, "Button = Whitelist selected cookies"),
+        or unlock access to whitelisted cookies to allow modification.
+        <p>
+        Do you want to <b>unlock whitelisted cookies</b> for modification?
+
+        <div>
+            <button id="whitelist-unlock-yes">Yes</button>
+            <button id="whitelist-unlock-confirm" disabled>Yes (confirm)</button>
+            <button id="whitelist-unlock-no">No</button>
+        </div>
+
+        <p>
+        When you have finished, click on the "Lock whitelisted cookies" button
+        at the bottom of the page.
+    </div>
+</div>
+
+<div class="footer-space"></div>
+<div id="footer-controls" class="footer-space">
+<button id="select-all">Select all (<span class="count"></span>)</button>
+<button id="select-none">Select none</button>
+<button id="select-visible" hidden>Select visible (<span class="count"></span>)</button>
+<button id="unselect-visible" hidden>Unselect visible (<span class="count"></span>)</button>
+<button id="remove-selected">Remove selected (<span class="count"></span>)</button>
+<button id="restore-selected">Restore selected (<span class="count"></span>)</button>
+<button id="whitelist-selected" hidden>Whitelist selected (<span class="count"></span>)</button>
+<button id="unwhitelist-selected" hidden>Unwhitelist selected (<span class="count"></span>)</button>
+<select id="other-action">
+    <option selected disabled>More actions</option>
+    <option value="new_cookie">New cookie</option>
+    <optgroup label="Import / export">
+        <option value="bulk_export">Export selected cookies</option>
+        <option value="bulk_import">Import cookies</option>
+    </optgroup>
+    <!-- &#x25C9; is a black dot with a circle around,
+         &#x25CC; is a dotted circle. These values are also used in the JS code.
+    -->
+    <optgroup label="Workflow (button behavior)">
+        <option value="workflow_remove" >&#x25C9; Button = Remove selected cookies</option>
+        <option value="workflow_whitelist">&#x25CC; Button = Whitelist selected cookies</option>
+    </optgroup>
+    <optgroup label="Bulk selection">
+        <option value="bulk_select_all" >&#x25C9; Select all = select all results</option>
+        <option value="bulk_select_some">&#x25CC; Select all = select visible results</option>
+    </optgroup>
+    <!--
+    <optgroup label="Cookie click behavior">
+        <option>&#x25C9; Click cookie = Toggle selection</option>
+        <option>&#x25CC; Click cookie = Edit</option>
+        <option>&#x25CC; Click cookie = Remove</option>
+    </optgroup>
+    -->
+</select>
+<button id="show-new-form">New cookie</button>
+
+<button id="export-export" class="exportbutton" form="exportform">Export</button>
+<button id="export-cancel" class="exportbutton">Cancel</button>
+
+<button id="import-import" class="importbutton" form="importform">Import</button>
+<button id="import-cancel" class="importbutton">Cancel</button>
+
+<button id="edit-save" class="editbutton" form="editform">Save</button>
+<button id="edit-cancel" class="editbutton">Cancel</button>
+
+<button id="whitelist-lock-again" hidden>Lock whitelisted cookies again</button>
+</div>
+
+
+<script src="cookie-manager.js"></script>
+<script src="cookie-manager-firefox.js"></script>
+<script src="datetime-local-polyfill.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

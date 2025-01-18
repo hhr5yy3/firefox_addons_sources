@@ -1,0 +1,132 @@
+﻿<!---------------------------------------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------- MODAL CERT-INFO ------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div class="modal-header">
+    <button type="button" class="btn btn-default pull-right no-margin" ng-click="close()">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </button>
+    <h4 class="modal-title center-block" id="myModalLabel">Certificado</h4>
+</div>
+
+<div class="modal-body">
+
+    <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+        <li ng-class="{'active':selected_tab=='info'}" ng-click="selected_tab='info'"><a style="padding: 10px 27px 10px 27px;">Detalhes</a></li>
+        <!--<li ng-class="{'active':selected_tab=='sites'}" ng-click="selected_tab='sites'"><a >Sites autorizados</a></li>-->
+    </ul>
+    <div ng-show="selected_tab=='info'">
+        <div class="cert-info-table">
+            <table class="table table-bordered info-table">
+                <tbody>
+                    <tr class="tr-info">
+                        <td width="100%" class="td-info-data">
+                            <ul>
+                                <li class="bold const-name">Nome:</li>
+                                <li class="var-name" style="word-wrap:break-word">{{Certificate.subjectName}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="tr-info" ng-show="Certificate.respName.length>0 && Certificate.respName!=undefined && Certificate.respName!=null">
+                        <td width="100%" class="td-info-data">
+                            <ul>
+                                <li class="bold const-name">Nome do responsável:</li>
+                                <li class="var-name" style="word-wrap:break-word">{{Certificate.respName}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="tr-info">
+                        <td width="100%" class="td-info-data">
+                            <ul>
+                                <li class="bold const-name">Tipo:</li>
+                                <li class="var-name" style="word-wrap:break-word">{{certType[Certificate.certType]}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="tr-info">
+                        <td width="100%" class="td-info-data">
+                            <ul>
+                                <li class="bold const-name">Emissor:</li>
+                                <li class="var-name" style="word-wrap:break-word">{{Certificate.issuerName}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="tr-info" ng-show="Certificate.cpf.length>0 && Certificate.cpf!=undefined && Certificate.cpf!=null">
+                        <td width="100%" class="td-info-data">
+                            <ul>
+                                <li class="bold const-name">CPF <span ng-show="Certificate.respName.length>0 && Certificate.respName!=undefined && Certificate.respName!=null">do responsável</span>:</li>
+                                <li class="var-name" style="word-wrap:break-word">{{Certificate.cpf|cpf}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="tr-info">
+                        <td width="100%" class="td-info-data" ng-show="Certificate.cnpj.length>0 && Certificate.cnpj!=undefined && Certificate.cnpj!=null">
+                            <ul>
+                                <li class="bold const-name">CNPJ:</li>
+                                <li class="var-name" style="word-wrap:break-word">{{Certificate.cnpj|cnpj}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="tr-info">
+                        <td width="100%" class="td-info-data">
+                            <ul>
+                                <li class="bold const-name">Emitido em:</li>
+                                <li class="var-name" style="word-wrap:break-word">{{Certificate.notBefore | date:'dd/MM/yyyy' }}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="tr-info">
+                        <td width="100%" class="td-info-data">
+                            <ul>
+                                <li class="bold const-name">Válido até:</li>
+                                <li class="var-name" style="word-wrap:break-word">{{Certificate.notAfter | date:'dd/MM/yyyy'}}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        <!------------------------------------------------------------Site list table----------------------------------------------------------------->
+        <div class="panel panel-default" ng-show="selected_tab=='sites'" style="" data-ng-init="init()">
+            <!-- Default panel contents -->
+            <div class="panel-heading panel-header panel-cert">
+                <span> sites <label ng-if="SiteList.length">: {{SiteList.length}}</label></span>
+            </div>
+            <div id="siteList" ng-if="SiteList.length">
+                <table class="table table-hover table-fixed table-cert">
+                    <tbody class="tbody-site  col-md-12">
+                        <tr ng-repeat="Site in SiteList" class="tr-sitelist ">
+                            <td width="90%">
+                                {{Site}}
+                            </td>
+                            <td width="10%" style="cursor:pointer;" class="tr-btn-site" data-toggle="modal" ng-click="removeWebSite(Site)">
+                                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<textarea id="myTextarea">
+            </textarea>
+            <button type="button" class="btn btn-default no-margin-bottom pull-left" ng-click="adicionaSite()">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Site
+            </button>
+            <button type="button" class="btn btn-default no-margin-bottom pull-left" ng-click="atualizaSites()">
+                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Atualiza Sites
+            </button>-->
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">  
+        <button type="button" class="btn btn-default no-margin-bottom pull-left" ng-click="removeCertificate()">
+            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Remover
+        </button>
+        <button type="button" class="btn btn-default no-margin-bottom pull-right" ng-click="exportCertificate()">
+            <span class="glyphicon glyphicon-export" aria-hidden="true"></span> Exportar
+        </button>
+</div>
+
+

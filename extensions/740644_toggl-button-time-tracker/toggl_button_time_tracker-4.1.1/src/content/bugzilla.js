@@ -1,0 +1,1 @@
+togglbutton.render("input[name=id]",{},function(t){const e=t.value,i=togglbutton.createTimerLink({className:"bugzilla",description:e,projectName:"Bugs"}),n=$("#summary_alias_container")||$("#summary_container");n!==null&&n.appendChild(i)});

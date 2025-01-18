@@ -1,0 +1,1 @@
+togglbutton.render(".bJ:not(.toggl)",{observe:!0},function(t){const o=$(".eo > span",t).textContent,n=$(".iK",t),e=togglbutton.createTimerLink({className:"google-inbox",description:o,buttonType:"minimal"});n.parentElement.insertBefore(e,n)});

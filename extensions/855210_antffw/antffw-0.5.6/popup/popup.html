@@ -1,0 +1,414 @@
+<html>
+	<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="popup.js"></script>
+		<link rel="stylesheet" href="titatoggle-dist.css" type="text/css" />
+  </head>
+	
+	<style type="text/css">
+		
+	html 
+	{
+		background:   #C7D6E7;
+		background: 	linear-gradient(to top, #e4ecf3, #C1D2E4 );
+		font-family: 	Arial, Gotham, "Helvetica Neue", Helvetica, sans-serif;
+		overflow-x: hidden;
+	}
+
+	body 
+	{
+		margin:     0 auto;
+		width:      400px;
+		height:     400px;
+		max-width:  400px;
+		max-height: 400px;
+		margin:     0;
+		text-align: center;
+	}
+	wrapper, footer 
+	{
+		width: 100%;
+	}
+	wrapper 
+	{
+		height: auto 	!important; 
+		min-height: 	100%;
+		display: 			block;
+		margin-left: 	auto;
+		margin-right: auto;		
+		margin: 0 auto -70px;
+	}
+		
+	header 
+	{
+		display: inline-block;
+		background-color: #254286;
+		height: 70px;
+		width:  100%;
+		position: relative;
+	}
+	
+	header img 
+	{
+		position: absolute;
+		margin: 0 auto;
+		right: 0;
+		bottom: 5;		
+	}
+	content 
+	{
+		color:#6A7386;
+			//margin: 0 auto;
+		//text-align: center;
+	}	
+	
+	content h4
+	{
+		margin: 0 auto;
+		font-size:11px
+	}
+	#id_version
+	{
+		padding-top: 5px; 
+	}
+		
+	.app_earth,
+	.buy
+	{
+		margin: 0 auto;
+		height: 120px;
+		max-height: 120px;		
+	}		
+	.app_earth
+	{
+		padding-top:10px; 
+		padding-bottom: 15px;
+	}
+	.buy
+	{
+		margin: 0 auto;
+		margin-top:-120px; 
+	}	
+	
+	.buy p
+	{
+		color:#556;
+		font-size: 14px;
+	}
+	
+	footer {
+		margin-top: 10px;
+		display: inline-block;
+	}		
+	footer a {
+		color: #F68700; 
+		text-decoration:none;
+	}
+		
+	a.button_buy 
+	{
+		display: inline-block;
+		color: white;
+		text-decoration: none;
+		margin-top: -12px;
+		padding: 22px 26px; 
+		outline: none;
+		border-width: 2px 0;
+		border-style: solid none;
+		border-color: #1beb35 #000 #008000;
+		border-radius: 36px; 
+		background: linear-gradient(#13D32B, #128d15) #128d15;
+		transition: 0.2s;
+		font-size: 16px;
+		font-weight: bold;
+		letter-spacing: 1px;
+	} 
+	a.button_buy:hover  { background: linear-gradient(#14E02F, #168A1B) #168A1B; }
+	a.button_buy:active { background: linear-gradient(#168A1B, #14E02F) #14E02F; }
+	
+		#btn_next 
+	{ 
+		margin: 0px; 
+		position: fixed; 
+		z-index: 10; 
+		top: 215px; 
+		right: 5px;
+		width:  40px;
+		height: 100px;
+		//border: 1px solid #000;
+	}
+	#btn_next img
+	{ 
+		position: absolute;
+		top: 32%;
+		right: 	0px; 
+		height: 40px;
+		opacity: 0.30;
+		content: url( "/images/btn_next.png" );
+	}	
+	#btn_next:hover img	{ opacity: 0.60; }
+	#btn_next:hover 
+	{ 
+		background-color:rgba( 100, 100, 100, 0.3 );
+	}	
+
+	.page {
+		width: 400px;
+		float:left; 
+		z-index:0; 
+		-webkit-transform: translateZ( 0 );
+		transform: translateZ( 0 );
+		-webkit-transition: -webkit-transform 0.6s ease-in-out;
+		transition: transform 0.6s ease-in-out;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+	
+	
+	.cfg_btns
+	{
+		margin: 0 auto;
+		margin-top: 20px;
+		display: inline-block;
+	}
+	
+	#vbtn,
+	#vbox
+	{ 
+		padding-top: 	15px;
+		margin-left: -40px;
+		height: 			30px;
+		line-height: 	30px;
+		align:left;
+	}
+	#vbtn span,
+	#vbox span
+	{ 
+		color: #556;
+		float: left;
+		font-size:  14px;
+		margin-left: 25px;
+		vertical-align: middle;
+		align: left;
+	}	
+	
+	#vbtn img,
+	#vbox img
+	{ 
+		float: 	left;
+		height: 30px;
+		width:  30px;			
+		background: url("/images/checked_62.png") no-repeat;
+		background-size:30px;			
+	}	
+
+	.rateit
+	{
+		width: 100%;
+		height: 18%;
+		background-color: #722822;
+		position: relative;
+		//border: 1px solid #000;
+	}
+	.rateit_outer
+	{
+		position: absolute;
+		left: 0;
+		top:  25%;
+		top:  30%;
+		width: 100%;
+		height: 24px;
+		line-height: 24px;
+		//border: 1px solid #AAA;
+	}	
+
+	.rateit_text
+	{
+		position: absolute;
+		left: 	0;
+		height: 100%;
+		width: 	78%;
+		width: 	84%;
+		width: 	100%;
+		max-height: 24px;
+		max-width:  390px;
+		align: center;
+		text-align: center;
+		
+	}
+	
+	.rateit_text span,
+	.rateit_thank_you span
+	{
+		font-size: 13px;
+		color: #F2F2F2;
+		vertical-align: top;
+	}	
+	
+	.rateit_thank_you
+	{
+		position: absolute;
+		bottom: 	10px;
+		width: 		100%;
+		align: 			center;
+		text-align: center;
+	}
+
+	.rateit_like {
+		height: 24px;
+		width:  24px;			
+		background: url("/images/like_64.png") no-repeat;
+		background-size:24px;
+	}
+	
+	.rateit_like:hover {
+		background-image: url("/images/like_hover_64.png");
+	}
+
+	.rateit_close
+	{
+		position: absolute;
+		top:   1px; 
+		right: 2px;
+		width: 22px;
+		background:url( "/images/close_128.png" ) no-repeat;
+		background-size:22px;
+	}		
+	.rateit_close:hover
+	{ 
+		background-image: url("/images/close_hover_128.png");
+	}		
+	
+	#pdf, #mp4
+	{
+		height: 18px;
+		width:  18px;			
+		background: url("/images/chk_green_62.png") no-repeat;
+		background-size:18px;
+	}	
+
+	.dtd
+	{
+		position: absolute;
+	}
+
+	.dtd img
+	{
+		margin-left: 30px;
+	}	
+	
+	.dtd span
+	{
+		font-size: 		15px;
+		font-weight: 	bold;
+		margin-left: 	10px;
+		vertical-align: top;
+	}	
+	
+	</style>
+ 
+	<body>
+		<wrapper>
+			<header>
+				<img src="/images/app_designed_by.png" width=200px>
+			</header>
+			
+		<!--span id=id_test style="font-size:10px;">id_test</span-->
+		<!-- page container -->
+    <section id="page_container" style="width: 800px;clear:both;">
+			<!-- page first -->
+      <article class="page">
+				<content>
+					<p id=id_app_enabled style="font-weight:bold; margin: 12 0 0; text-align:center; font-size:18px">
+						Ant Download Manager enabled
+					</p>			
+					<h4 id=id_version>version</h4>	
+					
+				<div class="app_earth">
+					<img id=id_app_earth src="/images/ant_earth.png" width=120px>
+				</div>			
+	
+				<div class="buy" hidden>
+					<a class=button_buy href="#">Buy Pro</a>
+					<p>It's free version</p>
+				</div>		
+	
+				<div id=idSliders style="width:100%;margin:0,auto;text-align: center;" hidden>
+					<div class="checkbox checkbox-slider--b-flat">
+						<label>
+							<input class="checkbox-slider" type="checkbox" checked><span></span>
+						</label>
+					</div>
+					<p>
+					<div class="checkbox checkbox-slider--b-flat2">
+						<label>
+							<input class="checkbox-slider-video" type="checkbox" checked><span></span>
+						</label>
+					</div>
+				</div>
+			
+				<p id=id_app_not_installed style="text-align:center; font-size:12px; color:#E22">
+					The application is not properly installed.<br>
+					The native part is not responding.
+				</p>			
+			</content>	
+	    </article>
+
+			<!-- page capture exceptios -->
+      <article class="page">
+				<content style="text-align:center;">
+				<div class="cfg_btns">
+					<div id="vbtn"><img src="/images/transparency.png"/><span>Video Button</span></div>
+					<div id="vbox"><img src="/images/transparency.png"/><span>Video Box</span></div>
+				</div>				
+				<p id=id_auto_cap_dl style="text-align:center;padding-top:10px;font-size:14px;color:#455;">
+					Capture downloads from web-players automatically
+				</p>		
+				<table width="80%" align="center" border="0" style="solid #AAB">
+					<tr style="text-align:center;color:#668">
+						<td>
+							<div class="dtd"><img id="pdf" src="/images/transparency.png"/><span>PDF</span></div>
+						</td>
+						<!--td>
+							<div class="dtd"><img id="mp4" src="/images/transparency.png"/><span>MP4</span></div>
+						</td-->
+					</tr>
+				</table>		
+				</content>	
+			</article>
+    </section>
+		
+			<footer>
+				<div class="about">
+					<table width="100%" style="border-collapse:collapse; border-top:1px solid #AAB">
+							<tr style="text-align:center;color:#668;">
+								<td style="text-transform:uppercase; font-size:10px; padding-top:10px;;">
+									<a class="a_index"   style="color:#668">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+									<a class="a_download"style="color:#668">Download</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+									<a class="a_contact" style="color:#668">Contact</a>
+								</td>
+							</tr>
+					</table>		
+					<p id="footer" style="margin-bottom: 1em; font-size:9px; line-height:1.34em; color:#668; display:block" align="center">
+					<span>Copyright</span><br>
+					Email technical supports:&nbsp<a href="mailto:support" target="_blank" >support</a>
+					</p>
+				</div>
+				
+				<div class="rateit" hidden>
+					<div class="rateit_outer">
+						<div class="rateit_text">
+							<span>If you liked our extension rate it please</span>
+							<a><img class="rateit_like" src="/images/transparency.png"/></a>
+						</div>
+					</div>
+					<div class="rateit_thank_you"><span>Thank you!</span></div>
+					<img id="rateit_close1" class="rateit_close" src="/images/transparency.png"/>
+				</div>
+			</footer>		
+		</wrapper>	
+		<div id="btn_next"><a><img src="/images/btn_next.png"/></a></div>
+	</body>
+</html>

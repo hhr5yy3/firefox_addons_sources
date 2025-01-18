@@ -1,0 +1,1 @@
+togglbutton.render(".telomere-border .description:not(.toggl)",{observe:!0},e=>{const t=()=>e.closest(".line").querySelector(".text").textContent.trim(),o=togglbutton.createTimerLink({className:"scrapbox",description:t});e.appendChild(o)});

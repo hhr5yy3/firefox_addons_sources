@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="css/OpenSans-Regular.ttf" rel="stylesheet" type="text/css">
+	<link href="css/stylePopup.css" rel="stylesheet">
+	<title>Generator danych testowych - Ustawienia</title>
+  </head>
+
+  <body>
+	<div>
+		<h1 id="popupHeader"><img id="logo" src="icons/logo.png" alt="Generator danych testowych">Generator danych testowych</h1>
+	
+		<div id="projectDiv">
+			Aktywny projekt:<br/>
+			<strong><span id="project" style="margin-left: 10px"></span></strong> (<a id="changeProjectLink" title="Ustawienia">zmień</a>)
+		</div>
+
+		<div id="infoDiv">
+			Skróty klawiszowe:<br/>
+			<i id="autofillForm"></i> - Autouzupełnienie wszystkich pól<br/>
+			<i id="autofillField"></i> - Autouzupełnienie wybranego pola<br/>
+			<i id="resetForm"></i> - Zresetowanie formularza<br/>&emsp;z aktywnym polem
+		</div>	
+	
+		<div id="settingsDiv">
+			<form id="testDataGeneratorSettingsForm">
+				<label><b>Metoda wprowadzania danych do pola:</b></label><br/>
+				<label title="Dane będą wprowadzane do pola za pomocą wartości atrybutu 'value'"><input name="typeMethod" type="radio" value="value">Zmiana wartości</label><br/>
+				<label title="Dane będą wprowadzane do pola za pomocą metody 'sendkeys' z biblioteki jQuery"><input name="typeMethod" type="radio" value="keys" checked>Symulacja wpisywanych znaków</label><br/><br/>
+				<label><b>Obsługa danych w polu:</b></label><br/>
+				<label title="Dane wprowadzane do pola będą zastępować obecną wartość"><input name="fillType" type="radio" value="new" checked>Zastąp</label>
+				<label title="Dane wprowadzane do pola będą dopisywane do obecnej wartości w miejscu obecności kursora (opcja niedostępna dla wprowadzania danych za pomocą zmiany wartości/funkcjonalność niedostępna podczas autouzupełniania wszystkich pól)"><input name="fillType" type="radio" value="add">Dopisz</label><br/><br/>
+				<label><b>Wklejanie danych do schowka:</b></label><br/>
+				<label title="Dane wprowadzane do pola będą wstawiane do schowka (opcja niedostępna dla danych dopisywanych)"><input name="clipboard" type="radio" value="yes">Tak</label>
+				<label title="Dane wprowadzane do pola nie będą wstawiane do schowka"><input name="clipboard" type="radio" value="no" checked>Nie</label><br/><br/>
+				<label><b>Typ danych do autouzupełniania:</b></label><br/>
+				<label title="Dane będą wprowadzane do pola w oparciu o generowane dane"><input name="autofillType" type="radio" value="generated" checked>Generowane</label>
+				<label title="Dane będą wprowadzane do pola w oparciu o zdefiniowane dane "><input name="autofillType" type="radio" value="defined">Zdefiniowane</label><br/><br/>
+				<label><b>Typ rozpoznawania wartości atrybutów:</b></label><br/>
+				<label title="Rozpoznanie wartości atrybutów pól poprzez 'równość' względem wprowadzonych wartości atrybutów pól dla funkcji autouzupełniania"><input name="matchType" type="radio" value="equals" checked>Równe</label>
+				<label title="Rozpoznanie wartości atrybutów pól poprzez 'zawieranie' względem wprowadzonych wartości atrybutów pól dla funkcji autouzupełniania"><input name="matchType" type="radio" value="contains">Zawiera</label><br/>
+			</form>
+		</div>
+		<div id="settingsButtonDiv">
+			<button id="fillAllFields" title="Uzupełnij wszystkie pola">Uzupełnij wszystkie pola</button>
+			<button id="settings" title="Przejdź do ustawień dodatku">Ustawienia</button>
+		</div>
+	</div>
+	<script src="utils.js"></script>
+	<script src="dbStore.js"></script>
+	<script src="optionsPopup.js"></script>
+  </body>
+</html>

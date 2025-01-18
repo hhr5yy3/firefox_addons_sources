@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="genWrapper1">
+        <div class="genWrapper">
+            <form action="" method="post" name="form_genPassword" class="form-genPassword">
+                <div class="genPass">
+                    <div class="top">{{h1}}</div>
+                    <div class="passgen">
+                        <ul class="list">
+                            <li><label class="input"><input type="hidden" id="gp_len[1]" name="gp_len" data-value="1" value="7" size="3" tabindex="0" />{{dlina}}:</label>
+                                <span class="range">
+                                    <span id="gp_len_count_1">&nbsp;</span>
+                                    <input type="range" name="gp_len_range" id="gp_len_range_1" data-value="1" min="0" max="20" step="1" value="7" />
+                                </span>
+                            </li>
+                            <li><label class="input"><input type="hidden" id="gp_count[1]" name="gp_count" data-value="1" value="10" size="3" tabindex="1"/>{{kol_vo}}:</label>
+                                <span class="range">
+                                    <span id="gp_count_count_1">&nbsp;</span>
+                                    <input type="range" name="gp_count_range" id="gp_count_range_1" data-value="1" min="1" max="10" step="1" value="10" />
+                                </span>                                
+                            </li>
+                            <li><input type="checkbox" name="gp" id="gp[2]" value="big" checked />
+                                <label for="gp[2]" tabindex="2"><span><span></span></span> ABC ({{verxniy_registr}})</label>
+                            </li>
+                            <li><input type="checkbox" name="gp" id="gp[3]" value="small" checked />
+                                <label for="gp[3]" tabindex="3"><span><span></span></span> abc ({{nizniy_registr}})</label>
+                            </li>
+                            <li><input type="checkbox" name="gp" id="gp[4]" value="nums" checked />
+                                <label for="gp[4]" tabindex="4"><span><span></span></span> 123 ({{cifri}})</label>
+                            </li>
+                            <li><input type="checkbox" name="gp" id="gp[5]" value="extra"  />
+                                <label for="gp[5]" tabindex="5"><span><span></span></span> ?!& ({{simvol}})</label>
+                            </li>
+                            <li><input type="checkbox" name="gp" id="gp[6]" value="phrase" tabindex="14"  />
+                                <label for="gp[6]" tabindex="6"><span><span></span></span> {{fraza}}</label>
+                                <br><label class="input" tabindex="7"><input type="text" name="gp_phrase" id="gp_phrase" data-value="phrase" value="" size="10" maxlength="20" placeholder="pass" tabindex="15"/></label>
+
+                                <div style="display:inline-block;">
+                                <input type="radio" name="gp_phrase_mode" id="gp_phrase_mode[1]" value="l" tabindex="8" />
+                                <label for="gp_phrase_mode[1]"><span><span></span></span> <small>{{left}}</small></label>
+
+                                <input type="radio" name="gp_phrase_mode" id="gp_phrase_mode[2]" value="lr" tabindex="9" checked />
+                                <label for="gp_phrase_mode[2]"><span><span></span></span> <small>{{center}}</small></label>
+
+                                <input type="radio" name="gp_phrase_mode" id="gp_phrase_mode[3]" value="r" tabindex="10" />
+                                <label for="gp_phrase_mode[3]"><span><span></span></span> <small>{{right}}</small></label>
+                                </div>
+                            </li>
+                            <li><label><button type="button" id="genPass" class="button-install" tabindex="15">{{generate}}</button>
+                            </label></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="resPass">
+                    <div class="download">
+                        <input type="button" class="" value="{{download}}" id="saveTextAsFile">
+                    </div>
+                    <div id="genOutput"></div>
+                </div>  
+            </form>
+        </div>
+</div>
+<script src="js/genPass.js"></script>
+<script src="js/localizer.js"></script>
+</body>
+</html>

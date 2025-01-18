@@ -1,0 +1,96 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<title>Webmail Ad Blocker -- Options</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+	<script type="module" src="js/polymer-css.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/extensionCommon.js"></script>
+	<script src="js/options.js"></script>
+
+	<style>
+		body {font-size:16px;opacity:1;transition:opacity 0.15s ease-in-out}
+		body[unresolved2] {opacity:0}
+
+		paper-toolbar {font-family:'Roboto'}
+		paper-toolbar > div, #middle {margin: 0 auto;max-width: 1366px}
+
+		/* options.html */
+		.title {-webkit-margin-start:10px !important;pointer-events:auto !important}
+		#middle {padding:30px 10px}
+
+        #webmails label {
+            display: block;
+            padding: 5px;
+            font-size:1.2em;
+            cursor: pointer;
+        }
+        #webmails input {
+            margin-right: 10px;
+        }
+
+        #reload-tabs {
+            font-size:1.2em;
+            border-radius: 5px;
+            margin-top:20px;
+            padding: 5px;
+            background: yellow;
+            opacity: 0;
+            transition: opacity 0.15s ease-in-out;
+        }
+	</style>
+</head>
+
+<body class="fullbleed layout vertical" unresolved unresolved2>
+
+	<app-header reveals>
+	    <app-toolbar>
+			<div main-title>
+				<img id="logo" src="images/icon48.png" style="vertical-align:middle" />
+				<a class="inherit" href="https://jasonsavard.com?ref=WABOptionsTitle">Webmail Ad Blocker</a>
+			</div>
+      		<paper-button id="version">version</paper-button>
+      		<a class="inherit" href="https://jasonsavard.com/wiki/Webmail_Ad_Blocker_changelog?ref=WABOptions"><paper-button><span msg="changelog"></span></paper-button></a>
+      		<a class="inherit" href="https://jasonsavard.com/contribute?ref=WAB"><paper-button><span msg="contribute"></span></paper-button></a>
+      		<a class="inherit" href="https://jasonsavard.com/wiki/Webmail_Ad_Blocker?ref=WABOptions"><paper-button><span msg="help"></span></paper-button></a>
+		</app-toolbar>
+	</app-header>
+	<div id="middle" class="layout vertical center">
+        <div id="webmails">
+            <h2>Block ads for these webmails:</h2>
+            <label><input type="checkbox" id="gmail" origin="https://mail.google.com/">Gmail</label>
+            <label><input type="checkbox" id="outlook" origin="https://outlook.live.com/">Outlook</label>
+            <label><input type="checkbox" id="yahoo" origin="https://*.mail.yahoo.com/">Yahoo Mail</label>
+            <div id="reload-tabs">Reload your tabs to see the ads removed.</div>
+        </div>
+	</div>
+
+	<template id="genericDialogTemplate">
+		<paper-dialog id="genericDialog" modal="true">
+			<h2>blah blah</h2>
+			<paper-dialog-scrollable class="dialogDescription"></paper-dialog-scrollable>
+			<div class="buttons">
+		  		<paper-button dialog-other class="otherDialog" hidden>empty</paper-button>
+		  		<paper-button dialog-dismiss class="cancelDialog"><span msg="cancel"></span></paper-button>
+		  		<paper-button dialog-confirm autofocus class="okDialog"><span msg="ok"></span></paper-button>
+		  	</div>
+		</paper-dialog>
+	</template>
+	
+	<!-- Must be above paper-drawer-panel -->
+    <paper-toast id="message" text="Done"><paper-icon-button class="closeToast" icon="close"></paper-icon-button></paper-toast>
+    
+    <dialog id="dialog">
+        <form method="dialog">
+            <div id="dialog-message"></div>
+            <menu>
+                <button id="disable" value="cancel">Instructions to disable all host permissions</button>
+                <button id="ok" value="ok">Ok</button>
+            </menu>
+        </form>
+    </dialog>
+	
+</body>
+</html>

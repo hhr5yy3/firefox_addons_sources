@@ -1,0 +1,530 @@
+<html>
+    
+    <head>
+        
+        <meta charset="utf-8"/>
+
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Tile Tabs WE - Generic WebExtension - Options Page              */
+/*                                                                      */
+/*      HTML and CSS for Options Page                                   */
+/*                                                                      */
+/*      Last Edit - 28 Feb 2023                                         */
+/*                                                                      */
+/*      Copyright (C) 2015-2023 DW-dev                                  */
+/*                                                                      */
+/*      Distributed under the GNU General Public License version 2      */
+/*      See LICENCE.txt file and http://www.gnu.org/licenses/           */
+/*                                                                      */
+/************************************************************************/
+-->
+
+        <title>Tile Tabs WE Options</title>
+        
+        <script src="options.js"></script>
+        
+        <style>
+            
+            /* Chrome - maximum height to avoid scrolling is 531px */
+            
+            body
+            {
+                display: flex;
+                background-color: #F0F0F0;
+            }
+            
+            #options
+            {
+                min-width: 337px;
+                margin: auto;
+                padding: 5px;
+                border: 1px solid #808080;
+                font-family: "Segoe UI","Helvetica Neue",Ubuntu,Arial;
+                font-size: 12px;
+                background-color: white;
+                opacity: 0;
+            }
+            
+            #options *
+            {
+                font-family: "Segoe UI","Helvetica Neue",Ubuntu,Arial;
+                font-size: 12px;
+            }
+            
+            #options-title
+            {
+                font-size: 16px;
+                margin-bottom: 7px;
+            }
+            
+            #options-tabbar
+            {
+                margin: 0px 3px 4px 2px;
+                padding: 1px 1px 1px 2px;
+                border: 1px solid #C0C0C0;
+            }
+            
+            #options-tabbar button
+            {
+                display: inline-block;
+                margin: 0px -1px;
+                padding: 1px 6px;
+                background-color: #E0E0E0;
+                border: 1px solid #C0C0C0;
+                cursor: pointer;
+            }
+            
+            #options-tabbar button:not([selected]):hover
+            {
+                background-color: #F0F0F0;
+            }
+            
+            #options-tabbar button:not([selected]):active
+            {
+                background-color: #FFFFFF;
+            }
+            
+            #options-tabbar button[selected]
+            {
+                background-color: #FFFFFF;
+            }
+            
+            #options-tab-general,
+            #options-tab-pagesettings,
+            #options-tab-advanced,
+            #options-tab-shortcuts
+            {
+                /* display: block; - selected tab */
+                /* display: none; - other tabs */
+            }
+            
+            form
+            {
+                margin-bottom: 3px;
+            }
+            
+            fieldset > div
+            {
+                margin-bottom: 5px;
+            }
+            
+            fieldset > div:last-child
+            {
+                margin-bottom: 0px;
+            }
+            
+            fieldset input[type="checkbox"]
+            {
+                margin-right: 7px;
+                vertical-align: 0px;
+            }
+            
+            fieldset input[type="radio"]
+            {
+                margin-left: 4px;
+                margin-right: 7px;
+                vertical-align: 0px;
+            }
+            
+            fieldset input[type="text"]
+            {
+                margin-left: 10px;
+                padding: 1px 3px 1px 3px;
+                vertical-align: 2px;
+            }
+            
+            fieldset input[type="number"]
+            {
+                margin-left: 4px;
+                margin-right: 8px;
+                padding: 1px 0px 1px 3px;
+                text-align: center;
+                vertical-align: 2px;
+            }
+            
+            fieldset label
+            {
+                vertical-align: 2px;
+            }
+            
+            fieldset label:first-child
+            {
+                margin-left: 3px;
+            }
+            
+            fieldset select
+            {
+                margin-left: 6px;
+                margin-top: -1px;
+                vertical-align: 2px;
+            }
+            
+            #options-customurl
+            {
+                width: 18.8em;
+                margin-left: 10px;
+            }
+            
+            #options-topmargin,
+            #options-lrbmarginnormal,
+            #options-lrbmarginpopup,
+            #options-maxadjust,
+            #options-openscrolldelay,
+            #options-openzoomdelay
+            {
+                width: 4em;
+                padding: 1px 0px 1px 0px;
+                text-align: center;
+            }
+            
+            body:not([windows]) #options-topmargin,
+            body:not([windows]) #options-lrbmarginnormal,
+            body:not([windows]) #options-lrbmarginpopup,
+            body:not([windows]) #options-maxadjust,
+            body:not([windows]) #options-openscrolldelay,
+            body:not([windows]) #options-openzoomdelay
+            {
+                width: 4.5em;
+            }
+            
+            #options-topmargin,
+            #options-lrbmarginnormal,
+            #options-lrbmarginpopup,
+            #options-maxadjust,
+            #options-openscrolldelay,
+            #options-openzoomdelay
+            {
+                margin-bottom: 3px;
+            }
+            
+            body[isfirefox] #options-zoommode
+            {
+                display: none;
+            }
+            
+            #options-export-button
+            {
+                width: 9em;
+                margin: 2px 2px 2px 3px;
+                padding: 1px 3px;
+                text-align: center;
+            }
+            
+            #options-import-button
+            {
+                width: 9em;
+                margin: 2px 2px 2px 7px;
+                padding: 1px 3px;
+                text-align: center;
+            }
+            
+            #options-availablekeys div
+            {
+                margin-left: 3px;
+                color: #606060;
+            }
+            
+            #options-configureshortcuts label
+            {
+                display: inline-block;
+                width: 11em;
+            }
+            
+            #options-configureshortcuts input
+            {
+                width: 13em;
+            }
+            
+            #options-save
+            {
+                display: flex;
+                margin-top: 10px;
+            }
+            
+            #options-save-button,
+            #options-resetall-button
+            {
+                width: 6em;
+                margin: 0px 10px 2px 2px;
+                padding: 1px 3px;
+                text-align: center;
+            }
+            
+            #options-spacer
+            {
+                flex: 1;
+            }
+            
+            /* Enable Shortcuts in Firefox 60+ */
+            
+            body:not([shortcuts]) #options-tabbar-shortcuts
+            {
+                display: none;
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <div id="options">
+            
+            <div>
+                
+                <div id="options-title">Tile Tabs WE Options</div>
+                
+                <div id="options-tabbar">
+                    <button id="options-tabbar-general">General</button>
+                    <button id="options-tabbar-pagesettings">Page Settings</button>
+                    <button id="options-tabbar-advanced">Advanced</button>
+                    <button id="options-tabbar-shortcuts">Shortcuts</button>
+                </div>
+                
+                <div id="options-tabs">
+                    
+                    <div id="options-tab-general">
+                        
+                        <form>
+                            <fieldset>
+                                <legend>&nbsp;User Interface&nbsp;</legend>
+                                <div>
+                                    <input id="options-doubleclose" type="checkbox"/><label for="options-doubleclose">Double-click to close layout (slows opening)</label>
+                                </div>
+                                <div>
+                                    <input id="options-showsubmenu" type="checkbox"/><label for="options-showsubmenu">Show add-on submenu on context menu</label>
+                                </div>
+                                <div>
+                                    <input id="options-showalltabs" type="checkbox"/><label for="options-showalltabs">Show tabs in all windows on Tile Tab submenu</label>
+                                </div>
+                                <div>
+                                    <input id="options-showquickmenu" type="checkbox"/><label for="options-showquickmenu">Show quick menu in all tiles:</label>
+                                    <select id="options-quickmenuposn">
+                                        <option value="0">Top Left</option>
+                                        <option value="1">Top Right</option>
+                                        <option value="2">Bottom Left</option>
+                                        <option value="3">Bottom Right</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <input id="options-showquickmenuctrl" type="checkbox"/><label for="options-showquickmenuctrl">Show quick menu using Ctrl+Right-click</label>
+                                </div>
+                                <div>
+                                    <input id="options-showtoolbars" type="checkbox"/><label for="options-showtoolbars">Show toolbars in new layouts and added tiles</label>
+                                </div>
+                                <div>
+                                    <input id="options-removetwotiles" type="checkbox"/><label for="options-removetwotiles">Remove Tile menu item removes last two tiles</label>
+                                </div>
+                                <div>
+                                    <input id="options-togglealltiles" type="checkbox"/><label for="options-togglealltiles">Toggle Toolbars shortcut toggles all tiles</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form>
+                            <fieldset>
+                                <legend>&nbsp;Manage Tabs&nbsp;</legend>
+                                <div>
+                                    <input id="options-assignexist" type="checkbox"/><label for="options-assignexist">Assign existing tabs before creating new tabs</label>
+                                </div>
+                                <div>
+                                    <input id="options-assignleft" type="checkbox"/><label for="options-assignleft">Assign existing tabs from left instead of right</label>
+                                </div>
+                                <div>
+                                    <input id="options-autoclosenew" type="checkbox"/><label for="options-autoclosenew">Automatically close tabs tiled by New Layout</label>
+                                </div>
+                                <div>
+                                    <input id="options-autocloseopen" type="checkbox"/><label for="options-autocloseopen">Automatically close tabs created by Open Layout</label>
+                                </div>
+                                <div>
+                                    <input id="options-autocloseuser" type="checkbox"/><label for="options-autocloseuser">Automatically close tabs created by user in tiles</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form>
+                            <fieldset>
+                                <legend>&nbsp;Start & Restart&nbsp;</legend>
+                                <div>
+                                    <input id="options-opendefault" type="checkbox"/><label for="options-opendefault">Open default layout on browser start & restart</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                    </div>
+                    
+                    <div id="options-tab-pagesettings">
+                        
+                        <form id="options-defaulttype">
+                            <fieldset>
+                                <legend>&nbsp;Default Page&nbsp;</legend>
+                                <div>
+                                    <input id="options-newtabpage" type="radio" name="type" value="0"/><label for="options-newtabpage">Browser new tab page</label>
+                                </div>
+                                <div>
+                                    <input id="options-blankpage" type="radio" name="type" value="1"/><label for="options-blankpage">Tile Tabs WE blank page</label>
+                                </div>
+                                <div>
+                                    <input id="options-custompage" type="radio" name="type" value="2"/><label for="options-custompage">Custom:</label><input id="options-customurl" type="text" placeholder="Enter page URL"/>
+                                </div>
+                                <div>
+                                    <input id="options-currentpage" type="radio" name="type" value="3"/><label for="options-currentpage">Current tab page</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form id="options-openlinks">
+                            <fieldset>
+                                <legend>&nbsp;Open Links in Next/Previous Tile&nbsp;</legend>
+                                <div>
+                                    <input id="options-openlinks-0" type="radio" name="clicks" value="0"/><label for="options-openlinks-0">Disabled</label>
+                                </div>
+                                <div>
+                                    <input id="options-openlinks-1" type="radio" name="clicks" value="1"/><label for="options-openlinks-1">Ctrl+Click / Ctrl+Shift+Click</label>
+                                </div>
+                                <div>
+                                    <input id="options-openlinks-2" type="radio" name="clicks" value="2"/><label for="options-openlinks-2">Middle-Click / Shift+Middle-Click</label>
+                                </div>
+                                <div>
+                                    <input id="options-openlinks-3" type="radio" name="clicks" value="3"/><label for="options-openlinks-3">Ctrl+Middle-Click / Ctrl+Shift+Middle-Click</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form>
+                            <fieldset>
+                                <legend>&nbsp;Reload Pages&nbsp;</legend>
+                                <div>
+                                    <input id="options-reloadpages" type="checkbox"/><label for="options-reloadpages">Reload pages in tiled tabs during Refresh Layout</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form>
+                            <fieldset>
+                                <legend>&nbsp;Synchronize Scroll&nbsp;</legend>
+                                <div>
+                                    <input id="options-syncactive" type="checkbox"/><label for="options-syncactive">Sync Scroll only when scrolling focused tile</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form id="options-zoommode">
+                            <fieldset>
+                                <legend>&nbsp;Zoom Mode&nbsp;</legend>
+                                <div>
+                                    <input id="options-zoompertab" type="checkbox"/><label for="options-zoompertab">Set zoom mode in tiled tabs to per-tab</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                    </div>
+                    
+                    <div id="options-tab-advanced">
+                        
+                        <form>
+                            <fieldset>
+                                <legend>&nbsp;Window Margins&nbsp;</legend>
+                                <div>
+                                    <input id="options-topmargin" type="number" min="-20" max="20" value="0"/><label for="options-topmargin">Top margin for all tiles (px)</label>
+                                </div>
+                                <div>
+                                    <input id="options-lrbmarginnormal" type="number" min="-20" max="20" value="0"/><label for="options-lrbmarginnormal">Other margins for tiles with toolbars (px)</label>
+                                </div>
+                                <div>
+                                    <input id="options-lrbmarginpopup" type="number" min="-20" max="20" value="0"/><label for="options-lrbmarginpopup">Other margins for tiles without toolbars (px)</label>
+                                </div>
+                                <div>
+                                    <input id="options-maxadjust" type="number" min="-20" max="20" value="0"/><label for="options-maxadjust">Adjustment if parent window maximized (px)</label>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form>
+                            <fieldset>
+                                <legend>&nbsp;Open Layout&nbsp;</legend>
+                                <div>
+                                    <input id="options-openscrolldelay" type="number" min="0.0" max="5.0" step="0.1" value="0.0"/><label for="options-openscrolldelay">Delay before setting tab scroll positions (secs)</label>
+                                </div>
+                                <div>
+                                    <input id="options-openzoomdelay" type="number" min="0.0" max="5.0" step="0.1" value="0.0"/><label for="options-openzoomdelay">Delay before setting tab zoom levels (secs)</label>
+                                </div>
+                           </fieldset>
+                        </form>
+                        
+                        <form>
+                            <fieldset>
+                                <legend>&nbsp;Scroll Lock&nbsp;</legend>
+                                <div>
+                                    <input id="options-reapplyscrolllock" type="checkbox"/><label for="options-reapplyscrolllock">Reapply scroll lock when page content size changes</label>
+                                </div>
+                           </fieldset>
+                        </form>
+                        
+                        <form>
+                            <fieldset>
+                                <legend>&nbsp;Export/Import Layouts&nbsp;</legend>
+                                <div>
+                                    <button id="options-export-button">Export Layouts</button>
+                                    <button id="options-import-button">Import Layouts</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                    </div>
+                    
+                    <div id="options-tab-shortcuts">
+                        
+                        <form id="options-availablekeys">
+                            <fieldset>
+                                <legend>&nbsp;Available Keys&nbsp;</legend>
+                                <div>
+                                    Shortcut must be one of the following:<br>
+                                    &nbsp;&nbsp;Alt+Key, Alt+Shift+Key, Ctrl+Key, Ctrl+Shift+Key,<br>
+                                    &nbsp;&nbsp;MacCtrl+Key, MacCtrl+Shift+Key (only on Mac)
+                                </div>
+                                <div>
+                                    Key must be one of the following:<br>
+                                    &nbsp;&nbsp;A-Z, 0-9, F1-F12, Comma, Period, Space, Insert, Delete,<br>
+                                    &nbsp;&nbsp;Home, End, PageUp, PageDown, Up, Down, Left, Right
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                        <form id="options-configureshortcuts">
+                            <fieldset>
+                                <legend>&nbsp;Configure Shortcuts&nbsp;</legend>
+                                <div>
+                                    <label for="options-shortcuts-newcloselayout">New/Close Layout:</label><input id="options-shortcuts-newcloselayout" type="text" value=""/>
+                                </div>
+                                <div>
+                                    <label for="options-shortcuts-hideshowlayout">Hide/Show Layout:</label><input id="options-shortcuts-hideshowlayout" type="text" value=""/>
+                                </div>
+                                <div>
+                                    <label for="options-shortcuts-refreshlayout">Refresh Layout:</label><input id="options-shortcuts-refreshlayout" type="text" value=""/>
+                                </div>
+                                <div>
+                                    <label for="options-shortcuts-toggletoolbars">Toggle Toolbars:</label><input id="options-shortcuts-toggletoolbars" type="text" value=""/>
+                                </div>
+                            </fieldset>
+                        </form>
+                        
+                    </div>
+                    
+                </div>
+                
+                <div id="options-save">
+                    <button id="options-save-button">Save</button>
+                    <button id="options-resetall-button">Reset All</button>
+                    <span id="options-spacer"></span>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </body>
+    
+</html>

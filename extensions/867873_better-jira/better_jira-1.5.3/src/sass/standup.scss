@@ -1,0 +1,91 @@
+$nice-blue: #3b7fc4;
+
+@import 'components/close';
+
+body.standup {
+  #ghx-header,
+  #header,
+  .aui-sidebar {
+    display: none;
+  }
+
+  #ghx-operations {
+    padding-top: 1rem;
+  }
+
+  #gh {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  #ghx-rabid {
+    height: 100vh;
+  }
+  #ghx-work {
+    height: calc(100vh - 71px) !important;
+  }
+
+  .BetterJira {
+    &-instructions {
+      position: fixed;
+      top: 1rem;
+      right: 2rem;
+      z-index: 2;
+      background: rgba(9, 30, 66, 0.04) none repeat scroll 0% 0%;
+      transition: background 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
+      color: var(--ds-text,#42526E) !important;
+      font-weight: 500;
+      padding: 0px 10px;
+      height: 2.28571em;
+      line-height: 2.28571em;
+      cursor: pointer;
+
+      .text {
+        margin-right: 1.4rem;
+      }
+
+      &:hover {
+        background: rgba(9, 30, 66, 0.08);
+        color: rgb(66, 82, 110) !important;
+        transition-duration: 0s, 0.15s;
+      }
+
+      @include close-button($top: -2px, $error-color: #d04437);
+    }
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | New JIRA Experience
+  |--------------------------------------------------------------------------
+  */
+
+  &.adg3 {
+    --topNavigationHeight: 0px;
+
+    #navigation-app {
+      display: none;
+    }
+
+    #page-body > #content {
+      border-top: 0px solid transparent;
+    }
+
+    #content {
+      margin-left: 1rem;
+    }
+
+    // Hide the side navigation (React component)
+    #jira-frontend
+      > div
+      > div
+      > div[class^='css']:nth-of-type(3)
+      > div:first-child {
+      display: none;
+    }
+
+    div#ak-jira-navigation {
+      display: none;
+    }
+  }
+}

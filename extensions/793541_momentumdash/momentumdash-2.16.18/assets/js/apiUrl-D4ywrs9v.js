@@ -1,0 +1,1 @@
+import{e as a}from"./localStorage-C5mLf9Kt.js";const o=()=>a.apiUrl;export{o as default};

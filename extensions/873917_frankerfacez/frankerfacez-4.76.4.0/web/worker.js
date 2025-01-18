@@ -1,0 +1,3 @@
+(()=>{(()=>{"use strict";var n={};const e=globalThis.browser??globalThis.chrome;e.runtime.onInstalled.addListener(()=>{e.action.disable()}),e.action.onClicked.addListener(t=>{t?.id&&e.tabs.sendMessage(t.id,{type:"ffz_to_page",data:{ffz_type:"open-settings"}})}),e.runtime.onMessage.addListener((t,i,a)=>{const s=t?.type;!s||!i?.tab?.id||(s==="ffz_not_supported"?e.action.disable(i.tab.id):s==="ffz_injecting"&&e.action.enable(i.tab.id))})})();})();
+
+//# sourceMappingURL=worker.js.map

@@ -1,0 +1,1 @@
+togglbutton.render(".action:not(.toggl)",{observe:!0},function(n){let t=n.querySelector(".action__title");t==null&&(t="");const o=togglbutton.createTimerLink({className:"focuster",description:t.textContent,buttonType:"minimal"}),e=document.createElement("div");e.className="meta-item is-active",e.append(o),n.querySelector(".meta-list").prepend(e)});

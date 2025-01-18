@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title data-i18n="extension_name"></title>
+  <link rel="stylesheet" href="../css/ui.css" />
+  <link rel="icon" type="image/png" href="../images/icon.svg" />
+</head>
+<body>
+  <div id="header-wrapper" class="default">
+    <header id="header">
+      <div id="logo-wrapper">
+        <a href="ui.html"></a>
+      </div>
+    </header>
+    <div id="logo-small">
+      <a href="ui.html"></a>
+    </div>
+    <div id="status-board">
+      <div class="item">
+        <div class="label" data-i18n="status_total"></div>
+        <div class="value"><span id="total-bookmarks">0</span></div>
+      </div>
+      <div class="item">
+        <div class="label" data-i18n="status_checked"></div>
+        <div class="value"><span id="checked-bookmarks">0</span></div>
+      </div>
+      <div class="item">
+        <div class="label" data-i18n="status_warnings"></div>
+        <div class="value warnings"><span id="bookmarks-warnings">0</span></div>
+      </div>
+      <div class="item">
+        <div class="label" data-i18n="status_errors"></div>
+        <div class="value errors"><span id="bookmarks-errors">0</span></div>
+      </div>
+    </div>
+    <progress id="progress" value="0"></progress>
+  </div>
+  <main id="main">
+    <section id="main-section">
+      <a href="" id="fox">
+        <img src="../images/fox.png" alt="Firefox" />
+      </a>
+      <div id="hint" class="hidden">
+        <span id="hint-close-button" class="close" data-i18n-title="close_overlay">&times;</span>
+        <div class="notice" data-i18n="greeting"></div>
+        <div class="content" data-i18n="intro_check"></div>
+      </div>
+      <div id="permission-container" class="hidden">
+        <div id="permission-needed" data-i18n="permission_needed"></div>
+        <div id="permission-description" data-i18n="permission_description"></div>
+        <button type="submit" id="permission-grant-button" data-i18n="permission_grant_button"></button>
+      </div>
+      <div id="result-wrapper" class="hidden">
+        <input type="search" id="search" data-i18n-placeholder="search_label" />
+        <div class="clearfix">
+          <div id="filterbar">
+            <div>
+              <div class="checkbox inline">
+                <input type="checkbox" id="filter-errors" class="filter" data-filter="error" checked />
+                <label for="filter-errors"><span data-i18n="filter_errors"></span></label>
+              </div>
+              <div class="checkbox inline">
+                <input type="checkbox" id="filter-warnings" class="filter" data-filter="warning" checked />
+                <label for="filter-warnings"><span data-i18n="filter_warnings"></span></label>
+              </div>
+            </div>
+          </div>
+          <div id="mass-actions">
+            <a href="#" id="repair-all-redirects" class="hidden" data-i18n="action_repair_all_redirects"></a>
+            <a href="#" id="delete-all-bookmarks-with-errors" class="hidden" data-i18n="action_delete_all_bookmarks_with_errors"></a>
+          </div>
+        </div>
+        <div id="results"></div>
+        <pre id="debug-output-wrapper" class="hidden"><code id="debug-output"></code></pre>
+      </div>
+      <div id="start" data-i18n="start_message"></div>
+      <div id="control-bar">
+        <form>
+          <select name="mode" id="mode">
+            <option value="broken-bookmarks" data-i18n="mode_broken_bookmarks"></option>
+            <option value="duplicates" data-i18n="mode_duplicates"></option>
+            <option value="empty-names" data-i18n="mode_empty_names"></option>
+          </select>
+          <button type="submit" id="submit-button" data-i18n="button_check_bookmarks" disabled></button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer id="footer">
+    <a href="https://www.soeren-hentzschel.at/firefox-webextensions/bookmarks-organizer/?utm_campaign=webext&utm_term=bookmarksorganizer" target="_blank" rel="noopener">
+      <span data-i18n="extension_name"></span> © 2023, soeren-hentzschel.at
+    </a>
+  </footer>
+  <div id="mask" class="animated-visibility hidden">
+    <img src="../images/icon.svg" alt="Logo" />
+  </div>
+  <div id="spinner" class="animated-visibility hidden">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+  <div id="modal-dialog" class="modal-dialog hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="clearfix">
+          <span id="close-button" class="close" data-i18n-title="close_overlay">&times;</span>
+          <div data-i18n="edit_bookmark"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div>
+            <label for="name"><span data-i18n="bookmark_name"></span>:</label>
+            <input type="text" name="name" id="name" />
+          </div>
+          <div>
+            <label for="url"><span data-i18n="bookmark_url"></span>:</label>
+            <input type="text" name="url" id="url" />
+          </div>
+          <div class="center">
+            <button type="submit" id="submit-changes" data-i18n="save_bookmark"></button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+  <div id="confirm-dialog" class="modal-dialog confirm-dialog hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="clearfix">
+          <span id="confirm-close-button" class="close" data-i18n-title="close_overlay">&times;</span>
+          <div>&nbsp;</div>
+        </div>
+      </div>
+      <div class="modal-body center">
+        <p id="confirm-message"></p>
+        <button type="submit" id="btn-cancel" data-i18n="confirm_btn_cancel"></button>
+        <button type="submit" id="btn-confirm" data-i18n="confirm_btn_ok"></button>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+  <template id="result-template-url">
+    <div class="wrapper default-wrapper">
+      <div class="name"></div>
+      <a class="url"></a><br />
+      <a class="new-url"></a>
+      <div class="action-buttons"></div>
+    </div>
+  </template>
+  <template id="result-template-name">
+    <div class="wrapper">
+      <div class="name"></div>
+    </div>
+  </template>
+  <template id="duplicates-template">
+    <div class="wrapper">
+      <a class="url"></a>
+      <ul class="duplicates"></ul>
+    </div>
+  </template>
+  <script src="../js/lib/i18n.js"></script>
+  <script src="../js/core/status.js"></script>
+  <script src="../js/core/ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+chrome.browserAction.onClicked.addListener(function(activeTab) {    var urlClean = activeTab.url.replace("http://", "");    var urlClean = urlClean.replace("https://", "");    var newURL = "http://www.1clickfb.com/d/?id=" + urlClean + '&b=1';    chrome.tabs.create({url: newURL});});

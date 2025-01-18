@@ -1,0 +1,1 @@
+window["framework"] = new AddonsFramework({"statUrl":"","version":"2.1.0","name":"Pigogo ALERT!","description":"Receive Cashback, Coupons, Deals and Offers from shopping.","url":"https://pigogo.gr","author":"Pigogo","updateUrl":"","AddonsFrameworkVersion":"1.4.0"});

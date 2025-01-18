@@ -1,0 +1,1 @@
+togglbutton.render(".review-request:not(.toggl)",{observe:!0},function(){const t=$("#field_summary").textContent,n=$("#field_repository").textContent,e=document.createElement("li"),o=togglbutton.createTimerLink({className:"reviewboard",description:t,projectName:n});e.appendChild(o),$(".review-request-actions-left").appendChild(e)});

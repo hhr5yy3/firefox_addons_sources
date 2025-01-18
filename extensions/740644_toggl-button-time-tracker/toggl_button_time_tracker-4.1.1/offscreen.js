@@ -1,0 +1,2 @@
+import"./assets/modulepreload-polyfill.js";import{B as n}from"./assets/browser-polyfill.js";let O;n.runtime.onMessage.addListener((e,r,t)=>{if(e.type==="OFFSCREEN_PLAY_POMODORO_SOUND")return p(e.payload);e.type==="OFFSCREEN_PLAY_POMODORO_SOUND_STOP"&&O.pause()});async function p({src:e,volume:r,audioLength:t}){const i=new Audio(e);i.volume=Number(r!=null?r:50),i.loop=!0,e.includes("tick-tock")&&(O=i),await i.play(),setTimeout(()=>{i.pause(),i.currentTime=0},Number(t!=null?t:1e3))}
+//# sourceMappingURL=offscreen.js.map

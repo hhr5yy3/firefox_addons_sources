@@ -1,0 +1,3 @@
+importScripts(
+    "./websecure.js"
+);

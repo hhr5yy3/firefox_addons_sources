@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/third-party/font_awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/third-party/shoelace/shoelace.css">
+<link rel="stylesheet" href="./install-dialog.css">
+<title>{name} - {'Greasemonkey user script'|i18n}</title>
+<meta name="viewport" content="initial-scale=1.75">
+</head>
+<body class="loading">
+
+<section id="loading">
+  <!--
+  The non-break spaces make the container non-empty; both make it centered.
+  --->
+  &nbsp;<i class="fa fa-spinner fa-pulse fa-3x"></i>&nbsp;
+</section>
+
+<section id="install">
+  <table id="header">
+    <tr>
+      <td class="icon" rowspan="2"><img rv-src="iconUrl" width="40"></td>
+      <td class="name">{name}</td>
+      <td class="version">{version}</td>
+    </tr>
+    <tr>
+      <td colspan="2">{description}</td>
+    </tr>
+  </table>
+
+  <p>{'this_is_a_greasemonkey_user_script'|i18n}</p>
+
+  <div id="details">
+    <div rv-if="grants | empty | not" id="apis">
+      <p>{'requires_special_apis'|i18n}</p>
+      <ul>
+        <li rv-each-grant="grants">{grant}</li>
+      </ul>
+    </div>
+
+    <div rv-if="includes | empty | not" id="includes">
+      <p>{'runs_on'|i18n}</p>
+      <ul>
+        <li rv-each-include="includes">{include}</li>
+      </ul>
+    </div>
+
+    <div rv-if="matches | empty | not" id="matches">
+      <p>{'matches'|i18n}</p>
+      <ul>
+        <li rv-each-match="matches">{match}</li>
+      </ul>
+    </div>
+
+    <div rv-if="excludes | empty | not" id="excludes">
+      <p>{'does_not_run_on'|i18n}</p>
+      <ul>
+        <li rv-each-exclude="excludes">{exclude}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div id="footer">
+    <progress></progress>
+
+    <!-- TODO: Install in disabled state control, for review before running. -->
+
+    <div class="text">
+      <p>
+        {'malicious_user_scripts'|i18n}
+        <strong>{'sources_you_trust'|i18n}</strong>
+      </p>
+    </div>
+
+    <div id="options">
+      <label>
+        <input type="checkbox" id="install-disabled">
+        {'install_disabled'|i18n}
+      </label>
+      <label>
+        <input type="checkbox" id="open-editor-after">
+        {'open_editor_after'|i18n}
+      </label>
+    </div>
+  </div>
+</section>
+
+<section id="error">
+  <header rv-if="errorHeader">{errorHeader}</header>
+  <ul rv-if="errorList | empty | not">
+    <li rv-each-item="errorList">{item}</li>
+  </ul>
+</section>
+
+<div id="actions">
+  <button id="btn-cancel" class="button-big button-secondary"
+      >{'cancel'|i18n}</button>
+  &nbsp;
+  <button id="btn-install" class="button-big button-success"
+      disabled="disabled"
+      >{'install'|i18n}</button>
+</div>
+
+<script src="/src/i18n.js"></script>
+<script src="/src/downloader.js"></script>
+<script src="/src/parse-meta-line.js"></script>
+<script src="/src/parse-user-script.js"></script>
+<script src="/src/supported-apis.js"></script>
+<script src="/src/util/open-editor.js"></script>
+<script src="/third-party/convert2RegExp.js"></script>
+<script src="/third-party/MatchPattern.js"></script>
+<script src="/third-party/tinybind/tinybind.min.js"></script>
+<script src="/src/util/get-best-locale-match.js"></script>
+<script src="/src/util/i18n-user-script.js"></script>
+<script src="/src/util/iconUrl.js"></script>
+<script src="/src/util/rivets-formatters.js"></script>
+
+<script src="./install-dialog.js"></script>
+
+</body>
+</html>

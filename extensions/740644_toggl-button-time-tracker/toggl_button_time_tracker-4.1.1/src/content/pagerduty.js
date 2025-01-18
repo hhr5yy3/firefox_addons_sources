@@ -1,0 +1,1 @@
+togglbutton.render(".pd-incident-actions:not(.toggl)",{observe:!0},function(){const t=$(".pd-service-name__name a"),e=document.title.replace(/\[#(\d*)\]([\w\W]*) - PagerDuty/g,"Pagerduty $1:$2"),n=togglbutton.createTimerLink({className:"pagerduty",description:e,projectName:t&&t.textContent});$(".pd-incident-actions").appendChild(n)});

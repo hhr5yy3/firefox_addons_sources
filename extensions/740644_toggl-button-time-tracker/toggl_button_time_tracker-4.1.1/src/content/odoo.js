@@ -1,0 +1,1 @@
+togglbutton.render(".o_control_panel .breadcrumb:not(.toggl)",{observe:!0},t=>{const e=()=>$(".breadcrumb-item.active",t).textContent.trim(),o=togglbutton.createTimerLink({className:"odoo",description:e});t.appendChild(o)});

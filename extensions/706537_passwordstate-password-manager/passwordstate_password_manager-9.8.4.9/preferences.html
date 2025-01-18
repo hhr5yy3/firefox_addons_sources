@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Passwordstate</title>
+  <link href="css/style.min.css" rel="stylesheet" type="text/css" />
+  <script src="js/preferences.min.js"></script>
+</head>
+
+<body>
+  <div class="prefences" id="prefences">
+    <form>
+      <div class="main">
+        <div class="popup" style='width: 100%;'>
+          <div class="ico_img" style='padding-right: 5px;'>
+            <img src="images/icon_16x16.png" />
+          </div>
+          Browser Extension Authentication
+          <span class="prefs-build-info">(Extension Build <span id="build"></span>)</span>
+          <div class="line"></div>
+          <br />
+
+          <div id="confirm_url_panel" style="display: none;margin-left:10px;">
+              <img class="login-image" id="favIconSavePopup"
+                style="display:inline-block !important;width:32px !important;height:32px !important;position:unset !important;vertical-align:middle;margin-right:8px;"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MjRGQzM5QjI1MTBGMTFFOTgxQzRERjJDRURGMzY4OTUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MjRGQzM5QjM1MTBGMTFFOTgxQzRERjJDRURGMzY4OTUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNEZDMzlCMDUxMEYxMUU5ODFDNERGMkNFREYzNjg5NSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyNEZDMzlCMTUxMEYxMUU5ODFDNERGMkNFREYzNjg5NSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PitAofIAAAlQSURBVHjanFcJWJTn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">
+              <div class="title-description" id="url_confirm_auth"
+                style="display:inline-block !important;font-weight:bold;white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; word-wrap: break-word;max-width:400px;vertical-align:middle;">
+              </div>
+              <div id="confirm_mpass_panel" style="display: none;">
+                <div style="margin-top:12px; margin-bottom: 12px;">
+                  You must enter your Master Password, as set on your Preferences -> Browser Extension screen, and confirm the URL above is correct.
+                </div>
+                <div id="passDiv" style="display: inline;">
+                  <b>Master Password:</b><input id="mPass" type="password" style="float:right;width:240px;margin-right:15px;" />
+                </div>
+                <br /><br />
+              </div>
+              <div id="confirm_blurbV1" style="margin-top:12px; margin-bottom: 12px;">
+                You must confirm that the above URL is correct for your Passwordstate instance or App Server before authentication can proceed.
+              </div>
+              <div id="confirm_blurb_rf" style="margin-top:12px; margin-bottom: 12px;display: none;">
+                You must confirm that the above URL is correct for your Passwordstate instance or App Server and ensure the active tab is logged into Passwordstate before authentication can proceed.
+              </div>
+              <div id="statusMessage" style="text-align: right;color:red;font-weight: bold;margin-bottom:12px;margin-right:15px;"></div>
+              <div class="save-btn" style="display: inline;margin-top: 12px;">
+                <button type="button" id="confirm_auth" style="float:right;margin-left:15px;margin-right:15px;">Login</button>
+                <button type="button" id="logout" style="float:right;display:none;">Logout</button>
+              </div>
+          </div>
+
+          <div id="config_info_panel" style="display: block;">
+            Please browse to your Passwordstate Website, or refresh the screen if already logged in, so this extension can be configured.
+            <br /><br />
+            When the extension icon is red you are not authenticated.<br />If the icon is yellow you are required to unlock with your Master Password and when the icon turns black or blue, you can begin using this feature (blue means an Ignored URL).
+            <br /><br />
+            Your Passwordstate Website must also be using a Trusted SSL Certificate for this extension to work. Please refer to documentation for further information.
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+
+
+</html>

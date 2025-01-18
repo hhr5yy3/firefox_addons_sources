@@ -1,0 +1,101 @@
+import React from '../npm/dom-chef.js';
+import { expectElement, $ } from '../npm/select-dom.js';
+import elementReady from '../npm/element-ready.js';
+import ArrowLeftIcon from '../npm/octicons-plain-react-components-ArrowLeft.js';
+import { isIssue, isPR, isPRConversation, isClosedConversation } from '../npm/github-url-detection.js';
+import features from '../feature-manager.js';
+import getDefaultBranch from '../github-helpers/get-default-branch.js';
+import observe from '../helpers/selector-observer.js';
+import { expectToken } from '../github-helpers/github-token.js';
+import { parseReferenceRaw } from '../github-helpers/pr-branches.js';
+import { assertNodeContent } from '../helpers/dom-utils.js';
+
+async function cleanIssueHeader(byline) {
+	byline.classList.add('rgh-clean-conversation-headers', 'rgh-hide-author');
+
+	// Shows on issues: octocat opened this issue on 1 Jan · [1 comments]
+	// Removes on issues: octocat opened this issue on 1 Jan [·] 1 comments
+	const commentCount = expectElement('relative-time', byline).nextSibling;
+	commentCount.replaceWith(React.createElement('span', null, commentCount.textContent.replace('·', '')));
+}
+
+async function cleanPrHeader(byline) {
+	byline.classList.add('rgh-clean-conversation-headers');
+	byline.parentElement.closest('.d-flex').classList.add('flex-items-center');
+
+	const prCreatorSelector = [
+		'.TimelineItem .author',
+		'.Timeline-Item [data-testid="author-avatar"] a:not([data-testid="github-avatar"])',
+	].join(',');
+
+	// Extra author name is only shown on `isPRConversation`
+	// Hide if it's the same as the opener (always) or merger
+	const shouldHideAuthor
+		= isPRConversation()
+		&& !byline.closest('.gh-header-sticky') // #7802
+		&& expectElement([
+			'.author',
+			'a[data-hovercard-url]',
+		], byline).textContent === (await elementReady(prCreatorSelector)).textContent;
+
+	if (shouldHideAuthor) {
+		byline.classList.add('rgh-hide-author');
+	}
+
+	const base = expectElement([
+		'.commit-ref',
+		'[class^="BranchName"]',
+	], byline);
+
+	let baseBranch;
+	if (base.title) {
+		baseBranch = parseReferenceRaw(base.title, base.textContent).branch;
+	} else {
+		baseBranch = parseReferenceRaw(base.nextElementSibling.textContent, base.textContent).branch;
+	}
+
+	const wasDefaultBranch = isClosedConversation() && baseBranch === 'master';
+	const isDefaultBranch = baseBranch === await getDefaultBranch();
+	if (!isDefaultBranch && !wasDefaultBranch) {
+		base.classList.add('rgh-non-default-branch');
+	}
+
+	// Shows on PRs: main [←] feature
+	const anchor
+		= $('.commit-ref-dropdown', byline)?.nextSibling // TODO: Drop old PR layout support
+		?? base.nextSibling?.nextSibling;
+	assertNodeContent(anchor, 'from');
+	anchor.after(React.createElement('span', null, React.createElement(ArrowLeftIcon, { className: "v-align-middle mx-1" ,} )));
+}
+
+async function init(signal) {
+	await expectToken();
+
+	const cleanConversationHeader = isIssue() ? cleanIssueHeader : cleanPrHeader;
+	observe([
+		'.gh-header-meta > .flex-auto', // Real
+		'.rgh-conversation-activity-filter', // Helper in case it runs first and breaks the `>` selector, because it wraps the .flex-auto element
+		'[class^="StateLabel"] + div > span:first-child',
+	], cleanConversationHeader, {signal});
+}
+
+void features.add(import.meta.url, {
+	include: [
+		isIssue,
+		isPR,
+	],
+	init,
+});
+
+/* Test URLs
+
+- Open PR (default branch): https://github.com/refined-github/sandbox/pull/4
+- Open PR (non-default branch): https://github.com/Kenshin/simpread/pull/698
+
+- Merged PR (same author): https://github.com/sindresorhus/refined-github/pull/3402
+- Merged PR (different author): https://github.com/parcel-bundler/parcel/pull/78
+- Merged PR (different author + first published tag): https://github.com/sindresorhus/refined-github/pull/3227
+
+- Closed PR: https://github.com/sindresorhus/refined-github/pull/4141
+
+*/

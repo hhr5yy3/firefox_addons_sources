@@ -1,0 +1,1 @@
+togglbutton.render(".main__header:not(.toggl)",{observe:!0},function(t){const e=$("div",t).textContent,o=$("h3",t).textContent,n=togglbutton.createTimerLink({className:"codeable",description:e,projectName:o});$(".task-developer .body").appendChild(n)});

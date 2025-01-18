@@ -1,0 +1,2 @@
+function l(o){const{selectedWorkspaceId:e,projects:r,projectName:n}=o.data,c=Object.values(r!=null?r:{}).filter(s=>s.name===n),t=c.find(s=>s.workspace_id===e);return t!=null?t:c[0]}self.onmessage=function(o){try{console.time("toggl:projectResolverWorker");const e=l(o);self.postMessage(e),console.timeEnd("toggl:projectResolverWorker")}catch(e){console.error(e,"toggl:projectResolverWorker")}};
+//# sourceMappingURL=projectResolver.worker.js.map

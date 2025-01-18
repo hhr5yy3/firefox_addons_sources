@@ -1,0 +1,1 @@
+chrome.runtime.onMessage.addListener(((e,t,n)=>{"isContextAnalyticScriptInjected"===e.type&&n({isInjected:!0})}));

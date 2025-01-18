@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="well">
+      <i class="fa fa-2x fa-info-circle"></i>
+      <span i18n="'optionsCommandsWellHelp'"></span>
+    </div>
+
+    <!-- Command search -->
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon">
+          <i class="fa fa-search"></i>
+        </span>
+        <input class="form-control" type="text"
+               ng-model="controls.searchCommands"></input>
+      </div>
+    </div>
+
+    <!-- List of gesture mappings -->
+    <div class="mapping-list built-ins">
+      <div class="mapping-group"
+           ng-repeat="group in commandGroups | orderBy:'order'">
+        <div class="heading">
+          <h4>{{::group.label}}</h4>
+        </div>
+        <div class="members">
+          <div class="mapping-item"
+               ng-repeat="command in group.members | orderBy:'label'">
+
+            <label class="control-label command-label">
+              <span>{{command.label}}</span>
+              <span>
+                <i class="fa fa-question-circle"
+                   ng-if="command.tooltip"
+                   uib-tooltip="{{command.tooltip}}"></i>
+                <i class="fa fa-exclamation-triangle"
+                    ng-if="command.permissions"
+                    uib-tooltip="{{i18n('tooltipRequiresPermissions', command.permissions.join(', '))}}"></i>
+                <i class="fa fa-exclamation-circle"
+                    ng-if="command.minVersion>browserInfo.version"
+                    uib-tooltip="{{i18n('tooltipRequiresVersion', command.minVersion)}}"></i>
+              </span>
+            </label>
+
+            <input class="form-control mapped-gesture"
+                    ng-value="getMappingForCommand(command).gesture"
+                    disabled="disabled"></input>
+
+            <canvas class="gesture-input" mg-gesture-input="" width="148" height="100"
+                    settings="settings"
+                    gesture="getMappingForCommand(command).gesture"
+                    on-gesture="assignGestureToCommand(gesture, command)"></canvas>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

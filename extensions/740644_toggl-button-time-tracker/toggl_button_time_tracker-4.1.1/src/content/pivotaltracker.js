@@ -1,0 +1,1 @@
+togglbutton.render("form.story:not(.toggl)",{observe:!0},function(t){const e=$("textarea",t),i=$(".id.text_value",t),n=$(".edit aside",t),o=$("title").textContent;if(e===null||n===null)return;const l=togglbutton.createTimerLink({className:"pivotal",description:i.value+" "+e.value,projectName:o&&o.split(" -").shift()});n.appendChild(l)});

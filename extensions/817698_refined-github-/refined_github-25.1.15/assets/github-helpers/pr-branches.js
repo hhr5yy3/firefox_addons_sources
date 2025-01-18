@@ -1,0 +1,50 @@
+import { expectElement } from '../npm/select-dom.js';
+
+const absoluteReferenceRegex = /^(?<nameWithOwner>(?<owner>[^:/]+)\/(?<name>[^:]+)):(?<branch>.+)$/;
+
+/**
+ * @param absolute - The full reference, e.g. `fregante/mem:main`
+ * @param relative - The references it appear to the user in the PR, e.g. "main" on same-repo PRs, "fregante:main" on cross-repo PRs
+ * @example parseReferenceRaw('fregante/mem:main', 'main')
+ */
+function parseReferenceRaw(absolute, relative) {
+	const absoluteMatch = absoluteReferenceRegex.exec(absolute);
+	if (!absoluteMatch) {
+		throw new TypeError(`Expected \`absolute\` to be "user/repo:branch", got "${absolute}"`);
+	}
+
+	const {owner, name, nameWithOwner, branch} = absoluteMatch.groups;
+
+	// We must receive the relative reference because it also tells whether it's a cross-repo PR
+	const expectedRelative = [branch, `${owner}:${branch}`];
+	if (!expectedRelative.includes(relative)) {
+		throw new TypeError(`Expected \`relative\` to be either "${expectedRelative.join('" or "')}", got "${relative}"`);
+	}
+
+	return {
+		owner,
+		name,
+		branch,
+		nameWithOwner,
+		absolute,
+		relative,
+	};
+}
+
+function parseReference(referenceElement) {
+	const {title, textContent} = referenceElement;
+	return parseReferenceRaw(title, textContent.trim());
+}
+
+function getBranches() {
+	return {
+		get base() {
+			return parseReference(expectElement('.base-ref'));
+		},
+		get head() {
+			return parseReference(expectElement('.head-ref'));
+		},
+	};
+}
+
+export { getBranches, parseReferenceRaw };

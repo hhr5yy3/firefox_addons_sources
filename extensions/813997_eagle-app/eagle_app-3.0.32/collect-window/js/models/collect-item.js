@@ -1,0 +1,1 @@
+class CollectItem{constructor(){this.title="",this.src="",this.url="",this.type="image",this.tags=[],this.annotation="",this.width=2048,this.height=2048,this.star=void 0}}

@@ -1,0 +1,1 @@
+!function(){let e=document.createElement("div");e.setAttribute("id","zoom-extension-installed-dom-mark"),e.style.display="none",e.setAttribute("version",browser.runtime.getManifest().version),document.body.appendChild(e)}();

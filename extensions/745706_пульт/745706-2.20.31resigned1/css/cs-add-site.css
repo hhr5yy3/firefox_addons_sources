@@ -1,0 +1,193 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Open Sans"), url("chrome-extension://__MSG_@@extension_id__/fonts/OpenSans-Regular.woff"); }
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local("Open Sans Semibold"), url("chrome-extension://__MSG_@@extension_id__/fonts/OpenSans-Semibold.woff"); }
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Open Sans Bold"), url("chrome-extension://__MSG_@@extension_id__/fonts/OpenSans-Bold.woff"); }
+
+@font-face {
+  font-family: 'Lato Black';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Lato Black"), url("chrome-extension://__MSG_@@extension_id__/fonts/Lato-Black.woff"); }
+
+@keyframes ntpExpandAndFadeOut {
+  0% {
+    transform: scale(1);
+    opacity: 1; }
+  100% {
+    transform: scale(1.3);
+    opacity: 0; } }
+
+@keyframes ntpSlideIn {
+  0% {
+    transform: translateY(10px);
+    opacity: 0.3; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
+
+.ntp-add-site {
+  position: fixed;
+  z-index: 1000000;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: none;
+  width: 410px;
+  height: 93px;
+  padding: 10px;
+  color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+  box-sizing: content-box;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  user-select: none;
+  -webkit-user-select: none; }
+  .ntp-add-site.ntp-show-active {
+    display: flex;
+    opacity: 0; }
+  .ntp-add-site.ntp-show {
+    display: flex;
+    animation: ntpSlideIn .4s forwards; }
+  .ntp-add-site.ntp-hide-active {
+    display: flex;
+    opacity: 1; }
+  .ntp-add-site.ntp-hide {
+    animation: ntpExpandAndFadeOut .1s forwards;
+    pointer-events: none; }
+  .ntp-add-site.ntp-added {
+    background: #fff; }
+    .ntp-add-site.ntp-added .ntp-tile-container {
+      background-color: rgba(0, 0, 0, 0.6); }
+    .ntp-add-site.ntp-added .ntp-title {
+      color: #333;
+      margin-bottom: 10px; }
+    .ntp-add-site.ntp-added .ntp-cross-button {
+      background-image: url("chrome-extension://__MSG_@@extension_id__/img/black-cross.png"); }
+  .ntp-add-site.ntp-removed {
+    background: #000; }
+    .ntp-add-site.ntp-removed .ntp-tile-container {
+      background-color: #333; }
+    .ntp-add-site.ntp-removed .ntp-title {
+      color: #ccc; }
+      .ntp-add-site.ntp-removed .ntp-title strong {
+        color: #fff; }
+    .ntp-add-site.ntp-removed .ntp-cross-button {
+      background-image: url("chrome-extension://__MSG_@@extension_id__/img/white-cross.png"); }
+
+.ntp-tile-container {
+  width: 196px;
+  flex-shrink: 0;
+  height: 93px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.ntp-text-container {
+  flex-shrink: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0 30px 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; }
+
+.ntp-title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: left;
+  color: #333; }
+  .ntp-title strong {
+    font-weight: 700;
+    color: #000; }
+
+.ntp-hostname {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: rgba(51, 51, 51, 0.8);
+  text-align: left; }
+
+.ntp-cross-button {
+  outline: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 13px;
+  height: 13px;
+  vertical-align: middle;
+  opacity: .4;
+  transition: none;
+  background-repeat: no-repeat;
+  background-position: center; }
+  .ntp-cross-button:hover {
+    opacity: .6; }
+  .ntp-cross-button:active {
+    opacity: .8; }
+
+.ntp-spinner {
+  animation-name: spin;
+  animation-iteration-count: infinite;
+  animation-duration: 2500ms;
+  animation-timing-function: linear; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.ntp-tile-image {
+  height: 40%;
+  width: auto; }
+
+.ntp-tile-favicon {
+  height: 45px;
+  width: 45px;
+  border-radius: 8px; }
+
+.ntp-tile-text {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  font-family: 'Lato Black', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  max-width: 80%;
+  transition: opacity .25s linear;
+  text-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; }

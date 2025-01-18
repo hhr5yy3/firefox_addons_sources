@@ -1,0 +1,1 @@
+togglbutton.render(".convo-actions:not(.toggl)",{observe:!0},function(){const n="#"+$("#tkHeader strong").textContent+" "+$("#subjectLine").textContent,t=togglbutton.createTimerLink({className:"helpscout",description:n,buttonType:"minimal"});t.setAttribute("style","margin-top: 10px");const e=document.createElement("li");e.appendChild(t),$(".convo-actions").appendChild(e)});

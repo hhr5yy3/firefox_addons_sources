@@ -1,0 +1,399 @@
+﻿<html>
+    
+    <head>
+        
+        <meta charset="utf-8"/>
+
+<!--
+/************************************************************************/
+/*                                                                      */
+/*      Zoom Page WE - Generic WebExtension - Popup Page                */
+/*                                                                      */
+/*      HTML and CSS for Popup Page                                     */
+/*                                                                      */
+/*      Last Edit - 16 Apr 2023                                         */
+/*                                                                      */
+/*      Copyright (C) 2016-2023 DW-dev                                  */
+/*                                                                      */
+/*      Distributed under the GNU General Public License version 2      */
+/*      See LICENCE.txt file and http://www.gnu.org/licenses/           */
+/*                                                                      */
+/************************************************************************/
+-->
+
+        <script src="popup.js"></script>
+        
+        <style>
+            
+            body
+            {
+                display: flex;
+                margin: 0px;
+                padding: 0px 1px 0px 0px;
+            }
+            
+            body *
+            {
+                font-family: "Segoe UI","Helvetica Neue",Ubuntu,Arial;
+                font-size: 14px;
+            }
+            
+            #popup-debug,
+            #popup-expand,
+            #popup-subsite
+            {
+                display: none;
+            }
+            
+            #popup-debug,
+            #popup-expand,
+            #popup-subsite,
+            #popup-font
+            {
+                border-right: 1px solid #C0C0C0;
+            }
+            
+            #popup-debug
+            {
+                padding: 7px;
+                background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAABACAYAAAAj8ea3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAO9SURBVEhLvZZbSNNxFMfd1KXTUJtKqGgKCYWBUgQ+BUES9hAULrqoExKthwwktBLsQvTQg08a5mVeCUUfCkKISAp6CBF7KbIwp0Vk4KoNTVO3Pue3/9YuavWgXzg753fO95zf/fdf2L9CJz9ut1vf09OTIvb8/LyzoqLih9j+UESr1dqn0+nMygNI/Ip6jlwqKyuziU8vPxreWywW3eLiYjxJRUgG8q67uztNghGK4getW6m2v6OjY2J5efkWdql/xRBQsRF1ROx1iYx1ErKpq6sreV0iiJSfqKgo598q7kA+mc3mn2sSm5ubE1G1dN0n7YBZd3Z2Zq+srMSFh4dnUek6rgXsGxJTFclaQu0kOI79FF2LPEKyiouLHcLxob+/3yCiNTcB6lB40dLSsisyMrLA5XJtZ6zjHIgOLfRnZ9jXk5DeMIFkSIkIh8p6Rwt7Kg4PD+ttNtu0Xq+/Wlpa2im+9vb2K7Rvzs7ORldXV/9S6zg1NZVEhVTMHCrXUFUKyPHSm0wmWfjPqmvGFC2axc6DlI+ZS6IRfc9oNH6RmKqI03v0LzOBEc0OgKpI8BuVhkk419TUlCC+3t7eBIZxVmyB/6E4jyTRlR2CbWlpyU7yIU9oDbS2tqawnWrcmwB2wcXY6rRmCHyTYcZjqHhPKxT+s5Y7EqeZIfCdHrodRU2wv93sUD49fCTxPmv8XeIBFUEO2/kQkgtSJXqUOx0rgWCinYqxvEF1PCUFkDNIzJRA8Bgfl5SUzIldXl4+Q8WXmFulHUAkEHDiSbSjwsUO7joA5GWhFsUOJl5j9iVisAGVqN2MeVrawcvzBDmKZNCtm4oXmFirxFcFSXItNgt0V9PW1nZAayowoVqev5CdsTDDPM0OY+timMztiIiIbdJedx39sbHEecak7rSA06PG5oX/G/6azTg2ODjYODc3l8zxsmp+BV9FqjWgDE6ncwbSCO27iCe4GvgymDRzgxEwCLasmHHtQZw0F8THC6yeZx8RkvwLSGXm02g5j3txP3A4HKerqqqW1az5GhgJmpGL3ONTuMTegm4QknAUEaf63LLIMaL5/jnlhAN1IwX+XU+RkK415QYOUb1Qa3qIrF06i/yCY1aBzibBzl3pUgwNqmuy9QTTIJ0QjSudHg5LzAtFNBgMs6gPkOQ7rUMysYc49QMS94HsfTjV98QLvlz1+Nz19fXqpVBjxJGLGqPSGSq9xZYH6iC2g7EeF47qmsYrAvIsW5AB7EJIzyYnJ4sk/l/wrSNVNCsQVOY3LOw3H0GhRV5PwwoAAAAASUVORK5CYII=");
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            
+            #popup-expand
+            {
+                padding: 5px;
+                background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAMCAYAAABFohwTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNBNAaMQAAAAbSURBVBhXY8AKFixY8B+EoVwsAoQBvc1gYAAAtRkidR1r+9YAAAAASUVORK5CYII=");
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            
+            /*----------------------------------------*/
+            
+            #popup-subsite-1
+            {
+                display: flex;
+                padding: 3px 3px 0px 3px;
+            }
+            
+            #popup-subsiteclear
+            {
+                width: 4.2em;
+                height: 2em;
+                margin: 3px;
+                padding: 0px 0px 2px 0px;
+            }
+            
+            /*----------------------------------------*/
+            
+            #popup-subsite-2
+            {
+                display: flex;
+                padding: 0px 3px 3px 3px;
+            }
+            
+            #popup-subsitetype
+            {
+                width: 4.2em;
+                height: 2em;
+                margin: 3px;
+                border: 1px solid #ADADAD;
+                text-align: center;
+                -moz-appearance: none;
+                -webkit-appearance: none;
+            }
+            
+            #popup-subsitetype[disabled]
+            {
+                border: 1px solid #BFBFBF;
+            }
+            
+            #popup-subsitetype:not([disabled]):hover
+            {
+                border: 1px solid #0078D7;
+            }
+            
+            #popup-subsitetype option
+            {
+                text-align: center;
+                background: #F8F8F8;
+                color: black;
+            }
+            
+            #popup-subsitetype option:first-child
+            {
+                font-weight: bold;
+            }
+            
+            body:not([isfirefox]) #popup-subsitetype
+            {
+                outline: 1px solid #767676;
+                outline-offset: -1px;
+            }
+            
+            body:not([isfirefox]) #popup-subsitetype:not([disabled]):hover
+            {
+                outline: 1px solid #00A000;
+            }
+            
+            /*----------------------------------------*/
+            
+            #popup-font-1
+            {
+                display: flex;
+                padding: 3px 3px 0px 3px;
+            }
+            
+            #popup-fontreset
+            {
+                width: 4.5em;
+                height: 2em;
+                margin: 3px;
+                padding: 0px 0px 2px 0px;
+            }
+            
+            /*----------------------------------------*/
+            
+            #popup-font-2
+            {
+                display: flex;
+                padding: 0px 3px 3px 3px;
+            }
+            
+            #popup-fontsize
+            {
+                width: 4.5em;
+                height: 2em;
+                margin: 3px;
+                padding: 0px 0px 2px 0px;
+                border: 1px solid #ADADAD;
+                text-align: center;
+                -moz-appearance: none;
+                -webkit-appearance: none;
+            }
+            
+            #popup-fontsize[disabled]
+            {
+                border: 1px solid #BFBFBF;
+            }
+            
+            #popup-fontsize:not([disabled]):hover
+            {
+                border: 1px solid #0078D7;
+            }
+            
+            #popup-fontsize option
+            {
+                text-align: center;
+                background: #F8F8F8;
+                color: black;
+            }
+            
+            body:not([isfirefox]) #popup-fontsize
+            {
+                outline: 1px solid #767676;
+                outline-offset: -1px;
+            }
+            
+            body:not([isfirefox]) #popup-fontsize:not([disabled]):hover
+            {
+                outline: 1px solid #00A000;
+            }
+            
+            /*----------------------------------------*/
+            
+            #popup-zoom-1
+            {
+                display: flex;
+                padding: 3px 3px 0px 3px;
+            }
+            
+            #popup-zoomautofit,
+            #popup-zoomreset
+            {
+                width: 4.0em;
+                height: 2em;
+                margin: 3px;
+                padding: 0px 0px 2px 0px;
+            }
+            
+            #popup-zoomtype
+            {
+                width: 3.0em;
+                height: 2em;
+                margin: 3px;
+                padding: 1px 0px 3px 0px;
+                border: 1px solid #ADADAD;
+            }
+            
+            body[isfirefox] #popup-zoom-1
+            {
+                padding-right: 2px;
+            }
+            
+            #popup-zoomtype[disabled]
+            {
+                border: 1px solid #BFBFBF;
+            }
+            
+            #popup-zoomtype:not([disabled]):hover
+            {
+                border: 1px solid #0078D7;
+            }
+            
+            /*----------------------------------------*/
+            
+            #popup-zoom-2
+            {
+                display: flex;
+                padding: 0px 3px 3px 3px;
+            }
+            
+            #popup-zoomout,
+            #popup-zoomin
+            {
+                width: 3.0em;
+                height: 2em;
+                margin: 3px;
+                padding: 0px 0px 2px 0px;
+            }
+            
+            #popup-zoomlevel
+            {
+                width: 5.0em;
+                height: 2em;
+                margin: 3px;
+                border: 1px solid #ADADAD;
+                text-align: center;
+                -moz-appearance: none;
+                -webkit-appearance: none;
+            }
+            
+            #popup-zoomlevel[disabled]
+            {
+                border: 1px solid #BFBFBF;
+            }
+            
+            #popup-zoomlevel:not([disabled]):hover
+            {
+                border: 1px solid #0078D7;
+            }
+            
+            #popup-zoomlevel option
+            {
+                text-align: center;
+                background: #F8F8F8;
+                color: black;
+            }
+            
+            body[isfirefox] #popup-zoom-2
+            {
+                padding-right: 2px;
+            }
+            
+            body:not([isfirefox]) #popup-zoomlevel
+            {
+                outline: 1px solid #767676;
+                outline-offset: -1px;
+            }
+            
+            body:not([isfirefox]) #popup-zoomlevel:not([disabled]):hover
+            {
+                outline: 1px solid #00A000;
+            }
+            
+            /*----------------------------------------*/
+            
+            button::-moz-focus-inner
+            {
+                border: 0px;
+                padding: 0px;
+            }
+            
+        </style>
+        
+        
+    </head>
+    
+    <body>
+        
+        <div id="popup-debug">
+        
+        </div>
+        
+        <div id="popup-expand">
+        
+        </div>
+        
+        <div id="popup-subsite">
+            
+            <div id="popup-subsite-1">
+                
+                <button id="popup-subsiteclear" title="Clear subsite">Clear</button>
+                
+            </div>
+            
+            <div id="popup-subsite-2">
+                
+                <select id="popup-subsitetype" title="Define subsite" tabindex="-1">
+                    
+                    <option>Off</option>
+                    <option title="Include this page and all descendants">&#x2606</option>
+                    <option title="Include all descendants">&gt;</option>
+                    <option title="Include all descendants except for first level">&gt; 1</option>
+                    <option title="Include all descendants except for first 2 levels">&gt; 2</option>
+                    <option title="Include all descendants except for first 3 levels">&gt; 3</option>
+                    <option title="Include all descendants except for first 4 levels">&gt; 4</option>
+                    <option title="Include all descendants except for first 5 levels">&gt; 5</option>
+                    <option title="Include all descendants except for first 6 levels">&gt; 6</option>
+                    
+                </select>
+                
+            </div>
+            
+        </div>
+        
+        <div id="popup-font">
+            
+            <div id="popup-font-1">
+                
+                <button id="popup-fontreset" title="Reset to default minimum font size or&#10;Set default minimum font size [Ctrl+Click]">Reset</button>
+                
+            </div>
+            
+            <div id="popup-font-2">
+                
+                <select id="popup-fontsize" title="Set minimum font size" tabindex="-1"></select>
+                
+            </div>
+            
+        </div>
+            
+        <div id="popup-zoom">
+            
+            <div id="popup-zoom-1">
+                
+                <button id="popup-zoomautofit" title="Automatic fit-to-width">Auto</button>
+                
+                <button id="popup-zoomtype" title="Toggle zoom type">Full</button>
+                
+                <button id="popup-zoomreset" title="Reset to default zoom level or&#10;Set default zoom level [Ctrl+Click]">Reset</button>
+                
+            </div>
+            
+            <div id="popup-zoom-2">
+                
+                <button id="popup-zoomout" title="Zoom out">−</button>
+                
+                <select id="popup-zoomlevel" title="Set zoom level" tabindex="-1"></select>
+                
+                <button id="popup-zoomin" title="Zoom in">+</button>
+                
+            </div>
+            
+        </div>        
+        
+    </body>
+    
+</html>

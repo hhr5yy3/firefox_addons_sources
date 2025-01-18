@@ -1,0 +1,92 @@
+html {
+    background-color: black;
+}
+html, body {
+    color: white;
+    height: 100%;
+    overflow: hidden;
+    font-size: 16px;
+    font-family: Verdana, system-ui, sans-serif, Helvetica;
+}
+.color_background {
+    position: fixed;
+    top: 25px;      /* being overridden */
+    background: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+.r_container {
+    will-change: left, top;
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    > .reload_container {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+
+        iframe {
+            border: none;
+            z-index: 1000;
+            position: absolute;
+            pointer-events: none;
+            background-color: white;
+            transform-origin: top left;
+        }
+    }
+}
+// class "is_loading" is removed before taking the shot
+html.is_loading {
+    .r_container {
+        transform: scale(0.1, 0.1);       // to fit all pages into the viewport, we scale them down
+        transform-origin: left top;
+        // puts iframes in a row
+        display: flex;
+        flex-wrap: nowrap;
+    }
+}
+
+.heading {
+    margin: 42px;
+    position: fixed;
+    bottom: 0;
+
+    // hide heading when shooting
+    html:not(.is_loading) & {
+        display: none;
+    }
+}
+
+/*
+// keeps loading boxes
+.loading_box {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 10;                        // to force a layer (experiment)
+    transform: scale(0.05, 0.05);       // to fit all pages into the viewport, we scale them down to 5%
+    transform-origin: left top;
+    display: flex;
+    flex-wrap: nowrap;
+    max-height: 500px;      // NOTE: scale applies here as well, so this is 500 x 0.05 = 100px
+    overflow: hidden;
+}
+.shooting_box {
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    > div {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+    }
+}
+ */

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="color-scheme" content="light dark">
+<title>Options for Don't Track Me Google</title>
+<style>
+body {
+    margin: 2em 3em;
+}
+label {
+    display: block;
+    margin: 1em 0;;
+    line-height: 150%;
+}
+footer {
+    border-top: 1px solid #CCC;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    html, body {
+        /* Override transparent/#222426 from Firefox's extension.css for
+           options_ui.browser_style (default true) */
+        background: Canvas;
+        /* Override for Chrome and Firefox. */
+        color: CanvasText;
+    }
+
+    /* Overrides colors from Chrome's extension.css (chrome_style:true) that
+       would force non-dark style */
+    a {
+        color: -webkit-link;
+    }
+    a:active {
+        color: -webkit-activelink;
+    }
+}
+</style>
+</head>
+<body>
+<label>
+    <input type="checkbox" id="noreferrer">
+    Clear HTTP referrer (this prevents other sites from seeing your Google search terms).
+</label>
+<label>
+    <input type="checkbox" id="noping">
+    Disable hyperlink auditing at Google (stops Google from tracking some link clicks).
+</label>
+<footer>
+    &copy; 2011 - 2023 Rob Wu &lt;rob@robwu.nl&gt;
+    &bull; <a href="https://github.com/Rob--W/dont-track-me-google/">Source code on Github</a>
+    &bull; <a href="https://chrome.google.com/webstore/detail/dont-track-me-google/gdbofhhdmcladcmmfjolgndfkpobecpg">Chrome Web Store listing</a>
+    &bull; <a href="https://addons.mozilla.org/addon/dont-track-me-google1/">Firefox addon listing</a>
+    &bull; <a href="https://addons.opera.com/extensions/details/dont-track-me-google/">Opera addon listing</a>
+</footer>
+<script src="options.js"></script>
+</body>
+</html>

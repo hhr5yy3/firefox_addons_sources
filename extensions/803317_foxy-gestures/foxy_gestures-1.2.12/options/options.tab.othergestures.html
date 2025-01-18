@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="checkbox clearfix">
+          <label>
+            <input type="checkbox"
+                   ng-model="settings.wheelGestures"></input>
+            <span i18n="'optionsEnableWheelGestures'"></span>
+          </label>
+          <div class="pull-right">
+            <i class="fa fa-info-circle"></i>
+            <span i18n="'optionsEnableWheelGesturesHelp'"></span>
+          </div>
+        </div>
+      </div>
+      <fieldset class="panel-body"
+                ng-disabled="!settings.wheelGestures">
+        <div class="form-group">
+          <label class="control-label" i18n="'labelScrollUp'"></label>
+          <select class="form-control"
+                  ng-options="item as item.label group by item.group for item in mappables track by item.id"
+                  ng-model="controls.wheelMappings.up"
+                  ng-change="assignMappingToWheel('up')"></select>
+        </div>
+        <div class="form-group">
+          <label class="control-label" i18n="'labelScrollDown'"></label>
+          <select class="form-control"
+                  ng-options="item as item.label group by item.group for item in mappables track by item.id"
+                  ng-model="controls.wheelMappings.down"
+                  ng-change="assignMappingToWheel('down')"></select>
+        </div>
+        <div class="form-group">
+          <label class="control-label" i18n="'labelScrollLeft'"></label>
+          <select class="form-control"
+                  ng-options="item as item.label group by item.group for item in mappables track by item.id"
+                  ng-model="controls.wheelMappings.left"
+                  ng-change="assignMappingToWheel('left')"></select>
+        </div>
+        <div class="form-group">
+          <label class="control-label" i18n="'labelScrollRight'"></label>
+          <select class="form-control" id="wheelRightMapping"
+                  ng-options="item as item.label group by item.group for item in mappables track by item.id"
+                  ng-model="controls.wheelMappings.right"
+                  ng-change="assignMappingToWheel('right')"></select>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="checkbox clearfix">
+          <label>
+            <input type="checkbox"
+                   ng-model="settings.chordGestures"></input>
+            <span i18n="'optionsEnableChordGestures'"></span>
+          </label>
+          <div class="pull-right">
+            <i class="fa fa-info-circle"></i>
+            <span i18n="'optionsEnableChordGesturesHelp'"></span>
+          </div>
+        </div>
+      </div>
+      <fieldset class="panel-body"
+                ng-disabled="!settings.chordGestures">
+        <div class="form-group"
+             ng-repeat="chordMapping in settings.chordMappings | index | orderBy:'chord'">
+          <label class="control-label">{{getChordPreview(chordMapping.chord)}}</label>
+          <div class="input-group">
+            <select class="form-control"
+                    ng-options="item as item.label group by item.group for item in mappables track by item.id"
+                    ng-model="controls.chordMappings[chordMapping.index]"
+                    ng-change="assignMappingToChord(chordMapping.index)"></select>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"
+                      uib-tooltip="Remove Chord" tooltip-placement="left"
+                      ng-click="removeChordMapping(chordMapping)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="form-group clearfix">
+          <button class="btn btn-default pull-right" type="button"
+                  ng-click="addChordMapping()"
+                  i18n="'buttonAddChord'"></button>
+        </div>
+      </fieldset>
+    </div>
+
+  </div>
+</div>

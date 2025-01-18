@@ -1,0 +1,2 @@
+import"./assets/modulepreload-polyfill.js";import{aC as t}from"./assets/constants.js";import{B as e}from"./assets/browser-polyfill.js";(()=>{var s;document!==null&&((s=document.querySelector("button#requestPermissions"))==null||s.addEventListener("click",async()=>{if(await e.permissions.request({origins:t()})){const r=e.runtime.getURL("src/pages/postInstallLP/index.html");e.tabs.update({url:r}),e.runtime.sendMessage({type:"activate",payload:{forwardError:!1}})}}))})();
+//# sourceMappingURL=requestPermissions.js.map

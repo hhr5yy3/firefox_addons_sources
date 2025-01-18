@@ -1,0 +1,1 @@
+var s=(s=>(s.Focus="focus",s.FocusPlusTen="focusPlusTen",s.Break="rest",s.BreakPlusTen="restPlusTen",s))(s||{}),e=(s=>(s.CountUp="countUp",s.Timer="timer",s))(e||{});export{e as T,s as a};

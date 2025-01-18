@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ReloadMatic Settings</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+
+<body>
+    <h3>Default Options</h3>
+    <div class="subheader">New tabs will automatically have the options you select here enabled.<br/>
+    <span class="warning">Note:</span> Changes here are only guaranteed to take effect in newly opened tabs.</div>
+    <form>
+        <label><input type="checkbox" id="defRandomize"/>Randomize</label><br/>
+        <label><input type="checkbox" id="defOnlyUnsuccessful"/>Only if unsuccessful</label><br/>
+        <label><input type="checkbox" id="defSmartTiming"/>Smart timing</label><br/>
+        <label><input type="checkbox" id="defStickyReload"/>Sticky reload</label><br/>
+        <label><input type="checkbox" id="defDisableCache"/>Disable cache</label><br/>
+    </form>
+
+    <h3>Notifications</h3>
+    <div class="subheader">ReloadMatic can notify you of events that could be of interest to you. You can set which notifications you wish to receive here.</div>
+    <form>
+        <label><input type="checkbox" id="chkNotifUnconfirmedPost"/>Timer disabled due to yet-unconfirmed POST processing.</label><br/>
+        <label><input type="checkbox" id="chkNotifNavigateAway"/>Timer disabled because user navigated to a different page.</label><br/>
+        <label><input type="checkbox" id="chkNotifTextInput"/>Timer disabled because user started typing in page.</label><br/>
+    </form>
+
+    <h3>Smart Timing</h3>
+    <div class="subheader">This feature can be enabled or disabled for each tab separately, and if enabled, adjusts a pending reload if there is user activity inside it. This way it avoids reloading the page while you are interacting with it. Its behavior can be influenced with the following options.</div>
+
+    Behavior when typing into a text field:
+    <form id="SmartTimingTypeReaction">
+        <label><input type="radio" name="SmartTimingTypeReaction" id="radSmartTimingTextDisable" value="radSmartTimingTextDisable"/>Disable periodic reloading for that tab</label><br/>
+        <label><input type="radio" name="SmartTimingTypeReaction" id="radSmartTimingTextDelay" value="radSmartTimingTextDelay"/>Delay periodic reloading like for any other activity</label><br/>
+    </form>
+
+    <form>
+        <label>If general activity is detected, delay a pending reload by <input type="text" id="txtSmartTimingActivityDelay" style="width:70px"/> seconds.</label><br/>
+    </form>
+
+    <h3>Pinning</h3>
+    <div class="subheader">If you enable this option, pinning or unpinning a tab will automatically set or clear the tab's "Remember page" property. <span class="warning">Note:</span> Only takes effect on newly pinned/unpinned tabs.</div>
+    <form>
+        <label><input type="checkbox" id="chkPinningSetsRemember"/>Let pinning also set page remembering</label><br/>
+    </form>
+
+    <h3>URL Fixing</h3>
+    <div class="subheader">A fixed URL is often used together with Sticky Reload, because one common use-case for a fixed URL is for pages that redirect. In those cases you'll probably want ReloadMatic to not disable the reload timer upon the redirect, which is what Sticky Reload is for. This option allows you to automatically set Sticky Reload when setting a fixed URL. <span class="warning">Note:</span> Only takes effect on newly set/unset fixed URLs.</div>
+    <form>
+        <label><input type="checkbox" id="chkFixedUrlSetsStickyReload"/>Let setting/unsetting a fixed URL also enable/disable Sticky Reload</label><br/>
+    </form>
+
+    <h3>Remembered Pages</h3>
+    <div class="subheader">Here you can delete all remembered pages. Saved ReloadMatic settings for remembered URLs are then deleted and all newly loaded pages will start with the default options unless changed and remembered again.</div>
+    <form>
+        <button type="button" id="btnClearRememberedPages">Clear all</button>
+    </form>
+
+
+</body>
+
+<script src="options.js"></script>
+
+</html>

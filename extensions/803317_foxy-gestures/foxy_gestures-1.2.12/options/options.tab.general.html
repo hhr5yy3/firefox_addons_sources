@@ -1,0 +1,214 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <!-- Gesture button -->
+    <div class="form-group">
+      <label class="control-label" i18n="'optionsGestureButton'"></label>
+      <select class="form-control"
+              ng-model="settings.gestureButton">
+        <option ng-value="0" i18n="'mouseButtonLeft'"></option>
+        <option ng-value="1" i18n="'mouseButtonMiddle'"></option>
+        <option ng-value="2" i18n="'mouseButtonRight'"></option>
+        <!--
+        Button 4 and 5 are not working in any tested browser/OS combination.
+        <option ng-value="3" i18n="[ 'mouseButtonOther', '4' ]"></option>
+        <option ng-value="4" i18n="[ 'mouseButtonOther', '5' ]"></option>
+        -->
+      </select>
+      <p class="help-block" i18n="'optionsGestureButtonHelp'"></p>
+    </div>
+
+    <!-- Gesture disable button -->
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input class="control-label" type="checkbox"
+                 ng-model="settings.disableOnAlt"></input>
+          <span i18n="'optionsDisableOnAlt'"></span>
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="checkbox">
+        <label>
+          <input class="control-label" type="checkbox"
+                 ng-model="settings.disableOnShift"></input>
+          <span i18n="'optionsDisableOnShift'"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Can select start -->
+    <div class="form-group"
+         ng-show="settings.gestureButton === 0">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"
+                 ng-model="settings.canSelectStart"></input>
+          <span i18n="'optionsCanSelectStart'"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Gesture timeout -->
+    <div class="form-group" ng-class="{'has-error':controls.optionsForm.gestureTimeout.$invalid}">
+      <label class="control-label" i18n="'optionsGestureTimeout'"></label>
+      <div class="input-group">
+        <input class="form-control" type="number" name="gestureTimeout"
+               step="0.1" min="0" max="30"
+               ng-model="controls.gestureTimeout"></input>
+        <span class="input-group-addon" i18n="'secondsAddon'"></span>
+      </div>
+      <p class="help-block" i18n="'optionsGestureTimeoutHelp'"></p>
+    </div>
+
+    <!-- Gesture style -->
+    <div class="form-group gesture-style"
+         ng-switch="settings.gestureDetector.style">
+      <label class="control-label" i18n="'optionsGestureStyle'"></label>
+      <div>
+        <div>
+          <select class="form-control"
+                  ng-model="settings.gestureDetector.style">
+            <option ng-value="'cardinal'" i18n="'optionsGestureStyleCardinal'"></option>
+            <option ng-value="'intercardinal45'" i18n="'optionsGestureStyleIntercardinal45'"></option>
+            <option ng-value="'intercardinal60'" i18n="'optionsGestureStyleIntercardinal60'"></option>
+          </select>
+          <p class="help-block" ng-switch-when="cardinal" i18n="'optionsGestureStyleCardinalHelp'"></p>
+          <p class="help-block" ng-switch-when="intercardinal45" i18n="'optionsGestureStyleIntercardinal45Help'"></p>
+          <p class="help-block" ng-switch-when="intercardinal60" i18n="'optionsGestureStyleIntercardinal60Help'"></p>
+        </div>
+        <img ng-switch-when="cardinal" src="images/cardinal.png"></img>
+        <img ng-switch-when="intercardinal45" src="images/intercardinal45.png"></img>
+        <img ng-switch-when="intercardinal60" src="images/intercardinal60.png"></img>
+      </div>
+    </div>
+
+    <!-- Draw trails -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"
+                   ng-model="settings.drawTrails"></input>
+            <span i18n="'optionsDrawTrails'"></span>
+          </label>
+          <a class="pull-right more-or-fewer"
+             ng-click="controls.fewerTrailOptions = !controls.fewerTrailOptions">
+            <span ng-show="controls.fewerTrailOptions">
+              <span i18n="'buttonMoreOptions'"></span>
+              <i class="fa fa-caret-down"></i>
+            </span>
+            <span ng-hide="controls.fewerTrailOptions">
+              <span i18n="'buttonFewerOptions'"></span>
+              <i class="fa fa-caret-up"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <fieldset class="panel-body"
+                uib-collapse="controls.fewerTrailOptions"
+                ng-disabled="!settings.drawTrails">
+        <!-- Trail width -->
+        <div class="form-group" ng-class="{'has-error':controls.optionsForm.trailWidth.$invalid}">
+          <label class="control-label" i18n="'optionsTrailWidth'"></label>
+          <div class="input-group">
+            <input class="form-control" type="number" name="trailWidth"
+                   step="0.5" min="0.5" max="40"
+                   ng-model="settings.trailWidth"></input>
+            <span class="input-group-addon">
+              <canvas fg-trail-preview="" settings="settings" width="50" height="16"></canvas>
+            </span>
+          </div>
+        </div>
+
+        <!-- Trail color -->
+        <div class="form-group" ng-class="{'has-error':controls.optionsForm.trailColor.$invalid}">
+          <label class="control-label" i18n="'optionsTrailColor'"></label>
+          <input class="form-control" type="text" name="trailColor"
+                 ng-model="settings.trailColor" fg-css-color=""></input>
+          <p class="help-block" i18n="'optionsTrailColorHelp'"></p>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Draw status -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"
+                   ng-model="settings.showStatusText"></input>
+            <span i18n="'optionsShowStatusText'"></span>
+          </label>
+          <a class="pull-right more-or-fewer"
+             ng-click="controls.fewerStatusOptions = !controls.fewerStatusOptions">
+            <span ng-show="controls.fewerStatusOptions">
+              <span i18n="'buttonMoreOptions'"></span>
+              <i class="fa fa-caret-down"></i>
+            </span>
+            <span ng-hide="controls.fewerStatusOptions">
+              <span i18n="'buttonFewerOptions'"></span>
+              <i class="fa fa-caret-up"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+      <fieldset class="panel-body"
+                uib-collapse="controls.fewerStatusOptions"
+                ng-disabled="!settings.showStatusText">
+
+        <!-- Status timeout -->
+        <div class="form-group" ng-class="{'has-error':controls.optionsForm.statusTimeout.$invalid}">
+          <label class="control-label" i18n="'optionsStatusTimeout'"></label>
+          <div class="input-group">
+            <input class="form-control" type="number" name="statusTimeout"
+                   step="0.1" min="0.1" max="30"
+                   ng-model="controls.statusTimeout"></input>
+            <span class="input-group-addon" i18n="'secondsAddon'"></span>
+          </div>
+          <p class="help-block" i18n="'optionsStatusTimeoutHelp'"></p>
+        </div>
+
+        <!-- Status template -->
+        <div class="form-group">
+          <label class="control-label" i18n="'optionsStatusTemplate'"></label>
+          <a class="pull-right"
+             ng-click="settings.statusTemplate = settings.templates.statusTemplate"
+             i18n="'buttonReset'"></a>
+          <textarea class="form-control"
+                    ng-model="settings.statusTemplate"></textarea>
+          <p class="help-block" i18n="'optionsStatusTemplateHelp'"></p>
+        </div>
+
+      </fieldset>
+    </div>
+
+    <!-- Blacklisted URLs -->
+    <div class="form-group">
+      <label class="control-label"
+             ng-hide="settings.whitelistMode"
+             i18n="'optionsBlacklistUrlPatterns'"></label>
+      <label class="control-label"
+             ng-show="settings.whitelistMode"
+             i18n="'optionsWhitelistUrlPatterns'"></label>
+      <textarea class="form-control"
+                ng-model="settings.blacklistUrlPatterns"
+                ng-list="&#10;" ng-trim="false"></textarea>
+      <p class="help-block"
+         ng-hide="settings.whitelistMode"
+         i18n="'optionsBlacklistUrlPatternsHelp'"></p>
+      <p class="help-block"
+         ng-show="settings.whitelistMode"
+         i18n="'optionsWhitelistUrlPatternsHelp'"></p>
+      <div class="checkbox">
+        <label>
+          <input class="control-label" type="checkbox"
+                 ng-model="settings.whitelistMode"></input>
+          <span i18n="'optionsWhitelistMode'"></span>
+        </label>
+      </div>
+    </div>
+
+  </div>
+</div>

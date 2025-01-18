@@ -1,0 +1,2 @@
+import"./assets/modulepreload-polyfill.js";import{aC as t}from"./assets/constants.js";import{B as e}from"./assets/browser-polyfill.js";(()=>{if(window.browser){e.permissions.contains({origins:t()}).then(s=>{s||e.tabs.update({url:e.runtime.getURL("src/pages/requestPermission/index.html")})});const i=document.getElementById("FFPin"),o=document.getElementById("chromePin");i&&(i.style.display="block"),o&&(o.style.display="none")}})();
+//# sourceMappingURL=postInstallLP.js.map

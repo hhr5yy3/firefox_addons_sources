@@ -1,0 +1,48 @@
+// Productivity mode:
+// - dials and groups are simply marked with ".distraction" class
+// - to activate this, simply put ".productivity_on" to the body!
+html.productivity_on:not(.add_current_mode, .dials_selection_mode, .in_iframe) {
+    #groups {
+        .distraction {
+            display: none;
+        }
+    }
+
+    #dials {
+        .distraction {      // main dial anchor
+            pointer-events: none;
+
+            .dial_container {
+                * {     // first of all, all existing content is hidden
+                    display: none;
+                }
+                // border restricts background dimensions (like a padding)
+                padding: 8px 0;
+                opacity: 0.6;
+                filter: grayscale(1);
+                display: flex;          // we have to use flex to center (vertically) image if it doesn't fill dial (due to "max-height" below)
+                flex-direction: row;
+                align-items: center;
+
+                &::before {         // we use pseudo node with background, this way we can have "max-height" and "contain"
+                    content: "";
+                    max-height: 96px;
+                    // todo: I don't think this will work on Web version
+                    background: url('../svg/padlock (8).svg') no-repeat center;
+                    background-size: contain;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+
+        }
+    }
+}
+
+// Productivity control:
+#productivity_control {
+    width: 24px;
+    height: 24px;
+
+}
+

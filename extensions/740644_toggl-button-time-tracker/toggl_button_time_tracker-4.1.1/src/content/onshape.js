@@ -1,0 +1,1 @@
+togglbutton.render(".document-name-container:not(.toggl)",{observe:!0},function(n){const t=$(".navbar-document-version",n).textContent,e=$(".navbar-document-name",n).textContent,o=togglbutton.createTimerLink({className:"onshape",description:t,projectName:e,buttonType:"minimal"});$(".navbar-document-and-workspace-names").appendChild(o)});

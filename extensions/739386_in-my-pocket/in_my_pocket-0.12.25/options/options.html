@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./options.css" />
+    <link rel="stylesheet" href="../assets/font/fontello.css" />
+    <title>In My Pocket Settings</title>
+  </head>
+
+  <body>
+    <span class="saved-notification hidden">✔︎ Saved!</span>
+
+    <h2>General</h2>
+    <section class="generic">
+      <p class="row display-badge-count-row">
+        <label>Display count badge</label>
+        <input type="checkbox" class="display-badge-count" />
+        <img src="../assets/images/show_badge.png" />
+      </p>
+
+      <p class="row display-page-action-row">
+        <label>Show "add to Pocket" button in address bar</label>
+        <input type="checkbox" class="display-page-action" />
+        <img src="../assets/images/show_page_action.png" />
+      </p>
+
+      <p class="row open-in-new-tab-row">
+        <label>Open item in new tab</label>
+        <input type="checkbox" class="open-in-new-tab" />
+      </p>
+
+      <p class="row zoom-level-row">
+        <label>Zoom level</label>
+        <select class="zoom-level">
+          <option value="10px">Small</option>
+          <option value="12px">Regular</option>
+          <option value="14px">Big</option>
+        </select>
+      </p>
+
+      <p class="row pagination-per-page-row">
+        <label>Pagination</label>
+        <select class="pagination-per-page">
+          <option value="">Disabled</option>
+          <option value="10">10 items per page</option>
+          <option value="20">20 items per page</option>
+          <option value="50">50 items per page</option>
+        </select>
+      </p>
+    </section>
+
+    <h2>Keyboard</h2>
+    <section class="keyboard">
+      <!--
+        No way to programmatically link to the keyboard shortcuts page yet:
+        https://bugzilla.mozilla.org/show_bug.cgi?id=1538451
+      -->
+      <p class='row notice firefox'>
+        ℹ️  Since version 66, Firefox provides a dedicated user interface to manage keyboard shortcuts for all your addons.
+        For more details, please have a look at <a href="https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox" target="_blank">Mozilla Support: Manage extension shortcuts in Firefox</a>
+      </p>
+      <p class='row notice chrome'>
+        ℹ️  Chrome-based browsers provide a dedicated user interface to manage keyboard shortcuts for all your addons.
+        Please have a look at <a href="chrome://extensions/shortcuts" class='chrome-shortcuts-page' target="_blank">addons shortcuts</a>.
+      </p>
+    </section>
+
+    <h2>Automations</h2>
+    <section class="automations">
+      <p class="row close-tab-when-added-row">
+        <label>Close tab when you add the page to Pocket</label>
+        <input type="checkbox" class="close-tab-when-added" />
+      </p>
+
+      <p class="row close-tab-when-read-row">
+        <label>Close the current page when marked as read</label>
+        <input type="checkbox" class="close-tab-when-read" />
+      </p>
+
+      <p class="row archive-when-opened-row">
+        <label>Mark page as read when you open it</label>
+        <input type="checkbox" class="archive-when-opened" />
+      </p>
+    </section>
+
+    <h2>Support</h2>
+    <section class="support">
+      <p class="row enabled-feature-switches-row hidden">
+        <label>
+          🧪 Enabled experimental features
+        </label>
+        <span class='value'></span>
+      </p>
+
+      <p class="row enable-bug-report-row">
+        <label>
+          📩 Help building a better addon by sending automatic bug reports
+          <a href="https://inmypocketaddon.com/faq.html#more-info-privacy">(learn more)</a>
+        </label>
+        <input type="checkbox" class="enable-bug-report" />
+      </p>
+
+      <p class="row enable-debug-mode-row">
+        <label>Enable debug mode</label>
+        <input type="checkbox" class="enable-debug-mode" />
+      </p>
+
+      <p class="row disconnect-row">
+        <label>Pocket account</label>
+        <a href="#" class="disconnect-first-step">Disconnect</a>
+
+        <span class="disconnect-second-step hidden">
+          You sure?
+          <a href="#" class="disconnect-second-step-confirm">Yes</a>
+          <a href="#" class="disconnect-second-step-cancel">No</a>
+        </span>
+      </p>
+    </section>
+
+    <!-- TODO: this polyfill should only be loaded in Chrome -->
+    <script src="../assets/browser-polyfill.js"></script>
+    <script src="./options.js"></script>
+  </body>
+</html>

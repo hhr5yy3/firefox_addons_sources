@@ -1,0 +1,1 @@
+togglbutton.render("body.node-type-project-issue #tabs ul:not(.toggl)",{},function(t){const e=togglbutton.createTimerLink({className:"drupalorg",description:t.textContent});t.appendChild(document.createElement("li").appendChild(e))});

@@ -1,0 +1,79 @@
+/**
+ * Yet Another Jenkins Notifier
+ * Copyright (C) 2016 Guillaume Girou
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+body {
+    width: 500px;
+    min-height: 200px;
+    padding-bottom: 10px;
+}
+
+#jobList:not(:empty) + .help-block {
+  display: none;
+}
+
+.avatar {
+    border-width: 0 0 0 5px;
+    border-style: solid;
+    vertical-align: bottom;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.job-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.dl-horizontal dt {
+  float: left;
+  width: 120px;
+  overflow: hidden;
+  clear: left;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dl-horizontal dd {
+  margin-left: 140px;
+}
+
+.building {
+    animation-name: building;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+}
+
+@keyframes building {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}

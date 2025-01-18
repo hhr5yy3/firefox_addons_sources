@@ -1,0 +1,22 @@
+$(function(){
+    $(".allsides_link").click(function(){
+        chrome.tabs.create({url:"http://allsides.com/"});
+        clickLink("allsides");
+    });
+    $(".unlocked_link").click(function(){
+        chrome.tabs.create({url:"http://twitter.com/The_Unlocked/"});
+        clickLink("twitter");
+    });
+    $(".unlocked_link_hyper").click(function(){
+        chrome.tabs.create({url:"http://twitter.com/The_Unlocked/"});
+        clickLink("twitter");
+    });
+    $(".review_link").click(function(){
+        chrome.tabs.create({url:"https://chrome.google.com/webstore/detail/bias-finder/jojjlkfeofgcjeanbpghcapjcccbakop/reviews"});
+        clickLink("writeReview");
+    });
+    $(".settings_link").click(function(){
+        chrome.tabs.create({url:"chrome://extensions/?options=" + chrome.runtime.id});
+        clickLink("settings");
+    });
+});

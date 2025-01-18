@@ -1,0 +1,80 @@
+{
+  "manifest_version": 2,
+  "version": "0.19.0",
+  "name": "Image Picka",
+  "description": "__MSG_extensionDescription__",
+  "author": "eight",
+  "homepage_url": "https://github.com/eight04/image-picka",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "image-picka@eight04.blogspot.com",
+      "strict_min_version": "58.0"
+    }
+  },
+  "permissions": [
+    "downloads",
+    "storage",
+    "contextMenus",
+    "activeTab",
+    "notifications",
+    "tabs",
+    "<all_urls>"
+  ],
+  "optional_permissions": [
+    "webNavigation"
+  ],
+  "background": {
+    "scripts": [
+      "index-BmprrkjV.js",
+      "pref-CU6GYXv6.js",
+      "expand-env-BJ_11ibq.js",
+      "readline-o8Ebgnf7.js",
+      "env-CBPEoOlM.js",
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "matches": [
+        "<all_urls>"
+      ],
+      "match_origin_as_fallback": true,
+      "js": [
+        "pref-CU6GYXv6.js",
+        "env-CBPEoOlM.js",
+        "index-BmprrkjV.js",
+        "readline-o8Ebgnf7.js",
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true
+  },
+  "web_accessible_resources": [
+    "images/download-button.svg"
+  ],
+  "browser_action": {
+    "default_title": "Pick Images",
+    "default_icon": "images/icon.svg"
+  },
+  "icons": {
+    "32": "images/icon.svg"
+  },
+  "default_locale": "en",
+  "commands": {
+    "_execute_browser_action": {},
+    "PICK_FROM_CURRENT_TAB": {
+      "description": "__MSG_commandPickFromHighlightedTab__"
+    },
+    "PICK_FROM_RIGHT_TABS_EXCLUDE_CURRENT": {
+      "description": "__MSG_commandPickFromRightTabsExcludeCurrent__"
+    },
+    "PICK_FROM_RIGHT_TABS": {
+      "description": "__MSG_commandPickFromRightTabs__"
+    }
+  }
+}

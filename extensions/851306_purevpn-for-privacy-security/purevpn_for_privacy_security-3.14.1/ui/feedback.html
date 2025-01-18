@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-lang="feedBackPageTitle"></title>
+    <style>
+        :root {
+            --purple: #6536CC;
+        }
+        body {
+            margin: 0;
+        }
+        @font-face {
+            font-family: 'proximanova';
+            font-style: normal;
+            font-weight: 400;
+            src: local('proxima-nova'), local(proxima-nova), url(../bower_components/proxima-nova/fonts/proxima-nova/proximanova-regular-webfont.ttf) format('truetype');
+        }
+        * { border-box: box-sizing; }
+        .feedbackPopUpOverlay {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+        }
+        body{
+            -webkit-backface-visibility: visible;
+        }
+
+        .feedbackPopUp {
+            width: 560px;
+            top:50%;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            position: absolute;
+            background: #fff;
+            left: 0;
+            right: 0;
+            margin: auto;
+            z-index: 11;
+            font-family:proximanova;
+            backface-visibility: hidden;
+        }
+
+        .feedbackPopUp h1 {
+            font-size: 24px;
+            color: #000000;
+            text-align: center;
+            margin-top: 50px;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .feedbackPopUpClosePop {
+            float: right;
+            color: #b4b4b4;
+            font-size: 30px;
+            padding: 20px;
+            cursor: pointer;
+            line-height: 10px;
+            position:absolute;
+            right:0;
+        }
+        .keepCenter{
+            position: relative;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+            text-align: center;
+        }
+        .starsRating {
+            display: inline-block;
+            margin-bottom: 60px;
+        }
+
+        .starsRating input[type=radio] {
+            display: none;
+        }
+
+        .starsRating label {
+            width: 54px;
+            height: 54px;
+            display: inline-block;
+            cursor: pointer;
+            float: right;
+            padding-left: 22px;
+            background: url("../assets/images/stars_grey_and_yellow.png") no-repeat center 0;
+            position: relative;
+        }
+        .starsRating label.rating-star:after {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+            bottom: -32px;
+            font-size: 13px;
+
+        }
+        .starsRating label.rating-star[for=feedbackrate-1]:after {
+            content: 'Poor'
+        }
+
+        .starsRating label.rating-star[for=feedbackrate-2]:after {
+            content: 'Bad';
+        }
+
+        .starsRating label.rating-star[for=feedbackrate-3]:after {
+            content: 'Average';
+        }
+
+        .starsRating label.rating-star[for=feedbackrate-4]:after {
+            content: 'Good';
+        }
+
+        .starsRating label.rating-star[for=feedbackrate-5]:after {
+            content: 'Excellent';
+        }
+
+        .starsRating input[type=radio]:checked + label:before {
+            content: '';
+            position: absolute;
+            right: 7px;
+            bottom: 0;
+            background: url(../assets/images/check_box_green.png);
+            width: 24px;
+            height: 24px;
+        }
+
+        .starsRating label:hover,
+        .starsRating label:hover ~ label, .starsRating input[type=radio]:checked ~ label {
+            background-position: center 102%;
+        }
+
+        .feedbackButtonSubmit,.feedbackButtonSubmit2 {
+            border-radius: 2px;
+            background: var(--purple);
+            color: #fff;
+            display: inline-block;
+            border: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            clear: both;
+            padding: 10px 40px;
+            outline:none;
+            cursor: pointer;
+            -webkit-transition:opacity .5s ease-in-out;
+            -moz-transition:opacity .5s ease-in-out;
+            -ms-transition:opacity .5s ease-in-out;
+            -o-transition:opacity .5s ease-in-out;
+            transition:opacity .5s ease-in-out;
+            margin: auto;
+            backface-visibility: hidden;
+        }
+        .feedbackButtonSubmit {
+            display: block;
+        }
+        .feedbackButtonSubmit:disabled{
+            opacity: .4;
+            cursor: default;
+        }
+        .feedbackButtonSubmit:not(:disabled):hover,.feedbackButtonSubmit2:hover{
+            opacity:.8;
+        }
+        .feedbackPopUp textarea, .feedbackPopUp input[type=text] {
+            display: block;
+            resize: none;
+            margin: auto;
+            width: 352px;
+            border:1px solid #cacaca;
+            color: #000;
+            outline: none;
+            margin-bottom: 30px;
+            padding-top:10px;
+            padding-left:10px;
+
+            box-sizing: border-box;
+            font-family: proximanova;
+        }
+        .feedbackPopUp input[type=text] {
+            padding: 0;
+            padding-left: 15px;
+            height: 35px;
+            margin-bottom: 35px;
+        }
+        .feedbackPopUpHeading2{
+            font-size:30px;
+            font-weight:normal;
+            margin-top: 40px;
+        }
+        .feedbackButtonSubmit2 {
+            text-decoration:none !important;
+        }
+
+        #feedBackContentChromeStore{
+            display: none;
+            padding-bottom: 50px;
+        }
+        .wrapField {
+            display: none;
+            position: relative;
+        }
+        .wrapField .character_count,.wrapField .error_length{
+            font-size: 10px;
+            float:right;
+            position: absolute;
+            bottom: 15px;
+
+        }
+        .wrapField .character_count{
+            right: 0;
+            color:#828282;
+        }
+         .wrapField .error_length.showMinLengthError{
+            display: block;
+        }
+        .error_length{
+            right: auto;
+            left: 0;
+            font-size: 12px;
+            color:red;
+        }
+        .error_length{
+            display: none;
+        }
+        #feedBackThanks{
+          display: none;
+          padding-bottom: 40px;
+        }
+        .feedbackPopUpHeading2_a{
+          margin-bottom: 0;
+        }
+        #feedBackContent{
+          padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="feedbackPopUpOverlay" class="feedbackPopUpOverlay"></div>
+<div id="feedbackPopUp" class="feedbackPopUp">
+    <!-- <span id="feedbackPopUpClosePop" class="feedbackPopUpClosePop">&times;</span> -->
+    <div class="keepCenter">
+    <div id="feedBackContent">
+        <h1 id="feedbackPopUpHeading" class="feedbackPopUpHeading" data-lang="PopUpfeedBackHeading"></h1>
+        <div class="starsRating">
+            <input type="radio" class="rating-input"
+                   id="feedbackrate-5" name="feedbackRating" value="5">
+            <label for="feedbackrate-5" class="rating-star"></label>
+
+            <input type="radio" class="rating-input"
+                   id="feedbackrate-4" name="feedbackRating" value="4">
+            <label for="feedbackrate-4" class="rating-star"></label>
+
+            <input type="radio" class="rating-input"
+                   id="feedbackrate-3" name="feedbackRating" value="3">
+            <label for="feedbackrate-3" class="rating-star"></label>
+
+            <input type="radio" class="rating-input"
+                   id="feedbackrate-2" name="feedbackRating" value="2">
+            <label for="feedbackrate-2" class="rating-star"></label>
+
+            <input type="radio" class="rating-input"
+                   id="feedbackrate-1" name="feedbackRating" value="1">
+            <label for="feedbackrate-1" class="rating-star"></label>
+        </div>
+        <div class="wrapField">
+            <textarea name="" id="feedbackText" cols="30" rows="4" data-lang-placeholder="feedbackDescriptionPlaceholder"></textarea>
+            <span id="feedbackTitleError" class="error_length" data-lang="feedbackMinLengthDescription"></span>
+            <span id="feedbackTextCount" class="character_count" data-lang="characterZero"></span>
+        </div>
+        <button id="feedbackButtonSubmit" class="feedbackButtonSubmit" disabled="disabled" data-lang="PopUpfeedBackSubmit">
+        </button>
+        </div>
+        <div id="feedBackContentChromeStore">
+            <h2 id="feedbackPopUpHeading2" class="feedbackPopUpHeading2" data-lang="PopUpfeedBackHeading2"></h2>
+             <a id="feedbackButtonSubmit2" data-lang="PopUpFeedBackStore" class="feedbackButtonSubmit2"></a>
+        </div>
+        <div id="feedBackThanks">
+          <h2 id="feedbackPopUpHeading2" class="feedbackPopUpHeading2 feedbackPopUpHeading2_a" data-lang="PopUpfeedBackHeading3"></h2>
+        </div>
+    </div>
+</div>
+<script src="../config/constant.js"></script>
+<script src="../config/config.js"></script>
+<script src="../library/common.js"></script>
+<script src="../assets/js/il8n.js"></script>
+<script src="../assets/js/feedback.js"></script>
+</body>
+</html>

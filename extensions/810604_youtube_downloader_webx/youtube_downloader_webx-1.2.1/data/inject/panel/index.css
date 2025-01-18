@@ -1,0 +1,147 @@
+:root {
+  --bg1: #ff6c09;
+  --bg2: #ffa05a;
+  --color: #fff;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: sans-serif, Roboto, arial;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  color: var(--color);
+  background-color: var(--bg1);
+  overflow: hidden;
+  user-select: none;
+}
+body[data-loading=true] {
+  background: url('fetch.svg') center center no-repeat;
+  background-color: var(--bg1);
+}
+
+.item {
+  background-color: var(--bg2);
+  margin: 20px 28px 0 28px;
+  height: 30px;
+  padding: 0 10px;
+  text-decoration: none;
+  color: var(--color);
+  width: calc(100vw - 76px);
+}
+.item > span:nth-child(2) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 5px;
+  text-align: left;
+}
+.item > span:first-child {
+  height: 16px;
+  width: 16px;
+  overflow: hidden;
+}
+.item img {
+  min-width: 16px;
+  min-height: 16px;
+  pointer-events: none;
+}
+.item > span:first-child > img {
+  transition: transform 200ms;
+}
+.item[data-toolbar=true] > span:first-child > img {
+  transform: translate(0, -16px);
+}
+#titlebar {
+  padding-left: 10px;
+}
+#titlebar span {
+  height: 20px;
+}
+#titlebar span[data-cmd] {
+  margin-left: 2px;
+  cursor: pointer;
+  padding: 0 10px;
+  background-color: var(--bg2);
+}
+#titlebar span[data-cmd="close-me"] {
+  width: 20px;
+  background-image: url('close.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+}
+@media screen and (max-width: 300px) {
+  #titlebar span[data-cmd="mp3-converter"] {
+    display: none;
+  }
+}
+#content {
+  overflow: hidden;
+  height: 100%;
+}
+#items {
+  flex-wrap: wrap;
+  transition: transform 500ms;
+}
+#toolbar {
+  min-height: 32px;
+  padding-top: 10px;
+}
+#toolbar input {
+  display: none;
+}
+#toolbar div {
+  flex: 1;
+}
+#toolbar label {
+  cursor: pointer;
+  border: none;
+  border-top: 2px solid transparent;
+}
+#toolbar input:checked + label {
+  border-color: #fff;
+}
+#externals {
+  position: absolute;
+  height: 32px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 10px;
+  transition: transform 300ms;
+  transform: translate(0, 32px);
+  background-color: var(--bg2);
+}
+body[data-integration=true] #externals {
+  transform: translate(0, 0);
+}
+#externals > span {
+  cursor: pointer;
+}
+
+[hbox] {
+  display: flex;
+  flex-direction: row;
+}
+[vbox] {
+  display: flex;
+  flex-direction: column;
+}
+[flex="1"] {
+  flex: 1;
+}
+[pack=center] {
+  justify-content: center;
+}
+[align=center] {
+  align-items: center;
+}
+
+[data-disabled=true] {
+  opacity: 0.5;
+  pointer-events: none;
+}

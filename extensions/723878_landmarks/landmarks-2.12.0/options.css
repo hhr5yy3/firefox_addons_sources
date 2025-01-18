@@ -1,0 +1,48 @@
+main > * + :not(h2) { margin-top: 1rem; }
+
+input[type="radio"],
+input[type="checkbox"] { transform: scale(var(--radio-and-tick-scale-factor)); }
+
+button[aria-pressed="true"] {
+	background-color: var(--accent-1);
+	color: var(--background-1);
+}
+
+fieldset > * + * { margin-top: 0.5rem; }
+
+.field-radio {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+}
+
+.field-radio label {
+	flex-grow: 1;
+}
+
+label p {
+	margin: 0;
+	margin-bottom: 0.25rem;
+}
+
+label p:first-child { font-weight: bold; }
+
+fieldset > :last-child { margin-bottom: 0.5rem; }
+
+input[type="number"] { width: 3rem; }
+
+input[type="color"] {
+	height: 1.5rem;
+	width: 5rem;
+}
+
+#gird {
+	display: grid;
+	grid-template-columns: max-content 1fr; /* TODO refine */
+	grid-gap: 1rem;
+	align-items: center;
+}
+
+#gird label { grid-column: 1 / 2; }
+
+#gird :not(label) { grid-column: 2 / 3; }

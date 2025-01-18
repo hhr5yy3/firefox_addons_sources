@@ -1,0 +1,178 @@
+{
+    "id": 870031,
+    "authors": [
+        {
+            "id": 13401255,
+            "name": "Teddy Gustiaux",
+            "url": "https://addons.mozilla.org/en-US/firefox/user/13401255/",
+            "username": "teddy-gustiaux"
+        }
+    ],
+    "average_daily_users": 13535,
+    "categories": [
+        "bookmarks",
+        "other"
+    ],
+    "contributions_url": "",
+    "created": "2017-11-03T02:32:27Z",
+    "current_version": {
+        "id": 5715493,
+        "compatibility": {
+            "firefox": {
+                "min": "115.0",
+                "max": "*"
+            }
+        },
+        "edit_url": "https://addons.mozilla.org/en-US/developers/addon/default-bookmark-folder/versions/5715493",
+        "file": {
+            "id": 4259794,
+            "created": "2024-04-04T00:58:57Z",
+            "hash": "sha256:f5cd78b38c6315ce8c9e100aa6a1cc34d1a2f66c9a18ddaef788aa80841fe6b7",
+            "is_mozilla_signed_extension": false,
+            "size": 589839,
+            "status": "public",
+            "url": "https://addons.mozilla.org/firefox/downloads/file/4259794/default_bookmark_folder-4.0.0.xpi",
+            "permissions": [
+                "bookmarks",
+                "activeTab",
+                "tabs",
+                "storage",
+                "menus"
+            ],
+            "optional_permissions": [],
+            "host_permissions": []
+        },
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "is_custom": false,
+            "name": {
+                "en-US": "MIT License"
+            },
+            "slug": "MIT",
+            "url": "https://spdx.org/licenses/MIT.html"
+        },
+        "release_notes": {
+            "en-US": "<strong>BREAKING CHANGES</strong>\nThe add-on will now officially support only versions of Firefox that are equal or more recent that the current <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/db6a3fbec53ad340e787c259c9d95f707a430d5753b8b372d8731caaa0adb1d9/https%3A//support.mozilla.org/en-US/kb/choosing-firefox-update-channel\" rel=\"nofollow\">Extended Support Release (ESR)</a>. As of this release, that means versions <code>115.x</code> and above are supported.\n\nAdditionally, a lot of work has been done on the internals of the add-on to try and fix (or at least improve) some of the issues introduced with the <code>3.x</code> branch of the add-on (and themselves related to the internal bookmarking changes that happened back then in Firefox).\n\nWhile this should provide a better user experience, it also means the internal logic to identify which bookmarks to process and how has changed significantly, and this is made explicit via the major version number.\n<ul><li>update minimum Firefox version to current ESR branch (<a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/9ce1171aafb201b11f8e750337b570c8e85df94fe8eeabd0c97a8388d2adff3f/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/commit/87b862ee913edae1668764f22b3ef66517858d03\" rel=\"nofollow\">87b862e</a>)</li><li>refactoring of the code to prevent processing bookmark that should not be (and re-organization of the add-on's structure) (<a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/8a45b863557bc80e5f5d6b5e5f4fb21202b7508df247b374ff9ba16bb080faee/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/commit/725213febea6b467b152e075f778bf888ec6b24e\" rel=\"nofollow\">725213f</a>)</li></ul>\n<strong>Features</strong>\n<ul><li>update bookmark tree in real-time on options page if there is any folder-related changes (<a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/2ef874b6486a95babb169704d88c2116547fc9e139937e3e33c87f9592b4a987/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/commit/2cfd4b7ea94f10ae8948d4c9d9509cb969f0c26f\" rel=\"nofollow\">2cfd4b7</a>)</li><li>automatic dark mode for settings page  (<a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/01628c986914b9aa0ab385c689f048c6934935b15e16918d60e1bdbe89c58ebc/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/commit/422470bd3b216b96a99c450576f432d6900f53d8\" rel=\"nofollow\">422470b</a>)</li><li>automatic dark mode for quick bookmarking to folder popup (<a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/2c58d86218831c35a95a362f169282186b7f8157bc28cf066394c221cfd05874/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/commit/cfc0a2dcf30619773ac5ba8545dfe8bccc74cf13\" rel=\"nofollow\">cfc0a2d</a>)</li></ul>\n<strong>Bug Fixes</strong>\n<ul><li>better handling for drag-and-drop (<a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/f219c08ebab90e91926c01e14ed6e6707906fb6911bc800c5fdb533836283b06/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/commit/49ed7243796871ae6267de6ec7c9acfbaaf21c31\" rel=\"nofollow\">49ed724</a>)</li><li>do not apply add-on logic when bookmark is created for a page different than the current one (<a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/e7e260595392b7ce79484a4707139e7d467ba84a2080575d7b3af3f8ec21a724/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/commit/270025d128406b7fb0cbddd060584c4572cc6550\" rel=\"nofollow\">270025d</a>)</li><li>do not update last used folder when importing bookmarks (<a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/31ece84f16256516748ef5a1327ff8574d50fc57f54a027dd4af1eb0708d3e04/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/commit/09ed406730d43af8088b55fa235feef9892abe0e\" rel=\"nofollow\">09ed406</a>)</li><li>inbox mode consistently creating bookmarks (now limiting to a single one)</li><li>allow removal of multiple bookmarks via page context menu even if inbox mode is enabled</li><li>update copy to be more accurate regarding how the feature works</li><li>various UI and copy improvements</li><li>various code cleanup</li></ul>"
+        },
+        "reviewed": "2024-04-09T12:05:34Z",
+        "version": "4.0.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Allows you to choose the default bookmark location folder and quickly bookmark pages via a dedicated icon.\n\n<strong>Features</strong>\n\n<i>Firefox built-in bookmarking:</i>\n\nThis feature only affects bookmarks added through the built-in Firefox bookmark icon or shortcut (Ctrl+D), through the context menu or via the bookmarks menu.\n\nYou can:\n<ul><li>Select where the new bookmarks will be added</li><li>Choose to add the new bookmarks to the top or the bottom of the selected folder</li><li>Choose to add the new bookmarks to the last used folder (by any bookmarking or sorting method)</li><li>Select where the new folders of bookmarked tabs will be added (when bookmarking multiple selected tabs or using \"Bookmark All Tabs...\")</li><li>Choose to add the new folders of bookmarked tabs to the top or the bottom of the selected folder</li><li>Choose to add the new folders of bookmarked tabs to the last used folder (by any bookmarking or sorting method)</li></ul>\n<i>Quick bookmark icon:</i>\n\nThis feature will add a quick bookmark icon in the address bar, to (un)bookmark a page with only one click.\nThe icon is a round star icon in the address bar.\nIf the current page is bookmarked, the icon color will change to red.\n\nYou can:\n<ul><li>Enable the quick bookmark shortcut (Alt+Shift+D)</li><li>Select where the new bookmarks will be added</li><li>Choose to add the new bookmarks to the top or the bottom of the selected folder</li><li>Choose to add the new bookmarks to the last used folder (by any bookmarking or sorting method)</li><li>Choose to show the page as bookmarked (i.e. the icon color changes) only if all the bookmarks of this page are in the folder you selected</li><li>Select the color of the quick bookmark icon (among a list) when the current page is bookmarked (red by default)</li></ul>\n<i>Quick bookmarking to folder:</i>\n\nAccess this feature via the extension browser action (toolbar icon) or via its dedicated shortcut (Alt+Shift+M).\n\nIt will allow you to search and select a specific folder within your bookmarks to quickly bookmark the current page into it.\n\n<strong>Known issues</strong>\n\nPlease refer to the <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/99ca916f391dba5619c8176db5d38567a48d7509c106f53fe3eeaef8544e1c2b/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/wiki/Known-issues\" rel=\"nofollow\">list</a> in the <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/24e80b8744861bfe27242651b52f0847ab6681111115caa6bfa2f922e6255800/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/wiki\" rel=\"nofollow\">official wiki</a>.\n\n<strong>Changelog</strong>\n\nPlease refer to the <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/597352af37a09ca0719a1e7d9562bd8554c2294868410b70e9d9fff1affc2669/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/blob/master/CHANGELOG.md\" rel=\"nofollow\">full changelog</a> on GitHub.\n\n<strong>Support</strong>\n\nIf you want to report a bug or help with translations, you can open an issue on <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/c1cc5b8ec4bde656fbb46e5831ea75938ab21d86503440878b3ea85e29ceb8ca/https%3A//github.com/teddy-gustiaux/default-bookmark-folder/issues\" rel=\"nofollow\">GitHub</a>. If you do not have an account, you can create one for free."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.mozilla.org/en-US/developers/addon/default-bookmark-folder/edit",
+    "guid": "default-bookmark-folder@gustiaux.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "url": {
+            "en-US": "https://github.com/teddy-gustiaux/default-bookmark-folder"
+        },
+        "outgoing": {
+            "en-US": "https://prod.outgoing.prod.webservices.mozgcp.net/v1/8b2ac0f5d3b946bd67b40d80413b422754054ce46f9d1db508260479ee472604/https%3A//github.com/teddy-gustiaux/default-bookmark-folder"
+        }
+    },
+    "icon_url": "https://addons.mozilla.org/user-media/addon_icons/870/870031-64.png?modified=mcrushed",
+    "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/870/870031-32.png?modified=mcrushed",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/870/870031-64.png?modified=mcrushed",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/870/870031-128.png?modified=mcrushed"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "last_updated": "2024-04-09T12:05:34Z",
+    "name": {
+        "en-US": "Default Bookmark Folder"
+    },
+    "previews": [
+        {
+            "id": 190805,
+            "caption": {
+                "en-US": "Adding a bookmark via the regular button will automatically save it in the specified folder."
+            },
+            "image_size": [
+                468,
+                269
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/190/190805.png?modified=1622132853",
+            "position": 0,
+            "thumbnail_size": [
+                468,
+                269
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/190/190805.jpg?modified=1622132853"
+        },
+        {
+            "id": 193492,
+            "caption": {
+                "en-US": "The \"quick bookmark\" icon (red when the current page is bookmarked)."
+            },
+            "image_size": [
+                120,
+                37
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/193/193492.png?modified=1622132854",
+            "position": 1,
+            "thumbnail_size": [
+                120,
+                37
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/193/193492.jpg?modified=1622132854"
+        },
+        {
+            "id": 193493,
+            "caption": {
+                "en-US": "The \"quick bookmark\" icon (grey when the current page is not bookmarked)."
+            },
+            "image_size": [
+                120,
+                37
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/193/193493.png?modified=1622132854",
+            "position": 2,
+            "thumbnail_size": [
+                120,
+                37
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/193/193493.jpg?modified=1622132854"
+        }
+    ],
+    "promoted": {
+        "apps": [
+            "firefox"
+        ],
+        "category": "recommended"
+    },
+    "ratings": {
+        "average": 4.5225,
+        "bayesian_average": 4.506545435475546,
+        "count": 400,
+        "text_count": 179
+    },
+    "ratings_url": "https://addons.mozilla.org/en-US/firefox/addon/default-bookmark-folder/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.mozilla.org/en-US/reviewers/review/870031",
+    "slug": "default-bookmark-folder",
+    "status": "public",
+    "summary": {
+        "en-US": "Allows you to choose the default bookmark location folder and quickly bookmark pages via a dedicated icon."
+    },
+    "support_email": null,
+    "support_url": {
+        "url": {
+            "en-US": "https://github.com/teddy-gustiaux/default-bookmark-folder"
+        },
+        "outgoing": {
+            "en-US": "https://prod.outgoing.prod.webservices.mozgcp.net/v1/8b2ac0f5d3b946bd67b40d80413b422754054ce46f9d1db508260479ee472604/https%3A//github.com/teddy-gustiaux/default-bookmark-folder"
+        }
+    },
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.mozilla.org/en-US/firefox/addon/default-bookmark-folder/",
+    "versions_url": "https://addons.mozilla.org/en-US/firefox/addon/default-bookmark-folder/versions/",
+    "weekly_downloads": 164,
+    "_score": null
+}

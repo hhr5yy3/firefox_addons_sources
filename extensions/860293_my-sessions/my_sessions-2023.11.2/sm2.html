@@ -1,0 +1,169 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>      
+    <link rel="stylesheet" rel="text/css" href="sm2.css"/>
+	<link rel="stylesheet" rel="text/css" href="jquery-ui.min.css"/>
+    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="jquery-ui.min.js"></script>
+	<script type="text/javascript" src="jquery.highlight.js"></script>
+    <script type="text/javascript" src="sm2.js"></script>
+	
+	
+<style>
+.highlight {
+	background-color: rgb(255,165,0);
+}
+.selectHighlight {
+	background-color: yellow; 
+	-moz-border-radius: 5px; /* FF1+ */ 
+	-webkit-border-radius: 5px; /* Saf3-4 */ 
+	border-radius: 5px; /* Opera 10.5, IE 9, Saf5, Chrome */ 
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* FF3.5+ */ 
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Saf3.0+, Chrome */ 
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Opera 10.5+, IE 9.0 */ 
+	padding:1px 4px; 
+	margin:0 -4px;
+	color:#ff0000;
+}
+.finded{
+	color:white;background: #8A8A7B;
+}
+</style>
+</head>
+<body>
+	<div id="loader-identity"></div>
+    <div id="mainDiv" style="border: 0px; margin-top: 5px; margin-right: 5px; margin-left: 5px; margin-bottom: 5px; width: 100%; height: 100%; position: relative; /* [disabled]overflow: hidden; */ padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: left; min-width: 0px; background-color: #EB7074;">
+        
+      <div id="msbase">
+          <div id="mssavebase">
+            
+            <div id="mssavelistDiv" title="Uncheck tabs that you don't want to be saved.">
+              <!--<h4 id="mssaveToggleH4">
+                <input id="mssavetoggle" type="checkbox" title="Toggle Selection" style="float:left;" checked>
+                <span class="msWinblabel" id="selectAll">Select All</span> </h4>-->
+              <div id="mssavelist">
+				<div style="text-align: center; color: red; font-weight: bold;"><big><span id = "WARNING">WARNING
+!!!<br><br>
+					To work with this module, you must enable the permission "Download files and read and modify the browser’s download history" !!!
+					<br>
+<br>
+- First of all, back up your bookmarks in the bookmark manager and save
+it in a safe place. Possible bugs.<br>
+<br>
+- When deleting one or several sessions, a file is created with
+sessions deleted in the default save path (usually C: \ Dowloads). You
+can delete this file at any time, or restore the session from it in
+case of an erroneous deletion. I do not plan to allow users to disable
+this feature.<br>
+<br>
+- For those who actively use bookmarks: You can backup all sessions to
+a file, delete them from storage, use bookmarks in the usual mode. At
+any moment you can restore one or several sessions from a file.<br>
+<br>
+- Send suggestions, comments, error messages in </span><a href="mailto:balyaev@gmail.com">balyaev@gmail.com</a><br>
+					<br>
+					- How to use <a href="https://youtu.be/cur37GYvFDA">https://youtu.be/cur37GYvFDA</a>
+</big></big></div>
+				
+				
+				</div>
+            </div>
+          </div>
+<div id="msrestorebase">
+      <div id="msrestorebaseDiv">
+<!--                    <div id="msrestoreicon"></div>-->
+<!--        <div id="msrestoreicon2" class="dimmed"></div>-->
+		 
+        <div id="msrestoretopbar">
+			<div id="importfile"  class="restoretopbarbtn"><label><span id="spanimportfile">Import MySessions file</span>
+				<input type="file" id="import" accept=".mysessions" multiple="" hidden=""></label> 
+			</div>
+			<div id="importfileTSM"  class="restoretopbarbtn"><label><span id="spanimportfileTSM" >Import Tab Session Manager file</span>
+				<input type="file" id="importTSM" accept=".json" multiple="" hidden=""></label> 
+			</div>
+          <!--<div id="importBtn"  class="restoretopbarbtn">
+			  <label>
+			  <span>Import</span>
+			<input id="import" type="file" accept=".json, .session" multiple="" hidden=""></label>
+		  </div>
+          <div id="msrestorecrash"  class="restoretopbarbtn">TimeLine</div>
+          <div id="msrestorecrashon"  class="restoretopbarbtn">On</div>
+          <div id="msrestorecrashoff"  class="restoretopbarbtn">Off</div>-->
+        </div>
+<!--        <div id="mssavebutton" class="dimmed"></div>-->
+<!--		<div id="msopentab" class="dimmed"></div>-->
+        <div id="mssavetitle">
+			<input id="mssavetoggle" type="checkbox" title="Toggle Selection" style="float:left;">
+                <span id="selectAll">Select All</span>
+          <input id="savetitle" value="MySession" maxlength="100" tabindex="1" autofocus>
+        </div>
+        <div id="msrestorelabel">MySessions</div>
+		  <div id="version">2023.11.1</div>
+		  <div id="SM">::&nbsp;&nbsp;Session Management</div>
+		  <div id="donat" class="dimmed"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YFPZ564TRKNLL"><img src="img/love.png" draggable="false"/></a></div>
+		  <div id="check">test</div>
+<!--		  <div id="qu" class="dimmed"></div>-->
+<!--
+                    <div id="msrestorelabel2">Click to open in new window
+                    </div>
+-->
+                    
+                    
+      </div>
+<!--<div id="msrestorebaseDiv"> </div>-->
+               
+                <div id="msrestorelistwrapper">
+                  <div id="msrestorelist"></div>
+                  <div id="mseditsession">
+                    <h4 class="h4"> <span id="msheadingtitle">Title</span> </h4>
+                    <input id="mstitle" type="text" maxlength="100">
+                    <div id="mseditlist2" class="mseditlist">
+                      <h4 class="h4"> <span id="msheadingsaved">Saved Tabs (uncheck to remove)</span>
+                        <input id="mseditsavedtoggle" type="checkbox" title="Toggle Selection" style="float:left;" checked>
+                      </h4>
+                      <div id="mslistoriginal" class="mseditlist"> </div>
+                    </div>
+                    <h4 class="mseditHead"> <span id="msheadingnew" title="You can drag and drop tabs between windows">Tabs to Add</span>
+                      <input id="mseditnewtoggle" type="checkbox" title="Toggle Selection" style="float:left;">
+                    </h4>
+                    <div id="mseditlist1" class="mseditlist"></div>
+                    <p>                    
+                    <div id="mseditcontrols">
+                      <input id="mseditsave" type="button" value="Save">
+                      <input id="mseditcancel" type="button" value="Cancel">
+                      <input id="mseditremove" type="button" value="Remove">
+                      <div id ="msselecttab" class="msmenu">Add to current window.</div>
+                    </div>
+                  </div>
+                </div>
+	<div id="exportfile">
+	<div id="exportmsfile"  class="restoretopbarbtn">Export MySessions file</div>
+		<div id="deletsessions"  class="restoretopbarbtn">Delete select sessions</div>
+		<div id="savetostorage"  class="restoretopbarbtn">Save to storage</div>
+		<div id="progressbar" class="restoretopbarbtn"><div id="progressDiv"></div></div>
+		
+	
+	</div>
+<div id="sessionTextBox">
+          <span id="sessionTextBoxCloseBtn"></span>
+        <div id="sessionTextBoxTips"></div>
+                    <textArea id="sessionTextBoxTextArea"></textArea>
+                    <div id="sessionTextBoxBottomBar">
+                       <span id="importSessionBtnf">
+                            <img id="importSessionBtnIcon" src="/img/import.png">
+                            <span id="importSessionBtnfText">Import file</span>
+                            
+                      </span>
+                        <span id="importSessionBtn">
+                            <img id="importSessionBtnIcon" src="/img/import.png">
+                            <span id="importSessionBtnText">Import session</span>
+                            
+                        </span>
+                        
+                    </div>
+      </div>
+        </div>
+      </div>
+    </div>
+    
+</body>
+

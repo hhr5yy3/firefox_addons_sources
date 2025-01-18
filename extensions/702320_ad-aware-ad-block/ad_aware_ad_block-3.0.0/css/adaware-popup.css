@@ -1,0 +1,351 @@
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("./fonts/Roboto/Roboto-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto-Medium";
+    src: url("./fonts/Roboto/Roboto-Medium.ttf");
+    font-weight: medium;
+    font-style: normal;
+}
+
+html,
+body {
+    font: 13px/18px 'Roboto-Regular', sans-serif !important;
+    width: 290px;
+    /* height: 380px; */
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8 !important;
+    color: #333333;
+    text-align: left;
+    overflow: hidden;
+}
+
+html.light #wrapper {
+    background-color: #ffffff;
+}
+
+#header {
+    background-color: #F5F6FA;
+    padding: 20px 10px;
+    border-bottom: 4px solid #F46700;
+}
+
+#logo {
+    background-image: url(../img/popup/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    width: 251px;
+    height: 35px;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: -99999px;
+}
+
+#sticky {
+    background-color: transparent !important;
+}
+
+#hostname {
+    color: #4D4D4D;
+    font: normal normal bold 20px/24px 'Roboto-Regular', sans-serif;
+    text-align: center;
+    margin: 15px 12px 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#switchText {
+    text-align: center;
+    font: normal normal normal 16px/19px 'Roboto-Medium', sans-serif;
+}
+
+#switchText.switch-text-on {
+    color: #F26700;
+}
+
+#switchText.switch-text-off {
+    color: #909090;
+}
+
+#basicStats {
+    background-color: #F5F6FA;
+    display: block;
+    margin: 0;
+    padding: 23px 20px 10px;
+    font: normal normal normal 16px/18px 'Roboto-Medium', sans-serif;
+}
+
+#basicStats > span {
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+#basicStats > [data-i18n] {
+    text-transform: capitalize;
+    font-size: 100%;
+}
+
+#basicStats > [data-i18n] + span {
+    color: #F26700;
+    margin-bottom: 15px;
+}
+
+#footer {
+    padding: 5px;
+    border-top: 4px solid #F26700;
+    background-color: #F5F6FA;
+}
+
+table.controls {
+    border-spacing: none;
+    border-collapse: collapse;
+    margin: 20px 20px 10px;
+}
+
+table.controls tr>td {
+    margin: 0;
+    padding: 0 0 12px;
+}
+
+table.controls tr>td:first-child {
+    width: 100%;
+    text-align: left;
+    font: normal normal normal 16px/20px 'Roboto-Medium', sans-serif;
+}
+
+table.controls tr>td:last-child {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.toolRibbon {
+    grid-template: inherit;
+    justify-items: inherit;
+}
+
+/*Toggles inside are positioned absolute, so buttons require a wrapper with positioning set as well*/
+#mainSwitch.toggle-btn-wrapper {
+    width: 100px;
+    height: 50px;
+    margin: 15px auto 20px auto;
+}
+
+#subSwitch.toggle-btn-wrapper, .hnSwitch.toggle-sw-wrapper {
+    width: 64px;
+    height: 34px;
+    margin: 1px auto 1px auto;
+}
+
+.toggle-btn-wrapper, .toggle-sw-wrapper {
+    position: relative;
+}
+
+/* Set default styles */
+#mainButtonSwitch.toggle-btn-default {
+    height: 50px;
+    width: 100px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#subButtonSwitch.toggle-btn-default {
+    width: 64px;
+    height: 36px;
+    font-size: 11px;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+}
+
+.hnSwitch.toggle-sw-wrapper .toggle-sw-default {
+    width: 64px;
+    height: 36px;
+    font-size: 11px;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+}
+
+#mainControlSwitch.toggle-btn-control {
+    width: 34px;
+    height: 34px;
+    top: 8px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#subControlSwitch.toggle-btn-control {
+    width: 22px;
+    height: 22px;
+    top: 7px;
+    right: 8px;
+    cursor: pointer;
+}
+
+.hnSwitch.toggle-sw-wrapper.on .toggle-sw-control {
+    right: 8px;
+}
+
+.hnSwitch.toggle-sw-wrapper .toggle-sw-control {
+    width: 22px;
+    height: 22px;
+    top: 7px;
+    right: 34px;
+    cursor: pointer;
+}
+
+.toggle-btn-default {
+    border: 4px solid #E7E8EA;
+    background-color: #F26700;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-radius: 50px;
+}
+
+.hnSwitch.toggle-sw-wrapper .toggle-sw-default {
+    background-color: #646466;
+    border: 4px solid #E7E8EA;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-radius: 50px;
+}
+
+.hnSwitch.toggle-sw-wrapper.on .toggle-sw-default {
+    background-color: #F26700;
+}
+
+.toggle-btn-control {
+    background-color: #ffffff;
+    color: #FFFFFF;
+    font-weight: bold;
+    position: absolute;
+    z-index: 2;
+    border-radius: 50px;
+}
+
+.hnSwitch.toggle-sw-wrapper .toggle-sw-control {
+    background-color: #ffffff;
+    font-weight: bold;
+    position: absolute;
+    z-index: 2;
+    border-radius: 50px;
+}
+
+/* Animation speeds and types */
+/* .transform-btn,
+.transform-control {
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    -ms-transition: all 0.8s ease;
+    transition: all 0.8s ease;
+} */
+
+#mainControlSwitch.transform-control-active {
+    right: 56px;
+}
+
+#subControlSwitch.transform-control-active {
+    right: 34px;
+}
+
+/* Changes to the button */
+.transform-btn-active {
+    background-color: #646466;
+}
+
+/* Changes to the toggle square on top */
+.transform-control-active {
+    border-radius: 50px;
+}
+
+.icon-faq {
+    background-image: url(../img/popup/icon_faq.png);
+    background-repeat: no-repeat;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 17px;
+    margin: 8px 20px;
+    padding-left: 25px;
+    vertical-align: middle;
+}
+
+.icon-rate {
+    background-image: url(../img/popup/icon_rate.png);
+    background-repeat: no-repeat;
+    background-position: -1px;
+    display: inline-block;
+    width: 14px;
+    height: 17px;
+    margin: 8px 20px;
+    padding-left: 25px;
+    vertical-align: middle;
+}
+
+.icon-elements {
+    background-image: url(../img/popup/icon_element.png);
+    background-repeat: no-repeat;
+    background-position: -2px;
+    display: inline-block;
+    width: 14px;
+    height: 17px;
+    margin: 8px 20px;
+    padding-left: 25px;
+    vertical-align: middle;
+}
+
+.icon-settings {
+    background-image: url(../img/popup/icon_settings.png);
+    background-repeat: no-repeat;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 17px;
+    margin: 8px 20px;
+    padding-left: 25px;
+    vertical-align: middle;
+}
+
+#footer > a {
+    font: normal normal normal 14px/17px 'Roboto-Regular', sans-serif;
+    display: inline-block;
+    width: 20%;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #000;
+}
+
+#footer > a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.isDisabled:hover {
+    text-decoration: none !important;
+    cursor: not-allowed !important;
+}
+
+.rulesetTools {
+    display: none;
+}
+
+.rulesetTools [id] > svg {
+    fill: #000 !important;
+}
+
+.rulesetTools [id] {
+    fill: #000 !important;
+}

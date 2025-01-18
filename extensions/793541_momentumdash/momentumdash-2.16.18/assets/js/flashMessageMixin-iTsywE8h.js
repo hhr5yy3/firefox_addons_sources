@@ -1,0 +1,1 @@
+import{q as s,e,u as a}from"./icon-alert-mvI7iJMO.js";const h=s({setup:()=>({flashMessageId:null}),methods:{showFlashMessage(s){this.flashMessageId&&e.$emit("flashMessage:dismiss",this.flashMessageId),this.flashMessageId=a.uuidv4(),s.id=this.flashMessageId,e.$emit("flashMessage",s)}}});export{h as f};

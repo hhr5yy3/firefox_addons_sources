@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- Copyright (c) 2018-2022 Pearl Crescent, LLC.  All Rights Reserved. -->
+<!-- vim: set sw=2 sts=2 ts=8 et syntax=html: -->
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title i18n-msg="optionsTitle"></title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <div class="title">
+      <img src="../icons/icon-32.png"><span i18n-msg="optionsTitle"></span>
+   </div>
+    <div>
+      <div id="clickAction" class="section" first="true">
+        <div>
+           <span i18n-msg="toolbarActionPrefix"></span>
+           <span id="keyboard-shortcut"></span>
+        </div>
+        <div id="clickAction-container">
+          <input id="menu" type="radio" name="clickAction" value="menu">
+          <label for="menu" i18n-msg="toolbarActionOpenMenu"></label><br>
+          <input id="visible" type="radio" name="clickAction" value="visible">
+          <label for="visible" i18n-msg="toolbarActionCaptureVisible"></label><br>
+          <input id="entire" type="radio" name="clickAction" value="entire">
+          <label for="entire" i18n-msg="toolbarActionCaptureEntire"></label><br>
+        </div>
+      </div>
+      <div id="button-container">
+        <button id="sendFeedback" type="button" i18n-msg="sendFeedback"></button>
+        <button id="makeDonation" type="button"><span class="red">&#x2665;</span>
+<span i18n-msg="donate"></span></button>
+      </div>
+    </div>
+    <div class="section endFloat">
+      <div i18n-msg="captureMethodPrefix"></div>
+      <div id="capture-method-container">
+        <input id="capture-method-no-scroll" type="radio" name="captureMethod"
+               value="no-scroll">
+        <label for="capture-method-no-scroll" i18n-msg="captureMethodNoScroll"></label><br>
+        <input id="capture-method-scroll" type="radio" name="captureMethod"
+               value="scroll">
+        <label for="capture-method-scroll" i18n-msg="captureMethodScroll"></label><br>
+      </div>
+    </div>
+    <div class="section">
+      <table>
+        <tr>
+          <td i18n-msg="fileNamePattern"></td>
+          <td><input id="filename-pattern" type="text"></td>
+        </tr>
+        <tr>
+          <td i18n-msg="example"></td>
+          <td id="filename-example"></td>
+        </tr>
+      </table>
+      <table id="filename-key">
+        <tr>
+          <td i18n-msg="legendTitle" i18n-msg-sub1="%t"></td>
+          <td i18n-msg="legendYear" i18n-msg-sub1="%Y/%y"></td>
+          <td i18n-msg="legendHour" i18n-msg-sub1="%H"></td>
+        </tr>
+        <tr>
+          <!-- <td>%i - element ID</td> -->
+          <!-- <td>%5 - MD5 hash of URL</td> -->
+          <td i18n-msg="legendURL" i18n-msg-sub1="%u"></td>
+          <td i18n-msg="legendMonth" i18n-msg-sub1="%m"></td>
+          <td i18n-msg="legendMinute" i18n-msg-sub1="%M"></td>
+        </tr>
+        <tr>
+          <td i18n-msg="legendHost" i18n-msg-sub1="%h"></td>
+          <td i18n-msg="legendDay" i18n-msg-sub1="%d"></td>
+          <td i18n-msg="legendSecond" i18n-msg-sub1="%S"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="section">
+      <input id="save-prompt" type="radio" name="save" value="prompt">
+      <label id="save-prompt-label" for="save-prompt"
+             i18n-msg="promptBeforeSaving"></label><br>
+      <div>
+        <input id="save-download" type="radio" name="save" value="download">
+        <label for="save-download" i18n-msg="saveToDownloads"></label>
+        <div id="save-download-subfolder-container">
+          <label id="save-download-subfolder-label"
+                 for="save-download-subfolder"
+                 i18n-msg="saveToDownloadsSubfolder"></label>
+          <input id="save-download-subfolder" type="text">
+        </div>
+      </div>
+      <div id="save-overwrite-container">
+        <input id="save-overwrite" type="checkbox">
+        <label id="save-overwrite-label" i18n-msg="overwriteFile"
+               for="save-overwrite"></label>
+      </div>
+    </div>
+    <div class="section">
+<!--
+      <label id="image-size-label" i18n-msg="imageSizePrefix" for="image-size"></label>
+      <input id="image-size" type="text">
+      <select id="image-size-units">
+        <option i18n-msg="imageSizePercentOfOriginal"></option>
+        <option i18n-msg="imageSizePixels"></option>
+      </select>
+-->
+      <div i18n-msg="imageFormatPrefix"></div>
+      <div id="format-container">
+        <input id="format-png" type="radio" name="format" value="png">
+        <label for="format-png" i18n-msg="imageFormatPNG"></label><br>
+        <input id="format-jpeg" type="radio" name="format" value="jpeg">
+        <label for="format-jpeg" i18n-msg="imageFormatJPEG"></label>&nbsp;&nbsp;&nbsp;&nbsp;
+<span i18n-msg="jpegQuality"></span>&nbsp;
+<input id="jpeg-quality" type="number" min="1" max="100" value="92"></input>
+      </div>
+    </div>
+    <div class="section">
+      <input id="add-header" type="checkbox">
+      <label for="add-header" i18n-msg="addHeader"></label>
+      <div id="header-container">
+        <table>
+          <tr>
+            <td id="header-pattern-label" i18n-msg="headerPattern"></td>
+            <td><input id="header-pattern" type="text"></td>
+          </tr>
+          <tr>
+            <td id="header-example-label" i18n-msg="example"></td>
+            <td id="header-example"></td>
+          </tr>
+        </table>
+        <table id="header-key">
+          <tr>
+            <td i18n-msg="legendTitle" i18n-msg-sub1="%t"></td>
+            <td i18n-msg="legendYear" i18n-msg-sub1="%Y/%y"></td>
+            <td i18n-msg="legendHour" i18n-msg-sub1="%H"></td>
+          </tr>
+          <tr>
+            <!-- <td>%i - element ID</td> -->
+            <!-- <td>%5 - MD5 hash of URL</td> -->
+            <td i18n-msg="legendURL" i18n-msg-sub1="%u"></td>
+            <td i18n-msg="legendMonth" i18n-msg-sub1="%m"></td>
+            <td i18n-msg="legendMinute" i18n-msg-sub1="%M"></td>
+          </tr>
+          <tr>
+            <td i18n-msg="legendHost" i18n-msg-sub1="%h"></td>
+            <td i18n-msg="legendDay" i18n-msg-sub1="%d"></td>
+            <td i18n-msg="legendSecond" i18n-msg-sub1="%S"></td>
+          </tr>
+        </table>
+      </div>
+      <input id="add-footer" type="checkbox">
+      <label for="add-footer" i18n-msg="addFooter"></label>
+      <div id="footer-container">
+        <table>
+          <tr>
+            <td id="footer-pattern-label" i18n-msg="footerPattern"></td>
+            <td><input id="footer-pattern" type="text"></td>
+          </tr>
+          <tr>
+            <td id="footer-example-label" i18n-msg="example"></td>
+            <td id="footer-example"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="section">
+      <div>
+        <input id="playsound" type="checkbox">
+        <label for="playsound" i18n-msg="playSound"></label>
+      </div>
+      <div>
+        <input id="showContextMenuItems" type="checkbox">
+        <label for="showContextMenuItems"
+               i18n-msg="showContextMenuItems"></label>
+      </div>
+    </div>
+    <div class="section">
+      <button id="show-legal-btn" type="button" i18n-msg="showLegal"></button>
+      <div id="legal-info">
+Copyright © 2005-2022 Pearl Crescent, LLC.<br>
+Please email support@pearlcrescent.com if you are interested in licensing
+the source code or if you want to redistribute the software.<br>
+<br>
+Page&nbsp;Saver&nbsp;WE may be used in packaged, binary form for any legal
+purpose at no cost.  The software is provided "as-is" and Pearl&nbsp;Crescent
+makes no other warranties with respect to its quality, performance, or
+fitness for any particular purpose.<br>
+<br>
+The following license applies to the open source
+full-page-screen-capture-chrome-extension code that is used in
+Page&nbsp;Saver&nbsp;WE:<br>
+        <div id="sublicense">
+The MIT License<br>
+<br>
+Copyright (c) 2012,2013 Peter Coles (http://mrcoles.com/)<br>
+<br>
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:<br>
+<br>
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.<br>
+<br>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+        </div>
+      </div>
+    </div>
+    <script src="../util.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1003 @@
+/******************************************************************************
+ *
+ * The background script for the main (auto-generated) background page.
+ *
+ * @public {Object} background
+ *****************************************************************************/
+
+(function (global, factory) {
+  // Browser globals
+  global.background = factory(
+    global.isDebug,
+    global.scrapbook,
+  );
+}(this, function (isDebug, scrapbook) {
+
+  'use strict';
+
+  /**
+   * @type {Map<integer~windowId, integer~timestamp>}
+   */
+  const focusedWindows = new Map();
+
+  /**
+   * @type {Map<string~url, integer~count>}
+   */
+  const capturedUrls = new Map();
+
+  const background = {
+    commands: {
+      async openScrapBook() {
+        return await scrapbook.openScrapBook();
+      },
+
+      async openOptions() {
+        return await browser.runtime.openOptionsPage();
+      },
+
+      async openViewer() {
+        return await scrapbook.visitLink({
+          url: browser.runtime.getURL("viewer/load.html"),
+          newTab: true,
+        });
+      },
+
+      async openSearch() {
+        return await scrapbook.visitLink({
+          url: browser.runtime.getURL("scrapbook/search.html"),
+          newTab: true,
+        });
+      },
+
+      async searchCaptures() {
+        const tabs = await scrapbook.getHighlightedTabs();
+        return scrapbook.searchCaptures({
+          tabs,
+          newTab: true,
+        });
+      },
+
+      async captureTab() {
+        return await scrapbook.invokeCapture(
+          (await scrapbook.getHighlightedTabs()).map(tab => ({
+            tabId: tab.id,
+            url: tab.url,
+            title: tab.title,
+          }))
+        );
+      },
+
+      async captureTabSource() {
+        return await scrapbook.invokeCapture(
+          (await scrapbook.getHighlightedTabs()).map(tab => ({
+            tabId: tab.id,
+            url: tab.url,
+            title: tab.title,
+            mode: "source",
+          }))
+        );
+      },
+
+      async captureTabBookmark() {
+        return await scrapbook.invokeCapture(
+          (await scrapbook.getHighlightedTabs()).map(tab => ({
+            tabId: tab.id,
+            url: tab.url,
+            title: tab.title,
+            mode: "bookmark",
+          }))
+        );
+      },
+
+      async captureTabAs() {
+        const tabs = await scrapbook.getHighlightedTabs();
+        return await scrapbook.invokeCaptureAs({
+          tasks: tabs.map(tab => ({
+            tabId: tab.id,
+            url: tab.url,
+            title: tab.title,
+          })),
+        });
+      },
+
+      async batchCapture() {
+        const tabs = await scrapbook.getContentTabs();
+        return await scrapbook.invokeCaptureBatch({
+          tasks: tabs.map(tab => ({
+            tabId: tab.id,
+            url: tab.url,
+            title: tab.title,
+          })),
+        });
+      },
+
+      async batchCaptureLinks() {
+        const tabs = await scrapbook.getHighlightedTabs();
+        return await scrapbook.invokeCaptureBatchLinks({
+          tasks: tabs.map(tab => ({
+            tabId: tab.id,
+            url: tab.url,
+            title: tab.title,
+          })),
+        });
+      },
+
+      async editTab() {
+        const tab = (await browser.tabs.query({active: true, currentWindow: true}))[0];
+        return await scrapbook.editTab({
+          tabId: tab.id,
+          force: true,
+        });
+      },
+    },
+  };
+
+  /**
+   * Get the real last focused window.
+   *
+   * Native browser.windows.getLastFocused() gets the last created window
+   * (the window "on top"), rather than the window the user last activates a
+   * tab within.
+   *
+   * @type invokable
+   * @param {Object} params
+   * @param {boolean} [params.populate]
+   * @param {WindowType[]} [params.windowTypes]
+   */
+  background.getLastFocusedWindow = async function ({
+    populate = false,
+    windowTypes = ['normal', 'popup'],
+  } = {}) {
+    const wins = (await browser.windows.getAll({windowTypes, populate}))
+      .sort((a, b) => {
+        const va = focusedWindows.get(a.id) || -Infinity;
+        const vb = focusedWindows.get(b.id) || -Infinity;
+        if (va > vb) { return 1; }
+        if (vb > va) { return -1; }
+        if (a.id > b.id) { return 1; }
+        if (b.id > a.id) { return -1; }
+        return 0;
+      });
+
+    return wins.pop();
+  };
+
+  /**
+   * @type invokable
+   */
+  background.invokeFrameScript = async function ({frameId, cmd, args}, sender) {
+    const tabId = sender.tab.id;
+    return await scrapbook.invokeContentScript({
+      tabId, frameId, cmd, args,
+    });
+  };
+
+  /**
+   * @type invokable
+   */
+  background.findBookIdFromUrl = async function ({url}, sender) {
+    await server.init(true);
+    return await server.findBookIdFromUrl(url);
+  };
+
+  /**
+   * Attempt to locate an item in the sidebar.
+   *
+   * @type invokable
+   * @return {Object|null|false} The located item.
+   *     - Object: the located item
+   *     - null: no item located
+   *     - false: no sidebar opened
+   */
+  background.locateItem = async function (params, sender) {
+    const cmd = 'sidebar.locate';
+    const args = params;
+    const sidebarUrl = browser.runtime.getURL("scrapbook/sidebar.html");
+
+    if (browser.sidebarAction) {
+      // Unfortunately we cannot force open the sidebar from a user gesture
+      // in a content page if it's closed.
+      if (!await browser.sidebarAction.isOpen({})) {
+        return false;
+      }
+
+      // pass windowId to restrict response to the current window sidebar
+      return await scrapbook.invokeExtensionScript({id: (await browser.windows.getCurrent()).id, cmd, args});
+    }
+
+    const sidebarTab = (await browser.tabs.query({}))
+        .filter(t => scrapbook.splitUrl(t.url)[0] === sidebarUrl)[0];
+
+    if (!sidebarTab) {
+      return false;
+    }
+
+    const tabId = sidebarTab.id;
+    const result = await scrapbook.invokeContentScript({tabId, frameId: 0, cmd, args});
+
+    if (result) {
+      if (browser.windows && sidebarTab.windowId) {
+        // In Chromium for Android (e.g. Kiwi Browser):
+        // - windowId of any tab is 1, which refers a non-existent window.
+        // - browser.windows.update() for a non-existent window does nothing
+        //   rather than throw.
+        await browser.windows.update(sidebarTab.windowId, {drawAttention: true});
+      }
+
+      await browser.tabs.update(tabId, {active: true});
+    }
+
+    return result;
+  };
+
+  /**
+   * @type invokable
+   */
+  background.captureCurrentTab = async function (params = {}, sender) {
+    const task = Object.assign({tabId: sender.tab.id}, params);
+    return await scrapbook.invokeCapture([task]);
+  };
+
+  /**
+   * @type invokable
+   * @param {Object} [params]
+   * @param {string[]} [params.urls]
+   * @return {Object<string~url, integer~count>}
+   */
+  background.getCapturedUrls = function ({urls = []} = {}, sender) {
+    const rv = {};
+    for (const url of urls) {
+      rv[url] = capturedUrls.get(url) || 0;
+    }
+    return rv;
+  };
+
+  /**
+   * @type invokable
+   * @param {Object} [params]
+   * @param {string[]} [params.urls]
+   */
+  background.setCapturedUrls = function ({urls = []} = {}, sender) {
+    for (const url of urls) {
+      capturedUrls.set(url, (capturedUrls.get(url) || 0) + 1);
+    }
+  };
+
+  /**
+   * @type invokable
+   */
+  background.createSubPage = async function ({url, title}, sender) {
+    await server.init(true);
+
+    // search for bookId and item
+    // reject if not found
+    const bookId = await server.findBookIdFromUrl(url);
+    if (typeof bookId !== 'string') {
+      throw new Error(`Unable to find a valid book.`);
+    }
+    const book = server.books[bookId];
+
+    const item = await book.findItemFromUrl(url);
+    if (!item) {
+      throw new Error(`Unable to find a valid item.`);
+    }
+
+    if (!item.index.endsWith('/index.html')) {
+      throw new Error(`Index page is not "*/index.html".`);
+    }
+
+    // generate subpage
+    const base = scrapbook.getRelativeUrl(url, book.dataUrl);
+    await server.request({
+      query: {
+        a: 'query',
+        lock: '',
+      },
+      body: {
+        q: JSON.stringify({
+          book: book.id,
+          cmd: 'add_item_subpage',
+          kwargs: {
+            item_id: item.id,
+            title,
+            base,
+          },
+        }),
+      },
+      method: 'POST',
+      format: 'json',
+      csrfToken: true,
+    });
+  };
+
+  /**
+   * @type invokable
+   */
+  background.registerActiveEditorTab = async function ({willEnable = true} = {}, sender) {
+    return editor.registerActiveEditorTab(sender.tab.id, willEnable);
+  };
+
+  /**
+   * @type invokable
+   */
+  background.invokeEditorCommand = async function ({code, cmd, args, frameId = -1, frameIdExcept = -1}, sender) {
+    const tabId = sender.tab.id;
+    if (frameId !== -1) {
+      const response = code ? 
+        await browser.tabs.executeScript(tabId, {
+          frameId,
+          code,
+          runAt: "document_start",
+        }) : 
+        await scrapbook.invokeContentScript({
+          tabId, frameId, cmd, args,
+        });
+      await browser.tabs.executeScript(tabId, {
+        frameId,
+        code: `window.focus();`,
+        runAt: "document_start"
+      });
+      return response;
+    } else if (frameIdExcept !== -1) {
+      const tasks = Array.prototype.map.call(
+        await scrapbook.initContentScripts(tabId),
+        async ({tabId, frameId, error, injected}) => {
+          if (error) { return undefined; }
+          if (frameId === frameIdExcept) { return undefined; }
+          return code ? 
+            await browser.tabs.executeScript(tabId, {
+              frameId,
+              code,
+              runAt: "document_start",
+            }) : 
+            await scrapbook.invokeContentScript({
+              tabId, frameId, cmd, args,
+            });
+        });
+      return Promise.all(tasks);
+    } else {
+      const tasks = Array.prototype.map.call(
+        await scrapbook.initContentScripts(tabId),
+        async ({tabId, frameId, error, injected}) => {
+          if (error) { return undefined; }
+          return code ? 
+            await browser.tabs.executeScript(tabId, {
+              frameId,
+              code,
+              runAt: "document_start",
+            }) : 
+            await scrapbook.invokeContentScript({
+              tabId, frameId, cmd, args,
+            });
+        });
+      return Promise.all(tasks);
+    }
+  };
+
+  /**
+   * @type invokable
+   */
+  background.onServerTreeChange = async function (params = {}, sender) {
+    const tasks = [];
+
+    const errorHandler = (ex) => {
+      console.error(ex);
+    };
+
+    // update badge
+    tasks.push(capturer.updateBadgeForAllTabs().catch(errorHandler));
+
+    // notify sidebars about server tree change
+    const sidebarUrls = [
+      browser.runtime.getURL("scrapbook/sidebar.html"),
+      browser.runtime.getURL("scrapbook/manage.html"),
+    ];
+    const cmd = 'sidebar.onServerTreeChange';
+    const args = {};
+
+    if (browser.sidebarAction) {
+      tasks.push(scrapbook.invokeExtensionScript({cmd, args}).catch(errorHandler));
+    }
+
+    const sidebarTabs = (await browser.tabs.query({}))
+        .filter(t => sidebarUrls.includes(scrapbook.splitUrl(t.url)[0]));
+
+    for (const tab of sidebarTabs) {
+      tasks.push(scrapbook.invokeContentScript({tabId: tab.id, frameId: 0, cmd, args}).catch(errorHandler));
+    }
+
+    return await Promise.all(tasks);
+  };
+
+  /**
+   * @type invokable
+   * @param {Object} [params]
+   */
+  background.onCaptureEnd = async function (params, sender) {
+    background.setCapturedUrls(params, sender);
+    await background.onServerTreeChange(params, sender);
+  };
+
+  /**
+   * @type invokable
+   * @param {Object} [options]
+   */
+  background.getGeoLocation = async function (options) {
+    return scrapbook.getGeoLocation(options);
+  };
+
+  function initStorageChangeListener() {
+    const toolbarOptions = Object.keys(scrapbook.DEFAULT_OPTIONS).filter(x => x.startsWith('ui.toolbar.'));
+
+    // Run this after optionsAuto to make sure that scrapbook.options is
+    // up-to-date when the listener is called.
+    browser.storage.onChanged.addListener((changes, areaName) => {
+      if (toolbarOptions.some(x => x in changes)) {
+        updateBrowserAction(); // async
+      }
+      if (("ui.showContextMenu" in changes) || ("server.url" in changes)) {
+        updateContextMenu(); // async
+      }
+      if ("ui.notifyPageCaptured" in changes) {
+        capturer.toggleNotifyPageCaptured(); // async
+      }
+      if ("autocapture.rules" in changes) {
+        capturer.configAutoCapture(); // async
+      }
+      if ("autocapture.enabled" in changes) {
+        capturer.toggleAutoCapture(); // async
+      }
+      if (("editor.autoInit" in changes) || ("server.url" in changes)) {
+        editor.toggleAutoEdit(); // async
+      }
+      if (("viewer.viewHtz" in changes) || ("viewer.viewMaff" in changes)) {
+        viewer.toggleViewerListeners(); // async
+      }
+    });
+  }
+
+  function updateBrowserAction(...args) {
+    const actions = {
+      showCaptureTab: background.commands.captureTab,
+      showCaptureTabSource: background.commands.captureTabSource,
+      showCaptureTabBookmark: background.commands.captureTabBookmark,
+      showCaptureTabAs: background.commands.captureTabAs,
+      showBatchCapture: background.commands.batchCapture,
+      showBatchCaptureLinks: background.commands.batchCaptureLinks,
+      showEditTab: background.commands.editTab,
+      showSearchCaptures: background.commands.searchCaptures,
+      showOpenScrapBook: background.commands.openScrapBook,
+      showOpenViewer: background.commands.openViewer,
+      showOpenOptions: background.commands.openOptions,
+    };
+    let action;
+
+    const fn = updateBrowserAction = () => {
+      // clear current listener and popup
+      browser.browserAction.setPopup({popup: ""});
+      if (action) {
+        browser.browserAction.onClicked.removeListener(action);
+      }
+
+      const buttons = scrapbook.getOptions("ui.toolbar");
+      const activeButtons = Object.entries(buttons).filter(x => x[1]);
+      if (activeButtons.length === 0) {
+        // if no button is activated, fallback to open option
+        action = actions.showOpenOptions;
+        browser.browserAction.onClicked.addListener(action);
+        return;
+      } else if (activeButtons.length === 1) {
+        // if a supported button is activated, make it the toolbar button click action
+        action = actions[activeButtons[0][0].slice(11)];
+        if (action) {
+          browser.browserAction.onClicked.addListener(action);
+          return;
+        }
+      }
+      browser.browserAction.setPopup({popup: "core/browserAction.html"});
+    };
+
+    return fn(...args);
+  }
+
+  async function updateContextMenu() {
+    if (!browser.contextMenus) { return; }
+
+    await browser.contextMenus.removeAll();
+
+    const willShow = scrapbook.getOption("ui.showContextMenu");
+    if (!willShow) { return; }
+
+    const hasServer = scrapbook.hasServer();
+    const urlMatch = await scrapbook.getContentPagePattern();
+
+    // Available in Chromium and Firefox >= 53.
+    if (browser.contextMenus.ContextType.BROWSER_ACTION) {
+      browser.contextMenus.create({
+        title: scrapbook.lang("CaptureTabAs") + '...',
+        contexts: ["browser_action"],
+        documentUrlPatterns: urlMatch,
+        onclick: async (info, tab) => {
+          const tabs = await scrapbook.getHighlightedTabs();
+          return await scrapbook.invokeCaptureAs({
+            tasks: tabs.map(tab => ({
+              tabId: tab.id,
+              url: tab.url,
+              title: tab.title,
+            })),
+          });
+        },
+      });
+
+      browser.contextMenus.create({
+        title: scrapbook.lang("EditTab"),
+        contexts: ["browser_action"],
+        documentUrlPatterns: urlMatch,
+        onclick: (info, tab) => {
+          return scrapbook.editTab({
+            tabId: tab.id,
+            force: true,
+          });
+        },
+      });
+
+      browser.contextMenus.create({
+        title: scrapbook.lang("searchCaptures"),
+        contexts: ["browser_action"],
+        documentUrlPatterns: urlMatch,
+        onclick: async (info, tab) => {
+          const tabs = await scrapbook.getHighlightedTabs();
+          return scrapbook.searchCaptures({
+            tabs,
+            newTab: true,
+          });
+        },
+        enabled: hasServer,
+      });
+
+      browser.contextMenus.create({
+        title: scrapbook.lang("openScrapBook"),
+        contexts: ["browser_action"],
+        documentUrlPatterns: urlMatch,
+        onclick: async (info, tab) => {
+          return await scrapbook.openScrapBook();
+        },
+        enabled: hasServer,
+      });
+
+      browser.contextMenus.create({
+        title: scrapbook.lang("openViewer") + '...',
+        contexts: ["browser_action"],
+        documentUrlPatterns: urlMatch,
+        onclick: async (info, tab) => {
+          return await scrapbook.visitLink({
+            url: browser.runtime.getURL("viewer/load.html"),
+            newTab: true,
+          });
+        },
+      });
+    }
+
+    // Available only in Firefox >= 53.
+    if (browser.contextMenus.ContextType.TAB) {
+      const captureTabs = async ({mode, details = false} = {}) => {
+        const tabs = await scrapbook.getHighlightedTabs();
+        const taskInfo = {
+          tasks: tabs.map(tab => ({
+            tabId: tab.id,
+            url: tab.url,
+            title: tab.title,
+          })),
+          mode,
+        };
+        return details ? await scrapbook.invokeCaptureAs(taskInfo) : await scrapbook.invokeCaptureEx({taskInfo});
+      };
+
+      browser.contextMenus.create({
+        title: scrapbook.lang("CaptureTab"),
+        contexts: ["tab"],
+        documentUrlPatterns: urlMatch,
+        onclick: (info, tab) => {
+          return captureTabs();
+        },
+      });
+
+      browser.contextMenus.create({
+        title: scrapbook.lang("CaptureTabSource"),
+        contexts: ["tab"],
+        documentUrlPatterns: urlMatch,
+        onclick: (info, tab) => {
+          return captureTabs({
+            mode: "source",
+          });
+        },
+      });
+
+      browser.contextMenus.create({
+        title: scrapbook.lang("CaptureTabBookmark"),
+        contexts: ["tab"],
+        documentUrlPatterns: urlMatch,
+        onclick: (info, tab) => {
+          return captureTabs({
+            mode: "bookmark",
+          });
+        },
+      });
+
+      browser.contextMenus.create({
+        title: scrapbook.lang("CaptureTabAs") + '...',
+        contexts: ["tab"],
+        documentUrlPatterns: urlMatch,
+        onclick: async (info, tab) => {
+          return captureTabs({
+            details: true,
+          });
+        },
+      });
+
+      browser.contextMenus.create({
+        title: scrapbook.lang("EditTab"),
+        contexts: ["tab"],
+        documentUrlPatterns: urlMatch,
+        onclick: (info, tab) => {
+          return scrapbook.editTab({
+            tabId: tab.id,
+            force: true,
+          });
+        },
+      });
+    }
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CapturePage"),
+      contexts: ["page"],
+      documentUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          tabId: tab.id,
+          fullPage: true,
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CapturePageSource"),
+      contexts: ["page"],
+      documentUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          tabId: tab.id,
+          mode: "source",
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CapturePageBookmark"),
+      contexts: ["page"],
+      documentUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          tabId: tab.id,
+          mode: "bookmark",
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CapturePageAs") + '...',
+      contexts: ["page"],
+      documentUrlPatterns: urlMatch,
+      onclick: async (info, tab) => {
+        return await scrapbook.invokeCaptureAs({
+          tasks: [{
+            tabId: tab.id,
+            fullPage: true,
+            url: tab.url,
+            title: tab.title,
+          }],
+        });
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("EditPage"),
+      contexts: ["page"],
+      documentUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.editTab({
+          tabId: tab.id,
+          force: true,
+        });
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureFrame"),
+      contexts: ["frame"],
+      documentUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          tabId: tab.id,
+          frameId: info.frameId,
+          fullPage: true,
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureFrameSource"),
+      contexts: ["frame"],
+      documentUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          url: info.frameUrl,
+          mode: "source",
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureFrameBookmark"),
+      contexts: ["frame"],
+      documentUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          url: info.frameUrl,
+          mode: "bookmark",
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureFrameAs") + '...',
+      contexts: ["frame"],
+      documentUrlPatterns: urlMatch,
+      onclick: async (info, tab) => {
+        return await scrapbook.invokeCaptureAs({
+          tasks: [{
+            tabId: tab.id,
+            frameId: info.frameId,
+            fullPage: true,
+            url: info.frameUrl,
+            title: tab.title,
+          }],
+        }, {ignoreTitle: true});
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureSelection"),
+      contexts: ["selection"],
+      documentUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          tabId: tab.id,
+          frameId: info.frameId,
+          fullPage: false,
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureSelectionAs") + '...',
+      contexts: ["selection"],
+      documentUrlPatterns: urlMatch,
+      onclick: async (info, tab) => {
+        return await scrapbook.invokeCaptureAs({
+          tasks: [{
+            tabId: tab.id,
+            frameId: info.frameId,
+            url: info.frameUrl || tab.url,
+            title: tab.title,
+          }],
+        }, {ignoreTitle: true});
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("BatchCaptureLinks") + '...',
+      contexts: ["selection"],
+      documentUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCaptureBatchLinks({
+          tasks: [{
+            tabId: tab.id,
+            frameId: info.frameId,
+          }],
+        });
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureLink"),
+      contexts: ["link"],
+      targetUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          url: info.linkUrl,
+          mode: "tab",
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureLinkSource"),
+      contexts: ["link"],
+      targetUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          url: info.linkUrl,
+          mode: "source",
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureLinkBookmark"),
+      contexts: ["link"],
+      targetUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          url: info.linkUrl,
+          mode: "bookmark",
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureLinkAs") + '...',
+      contexts: ["link"],
+      targetUrlPatterns: urlMatch,
+      onclick: async (info, tab) => {
+        return await scrapbook.invokeCaptureAs({
+          tasks: [{
+            url: info.linkUrl,
+            title: info.linkText,
+          }],
+        }, {ignoreTitle: true});
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureMedia"),
+      contexts: ["image", "audio", "video"],
+      targetUrlPatterns: urlMatch,
+      onclick: (info, tab) => {
+        return scrapbook.invokeCapture([{
+          url: info.srcUrl,
+          refUrl: info.pageUrl,
+          mode: "source",
+        }]);
+      },
+    });
+
+    browser.contextMenus.create({
+      title: scrapbook.lang("CaptureMediaAs") + '...',
+      contexts: ["image", "audio", "video"],
+      targetUrlPatterns: urlMatch,
+      onclick: async (info, tab) => {
+        return await scrapbook.invokeCaptureAs({
+          tasks: [{
+            url: info.srcUrl,
+            refUrl: info.pageUrl,
+          }],
+        });
+      },
+    });
+  }
+
+  function initCommands() {
+    if (!browser.commands) { return; }
+
+    browser.commands.onCommand.addListener((cmd) => {
+      return background.commands[cmd]();
+    });
+  }
+
+  function initLastFocusedWindowListener() {
+    if (!browser.windows) { return; }
+
+    function onFocusChanged(windowId) {
+      if (windowId === browser.windows.WINDOW_ID_NONE) {
+        return;
+      }
+
+      focusedWindows.set(windowId, Date.now());
+    }
+
+    function onRemoved(windowId) {
+      focusedWindows.delete(windowId);
+    }
+
+    browser.windows.onFocusChanged.addListener(onFocusChanged);
+    browser.windows.onRemoved.addListener(onRemoved);
+
+    browser.windows.getAll().then(wins => {
+      for (const win of wins) {
+        if (!win.focused) {
+          return;
+        }
+
+        focusedWindows.set(win.id, Date.now());
+      }
+    });
+  }
+
+  function initBeforeSendHeadersListener() {
+    const extraInfoSpec = ["blocking", "requestHeaders"];
+    if (browser.webRequest.OnBeforeSendHeadersOptions.hasOwnProperty('EXTRA_HEADERS')) {
+      extraInfoSpec.push('extraHeaders');
+    }
+    browser.webRequest.onBeforeSendHeaders.addListener((details) => {
+      // Some headers (e.g. "referer") are not allowed to be set via
+      // XMLHttpRequest.setRequestHeader directly.  Use a prefix and
+      // modify it here to workaround.
+      for (const header of details.requestHeaders) {
+        if (header.name.slice(0, 15) === "X-WebScrapBook-") {
+          header.name = header.name.slice(15);
+        }
+      }
+      return {requestHeaders: details.requestHeaders};
+    }, {urls: ["<all_urls>"], types: ["xmlhttprequest"]}, extraInfoSpec);
+  }
+
+  function initMessageListener() {
+    scrapbook.addMessageListener((message, sender) => {
+      if (!message.cmd.startsWith("background.")) { return false; }
+      return true;
+    });
+  }
+
+  function initExternalMessageListener() {
+    if (!browser.runtime.onMessageExternal) { return; }
+
+    browser.runtime.onMessageExternal.addListener((message, sender) => {
+      const {cmd, args} = message;
+
+      let result;
+      switch (cmd) {
+        case "ping": {
+          result = true;
+          break;
+        }
+        case "invokeCapture": {
+          result = scrapbook.invokeCapture(args);
+          break;
+        }
+        case "invokeCaptureEx": {
+          result = scrapbook.invokeCaptureEx(args);
+          break;
+        }
+        default: {
+          // thrown Error don't show here but cause the sender to receive an error
+          throw new Error(`Unable to invoke unknown command '${cmd}'.`);
+        }
+      }
+
+      return Promise.resolve(result)
+        .catch((ex) => {
+          console.error(ex);
+          throw ex;
+        });
+    });
+  }
+
+  async function init() {
+    initStorageChangeListener();
+    initCommands();
+    initLastFocusedWindowListener();
+    initBeforeSendHeadersListener();
+    initMessageListener();
+    initExternalMessageListener();
+
+    await scrapbook.loadOptionsAuto;
+    updateBrowserAction();
+    updateContextMenu();
+  }
+
+  init();
+
+  return background;
+
+}));

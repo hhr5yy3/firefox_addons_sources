@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/angular-block-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <script src="scripts/libs/jquery-2.0.3.min.js"></script>
+    <script src="scripts/libs/bootstrap.min.js"></script>
+    <script src="scripts/libs/angular.min.js"></script>
+    <script src="scripts/libs/mask.min.js"></script>
+    <script src="scripts/libs/angular-block-ui.min.js"></script>
+    <script src="scripts/libs/tooltip-config.js"></script>
+    <script src="scripts/libs/ui-bootstrap-tpls-1.1.0.min.js"></script>
+</head>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------- BODY ------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------------------->
+<body ng-app="IcpBravoAccessNgApp" ng-controller="popUpNgController" ng-init="onLoad()">
+
+    <div id="modal-header">
+        <header>
+            <div class="LOGO">
+                <a ng-click="redirectTo('http://icpbravoaccess.com.br/#/main')" src="img/logo.png" style="cursor:pointer" srcset="img/logo.png 2x"></a>
+            </div>
+        </header>
+    </div>
+
+    <div id="modal-body">
+        <div class="col-sm-12">
+            <!------------------------------------------------------------Certificate table----------------------------------------------------------------->
+            <div class="input-group input-search-cert">
+                <span class="input-group-addon drop-cert-icon" id="sizing-addon1">
+                    <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                </span>
+
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle drop-cert-type-btn" type="button" data-toggle="dropdown" style="text-align:left">
+                        <span ng-bind="type.current"></span>
+                        <span class="caret" style="position:absolute; right:12px; top:47%" />
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="drop-cert-item" ng-click="onGetCertificateList()">Todos</a></li>
+                        <li><a class="drop-cert-item" ng-click="onGetCertificateList('unknown')">Desconhecidos</a></li>
+                        <li><a class="drop-cert-item" ng-click="onGetCertificateList('icpbrasil')">ICPBrasil</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+
+                <div class="panel-heading panel-header panel-cert">
+                    <span>CERTIFICADOS : {{CertificatesList.length}}</span>
+                </div>
+                <div id="certList">
+                    <table class="table table-hover table-fixed table-cert">
+                        <tbody class="tbody-cert col-md-12">
+                            <tr ng-repeat="Certificate in CertificatesList" ng-class="{'cert-invalid':!Certificate.isValid, 'tr-top-cert':Certificate.isValid}">
+                                <!--<td width="10%" class="name-cell-cnst">Nome</td>-->
+                                <td class="name-cell cell-var tr-btn-name">
+                                    <ul>
+                                        <li class="li-trucate bold">{{Certificate.subjectName}}</li>
+                                        <li class="li-trucate">{{Certificate.issuerName}}</li>
+                                    </ul>
+                                </td>
+                                <td class="tr-btn-cert" ng-click="certificateInfoModal(Certificate)">
+                                    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer" style="margin-top: 15px;">
+        <div class="row">
+            <div class="LOGOScytl col-xs-6">
+                <a ng-click="redirectTo('http://www.scytl.com.br/')" src="img/LOGO_HEADER.png" style="cursor:pointer" srcset="img/LOGO_HEADER.png 2x" class=""></a>
+            </div>
+            <div class="col-xs-6" style="padding-top: 3px">
+                <button type="button" class="btn btn-default pull-right no-margin " ng-click="onGetCertificateList(type.current)">
+                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Atualizar
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="scripts/content_script.js"></script>
+    <script src="scripts/libs/icpbravo.access.ext.js"></script>
+    <script src="scripts/popup.js"></script>
+    <script src="scripts/outdated.js"></script>
+    <script src="scripts/certificate_info.js"></script>
+    <script src="scripts/confirm_dialog.js"></script>
+</body>
+</html>

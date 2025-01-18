@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <title>Webmail Ad Blocker - Popup</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+        body {
+            margin:0;
+            padding:0;
+            width: 800px;
+            height: 300px;
+            font-size: 16px;
+            opacity: 1;
+            transition: opacity 0.15s ease-in-out
+        }
+        
+        body[unresolved2] {
+            opacity: 0
+        }
+
+        #middle {
+            margin: 0 auto;
+            max-width: 1366px
+        }
+        
+        [main-title] {
+            pointer-events: auto !important;
+        }
+        
+        #middle {
+            padding: 30px 10px
+        }
+
+        #socialMedia paper-button {min-width:auto}
+    </style>
+
+    <script type="module" src="js/polymer-css.js"></script>
+    
+    <script src="js/common.js"></script>
+    <script src="js/extensionCommon.js"></script>
+    <script src="js/popup.js"></script>
+
+</head>
+
+    <body class="fullbleed layout vertical" unresolved unresolved2>
+
+        <app-header reveals>
+            <app-toolbar>
+                <div main-title>
+                    <img id="logo" src="images/icon48.png" style="vertical-align:middle" />
+                    <a class="inherit" href="https://jasonsavard.com?ref=WABPopupTitle">Webmail Ad Blocker</a>
+                </div>
+                <paper-button id="version">version</paper-button>
+                <a class="inherit" href="https://jasonsavard.com/wiki/Webmail_Ad_Blocker_changelog?ref=WABPopup">
+                    <paper-button><span msg="changelog"></span></paper-button>
+                </a>
+                <a class="inherit" href="https://jasonsavard.com/contribute?ref=WABPopup">
+                    <paper-button><span msg="contribute"></span></paper-button>
+                </a>
+                <a class="inherit" href="https://jasonsavard.com/wiki/Webmail_Ad_Blocker?ref=WABPopup">
+                    <paper-button><span msg="help"></span></paper-button>
+                </a>
+            </app-toolbar>
+        </app-header>
+        <div id="middle" class="layout vertical center">
+            <paper-button id="options" class="colored" raised>Options</paper-button>
+            <br>
+            <a class="inherit" href="https://jasonsavard.com?ref=WABPopup">
+                <paper-button raised>Try my other extensions!</paper-button>
+            </a>
+        </div>
+
+        <template id="genericDialogTemplate">
+            <paper-dialog id="genericDialog" modal="true">
+                <h2>blah blah</h2>
+                <paper-dialog-scrollable class="dialogDescription"></paper-dialog-scrollable>
+                <div class="buttons">
+                    <paper-button dialog-other class="otherDialog" hidden>empty</paper-button>
+                    <paper-button dialog-dismiss class="cancelDialog"><span msg="cancel"></span></paper-button>
+                    <paper-button dialog-confirm autofocus class="okDialog"><span msg="ok"></span></paper-button>
+                </div>
+            </paper-dialog>
+        </template>
+
+        <!-- Must be above paper-drawer-panel -->
+        <paper-toast id="message" text="Done">
+            <paper-icon-button class="closeToast" icon="close"></paper-icon-button>
+        </paper-toast>
+
+    </body>
+
+</html>

@@ -1,0 +1,27 @@
+import { isEnterprise } from '../npm/github-url-detection.js';
+import onetime from '../helpers/onetime.js';
+import features from '../feature-manager.js';
+import { getUsername } from '../github-helpers/index.js';
+import { registerHotkey } from '../github-helpers/hotkey.js';
+
+function initOnce() {
+	// This patterns also works on gist.github.com
+	const origin = isEnterprise() ? location.origin : 'https://github.com';
+	const profileLink = new URL(getUsername(), origin);
+	registerHotkey('g m', profileLink.href);
+}
+
+void features.add(import.meta.url, {
+	shortcuts: {
+		'g m': 'Go to Profile',
+	},
+	init: onetime(initOnce),
+});
+
+/*
+
+Test URLs:
+
+1. Visit any page
+
+*/

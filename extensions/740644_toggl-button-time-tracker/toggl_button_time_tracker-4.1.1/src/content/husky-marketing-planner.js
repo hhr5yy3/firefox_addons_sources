@@ -1,0 +1,1 @@
+togglbutton.render(".toggl-target:not(.toggl)",{observe:!0},function(t){const e=t.getAttribute("data-descr"),n=t.getAttribute("data-proj"),o=togglbutton.createTimerLink({className:"husky-marketing-planner",description:e,projectName:n});t.appendChild(o)});

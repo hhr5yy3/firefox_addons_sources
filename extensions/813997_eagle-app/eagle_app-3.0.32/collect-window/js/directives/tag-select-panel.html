@@ -1,0 +1,120 @@
+<select-panel id="tag-select-panel" class="select-panel tag-select-panel" ng-mouseup="focusSearchInput()">
+	<div class="panel-header">
+		<!-- 搜索框 -->
+		<div class="search">
+			<input id="tag-select-panel-search-input" type="search" placeholder="{{ 'collect-window.tag-select-panel.search' | i18n }}" />
+		</div>
+	</div>
+
+	<div class="panel-container" ng-class="{'has-sidebar' : listData.tagGroups.length > 0}">
+		<div class="panel-sidebar">
+			<!-- 全部 -->
+			<div class="panel-sidebar-item" ng-click="selectGroup()" ng-class="{'active': !listData.currentGroup }">
+				<div class="icon"><div class="fake-svg png"></div></div>
+				<div class="name">{{ 'collect-window.tag-select-panel.sidebar.all' | i18n}}</div>
+				<div class="right">
+					<div class="count" ng-if="listData.tagGroupsCountMap['all']">{{listData.tagGroupsCountMap['all']}}</div>
+				</div>
+			</div>
+			<!-- 標籤群組 -->
+			<div class="panel-sidebar-item color-{{group.color}}" ng-class="{'active': listData.currentGroup.id === group.id }" ng-repeat="group in listData.tagGroups" ng-click="selectGroup(group)" title="{{ ::group.name }}">
+				<div class="icon"><div class="fake-svg png"></div></div>
+				<div class="name">{{group.name}}</div>
+				<div class="right">
+					<div class="count">{{listData.tagGroupsCountMap[group.id]}}</div>
+				</div>
+			</div>
+			<!-- 未分類 -->
+			<div class="panel-sidebar-item" ng-click="selectGroup('none')" ng-class="{'active': listData.currentGroup.id === 'none' }">
+				<div class="icon">
+					<div
+						class="fake-svg png"
+						style="mask-image: url(assets/images/base/icons/ic-tag-select-unfiled.png); -webkit-mask-image: url(assets/images/base/icons/ic-tag-select-unfiled.png); mask-size: 20px; -webkit-mask-size: 20px"
+					></div>
+				</div>
+				<div class="name">{{ 'collect-window.tag-select-panel.sidebar.uncategorized' | i18n}}</div>
+				<div class="right">
+					<div class="count" ng-if="listData.tagGroupsCountMap['none']">{{listData.tagGroupsCountMap['none']}}</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 空状态 -->
+		<div class="panel-empty" ng-if="listData.items.length == 0">
+			<span>{{ 'collect-window.tag-select-panel.empty' | i18n}}</span>
+		</div>
+
+		<!-- 项目列表 -->
+		<div ng-hide="listData.items.length == 0" class="panel-list" vs-auto-scroll index="listData.currentIndex" scroll-container="#tag-select-panel [vs-repeat]">
+			<select-panel-list vs-excess="30" vs-repeat="26" vs-size="size" allow-scroll>
+				<div
+					class="select-panel-item"
+					ng-class="{'active': item.index == listData.currentIndex, 'checked': listData.selectedTags[item.name] }"
+					ng-repeat="item in listData.items"
+					ng-click="openItem(item)"
+					ng-mousemove="hoverItem(item)"
+					ng-switch
+					on="item.type"
+				>
+					<!-- 分隔線 -->
+					<div class="separator" ng-switch-when="separator"></div>
+
+					<!-- 建立標籤 -->
+					<div ng-switch-when="create" class="list-item color-{{listData.currentGroup.color}}" style="height: 26px; line-height: 26px" ng-class="{'active': item.index == listData.currentIndex}">
+						<div class="checkbox">
+							<img ng-src="assets/images/{{theme}}/icons/ic-tag-select-create.svg" />
+						</div>
+						<div class="icon"><div class="fake-svg png"></div></div>
+						<div class="name">{{ 'collect-window.tag-select-panel.create' | i18n }} "<b>{{item.name}}</b>"</div>
+					</div>
+
+					<!-- 選擇標籤 -->
+					<div
+						ng-switch-default
+						class="list-item color-{{item.color}}"
+						style="height: 26px; line-height: 26px"
+						ng-class="{ 
+                            'active': item.index == listData.currentIndex, 
+                            'selected': listData.selectedTags[item.name], 
+                            'search-mode': listData.currentTab === 'SELECTED' || listData.searchKeyword.length > 0, 
+                            'recent': item.isRecent, 
+                            'suggestion': item.isSuggestion && !item.isExist 
+                        }"
+						title="{{ ::item.name }}"
+					>
+						<div class="guidelines" ng-if="!item.isRecent">
+							<div class="guideline color-{{line}} depth-{{$index + 1}}" ng-hide="item.depth === $index" ng-repeat="line in item.guidelines track by $index">
+								<div class="top"></div>
+								<div class="middle"></div>
+								<div class="bottom"></div>
+							</div>
+						</div>
+						<div class="checkbox"><div class="check-icon"></div></div>
+						<div class="icon">
+							<div class="fake-svg png"></div>
+							<div ng-if="item.isRecent" class="history-badge"></div>
+						</div>
+						<div class="name" ng-bind-html="item.name | fuzzyMatch:listData.searchKeyword"></div>
+						<div class="right">
+							<div class="count" ng-if="item.imageCount">{{item.imageCount}}</div>
+						</div>
+					</div>
+				</div>
+			</select-panel-list>
+		</div>
+	</div>
+
+	<div class="panel-footer">
+		<div class="left">
+			<div class="shortcut-tip">
+				{{ 'collect-window.tag-select-panel.shortcut.move' | i18n }}
+				<div class="keys"><key>↑</key><key>↓</key></div>
+			</div>
+			<div class="shortcut-tip">{{ 'collect-window.tag-select-panel.shortcut.select' | i18n }}<key>︎⏎</key></div>
+		</div>
+		<div class="right">
+			<div class="shortcut-tip">{{ 'collect-window.tag-select-panel.shortcut.close' | i18n }}<key>︎ESC</key></div>
+		</div>
+	</div>
+</select-panel>
+<select-panel-overlay ng-click="close()"></select-panel-overlay>

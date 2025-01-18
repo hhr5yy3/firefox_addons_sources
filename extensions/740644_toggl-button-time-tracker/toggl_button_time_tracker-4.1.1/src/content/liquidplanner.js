@@ -1,0 +1,1 @@
+togglbutton.render("#treeitem_panel .details.page:not(.toggl)",{observe:!0},function(t){const n=$("#treeitem_panel_name").textContent,r=function(){const e=$("#treeitem_panel_parent").textContent.split(">");return e[e.length-1].trim()},i=togglbutton.createTimerLink({className:"liquidplanner",description:n,projectName:r});t.insertBefore(i,t.firstChild)});

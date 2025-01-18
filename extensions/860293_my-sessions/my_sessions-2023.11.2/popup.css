@@ -1,0 +1,893 @@
+html[theme='dark']{
+  /*...*/
+	--main-hue: 0;
+	--blue-hue: 200;
+	--blue-mssessiontimelabel-color: hsl(var(--blue-hue) ,80%,70%);
+	--blue-mssessioncount-color: hsl(var(--blue-hue) ,80%,80%);
+	--blue-select-color: hsl(var(--blue-hue) ,90%, 20%);
+	
+	--main-background-color: hsl(var(--main-hue) ,0%,20%);
+	--save-background-color: hsl(var(--main-hue) ,0%,20%);
+	
+	--content-text-color: hsl(var(--main-hue) , 0%, 90%);
+	--content-text-bold-color: hsl(var(--main-hue) , 0%, 100%);
+	
+	--accent-background: linear-gradient(to top, #000, #999);
+	--msmenu-background:  -webkit-gradient(linear, left top, left bottom, from(#000), to(#aaa));
+	--mssavelistDiv-background: hsl(var(--main-hue) , 0%, 30%);
+	--msrestorelistwrapper-background: hsl(var(--main-hue) , 0%, 30%);
+	
+	--qu-url: url(img/qu-l.png);
+	--mssavebutton-url: url(img/save-l.png);
+	--msrestoreicon2-url: url(img/manage-l.png);
+	--msopentab-url: url(img/opentab-l.png);
+	--sross-url: url(img/cross-l.png);
+	--srossr-url: url(img/crossr-l.png);
+	
+	--yel-hue: 65;
+	--savetitle-color: hsl(var(--yel-hue) , 0%, 30%);
+	
+}
+html{
+  /*...*/
+	--main-hue: 0;
+	--blue-hue: 200;
+	--blue-mssessiontimelabel-color: hsl(var(--blue-hue) ,100%,50%);
+	--blue-mssessioncount-color: hsl(var(--blue-hue) ,80%,80%);
+	--blue-select-color: hsl(var(--blue-hue) ,40%, 90%);
+	
+	--main-background-color: hsl(var(--main-hue) ,0%,93%);
+	--save-background-color: hsl(var(--main-hue) ,0%,93%);
+	
+	--content-text-color: hsl(var(--main-hue) , 0, 20%);
+	--content-text-bold-color: hsl(var(--main-hue) , 0%, 10%);
+	
+	--accent-background: linear-gradient(to top, #fff, #bbb);
+	--msmenu-background:  -webkit-gradient(linear, left top, left bottom, from(#fff), to(#aaa));
+	--mssavelistDiv-background: hsl(var(--main-hue) , 0%, 100%);
+	--msrestorelistwrapper-background: hsl(var(--main-hue) , 0%, 100%);
+	
+	--qu-url: url(img/qu.png);
+	--mssavebutton-url: url(img/save.png);
+	--msrestoreicon2-url: url(img/manage.png);
+	--msopentab-url: url(img/opentab.png);
+	--sross-url: url(img/cross.png);
+	--srossr-url: url(img/crossr.png);
+	
+	--yel-hue: 65;
+	--savetitle-color: hsl(var(--yel-hue) , 90%, 70%);
+}
+html.color-theme-in-transition,
+html.color-theme-in-transition *,
+html.color-theme-in-transition *:before,
+html.color-theme-in-transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
+}
+background {
+  filter: invert(100%);
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	width: 800px;
+	height: 600px;
+	overflow: hidden;
+	/* [disabled]background-color: #E6F5F5; */
+	/* [disabled]min-width: 800px; */
+	/* [disabled]min-height: 600px; */
+}
+/* Update notice */
+
+#updateNotifier {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 380px;
+    margin: 0px;
+    padding: 4px 2px 6px 2px;
+
+    background: rgba(255, 255, 255, 0.9);
+    -webkit-box-shadow: 0px 0px 8px black;
+
+    color: black;
+    font: bold 12px Verdana, Arial, Tahoma;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+
+    z-index: 9999;
+    display:none;
+}
+
+#updateNotifier:hover {
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffd), to(#eec));
+    color: #03f;
+}
+
+/* Layout */
+
+#msbase {
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+	position: absolute;
+	/* [disabled]border-color: #76D5F0; */
+	/* [disabled]border-style: solid; */
+	/* [disabled]border-width: 1px; */
+	-webkit-box-shadow: 0px 2px 2px 0px #000000;
+	box-shadow: 0px 2px 2px 0px #000000;
+	/* [disabled]left: 5px; */
+	/* [disabled]top: 0px; */
+	display: table;
+	/* [disabled]background-color: #F10F13; */
+}
+
+#mssavebase {
+	top: 0px;
+	-webkit-user-select: none;
+	height: 100%;
+	width: 50%;
+	/* user-select: none; */
+}
+
+#msrestorebase {
+	top: 0px;
+	-webkit-user-select: none;
+	/* user-select: none; */
+	left: 50%;
+	height: 100%;
+	width: 50%;
+}
+
+#mssavebase, #msrestorebase {
+	display: table-column;
+	position: absolute;
+	border: 0 solid #777;
+	/* [disabled]width: 50%; */
+	/* [disabled]height: 100%; */
+	/* [disabled]-webkit-border-radius: 5px; */
+	/* background-position: left top, left bottom, from(#bbb), to(#999)); */
+	background-color: var(--main-background-color);
+}
+/* Save session panel */
+
+#mssaveicon {
+    position:absolute;
+    top:10px;
+    left:12px;
+    width:48px;
+    height:48px;
+}
+#mssavelabel {
+	position: relative;
+	top: 9px;
+	width: 300px;
+	height: 22px;
+	line-height: 18px;
+	font: bold 18px Verdana, Arial, Tahoma, sans-serif;
+	color: #76D5F0;
+	overflow: hidden;
+	left: 5px;
+}
+#mssavetitle {
+	position: relative;
+	top: 80px;
+	/* [disabled]width: 260px; */
+	height: 20px;
+	left: 0px;
+}
+#mssavebutton {
+    position: absolute;
+    right: 95px;
+    width: 48px;
+    height: 48px;
+    background: var(--mssavebutton-url);
+    top: 5px;
+}
+
+#msopentab {
+    position: absolute;
+    right: 5px;
+    width: 30px;
+    height: 48px;
+    background: var(--msopentab-url);
+    top: 5px;
+}
+
+#mssavetoggle {
+    /* vertical-align: center; */
+}
+
+/* Save session list */
+
+#mssavelistDiv {
+	position: relative;
+	margin-top: 2px;
+	margin-right: 4px;
+	margin-left: 8px;
+	width: 96%;
+	height: calc(100% - 18px);
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+	border: 0 solid #779;
+	-webkit-border-radius: 3px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-radius: 0;
+	-webkit-box-shadow: 0px 2px 2px 0px #000000;
+	box-shadow: 0px 2px 2px 0px #000000;
+	/* [disabled]display: inline-table; */
+	background-color: var(--mssavelistDiv-background);
+}
+#mssavelistDiv H4{
+	color: var(--content-text-bold-color);
+	margin: 5px 5px 3px 0px;
+	background-color: var(--save-background-color);
+	height: 20px;
+}
+
+.mstabline, .mswinline {
+    width: 100%;
+    height: 22px;
+    cursor: pointer;
+    /* [disabled]float: left; */
+}
+.mstabline:hover, .mswinline:hover {
+	background: var(--accent-background);
+}
+.mstabline:hover .msdeltab {
+	display: block;
+	
+}
+.mscheck {
+    float: left;
+}
+.msicon {
+	float: left;
+	width: 15px;
+	height: 15px;
+}
+
+.mscheck {
+	float: left;
+	margin-left: 2px;
+}
+
+.mswincheck {
+	float: left;
+	margin-left: 2px;
+}
+
+.msWinblabel, .mstablabel {
+    float: left;
+    /*max-width: 330px;*/
+    width: calc(100% - 52px);
+    height: 15px;
+    font: 12px Verdana, Arial, Tahoma, sans-serif;
+    color: var(--content-text-color);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    /* [disabled]padding-left: 5px; */
+}
+.msWinblabel{
+    font-weight: bold;
+}
+.mswspan{
+	color: var(--blue-mssessiontimelabel-color);
+}
+
+/* Restore session panel */
+
+#msrestoreicon {
+	position: absolute;
+	top: 10px;
+	left: 12px;
+	width: 48px;
+	height: 48px;
+	background: url(/img/icon48.png);
+}
+
+#msrestoreicon2 {
+    /* [disabled]position: absolute; */
+    top: 10px;
+    left: 290px;
+    width: 48px;
+    height: 48px;
+    background: var(--msrestoreicon2-url);
+    cursor: pointer;
+    float: right;
+    margin-right: 40px;
+    margin-top: 5px;
+}
+
+#msrestorelabel {
+	position: absolute;
+	top: 18px;
+	left: 8px;
+	height: 23px;
+	line-height: 16px;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Tahoma;
+	color: var(--content-text-color);
+	overflow: hidden;
+}
+
+#version {
+	position: absolute;
+	top: 18px;
+	left: 115px;
+	height: 23px;
+	line-height: 16px;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Tahoma;
+	color: var(--content-text-color);
+	overflow: hidden;
+}
+#ChangeTheme {
+	position: absolute;
+	top: 15px;
+	left: 195px;
+	height: 23px;
+	overflow: hidden;
+	background-image: url(img/contrast_high.png);
+	width: 23px;
+}
+
+#donat {
+	position: absolute;
+	top: 15px;
+	left: 217px;
+	height: 23px;
+	overflow: hidden;
+	background-image: url(img/love.png);
+	width: 23px;
+}
+
+#qu {
+	position: absolute;
+	top: 15px;
+	left: 235px;
+	height: 23px;
+	overflow: hidden;
+	background-image: var(--qu-url);
+	width: 23px;
+}
+#msrestorelabel2 {
+	position: absolute;
+	top: 30px;
+	left: 70px;
+	height: 28px;
+	line-height: 14px;
+	font-size: 12px !important; /* some user said it is clipped, font size problem? */
+	font-family: Verdana, Arial, Tahoma;
+	color: #76D5F0;
+	width: 220px;
+    
+}
+#msrestoretopbar {
+	position: absolute;
+	left: 8px;
+	overflow: hidden;
+	top: 50px;
+}
+.restoretopbarbtn {
+	display: inline-block;
+	position: relative;
+	padding-top: 3px;
+	padding-right: 10px;
+	padding-left: 10px;
+	border: 1px solid rgba(0,0,0,0.33);
+	border-radius: 0;
+	/* -moz-border-radius: 2px; */
+	margin-top: 5px;
+	margin-right: 8px;
+	margin-left: 0px;
+	margin-bottom: 5px;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	color: var(--content-text-color);
+	text-align: center;
+	background-image: url(url);
+	-webkit-box-shadow: inset 0 4px 4px #E9E9E9;
+	/* -moz-box-shadow: inset 0 4px 4px rgba(255,255,255,0.25); */
+	text-shadow: 1px 1px 1px rgba(255,255,255,0.33);
+	font-family: Verdana, Arial, Tahoma;
+	box-shadow: inset 0 4px 4px #E9E9E9;
+	/* [disabled]background-color: #76D5F0; */
+	padding-bottom: 3px;
+}
+
+#options, #importBtn, #msrestorecrash, #SMBtn{
+    cursor: pointer;
+}
+#options:hover, #importBtn:hover, #msrestorecrash:hover, #SMBtn:hover{
+	color: var(--content-text-color);
+	-webkit-box-shadow: 0px 2px 2px 0px #000000;
+	box-shadow: 0px 2px 2px 0px #000000;
+	/* [disabled]background-color: #76D5F0; */
+}
+
+#msrestorecrashon {
+	left: -5px;
+	min-width: 20px;
+	max-width: 20px;
+	padding: 2px 2px 2px 2px;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#00aa00),to(#55ff55));
+	border-radius: 9px;
+	color: #fff;
+}
+
+#msrestorecrashoff {
+	left: -5px;
+	min-width: 20px;
+	max-width: 20px;
+	padding: 2px 2px 2px 2px;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#aa0000),to(#ff5555));
+	border-radius: 9px;
+	color: #fff;
+}
+
+/* Restore session list */
+
+#msrestorelistwrapper {
+	position: relative;
+	margin-top: 2px;
+	margin-right: 8px;
+	margin-left: 4px;
+	height: calc(100% - 143px);
+	-webkit-border-radius: 3px;
+	border: 0 solid #999999;
+	overflow: hidden;
+	border-radius: 0;
+	-webkit-box-shadow: 0px 2px 2px 0px #000000;
+	box-shadow: 0px 2px 2px 0px #000000;
+	/* [disabled]-webkit-box-sizing: content-box; */
+	/* [disabled]-moz-box-sizing: content-box; */
+	/* [disabled]box-sizing: content-box; */
+	/* [disabled]display: marker; */
+	margin-bottom: 0px;
+	/* [disabled]overflow-y: scroll; */
+	background-color: var(--msrestorelistwrapper-background);
+	width: auto;
+}
+
+#msrestorelist, #mseditsession {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-radius: 0;
+	/* [disabled]-webkit-box-shadow: 2px 2px 2px 1px #9A9A9A; */
+	/* [disabled]box-shadow: 2px 2px 2px 1px #9A9A9A; */
+	/* [disabled]display: inline-table; */
+}
+.nosessionsaved {
+    color: black;
+    font: 14px Verdana, Arial, Tahoma, sans-serif;
+}
+
+.mssessionblock {
+	width: 100%;
+	height: 30px;
+	padding: 2px;
+	cursor: pointer;
+	border-bottom: 1px solid #DEDEDE;
+	position: relative;
+}
+.mssessionblock:hover {
+    background: var(--accent-background);
+}
+
+.msmenu {
+    width: 100%;
+    height: 25px;
+    padding: 2px;
+    cursor: pointer;
+    border-bottom: 1px double #7E82D0;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    background: var(--msmenu-background);
+    font-weight: bolder;
+    color: var(--content-text-color);
+}
+.msmenu:hover {
+	background: var(--accent-background);
+}
+
+.mssessionlabel {
+	position: absolute;
+	top: 2px;
+	left: 10px;
+	width: 100%;
+	height: 18px;
+	font: 12px Verdana, Arial, Tahoma, sans-serif;
+	font-weight: bold;
+	color: var(--content-text-color);
+	overflow: hidden;
+}
+.mssessiontitle {
+	float: left;
+	max-width: 220px;
+	max-height: 30px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.mssessioncount {
+	float: left;
+	font-size: 10px;
+	color: var(--blue-mssessioncount-color);
+	margin-left: 5px;
+}
+.mssessiontimelabel {
+	position: absolute;
+	left: 10px;
+	top: 18px;
+	width: 100%;
+	height: 15px;
+	font: 10px Verdana, Arial, Tahoma, sans-serif;
+	color: var(--blue-mssessiontimelabel-color);
+	overflow: hidden;
+}
+
+/* Edit session panel/list */
+
+#mseditsession {    
+    background: var(--msrestorelistwrapper-background);
+    font: 12px Verdana, Arial, Tahoma, sans-serif;
+    display: none;
+}
+#mseditsession h4 {
+	color: #005;
+	margin: 5px 5px 3px 5px;
+	background-color: #E0E0E0;
+	height: 40px;
+}
+#mstitle {
+    width: 200px;
+    margin: 5px;
+}
+#mseditcontrols {
+    margin: 10px 5px 5px 5px;
+}
+.mseditlist {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+}
+.mseditlist .mstablabel {
+    /*width: 340px;*/
+    width: calc(100% - 52px);
+    text-decoration: none;
+}
+.mseditlist .mstablabel[href]:hover {
+	color: #05f;
+	width: auto;
+}
+.msdeltab {
+	float: left;
+	/*max-width: 330px;*/
+	width: 15px;
+	height: 15px;
+	background-image: var(--sross-url);
+	display: none;
+}
+.msdeltab:hover  {
+	float: left;
+	/*max-width: 330px;*/
+	width: 15px;
+	height: 15px;
+	background-image: var(--srossr-url);
+	display: none;
+}
+.mseditlist h4 {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 5px;
+}
+#mseditnewtoggle, #mseditsavedtoggle {
+    display: inline-block;
+    margin: 3px 2px -3px;
+    width: 16px;
+    height: 16px;
+    background: url(/img/contrast_high.png);
+}
+/* Confirm Box*/
+
+.confirmBox {
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	width: 200px;
+	height: 100px;
+	border: 1px solid #777;
+	/* [disabled]-webkit-border-radius: 5px; */
+	-webkit-box-shadow: 2px 2px 2px 1px #9A9A9A;
+	color: #333;
+	box-shadow: 2px 2px 2px 1px #9A9A9A;
+	background-color: #FFFFFF;
+}
+
+.messageBox {
+	padding: 10px;
+	height: 50px;
+	font: bold 10px Verdana, Arial, Tahoma, sans-serif;
+	-webkit-box-shadow: 0px 0px #FFFFFF;
+	box-shadow: 0px 0px #FFFFFF;
+	background-color: #FFFFFF;
+}
+
+.confirmButton {
+	position: absolute;
+	width: 54px;
+	height: 14px;
+	padding: 3px;
+	top: 70px;
+	left: 30px;
+	border: 1px solid #777;
+	/* [disabled]background: #eee; */
+	font: 10px Verdana, Arial, Tahoma, sans-serif;
+	text-align: center;
+	cursor: pointer;
+}
+
+.confirmButton:hover {
+	/* [disabled]background-color: #ddd; */
+	-webkit-box-shadow: 2px 2px 2px 1px;
+	box-shadow: 2px 2px 2px 1px;
+}
+
+.cancelButton {
+	position: absolute;
+	width: 54px;
+	height: 14px;
+	padding: 3px;
+	top: 70px;
+	right: 30px;
+	border: 1px solid #777;
+	/* [disabled]background: #eee; */
+	font: 10px Verdana, Arial, Tahoma, sans-serif;
+	text-align: center;
+	cursor: pointer;
+	-webkit-box-shadow: 0px 0px;
+	box-shadow: 0px 0px;
+}
+
+.cancelButton:hover {
+	-webkit-box-shadow: 2px 2px 2px 1px;
+	box-shadow: 2px 2px 2px 1px;
+}
+/* exported session*/
+
+#sessionTextBox {
+	position: absolute;
+	width: 90%;
+	left: 5%;
+	top: 20px;
+	display: none;
+	-webkit-box-shadow: 2px 2px 2px 1px #777;
+	box-shadow: 2px 2px 2px 1px #777;
+	background-color: #FFFFFF;
+}
+
+#SessionTextBoxTextArea {
+    width: 100%;
+    height: 170px;
+}
+
+#sessionTextBoxCloseBtn {
+    float: right;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    padding: 0px;
+    margin: 4px;
+    background-image: url(/img/cross.png);
+    background-repeat: no-repeat;
+    border: 1px solid rgba(255,255,255,0);
+}
+
+
+#sessionTextBoxCloseBtn:hover {
+    border: 1px solid #777;
+    background-color: white;
+    opacity: 1;
+}
+
+
+#importSessionBtn {
+    float: right;
+    cursor: pointer;
+    width: 120px;
+    height: 16px;
+    padding: 1px;
+    margin: 2px;
+    
+    border: 1px solid rgba(255,255,255,0);
+}
+
+#importSessionBtn:hover {
+    border: 1px solid #777;
+    background-color: white;
+    opacity: 1;
+}
+
+#importSessionBtnf {
+    float: left;
+    cursor: pointer;
+    width: 120px;
+    height: 16px;
+    padding: 1px;
+    margin: 2px;
+    
+    border: 1px solid rgba(255,255,255,0);
+}
+
+#importSessionBtnf:hover {
+    border: 1px solid #777;
+    background-color: white;
+    opacity: 1;
+}
+
+#importSessionBtnIcon {
+    float: left;
+    margin-left: 3px;
+}
+
+#importSessionBtnText {
+    float: left;
+    font: bold 10px Verdana, Arial, Tahoma, sans-serif;
+    height: 20px;
+    margin-left: 3px;
+    padding: 2px;
+}
+
+#importSessionBtnfText {
+    float: left;
+    font: bold 10px Verdana, Arial, Tahoma, sans-serif;
+    height: 20px;
+    margin-left: 3px;
+    padding: 2px;
+}
+
+#sessionTextBoxTips {
+    padding: 4px;
+    height: 14px;
+    width: 100%;
+    font: bold 12px Verdana, Arial, Tahoma, sans-serif;
+}
+/* Other controls */
+
+.controls {
+    position:absolute;
+    width: 100px;
+    right: 35px;
+    top: 1px;
+    display: none;
+}
+.mssessionblock:hover .controls {
+    display: block;
+}
+.control {
+    float: right;
+    width: 16px;
+    height: 16px;
+    padding: 1px;
+    margin: 1px;
+    border: 1px solid #ddd;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+}
+.control:hover {
+    border: 1px solid #777;
+    background-color: white;
+    opacity: 1;
+}
+.mssessionedit {
+    background-image: url(/img/comment_edit.png);
+}
+.mssessionremove {
+    background-image: url(/img/cross.png);
+}
+.mssessionexport {
+    background-image: url(/img/export.png);
+}
+.tooltip {
+    clear: both;
+    height: 12px;
+    font: 10px Verdana, Arial, Tahoma, sans-serif;
+    color: #333;
+    margin: 1px 0px 0px 3px;
+    text-align: right;
+}
+
+/* Other controls */
+
+.dimmed {
+    opacity: 0.5;
+    cursor: pointer;
+}
+.dimmed:hover {
+    opacity: 1.0;
+}
+.dimmed[disabled="true"] {
+    opacity: 0.25;
+    cursor: default;
+}
+
+#alertIcon{
+    position: relative; top: 3px; left: -2px;
+}
+
+#mssavebaseDiv{
+    position:relative;
+    height:60px;
+}
+
+#savetitle{
+	width: 97%;
+	left: 7px;
+	border-radius: 9px;
+	position: absolute;
+	background-color: var(--savetitle-color);
+	color: var(--content-text-bold-color);
+	font-weight: bold;
+}
+
+#msrestorebaseDiv{
+	position: relative;
+	height: 110px;
+	padding: 0px;
+	margin: 0px;
+	bottom: 0px;
+	/* [disabled]display: table-row; */
+	width: 100%;
+}
+#msselectDiv{
+    position: relative;
+    height: 25px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 5px;
+    margin-bottom: 0px;
+    bottom: 3px;
+    /* [disabled]display: table-row; */
+    width: 97%;
+    background-color: #CAEDF3;
+    border-collapse: separate;
+}
+#msselectDiv select{
+    position: relative;
+    height: 25px;
+    padding: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    bottom: 0px;
+    /* [disabled]display: table-row; */
+    width: 100%;
+    color: var(--content-text-color);
+    background-color: var(--blue-select-color);
+}
+
+#footnote{
+    position: absolute;
+    height: 20px;
+    bottom: 0px;
+    padding-left: 5px;
+    border-collapse: collapse;
+}

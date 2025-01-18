@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title id="title">MySessions Options</title>
+    
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="options.css">
+        <style type="text/css">
+            body {
+	color: #F10F13;
+	font-size: large;
+	background-color: #EDEDED;
+            }
+            #pagetitle {
+	color: #000000;
+            }
+            #feature {
+	/* [disabled]background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ddd)); */
+	color: black;
+	-webkit-box-shadow: 0px 2px 2px 0px #000000;
+	box-shadow: 0px 2px 2px 0px #000000;
+	text-align: left;
+            }
+            #options-saved {
+	margin-left: 5px;
+	display: none;
+	color: #F10F13;
+	font-weight: bold;
+            }
+
+            #optionsBackupPeriodWrapper, #optionsSortTitleWrapper {
+    margin-left: 25px;
+    color: #A1A1A1;
+    font-weight: normal;
+    font-style: italic;
+    font-variant: normal;
+            }
+
+            #optionsNewUserTips a, .link a{
+                color: #ddd;
+            }
+            #optionsNewUserTips a:hover, .link a:hover {
+                color: #bbb;
+            }
+        </style>
+        <script type="text/javascript" src="options.js"></script></head><body>
+
+        <div id="wrapper">
+            <div id="header">
+                <div id="logo"></div>
+                <div id="pagetitle">MySessions Options</div>
+            </div>
+
+            <br style="clear: both;">
+
+            <div id="feature">
+                
+				<div id="favicons">
+					<input id="ShowFavicon" type="checkbox">
+					<span id="optionsShowFavicon">Show favicons. </span> <br>
+                	<span id="DuckDuckGo" style="margin: 25px">Now extension uses queries to <a href="https://duckduckgo.com/privacy" target="_blank">DuckDuckGo</a>.</span><br/>
+					<div id="optionsSortTitleWrapper"><span id="Privacy"><strong>This setting may violate your privacy</strong> (<a href="opt-in.html" target="_blank">more</a>).</span><br>
+					  					
+					</div>
+					<input id="ShowFaviconTab" type="checkbox">
+					<span id="optionsShowFaviconTab">Do not show warning tab when updating an extension. </span> <br>
+				</div>
+				<br>
+                <input id="LazyLoading" type="checkbox">
+                <span id="optionsLazyLoading">Enable lazy loading tabs. </span>
+				<br>
+				<input id="Discarded" type="checkbox">
+                <span id="optionsDiscarded">Enable the "discarded" property for tabs when opening a session. </span>
+				<div id="optionsSortTitleWrapper">
+					<span id="optionsDiscarded1">This option will work in FF63 and older (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1378647" target="_blank">https://bugzilla.mozilla.org/show_bug.cgi?id=1378647</a>).</span><br>
+					<span id="optionsDiscarded2">In the version FF63 and later this option disables the option above (lazy loading tabs).</span><br>
+					<span id="optionsDiscarded3">In the version of FF62 and earlier, the inclusion of this option has no effect.</span><br>
+					<span id="optionsDiscarded4">You can see how it works <a href="https://www.youtube.com/watch?v=ZodZxpQRNsg" target="_blank">https://www.youtube.com/watch?v=ZodZxpQRNsg</a> &amp; <a href="https://www.youtube.com/watch?v=OKyG1_AXAxI" target="_blank">https://www.youtube.com/watch?v=OKyG1_AXAxI</a></span>
+                </div>
+			  <br>
+				<input id="DarkTheme" type="checkbox">
+                <strong><span id="optionsDarkTheme">Enable Dark Theme</span></strong>
+				<br>
+<!--				<iframe id = "iframeDarkTheme" src = "img/popup.html"></iframe>-->
+				<br>
+				<br>
+				<br>
+				<input id="crashRestore" type="checkbox">
+                <span id="optionsEnableCrashRecovery">Enable TimeLine</span>
+               
+                <div id="optionsBackupPeriodWrapper">
+                    <span id="optionsBackupPeriod">Saves all your windows and tabs every </span> <input id="backupPeriod" maxlength="3" style="width: 35px; border-radius: 9px; height: 20px; text-align: center;"><span id="stringMinutesbackupPeriod">minutes, maximum number </span><input id="backupPeriodNumber" maxlength="3" style="width: 35px; border-radius: 9px; height: 20px; text-align: center;">
+					<span id="stringMinutes"><br>Recommended: 5 minutes. Auto-saving too<br> frequently may slow down your machine.</span>
+                </div>
+               
+<!--
+                <input id="AutoSave" type="checkbox">
+                <span id="optionsEnableAutoSave">Autosave every </span><input id="AutoSavePeriod" maxlength="3" style="width: 35px; border-radius: 9px; height: 20px; text-align: center;"> <span id="stringMinutesAutoSave">minutes, maximum number </span><input id="AutoSaveNumber" maxlength="3" style="width: 35px; border-radius: 9px; height: 20px; text-align: center;">
+                <br>
+				
+-->
+				<span id="DisabledAutoSave">Autosave disabled.<a href="opt-in.html" target="_blank">Read more ...</a></span>
+				<br>
+				<input id="ShowPrivate" type="checkbox">
+                <span id="optionsShowPrivate">Save private windows. </span>
+				<br>
+				<!--			Сохранить при закрытии	-->
+				<input id="CloseWindow" type="checkbox">
+				<strong><span id="optionsEnableCloseWindow">Save session when closing window, maximum number</strong></span>
+				<input id="CloseWindowNumber" maxlength="3" style="width: 35px; border-radius: 9px; height: 20px; text-align: center;">
+                <br>
+				<br>
+				<br>
+				<!--			Сохранить сессии в файл	-->
+				<div id="optionsSortTitleWrapper">
+					<span id="optionPermissions" style="color: red; font-weight: bold;">To use backing up sessions to a file, you must enable the permission "Upload files, read and change browser download history." </span>
+					<br>
+					</span><button id="enablePermissions"><span id="stringEnablePermissions">Enable Upload files.</span></button>
+					</span><button id="disablePermissions"><span id="stringDisablePermissions">Disable Upload files</span></button>
+					<strong><span id="DownloadPermissions" style="color:green"></span><strong>
+                </div>
+				<input id="SaveFile" type="checkbox">
+				<strong><span id="optionsEnableSaveFile">Save backup to file, save path</strong></span>
+				<input id="SaveFileName"  style="width: 250px; border-radius: 9px; height: 20px; text-align: center;">
+				<div id="optionsSortTitleWrapper">
+					<span id="optionSaveFile">When browser starts up, create a backup file of sessions and save it in the download folder. Specify the folder to save the backup file. The save location is limited to the folder under browser download folder. </span>
+                </div>
+                <br>
+			  <br>
+				<input id="ShowHidden" type="checkbox">
+                <span id="optionsShowHidden">Display in the list of tabs and save hidden tabs. </span>
+				<br>
+				<div id="optionsSortTitleWrapper">
+					<span id="optionsHidden1">This option is added for compatibility with extensions that use tab hiding, such as "Simple Tabb Groups "and others.</span><br>
+					<span id="optionsHidden3" style="color: red; font-weight: bold;">ATTENTION! Do not press the button "Close hidden tabs" if you have extensions that use tab hiding. This can lead to data loss.</span><br>
+					<span id="optionsHidden2" style="color: green"> </span><button id="closeHidden"><span id="stringHidden">Close hidden tabs</span></button>
+                </div>
+				<br>
+
+				
+				
+				<br>
+                <input id="MarkAll" type="checkbox">
+                <span id="optionsMarkAll">Mark all open windows for saving (otherwise - only active). </span>
+				
+				<br>
+				<br>
+                <input id="PopupNewTab" type="checkbox">
+                <span id="optionsPopupNewTab">Open the extension popup in a new tab. </span>
+				
+				<br>
+<!--
+                <input id="ShowAutoSave" type="checkbox">
+                <span id="optionsShowAutoSave">Show autosaved sessions in the session list. </span>
+-->
+                <br>
+                
+            	<br>
+<!--
+                <input id="ShowPopap" type="checkbox">
+                <span id="optionsShowPopap">Show a pop-up window (in a new tab) when updating. </span>
+                <br/>
+-->
+				<input id="DisableConfirm" type="checkbox">
+				<span id="optionsDisableConfirm"><strong>Disable confirmation when opening a session in the current window (not recommended).</strong></span> <br>
+				<input id="DisableConfirmation" type="checkbox">
+                <span id="optionsDisableConfirmation">Disable confirmation to delete the session (not recommended). </span>
+                <br>
+				<br>
+				<!--			Список сессий по умолчанию	-->
+				<span style="text-decoration: underline; font-weight: bold;" id="DefaultSessionList">Default Session List.</span>
+				<br>
+				<br>
+				<div id="msselectDiv"> 
+	<select title="filter">
+		<option value="_displayAll" id="displayAlltext">||bookmarks|| All</option>
+		<option value="_user" id="usertext">||bookmarks|| User Save</option>
+		<option value="_auto" id="autotext">||bookmarks|| Auto Save</option>
+		<option value="_quick" id="quicktext">||bookmarks|| Qick Save</option>
+		<option value="_close" id="closetext">||local storage|| Snapshots Close Window</option>
+		<option value="_crash" id="crashtext">||local storage|| Snapshots</option>
+		
+		
+	</select>
+	</div>
+				<br>
+				<br>
+				
+<!--			Название сессии по умолчанию	-->
+				<span style="text-decoration: underline; font-weight: bold;" id="DefaultSessionTitle">Default session title.</span>
+				
+                <br>
+<table style="text-align: left; width: 768px; height: 30px;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><input id="Prefix" type="checkbox">
+                <input id="Stringprefix" style="width: 235px; border-radius: 9px; height: 20px; text-align: center;"><br>
+		  <input id="Title" type="checkbox">
+                <span id="Stringtitle">Tab Title. </span><br>
+<input id="Date1" type="checkbox">
+                <span id="Stringdate">Date. </span><br>
+<input id="Time" type="checkbox">
+                <span id="Stringtime">Time. </span><br>
+<input id="Suffix" type="checkbox">
+                <input id="Stringsuffix" style="width: 235px; border-radius: 9px; height: 20px; text-align: center;"><br>
+      </td>
+      <td id="SessionTitle" style="vertical-align: middle; text-align: center;">"MySession"<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+				
+				
+				
+<br>
+				<input id="SortTitle" type="checkbox">
+                <span id="optionsSortTitle">Sort sessions by title.</span>
+                <div id="optionsSortTitleWrapper">
+					<span id="stringSortTitle">You can store frequently used sessions at the top of the list using prefixes.<br> For example: "1. Session1", "2. Session2", "A.Session3", etc.</span>
+                </div>
+                <br>
+				
+				<div>
+				<input id="EnablecolorIcon" type="checkbox">
+                <span id="optionsEnablecolorIcon">Select the color of the icon. </span>
+				<div id="icon"><input id="colorIcon" name="color" value="#000000" class="coloricon" type="color"></div>
+				</div>
+				
+                <input id="ListURL" type="checkbox">
+                <span id="optionsListURL">Export sessions as a list of URLs. </span>
+                <br>
+				
+				<br>
+                <span id="optionsDateFormat">Date format:</span>
+                <select id="dateFormatSelect" name="dateFormat" size="1">
+                    <option selected="selected" value="1">dd/mm/yyyy</option>
+                    <option value="2">mm/dd/yyyy</option>
+                    <option value="3">yyyy-mm-dd</option>
+                </select>
+						
+						</p>
+<p style="text-align: center;"><img src="img/trc20.png" alt="" ><br>
+</p>
+</p>
+<p style="text-align: center;"><img src="img/e20.png" alt="" ><br>
+</p>
+</p>
+<p style="text-align: center;"><img src="img/btc.png" alt="" ><br>
+</p>
+               
+                <br>
+<!--
+                <span id="optionsReorder">Move session to top after edit</span>:
+                <input id="editOrder" type="checkbox" checked>
+                <br/>
+-->
+                
+                
+                
+                <br>
+                <button id="saveBtn" style="visibility: hidden;"><span id="stringSave">Save</span></button>
+                <span id="options-saved">Options saved</span>
+                <div id="donat"><span><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=YFPZ564TRKNLL" target="_blank" style="float: left; clear: none; position: relative;">
+     
+    </a></span>
+					<span><a href="https://money.yandex.ru/to/410011025696039" target="_blank" style="float: left; clear: none; position: relative;">
+     <img src="/img/donatY.png" draggable="false">
+    </a></span>
+				
+				</div>
+               
+            </div>
+            <div id="bug">
+                Bug report or suggestions? Go to <a href="mailto:balyaev@gmail.com">email</a>.
+            </div>
+			<br>
+            
+			<div id="attention1"> Attention! It is recommended to save the settings again after each update of the add-on. This will protect you from some bugs. </div>
+			<br>
+            
+	<div id="attention2">
+Attention! It is recommended that you periodically keep a backup of
+your bookmarks in the bookmark manager and save it in a safe place
+(cloud). This will protect you from losing sessions in the event of
+force majeure. </div>
+			
+			<div id="footer">
+			<h4>Original Image</h4>
+<img id="testImage" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gUbBikp2tk08gAAAeNJREFUWMPt2D1rFFEUxvHf7M6uEaKGFKZSsJE0ohD8BL6UioUWIohapLKw9UMI2mtpKWghCn4GNSCiNqKFhSDEl+CSbLIWOYFBZtadyc64xR64MMwM9/nPOc89d2YS2zGLRZxARzPRx0Os5V1MAuoermXOb+IJvpcU28B6HHfQRRvncCDn/me4gm95ky1h8Nd4i8MVsnAI13EVx+Jcihc5GjvjUV6V0ihfXrQrgH2OEsEW9oX4sLiApzibvbcVcOOMNEa3xMOdxvMsS8vkxJlYDPNqyNZu42Jk+nLL5MV5XBoGNhiTUJV5ZopKubfiqryNk5mW8zvm2lPlYZYL+ssdzIwhYzewOqSP5Y3lYea/FY1yfRdQbcxV2eb+tSrn/9cKmMRVOQWbgk3BpmDjbLAbNet3yoKtxgfEy5rBlvA4tq2RwL7E+/tazWCfQmtuVI8lDfmvFVqlzD9oAGxQ1mNJvHt3awbrFmWsCGwWp/C1ZrCDoTUy2M/4zvtYM9gR3Czbx7Ya8NlWlc6fNGD+pKz506h/rwGPpWXBFhoo5UJZsB7eNGT+XhFYf0jzqztjRfP3W3hdcHGzAfMXabxK8R4PbP8J3ImjuIsfNYPtD61s3MeHJNPpF3G84j+LcWVvBe/w6w8sUWgLywkEHwAAAABJRU5ErkJggg==">
+
+<div id="console-log"></div>
+
+<h4>Image copied to canvas</h4>
+<canvas id="canvas" width="38" height="38"></canvas>
+
+<h4>Modified Image copied to an image tag</h4>
+<img id="imageData">
+			
+			</div>
+
+    </div></body></html>

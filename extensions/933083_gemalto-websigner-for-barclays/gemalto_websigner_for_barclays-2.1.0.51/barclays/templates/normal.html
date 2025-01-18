@@ -1,0 +1,105 @@
+<div id="superWrapper" class="sign" data-webSigner>
+<!-- MODALS -->
+	<div id="about" class="modal"> <!-- Getting version from WebEx -->
+		<p><span>About Web Signer</span></p>
+		<p class="error"></p>
+		<p id="WebExVersion"></p>
+		<p id="WebExBuildInfo"></p>
+		<p>©2024 Thales Group</p>
+		<button type="button" class="okButton action">Close</button>
+	</div>
+
+	<div id="viewCertificate" class="modal">
+		<button type="button" id="againButton" disabled="true">Refresh</button>
+		<button type="button" class="okButton action">Close</button>
+	</div>
+
+	<div id="errorModal" class="modal">
+		<p id="errorModalTitle"></p>
+		<p id="errorModalMessage"></p>
+		<button type="button" id="errorModalBypassButton">Continue</button>
+		<button type="button" id="errorModalCloseButton" class="okButton action">Close</button>
+	</div>
+
+	<div id="wysiwysWarning" class="modal">
+		<p id="wysiwysWarningMessage"><span>Here should be a custom WYSIWYS fail message. If you see this, the GUI is broken.</span><br><br></p>
+		<button type="button" id="wysiwysWarningCancelButton" class="cancelButton" title="Cancel the signing action">Cancel</button>
+		<button type="button" id="wysiwysWarningSignButton" class="action" title="Continue with signing action">Proceed</button>
+	</div>
+
+	<!-- modal for selecting certificate for signature -->
+	<div id="selectCertificate" class="modal">
+		<button type="button" id="selectCertificateRefreshButton" title="Refresh the certificate list" disabled="true" >Refresh</button>
+		<button type="button" id="selectCertificatecancelButton" class="cancelButton" title="Cancel the signing action">Cancel</button>
+		<button type="button" id="selectCertificateSignButton" class="action" title="Sign the data with the selected certificate" disabled="true">Sign</button>
+	</div>
+
+	<!-- modal for entering PIN for signature -->
+	<div id="enterPIN" class="modal">
+		<p>
+			<span class="selectedCertificate"></span>
+		</p>
+		<input type="password" autocomplete="new-password" id="inputPIN" maxlength="8" placeholder="Provide credential">
+		<br>
+		<button type="button" id="enterPINCancelButton" class="cancelButton" title="Cancel the signing action">Cancel</button>
+		<button type="button" id="enterPINOKButton" class="action" title="Authenticate with selected certificate" disabled="true">OK</button>
+	</div>
+
+	<!-- modal for displaying the result of the signature -->
+	<div id="signatureResult" class="modal">
+		<p>
+			<span class="selectedCertificate"></span>
+		</p>
+		<p id="signatureResultMessage"><span>Waiting for signature...</span></p>
+		<span><img class="assetWS" id="signatureResultLoading" data-src="assets/img/loading.gif" title="Waiting for signature"></span>
+		<p id="signatureResultContent" style="word-wrap: break-word;"></p>
+	</div>
+
+	<!-- SEMI-TRANSPARENT LAYOUT WHEN MODAL IS DISPLAYED -->
+	<div id="overlay"></div>
+
+<!-- BEGINNING OF BASIC INTERFACE -->
+	<!-- outer border of the extension GUI -->
+	<div id="main" style="position: relative;">
+		<!-- central column of elements (logo, multipage, data, controls) -->
+		<div id="contentWebsigner">
+			<section id="above">
+				<span id="aboveText">Digital Signing</span>
+			</section>
+
+			<section id="middle">
+				<!-- left hand menu (print, certificates and about) -->
+				<div id="menu">
+					<button type="button" id="menuPrint" class="menuItem" title="Print the content.">
+						<img class="assetWS" data-src="assets/img/print.png" alt="print">
+					</button>
+					<button type="button" id="menuAbout" class="menuItem" title="Additional information.">
+						<img class="assetWS" data-src="assets/img/about.png" alt="about">
+					</button>
+				</div>
+				<div id="renderDiv">
+					<img class="assetWS" id="render" data-src="assets/img/loading.gif" alt="rendered user data">
+				</div>
+			</section>
+			<section id="below">
+			<!-- bottom strip with 'Sign'/'Cancel' buttons -->
+				<div id="bottomCtrl">
+				</div>
+				<!-- information text -->
+				<div id="informationText">
+					<p id="textTitle">FRAUD WARNING – Stop and Think</p>
+					<ul id="warningList1">
+						<li>Validate new account details. Contact the payee first via a phone number you know & trust</li>
+						<li>Barclays will never call / email you to make a payment or request remote control of your PC</li>
+					</ul>
+				</div>
+				<div id="signCtrl">
+					<button type="button" id="signButton" class="action sign" disabled="true" title="Sign the data">Submit</button>
+					<button type="button" id="cancelButton" title="Cancel the sign operation">Cancel</button>
+				</div>
+			</section>
+
+		</div>
+	</div>
+</div>
+<div id="toBePrinted" data-webSigner></div>

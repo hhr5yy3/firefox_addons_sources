@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="/vendor/jquery.min.js"></script>
+    <script src="/vendor/jquery-barcode.js"></script>
+    <script src="processSlip.js"></script>
+    <title>Process Slip</title>
+    <style>
+      body { padding: 40px 20px; }
+      #xml * { display: block; }
+      #xml author,
+      #xml title,
+      #xml bcnph,
+      #xml place_of_publication,
+      #xml date_of_publication { display: inline; }
+      #xml place_of_publication::before { content: ' - ' }
+      #xml date_of_publication::before { content: ', ' }
+      #xml author::after { content: ': ' }
+      #xml bcnph::before { content: ' : ' }
+      #xml #tit { margin-bottom: 20px; font-size: 120%; }
+      #xml network_number::before { content: 'AC:'; width: 200px; font-weight: 600; display: inline-block; }
+      #xml barcode::before { content: 'Barcode:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml library::before { content: 'Bibliothek:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml location::before { content: 'Standort:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml call_number::before { content: 'Signatur:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml library::before { content: 'Library:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml location::before { content: 'Location:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml call_number::before { content: 'Call-Number:'; width: 200px; font-weight: 600; display: inline-block; }
+      #xml isbn::before { content: 'ISBN:'; width: 200px; font-weight: 600; display: inline-block; }
+      #xml issn::before { content: 'ISSN:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml alternative_call_number::before { content: 'Alternative Signatur:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml inventory_number::before { content: 'Inventarnummmer:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml policy::before { content: 'Richtlinie:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml process_type::before { content: 'Prozesstyp:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml public_note::before { content: 'Öffentliche Notitz:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml internal_note_1::before { content: 'Interne Notitz 1:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml internal_note_2::before { content: 'Interne Notitz 2:'; width: 200px; font-weight: 600; display: inline-block; }
+      body.de #xml internal_note_3::before { content: 'Interne Notitz 3:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml alternative_call_number::before { content: 'Alt Call-Number:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml inventory_number::before { content: 'Inventory-Number:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml policy::before { content: 'Policy:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml process_type::before { content: 'Processtype:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml public_note::before { content: 'Public Note:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml internal_note_1::before { content: 'Internal Note 1:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml internal_note_2::before { content: 'Internal Note 2:'; width: 200px; font-weight: 600; display: inline-block; }
+      body:not(.de) #xml internal_note_3::before { content: 'Internal Note 3:'; width: 200px; font-weight: 600; display: inline-block; }
+      #xml network_number div.canvas { position: absolute; left: 15px; top: 450px; }
+      #xml barcode div.canvas { position: absolute; right: 15px; top: 450px; }
+      #xml barcode div.canvas img { float: right; }
+      #xml isbn div.canvas { position: absolute; top: 450px; margin-left: auto; margin-right: auto; left: 0; right: 0; }
+      #xml issn div.canvas { position: absolute; top: 450px; margin-left: auto; margin-right: auto; left: 0; right: 0; }
+      #xml user_id, #xml full_name { display: inline-block; margin-left: 10px; }
+      body #date { position: absolute; top: 420px; right: 25px; }
+      @media print { #xml internal_note_1 { display: none; }} 
+    </style>
+  </head>
+  <body>
+    <div id="xml"><div id="tit"></div></div>
+    <div id="date"></div>
+  </body>
+</html>

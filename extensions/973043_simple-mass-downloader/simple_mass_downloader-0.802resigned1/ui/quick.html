@@ -1,0 +1,400 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>SMD</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link rel="shortcut icon" type="image/png" href="/download.png" />
+    <script src="quick_start.js"></script>
+    <script src="util.js"></script>
+    <script src="popups_lib.js"></script>
+    <link rel="stylesheet" href="custom-mdc.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+            font-size: 75%;
+        }
+
+        body {
+            padding: 1px;
+        }
+
+        body * {
+            box-sizing: border-box;
+            text-align: start;
+        }
+
+        #bottom {
+            padding: 1px;
+            background-color: white;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #buttons button {
+            text-align: center;
+        }
+
+        #to-list {
+            width: 50%
+        }
+
+        #to-download {
+            flex-grow: 1;
+        }
+
+        #extensions {
+            color: #367694;
+            font-size: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: auto;
+            padding: 8px;
+            overflow: auto;
+            background-color: white;
+        }
+
+        .unit {
+            display: inline-flex;
+            -moz-box-align: center;
+            align-items: center;
+            vertical-align: top;
+            flex-direction: row;
+        }
+
+
+        .mdc-checkbox {
+            display: inline-block;
+            position: relative;
+            -moz-box-flex: 0;
+            flex: 0 0 18px;
+            box-sizing: content-box;
+            width: 18px;
+            height: 18px;
+            padding: 11px;
+            line-height: 0;
+            white-space: nowrap;
+            cursor: pointer;
+            vertical-align: bottom;
+        }
+
+        .mdc-checkbox .mdc-checkbox__native-control:disabled:not(:checked):not(:indeterminate)~.mdc-checkbox__background {
+            border-color: rgba(0, 0, 0, 0.26);
+        }
+
+        .mdc-checkbox .mdc-checkbox__native-control:disabled:checked~.mdc-checkbox__background,
+        .mdc-checkbox .mdc-checkbox__checkmark__path {
+            stroke: white !important;
+        }
+
+        .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate)~.mdc-checkbox__background {
+            border-color: rgba(0, 0, 0, 0.54);
+            background-color: transparent;
+        }
+
+        .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background {
+            border-color: var(--mdc-theme-secondary, #018786);
+            background-color: var(--mdc-theme-secondary, #018786);
+        }
+
+        .mdc-checkbox__background {
+            left: 11px;
+            right: initial;
+            display: inline-flex;
+            position: absolute;
+            top: 11px;
+            bottom: 0px;
+            -moz-box-align: center;
+            align-items: center;
+            -moz-box-pack: center;
+            justify-content: center;
+            box-sizing: border-box;
+            width: 45%;
+            height: 45%;
+            transition: background-color 90ms cubic-bezier(0.4, 0, 0.6, 1) 0ms, border-color 90ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+            border: 2px solid;
+            border-radius: 2px;
+            background-color: transparent;
+            pointer-events: none;
+            will-change: background-color, border-color;
+        }
+
+        [dir="rtl"] .mdc-checkbox .mdc-checkbox__background,
+        .mdc-checkbox[dir="rtl"] .mdc-checkbox__background {
+            left: initial;
+            right: 11px;
+        }
+
+        .mdc-checkbox__native-control {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            opacity: 0;
+            cursor: inherit;
+        }
+
+        .mdc-checkbox__native-control:disabled {
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .mdc-checkbox__checkmark {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            transition: opacity 180ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+            opacity: 0;
+        }
+
+        .mdc-checkbox__native-control:checked~.mdc-checkbox__background .mdc-checkbox__checkmark {
+            transition: opacity 180ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 180ms cubic-bezier(0, 0, 0.2, 1) 0ms, -webkit-transform 180ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+            opacity: 1;
+        }
+
+        .mdc-checkbox__checkmark__path {
+            transition: stroke-dashoffset 180ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+            stroke-width: 3.12px;
+            stroke-dashoffset: 29.7833;
+            stroke-dasharray: 29.7833;
+        }
+
+        .mdc-checkbox__native-control:checked~.mdc-checkbox__background .mdc-checkbox__checkmark__path {
+            stroke-dashoffset: 0;
+        }
+
+        .customcheck .mdc-checkbox__background {
+            top: 8px;
+            width: 14px;
+            left: 8px;
+            height: 14px;
+        }
+
+        .customcheck.mdc-checkbox {
+            width: 14px;
+            height: 14px;
+            padding: 8px;
+            flex: unset;
+        }
+
+        .customcheck .mdc-checkbox__native-control:focus~.mdc-checkbox__background::before {
+            transform: matrix(2.85, 0, 0, 2.85, 0, 0);
+        }
+
+        /*start corectii mdc */
+
+        .mdc-form-field {
+            font-size: 0.875rem;
+        }
+
+        .mdc-text-field--upgraded:not(.mdc-text-field--fullwidth):not(.mdc-text-field--box):not(.mdc-text-field--textarea) {
+            height: 1.5rem;
+        }
+
+        .mdc-text-field__label {
+            padding-left: 4px;
+        }
+
+        .mdc-text-field--upgraded:not(.mdc-text-field--fullwidth):not(.mdc-text-field--box):not(.mdc-text-field--textarea):not(.mdc-text-field--outlined) {
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+            height: 2rem;
+        }
+
+        .mdc-text-field__label--float-above,
+        .mdc-floating-label--float-above {
+            transform: translateY(-100%) scale(1, 1);
+            opacity: 0.7;
+        }
+
+        .mdc-form-field.customradiodiv>label {
+            margin-right: 0;
+        }
+
+        .mdc-button--dense {
+            font-size: 0.875rem;
+        }
+
+        .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input:focus~.mdc-text-field__bottom-line {
+            background-color: #6200ee;
+            /* @alternate */
+            background-color: var(--mdc-theme-primary, #6200ee);
+        }
+
+        .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input:focus~.mdc-text-field__label--float-above {
+            color: rgba(98, 0, 238, 0.87);
+        }
+
+        /*end corectii mdc */
+
+        .popup.light-theme-simple {
+            color: #203d5d;
+            background-color: white;
+            border: 1px solid gray;
+            border-radius: unset;
+            padding: 0;
+            cursor:default;
+        }
+
+        .mdc-list--dense .mdc-list-item.custom-list-item{
+    height: 2rem;
+    padding: 0 0.5rem;
+    font-size: .875rem;
+    font-weight: 500;
+}
+
+.custom-list-item.recent-folder{
+    color:#37474F;
+}
+.custom-list-item.star-folder{
+    color:#303F9F;
+}
+
+.mdc-text-field__label.notransition{
+    transition:unset;
+}
+
+.mdc-button--stroked.minimal {
+    border-style: solid;
+    padding-right: 8px;
+    padding-left: 8px;
+    border-width: 2px;
+    line-height: 32px;
+}
+
+
+.custom-list-item.hidden{
+    display:none;
+}
+
+.custom-list-item.ac-selected{
+    background-color:#FFC107;
+}
+#template-1{
+    max-height: 300px;
+    overflow: auto;
+}
+
+.popup.vhidden{
+    visibility:hidden;
+}
+
+.disable-hover,
+.disable-hover * {
+    pointer-events: none !important;
+}
+
+
+.close-button{
+    height: 16px;
+    width: 16px;
+    background: url(close.svg);
+    position: absolute;
+    vertical-align: middle;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    top: 2px;
+    right: 5px;
+    outline: none;
+    border-radius:8px;
+}
+
+
+.close-button.hidden{
+    display:none;
+}
+
+.close-button:hover{
+    background-color: #E0E0E0;
+}
+
+.close-button:active{
+    background-color: #BDBDBD;
+}
+
+.input-text{
+    padding-right:20px;
+}
+
+.mdc-list--dense {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 0.812rem;
+}
+    </style>
+    <style>
+        :root {
+            --mdc-theme-primary: #367694;
+            --mdc-theme-secondary: #00acc1;
+        }
+
+        #content {
+            border: 1px solid gray;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 420px;
+            height: 250px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
+        }
+    </style>
+</head>
+
+<body class="mdc-typography">
+    <div id="content" class="mdc-elevation--z2">
+        <div id="header" style="background-color: #3F51B5;padding: 8px;border-bottom: 1px solid gray;display: flex;position: relative;">
+            <img src="download.png" style="width: 20px;position: absolute;left: 5px;top: 5px;background-color: #E8EAF6;/* margin: 3px; */padding: 3px;">
+            <div style="display: flex;flex-direction: column;flex-grow: 1;">
+                <div class="spacer" style="flex-grow:1"></div>
+                <div style="display: inline-block;font-size: 1rem;font-weight: 500;color: #E8EAF6;text-align: center;">QUICK DOWNLOAD DIALOG</div>
+                <div class="spacer" style="flex-grow:1"></div>
+            </div>
+
+        </div>
+        <div id="extensions">
+        </div>
+        <div class="spacer" style="background-color: white;flex-grow: 1;"></div>
+        <div id="bottom" style="width:100%;">
+            <div class="mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="directory-div" style="padding: 1px;width:100%;margin-bottom:1px;font-size:1rem;">
+                <input id="directory" type="text" class="mdc-text-field__input input-text" spellcheck="false" style="padding: 0px 3px 2px;">
+                <label id = "dir-label" for="directory" class="mdc-text-field__label ">
+                    Set directory for checked files
+                </label>
+                <button class="close-button hidden"></button>
+                <div class="mdc-text-field__bottom-line"></div>
+            </div>
+            <div id="buttons" style="padding: 0;width:100%;">
+                <button id="to-list" type="button" class="mdc-button mdc-button--stroked mdc-button--dense" style="margin-right:0.5rem">ADD ITEMS TO LIST</button>
+                <button id="to-download" type="button" class="mdc-button mdc-button--stroked mdc-button--dense" disabled>DOWNLOAD NOW</button>
+            </div>
+        </div>
+    </div>
+    <div id="template-1" style="display:none">
+        <ul id="folders-list-D" class="mdc-list mdc-list--dense demo-list">
+
+        </ul>
+    </div>
+    <script src="quick.js"></script>
+</body>
+
+</html>

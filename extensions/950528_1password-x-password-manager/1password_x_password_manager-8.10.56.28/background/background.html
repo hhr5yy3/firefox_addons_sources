@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<!-- 
+			Webkit has a bug in iOS 17 that prevents background scripts
+			from resuming after they've been suspended. This bug does
+			not manifest when a message handler has been registered in
+			the background from a non module script. Therefore we must
+			keep health-check.js as a non-module script until we drop
+			support for iOS 17.
+		-->
+		<script defer src="/background/health-check.js"></script>
+		<script defer type="module" src="/background/background.js"></script>
+	</head>
+</html>

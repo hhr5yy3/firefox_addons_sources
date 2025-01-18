@@ -1,0 +1,201 @@
+@import 'folder-form.css';
+
+@font-face {
+    font-family: 'Fira Sans Heavy';
+    src: url('fonts/FiraSans-Heavy.ttf');
+}
+
+:root {
+    --borderSize: 8px;
+    --inlineSpacing: 4px;
+    --iconSize: 16px;
+    --numberFontSize: 0px;
+    --assignmentFormScale: 1;
+    --fieldsetBlurValue: 5px;
+    --elementNumberDisplay: flex;
+    --elementBorderRadius: 2px;
+
+    --backgroundColor: ; /*grey-10 / grey-70*/
+    --textColor: ; /*grey-90 / grey-10*/
+    --inputsColor: ; /*white-100 / grey-60*/
+    --curtainColor: ; /*grey-90-a60 / grey-90-a90*/
+    --togglesColor: ; /*grey-90-a10 / grey-90-a50*/
+}
+
+body {
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
+}
+
+.fullscreenElement {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+#background {
+    background-size: cover;
+}
+
+#grid {
+    width: 100vw;
+    height: 100vh;
+}
+
+td {
+    position: relative;
+}
+
+#curtain {
+    background-color: var(--curtainColor);
+    display: none; /*none or flex*/
+    justify-content: center;
+    align-items: center;
+}
+
+#assignmentFormContainer {
+    /*position: absolute;*/
+    background-color: var(--backgroundColor);
+    padding: 20px;
+    border-radius: 2px;
+    /*animation-name: unbluring;
+    animation-duration: 0.5s;*/
+    -moz-user-select: none;
+    -moz-transform: scale(var(--assignmentFormScale));
+}
+
+input {
+   background-color: var(--inputsColor);
+    color: var(--textColor);
+}
+
+input:disabled {
+    opacity: initial;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    background-color: var(--togglesColor);
+}
+
+#assignmentForm fieldset:disabled {
+    opacity: 0.4;
+}
+
+#assignmentForm {
+    white-space: nowrap;
+}
+
+.element {
+    display: block;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgba(120, 120, 120, .2);
+    text-decoration: none;
+    -moz-user-select: none;
+    cursor: default;
+    /*http://dabblet.com/gist/2775781*/
+    background-clip: padding-box;
+    border: var(--borderSize) solid rgba(170, 170, 170, .3);
+    border-top-width: calc(var(--borderSize) * 4);
+    border-radius: var(--elementBorderRadius);
+    box-shadow: 0 0 1px rgba(255, 255, 255, .8),
+    0 0 3px rgba(0, 0, 0, .8),
+    1px 1px 0 rgba(0, 0, 0, .8) inset,
+    -1px -1px 0 rgba(0, 0, 0, .8) inset;
+    padding: 1px;
+}
+
+.element:hover {
+    background-color: rgba(220, 220, 220, .35);
+    border-color: rgba(255, 255, 255, .5);
+}
+
+.elementHeader {
+    position: absolute;
+    top: calc(var(--borderSize) * (-3.5));
+    right: 0px;
+    left: 0px;
+    height: calc(var(--borderSize) * 3);
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.elementHeader img {
+    /*width: var(--iconSize);*/
+    height: var(--iconSize);
+}
+
+.elementCaption {
+    display: inline-block;
+    width: calc(100% - var(--iconSize) - 8px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0px 4px 0px 4px;
+    position: relative;
+    top: 4px;
+}
+
+.element .elementCaption {
+    color: black;
+    text-shadow: 0px 0px 5px white;
+}
+
+.element:hover .elementCaption {
+    width: calc(100% - (var(--iconSize) + var(--inlineSpacing)) * 5 - 4px * 2);
+}
+
+.elementButton {
+    display: none;
+    margin-left: var(--inlineSpacing);
+    cursor: pointer;
+    filter: grayscale(0.75);
+}
+
+.elementButton:hover {
+    filter: grayscale(0);
+}
+
+.element:hover .elementButton {
+    display: inline-block;
+}
+
+.elementMiniature {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center top;
+}
+
+.elementNumber {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Fira Sans Heavy';
+    font-size: var(--numberFontSize);
+    text-shadow: 0px 0px 3px var(--grey-10);
+    color: transparent;
+    -webkit-text-stroke: 2px black; /*Non-standard*/
+    opacity: 0.75;
+}
+
+.elementNumber[tag="backstep"] {
+    display: flex;
+}
+
+.elementNumber:not([tag~="backstep"]) {
+    display: var(--elementNumberDisplay);
+}
+
+.element:hover .elementNumber {
+    opacity: 0.1;
+}

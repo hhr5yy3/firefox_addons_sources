@@ -1,0 +1,3 @@
+// Copyright (c) Zanger LLC. All rights reserved.
+
+(function(){var buttonYes=document.getElementById("consentYes");var buttonNo=document.getElementById("consentNo");buttonYes.onclick=function(){var settings={'enable':true};console.log(settings);browser.storage.sync.set({'general.cookies':settings});window.close();};buttonNo.onclick=function(){var settings={'enable':false};browser.storage.sync.set({'general.cookies':settings});window.close();};})();

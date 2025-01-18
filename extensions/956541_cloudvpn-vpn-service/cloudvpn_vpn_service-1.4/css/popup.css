@@ -1,0 +1,297 @@
+@font-face {
+	font-family: HelveticaNeue Medium;
+	src: url("HelveticaNeueCyr-Medium.ttf");
+}
+
+@font-face {
+	font-family: Lato Regular;
+	src: url("Lato-Regular.ttf");
+}
+
+*{
+	font-family: HelveticaNeue Medium;
+	font-weight: normal;
+	font-size: 14px;
+	overflow1: hidden;
+	opacity:  1;
+}
+html{
+	margin:0;
+	padding:0;
+}
+body{
+	margin:0;
+	padding:0;
+	width: 260px;
+	height: 495px;
+	color: white;
+	text-align: center;
+	background-color: #44515f;
+}
+
+::-moz-placeholder          {color: white; opacity:  1;}/* Firefox 19+ */
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: url(../img/bg.png) no-repeat;
+	background-size: 100% 100%;
+}
+a{
+	color: white;
+}
+header{
+    height: 65px;
+}
+footer {
+    height: 145px;
+}
+
+main {
+    flex: 1;
+}
+
+button{
+	width: 72%;
+	height: 31px;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	font-size: 16px;
+	cursor: pointer;
+	margin: 0 auto;
+}
+.login{
+	width: 100%;
+	position: absolute;
+	top: 39%;
+	left: 0;
+	display: inline-block;
+	transition: opacity 0.2s ease;
+}
+
+.login input{
+	background: none;
+	width: 71%;
+	height: 27px;
+	color: white;
+	border: solid 1px #a2efea;
+	border-radius: 6px;
+	text-align: center;
+}
+
+.login button{
+	margin-top: 7px;
+	background: #2ec7d2;
+}
+
+.info{
+	position: absolute;
+	left: 7%;
+	top: 31%;
+	width: 86%;
+	color: #d1d1d1;
+	font-size: 12px;
+}
+.loading{
+	display: none;
+	position: absolute;
+	top: 40%;
+	width: 100%;
+	text-align: center;
+}
+
+.loading img{
+	width: 25%;
+	height: 25%;
+}
+.logged{
+	display: none;
+	width: 100%;
+	position: absolute;
+	top: 39%;
+}
+
+.logout{
+	display: none;
+	width: 20%;
+	height: 10%;
+	position: absolute;
+	top: 0%;
+	right: 0%;
+	background: url("../img/logout.png") center 22px no-repeat;
+	cursor: pointer;
+}
+
+/*.logout:hover{
+	background-color: #4c5575;
+	opacity: 0.6;
+}*/
+#server{
+	background: none;
+	border: solid 1px #a2efea;
+	font-size: 12px;
+	text-align: left;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+#server img.flag{
+	width: 25px;
+	height: 22px;
+	margin-right: 7px;
+}
+
+#server img.sel{
+	float: right;
+	margin-top: 5px;
+	margin-right: 5px;
+	width: 13px;
+	height: 13px;
+}
+
+#server span{
+	position: relative;
+	top: -6px;
+}
+
+#server:hover{
+	background: #525c7e;
+}
+.connected:before {
+	content: ' \25CF';
+	font-size: 20px;
+	color: #97cb3f;
+	margin-right: 3px;
+	position: relative;
+	top: 1px;
+}
+.connecting:before {
+	content: ' \25CF';
+	font-size: 20px;
+	color: #ffa500;
+	margin-right: 3px;
+	position: relative;
+	top: 1px;
+}
+.disconnected:before {
+	content: ' \25CF';
+	font-size: 20px;
+	color: #c06c66;
+	margin-right: 3px;
+	position: relative;
+	top: 1px;
+}
+
+#doconnect{
+	margin-top: 10px;
+	background: #96ca40;
+	display: block;
+	transition: opacity 0.2s ease;
+}
+#dodisconnect{
+	display: none;
+	margin-top: 10px;
+	background: #c9453c;
+	transition: opacity 0.2s ease;
+}
+.servers{
+	display: none;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #4a6b8c;
+	z-index: 999999;
+	text-align: left;
+	transition: opacity 0.2s ease;
+}
+
+.servers div.servers_hide{
+	background: #535e7f;
+	width: 100%;
+	height: 10%;
+}
+.servers div.servers_label{
+	padding-top: 5.8%;
+	padding-left: 45px;
+	box-sizing: border-box;
+	font-size: 16px;
+}
+
+.servers span{
+	float: left;
+	width: 20%;
+	height: 100%;
+	box-sizing: border-box;
+	display: block;
+	cursor: pointer;
+	background: url("../img/arrow_left.png") center center no-repeat;
+}
+
+#tblServers {
+	width: 100%;
+	vertical-align: top;
+}
+
+#tblServers tr{
+	cursor: pointer;
+	height: 39px;
+}
+
+#tblServers td{
+	font-size: 12px;
+	border-top: solid 1px #4f7194;
+}
+#tblServers tr:hover{
+	background: #5d779e;
+}
+
+#tblServers td:first-child{
+	text-align: center;
+	padding-top: 3px;
+	box-sizing: border-box;
+}
+
+#tblServers img.flag{
+	width: 20px;
+	height: 20px;
+}
+
+footer button{
+    background: #c9453c;
+    margin-top: 5px;
+}
+
+.remain{
+	display: none;
+	width: 100%;
+	position: absolute;
+	bottom: 2%;
+}
+.tryfree{
+	display: inline-block;
+	margin-top: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	font-weight: normal;
+	color: #4e6074;
+	width: 80%;
+}
+.getapp{
+	margin-top: 20px;
+	color: #3c3835;
+	font-family: Lato Regular;
+	font-size: 18px;
+}
+.getapp-icons{
+	margin-top: 3px;
+}
+
+.getapp-icons img{
+	width: 25px;
+	height: 25px;
+	margin: 5px 16px;
+	cursor: pointer;
+}

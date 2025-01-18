@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Tab Sidebar Options</title>
+<link rel="stylesheet" href="chrome://browser/content/extension.css">
+<link rel="stylesheet" href="options.css">
+<link rel="icon" href="icon.svg">
+
+<h1>Tab Sidebar Options</h1>
+
+<h2>How to Fold Tabs</h2>
+
+<div>Tabs between <em>marker tabs</em> in the sidebar are foldable.<br>
+You can create a marker tab with "New Marker Tab" in the right click menu.<br>
+A tab with URL "data:text/plain,tab-siderbar-marker:MarkerNameHere" becomes a marker tab.
+</div>
+
+<h2>Mouse and Keyboard Operations</h2>
+
+<dl class="grid">
+  <dt>Left Click<dd>Activate Tab
+  <dt>Left Double Click<dd>Reload Tab
+  <dt>Middle Click<dd>Close Tab
+  <dt>Right Click<dd>Pop up Menu
+  <dt>Ctrl + Right Click<dd>Pop up Tabs Stats
+  <dt>Ctrl + Shift + F<dd>Toggle Sidebar
+</dl>
+
+<div class="browser-style">
+  <input data-ctl="wheel_activate" id="wheel_activate" type="checkbox"><label for="wheel_activate">Wheel activates next / previous tab (Ctrl + Wheel to always scroll)</label>
+</div>
+
+<div class="browser-style">
+  <input data-ctl="key_activate_markertab" id="key_activate_markertab" type="checkbox"><label for="key_activate_markertab">Alt + 1 to 9 activate marker tab (Firefox 60 and later)</label>
+</div>
+
+<h2>Theme</h2>
+
+<div class="browser-style">
+  <input data-ctl="theme_default" id="theme_default" type="radio" name="theme"><label for="theme_default">Default</label>
+  <input data-ctl="theme_dark" id="theme_dark" type="radio" name="theme"><label for="theme_dark">Dark</label>
+</div>
+
+<h2>Bookmark All Tabs</h2>
+
+<div class="bookmark">
+  <button data-ctl="bookmark" class="browser-style">Bookmark All Tabs to "Tab Sidebar <i>date time</i>" Folder</button>
+  <div data-ctl="message"></div>
+  <div data-ctl="progress"></div>
+  <div data-ctl="completed"></div>
+</div>
+
+<div class="panel-section-separator"></div>
+
+<h2>Override Style Sheet</h2>
+
+<div class="css">
+  <a href="sidebar.css" target="_blank">Default Style Sheet</a><br>
+  <textarea data-ctl="css" rows=12 class="browser-style" spellcheck="false"></textarea>
+  <br>
+  <button data-ctl="savecss" class="browser-style">Save</button>
+</div>
+
+<script src="options.js"></script>

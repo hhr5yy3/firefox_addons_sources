@@ -1,0 +1,150 @@
+{
+    "id": 990371,
+    "authors": [
+        {
+            "id": 14197204,
+            "name": "bemodtwz",
+            "url": "https://addons.mozilla.org/en-US/firefox/user/14197204/",
+            "username": "bemodtwz"
+        }
+    ],
+    "average_daily_users": 231,
+    "categories": [
+        "web-development",
+        "privacy-security"
+    ],
+    "contributions_url": "",
+    "created": "2018-08-02T20:08:57Z",
+    "current_version": {
+        "id": 5843398,
+        "compatibility": {
+            "firefox": {
+                "min": "58.0",
+                "max": "*"
+            }
+        },
+        "edit_url": "https://addons.mozilla.org/en-US/developers/addon/eval-villain/versions/5843398",
+        "file": {
+            "id": 4387685,
+            "created": "2024-11-13T20:16:55Z",
+            "hash": "sha256:3543740e09cb5f26d45593cfe266d6516cd0107345d085939247aa1aafd02ab9",
+            "is_mozilla_signed_extension": false,
+            "size": 55185,
+            "status": "public",
+            "url": "https://addons.mozilla.org/firefox/downloads/file/4387685/eval_villain-2.11.xpi",
+            "permissions": [
+                "<all_urls>",
+                "storage"
+            ],
+            "optional_permissions": [],
+            "host_permissions": []
+        },
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 6,
+            "is_custom": false,
+            "name": {
+                "en-US": "GNU General Public License v3.0 only"
+            },
+            "slug": "GPL-3.0-only",
+            "url": "https://spdx.org/licenses/GPL-3.0-only.html"
+        },
+        "release_notes": {
+            "en-US": "Fixes bug where localStorage is not properly sourced\nImproves encoder function for path search\nFixes mistake is sourcer debug statment"
+        },
+        "reviewed": "2024-11-13T20:20:28Z",
+        "version": "2.11"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Eval Villain hooks JavaScript sinks and monitors input for the presence of strings found in sources. There is no race condition as Eval Villain will hook sinks before they can be used. Sinks will be hooked in all frames and pages unless a target URL pattern is configured.\n\nThe default configuration will hook common DOM XSS sinks but Eval Villain can be configured to hook any function. Go to the configuration page and click the icon -&gt; configure to see examples.\n\nWhen a sink is called, Eval Villain goes through a list of sources and tests input to that function for any occurrence of the sources. Sources include user defined strings or regex (referred to as needles), URL parameters, URL fragments (aka hash), local storage, window name and the user cookie. There is also a blacklist feature to remove commonly occurring false positives. Each of these features can be individually enabled or disabled in the  popup menu. When changes are made, the page will need to be refreshed for changes to take effect.\n\nThese features make Eval Villain well suited to find DOM XSS, but also to answer other questions about how a web page is functioning. Hooking eval() and dumping input can bypass common obfuscation techniques and even find malware. Hooking decodeURI() with the URL parameter source enabled will give a stack trace that often contains the website's URL parser. Instrumenting the parser can then expose hidden URL parameters. Hooking addEventListener() with the needle \"message\" will dump the source code and location of post message handlers. Eval Villain allows a lot of configuration options to allow for creative solutions.\n\nEval Villain will also attempt to recursively decode sources. For example, ad networks often build iframes with encoded HTML hidden in the window name. Eval Villain can detect this behavior and provide both the sink where the HTML lands and an encoder function to encode arbitrary HTML into the frame.\n\nSupport for this version provided by Doyensec Research <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/07392e14e68b2d10203740a1f2970d63d3281f58fd06df87d8c1bdfe83436b9f/https%3A//doyensec.com/research.html\" rel=\"nofollow\">https://doyensec.com/research.html</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.mozilla.org/en-US/developers/addon/eval-villain/edit",
+    "guid": "dennis@hurricanelabs.com",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": {
+        "url": {
+            "en-US": "https://github.com/swoops/eval_villain"
+        },
+        "outgoing": {
+            "en-US": "https://prod.outgoing.prod.webservices.mozgcp.net/v1/34e32997a6b182a6c8c8e3967c6c20e9b370a65d162e5e23854a979a7a065a84/https%3A//github.com/swoops/eval_villain"
+        }
+    },
+    "icon_url": "https://addons.mozilla.org/user-media/addon_icons/990/990371-64.png?modified=d0ae6df9",
+    "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/990/990371-32.png?modified=d0ae6df9",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/990/990371-64.png?modified=d0ae6df9",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/990/990371-128.png?modified=d0ae6df9"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "last_updated": "2024-11-13T20:20:28Z",
+    "name": {
+        "en-US": "Eval Villain"
+    },
+    "previews": [
+        {
+            "id": 287931,
+            "caption": {
+                "en-US": "Eval Villain discovers a DOM XSS vector, despite multiple layers of encoding on the x URL parameter. An encoder function is provided to encode your own payloads."
+            },
+            "image_size": [
+                1668,
+                1143
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287931.png?modified=1695330729",
+            "position": 0,
+            "thumbnail_size": [
+                533,
+                365
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287931.jpg?modified=1695330729"
+        },
+        {
+            "id": 287932,
+            "caption": {
+                "en-US": "The provided encoder function is pasted into the console. Then it's used to encode a new payload. Eval Villain shows the new payload hitting the sink and executing."
+            },
+            "image_size": [
+                2400,
+                861
+            ],
+            "image_url": "https://addons.mozilla.org/user-media/previews/full/287/287932.png?modified=1695330729",
+            "position": 1,
+            "thumbnail_size": [
+                533,
+                191
+            ],
+            "thumbnail_url": "https://addons.mozilla.org/user-media/previews/thumbs/287/287932.jpg?modified=1695330729"
+        }
+    ],
+    "promoted": null,
+    "ratings": {
+        "average": 3.6667,
+        "bayesian_average": 2.670992420846828,
+        "count": 3,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.mozilla.org/en-US/firefox/addon/eval-villain/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.mozilla.org/en-US/reviewers/review/990371",
+    "slug": "eval-villain",
+    "status": "public",
+    "summary": {
+        "en-US": "Hook native JavaScript functions before page load to see how a website uses them. Narrow down output based on the appearance of URL and session artifacts,  user configured strings/regex, blacklists and more."
+    },
+    "support_email": {
+        "en-US": "jesupnotdown@gmail.com"
+    },
+    "support_url": null,
+    "tags": [
+        "security"
+    ],
+    "type": "extension",
+    "url": "https://addons.mozilla.org/en-US/firefox/addon/eval-villain/",
+    "versions_url": "https://addons.mozilla.org/en-US/firefox/addon/eval-villain/versions/",
+    "weekly_downloads": 13,
+    "_score": null
+}

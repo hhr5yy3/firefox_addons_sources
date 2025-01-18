@@ -1,0 +1,1 @@
+console.debug("SKIMMER: Skimmer protection script loaded"),setTimeout((()=>devtools=!0),1e3),window.Firebug={chrome:{isInitialized:!0}};

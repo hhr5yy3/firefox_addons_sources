@@ -1,0 +1,707 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Simple mass downloader options</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link rel="stylesheet" href="../ui/custom-mdc.css">
+    <link rel="icon" type="image/png" href="../ui/download.png?v=2">
+    <script src="../ui/util.js"></script>
+    <script src="../ui/util-2.js"></script>
+    <script src="../ui/popups_lib.js"></script>
+    <style>
+        body {
+            background-color: whitesmoke;
+            display: flex;
+        }
+
+        fieldset {
+            padding: 4.2px 9px 7.5px 9px;
+        }
+
+        /*         :focus {outline:none;}
+        ::-moz-focus-inner {border:1;} */
+
+        #download-management div,
+        #automatic-retries div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #template-2 {
+            max-width: 400px;
+            font-size: 0.8rem;
+        }
+
+        #template-2 code {
+            color: #795548;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        select:invalid {
+            color: gray;
+        }
+
+        option {
+            color: black;
+        }
+
+        .square {
+            padding: 1px;
+        }
+
+        .square.firefox {
+            position: relative;
+            bottom: 1px;
+        }
+
+        .square svg {
+            fill: #455A64;
+        }
+
+        .square:disabled svg {
+            fill: #90a4ae;
+        }
+
+        .popup.light-theme {
+            color: #203d5d;
+            box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2), 0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12);
+            background-color: whitesmoke;
+            border: 1px solid gray;
+            border-radius: unset;
+            padding: 0;
+            /*     box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12); */
+        }
+
+        #options-save-button.unsaved {
+            color: #F44336;
+        }
+
+        #rules {
+            background-color: #E3F2FD;
+            border: 1px solid darkgray;
+        }
+
+        #rules:disabled {
+            background-color: #EEEEEE;
+            border: 1px solid #9E9E9E;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #content {
+            width: 28rem;
+            background-color: white;
+            margin: 0 auto auto auto;
+            padding: 5px;
+            border: 1px solid #808080;
+            font-family: "Roboto", "Segoe UI", "Helvetica Neue", Ubuntu, Arial;
+            user-select: none;
+        }
+
+        #options-title {
+            text-align: center;
+            font-weight: 500;
+            color: #3F51B5;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        #options * {
+            font-family: "Roboto", "Segoe UI", "Helvetica Neue", Ubuntu, Arial;
+            font-size: 0.75rem;
+        }
+
+        ::-webkit-input-placeholder {
+            color: gray;
+            font-size: 0.8rem;
+        }
+
+        ::-moz-placeholder {
+            color: gray;
+            font-size: 0.8rem;
+        }
+
+        form {
+            margin-bottom: 3px;
+        }
+
+        fieldset>div {
+            margin-bottom: 5px;
+        }
+
+        fieldset>div:last-child {
+            margin-bottom: 0px;
+        }
+
+        fieldset input[type="radio"] {
+            margin-left: 2px;
+            margin-right: 5px;
+            vertical-align: baseline;
+        }
+
+        fieldset input[type="number"] {
+            width: 3rem;
+            margin-left: 4px;
+            margin-right: 4px;
+            padding: 1px 0px 0px 2px;
+            text-align: left;
+            vertical-align: 2px;
+        }
+
+        fieldset label {
+            vertical-align: 2px;
+        }
+
+        legend {
+            color: darkcyan;
+        }
+
+        #options-save {
+            margin-top: 10px;
+            float: right;
+            margin-right: 4px;
+        }
+
+        #options-save-button {
+            width: 4rem;
+            margin-left: 2px;
+            margin-bottom: 2px;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+            line-height: 1rem;
+        }
+
+        #download-management label,
+        #automatic-retries label {
+            display: inline-block;
+            width: 22rem;
+        }
+
+
+
+        #options code {
+            font-family: monospace !important;
+            font-size:0.875rem;
+
+        }
+
+                #template-3 code {
+            font-family: monospace !important;
+            color:#e91e63;
+            font-weight:500;
+        }
+
+        /* corectie bara taburi*/
+
+        .mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab--active,
+        .mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab:not(.mdc-tab--active):active::after {
+            opacity: 1;
+        }
+
+        #dynamic-demo-toolbar a.mdc-tab.regulartab {
+            color: #f5f5f587;
+        }
+
+        #dynamic-demo-toolbar a.mdc-tab.regulartab:hover {
+            color: #E8EAF6;
+        }
+
+        #dynamic-demo-toolbar {
+            background-color: #3F51B5;
+            box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+        }
+
+        .mdc-tab-bar--indicator-accent .mdc-tab-bar__indicator {
+            background-color: var(--mdc-theme-secondary, #00acc1);
+        }
+
+        #dynamic-demo-toolbar a.mdc-tab.regulartab.mdc-tab--active {
+            color: #EDE7F6;
+        }
+
+        #dynamic-tab-bar {
+            width: calc(100% - 1rem);
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+
+        }
+
+        .barform {
+            display: table-cell;
+            text-align: right;
+        }
+
+        .barform.right {
+            width: 3rem;
+        }
+
+        .barform.left {
+            width: 5rem;
+        }
+
+        .specialtab {
+            float: right;
+        }
+
+        .regulartab {
+            max-width: 5rem;
+            font-size: 0.75rem;
+        }
+
+        .panel {
+            display: none;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        #disable-af-div.hidden2{
+            visibility:hidden;
+        }
+
+        /* end corectie bara taburi*/
+
+        #template-5 code{
+            color: #C2185B;
+            font-weight: 500;
+        }
+    </style>
+
+    <style>
+        :root {
+            --mdc-theme-primary: #367694;
+            --mdc-theme-secondary: rgb(0, 172, 193);
+            --title: rgb(57, 73, 171);
+            --title-light: rgb(57, 73, 171);
+            --modified: #BF360C;
+        }
+    </style>
+</head>
+
+<body class="mdc-typography">
+    <img src="../ui/download.png" height="24px"></img>
+    <div id="content">
+
+        <!-- <div id="options-title" style="text-align: center">SIMPLE MASS DOWNLOADER SETTINGS</div> -->
+        <section id="dynamic-demo-toolbar" class="mdc-elevation--z1" style="margin-bottom: 0.5rem;">
+            <nav id="dynamic-tab-bar" class="mdc-tab-bar mdc-tab-bar--indicator-accent">
+                <a class="mdc-tab firsttab regulartab mdc-tab--active mdc-ripple-upgraded" href="#panel-1">General
+                    options</a>
+                <a id="automatic-folders-tab" class="mdc-tab regulartab mdc-ripple-upgraded" href="#panel-2">Automatic
+                    folders</a>
+                <span class="mdc-tab-bar__indicator"></span>
+            </nav>
+        </section>
+
+
+
+        <section id="panels-section">
+            <div class="panels">
+                <div class="panel active" id="panel-1" role="tabpanel">
+
+                    <div id="options" style="opacity: 1;">
+                        <div>
+
+                            <div id="options-tabs">
+                                <form id="resources-name">
+                                    <fieldset>
+                                        <legend>&nbsp;Resources list default names&nbsp;</legend>
+                                        <div style="display:flex;">
+                                            <div>
+                                                <input id="show-url" name="dtype" value="url" type="radio">
+                                                <label for="show-url">Use url</label>
+                                            </div>
+                                            <div style="margin-left: 2rem;">
+                                                <input id="show-filename" name="dtype" value="name" type="radio"
+                                                    checked>
+                                                <label for="show-filename">Use (estimated) filename</label>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </form>
+                                <form id="options-textfilter">
+                                    <fieldset>
+                                        <legend>&nbsp;Text filter sources&nbsp;</legend>
+                                        <div>
+                                            <input id="filter-current" name="source" value="current" type="radio">
+                                            <label for="filter-current">Use only current active source</label>
+                                        </div>
+                                        <div>
+                                            <input id="filter-all" name="source" value="all" type="radio" checked>
+                                            <label for="filter-all">Use all disponible sources:</label>
+                                            <label style="display: block;padding-left: 20px;">
+                                                <i> (filename, url, link text, link title, alt-text)</i>
+                                            </label>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>&nbsp;Collecting links&nbsp;</legend>
+                                        <div> <input id="internal-links" type="checkbox">
+                                            <label for="internal-links">Include internal
+                                                <code>js/css/etc</code> pages links </label>
+                                        </div>
+                                        <div> <input id="recognize-text-links" type="checkbox">
+                                            <label for="recognize-text-links">Recognize text links</label>
+                                        </div>
+
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>&nbsp;File icons&nbsp;</legend>
+                                        <div style = "display:flex;justify-content: space-between;">
+                                            <div style="display:flex;">
+                                                <div style="display:flex;flex-direction:column;">
+                                                    <div style="flex-grow:1"></div>
+                                                  <div style="flex-grow:1">Build an initial file icons database </div>
+                                                  <div style="flex-grow:1"></div>
+                                                  
+                                                  
+                                                  </div>
+                                                <svg id="build-file-icons-help" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                    viewBox="0 0 24 24" style="
+                                                    margin-left:0.25rem;
+                                                    cursor: pointer;
+                                                    fill: #607D8B;
+                                                ">
+                                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                                    <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
+                                                </svg>
+                                            </div>
+    
+                                            <div><span id = "icons-building-status" style = "margin-right:0.25rem;"></span><button id="start-icons-building" type="button" >Start</button></div>
+
+                                        </div>
+
+                                        <!-- </button> -->
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend>&nbsp;Download Directories&nbsp;</legend>
+                                        <div> When <span style="font-weight:400;">double click</span> a <em style="font-weight:500;">set
+                                                download directory</em> input field:</div>
+                                        <div style="display:flex;justify-content:space-between;">
+                                            <div>
+                                                <input id="show-rec-dirs" type="checkbox" checked="">
+                                                <label for="show-rec-dirs">Show recently used directories, up to
+                                                </label> <input id="max-rec-dirs" value="3" type="number" min="0" max="10">
+                                                <label for="max-rec-dirs">items.</label>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div style="display:flex; justify-content:space-between;">
+                                            <div>
+                                                <input id="show-fav-dirs" type="checkbox" checked="">
+                                                <label for="show-fav-dirs">Show favorite folders. Click here to edit
+                                                    the list: </label>&nbsp;
+                                                <!-- lasa type = "button", caci default este submit (inside form), si da refresh autmat! -->
+                                                <button type="button" id="edit-star-folders" style="margin-right:0.25rem;"
+                                                    class="square" title="edit favorite folders list">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                                        viewBox="0 0 24 24">
+                                                        <path fill="none" d="M0 0h24v24H0z" />
+                                                        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+
+
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+                               
+
+                               
+                                <form id="download-management">
+
+
+
+                                    <fieldset>
+                                        <legend>&nbsp;Downloads&nbsp;</legend>
+                                        <div>
+                                            <label for="nmax">Max number of active (distinct) servers:</label>
+                                            <input id="nmax" value="4" type="number" min="1" max="10">
+                                        </div>
+                                        <div>
+                                            <label for="nhmax">Max number of downloads per server:</label>
+                                            <input id="nhmax" value="3" type="number" min="1" max="6">
+                                        </div>
+                                        <div>
+                                            <label for="trottle-interval">Seconds between throttled downloads:</label>
+                                            <input id="trottle-interval" value="5" min="1" max="600" type="number">
+                                        </div>
+                                    </fieldset>
+                                </form>
+                                <!--                                 <form id="automatic-retries">
+                                    <fieldset>
+                                        <legend>&nbsp;Automatic retries&nbsp;</legend>
+                                        <div>
+                                            <label for="yInterval">Minutes between retries:</label>
+                                            <input id="yInterval" value="5" type="number" min="1" max="60">
+                                        </div>
+                                        <div>
+                                            <label for="ymax">Number of retries:</label>
+                                            <input id="ymax" value="3" type="number" min="1" max="6">
+                                        </div>
+                                    </fieldset>
+                                </form> -->
+                                <form id="restore-session">
+                                    <fieldset>
+                                        <legend>&nbsp;Restore Session&nbsp;</legend>
+                                        <div style="display:flex; justify-content:space-between;">
+                                            <div>
+                                                <input id="include-unstarted" type="checkbox">
+                                                <label for="enable-restore-session">Include also unstarted items from
+                                                    the last session queue</label>
+                                            </div>
+                                            <!--                                             <div>
+                                                <input id="enable-restore-session" type="checkbox">
+                                                <label for="enable-restore-session">Show Last Downloads Queue</label>
+                                            </div> -->
+                                            <!--                                             <div>
+                                                <input id="restore-only-active" type="checkbox">
+                                                <label for="restore-only-active">Only those started and unfinished</label>
+                                            </div> -->
+                                        </div>
+                                    </fieldset>
+                                </form>
+                                <form id="pagination">
+                                    <fieldset>
+                                        <legend>&nbsp;Pagination&nbsp;</legend>
+                                        <div style="display:flex; justify-content:space-between;">
+                                            <label for="perpage">Number of items per page:</label>
+                                            <input id="perpage" size="13" value="" type="text" style="text-align:right;">
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+                                <form id="export-mask-form">
+                                    <fieldset>
+                                        <legend>&nbsp;Exporting links format&nbsp;</legend>
+                                        <div style="display:flex; justify-content:space-between;">
+                                            <label for="export-mask" style="margin-right: 1rem;position: relative;bottom: -2px;">Mask:</label>
+                                            <input id="export-mask" value="" type="text" style="flex-grow:1;">
+                                            <svg id="export-mask-help" xmlns="http://www.w3.org/2000/svg" width="18"
+                                                height="18" viewBox="0 0 24 24" style="
+                                            position: relative;
+                                            bottom: -1px;
+                                            cursor: pointer;
+                                            fill: #607D8B;
+                                            margin-left: 1rem;
+                                        ">
+                                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                                <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
+                                            </svg>
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+                                <form id="experimental-features">
+                                    <fieldset>
+                                        <legend>&nbsp;Experimental features&nbsp;</legend>
+                                        <input id="enable-exp-feat" type="checkbox">
+                                        <label for="enable-exp-feat">Enable experimental features </label>
+                                        <!-- <button id="exp-feat-help" class="square" title="popup help info"> -->
+                                        <svg id="exp-feat-help" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                            viewBox="0 0 24 24" style="
+                                            position: relative;
+                                            bottom: -3px;
+                                            cursor: pointer;
+                                            fill: #607D8B;
+                                        ">
+                                            <path fill="none" d="M0 0h24v24H0z"></path>
+                                            <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
+                                        </svg>
+                                        <!-- </button> -->
+                                    </fieldset>
+                                </form>
+
+                                <form id="backup-restore">
+                                    <fieldset>
+                                        <legend>&nbsp;Backup or restore settings&nbsp;</legend>
+                                        <div style="display:flex; justify-content: space-between">
+                                            <div>
+                                                <button id="backup-button" type="button" title="Save user settings to a local file; this include &#13;general settings, favorite and automatic folders&#13;but not download history info.">Backup
+                                                    settings</button>
+                                            </div>
+                                            <div>
+                                                <input type="file" id="choose-file" style="display:none;">
+                                                <button id="restore-from-file" type="button" title="Restore settings from a local file.">Restore
+                                                    settings</button>
+                                            </div>
+                                        </div>
+
+
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel" id="panel-2" role="tabpanel" style="position:relative">
+
+
+                    <div id="directory-div" style="display:flex">
+                        <div id="wrapper-input" style="width:100%;margin-right:0.25rem;">
+                            <select id="set-directory" style="width:100%;height: 1.5rem;">
+                                <option value="" disabled selected hidden>Select folder...</option>
+                                <option value="all">All</option>
+                                <option value="text">Link text</option>
+                                <option value="name">File name</option>
+                                <option value="url">Link url</option>
+                                <option value="title">Link title</option>
+                                <option value="alt">Alt text</option>
+                            </select>
+                        </div>
+                        <button id="add-directory" style="margin-right:0.25rem;" class="square" title="add new folder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                <path fill="none" d="M0 0h24v24H0V0z" />
+                                <path d="M20 6h-8l-2-2H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-1 8h-3v3h-2v-3h-3v-2h3V9h2v3h3v2z" />
+                            </svg>
+                        </button>
+                        <button id="remove-directory" class="square" disabled title="remove current folder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                                <path d="M0 0h24v24H0z" fill="none" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="rules-info-div" class="mdc-form-field" style="display:flex;justify-content: space-between;margin-top:0.5rem;margin-bottom: 0.25rem;">
+                        <b style="font-size:0.75rem;/* position:relative; *//* bottom: -0.25rem; */font-weight:500;">&nbsp;Folder
+                            rules:</b>
+                        <div id="helpers" style="display:flex;" class="mdc-form-field">
+                            <b style="margin-right:0.25rem;font-size:0.75rem;font-weight:400;">&nbsp;Insert helper
+                                template:</b>
+                            <button id="use-template" class="square" style="margin-right:0.25rem;" disabled title="insert helper template">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                    <path d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                                </svg>
+                            </button>
+
+                            <button id="rules-help" class="square" title="popup help info">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                    <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
+                                </svg>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div id="textarea-div" style="position: absolute;width: 100%;height: 20.5rem"></div>
+                    <textarea disabled="" id="rules" spellcheck="false" style="resize:vertical;width: 100%;height: 20.5rem"></textarea>
+                </div>
+        </section>
+        <div id="options-save" style="display: flex; justify-content: space-between; width:100%;">
+            <div id="disable-af-div" class="hidden2" style="font-size:0.8rem; margin-left: 0.25rem;">
+                <input id="disable-automatic-folders" type="checkbox">
+                <label for="disable-automatic-folders" style="vertical-align: 2px;">Disable automatic folders</label>
+            </div>
+
+            <button id="options-save-button" type="button">SAVE</button>
+        </div>
+    </div>
+
+
+    <div id="template-1" style="display:none">
+        <div style="padding:0.35rem; display:flex;">
+            <input id="define-folder" type="text" placeholder="Define new folder..." spellcheck="false">
+            <button id="confirm-new-folder" style="margin-left: 0.25rem; margin-left: 2px;padding-top: 2px;text-align: center;font-size: 0.7rem;font-weight: 500;user-select: none;">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <div id="template-2" style="display:none">
+        <div style="padding:0.35rem">
+            <p style="margin-top: 0;">
+                First step is to define a new folder or open a previously defined folder</p>
+            <p>
+
+                Every automatic folder has (at least) an associated rule set. A resource will be saved in this folder
+                only if it satisfies
+                all rules from this rule set (if there are more rule sets, it's enough to satisfy all rules from one of
+                his rule sets). An individual rule must be written in the form</p>
+            <p>
+                <code>keyword: word1, word2, ...</code>
+            </p>
+            <p>where
+                <code>keyword</code> may be
+                <code>ext|url|name|host|text|alt|title</code>, for example
+                <code>ext: jpg, png, bmp</code>. So a resource satisfies this sample rule only if its file extension is
+                <code>jpg</code> or
+                <code>png</code> or
+                <code>bmp</code>.</p>
+            <p>In this dialog, the user may define new folders or select for editing previous folders. A new folder is
+                written
+                in the form
+                <code>aaa/bbb/.../zzz</code>. Please note that every folder is defined relative to the default download
+                directory (this is a web
+                extensions security limitation). So a folder defined as
+                <code>John/Music</code> is, in fact, a folder named
+                <code>Music</code> located inside a folder named
+                <code>John</code>, and this last one is created inside the browser's default download directory.</p>
+                <p>The folder name can include the following masks: <code>{yyyy}, {yy}, {MM}, {ww}, {dd}, {host}, {url:n}, {ext} </code></p>
+            <p>A folder may be also removed (but this only remove it from automatic folders list, not delete it from
+                disk)</p>
+        </div>
+
+    </div>
+
+    <div id="template-3" style="display:none;">
+        <div style="padding:4px;font-size: 12px;">
+            Write here the favorite folders (<span style="font-weight: 500;">relative to the default download directory</span>),
+            <span style="font-weight: 500;">one folder per line</span>. For example <code>Music</code> or <code>Docs/Math/Algebra</code>,
+            with optional masks: <code style = "color:black">{yyyy}, {yy}, {MM}, {ww}, {dd}, {host}, {url:n}, {ext} </code>
+
+        </div>
+        <textarea id="star-folders" spellcheck="false" style="resize:vertical;width: 100%;height: 10rem;background-color: #E3F2FD;border: 1px solid darkgray;margin-bottom: 0px;padding:0.25rem;"></textarea>
+    </div>
+
+    <div id="template-4" style="display:none; padding:4px;font-size: 12px;">
+        There are actually these experimental features:
+        <ul>
+            <li>Extra scan</li>
+            <li>Throttle mode</li>
+            <!-- <li>Proximity masks</li> -->
+        </ul>
+        See extension's page help for further info
+    </div>
+
+    <div id="template-5" style="display:none; padding:4px;font-size: 12px;max-width:300px;">
+        <div>
+            Default name mask is
+            <code class="default-name">{url}{newline}</code> (meaning <i>one URL per line</i>)
+            <br> <br>Other masks:
+            <code>{name}, {text} {url}, {title}, {alt}, {host}, {ext}, {newline}, {tab}</code>.
+            <br><br> Date masks are also available:
+            <code>{yyyy}, {yy}, {MM}, {dd}, {hh}, {mm}, {ss}, {ms}</code>.
+            <br><br>It's also possible to use the counter masks <code>{counter}</code> and <code>{cc...c}</code>. For
+            example,
+            <code>{cccc}</code> will generate the sequence <code>0001, 0002...</code>etc.
+            <br><br>The literals <code>{</code> and <code>}</code> as such must be escaped: <code>\{</code>, <code>\}</code>
+
+        </div>
+    </div>
+
+    <div id="template-6" style="display:none; padding:8px;font-size: 12px;max-width:350px;text-align: justify;">
+        <div style = "text-indent:20px;">The resource list items may be displayed with appropriate file icons if these are known. </div>
+        <div style = "text-indent:20px;">        The web extensions system allows file icons to be retrieved only after a file was downloaded. So this button initiate a series of empty file downloads with various common mime types with the purpose of building and store a list of icons for popular file types (these icon sets vary from one computer to another)</div>
+
+    </div>
+    <script src="options.js"></script>
+</body>
+
+</html>

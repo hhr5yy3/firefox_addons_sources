@@ -1,0 +1,1 @@
+console.debug("TOPICS: Topics blocker loaded"),document.browsingTopics&&delete Document.prototype.browsingTopics;

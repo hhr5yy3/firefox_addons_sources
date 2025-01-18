@@ -1,0 +1,67 @@
+.navigation {
+  height: 100%;
+  flex-shrink: 0;
+  text-align: center;
+  background: #444A61;
+  max-width: 75px;
+  ul {
+    height: 100%;
+    li {
+      font-size: 12px;
+      height: 16.666667%;
+      a {
+        display: block;
+        padding: 3px 5px;
+        color: rgba(255, 255, 255, .2);
+        i {
+          display: block;
+          margin: 0 auto 4px;
+          width: 18px;
+          svg {
+            width: 18px;
+            path {
+              @include transition(all .2s ease);
+              fill: #FFF;
+            }
+          }
+        }
+        span {
+          width: 30px;
+          svg {
+            width: 30px;
+            path {
+              @include transition(all .2s ease);
+              fill: #FFF;
+            }
+          }
+        }
+        &:hover {
+          color: #fff;
+          text-decoration: none;
+          i, span {
+            svg {
+              path:not(#Button) {
+                fill-opacity: 1!important;
+                fill: #fff!important;
+              }
+            }
+          }
+        }
+      }
+      &.active {
+        a {
+          background: $main-color;
+          color: #fff;
+          i {
+            svg {
+              path {
+                fill-opacity: 1!important;
+                fill: #fff!important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

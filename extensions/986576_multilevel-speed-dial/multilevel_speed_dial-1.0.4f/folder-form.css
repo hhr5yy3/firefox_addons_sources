@@ -1,0 +1,76 @@
+@import 'photon.css';
+
+form {
+    font-size: 15px;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.doLeading {
+    line-height: 180%;
+}
+
+.warning {
+    font-size: 75%;
+    height: 20px;
+    background-color: var(--yellow-50);
+    color: var(--grey-90);
+    display: none; /*none or initial*/
+    padding: 6px 2px 3px 2px;
+}
+
+.warning::before {
+    content: url('icons/photon/warning-16.svg');
+    position: relative;
+    margin: 0px 2px 0px 2px;
+    top: 2px;
+}
+
+#bgcolorPicker {
+    height: 24px;
+    position: relative;
+    top: 4px;
+}
+
+.waitSpinner {
+    height: 25px;
+    position: relative;
+    top: 7px;
+    display: none; /*none or initial*/
+}
+
+#controlButtons {
+    margin-top: 3px;
+    margin-left: 2px;
+}
+
+#bgimgPicker {
+    display: none;
+}
+
+#fakeBgimgPicker {
+    display: inline-block;
+    height: 24px;
+}
+
+#fakeBgimgPickerBtn {
+    min-width: 80px;
+    width: 80px;
+    height: 24px;
+}
+
+#fakeBgimgPickerLabel {
+    font-size: 12px;
+    padding-right: 2px;
+}
+
+#fakeBgimgPickerBtn:disabled+#fakeBgimgPickerLabel {
+    opacity: 0.4;
+}
+
+#bgimgPicker:invalid+#fakeBgimgPicker {
+    border-radius: 2px;
+    box-shadow: 0 0 2px 1px red/*var(--red-60)*/;
+}

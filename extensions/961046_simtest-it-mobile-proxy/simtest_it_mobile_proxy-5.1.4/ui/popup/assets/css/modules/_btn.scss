@@ -1,0 +1,75 @@
+.btn {
+  font-size: 12px;
+  font-weight: 500;
+  @include box-shadow(none!important);
+  @include border-radius(4px);
+  padding: 4px 8px;
+  &.btn-default {
+    background-color: #A7A7A7;
+    border: 1px solid #a7a7a7;
+    color: #fff;
+  }
+  &.btn-primary {
+    background-color: $main-color;
+    border: 1px solid $main-color;
+    &:hover {
+      background-color: #5a78ff;
+    }
+    &:focus,
+    &:active {
+      background-color: $main-color!important;
+    }
+  }
+  &.btn-secondary {
+    background-color: $color-active;
+    border: 1px solid $color-active;
+    &:hover {
+      background-color: #72a951;
+    }
+    &:focus,
+    &:active {
+      background-color: $color-active!important;
+    }
+  }
+  &.btn-expand {
+    padding: 2px 8px;
+    background-color: rgba(44, 44, 44, 0.4);
+    color: #FFF;
+  }
+  &:focus,
+  &:active {
+    @include box-shadow(none!important);
+    outline: none!important;
+  }
+  &.error-icon {
+    svg {
+      path {
+        fill:#ab0f00;
+      }
+
+    }
+  }
+  &.btn-tooltip,
+  &.btn-refresh {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    svg {
+      width: 18px;
+      path {
+        @include transition(all .3s ease);
+      }
+    }
+    &:hover {
+      background: rgba(167, 167, 167, 0.28);
+      svg {
+        path {
+          fill: $text-primary!important;
+        }
+      }
+    }
+  }
+}

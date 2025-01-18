@@ -1,0 +1,276 @@
+/**********************************************************************************************************************
+ * CHECKMARKS SIDEBAR
+ **********************************************************************************************************************/
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #2d2d2d;
+    }
+}
+
+/**********************************************************************************************************************
+ * TOP LEVEL CONTROLS/INDICATORS
+ **********************************************************************************************************************/
+#content {
+    position: relative;
+}
+
+header {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+}
+
+#controls,
+#progress {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    height: 70px;
+    line-height: 70px;
+}
+
+#controls {
+    font-size: 26px;
+    left: 20px;
+}
+
+#progress {
+    right: 20px;
+    font-weight: bold;
+}
+
+#apostrophe {
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    left: 20px;
+    font-size: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+    #controls,
+    #progress,
+    #apostrophe {
+        color: #f9f9fa;
+    }
+}
+
+/**********************************************************************************************************************
+ * PROGRESS BAR
+ **********************************************************************************************************************/
+#progress-container {
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #b1b1b3;
+    background-color: rgba(241, 242, 242, .9);
+}
+
+@media (prefers-color-scheme: dark) {
+    #progress-container {
+        background-color: #2d2d2d;
+    }
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: #497eb8;
+}
+
+/**********************************************************************************************************************
+ * STATISTICS/FILTER
+ **********************************************************************************************************************/
+#statistics,
+#filters {
+    display: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #b1b1b3;
+    background-color: rgba(241, 242, 242, .9);
+    padding: 0 20px;
+    line-height: 40px;
+    font-size: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+    #statistics,
+    #filters {
+        background-color: #2d2d2d;
+    }
+}
+
+/**********************************************************************************************************************
+ * FAVICONS
+ **********************************************************************************************************************/
+#favicons {
+    display: none;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 40px;
+    padding: 10px 0;
+    border-bottom: 1px solid #b1b1b3;
+    background-color: rgba(255, 255, 255, .9);
+}
+
+
+@media (prefers-color-scheme: dark) {
+    #favicons {
+        background-color: #2d2d2d;
+    }
+}
+
+.favicon {
+    height: 20px;
+    width: auto;
+    margin-right: 4px;
+}
+
+/**********************************************************************************************************************
+ * ICONS
+ **********************************************************************************************************************/
+.icon {
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.success {
+    color: #12bc00;
+}
+
+.error {
+    color: #ff9400;
+}
+
+/**********************************************************************************************************************
+ * MODAL
+ **********************************************************************************************************************/
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.modal-content,
+.modal-content p {
+    text-align: center;
+}
+
+.modal-content {
+    display: none;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #b1b1b3;
+    background-color: #fff;
+    font-size: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .modal-content {
+        background-color: #2d2d2d;
+    }
+}
+
+.modal-content .icon {
+    font-size: 26px !important;
+    margin: 0;
+}
+
+.help {
+    width: 100%;
+    text-align: left;
+}
+
+.help .icon {
+    font-size: 16px !important;
+    margin: 0;
+}
+
+.help table {
+    border-collapse: collapse;
+}
+
+.help td {
+    border: 1px solid #b1b1b3;
+    padding: 4px;
+}
+
+.help ul {
+    margin: 0;
+    padding-left: 12px;
+}
+
+/**********************************************************************************************************************
+ * TOOLTIP
+ **********************************************************************************************************************/
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-container .tooltip-text {
+    position: absolute;
+    z-index: 100;
+    top: -22px;
+    left: 10px;
+    visibility: hidden;
+    opacity: 0;
+    height: 22px;
+    padding: 0 11px;
+    border-radius: 11px;
+    background-color: #4e4947;
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    transition: opacity 1s;
+}
+
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: .8;
+}
+
+/**********************************************************************************************************************
+ * MESSAGES
+ **********************************************************************************************************************/
+#messages {
+    display: table;
+    overflow: hidden;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 130px;
+}
+
+.message-container {
+    display: table-row;
+    height: 40px;
+    width: 100%;
+    white-space: nowrap;
+    border-bottom: 1px solid #b1b1b3;
+}
+
+.message-container:first-of-type {
+    height: 20px;
+    border: 0;
+}
+
+.message {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 20px;
+}

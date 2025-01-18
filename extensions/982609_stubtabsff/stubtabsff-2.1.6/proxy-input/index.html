@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Proxy Table</title>
+</head>
+
+<body>
+    <input type="file" name="file" id="importFile" style="display:none">
+    <div class="top-bar container-fluid p-3 mt-2 d-flex flex-wrap justify-content-between align-items-center">
+        <div class="d-flex align-items-center w-50">
+            <label class="switch">
+                <input type="checkbox" id="toggleSwitch">
+                <span class="slider round"></span>
+            </label>
+            <label class="fs-5 px-2 btn" for="toggleSwitch" >Enable Proxy</label>
+        </div>
+        <div>
+            <button class="btn btn-info m-1 px-3" id="import">import</button>
+            <button class="btn btn-info m-1 px-3" id="export">export</button>
+            <button class="btn btn-primary m-2 px-3" id="save">Save</button>
+        </div>
+    </div>
+    <div class="container-fluid" >
+        <div class="c-row heading shadow p-3 mt-2 px-3 bg-warning">
+            <div class="index">#</div>
+            <div class="protocol-name">Protocol</div>
+            <div class="ip">IP</div>
+            <div class="port">Port</div>
+            <div class="username">User Name</div>
+            <div class="password">Password</div>
+            <div class="action"></div>
+        </div>
+        <div id="proxyList" class="w-100">
+
+        </div>
+    </div>
+    <div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="container p-4">
+                        
+                        <div class="mb-3">
+                            <label for="AddGroupName" class="form-label">Group Name</label>
+                            <input required type="text" class="form-control" id="AddGroupName">
+                            <div class="error text-danger" style="display: none;">This Field is required</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="AddProxyList" class="form-label">paste a proxy list with format Protocol, ip, port, username, password</label>
+                            <textarea class="form-control" id="AddProxyList" rows="10"></textarea>
+                        </div>
+                        <button class="btn btn-primary m-auto" id="saveGroup">save</button>
+                        <button class="btn btn-warning" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn btn-primary rounded-circle add" id="addProxy"><i class="fas fa-plus"></i></div>
+    <script type="application/x-javascript" src="scripts/7a0d96c578.js" ></script>
+    <script type="application/x-javascript" src="scripts/papaparse.min.js" ></script>
+    <script type="application/x-javascript" src="../jquery-3.6.0.js"></script>
+    <script type="application/x-javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="application/x-javascript" src="scripts/proxy.js"></script>
+    <script type="application/x-javascript" src="scripts/functions.js"></script>
+    <script type="application/x-javascript" src="scripts/eventHandlers.js"></script>
+    <script type="application/x-javascript" src="scripts/index.js"></script>
+</body>
+
+</html>

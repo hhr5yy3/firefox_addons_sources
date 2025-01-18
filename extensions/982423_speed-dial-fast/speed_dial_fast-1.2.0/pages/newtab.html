@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/64.png">
+    <title>Speed Dial</title>
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <link rel="stylesheet" href="/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/materialicons.css">
+    <link rel="stylesheet" href="/css/newtab.css">
+    <style id="custom-style"></style>
+</head>
+<body class="hide-mode">
+
+<div id="settings-btn">
+    <i class="material-icons gear">settings</i>
+    <i class="material-icons cross">clear</i>
+</div>
+
+<div id="sidebar">
+    <div class="inner settings-block settings-main active">
+        <div class="block-title"><div>Settings</div></div>
+        <ul class="settings-ul">
+            <li class="settings-li">
+                <div class="settings-link" data-show-target=".settings-theme">
+                    <span>Theme</span>
+                    <i class="material-icons">keyboard_arrow_right</i>
+                </div>
+            </li>
+            <li class="settings-li">
+                <div class="settings-link" data-show-target=".settings-tile">
+                    <span>Tiles</span>
+                    <i class="material-icons">keyboard_arrow_right</i>
+                </div>
+            </li>
+        </ul>
+        
+        <div class="block-title"><div>Import / Export</div></div>
+        <ul class="settings-ul">
+			<li class="settings-li">
+                <button id="import" class="ex-im-btn waves-effect waves-green btn">Import</button>
+                <button id="export" class="ex-im-btn waves-effect waves-light btn">Export</button>
+                <input id="import-file-input" type="file" hidden>
+            </li>
+        </ul>
+    </div>
+
+    <div class="inner settings-block settings-theme">
+        <i class="material-icons to-main" data-show-target=".settings-main">keyboard_arrow_left</i>
+        <div class="block-title"><div>Select Theme</div></div>
+        <div class="row">
+            <div class="col m4"><div class="bg" data-bg="bg-white"><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg-black"><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg1"     ><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg2"     ><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg3"     ><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg4"     ><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg5"     ><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg6"     ><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg7"     ><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg8"     ><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg9"     ><i class="material-icons">check</i></div></div>
+            <div class="col m4"><div class="bg" data-bg="bg10"    ><i class="material-icons">check</i></div></div>
+        </div>
+        <div class="row">
+            <label class="btn btn-block select-img">
+                <input type="file" id="custom-bg-input-file" hidden>
+                Upload Background
+            </label>
+        </div>
+        <div class="row">
+            <div class="col m4"><div class="bg" data-bg="custom" ><i class="material-icons">check</i></div></div>
+        </div>
+    </div>
+
+    <div class="inner settings-block settings-tile">
+        <i class="material-icons to-main" data-show-target=".settings-main">keyboard_arrow_left</i>
+        <div class="block-title"><div>Configure tiles</div></div>
+        <ul class="settings-ul">
+            <!--
+            <li class="settings-li">
+                <div class="input-counter" data-setting="tilesCount" data-max-value="1000">
+                    <span>Tiles</span>
+                    <div class="input-counter fr">
+                        <i class="material-icons input-counter-remove-btn">remove_circle_outline</i>
+                        <span class="input-counter-value"></span>
+                        <i class="material-icons input-counter-add-btn">add_circle_outline</i>
+                    </div>
+                </div>
+            </li>
+            -->
+            <li class="settings-li">
+                <div class="input-counter" data-setting="columnCount" data-min-value="1" data-max-value="20">
+                    <span>Columns</span>
+                    <div class="input-counter fr">
+                        <i class="material-icons input-counter-remove-btn">remove_circle_outline</i>
+                        <span class="input-counter-value"></span>
+                        <i class="material-icons input-counter-add-btn">add_circle_outline</i>
+                    </div>
+                </div>
+            </li>
+            <li class="settings-li">
+                <div class="input-counter" data-setting="containerWidthCount" data-min-value="1" data-max-value="10">
+                    <span>Container width</span>
+                    <div class="input-counter fr">
+                        <i class="material-icons input-counter-remove-btn">remove_circle_outline</i>
+                        <span class="input-counter-value"></span>
+                        <i class="material-icons input-counter-add-btn">add_circle_outline</i>
+                    </div>
+                </div>
+            </li>
+            <li class="settings-li">
+                <div class="input-counter" data-setting="tilesPaddingCount" data-min-value="1" data-max-value="10">
+                    <span>Padding</span>
+                    <div class="input-counter fr">
+                        <i class="material-icons input-counter-remove-btn">remove_circle_outline</i>
+                        <span class="input-counter-value"></span>
+                        <i class="material-icons input-counter-add-btn">add_circle_outline</i>
+                    </div>
+                </div>
+            </li>
+            <li class="settings-li">
+                <div class="switch">
+                    <label>
+                        <span class="title">Hide tiles</span>
+                        <input type="checkbox" class="mode-checkbox" data-mode="hideMode">
+                        <span class="lever fr"></span>
+                    </label>
+                </div>
+            </li>
+            <li class="settings-li">
+                <div class="switch">
+                    <label>
+                        <span class="title">Hide add new</span>
+                        <input type="checkbox" class="mode-checkbox" data-mode="hideAddNewMode">
+                        <span class="lever fr"></span>
+                    </label>
+                </div>
+            </li>
+            <li class="settings-li">
+                <div class="switch">
+                    <label>
+                        <span class="title">Colour tiles</span>
+                        <input type="checkbox" class="mode-checkbox" data-mode="tilesColorMode">
+                        <span class="lever fr"></span>
+                    </label>
+                </div>
+            </li>
+        </ul>
+    </div>
+	<div class="about-block">
+		<a href="https://www.addonsearch.net/terms.html" target="_blank">Terms</a>
+		<a href="https://www.addonsearch.net/privacy.html" target="_blank">Privacy</a>
+		<a href="https://www.addonsearch.net/contact.html" target="_blank">Contact</a>
+	</div>
+</div>
+
+<main>
+	<img class="search-logo" src="/img/64-transparent-with-text.png" alt="Logo" />
+    <form id="f">
+		<div id="input-box" class="search-wrapper">
+            <label for="q" class="search-label"></label>
+            <input id="q" maxlength="256" placeholder="" autocomplete="off">
+            <button id="searchSubmit" class="search-button" title="Search"></button>
+        </div>
+    </form>
+    <div id="tiles">
+        <a class="tile add-bookmark ui-state-disabled">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+</main>
+
+<div id="bookmark-modal" class="modal">
+    <i class="material-icons modal-action modal-close close-icon">clear</i>
+    <div class="modal-content">
+        <div class="block-title"><div id="bookmark-modal-title">Add Tile</div></div>
+        <br>
+        <div class="input-field-modal">
+            <label for="form-url" class="active">URL</label>
+            <input id="form-url" type="text" autocomplete="off">
+        </div>
+        <div class="input-field-modal">
+            <label for="form-title" class="active">Tile Name</label>
+            <input id="form-title" type="text" autocomplete="off">
+        </div>
+        <div id="preview-box">
+            <div class="row">
+                <div class="col m8">
+                    <div id="preview">
+                        <div id="preloader-in-modal" class="preloader-wrapper active">
+                            <div class="spinner-layer spinner-blue-only">
+                                <div class="circle-clipper left"><div class="circle"></div></div>
+                                <div class="gap-patch"><div class="circle"></div></div>
+                                <div class="circle-clipper right"><div class="circle"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m4">
+                    <input id="input-file" hidden type="file">
+                    <!--<button id="file-upload-btn" class="modal-btn waves-effect waves-light btn">-->
+                        <!--<i class="material-icons left">file_upload</i>Upload Preview-->
+                    <!--</button>-->
+                    <button id="refresh-preview" class="modal-btn waves-effect waves-green btn">
+                        <i class="material-icons left">autorenew</i>Refresh Preview
+                    </button>
+
+                    <button id="modal-btn-cancel" class="modal-btn modal-action modal-close waves-effect waves-green btn">Cancel</button>
+                    <button id="save-bookmark-btn" class="modal-btn modal-action waves-effect waves-green btn">Save</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="remove-bookmark-modal" class="modal">
+    <div class="modal-content">
+        <div class="block-title"><div>Remove Tile</div></div>
+        <p>Are you sure you want to delete the tile ?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="remove-bookmark-btn-no modal-action modal-close waves-effect waves-green btn">Cancel</button>
+        <button id="remove-bookmark-btn" class="modal-action modal-close waves-effect waves-green btn">Remove</button>
+    </div>
+</div>
+
+<script src="/js/libs/jquery.min.js"></script>
+<script src="/js/libs/jquery-ui.min.js"></script>
+<script src="/js/libs/materialize.min.js"></script>
+<script src="/js/newtab.js"></script>
+</body>
+</html>

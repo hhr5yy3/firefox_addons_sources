@@ -1,0 +1,62 @@
+var GHOST = {
+	'blinky': {
+		'CANVAS_CONTEXT': null,
+		'POSITION_X' 	: 276,
+		'POSITION_Y' 	: 204,
+		'DIRECTION'  	: 1,
+		'COLOR' 		: "#ed1b24",
+		'MOVING_TIMER' 	: -1,
+		'MOVING' 		: false,
+		'BODY_STATE' 	: 0,
+		'STATE' 		: 0,
+		'EAT_TIMER' 	: null,
+		'AFFRAID_TIMER' : null,
+		'AFFRAID_STATE' : 0,
+		'TUNNEL'		: false
+	},
+	'pinky': {
+		'CANVAS_CONTEXT': null,
+		'POSITION_X' 	: 276,
+		'POSITION_Y' 	: 258,
+		'DIRECTION'  	: 2,
+		'COLOR' 		: "#feaec9",
+		'MOVING_TIMER' 	: -1,
+		'MOVING' 		: false,
+		'BODY_STATE' 	: 1,
+		'STATE' 		: 0,
+		'EAT_TIMER' 	: null,
+		'AFFRAID_TIMER' : null,
+		'AFFRAID_STATE' : 0,
+		'TUNNEL'		: false
+	},
+	'inky': {
+		'CANVAS_CONTEXT': null,
+		'POSITION_X' 	: 238,
+		'POSITION_Y' 	: 258,
+		'DIRECTION'  	: 3,
+		'COLOR' 		: "#4adecb",
+		'MOVING_TIMER' 	: -1,
+		'MOVING' 		: false,
+		'BODY_STATE' 	: 2,
+		'STATE' 		: 0,
+		'EAT_TIMER' 	: null,
+		'AFFRAID_TIMER' : null,
+		'AFFRAID_STATE' : 0,
+		'TUNNEL'		: false
+	},
+	'clyde': {
+		'CANVAS_CONTEXT': null,
+		'POSITION_X' 	: 314,
+		'POSITION_Y' 	: 258,
+		'DIRECTION'  	: 4,
+		'COLOR' 		: "#f99c00",
+		'MOVING_TIMER' 	: -1,
+		'MOVING' 		: false,
+		'BODY_STATE' 	: 3,
+		'STATE' 		: 0,
+		'EAT_TIMER' 	: null,
+		'AFFRAID_TIMER' : null,
+		'AFFRAID_STATE' : 0,
+		'TUNNEL'		: false
+	}
+}

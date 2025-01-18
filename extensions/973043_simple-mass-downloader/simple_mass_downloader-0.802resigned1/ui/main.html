@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+
+<html class="normal">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono"> -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+	<link rel="stylesheet" href="custom-mdc.css">
+	<link rel="stylesheet" href="main.css" />
+	<script src="util.js"></script>
+	<script src="util-2.js"></script>
+	<script src="popups_lib.js"></script>
+	<script src="popups.js"></script>
+	<script src="pagination.js"></script>
+	<style>
+		:root {
+			--mdc-theme-primary: #367694;
+			--mdc-theme-secondary: rgb(0,172,193);/* #00acc1; */
+			--title:rgb(57,73,171);/*  #6D4C41; *//* rgb(93, 64, 55); */
+			--title-light:rgb(57,73,171);/* #8D6E63; */
+			--modified: #BF360C;
+			/* #9c27b0; */
+		}
+	</style>
+</head>
+
+<body class="mdc-typography normal">
+	<section id="dynamic-demo-toolbar" class="mdc-elevation--z1">
+		<nav id="dynamic-tab-bar" class="mdc-tab-bar mdc-tab-bar--indicator-accent">
+			<a class="mdc-tab firsttab regulartab mdc-tab--active mdc-ripple-upgraded" href="#panel-1">Resource List</a>
+			<a id="download-tab" class="mdc-tab regulartab mdc-ripple-upgraded" href="#panel-2">Download List</a>
+			<div class="mdc-form-field barform left">
+				<button id="ratio" class="mdc-button  mdc-button--dense small" title="toggle popup width">
+
+					<svg class="icon middle small" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M19 12h-2v3h-3v2h5v-5zM7 9h3V7H5v5h2V9zm14-6H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16.01H3V4.99h18v14.02z" />
+						<path d="M0 0h24v24H0z" fill="none" />
+					</svg>
+				</button>
+			</div>
+
+			<div class="mdc-form-field barform middle">
+
+				<button id="open-download-directory" class="mdc-button  mdc-button--dense small" title="open download directory">
+
+					<svg class="icon middle small" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+						<path d="M0 0h24v24H0z" fill="none" />
+					</svg>
+				</button>
+			</div>
+
+			<!-- 			<div class="mdc-form-field barform middle">
+
+				<button id="help" class="mdc-button  mdc-button--dense small" title="Help page">
+
+					<svg class="icon middle small" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 0h24v24H0z" fill="none" />
+						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+					</svg>
+				</button>
+			</div> -->
+			<div class="mdc-form-field barform middle">
+				<button id="settings" class="mdc-button  mdc-button--dense small" title="Simple mass downloader options">
+
+					<svg class="icon middle small" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 0h24v24H0z" fill="none" />
+						<path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+					</svg>
+				</button>
+			</div>
+
+			<div class="mdc-form-field barform right">
+
+				<button id="toolbar-menu" class="mdc-button  mdc-button--dense small" title="General menu">
+
+					<svg class="icon middle small" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 0h24v24H0z" fill="none" />
+						<path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+					</svg>
+				</button>
+			</div>
+			<span class="mdc-tab-bar__indicator"></span>
+		</nav>
+
+	</section>
+	<section id="panels-section">
+		<div class="panels">
+			<div class="panel active" id="panel-1" role="tabpanel">
+
+				<div id="header_1" class="mdc-form-field mdc-elevation--z1 header willnotrender">
+					<div class="mdc-form-field" style="width: 100%;justify-content: space-between;">
+
+
+						<div class="mdc-form-field">
+							<div>
+								<button class="mdc-button  mdc-button--dense" id="loadlinks" title="Fill the list using only the current tab links">
+									<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+										<path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+										<path d="M0 0h24v24H0z" fill="none" />
+									</svg>
+									Load Page Links
+								</button>
+
+
+								<button class="mdc-button  mdc-button--dense " id="fromtabs" title="Collect links from open tabs&#13;and add them to the list">
+									<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<g transform="translate(0,-1)">
+											<rect x="5" y="7" width="14" height="2" stroke-width=".93541" />
+											<rect x="7" y="4" width="10" height="2" stroke-width=".91287" />
+											<rect x="3" y="10" width="18" height="2" />
+											<rect x="3" y="19" width="18" height="2" />
+											<rect x="3" y="12" width="2" height="7" />
+											<rect x="19" y="12" width="2" height="7" />
+										</g>
+									</svg>
+								</button>
+
+								<button class="mdc-button  mdc-button--dense exp-feat" id="scanner" title="Extra scan">
+									<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<g transform="translate(0,2)">
+											<rect x="3" y="3" width="18" height="2" stroke-width=".94868" />
+											<rect x="3" y="7" width="18" height="2" stroke-width=".94868" />
+											<rect x="3" y="11" width="12" height="2" stroke-width=".96077" />
+											<rect x="3" y="15" width="9" height="2" stroke-width=".94868" />
+											<rect x="18" y="12" width="2" height="8" />
+											<rect x="15" y="15" width="8" height="2" />
+										</g>
+									</svg>
+								</button>
+
+
+
+								<button class="mdc-button  mdc-button--dense " id="gallery" title="Show only images (toggle)">
+									<svg class="icon middle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<circle cx="10.77" cy="9.9419" r="2.4907" stroke-width="1.6605" />
+										<g transform="matrix(.9093 0 0 1 1.2721 0)">
+											<path d="m3.3027 3c-1.3542 0-2.4629 0.9-2.4629 2v14c0 1.1 1.1087 2 2.4629 2h17.234c1.3542 0 2.4629-0.9 2.4629-2v-14c0-1.1-1.1087-2-2.4629-2zm-0.30273 2h18v14h-18z"
+											 stroke-width="1.1096" />
+											<path d="m3 19 4.586-5 2.414 4 6-6 5 7z" stroke-width="0" />
+										</g>
+									</svg>
+								</button>
+
+
+							</div>
+						</div>
+
+						<div class="mdc-form-field" class="willnotrender">
+
+							<div id="contordiv">
+								<span id="contor">0</span>
+								<span id="labelcontor">items</span>
+							</div>
+
+							<button class="mdc-button mdc-button--dense  hidden" id="menu-1">
+								<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0 0h24v24H0z" fill="none" />
+									<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+								</svg>
+							</button>
+						</div>
+
+
+					</div>
+					<div id="gallery-actions" class="mdc-form-field hidden" style="width: 100%;justify-content: space-between;margin-top:0.5rem;">
+
+						<div id="images-actions">
+							<div class="mdc-checkbox customcheck" title="check/uncheck all images">
+								<input id="images-main-check" class="mdc-checkbox__native-control" type="checkbox">
+								<div class="mdc-checkbox__background">
+									<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+										<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+									</svg>
+									<div class="mdc-checkbox__mixedmark"></div>
+								</div>
+							</div>
+						</div>
+						<div style="display:flex;flex-grow: 1;margin-right: 0.5rem;"><label class="slider-label" for="w-slider">WIDTH:
+							</label>&nbsp;<input id="w-slider" type="range" step="10" min="0" max="2000" value="0"></div>
+
+						<div style="display:flex;flex-grow: 1;"><label class="slider-label" for="h-slider">HEIGHT: </label>&nbsp;<input
+							 id="h-slider" type="range" step="10" value="0" min="0" max="2000"></div>
+
+						<button class="mdc-button  mdc-button--dense " id="sortPics" title="Sort images in descending size order">
+							<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+								<path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z" />
+								<path d="M0 0h24v24H0z" fill="none" />
+							</svg>
+						</button>
+
+
+					</div>
+				</div>
+
+				<!-- <div id="middle_1" class="mdc-elevation--z1 wrapper"> -->
+
+				<div id="middle_1" class="mdc-elevation--z1 wrapper">
+					<table class=" mdl-data-table" id="resources">
+						<thead>
+							<tr>
+								<th>
+									<div class="mdc-checkbox customcheck">
+										<input id="main-check" class="mdc-checkbox__native-control" type="checkbox">
+										<div class="mdc-checkbox__background">
+											<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+												<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+											</svg>
+											<div class="mdc-checkbox__mixedmark"></div>
+										</div>
+									</div>
+
+								</th>
+								<th class="mdl-data-table__cell--non-numeric">
+									<span id="menu-2">
+										<!-- <span>&#x25BC;</span> -->
+										<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+											<path d="M7 10l5 5 5-5z" />
+											<path d="M0 0h24v24H0z" fill="none" />
+										</svg>
+										<span id="displayed-name">File name</span>
+
+									</span>
+								</th>
+								<!-- <th class="size hidden">Size</th> -->
+								<th>Ext</th>
+
+							</tr>
+						</thead>
+						<tbody id="contentArea">
+
+						</tbody>
+					</table>
+					<div id="noimages" class="" style="font-size: 0.875rem;width: 100%;text-align: center;padding: 2rem;color: rgb(38,50,56); font-weight:500;">NO
+						IMAGES IN THE CURRENT LIST</div>
+					<div id="pics" class="hidden normal">
+					</div>
+
+				</div>
+				<div id="resources-pager" class="mdc-elevation--z1 pager"></div>
+				<div id="thumbnails-pager" class="mdc-elevation--z1 pager"></div>
+
+				<div id="bottom_1" class="mdc-elevation--z1 bottom">
+
+					<div class="mdc-form-field" id="filters" style="justify-content: space-between;">
+
+						<div style="flex-grow: 1;display: inline-flex;justify-content: space-between;">
+							<div class="mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="extensionsdiv">
+
+
+
+								<input id="extensions" type="text" class="mdc-text-field__input input-text" spellcheck="false">
+								<label for="extensions" class="mdc-text-field__label">
+									Extensions
+								</label>
+								<button class="close-button hidden"></button>
+								<div class="mdc-text-field__bottom-line"></div>
+							</div>
+
+							<div class="mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="textfilterdiv">
+								<input id="textfilter" type="text" class="mdc-text-field__input input-text" spellcheck="false">
+								<label for="textfilter" class="mdc-text-field__label">
+									Text filter
+								</label>
+								<button class="close-button hidden"></button>
+								<div class="mdc-text-field__bottom-line"></div>
+							</div>
+							<div id="help-filter-div" style="width:25px;text-align: center;display: flex;flex-direction: column;justify-content: space-around;padding-left:2px;margin-bottom:0.15rem;"
+							 class="">
+								<svg id="help-filter" xmlns="http://www.w3.org/2000/svg" class="hidden" width="18" height="18" viewBox="0 0 24 24"
+								 style="
+								cursor: pointer;
+								vertical-align: middle;
+							">
+									<path d="M0 0h24v24H0z" fill="none" />
+									<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+
+								</svg>
+
+							</div>
+							<div class="mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="directorydiv">
+								<input id="directory" type="text" class="mdc-text-field__input input-text" spellcheck="false">
+								<label for="directory" class="mdc-text-field__label">
+									Directory
+								</label>
+								<button class="close-button hidden"></button>
+
+
+								<div class="mdc-text-field__bottom-line"></div>
+							</div>
+							<div id="help-dir-div" style="width:25px;text-align: center;display: flex;flex-direction: column;justify-content: space-around;padding-left:2px;margin-bottom:0.15rem;"
+							 class="">
+								<svg id="help-dir" xmlns="http://www.w3.org/2000/svg" class="hidden" width="18" height="18" viewBox="0 0 24 24"
+								 style="
+								cursor: pointer;
+								vertical-align: middle;
+							">
+									<path d="M0 0h24v24H0z" fill="none" />
+									<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+
+								</svg>
+
+							</div>
+						</div>
+
+						<div class="mdc-form-field" id="addToQueue" style="justify-content: space-between;">
+							<button class="mdc-button mdc-button--dense " id="addToPassiveQueue" title="Add to passive queue for&#13;optional mass operations:&#13;renaming, reordering etc.">
+								<!-- Add to queue -->
+
+								<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+									<path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
+									<path d="M0 0h24v24H0z" fill="none" />
+								</svg>
+							</button>
+
+							<button class="mdc-button mdc-button--dense " id="addToActiveQueue" title="Add to active queue for&#13;immediate downloading">
+								<!-- Add to queue -->
+
+								<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0 0h24v24H0z" fill="none" />
+									<rect x="3.0558" y="3" width="17.944" height="18" ry="2.0651" stroke-width="0" />
+									<path d="m15 12.5h3l-6 6.5-6-6.5h3v-6.5h6z" fill="#fffffa" stroke-width=".78062" />
+								</svg>
+							</button>
+
+						</div>
+
+
+
+					</div>
+
+				</div>
+
+
+			</div>
+			<div class="panel" id="panel-2" role="tabpanel">
+				<div id="header_2" class="mdc-form-field mdc-elevation--z1 header">
+					<div class="mdc-form-field" id="downloadActions">
+						<div>
+							<button class="mdc-button mdc-button--dense " id="start">
+								<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+									<path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+									<path d="M0 0h24v24H0z" fill="none" />
+								</svg>
+								START SELECTED
+							</button>
+
+							<button title="Select all" class="mdc-button mdc-button--dense " id="select-all">
+								<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+									<path d="M3 5h2V3c-1.1 0-2 .9-2 2zm0 8h2v-2H3v2zm4 8h2v-2H7v2zM3 9h2V7H3v2zm10-6h-2v2h2V3zm6 0v2h2c0-1.1-.9-2-2-2zM5 21v-2H3c0 1.1.9 2 2 2zm-2-4h2v-2H3v2zM9 3H7v2h2V3zm2 18h2v-2h-2v2zm8-8h2v-2h-2v2zm0 8c1.1 0 2-.9 2-2h-2v2zm0-12h2V7h-2v2zm0 8h2v-2h-2v2zm-4 4h2v-2h-2v2zm0-16h2V3h-2v2zM7 17h10V7H7v10zm2-8h6v6H9V9z" />
+								</svg>
+
+							</button>
+							<button title="Pause all" class="mdc-button mdc-button--dense " id="pause-all">
+								<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+									<path d="M9 16h2V8H9v8zm3-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-4h2V8h-2v8z" />
+								</svg>
+
+							</button>
+						</div>
+						<div>
+							<div class="mdc-form-field exp-feat" id="throttlediv" title="Download files one by one&#13;with a ten-second interval&#13;between (this value may be&#13;changed in settings)">
+								<label for="throttle">THROTTLE MODE</label>
+								<div class="mdc-checkbox customcheck">
+									<input id="throttle" class="mdc-checkbox__native-control" type="checkbox">
+									<div class="mdc-checkbox__background">
+										<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+											<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+										</svg>
+										<div class="mdc-checkbox__mixedmark"></div>
+									</div>
+								</div>
+							</div>
+							<div class="mdc-form-field" class="willnotrender">
+
+								<button class="mdc-button mdc-button--dense  hidden" id="menu-3">
+									<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+									</svg>
+								</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div id="middle_2" class="mdc-elevation--z1 wrapper">
+
+					<table class="mdl-data-table " id="downloadlist">
+						<thead>
+							<tr>
+								<th class="play">
+									<svg class="icon middle normal pad" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+										<path d="M8 5v14l11-7z" />
+										<path d="M0 0h24v24H0z" fill="none" />
+									</svg>
+								</th>
+								<th class="mdl-data-table__cell--non-numeric dname">Name</th>
+								</th>
+								<th class="size">Size&nbsp;</th>
+								<th class="info">
+									<svg class="icon middle small" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+										<path d="M0 0h24v24H0z" fill="none" />
+										<path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z" />
+									</svg>
+								</th>
+							</tr>
+						</thead>
+						<tbody id="contentArea2">
+						</tbody>
+					</table>
+				</div>
+				<div id="downloads-pager" class="mdc-elevation--z1 pager"></div>
+				<div id="bottom_2" class="mdc-elevation--z1 bottom">
+					<div class="mdc-form-field" id="filters-B">
+						<div>
+							<button class="mdc-button mdc-button--dense " id="multi-rename" title="Multi-rename the selected files or&#13;set a common directory for them">
+								<svg class="icon middle" width="20" height="20" version="1.1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+									<path d="M0 0h20v20H0V0z" fill="none" />
+									<path d="m11 14c0.02-0.17 0.034-0.34 0.034-0.53s-0.014-0.36-0.041-0.53l1.1-0.89c0.1-0.081 0.13-0.23 0.068-0.34l-1.1-1.9c-0.068-0.12-0.21-0.16-0.33-0.12l-1.4 0.54c-0.29-0.22-0.58-0.39-0.92-0.53l-0.2-1.4c-0.02-0.13-0.14-0.23-0.27-0.23h-2.2c-0.14 0-0.24 0.094-0.27 0.23l-0.2 1.4c-0.33 0.13-0.64 0.32-0.92 0.53l-1.4-0.54c-0.12-0.047-0.27 0-0.33 0.12l-1.1 1.9c-0.068 0.12-0.041 0.26 0.068 0.34l1.1 0.89c-0.027 0.17-0.048 0.35-0.048 0.53s0.014 0.36 0.041 0.53l-1.1 0.89c-0.1 0.081-0.13 0.23-0.068 0.34l1.1 1.9c0.068 0.12 0.21 0.16 0.33 0.12l1.4-0.54c0.29 0.22 0.58 0.39 0.92 0.53l0.2 1.4c0.027 0.13 0.14 0.23 0.27 0.23h2.2c0.14 0 0.25-0.094 0.27-0.23l0.2-1.4c0.33-0.13 0.64-0.32 0.92-0.53l1.4 0.54c0.12 0.047 0.27 0 0.33-0.12l1.1-1.9c0.068-0.12 0.041-0.26-0.068-0.34zm-4 1.5c-1.1 0-2-0.91-2-2s0.92-2 2-2c1.1 0 2 0.91 2 2s-0.92 2-2 2z"
+									 stroke-width=".68" />
+									<path d="m16 4c-0.031-0.12-0.069-0.24-0.12-0.36-0.049-0.12-0.1-0.24-0.17-0.34l0.54-0.92c0.048-0.083 0.026-0.19-0.046-0.25l-1.2-0.94c-0.078-0.062-0.19-0.049-0.26 0.012l-0.77 0.74c-0.25-0.064-0.5-0.097-0.76-0.094l-0.52-0.9c-0.05-0.084-0.15-0.12-0.25-0.077l-1.5 0.61c-0.092 0.038-0.14 0.13-0.12 0.23l0.24 1c-0.19 0.18-0.35 0.39-0.48 0.61l-1.1 0.02c-0.096 0.0028-0.18 0.075-0.19 0.17l-0.24 1.6c-0.014 0.1 0.043 0.19 0.14 0.21l1 0.27c0.027 0.12 0.061 0.25 0.11 0.37 0.047 0.12 0.1 0.24 0.17 0.34l-0.54 0.92c-0.048 0.083-0.026 0.19 0.046 0.25l1.2 0.94c0.078 0.062 0.19 0.049 0.26-0.012l0.77-0.74c0.25 0.064 0.5 0.097 0.76 0.094l0.52 0.9c0.054 0.083 0.15 0.12 0.25 0.077l1.5-0.61c0.092-0.038 0.15-0.13 0.12-0.23l-0.24-1c0.19-0.18 0.35-0.39 0.48-0.61l1.1-0.02c0.096-0.0028 0.18-0.075 0.19-0.17l0.24-1.6c0.014-0.1-0.043-0.19-0.14-0.21zm-2.3 2.1c-0.76 0.32-1.6-0.035-1.9-0.78-0.3-0.74 0.082-1.6 0.84-1.9 0.76-0.32 1.6 0.035 1.9 0.78 0.3 0.74-0.082 1.6-0.84 1.9z"
+									 stroke-width=".49" /></svg>
+								Multirename
+							</button>
+
+						</div>
+						<button class="mdc-button mdc-button--dense " id="menu-clear" title="clear completed &#13;or all inactive items">
+							Clear List &nbsp;
+							<svg class="icon middle" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+								<path d="M5 13h14v-2H5v2zm-2 4h14v-2H3v2zM7 7v2h14V7H7z" />
+								<path d="M0 0h24v24H0z" fill="none" />
+							</svg>
+						</button>
+					</div>
+				</div>
+			</div>
+	</section>
+
+
+	<div id="template-1" style="display:none"></div>
+	<div id="template-2" style="display:none">
+		<div id="edit-title" style="text-align: center;margin-bottom: 1rem; color: var(--title);font-weight:500;">CHANGE
+			DIRECTORY NAME AND FILENAME</div>
+		<div id="edit-directory-div" class="input-div">
+			<div class="mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="edit-directory-inner-div"
+			 style="width: 100%;padding:0;margin-right: 0.5rem;">
+				<input id="edit-directory" class="mdc-text-field__input input-text" spellcheck="false" type="text">
+				<label for="edit-directory" class="mdc-text-field__label">
+					Directory
+				</label>
+				<button class="close-button hidden"></button>
+				<div class="mdc-text-field__bottom-line"></div>
+				<div id="conflict-arrow" class="hidden">&#9660;</div>
+			</div>
+
+			<div id="edit-directory-ok-div" style="display: flex;flex-direction: column;">
+				<div class="spacer"></div>
+				<button id="edit-directory-ok" type="button" style="text-align: center;margin-bottom:6px" class="mdc-button mdc-button--dense">OK</button>
+			</div>
+		</div>
+
+		<div id="edit-mask-div" class="input-div">
+
+			<div class="mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="edit-mask-inner-div"
+			 style="width: 100%;padding:0;margin-right: 0.5rem;">
+				<input id="edit-mask" class="mdc-text-field__input input-text" spellcheck="false" type="text">
+				<label for="edit-mask" class="mdc-text-field__label">
+					Mask
+				</label>
+				<button class="close-button hidden"></button>
+				<div class="mdc-text-field__bottom-line"></div>
+			</div>
+
+			<div id="edit-mask-ok-div" style="display: flex;flex-direction: column;">
+				<div class="spacer"></div>
+				<button id="edit-mask-ok" type="button" style="text-align: center;margin-bottom:6px" class="mdc-button  mdc-button--dense">OK</button>
+			</div>
+		</div>
+
+		<div id="edit-textarea-div" style="padding-bottom: 0;">
+			<div style="width: 100%;display: inline-flex;padding: 0;justify-content: space-between;">
+				<div style="display: flex;flex-direction: column;">
+					<div class="spacer"></div>
+					<b class="label" style="color:var(--title);">FINAL NAME</b>
+					<div class="spacer"></div>
+				</div>
+				<!-- <button id="edit-final-name" type="button">EDIT</button> -->
+				<button id="edit-final-name" type="button" style="text-align: center;" class="mdc-button  mdc-button--dense">EDIT</button>
+			</div>
+			<textarea id="edit-textarea" rows="4" spellcheck="false" disabled="false"></textarea>
+		</div>
+	</div>
+
+	<div id="template-3" style="display:none; padding:4px;font-size: 12px;max-width:430px;color:#616161;">
+		<div>
+			<div class="row"> Default name mask is
+				<code class="default-name firefox hidden">{name}.{ext}</code>
+				<code class="default-name chrome hidden">{auto}</code><span class="chrome hidden">, this is usually equivalent with
+					<code>{auto:name}.{auto:ext}</code></span></div>
+			<div class="row"> Other masks:
+				<code>{name}, {text}, {url}, {title}, {alt}, {host}, {ext}</code>.</div>
+
+			<div class="row">Date masks:
+				<code>{yyyy}, {yy}, {MM}, {dd}, {hh}, {mm}, {ss}, {ms}</code>.</div>
+			<div class="row">Counter masks: <code>{counter}</code> and <code>{cc...c}</code>. For example,
+				<code>{cccc}</code> will generate the sequence <code>0001, 0002...</code>etc.</div>
+
+			<div class="row">URL parts masks: <code>{url:n}</code>. If url = <code>http://example.com/aaa/bbb/ccc.jpg</code>
+				then <code>{url:0}</code> = <code>example.com</code>, <code>{url:1}</code> = <code>aaa</code> and so on. Also <code>{url:-1}</code>
+				= <code>ccc.jpg</code>, <code>{url:-2}</code> = <code>bbb</code> etc.</div>
+
+			<div class="row">A more advanced type of mask use the URL search parameters (if available). For example, if the
+				search part
+				of an url is <code>foo=1&bar=2</code> we can define a mask as <code>{search:foo}</code> or <code>{search:bar}</code></div>
+
+			<div class="row">The literals <code>{</code> and <code>}</code> as such must be escaped: <code>\{</code>, <code>\}</code></div>
+		</div>
+	</div>
+
+	<div id="template-24" style="display:none; padding:4px;font-size: 12px;max-width:400px;color:#616161;">
+		<div style = "display:flex;justify-content: space-between;">
+
+			<div>This is a highly experimental feature; click the help icon for info.</div>
+			<svg id="pmask-info" style="width:20px;height:20px;cursor: pointer;" viewBox="0 0 24 24">
+					<path d="M0 0h24v24H0z" fill="none" />
+					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+
+				</svg>
+<!-- 			 -->
+
+
+			<!--The extension tries here to extract <strong>contextual info besides the normal text attributes</strong> of items. This works well only
+			if the selected items are integrated in the parent page in <strong>a very similar manner</strong>.  The following table exemplifies
+			this extra attributes using <strong>the first selected item</strong>. -->
+
+
+		</div>
+		<div style="max-height: 200px;overflow-y: auto;    margin-top: 0.5rem;border: 1px solid #757575;">
+			<table class=" mdl-data-table" id="proximity-masks-table" style="">
+				<thead>
+					<tr>
+						<th class="pmask-name" style="position:sticky;border-bottom: 1px solid #EEEEEE;">
+							Mask
+
+						</th>
+						<th class="mdl-data-table__cell--non-numeric pmask-value" style="    padding-left: 0.5rem!important;position:sticky;border-bottom: 1px solid #EEEEEE;">
+							Value
+						</th>
+
+					</tr>
+				</thead>
+				<tbody id="proximity-masks-tbody">
+
+				</tbody>
+			</table>
+		</div>
+		<div id="add-new-row-mask-div" class="mdc-form-field">
+			<button class="mdc-button mdc-button--dense " id="add-new-row-mask">
+				Add new mask
+			</button>
+		</div>
+	</div>
+
+	<div id="template-25" style="display:none; padding:4px;font-size: 12px;max-width:400px;color:#616161;">
+			 Here you can define  "proximity masks" in the <code>{extra:n}</code> form.
+			<br> <br>First you click the "add new mask" button; this will highlight the selected items on their original web page (they should belont to the same web page). After that you must indicate a text zone from web page (by right clicking it) associated with the first selected item
+			(and usually located in the proximity of that item). 
+			
+			<br><br>The extension will try to identify the corresponding text zones
+			for the rest of selected items. 
+			
+			<br><br>After right clicking you may return to this dialog to examine the table or define a
+			new proximity mask
+		</div>
+
+	<div id="template-4">
+		<ul id="actions-menu-2" class="mdc-list mdc-list--dense demo-list">
+			<li id="show-filename" class="mdc-list-item">
+				<div class="mdc-radio customradio2" data-demo-no-js="">
+					<input value="name" class="mdc-radio__native-control" checked="checked" id="radio2-filename" name="radio2" type="radio">
+					<div class="mdc-radio__background">
+						<div class="mdc-radio__outer-circle"></div>
+						<div class="mdc-radio__inner-circle"></div>
+					</div>
+				</div>
+				<label for="radio2-filename">FILENAME</label>
+
+			</li>
+
+			<li id="show-url" class="mdc-list-item">
+				<div class="mdc-radio customradio2" data-demo-no-js="">
+					<input value="url" class="mdc-radio__native-control" id="radio2-url" name="radio2" type="radio">
+					<div class="mdc-radio__background">
+						<div class="mdc-radio__outer-circle"></div>
+						<div class="mdc-radio__inner-circle"></div>
+					</div>
+				</div>
+				<label for="radio2-url">URL</label>
+			</li>
+
+			<li id="show-text" class="mdc-list-item">
+				<div class="mdc-radio customradio2" data-demo-no-js="">
+					<input value="text" class="mdc-radio__native-control" id="radio2-text" name="radio2" type="radio">
+					<div class="mdc-radio__background">
+						<div class="mdc-radio__outer-circle"></div>
+						<div class="mdc-radio__inner-circle"></div>
+					</div>
+				</div>
+				<label for="radio2-text">TEXT</label>
+			</li>
+
+			<li id="show-title" class="mdc-list-item">
+				<div class="mdc-radio customradio2" data-demo-no-js="">
+					<input value="title" class="mdc-radio__native-control" id="radio2-title" name="radio2" type="radio">
+					<div class="mdc-radio__background">
+						<div class="mdc-radio__outer-circle"></div>
+						<div class="mdc-radio__inner-circle"></div>
+					</div>
+				</div>
+				<label for="radio2-title">TITLE</label>
+			</li>
+
+			<li id="show-alt" class="mdc-list-item">
+				<div class="mdc-radio customradio2" data-demo-no-js="">
+					<input value="alt" class="mdc-radio__native-control" id="radio2-alt" name="radio2" type="radio">
+					<div class="mdc-radio__background">
+						<div class="mdc-radio__outer-circle"></div>
+						<div class="mdc-radio__inner-circle"></div>
+					</div>
+				</div>
+				<label for="radio2-alt">ALT TEXT</label>
+			</li>
+
+		</ul>
+	</div>
+
+	<div id="template-5" style="display:none">
+		<ul id="actions-menu-1" class="mdc-list mdc-list--dense demo-list">
+			<!-- <li id="add-url" class="mdc-list-item">Add urls from clipboard</li> -->
+			<li id="clear-filters" class="mdc-list-item">Clear all filters</li>
+			<li id="remove-filtered" class="mdc-list-item">Remove filtered items</li>
+			<li id="reset-list" class="mdc-list-item">Reset list</li>
+			<!-- 			<li id="reload-extension" class="mdc-list-item" style="color:tomato;">Reload extension</li> -->
+		</ul>
+	</div>
+
+	<div id="template-15" style="display:none">
+		<ul id="folders-list" class="mdc-list mdc-list--dense demo-list">
+
+		</ul>
+	</div>
+
+	<div id="template-14" style="display:none">
+		<ul id="actions-menu-clear" class="mdc-list mdc-list--dense demo-list">
+			<li id="clear-completed" class="mdc-list-item">Clear completed downloads</li>
+			<li id="clear-inactives" class="mdc-list-item">Clear all inactive items</li>
+		</ul>
+	</div>
+
+	<div id="template-6" style="display:none">
+		<ul class="mdc-list mdc-list--dense demo-list">
+			<li class="mdc-list-item">Single-line item</li>
+			<li class="mdc-list-item">Single-line item</li>
+			<li class="mdc-list-item">Single-line item</li>
+		</ul>
+	</div>
+
+	<div id="template-7" style="display:none">
+		<ul id="actions-menu-7" class="mdc-list mdc-list--dense demo-list">
+			<li id="open" class="mdc-list-item">Open file</li>
+			<li id="open-folder" class="mdc-list-item">Open directory</li>
+			<li id="toggle" class="mdc-list-item">Pause</li>
+			<li id="cancel" class="mdc-list-item">Cancel download</li>
+			<li id="retry" class="mdc-list-item">Retry download</li>
+			<li id="remove" class="mdc-list-item">Remove from list</li>
+			<li id="delete" class="mdc-list-item">Delete file from disk</li>
+		</ul>
+	</div>
+
+
+	<div id="template-8" style="display:none">
+
+		<table id="info-table" class="mdl-data-table">
+			<tbody>
+				<tr id="info-directory">
+					<td>
+						<b>Directory</b>
+					</td>
+					<td class="last-td">Default Directory</td>
+				</tr>
+				<tr id="info-status">
+					<td>
+						<b>Status</b>
+					</td>
+					<td class="last-td">queued</td>
+				</tr>
+				<tr id="info-size">
+					<td>
+						<b>File size</b>
+					</td>
+					<td class="last-td">Unknown</td>
+				</tr>
+				<tr id="info-time">
+					<td class="first-td">
+						<b>Time remaining</b>
+					</td>
+					<td class="last-td"></td>
+				</tr>
+				<tr id="info-errors">
+					<td>
+						<b>Errors</b>
+					</td>
+					<td class="last-td">
+						None
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div id="template-9" style="display:none">
+		<div style="text-align: center;padding: 0.25rem;background-color: #3F51B5;color: whitesmoke;font-size:1rem;margin-bottom: 0.5rem;">Batch
+			actions for <span id="mr-contor"></span> selected items</div>
+		<div style="padding: 0.5rem;padding-bottom: 0.25rem;padding-top: 0;">
+			<div class="mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="mr-mask-div" style="width: 100%;position:relative;padding:0;">
+				<input id="mr-mask" class="mdc-text-field__input" spellcheck="false" type="text">
+				<label for="mr-mask" class="mdc-text-field__label">
+					Set mask for selected files
+				</label>
+				<div class="mdc-text-field__bottom-line"></div>
+				<svg id="mask-info" style="width:22px;height:22px;margin-bottom: 0.25rem;cursor: pointer;" viewBox="0 0 24 24">
+					<path d="M0 0h24v24H0z" fill="none" />
+					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+
+				</svg>
+				<svg style = "display:none" class="exp-feat" id="add-proximity-mask" style="width:22px;height:22px;margin-bottom: 0.25rem;cursor: pointer;"
+				 viewBox="0 0 24 24">
+					<title>Add proximity masks</title>
+					<path d="M0 0h24v24H0z" fill="none" />
+					<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
+
+				</svg>
+			</div>
+
+			<div class="mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="mr-directory-div" style="width: 100%;padding:0;">
+				<input id="mr-directory" class="mdc-text-field__input input-text" spellcheck="false" type="text">
+				<label for="mr-directory" class="mdc-text-field__label">
+					Set directory for selected files
+				</label>
+				<button class="close-button hidden"></button>
+				<div class="mdc-text-field__bottom-line"></div>
+			</div>
+
+			<div id="mr-search-header" style="padding-left:0.5rem;width: 100%;margin-top: 1rem;justify-content: space-between;display: flex;">
+				<div style="display: flex;flex-direction: column;">
+					<div class="spacer"></div>
+					<b style="vertical-align: middle;color: var(--title);">SEARCH FOR</b>
+					<div class="spacer"></div>
+				</div>
+				<div style="align-items: center;vertical-align: middle;display: inline-flex;padding-bottom: 0.25rem;">
+
+					<div class="mdc-checkbox customcheck" style="margin-left:0.5rem">
+						<input id="mr-case" class="mdc-checkbox__native-control" type="checkbox">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+							<div class="mdc-checkbox__mixedmark"></div>
+						</div>
+					</div>
+					<label for="mr-case">Case Sensitive</label>
+					&nbsp;&nbsp;
+					<div class="mdc-checkbox customcheck" style="margin-left:0.5rem">
+						<input id="mr-reg" class="mdc-checkbox__native-control" type="checkbox">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+							<div class="mdc-checkbox__mixedmark"></div>
+						</div>
+					</div>
+					<label for="mr-reg">RegExp</label>
+				</div>
+			</div>
+
+			<div class="mr mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="mr-search-div" style="width: 100%;">
+				<input id="mr-search" class="mdc-text-field__input input-text" spellcheck="false" type="text">
+				<button class="close-button special hidden"></button>
+				<div class="mdc-text-field__bottom-line"></div>
+			</div>
+
+			<div id="mr-replace-header" style="padding-left:0.5rem;width: 100%;margin-top: 1rem;justify-content: space-between;display: flex;"
+			 class="">
+
+				<div style="display: flex;flex-direction: column;">
+					<div class="spacer"></div>
+					<b style="vertical-align: middle;color: var(--title);">REPLACE WITH</b>
+					<div class="spacer"></div>
+				</div>
+				<div style="align-items: center;vertical-align: middle;display: inline-flex;padding-bottom: 0.25rem;">
+					<label for="mr-first">Only first occurence</label>
+					<div class="mdc-checkbox customcheck" style="margin-left:0.5rem">
+						<input id="mr-first" class="mdc-checkbox__native-control" type="checkbox">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+							<div class="mdc-checkbox__mixedmark"></div>
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+			<div class="mr mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="mr-replace-div" style="width: 100%;">
+				<input id="mr-replace" class="mdc-text-field__input input-text" spellcheck="false" type="text">
+				<button class="close-button special hidden"></button>
+				<div class="mdc-text-field__bottom-line"></div>
+			</div>
+			<div id="mr-bottom" class="mdc-form-field" style="width: 100%;margin-top: 0.25rem;font-size: 0.8125rem;color: #367694;font-weight: 500;justify-content: space-between;">
+				<div class="mdc-form-field" style="font-size: 0.8125rem;color: #367694;font-weight: 500;padding-right: 16px;">
+					<div class="mdc-checkbox customcheck" style="margin-left:0.5rem">
+						<input id="mr-preview" class="mdc-checkbox__native-control" type="checkbox">
+						<div class="mdc-checkbox__background">
+							<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+								<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+							</svg>
+							<div class="mdc-checkbox__mixedmark"></div>
+						</div>
+					</div>
+					<label for="mr-preview" style="font-size: 0.875rem;">PREVIEW</label>
+				</div>
+				<button class="mdc-button mdc-button--dense " id="mr-clear">
+					Reset
+				</button>
+				<button class="mdc-button mdc-button--dense " id="confirmMultiRename">
+					CONFIRM
+				</button>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="template-10" style="display:none">
+		<div id="sc-title-div" style="width: 100%;justify-content:space-between;">
+			<div style="text-align: center;padding: 0.25rem;background-color: #3F51B5;color: whitesmoke;font-size:1rem;">Scan
+				checked pages for extra
+				resources</div>
+
+
+
+		</div>
+
+		<div style="padding: 0.5rem;padding-bottom: 0.25rem;padding-top: 0;">
+			<div id="sc-textfilter-div" style="width: 100%; padding-bottom:0;">
+				<div class="sc mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="sc-textfilter-inner-div"
+				 style="flex-grow:1;margin-right:0.5rem">
+					<input id="sc-textfilter" type="text" class="mdc-text-field__input input-text" spellcheck="false">
+					<label for="sc-textfilter" class="mdc-text-field__label">
+						Text filter
+					</label>
+					<button class="close-button hidden"></button>
+					<div class="mdc-text-field__bottom-line"></div>
+				</div>
+
+				<div id="sc-textfilter-source-inner-div" class="sc mdc-select" title="source text used by text filter">
+					<select class="mdc-select__native-control" id="sc-textfilter-source" name="sc-textfilter-source">
+						<option value="all" selected>All</option>
+						<option value="text">Link text</option>
+						<option value="name">File name</option>
+						<option value="url">Link url</option>
+						<option value="title">Link title</option>
+						<option value="alt">Alt text</option>
+					</select>
+					<label class="mdc-floating-label mdc-floating-label--float-above" for="sc-textfilter-source" style="opacity: 0.7;font-size: 0.875rem;">Text
+						origin</label>
+					<div class="mdc-line-ripple"></div>
+				</div>
+
+			</div>
+			<div id="sc-extensions-div" style="width: 100%;padding-top:0;">
+				<div class="sc mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="sc-textfilter-inner-div"
+				 style="width: 9rem;">
+					<input id="sc-extensions" type="text" class="mdc-text-field__input input-text" spellcheck="false">
+					<label for="sc-extensions" class="mdc-text-field__label">
+						Extensions
+					</label>
+					<button class="close-button hidden"></button>
+					<div class="mdc-text-field__bottom-line"></div>
+				</div>
+
+				<div id="sc-progress-div" style="font-size: 1rem;display: flex;flex-direction: column;">
+					<div class="spacer"></div>
+					<div id="sc-progress" style="margin-bottom: 0.5rem;">0 / 0</div>
+
+				</div>
+
+
+				<div id="sc-ok-div" style="display: flex;flex-direction: column;">
+					<div class="spacer"></div>
+					<button id="sc-ok" type="button" style="width: 6rem; text-align: center;" class="mdc-button mdc-button--dense">START</button>
+
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+
+	<div id="template-11" style="display:none"></div>
+	<div id="template-13" style="display:none"></div>
+
+	<div id="template-12" style="display:none">
+		<div id="tb-title-div" style="display:flex;width:100%;background-color: #3F51B5;color: whitesmoke;font-size:1rem;">
+			<div class="spacer"></div>
+			<div style="font-size: 12px;text-align: center;flex-grow:1; flex-wrap: nowrap;padding:0.25rem;">Collect links
+				from open tabs</div>
+			<div class="spacer" style="display:flex;position:relative;">
+				<div class="spacer"></div>
+				<div id="tabsOptions" style="font-size: 1rem;text-align: center;/* flex-grow:1; */flex-wrap: nowrap;padding:0.25rem;cursor: pointer;margin-right: 0.25rem;">
+					<svg class="icon middle smallest" fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+						<path d="M0 0h24v24H0z" fill="none" />
+						<path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+					</svg>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="fieldset">
+				<div class="legend">Tabs filter</div>
+				<div id="tb-select-tabs-radio" class="mdc-form-field" style="display:flex;width: 100%;justify-content:space-between;">
+					<div class="mdc-form-field">
+						<div class="mdc-radio customradio2" data-demo-no-js="">
+							<input value="active" class="mdc-radio__native-control" checked="checked" id="tb-active" name="tb-radio" type="radio">
+							<div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							</div>
+						</div>
+						<label for="tb-active">ACTIVE TAB</label>
+					</div>
+					<div class="mdc-form-field">
+						<div class="mdc-radio customradio2" data-demo-no-js="">
+							<input value="all" class="mdc-radio__native-control" id="tb-all" name="tb-radio" type="radio">
+							<div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							</div>
+						</div>
+						<label for="tb-all">ALL</label>
+					</div>
+					<div class="mdc-form-field">
+						<div class="mdc-radio customradio2" data-demo-no-js="">
+							<input value="right" class="mdc-radio__native-control" id="tb-right" name="tb-radio" type="radio">
+							<div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							</div>
+						</div>
+						<label for="tb-right">RIGHT</label>
+					</div>
+					<div class="mdc-form-field">
+						<div class="mdc-radio customradio2" data-demo-no-js="">
+							<input value="left" class="mdc-radio__native-control" id="tb-left" name="tb-radio" type="radio">
+							<div class="mdc-radio__background">
+								<div class="mdc-radio__outer-circle"></div>
+								<div class="mdc-radio__inner-circle"></div>
+							</div>
+						</div>
+						<label for="tb-left">LEFT</label>
+					</div>
+
+
+				</div>
+				<div id="tb-tabfilter-div" style="width: 100%; padding-bottom:0;">
+					<div class="tb mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="tb-tabfilter-inner-div"
+					 style="width: 100%;margin-right:0.5rem;height: 32px;">
+						<input id="tb-tabfilter" type="text" class="mdc-text-field__input input-text" spellcheck="false">
+						<label for="tb-tabfilter" class="mdc-text-field__label">
+							Tab url filter
+						</label>
+						<button class="close-button hidden"></button>
+						<div class="mdc-text-field__bottom-line"></div>
+					</div>
+				</div>
+
+			</div>
+			<div class="fieldset">
+				<div class="legend">Links filter</div>
+				<div id="tb-textfilter-div" style="width: 100%; padding-bottom:0;">
+					<div class="tb mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="tb-textfilter-inner-div"
+					 style="flex-grow:1;margin-right:0.5rem">
+						<input id="tb-textfilter" type="text" class="mdc-text-field__input input-text" spellcheck="false">
+						<label for="tb-textfilter" class="mdc-text-field__label">
+							Text filter
+						</label>
+						<button class="close-button hidden"></button>
+						<div class="mdc-text-field__bottom-line"></div>
+					</div>
+
+					<div id="tb-textfilter-source-inner-div" class="tb mdc-select" title="source text used by text filter">
+						<select class="mdc-select__native-control" id="tb-textfilter-source" name="tb-textfilter-source">
+							<option value="all" selected>All</option>
+							<option value="text">Link text</option>
+							<option value="name">File name</option>
+							<option value="url">Link url</option>
+							<option value="title">Link title</option>
+							<option value="alt">Alt text</option>
+						</select>
+						<label class="mdc-floating-label mdc-floating-label--float-above" for="tb-textfilter-source" style="opacity: 0.7;font-size: 0.875rem;">Text
+							origin</label>
+						<div class="mdc-line-ripple"></div>
+					</div>
+
+				</div>
+
+				<div id="tb-extensions-div" style="width: 100%;padding-top:0;display:flex;justify-content: space-between;">
+					<div class="tb mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="tb-textfilter-inner-div"
+					 style="width: 9rem;">
+						<input id="tb-extensions" type="text" class="mdc-text-field__input input-text" spellcheck="false">
+						<label for="tb-extensions" class="mdc-text-field__label">
+							Extensions
+						</label>
+						<button class="close-button hidden"></button>
+						<div class="mdc-text-field__bottom-line"></div>
+					</div>
+
+					<div class="mdc-form-field" style="position: relative;bottom: -0.4rem;">
+						<label for="tb-only-pictures">Only images</label>
+						<div class="mdc-checkbox customcheck">
+
+							<input id="tb-only-pictures" class="mdc-checkbox__native-control" type="checkbox">
+							<div class="mdc-checkbox__background">
+								<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+									<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+								</svg>
+								<div class="mdc-checkbox__mixedmark"></div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div id="tb-bottom" style="width: 100%;padding: 0.5rem;display: flex;justify-content: space-between;margin-top:0.5rem;">
+
+				<div id="tb-clear-div" style="font-size: 1rem;display: flex;flex-direction: column;">
+					<div class="spacer"></div>
+					<button class="mdc-button mdc-button--dense" id="tb-reset">
+						Reset
+					</button>
+
+				</div>
+
+
+				<div id="tb-progress-div" style="font-size: 1rem;display: flex;flex-direction: column;">
+					<div class="spacer"></div>
+					<div id="tb-progress" style="margin-bottom: 0.5rem;margin-left: 0.25rem;">0 / 0 tabs</div>
+
+				</div>
+
+				<div id="tb-results-div" style="color: rgb(0,137,123);font-size: 1rem;display: none;flex-direction: column;">
+					<div class="spacer"></div>
+					<div id="tb-results" class="tb-done" style="margin-bottom: 0.5rem;margin-left: 0.25rem;">wait...</div>
+				</div>
+
+				<div id="tb-ok-div" style="display: flex;flex-direction: column;">
+					<div class="spacer"></div>
+					<button id="tb-ok" type="button" style="width: 6rem; text-align: center;" class="mdc-button  mdc-button--dense">START</button>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</div>
+
+	<div id="template-16" style="display:none">
+		<ul id="folders-list-A" class="mdc-list mdc-list--dense demo-list">
+
+		</ul>
+	</div>
+	<div id="template-17" style="display:none">
+		<ul id="folders-list-B" class="mdc-list mdc-list--dense demo-list">
+
+		</ul>
+	</div>
+	<div id="template-18" style="display:none">
+		<ul id="folders-list-C" class="mdc-list mdc-list--dense demo-list">
+
+		</ul>
+	</div>
+
+	<div id="template-19" style="display:none; padding:4px;font-size: 12px;max-width:400px;color:#616161;">
+		<p style="padding:4px;"><span style="font-weight: 500;">Basic example:</span> <code>term_1 term_2</code>. This shows
+			those resources for which the current displayed attribute contains
+			<code>term_1</code> <span style="font-weight: 500;text-decoration: underline;">and</span>
+			<code>term_2</code>.</p>
+		<p style="padding:4px;">But it's also possible to use here the special syntax <code>source:term</code> where source
+			is <code>all|url|name|text|title|alt</code>
+			(or shorter corresponding variants <code>a|u|n|x|t|l</code>). <span style="font-weight:500;">Negative</span> forms
+			are also possible (using <code>"-"</code> operator).</p>
+
+		<p style="font-weight: 500;color:#0277bd;margin-left:0.5rem;">Filtering examples:</p>
+		<ul>
+			<li>
+				<div class="inner-li">
+					<code>all:term_1</code> shows those resources for which at least an attribute contains
+					<code>term_1</code>. Shorter version
+					<code>a:term_1</code>.</div>
+			</li>
+			<li>
+				<div class="inner-li">
+					<code>url:term_1 text:term_2</code> shows those resources that have
+					<code>term_1</code> somewhere in their url <span style="font-weight: 500;text-decoration: underline;">and</span>
+					<code>term_2</code> somewhere in their link text. Shorter version:
+					<code>u:term_1 x:term_2</code>.</div>
+			</li>
+			<li>
+				<div class="inner-li">
+					<code>url:term_1 -text:term_2</code> shows those resources that have
+					<code>term_1</code> somewhere in their url and <span style="font-weight: 500;text-decoration: underline;">not</span>
+					<code>term_2</code> in their link text. Shorter version:
+					<code>u:term_1 -x:term_2</code> (note that the search terms do not have spaces).</div>
+			</li>
+		</ul>
+
+	</div>
+
+	<div id="template-20" style="display:none; padding:4px;font-size: 12px;max-width:400px;color:#616161;">
+		<p>Here the user can set a download directory.</p>
+		<p>Please note that every such directory is defined only <strong>relative to the default download directory</strong>
+			(this is a web extensions security limitation).</p>
+		<p>A new folder is written in the form <code>aaa/bbb/.../zzz</code>.<br>
+			For example <code>Docs</code> or <code>Docs/Math/Algebra</code>.</p>
+		<p>The user can first define a custom <strong>favorite folders list</strong> (see extension's general settings, the
+			<code>Download directories</code> section). Once defined, this list will be available via <strong>autocomplete</strong>
+			or simply by <strong>double-clicking</strong> this text field.</p>
+		<p>Also, the user can decide via extension's settings if the autocomplete list should include some of <strong>the
+				recently used directories</strong>.</p>
+
+		<p>The directory name can include the following masks: <code>{yyyy}, {yy}, {MM}, {ww}, {dd}, {host}, {url:n}, {ext} </code></p>
+		<div class="firefox hidden">The default download directory location may be changed using the Firefox general options
+			page.</div>
+		<div class="chrome hidden">
+			<p><button id="open-chrome-settings">Click here</button> to enter the Chrome general download settings window.<br>
+				Here you can <strong>change the default download directory location</strong>.<br>
+				Also, you should verify here that <code>Ask where to save each file before downloading</code> option is <strong>not
+					checked</strong> (otherwise a lot of Save As dialog boxes will pop up, defeating the main purpose of this addon,
+				namely <strong>mass downloading</strong>)</p>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+	<div id="template-21" style="display:none; padding:4px;font-size: 12px;max-width:260px;color:#616161;">
+		<div class="mdc-form-field" style="">
+			<div class="mdc-checkbox customcheck">
+				<input id="tabsDownloadNow" class="mdc-checkbox__native-control" type="checkbox">
+				<div class="mdc-checkbox__background">
+					<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+						<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+					</svg>
+					<div class="mdc-checkbox__mixedmark"></div>
+				</div>
+			</div>
+			<label for="tabsDownloadNow">Download links immediately</label>
+		</div>
+
+		<div class="mdc-form-field" style="margin-left: 2rem;">
+			<div class="mdc-checkbox customcheck">
+				<input id="tabsApplyMR" class="mdc-checkbox__native-control" type="checkbox">
+				<div class="mdc-checkbox__background">
+					<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+						<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+					</svg>
+					<div class="mdc-checkbox__mixedmark"></div>
+				</div>
+			</div>
+			<label for="tabsApplyMR">Apply the current multirename dialog settings</label>
+		</div>
+
+		<div class="mdc-form-field" style="">
+			<div class="mdc-checkbox customcheck">
+				<input id="tabsClose" class="mdc-checkbox__native-control" type="checkbox">
+				<div class="mdc-checkbox__background">
+					<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+						<path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+					</svg>
+					<div class="mdc-checkbox__mixedmark"></div>
+				</div>
+			</div>
+			<label for="tabsClose">Close tabs when collecting is completed <span class="chrome  hidden">(active tab excepted)</span></label>
+		</div>
+	</div>
+
+	<div id="template-22" style="display:none">
+		<ul id="toolbar-menu-list" class="mdc-list mdc-list--dense demo-list">
+			<li id="faq" class="mdc-list-item">Frequently asked questions</li>
+			<li id="general-help" class="mdc-list-item">General help page</li>
+			<li id="user-report" class="mdc-list-item">Report an issue/send feedback</li>
+			<!-- <li id="about-extension" class="mdc-list-item">About extension</li> -->
+			<li id="reload-extension" class="mdc-list-item" style="color:#E91E63;">Reload extension</li>
+		</ul>
+	</div>
+
+	<div id="template-23" style="display:none">
+		<ul id="actions-menu-1" class="mdc-list mdc-list--dense demo-list">
+			<li id="add-urls" class="mdc-list-item">Inport URLs from clipboard</li>
+			<li id="add-urls-file" class="mdc-list-item chrome hidden">
+				Inport URLs from local file
+			</li>
+			<li id="set-pattern-url" class="mdc-list-item">
+				Set a pattern URL
+			</li>
+			<li id="export-urls-file" class="mdc-list-item">Export selected items to file</li>
+		</ul>
+	</div>
+
+	<div id="template-26" style="display:none;width:400px;color:#616161;">
+		<div id="pt-title-div" style="width: 100%;justify-content:space-between;">
+			<div style="text-align: center;padding: 0.25rem;background-color: #3F51B5;color: whitesmoke;font-size:1rem;">Set a pattern URL and import the generated URLs</div>
+
+
+
+		</div>
+
+		<div style="padding: 0.5rem;padding-bottom: 0.25rem;padding-top: 0;">
+			<div id="pt-textfilter-div" style="width: 100%; padding-bottom:0;">
+				<div class="pt mdc-text-field mdc-text-field--upgraded" data-mdc-auto-init="MDCTextField" id="pt-textfilter-inner-div"
+				 style="flex-grow:1;margin-right:0.5rem">
+					<input id="pt-textfilter" type="text" class="mdc-text-field__input input-text" spellcheck="false">
+					<label for="pt-textfilter" class="mdc-text-field__label">
+						Set URL
+					</label>
+					<button class="close-button hidden"></button>
+					<div class="mdc-text-field__bottom-line"></div>
+				</div>
+
+				<div id="pt-ok-div" style="display: flex;flex-direction: column;">
+					<div class="spacer"></div>
+					<button id="pt-ok" type="button" style="padding: 0px 8px; text-align: center;margin-bottom: 0.3rem;" class="mdc-button mdc-button--dense">IMPORT</button>
+				</div>
+
+
+
+				<div id="pt-info-div" style="display: flex;flex-direction: column;margin-left:0.2rem;">
+					<div class="spacer"></div>
+					<svg id="pt-info" style="width: 20px;height: 20px;margin-bottom: 0.5rem;cursor: pointer;" viewBox="0 0 24 24">
+						<path d="M0 0h24v24H0z" fill="none" />
+						<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+	
+					</svg>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div id="template-27" style="display:none; padding:4px;font-size: 12px;max-width:400px;color:#616161;">
+		<div>For example <code>http://example.com/image-[001:100].jpg </code></div>
+		<p>These pattern URLs use the special batch descriptors <code>[start:end]</code> or <code>[start:end:step]</code> where
+			<ul>
+				<li><code>start/end</code> are positive integers or ascii letters</li>
+				<li>[optional] <code>step</code> is an integer (eventually negative)</li>
+			</ul></p>
+	<div>Note that <code>start/end</code> must have the same type <code>integer|upper|lower</code>. </div><div>More examples:</div>
+	<table id="pt-examples">
+		<tbody><tr>
+		<th>Batch descriptor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		<th>Generated result</th>
+		</tr>
+		<tr>
+		<td>[1:100]</td>
+		<td>1, 2, 3 ... 100</td>
+		</tr>
+		<tr>
+			<td>[1:100:3]</td>
+			<td>1, 4, 7 ... 100 </td>
+		</tr>
+		<td>[001:100]</td>
+		<td>001, 002, ... 099, 100</td>
+		</tr>
+		<tr>
+			<td>[100:1:-3]</td>
+			<td>100, 97, 94 ... 1</td>
+			</tr>
+		<tr>
+		<tr>
+		<td>[a:z]</td>
+		<td>a, b, c ... z</td>
+		</tr>
+		<tr>
+		<td>[A:G:2]</td>
+		<td>A, C, E, G</td>
+		</tr>
+		</tbody></table>
+
+		
+	</div>
+
+	<div id="pasteFromClipboard" style="width:10px; height:10px;position:absolute;z-index:-1;" contenteditable="true"></div>
+
+	<input type="file" id="choose-import-file" style="display:none;">
+
+	<input id="writeToClipboard" style="border-width: 0px;position: absolute;z-index: -1;">
+
+
+	<div id="notification-area" class="hidden" data-count="0">
+		<div id="notification-content"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+			do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+	</div>
+	<div class = "loader hidden"></div>
+	<script src="main.js"></script>
+
+</body>
+
+</html>

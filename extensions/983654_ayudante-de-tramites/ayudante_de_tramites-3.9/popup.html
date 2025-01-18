@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="jquery.js"></script>
+<script src="popup2.js"></script>
+<script src="historial.js"></script>
+<style type="text/css">
+body{
+  min-width:200px;
+  max-width:1920px;
+  background-color:#000;
+}
+a{
+  color:#f90;
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:underline;
+}
+j{
+  color:#000;
+  font-weight: bold;
+  text-decoration:none;
+}
+j:hover{
+  text-decoration:underline;
+  font-weight: bold;
+}
+p{
+  text-align: center;
+  font:1.1em sans-serif;
+  color:#fff;
+}
+h1{
+  text-align: center;
+  font:1.3em sans-serif;
+  color:#fff;
+}
+h2{
+  text-align: center;
+  font:1.1em sans-serif;
+  color:#000;
+  background-color:#fff;
+}
+h3{
+  text-align: center;
+  font:1.2em sans-serif;
+  color:#fff;
+}
+h4{
+  font:0.7em sans-serif;
+  color:#000;
+  background-color:#fff;
+}
+</style>
+</head>
+<body>
+<h1>Ayudante de Tramites</h1>
+<h3>Extension: <button class="button button1" id="disableButton" style="display:none"></button>
+<br id="br1" style="display:none">
+<br id="br2" style="display:none"></h3>
+<p id="muestraip"></p>
+<script src="popup.js"></script>
+<p><a target="_blank" href="http://legalizacionve.mppre.gob.ve">Pagina Apostilla!</a></p>
+<p><a target="_blank" href="https://tramites.saime.gob.ve/index.php?r=site/login">Pagina Saime!</a></p>
+<p><a target="_blank" href="http://certificacioninternacional.mijp.gob.ve/paginas/CU_login/index.php">Pagina Antecedentes!</a></p>
+<p><a target="_blank" href="https://citas.saren.gob.ve">Pagina Legalizaciones!</a></p>
+<p><a target="_blank" href="http://www.citavirtual.mppeu.gob.ve/">Pagina GTU!</a></p>
+<p><iframe id="twitter-widget-510" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 85px; height: 28px;" title="Twitter Tweet Button" src="https://platform.twitter.com/widgets/tweet_button.7a5ca036ea5299f1d2ebb2234731e35e.es.html#dnt=true&amp;hashtags=Apostilla%20%23GTU%20%23CitasGTU%20%23Saren%20%23CitasSaren%20%23Legalizacion%20%23PasaporteExpress%20%23SAIME%20%23AntecedentesPenales&amp;id=twitter-widget-510&amp;lang=es&amp;original_referer=https%3A%2F%2Fpublish.twitter.com%2F%3FbuttonHashtag%3DApostilla%2520%2523GTU%2520%2523CitasGTU%2520%2523Saren%2520%2523CitasSaren%2520%2523Legalizacion%2520%2523PasaporteExpress%2520%2523SAIME%2520%2523AntecedentesPenales%26buttonLarge%3Don%26buttonText%3DEstoy%2520usando%2520la%2520extensi%25C3%25B3n%2520%2522Ayudante%2520de%2520Tramites%2522%2520para%2520Firefox%252C%2520dicha%2520herramienta%2520me%2520ayuda%2520a%2520gestionar%2520mis%2520citas%2520de%2520manera%2520sencilla%2521%2520Descargalo%2520aqu%25C3%25AD%2521%26buttonType%3DTweetButton%26buttonUrl%3Dhttps%253A%252F%252Faddons.mozilla.org%252Fes%252Ffirefox%252Faddon%252Fayudante-de-tramites%252F%26lang%3Des%26widget%3DButton&amp;size=l&amp;text=Estoy%20usando%20la%20extensi%C3%B3n%20%22Ayudante%20de%20Tramites%22%20para%20Firefox%2C%20dicha%20herramienta%20me%20ayuda%20a%20gestionar%20mis%20citas%20de%20manera%20sencilla!%20Descargalo%20aqu%C3%AD!&amp;time=1532586662027&amp;type=share&amp;url=https%3A%2F%2Faddons.mozilla.org%2Fes%2Ffirefox%2Faddon%2Fayudante-de-tramites%2F" __idm_frm__="976" data-url="https://addons.mozilla.org/es/firefox/addon/ayudante-de-tramites/"></iframe></p>
+<h2>
+<table style="margin-left: auto; margin-right: auto;">
+<tr><td>DONACIONES</td></tr>
+<tr><td><j>Para Donar en BsS. deben darle click al boton "Pagar ahora"</j></td></tr>
+</table>
+<form action="https://forms.gle/CuJvmJssaT545UHK9" method="get" target="_blank">
+<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_paynow_LG.gif">
+</form>
+<img src="banks.png" width="180" height="45" />
+<table style="margin-left: auto; margin-right: auto;">
+<tr><td><j>Para Donar en Pesos Chilenos deben escanear el siguiente codigo QR.</j></td></tr>
+<tr><td><img src="qr.jpg" width="250" height="250" /></td></tr>
+</table></h2>
+<h2>Envio de Formularios</h2>
+<h4><button id="add_button" type="button"
+    title="Agrega un campo vacio de datos">Agregar Campo</button>
+	<button id="reload_button" type="button"
+    title="Recarga los campos de formulario">Recarga Campos</button>
+<table>
+    <thead>
+        <tr>
+            <th>Web a Ir</th>
+            <th><input id="form_action" type="text" /></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Metodo</th>
+            <th><select id="form_method">
+                <option value="get">GET</option>
+                <option value="post">POST</option>
+            </select></th>
+
+            <th></th>
+        </tr>
+        <tr>
+            <th>Chartset (No Cambiar)</th>
+            <th><input id="form_charset" type="text" /></th>
+            <th></th>
+        </tr>
+
+        <tr>
+            <th>Nombre</th>
+            <th>Datos</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody id="form_detail">
+    </tbody>
+</table>
+<form id="form_editor">
+<div id="form_hidden"></div>
+<input type='submit' title="Envia el formulario"/></form>
+<select id="form_select"></select></h4>
+</body>
+</html>

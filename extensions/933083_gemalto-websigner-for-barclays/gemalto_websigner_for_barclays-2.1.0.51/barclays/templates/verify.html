@@ -1,0 +1,77 @@
+<div id="superWrapper" class="verify" data-webSigner>
+<!-- MODALS -->
+	<div id="about" class="modal"> <!-- Getting version from WebEx -->
+		<p><span>About Web Signer</span></p>
+		<p class="error"></p>
+		<p id="WebExVersion"></p>
+		<p id="WebExBuildInfo"></p>
+		<p>©2024 Thales Group</p>
+		<button type="button" class="okButton action">Close</button>
+	</div>
+
+	<div id="viewCertificate" class="modal">
+		<button type="button" id="againButton" disabled="true">Refresh</button>
+		<button type="button" class="okButton action">Close</button>
+	</div>
+
+	<div id="errorModal" class="modal">
+		<p id="errorModalTitle"></p>
+		<p id="errorModalMessage"></p>
+		<button type="button" id="errorModalCloseButton" class="okButton action">Close</button>
+	</div>
+	
+	<div id="verificationResultModal" class="modal">
+		<table id="verifyDiv">
+			<!-- individual results of verification criteria are inserted here -->
+		</table>
+		<button type="button" class="okButton action">Close</button>
+	</div>
+
+		<!-- a modal that displays certificate details, including the chain -->
+	<div id="certificateDetailModal" class="modal">
+		<div id="certificateChainDiv" class="certificateChain"></div>
+		<div id="certificateDetailsDiv"></div>
+		<button type="button" class="okButton action">Close</button>
+	</div>
+	
+	<!-- SEMI-TRANSPARENT LAYOUT WHEN MODAL IS DISPLAYED -->
+	<div id="overlay"></div>
+	
+	<!-- outer border of the extension GUI -->
+	<div id="main" class="" style="position: relative;">
+		<!-- central column of elements (logo, multipage, data, controls) -->
+		<div id="contentWebsigner">
+			<section id="above">
+				<span id="aboveText">Digital Signature Verification</span>
+			</section>
+			<section id="middle">		
+				<!-- left hand menu (print, certificates and about) -->
+				<div id="menu">
+					<button type="button" id="menuPrint" class="menuItem" title="Print the content.">
+						<img class="assetWS" data-src="assets/img/print.png" alt="print">
+					</button>
+					<button type="button" id="menuCertificates" class="menuItem" title="Look at your certificates.">
+						<img class="assetWS" data-src="assets/img/certificate.png" alt="certificates">
+					</button>
+					<button type="button" id="menuAbout" class="menuItem" title="Additional information.">
+						<img class="assetWS" data-src="assets/img/about.png" alt="about">
+					</button>
+				</div>
+				<div id="renderDiv">
+					<img class="assetWS" id="render" data-src="assets/img/loading.gif" alt="rendered user data">
+				</div>
+			</section>
+			<section id="below">
+				<div id="bottomCtrl">
+					<div id="signedByDiv">
+						<p style="display:inline">signed by</p>
+						<button type="button" id="signatureCertificatesBtn" disabled="true" class="action" style="display: inline;" title="See the certification path of the signing certificate.">-</button>
+					</div>
+					<button type="button" id="verificationResult" title="See the verification results in detail.">
+					</button>
+				</div>
+			</section>
+		</div>			
+	</div>
+</div>
+<div id="toBePrinted" data-webSigner></div>

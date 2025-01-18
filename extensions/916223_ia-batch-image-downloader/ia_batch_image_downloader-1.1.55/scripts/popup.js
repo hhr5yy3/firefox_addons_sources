@@ -1,0 +1,136 @@
+/**
+ * ImageAssistant
+ * Project Home: http://www.pullywood.com/ImageAssistant/
+ * Author: 睡虫子(Joey)
+ * Copyright (C) 2013-2020 普利坞(Pullywood.com)
+**/
+"use strict";
+
+$((function() {
+    document.title = _MSG_("pop_doc_title");
+    $("#pop_main").append($("<ul />", {
+        class: "nav nav-pills nav-stacked"
+    }).append($("<li />").append($("<a />", {
+        class: "extBtn",
+        href: "#",
+        "data-level": 0,
+        text: _MSG_("pop_menu_item_ext_cur_page")
+    }).prepend($("<span />", {
+        class: "glyphicon glyphicon-flash"
+    })))).append($("<li />").append($("<a />", {
+        class: "extBtn",
+        href: "#",
+        "data-level": 1,
+        text: _MSG_("pop_menu_item_prefetch_link")
+    }).prepend($("<span />", {
+        class: "glyphicon glyphicon-warning-sign"
+    })))).append($("<li />").append($("<a />", {
+        class: "extBtn",
+        href: "#",
+        "data-level": 2,
+        text: _MSG_("pop_menu_item_analyze_prefetch")
+    }).prepend($("<span />", {
+        class: "fa fa-bomb"
+    })))).append($("<li />").append($("<a />", {
+        id: "multiUrlExtractor",
+        class: "multiExtBtn font-weight-bold info",
+        target: "_blank",
+        href: "./multiUrlExtractor.html",
+        text: _MSG_("pop_menu_item_ext_multi_url")
+    }).prepend($("<span />", {
+        class: "glyphicon glyphicon-list-alt"
+    })))).append($("<li />", {
+        class: "divider"
+    })).append($("<li />").append($("<a />", {
+        id: "_imageAssistant_qrcode_",
+        class: "optionBtn",
+        href: "#",
+        text: _MSG_("pop_menu_item_qrcode_current_page")
+    }).prepend($("<span />", {
+        class: "glyphicon glyphicon-qrcode"
+    })))).append($("<li />").append($("<a />", {
+        id: "_imageAssistant_editor_",
+        class: "optionBtn",
+        target: "_imageAssistant_editor_",
+        href: "./imageEditor.html",
+        text: _MSG_("pop_menu_item_image_editor")
+    }).prepend($("<span />", {
+        class: "glyphicon glyphicon-edit"
+    })))).append($("<li />", {
+        class: "divider"
+    })).append($("<li />").append($("<a />", {
+        id: "_cxyz_fav_",
+        class: "optionBtn",
+        target: "_imageAssistant_favorite",
+        href: "./favorite.html",
+        text: _MSG_("pop_menu_item_ext_favorite")
+    }).prepend($("<span />", {
+        class: "glyphicon glyphicon-folder-open"
+    })))).append($("<li />", {
+        class: "divider"
+    })).append($("<li />").append($("<a />", {
+        class: "optionBtn",
+        target: "_imageAssistant_options",
+        href: "./options.html",
+        text: _MSG_("pop_menu_item_ext_option")
+    }).prepend($("<span />", {
+        class: "glyphicon glyphicon-wrench"
+    })))).append($("<li />").append($("<a />", {
+        class: "optionBtn",
+        target: "_imageAssistant_options",
+        href: "./options.html?showMsg=about",
+        text: _MSG_("pop_menu_item_about")
+    }).append($("<span />", {
+        id: "newVersion",
+        text: "new"
+    })).prepend($("<span />", {
+        class: "glyphicon glyphicon-copyright-mark"
+    })))));
+    $(".extBtn").click((function() {
+        let _o_fetchLevel = $(this).attr("data-level");
+        _o_getBackground()._o_extractImageFromSelectedPage(_o_fetchLevel);
+        window.close();
+    }));
+    if (localStorage["version"] && localStorage["version"] > chrome.runtime.getManifest().version) {
+        $("#newVersion").show();
+    }
+    $.getJSON(_o_checkClientURL, (function(data) {
+        let $_w_favLink = $("#_cxyz_fav_");
+        if (data.shortName) {
+            let _w_avatar = DOMPurify.sanitize(data.icon);
+            let $_w_userInfo = $("<div />", {
+                id: "popup_user_info"
+            });
+            let $_o_img = $("<img />", {
+                src: _w_avatar,
+                id: "popup_avatar"
+            });
+            let $_o_appName = $("<span />", {
+                text: " " + data.shortName
+            });
+            $_w_userInfo.append($_o_img);
+            $_w_userInfo.append($_o_appName);
+            $_w_favLink.attr("href", _o_checkClientURL);
+            $_w_favLink.append($_w_userInfo);
+        } else {}
+    }));
+    $("#multiUrlExtractor").on("click", (function() {
+        _o_getBackground()._o_multiUrlExtract();
+        return false;
+    }));
+    $("#_imageAssistant_qrcode_").on("click", (function() {
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, (function(_w_tabArray) {
+            if (!_w_tabArray || _w_tabArray.length === 0) return;
+            let _w_selectedTab = _w_tabArray[0];
+            let _w_originalUrl = _w_selectedTab.url;
+            if (_w_originalUrl.indexOf("#") > 0) {
+                _w_originalUrl = _w_originalUrl.substring(0, _w_originalUrl.indexOf("#"));
+            }
+            _o_createQRCode(_w_originalUrl, false);
+        }));
+        return false;
+    }));
+}));

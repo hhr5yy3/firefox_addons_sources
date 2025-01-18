@@ -1,0 +1,536 @@
+@font-face { 
+  font-family: 'Quadrit'; 
+  src: url('./Quadrit.ttf'); 
+}
+
+* { 
+  font-family: Quadrit, sans-serif;
+  font-size: 20px;
+  color: #fff;
+}
+
+html, body { 
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 100%;
+  height: 100%;
+}
+html  { 
+  background-color: #000;
+}
+body { 
+  position: relative;
+  width: 550px;
+  height: 600px;
+  overflow: hidden;
+}
+
+
+#score, #highscore  { 
+  position: absolute;
+  display: inline;
+  top: 70px;
+  margin: 0px;
+  padding: 0px;
+  width: 160px;
+}
+#highscore { 
+  left: 180px;
+}
+#score h2, #score span, #highscore h2, #highscore span { 
+  display: block;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 2px;
+  font-size: 16px;
+  height: 21px;
+  margin: 0px;
+  padding: 0px;
+  text-align: right;
+  padding-right: 15px;
+}
+#score span, #highscore span { 
+  padding-right: 0px;
+}
+#highscore span { 
+  padding-right: 40px;
+}
+#message { 
+  position: absolute;
+  display: inline;
+  top: 413px;
+  left: 180px;
+  margin: 0px;
+  padding: 0px;
+  width: 210px;
+  height: 30px;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 2px;
+  font-size: 20px;
+  color: #fff200;
+  text-align: center;
+}
+#message.red { 
+  color: red;
+}
+
+span.combo, span.fruits { 
+  position: absolute;
+  letter-spacing: 1.5px;
+  font-size: 14px;
+  color: #89dfff;
+  font-weight: normal;
+}
+
+#panel, #home { 
+  width: 550px;
+  height: 600px;
+  margin: auto;
+  margin-top: 10px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  padding: 5px 10px 10px 10px;
+  background-color: #000;
+  transform: scale(0.8);
+  -moz-transform: scale(0.8);
+}     
+#board, #canvas-board, #canvas-paths, #canvas-fruits, #canvas-pacman, #canvas-bubbles, #canvas-ghost-blinky, #canvas-ghost-pinky, #canvas-ghost-inky, #canvas-ghost-clyde { 
+  width: 550px;
+  height: 550px;
+  position: absolute;
+}
+#canvas-paths { 
+  display: none;
+}
+#board {  
+  position: relative;
+}
+
+#canvas-lifes, #canvas-level-fruits { 
+  height: 30px;
+  top: 670px;
+  position: absolute;
+  z-index: 111111;
+}
+#canvas-lifes { 
+  width: 120px;
+  left: 50px;
+}
+#canvas-level-fruits { 
+  width: 265px;
+  right: 50px;
+}
+
+#control { 
+  position: absolute;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  bottom: -145px;
+  width: 550px;
+  height: 140px;
+  background-color: #666;
+  opacity: 0.7;
+  display: none;
+}
+#control-up, #control-down, #control-up-second, #control-down-second, #control-left, #control-right, #control-up-big, #control-down-big, #control-left-big, #control-right-big { 
+  position: absolute;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 64px;
+  cursor: pointer;
+  width: 64px;
+  height: 64px;
+  padding: 5px;
+}
+#control-up { 
+  top: 0px;
+  left: 70px;
+  background-image: url('../img/move-up.png');
+}
+#control-down { 
+  bottom: 0px;
+  right: 70px;
+  background-image: url('../img/move-down.png');
+}
+#control-up-second { 
+  top: 0px;
+  right: 70px;
+  background-image: url('../img/move-up.png');
+}
+#control-down-second{ 
+  bottom: 0px;
+  left: 70px;
+  background-image: url('../img/move-down.png');
+}
+#control-left { 
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+  background-image: url('../img/move-left.png');
+}
+#control-right { 
+  bottom: 0px;
+  top: 0px;
+  right: 0px;
+  background-image: url('../img/move-right.png');
+}
+
+#control-up-big, #control-down-big, #control-left-big, #control-right-big { 
+  position: absolute;
+  opacity: 0.2;
+  margin: auto;
+  padding: 0px;
+  display: none;
+  background-size: 98px;
+  z-index: 999999;
+}
+#control-up-big { 
+  bottom: 10px;
+  left: 0px;
+  right: 0px;
+  width: 125px;
+  height: 125px;
+  background-image: url('../img/move-up-big.png');
+}
+#control-down-big { 
+  bottom: -120px;
+  left: 0px;
+  right: 0px;
+  width: 125px;
+  height: 125px;
+  background-image: url('../img/move-down-big.png');
+}
+#control-left-big { 
+  left: 80px;
+  bottom: -90px;
+  width: 125px;
+  height: 175px;
+  background-image: url('../img/move-left-big.png');
+}
+#control-right-big { 
+  right: 80px;
+  bottom: -90px;
+  width: 125px;
+  height: 175px;
+  background-image: url('../img/move-right-big.png');
+}
+
+
+
+h1 { 
+  margin: 0px 0px 74px 0px;
+  padding: 0px;
+  font-size: 24px;
+  letter-spacing: 3px;
+  color: #fff;
+  text-transform: uppercase;
+  font-style: normal;
+}
+h3 { 
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-transform: uppercase;
+  font-style: normal;
+}
+
+.sound { 
+  position: absolute;
+}
+.sound img { 
+  height: 28px;
+}
+#home .sound { 
+  bottom: 0px;
+  right: 5px;
+}
+#panel .sound { 
+  top: 77px;
+  right: 5px;
+}
+
+.github { 
+  position: absolute;
+  bottom: 0px;
+  left: 5px;
+}
+
+.help-button { 
+  position: absolute;
+  text-align: center;
+  bottom: 8px;
+  right: 55px;
+  margin: auto;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  color: #78abf7;
+  transition: color 1.5s;
+}
+.help-button.yo { 
+  color: #333;
+}
+#panel .help-button { 
+  top: -510px;
+  height: 25px;
+}
+
+#help h2 { 
+  margin: 0px 0px 10px 0px;
+  color: #d43b3b;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 26px;
+}
+#help { 
+  position: absolute;
+  width: 420px;
+  height: 265px;
+  top: 90px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  padding-top: 15px;
+  text-align: center;
+  z-index: 999999;
+  background-color: #222;
+  border: solid 1px #193fff;
+  text-transform: uppercase;
+  opacity: 0.9;
+  display: none;
+  cursor: pointer;
+}
+#help  table  tr  td { 
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+#help  table  tr  td:first-child { 
+  color: #f4c030;
+  font-weight: bold;
+  text-align: right;
+}
+#help  table  tr  td:last-child { 
+  text-align: left;
+}
+
+#sound { 
+  position: absolute;
+}
+
+@media screen and (min-height:1200px), screen and (min-device-height : 1200px) { 
+  #panel, #home { 
+    transform: scale(0.75);
+    -moz-transform: scale(1.35);
+  }
+}
+
+@media screen and (max-width:1024px), screen and (min-device-width : 768px) and (max-device-width : 1024px) { 
+  #home .help-button, #panel .help-button, #home .github, #sound, .sound { 
+    display: block;
+  }
+  #panel, #home { 
+    transform: scale(0.75);
+    -moz-transform: scale(1.05);
+  }
+  #control-up-big, #control-down-big, #control-left-big, #control-right-big { 
+    display: inline; 
+  } 
+
+}
+@media screen and (max-height:640px), screen and (min-device-height : 480px) and (max-device-height : 640px) { 
+  #panel, #home { 
+    transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    margin-top: -100px;
+  }
+  #control-up-big, #control-down-big, #control-left-big, #control-right-big { 
+    display: inline; 
+  } 
+  #home .help-button, #panel .help-button, #home .github, #sound, .sound { 
+    display: block;
+  }
+  h1, #canvas-panel-title-pacman { 
+    visibility: visible;
+  }
+}
+@media screen and (max-height:480px), screen and (min-device-height : 320px) and (max-device-height : 480px) { 
+  #panel, #home { 
+    transform: scale(0.55);
+    -moz-transform: scale(0.55);
+  }
+  #control-up-big, #control-down-big, #control-left-big, #control-right-big { 
+    display: inline; 
+  } 
+  h1, #canvas-panel-title-pacman, #control-up-second, #control-down-second, #home .help-button, #panel .help-button, #home .github, #sound, .sound { 
+    display: none;
+  }
+  #score, #highscore { 
+    top: 0px;
+  }
+  #panel { 
+    padding-top: 50px;
+  }
+  #canvas-lifes, #canvas-level-fruits { 
+    top: 607px;
+  }
+  #control { 
+    bottom: 50px;
+    width: 550px;
+    height: 55px;
+  }
+  #control-up, #control-down, #control-left, #control-right { 
+    top: 0px;
+    bottom: 0px;
+    background-size: 48px;
+    width: 48px;
+    height: 48px;
+    padding: 5px;
+  }
+  #message { 
+    top: 347px;
+  }
+}
+
+
+#home h1 { 
+  text-align: center;
+  font-size: 78px;
+}
+#home h3 { 
+  position: absolute;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  bottom: 15px;
+  text-align: center;
+}
+#home h3 em { 
+  font-size: inherit;
+  font-style: inherit;
+  color: #fff200;
+}
+#canvas-home-title-pacman { 
+  background-color: #000;
+  position: absolute;
+  top: 10px;
+  left: 182px;
+  height: 100px;
+  width: 118px;
+}
+#canvas-panel-title-pacman { 
+  background-color: #000;
+  position: absolute;
+  top: 6px;
+  left: 47px;
+  height: 32px;
+  width: 38px;
+}
+
+#presentation { 
+  position: absolute;
+  margin: auto;
+  padding: 0px;
+  left: 0px;
+  right: 0px;
+  top: 200px;
+  width: 500px;
+  height: 250px;
+}
+#presentation-titles { 
+  position: absolute;
+  width: 360px;
+  height: 28px;
+  top: 10px;
+  left: 117px;
+  letter-spacing: 2px;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #fff;
+}
+#canvas-presentation-blinky, #canvas-presentation-pinky, #canvas-presentation-inky, #canvas-presentation-clyde { 
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 35px;
+}
+#canvas-presentation-blinky { 
+  top: 40px;
+}
+#canvas-presentation-pinky { 
+  top: 90px;
+}
+#canvas-presentation-inky { 
+  top: 140px;
+}
+#canvas-presentation-clyde { 
+  top: 190px;
+}
+#presentation-character-blinky, #presentation-character-pinky, #presentation-character-inky, #presentation-character-clyde, 
+#presentation-name-blinky, #presentation-name-pinky, #presentation-name-inky, #presentation-name-clyde { 
+  position: absolute;
+  width: 180px;
+  height: 28px;
+  left: 120px;
+  letter-spacing: 2px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+#presentation-name-blinky, #presentation-name-pinky, #presentation-name-inky, #presentation-name-clyde { 
+  left: 310px;
+  width: 180px;
+}
+#presentation-character-blinky, #presentation-name-blinky { 
+  top: 50px;
+  color: #ed1b24;
+}
+#presentation-character-pinky, #presentation-name-pinky { 
+  top: 100px;
+  color: #feaec9;
+}
+#presentation-character-inky, #presentation-name-inky { 
+  top: 150px;
+  color: #4adecb;
+}
+#presentation-character-clyde, #presentation-name-clyde { 
+  top: 200px;
+  color: #f99c00;
+}
+
+#trailer { 
+  position: absolute;
+  margin: auto;
+  padding: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 100px;
+  width: 500px;
+  height: 50px;
+}
+
+@media screen and (min-height:1200px), screen and (min-device-height : 1200px) { 
+
+}
+
+@media screen and (max-width:1024px), screen and (min-device-width : 768px) and (max-device-width : 1024px) { 
+
+  
+  #canvas-panel-title-pacman { 
+    left: 49px;
+    width: 42px;
+  }
+}
+
+@media screen and (max-height:640px), screen and (min-device-height : 480px) and (max-device-height : 640px) { 
+
+}
+@media screen and (max-height:480px), screen and (min-device-height : 320px) and (max-device-height : 480px) { 
+
+}

@@ -1,0 +1,6 @@
+// Copyright (c) Zanger LLC. All rights reserved.
+
+browser.runtime.onMessage.addListener(messageCheck1Ticket);function messageCheck1Ticket(message,sender,reply){if(message.type=="1Ticket"){messageHandle1Ticket(message);}}
+async function messageHandle1Ticket(message){if(message.number&&message.email){var promise=browser.storage.sync.get('third_party.1ticket');await promise.then(function(object){if(object['third_party.1ticket']===undefined)return;var enable,key;enable=object['third_party.1ticket'].enable;key=object['third_party.1ticket'].key;if(enable&&key!="")
+send1TicketRequest(message.number,message.email,key);});}}
+function send1TicketRequest(number,email,key){var API_URL='http://1ticket.com/api/v2/crawl/?username='+email+'&confnum='+number+'&source=stubtabs';var request=new XMLHttpRequest();request.open('GET',API_URL);request.setRequestHeader('x-api-token',key);request.onreadystatechange=function(){if(request.readyState==4){log.log(request.responseText);}};request.onload=function(){log.log("1Ticket request status: "+this.status);};log.log("1Ticket Request: Email - "+email+" Confirmation - "+number);request.send();}

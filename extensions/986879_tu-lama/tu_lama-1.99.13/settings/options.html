@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+  TU lAma - let Alma be more adroit
+
+  settings
+ 
+  Copyright (C) 2019 Leo Zachl, Technische Universität Wien, Bibliothek
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+
+  <head>
+    <meta charset="utf-8">
+    <style>
+      table#warningList, table#acList {
+        width: 100%;
+      }
+      table#idLinksList {
+        float: right;
+      }
+      table, table input {
+        font-size: 12px;
+      }
+      input, select, button {
+        padding: 2px;
+        border: 1px solid lightgray;
+        text-align: center;
+      }
+      input#warningTag { width: 2.5em; }
+      input#warningInd1, input#warningInd2, input#acListSfOnly { width: 1.2em; }
+      select#bmsCats { border: none; text-align: right; }
+      select#bmsCats option { 
+        border: 1px solid #000;
+        background-color: white;
+        margin-left: 2px;
+        display: inline-block; border-radius: 5px; }
+      select#bmsCats option:checked {
+        background-color: #30b4df;
+        color: white;
+      }
+      td { padding-bottom: 10px; vertical-align: top; }
+      td.right, th.right { text-align: right; }
+      td.left, th.left { text-align: left; }
+      th {
+        padding-top: 5px;
+        margin-top: 0px;
+        border-top: darkgray solid 1px;
+        padding-bottom: 10px;
+        font-size: 110%;
+      }
+      body.tuw tr.tuw { display: none; }
+      span.mark span {
+        display: block;
+        float: left;
+        min-width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        margin-right: 5px;
+        padding: 0 5px;
+      }
+      span.ff { background-color: #4a138c40; }
+      span.ju { background-color: #71558140; }
+      span.rgb {background-color: #1a5e1f40; }
+      span.el { background-color: #80008040; }
+      span.gray { background-color: #ccc; }
+      span.dark { background-color: #666; color: white; }
+    </style>
+  </head>
+
+  <body class='tuw'>
+    <form>
+      <table style="border: none;">
+        <thead></thead>
+	      <tbody>
+          <tr>
+            <th colspan="3" class="left"><span data-i18n="General"></span></th>
+          </tr>
+          <tr>
+            <td><label for="selectLocationIP"><span data-i18n="selectLocationIP"></span>&nbsp;<small><span data-i18n="selLocIpWarn"></span></small></label></td>
+            <td colspan="2" class="right"><input type="text" id="locationIPURL" name="locationIPURL" placeholder="e.g. https://almagw.ub.tuwien.ac.at/tulama/locMap.php" size="45" /></td>
+          </tr>
+          <tr class='tuw'>
+            <td><label for="loansUrl"><span data-i18n="loansUrl"></span>&nbsp;<small><span data-i18n="loansUrlWarning"></span></small></label></td>
+            <td colspan="2" class="right"><input type="text" id="loansUrl" name="loansUrl" placeholder="e.g. https://almagw.ub.tuwien.ac.at/tulama/loans.php" size="45" /></td>
+          </tr>
+          <tr>
+            <td colspan="3">
+            <input class="right" type="checkbox" id="processSlip" name="processSlip"/><label for="processSlip"><span data-i18n="processSlip"></span>&nbsp;<small><span data-i18n="processSlipWarn"></span></small></label></td>
+          </tr>
+          <tr>
+            <td colspan="2"><label for="colorScheme"><span data-i18n="colorScheme"></span>&nbsp;</label></td>
+            <td class="right">
+              <select id="colorScheme" name="colorScheme">
+                <option id='disabled' title='disabled' value=''>disabled</option>
+                <option id='el' title='el' value='el' selected="selected">el</option>
+                <option id='rgb' title='rgb' value='rgb'>rgb</option>
+                <option id='ju' title='ju' value='ju'>ju</option>
+                <option id='ff' title='ff' value='ff'>ff</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="checkbox" id="overwriteAlmaColors" name="overwriteAlmaColors"/>
+              <label for="overwriteAlmaColors" data-i18n="overwriteAlmaColors">&nbsp;</label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="highContrast" name="highContrast"/>
+              <label for="highContrast"><span data-i18n="highContrast"></span></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <label for="markedBackg"><span data-i18n="markedBackg"></span>&nbsp;</label>
+            </td>
+            <td class="right">
+              <span class='mark'><span class="el"> el </span><span class="rgb"> rgb </span><span class="ju"> ju </span>
+              <span class="ff"> ff </span><span class="dark"> dark </span><span class="gray"> gray </span></span>
+              <select id="markedBackg" name="markedBackg">
+                <option id='disabled' title='disabled' value='' selected="selected">disabled</option>
+                <option id='el' title='el' value='el' >el</option>
+                <option id='rgb' title='rgb' value='rgb'>rgb</option>
+                <option id='ju' title='ju' value='ju'>ju</option>
+                <option id='ff' title='ff' value='ff'>ff</option>
+                <option id='gray' title='gray' value='gray'>gray</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="m866sp" name="m866sp"/>
+              <label for="m866sp"><span data-i18n="m866sp"></span></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="gotoReceive" name="addLinks"/>
+              <label for="gotoReceive"><span data-i18n="gotoReceive"></span>&nbsp;<small></small></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="addLinks" name="addLinks"/>
+              <label for="addLinks"><span data-i18n="addLinks"></span>&nbsp;<small></small></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="addPortfolio" name="addPortfolio"/>
+              <label for="addPortfolio"><span data-i18n="addPortfolio"></span>&nbsp;<small></small></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" id="messageToBottom" name="messageToBottom"/>
+              <label for="messageToBottom"><span data-i18n="messageToBottom"></span>&nbsp;<small></small></label>
+              <input type="checkbox" class="right" id="messageCut" name="messageCut"/>
+              <label for="messageCut" class="right"><span data-i18n="messageCut"></span>&nbsp;<small></small></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="createLinks" name="createLinks"/>
+              <label for="createLinks"><span data-i18n="createLinks"></span>&nbsp;</label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <table id="idLinksList">
+                <tr><td>ISIL</td><td>link</td></tr>
+                <tbody class="idLinksValues">
+                  <tr>
+                    <td><input size="10" id="idLinksISIL" placeholder="DE-588" /></td>
+                    <td><input size="45" id="idLinksLink" placeholder="https://lobid.org/gnd/" /></td>
+                    <td class="right"><button title="delete id link" id="clearIdLink"> - </button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><label for="addIdLink"><span data-i18n="addIdLink"></span></label></td>
+            <td class="right"><button title="add new Id link" id="addIdLink">+</button></td>
+          </tr>
+          <tr>
+            <th colspan="3" class="left"><span data-i18n="warnings"></span></th>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <table id="warningList">
+                <tr><td>Not Local? Tag</td><td>I1</td><td>I2</td><td>Regexp/flag</td><td>Color</td><td>Level</td></tr>
+                <tbody class="warningValues">
+                  <tr>
+                    <td>!<input type="checkbox" id="warningNotLocal" title="Not local"/>L<input type="checkbox" id="warningLocal" title="local"/><input size="3" maxlength="3" id="warningTag" placeholder="970" /></td>
+                    <td><input size="1" maxlength="1" id="warningInd1" /></td>
+                    <td><input size="1" maxlength="1" id="warningInd2" /></td>
+                    <td>
+                      !<input type="checkbox" id="warningNot" title="Warning on non matching"/> /<input size="20" id="warningRegExp" placeholder="e.g. dublette|löschen" />
+                      /<input size="1" maxlength="1" id="warningReFlag" value="i" title="caseinsensitive"/>
+                      Bib<input type="checkbox" id="warningBib" title="Bibliographic only"/> Hol<input type="checkbox" id="warningHol" title="Holding only"/>
+                      GND<input type="checkbox" id="warningGND" title="GND authority only"/>
+                    </td>
+                    <td><input size="7" maxlength="7" id="warningColor" placeholder="#FF0000" /></td>
+                    <td class="right">
+                      <select id="warningLevel" name="warningLevel">
+                        <option id='0' title='disabled' value='0' selected="selected">0</option>
+                        <option id='1' title='1' value='1'>1</option>
+                        <option id='2' title='2' value='2'>2</option>
+                        <option id='3' title='3' value='3'>3</option>
+                        <option id='4' title='4' value='4'>4</option>
+                        <option id='5' title='5' value='5'>5</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="5"><label for="warningMsg"><span data-i18n="warningMsg"></span></label> <input size="50" id="warningMsg" placeholder="Warning message"/></td>
+                    <td class="right"><button title="delete rule" id="clearWarningRule"> - </button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><label for="addWarningRule"><span data-i18n="addWarningRule"></span></label></td>
+            <td class="right"><button title="add new rule" id="addWarningRule">+</button></td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="checktutat" name="checktutat"/>
+              <label for="checktutat"><span data-i18n="checktutat"></span>&nbsp;<small></small></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="check689order" name="check689order"/>
+              <label for="check689order"><span data-i18n="check689order"></span>&nbsp;<small></small></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><label for="debugLevel"><span data-i18n="debugLevel"></span>&nbsp;</label></td>
+            <td class="right">
+              <select id="debugLevel" name="debugLevel">
+                <option id='disabled' title='disabled' value='0' selected="selected">0</option>
+                <option id='1' title='1' value='1'>1</option>
+                <option id='2' title='2' value='2'>2</option>
+                <option id='3' title='3' value='3'>3</option>
+                <option id='4' title='4' value='4'>4</option>
+                <option id='5' title='5' value='5'>5</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="3" class="left"><span data-i18n="MD-Editor"></span></th>
+          </tr>
+          <tr>
+            <td colspan="3" >
+              <label for="hideLC"><span data-i18n="hideLC"></span></label><input type="checkbox" id="hideLC" name="hideLC"/>
+              <label for="hideVLK"><span>VLK</span></label><input type="checkbox" id="hideVLK" name="hideVLK"/>
+              <label for="hideRVK"><span>RVK</span></label><input type="checkbox" id="hideRVK" name="hideRVK"/>
+              <label for="hideDC"><span>DC</span></label><input type="checkbox" id="hideDC" name="hideDC"/>
+              <label for="hideVND"><span>VND</span></label><input type="checkbox" id="hideVND" name="hideVND"/>
+              <label for="hideMESH"><span>MESH</span></label><input type="checkbox" id="hideMESH" name="hideMESH"/>
+              <span class="right" data-i18n="hideTabs"></span>
+            </td>
+          </tr>
+          <tr class='tuw'>
+            <td><label for="tuwsysUrl"><span data-i18n="tuwsysUrl"></span>&nbsp;<small><span data-i18n="tuwsysUrlWarning"></span></small></label></td>
+            <td colspan="2" class="right"><input type="text" id="tuwsysUrl" name="tuwsysUrl" placeholder="e.g. https://almagw.ub.tuwien.ac.at/tulama/tuwsys.php" size="45" /></td>
+          </tr>
+          <tr>
+            <td colspan="2" ><label for="lobidUrl"><span data-i18n="lobidUrl"></span><br/><small><span data-i18n="lobidUrlWarning"></span></small></label></td>
+            <td class="right"><input type="input" id="lobidUrl" name="lobidUrl" placeholder="e.g. https://lobid.org/gnd/search" size="45"/></td>
+          </tr>
+          <tr>
+            <td colspan="2" ><label for="gndUrl"><span data-i18n="gndUrl"></span><br/><small><span data-i18n="gndUrlWarning"></span></small></label></td>
+            <td class="right"><input type="checkbox" id="gndUrl" name="gndUrl" value="https://services.dnb.de/sru/authorities"/></td>
+          </tr>
+          <tr>
+            <td colspan="2" ><label for="creatorAC"><span data-i18n="creatorAC"></span><br/><small><span data-i18n="creatorACWarning"></span></small></label></td>
+            <td class="right"><input type="checkbox" id="creatorAC" name="creatorAC"/></td>
+          </tr>
+          <tr class='tuw'>
+            <td><label for="tissorcUrl"><span data-i18n="tissorcUrl"></span>&nbsp;<small><span data-i18n="tissorcUrlWarning"></span></small></label></td>
+            <td colspan="2" class="right"><input type="checkbox" id="tissorcUrl" name="tissorcUrl" value="https://www2.ub.tuwien.ac.at/tissorc" /></td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <table id="acList">
+                <tr><td colspan="5"><span data-i18n="acList"></span></td></tr>
+                <tr><td>Tags(reg exp)</td><td>URL</td><td>fast</td><td>Bib Hol GND</td><td>request data</td><td colspan="2">key extra SF</td></tr>
+                <tbody class="acListValues">
+                  <tr>
+                    <td><input size="7" id="acListTag" placeholder="[17]00|971 5" /></td>
+                    <td>
+                      <input size="25" id="acListUrl" placeholder="https//lobid.org/search?q=" />
+                    </td>
+                    <td>
+                      <input type="checkbox" id="acListFast" title="fast response, delay &lt 1s"/>
+                    </td>
+                    <td>
+                      <input type="checkbox" id="acListBib" title="Bibliographic only"/>
+                      <input type="checkbox" id="acListHol" title="Holding only"/>
+                      <input type="checkbox" id="acListGND" title="GND authority only"/>
+                    </td>
+                    <td>
+                      sf<input size="1" id="acListSfOnly" maxlength="1" title="send only value of subfield" placeholder="a" />
+                      all<input type="checkbox" id="acListAll" title="send all data"/>
+                      both<input type="checkbox" id="acListBoth" title="send second tab too"/>
+                    </td>
+                    <td>
+                      <input size="1" id="acListKey" maxlength="1" title="Ctrl-Alt-" placeholder="b" pattern="[ABDGIKNPQÄÖÜabdgiknpqäöü]" />
+                      <input type="checkbox" id="acListExtra" title="extra search field"/>
+                    </td>
+                    <td class="right"><button title="delete" id="clearAcEntry"> - </button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><label for="addAcList"><span data-i18n="addAcList"></span></label></td>
+            <td class="right"><button title="add new autocomplete integration" id="addAcList">+</button></td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label for="templateName"><span data-i18n="templateName"></span>&nbsp;</label>
+              <input class="right" type="text" id="templateName" name="templateName"/>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label for="add852c"><span data-i18n="add852c"></span>&nbsp;</label>
+              <input class="right" type="text" id="add852c" name="add852c"/>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="keepCatLevel" name="keepCatLevel"/>
+              <label for="keepCatLevel"><span data-i18n="keepCatLevel"></span>&nbsp;<small></small></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="hideSH" name="hideSH"/>
+              <label for="hideSH"><span data-i18n="hideSH"></span>&nbsp;<small></small></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="goto1stEmpty" name="goto1stEmpty"/>
+              <label for="goto1stEmpty"><span data-i18n="goto1stEmpty"></span>&nbsp;<small></small></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="goto001" name="goto001"/>
+              <label for="goto001"><span data-i18n="goto001"></span>&nbsp;<small><span data-i18n="goto001Warn"></span></small></label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" class="right" id="checkBug00576546" name="checkBug00576546"/>
+              <label for="checkBug00576546"><span data-i18n="checkBug00576546"></span><br/><small><span data-i18n="checkBug00576546Warn"></span></small></label>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="3" class="left"><span data-i18n="Item-Editor"></span></th>
+          </tr>
+          <tr>
+            <td colspan="3"><label for="itemTemplate"><span data-i18n="itemTemplate"></span>&nbsp;</label></td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label for="itemPolicy"><span data-i18n="itemPolicy"></span>&nbsp;</label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <label for="processType"><span data-i18n="processType"></span>&nbsp;</label>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="3" class="left"><span data-i18n="Bookmarklets"></span></th>
+          </tr>
+          <tr>
+            <td><label for="bmsUrl"><span data-i18n="bmsUrl"></span>&nbsp;<small><span data-i18n="bmsUrlWarning"></span></small></label></td>
+            <td colspan="2" class="right"><input type="text" id="bmsUrl" name="bmsUrl" placeholder="e.g. https://almagw.ub.tuwien.ac.at/tulama/menu.html" size="45" /></td>
+          </tr>
+          <tr>
+            <td><label for="bmsCats"><span data-i18n="bmsCats"></span>&nbsp;<small><span data-i18n="bmsCatsWarning"></span></small></label></td>
+            <td colspan="2" class="right" id="bmsCatsTd"></td>
+          </tr> 
+          <tr class='tuw'>
+            <th colspan="3" class="left"><span data-i18n="theses"></span></th>
+          </tr>
+          <tr class='tuw'>
+            <td><label for="lockPriKey"><span data-i18n="lockPriKey"></span>&nbsp;<small><span data-i18n="lockPriKeyWarning"></span></small></label></td>
+            <td colspan="2" class="right"><input type="password" id="lockPriKey" name="lockPriKey" size="45"/></td>
+          </tr>
+          <tr class='tuw'>
+            <td><label for="unlockPriKey"><span data-i18n="unlockPriKey"></span>&nbsp;<small><span data-i18n="unlockPriKeyWarning"></span></small></label></td>
+            <td colspan="2" class="right"><input type="password" id="unlockPriKey" name="unlockPriKey" size="45"/></td>
+          </tr>
+          <tr>
+            <td colspan="3">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="right"><button type="submit"><span data-i18n="Save"></span></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+    <script src="/vendor/jquery.min.js"></script>
+    <script src="options.js"></script>
+  </body>
+
+</html>

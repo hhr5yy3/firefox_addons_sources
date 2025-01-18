@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/assets/styles/checkmarks-commons.css"/>
+    <link rel="stylesheet" href="/assets/styles/checkmarks-material.css"/>
+    <link rel="stylesheet" href="checkmarks-options.css"/>
+</head>
+
+<body>
+<label>
+    Request timeout in seconds:<br><br>
+    <input type="number" id="request-timeout" min="1">
+</label>
+<label>
+    Number of successful sub-requests to consider a timed out bookmark okay:<br>
+    <small>
+        (Some pages won't complete loading because of unresponsive external resources.)<br><br>
+    </small>
+    <input type="number" id="timeout-overrule" min="1"><br>
+</label>
+<label>
+    Maximum number of tabs:<br>
+    <small>
+        (Adjust request timeout accordingly! Continuously loading tabs in parallel consumes a considerable amount of
+        resources.)<br><br>
+    </small>
+    <input type="number" id="max-tabs" min="1"><br>
+</label>
+<label>
+    Ignored directories contain:<br>
+    <small>
+        (Use paths like "path/to/archive" to be more specific! Path-matching is not case-sensitive.)<br><br>
+    </small>
+    <input type="text" id="ignored-dirs"><br><br>
+    <label>active: <input type="checkbox" id="ignored-dirs-active"></label>
+</label>
+<label>
+    Included directories contain:<br>
+    <small>
+        (All other directories will be ignored. Ignored directories and urls within included directories remain
+        ignored.)<br><br>
+    </small>
+    <input type="text" id="included-dirs"><br><br>
+    <label>active: <input type="checkbox" id="included-dirs-active"></label>
+</label>
+<label>
+    Ignored URLs contain:<br>
+    <small>
+        (Not case-sensitive.)<br><br>
+    </small>
+    <input type="text" id="ignored-urls"><br><br>
+    <label>active: <input type="checkbox" id="ignored-urls-active"></label>
+</label>
+<label><input type="checkbox" id="show-favicons"> Show recently loaded favicons while running</label>
+<label><input type="checkbox" id="to-lowercase"> Reformat bookmark titles to lowercase</label>
+<label><input type="checkbox" id="sort"> Sort bookmarks by title</label>
+<label><input type="checkbox" id="sort-unfiled-by-date"> Sort unfiled (other) bookmarks by date if sorting is
+    enabled</label>
+<label><input type="checkbox" id="clear-cache"> Clear cache before each run</label>
+<script src="../commons/checkmarks-commons.js"></script>
+<script src="checkmarks-options.js"></script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+.canvas-ext-container{
+    display: none;
+    position: relative;
+}
+.canvas-ext-container a, .canvas-ext-container a:hover{
+    text-decoration: none!important;
+}
+.canvas-ext-added:hover .canvas-ext-container{
+    display: block!important
+}
+.canvas-ext-controls{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 0 0 4px;
+    background: rgba(11,142,251,0.8);
+    font-size: 13px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all .4s;
+    overflow: hidden;
+    z-index: 2;
+}
+.canvas-ext-controls > a, .canvas-ext-controls > div{
+    color: #fff!important;
+    display: inline-block;
+    padding: 6px 8px;
+}
+.canvas-ext-controls > a.active, .canvas-ext-controls > a:hover {
+    background: rgba(000,000,000,0.3);
+}
+.canvas-ext-controls i{
+    display: block;
+}
+.canvas-ext-more-options-menu{
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 2px 3px 0 rgba(34,36,38,.15);
+    border: 1px solid rgba(34,36,38,.15);
+    border-radius: 0 0 0 4px;
+    color: #444;
+    font-size: 12px;
+    transition: all .4s;
+    overflow: hidden;
+    z-index: 2;
+}
+.canvas-ext-more-options-menu.open{
+    display: block!important;
+}
+.canvas-ext-more-options-menu a{
+    color: #444!important;
+    display: block;
+    cursor: pointer;
+    padding: 5px;
+}
+.canvas-ext-more-options-menu a:hover{
+    background: rgba(0,0,0,.05);
+    color: rgba(0,0,0,.95);
+}
+
+.canvas-ext-modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background: rgba(000,000,000,0.9);
+    z-index: 9999;
+}
+#tui-image-editor-container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(000,000,000,0.9);
+    z-index: 9999;
+}
+.canvas-ext-modal-container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.canvas-ext-modal-size-container{
+    position: relative;
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.canvas-ext-image-boundary{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.canvas-ext-image-container{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.canvas-ext-modal-header{
+    position: fixed;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.canvas-ext-modal-header a:not(:last-child){
+    margin-right: 30px
+}
+#canvas-ext-modal a{
+    color: rgba(999,999,999,0.8)!important;
+    text-decoration: none!important;
+    cursor: pointer!important;
+}
+#canvas-ext-modal .canvas-ext-modal-header a:not(.canvas-ext-modal-close):hover{
+    color: #fff!important
+}
+#canvas-ext-modal .canvas-ext-modal-header a.canvas-ext-modal-close{
+    color: #F2D024!important;
+}
+#canvas-ext-modal-image{
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+}
+#canvas-ext-modal-image-error{
+    margin-right: 30px;
+    color: #fff;
+    font-size: 18px;
+}
+#canvas-ext-modal-loading{
+    margin-right: 30px;
+    color: #38C172;
+}
+#canvas-ext-modal-image-error{
+    flex-direction: column;
+}
+#canvas-ext-modal-image-error div:not(:last-child){
+    margin-bottom: 10px;
+}
+#canvas-ext-modal-image-error a{
+    color: #47A9FA!important;
+    font-size: 16px!important;
+}
+#canvas-ext-modal-image-error{
+    flex-direction: column;
+}
+#canvas-ext-modal-image-error div:not(:last-child){
+    margin-bottom: 10px;
+}
+#canvas-ext-modal-image-error a{
+    color: #47A9FA!important;
+    font-size: 16px!important;
+}
+.canvas-ext-modal-footer{
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+.canvas-ext-modal-header a:not(#canvas-ext-modal-close):hover .canvas-ext-modal-header-icon{
+    fill: #fff!important;
+}
+.canvas-ext-modal-footer div, .canvas-ext-modal-footer a{
+    display: inline-block;
+    font-size: 16px;
+}
+.canvas-ext-modal-image-info-resolution, .canvas-ext-modal-image-info-extension{
+    margin-right: 30px;
+    color: #fff;
+}
+#canvas-ext-modal a.canvas-ext-modal-image-info-website{
+    color: #47A9FA!important;
+}
+.canvas-ext-modal-image-info-resolution:hover, .canvas-ext-modal-image-info-website:hover{
+    color: #fff!important;
+}
+#canvas-ext-modal a.canvas-ext-modal-image-info-website:hover{
+    text-decoration: underline!important;
+}
+#canvas-ext-modal .canvas-ext-modal-image-next{
+    position: fixed;
+    right: 30px;
+}
+#canvas-ext-modal .canvas-ext-modal-image-previous{
+    position: fixed;
+    left: 30px;
+}
+#canvas-ext-modal .canvas-ext-modal-image-next, #canvas-ext-modal .canvas-ext-modal-image-previous{
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+}
+.canvas-ext-modal-loader{
+    width: 32px;
+    height: 32px;
+    background-image:url('moz-extension://__MSG_@@extension_id__/assets/images/loading_circular.svg');
+    background-repeat: no-repeat;
+    margin-right: 5px;
+    margin-bottom: -10px;
+}
+.canvas-ext-modal-header a{
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.canvas-ext-modal-header-icon{
+    width: 20px;
+    height: 20px;
+    fill: rgba(255, 255, 255, 0.8);
+    margin-right: 10px
+}
+#canvas-ext-modal-close .canvas-ext-modal-header-icon{
+    width: 15px;
+    height: 15px;
+    fill: rgb(242, 208, 36);
+}
+.canvas-ext-controls-icon{
+    width: 13px;
+    height: 13px;
+    fill: rgba(255, 255, 255, 0.8);
+    stroke: #fff;
+    stroke-width: 75px;
+}
+#canvas-ext-modal .canvas-ext-icon{
+    width: 30px;
+    height: 30px;
+    fill: rgba(255, 255, 255, 0.8);
+}
+.canvas-ext-red-text{
+    color: #E3342F!important
+}
+
+/* Image Editor*/
+.tui-image-editor-container .tui-image-editor-header-logo{
+    display: flex!important;
+    align-items: center!important;
+}
+.tui-image-editor-container .tui-image-editor-header-logo-title{
+    font-size: 14px!important;
+    font-weight: 500!important;
+    color: #fff!important;
+    margin-left: 10px!important
+}
+.tui-image-editor-container .tui-image-editor-controls-logo > img, .tui-image-editor-container .tui-image-editor-header-logo > img{
+    height: 32px!important;
+}
+.tui-image-editor-container .tui-image-editor-header-logo-title-label{
+    padding: 3px 5px;
+    font-size: 11px;
+    border-radius: 2px;
+    background: #EF5753;
+    color: #fff!important;
+    margin-left: 10px!important
+}
+#tui-image-editor-container{
+    background: #22292F!important
+}
+.tui-image-editor-main-container{
+    background: none!important
+}
+.tui-image-editor-submenu-style, .tui-image-editor-controls{
+    background: #1a1f22!important;
+}
+.tui-image-editor-header-buttons{
+    margin: 20px!important
+}
+.tui-image-editor-header-logo{
+    padding: 20px!important
+}
+.tui-image-editor-container .tui-image-editor-header-buttons{
+    display: flex;
+}
+.tui-image-editor-container .tui-image-editor-header-buttons button{
+    font-weight: 500!important;
+    font-size: 14px!important;
+    width: auto!important;
+    height: auto!important;
+    line-height: 35px!important;
+    padding: 0px 12px!important;
+    border: none!important;
+}
+.tui-image-editor-download-btn{
+    margin-left: 0;
+    background: rgba(11,142,251,0.8)!important;
+    border-radius: 4px 0 0 4px!important;
+}
+.tui-image-editor-close-btn{
+    background: #CBD5E0!important;
+    color: #4A5568!important;
+    margin-left: 0;
+    border-radius: 0 4px 4px 0!important;
+}
+.tui-image-editor-container *{
+    font-family: system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif!important;
+}
+.tui-editor-loading-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #E2E8F0;
+}
+.tui-editor-loader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tui-editor-loader-indicator{
+    width: 64px;
+    height: 64px;
+    background-image:url('moz-extension://__MSG_@@extension_id__/assets/images/loading.svg');
+    background-repeat: no-repeat;
+    margin-bottom: 10px!important;
+}

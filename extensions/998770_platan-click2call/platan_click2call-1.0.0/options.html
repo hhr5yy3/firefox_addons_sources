@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Ustawienia Platan Click2Call</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/options.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+</head>
+
+<style>
+    body {
+        min-width: 500px;
+        max-width: 700px;
+        text-align: center;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 20px;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <form>
+            <div class="card">
+                <div class="card-header">
+                    Ustawienia Platan Click2Call
+                </div>
+                <div class="card-body">
+                    <small id="selectUsedClientHelp" class="form-text text-muted">Wybór klient do obsługi połączeń Click2Call</small>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="selectUsedClient">Klient:</label>
+                        </div>
+                        <select class="custom-select" id="selectUsedClient" aria-describedby="selectUsedClientHelp">
+                            <option value="cti" selected>Platan CTI</option>
+                            <option value="callMonitor">Platan Call Monitor</option>
+                        </select>
+                    </div>
+                    <div id="hiddenContent" class="hidden">
+                        <small id="selectCallMonitorApiVersionHelp" class="form-text text-muted">Wersja API aplikacji Platan Call Monitor</small>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="selectCallMonitorApiVersion">Wersja API:</label>
+                            </div>
+                            <select class="custom-select" id="selectCallMonitorApiVersion" aria-describedby="selectCallMonitorApiVersion">
+                                <option value="1">Platan Call Monitor 1.X.X</option>
+                                <option value="2" selected>Platan Call Monitor 2.X.X</option>
+                            </select>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <small id="txtUserExtensionHelp" class="form-text text-muted">Wewnętrzny numer abonenta serwera PBX</small>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Numer abonenta:</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="txtUserExtension" aria-describedby="txtUserExtensionHelp">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                 <small id="txtCallMonitorUrlHelp" class="form-text text-muted">Adres serwera CallMonitor (przykład: http://192.168.0.100:8082)</small>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Adres serwera Call Monitor:</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="txtCallMonitorUrl" aria-describedby="txtCallMonitorUrlHelp">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row mb-2 mt-2">
+                        <div class="col">
+                            <button type="button" class="btn btn-success" id="btnSaveConfig">Zapisz</button>
+                        </div>
+                    </div>
+                    <div class="mt-2" id="alert-area"></div>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Image Search Options - Prefs</title>
+		<link href='options.css' rel='stylesheet'>
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript" src="jquery-ui.min.js"></script>
+		<script type="text/javascript" src="options.js"></script>
+	</head>
+	<body>
+		<div id='page-container'>
+			<div id='settings-container'>
+				<div id='main-settings'>
+					<h4>Main Settings</h4>
+					<label>Hide 'Use Alternate' Option: <input type="checkbox" id="hideUseAlt"/></label><br />
+					<label>Show 'Multisearch' Option: <input type="checkbox" id="showSearchAll"/></label><br />
+					<label>Open In: <select id = "tabType">
+						<option value=0>New Tab</option>
+						<option value=5>New Tab (Next to Current)</option>
+						<option value=1>Current Tab</option>
+						<option value=2>New Window</option>
+						<option value=3>New Background Tab</option>
+						<option value=6>New Background Tab (Next to Current)</option>
+						<option value=4>New Private Window</option>
+					</select></label><br />
+					<button id="save">Save Prefs</button>
+					<button id="help">Show Help</button> <br />
+				</div>
+				<div id='menu-settings'>
+					<h4>Search Options</h4>
+					<div id='menu-settings-list'>
+						Load Failed...
+					</div>
+					<div id='menu-settings-buttons'>
+						<button type="button" id="add"> Add </button><br>
+						<button type="button" id="remove">Remove</button><br>
+						<button type="button" id="move">Move to End</button><br>
+						<button type="button" id="fixdefaults">Fix Defaults</button><br>
+					</div>
+				</div>
+			</div><br />
+			<div id='edit-container' class='active'>
+				<div class='edit-box'>
+					<h4>Search Option Settings</h4>
+					<div class='edit-box-settings'>
+						<label>Name: <input id="optionName" type="text" size="47"></label><br />
+						<label>Icon: <input id="optionIcon" type="text" size="47"></label><br />
+						<label>Show on Menu: <input id="optionEnabled" type="checkbox"></label><br />
+						<label>Include in Search All: <input id="optionSearchAll" type="checkbox"></label><br />
+						<label>Search URL: <input id="optionURL" type="text" size="40"></label><br />
+						Search Variables (One per Line):<br />
+						<label><textarea rows="4" cols="41" id="optionVariables"></textarea></label><br />
+						<label>GET Var Seperators: <input id="optionSeperator1" size="1" type="text"></label><input id="optionSeperator2" size="1" type="text"><br>
+						<label>Use POST instead of GET: <input id="optionPOST" type="checkbox"></label><br />
+						<label>Use IMGDATA to URL Host: <input id="optionIMGDATA2URL" type="checkbox"></label><br /><br />
+						<button type="button" id="submitEdit">Update Option</button> <button type="button" id="closeEdit">Close</button>
+					</div>
+				</div>
+				<div class='edit-box'>
+					<h4>Alternate Settings (Use Checkbox)</h4>
+					<div class='edit-box-settings'>
+						<br /><br /><br /><br />
+						<label>Search URL: <input id="optionURL-Alt" type="text" size="40"></label><br />
+						Search Variables (One per Line):<br />
+						<label><textarea rows="4" cols="41" id="optionVariables-Alt"></textarea></label><br />
+						<label>GET Var Seperators: <input id="optionSeperator1-Alt" size="1" type="text"></label><input id="optionSeperator2-Alt" size="1" type="text"><br>
+						<label>Use POST instead of GET: <input id="optionPOST-Alt" type="checkbox"></label><br />
+						<label>Use IMGDATA to URL Host: <input id="optionIMGDATA2URL-Alt" type="checkbox"></label><br /><br />
+					</div>
+				</div>
+				<br />
+			</div>
+			<div id='import-export-container'>
+				<h4>Import / Export:</h4>
+				<textarea id='import-export-text'>
+				</textarea>
+				<button type="button" id="import">Import</button>
+				<button type="button" id="export">Export</button><br>
+			</div>
+		</div>
+	</body>
+</html>

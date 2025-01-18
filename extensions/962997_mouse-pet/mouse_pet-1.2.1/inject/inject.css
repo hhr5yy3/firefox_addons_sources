@@ -1,0 +1,42 @@
+#__mouse-pet-container {
+	position: fixed;
+	/* 2^31-2, the second biggest z-index possible, because Easy RSS goes first ;) */
+	z-index: 2147483646;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+	opacity: var(--opacity);
+}
+
+#__mouse-pet-container.disabled {
+	display: none;
+}
+
+#__mouse-pet-container.hidden {
+	transition: opacity 0.5s;
+	opacity: 0;
+}
+
+#__mouse-pet-container div {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: var(--size);
+	height: var(--size);
+
+	background-image: var(--image);
+	background-size: cover;
+	transform: translate(var(--x), var(--y)) rotate(var(--a));
+
+	background-position-x: center;
+}
+
+#__mouse-pet-container div:first-child {
+	background-position-x: left;
+}
+
+#__mouse-pet-container div:last-child {
+	background-position-x: right;
+}

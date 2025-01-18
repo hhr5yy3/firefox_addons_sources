@@ -1,0 +1,509 @@
+/*** BARCLAYS CUSTOM ***/
+
+#superWrapper[data-webSigner] {
+    font-family: "ExpertSans-Regular", Geneva, Arial, Verdana, sans-serif;
+    font-size: 100%;
+}
+#superWrapper[data-webSigner] a {
+    color: #0074A6;
+    -webkit-text-fill-color: #0074A6;
+}
+
+#superWrapper[data-webSigner] button,  #superWrapper[data-webSigner] #directSignButton {
+    background:#0074A6;
+    border-radius: 3px;
+    color:#fff;
+    -webkit-text-fill-color:#fff;
+    font-family: "ExpertSans-Regular", Geneva, Arial, Verdana, sans-serif;
+    font-size: 16px;
+    padding: 3px 16px;
+}
+
+#superWrapper[data-webSigner] button.action {
+    font-size: 16px;
+}
+
+#superWrapper[data-webSigner] button:hover, 
+#superWrapper[data-webSigner] #directSignButton:hover {
+    background:#00395D;
+    border-color: transparent;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+}
+
+#superWrapper[data-webSigner] button:-moz-focusring { /* harmonized focus behaviour for firefox & chrome */
+    border: 1px solid #498fff; 
+}
+#superWrapper[data-webSigner] input[type=text],
+#superWrapper[data-webSigner] input[type=password] {
+    box-sizing: initial;
+	padding-left: 30px;
+    width: 145px;
+}
+
+#superWrapper[data-webSigner] span {
+    color: #0074A6;
+    -webkit-text-fill-color: #0074A6;
+}
+
+#superWrapper[data-WebSigner] span#aboveText {
+    font-family: ExpertSans-Light, Geneva, Arial, Verdana, sans-serif;
+    font-size: 2em;
+}
+
+/*****************
+*     MODALS     *
+******************/
+
+#superWrapper[data-webSigner]  #errorModalMessage strong {
+    font-size: 120%
+}
+
+/*****************
+* LEFT HAND MENU *
+******************/
+
+#superWrapper[data-webSigner] #menu {
+    width: 4em;
+    background-color: #fff;
+}
+
+#superWrapper[data-webSigner] button.menuItem,
+#superWrapper[data-webSigner] button.menuItem img,
+#superWrapper[data-webSigner] button.menuItem:hover img {
+    background: #fff;
+}
+
+#superWrapper[data-webSigner] button.menuItem {
+    margin: 1em 0;
+}
+
+/*********************
+* MULTIPAGE CONTROLS * 
+**********************/
+
+#superWrapper[data-webSigner] .multiPageButton {
+    margin: 0.2em 0.125em;
+}
+#superWrapper[data-webSigner] #multiPageCtrl {
+    margin-top: 0;
+}
+#superWrapper[data-webSigner] button.multiPageButton {
+    background: #0074A6;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    padding: .4em 1em;
+    width: auto;
+    height: 30px;
+}
+#superWrapper[data-webSigner].sign #bottomCtrl.multipage {
+    justify-content: flex-start;
+}
+
+/***************
+* DATA DISPLAY *
+****************/
+#superWrapper[data-webSigner] .scrollbarX,
+#superWrapper[data-webSigner] .scrollbarY {
+    background: #0074A6;
+}
+
+
+/**********************
+* BOTTOM CONTROLS ROW *
+***********************/
+
+#superWrapper[data-webSigner] #below {
+    /* #informationText needs more space */
+    min-height: 125px;
+}
+
+#superWrapper[data-webSigner] #below.extended {
+    /* prevent #informationText wrapping from failing wysiwys */
+    min-height: 150px;
+    overflow: initial;
+}
+
+#superWrapper[data-webSigner] #bottomCtrl.sign {
+    justify-content: flex-start;
+}
+
+#superWrapper[data-webSigner] #signCtrl,
+#superWrapper[data-webSigner] #Checkbox {
+    margin-right: 1.5em;
+    display: inline-flex;
+    justify-content: flex-end;
+}
+
+
+/**********************
+* BOTTOM CONTENT      *
+***********************/
+
+#superWrapper[data-webSigner] #saveSignature {
+    display: inline-flex;
+    justify-content: flex-end;
+    padding-right: 7.8em;
+}
+#superWrapper[data-webSigner] #saveSignature .container {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+    font-size: 1em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#superWrapper[data-webSigner] #saveSignature label.container {
+    color: #00395D;
+    -webkit-text-fill-color: #00395D;
+}
+#superWrapper[data-webSigner] #saveSignature .container input {
+    position: absolute;
+    opacity: 0;
+}
+#superWrapper[data-webSigner] #saveSignature .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 17px;
+    width: 17px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.1em;
+}
+#superWrapper[data-webSigner] #saveSignature .container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+#superWrapper[data-webSigner] #saveSignature .container input:checked ~ .checkmark {
+    background-color: #fff;
+}
+#superWrapper[data-webSigner] #saveSignature .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+#superWrapper[data-webSigner] #saveSignature .container input:checked ~ .checkmark:after {
+    display: block;
+}
+#superWrapper[data-webSigner] #saveSignature .container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 9px;
+    border: solid #00395D;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+#superWrapper[data-webSigner] #informationText {
+    text-align:left;
+	padding: 0.5em 0;
+    max-width: 70vw;
+    font-size: 0.9em
+}
+#superWrapper[data-webSigner] #informationText ul,
+#superWrapper[data-webSigner] #informationText li {
+    margin: 0;
+    padding: 0;
+}
+#superWrapper[data-webSigner] #informationText li {
+    margin-left: 15px;
+}
+#superWrapper[data-webSigner] #textTitle {
+    color: #FF0000;
+    -webkit-text-fill-color: #FF0000;
+    font-weight: 700;
+    margin: 0;
+}
+#superWrapper[data-webSigner] #warningList1{
+    margin: 0.5em 0 0 0;
+}
+
+/***************************
+* CERTIFICATE LIST (MODAL) *
+****************************/
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.selected {
+    background-color: #0074A6;
+}
+
+#superWrapper[data-webSigner] .certificateTable tr.infoRow {
+    color: #0074A6;
+    -webkit-text-fill-color: #0074A6;
+
+}
+
+#superWrapper[data-webSigner] .certificateChainItem.is-selected {
+    background-color: #0074A6;
+}
+
+#superWrapper[data-webSigner] #errorSign {
+    font-size: 1.8em;
+}
+
+#superWrapper[data-webSigner] #overlay.buttonMode ~ div.modal { position:relative }
+
+/***********************
+*         FONTS        *
+************************/
+/* Additional fonts are loaded through app_settings.js */
+
+/****************************************
+*       Barclays 1.7 UI override        *
+*****************************************/
+#superWrapper[data-webSigner] #customTitle {
+    font-family: "ExpertSans-Light", Geneva, Arial, Verdana, sans-serif;
+}
+
+#superWrapper[data-webSigner] div.multiPageCtrlContainer {
+    display: flex;
+}
+
+#superWrapper[data-webSigner] #main {
+    border-radius: 8px;
+}
+#superWrapper[data-webSigner] #contentWebsigner {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+}
+
+#superWrapper[data-webSigner] #above {
+    margin: 1em;
+}
+
+#superWrapper[data-webSigner] #middle {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #BFBFBF;
+    padding-right: 32px;
+}
+
+#superWrapper[data-webSigner] #below {
+    margin-left: 64px;
+    margin-right: 64px;
+    margin-bottom: 16px;
+}
+
+#superWrapper[data-webSigner] #customTitle {
+    font-size: 2em;
+}
+
+#superWrapper[data-webSigner] #menu {
+    width: initial;
+    min-width: 0px;
+    max-width: 64px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+#superWrapper[data-webSigner] .scrollbarWrapper {
+    border: 0;
+}
+#superWrapper[data-webSigner] .scrollbarX,
+#superWrapper[data-webSigner] .scrollbarY {
+    background: #B8B8B8;
+    border-radius: 3px;
+}
+
+#superWrapper[data-webSigner] .scrollbarX:hover,
+#superWrapper[data-webSigner] .scrollbarY:hover {
+    background: #474747;
+}
+
+
+#superWrapper[data-webSigner] .scrollbarY {
+    width: 6px;
+    margin-left: 17px;
+}
+
+#superWrapper[data-webSigner] .scrollbarX {
+    height: 6px;
+    margin-top: 8px;
+}
+
+#superWrapper[data-webSigner].sign #bottomCtrl.multipage {
+    justify-content: center;
+}
+#superWrapper[data-webSigner] button.multiPageButton {
+    border-radius: 8px;
+}
+
+#superWrapper[data-webSigner] #signCtrl {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 0px;
+}
+#superWrapper[data-webSigner] #signCtrl button {
+    border-radius: 24px;
+    height: 48px;
+    margin: 0px;
+}
+
+#superWrapper[data-webSigner] #cancelButton {
+    border: 1px solid #00395D;
+    order: -1;
+    background: white;
+    color: #00395D;
+    -webkit-text-fill-color: #00395D;
+    width: 164px;
+}
+
+#superWrapper[data-webSigner] #cancelButton:hover {
+    border: 1px solid #007EB6;
+    background-color: #f2fbfe;
+}
+
+#superWrapper[data-webSigner] #directSignButton {
+    background:#007EB6;
+    border-radius: 16px;
+    padding: 4px 16px;    
+}
+
+#superWrapper[data-webSigner] #signButton {
+    width: 164px;
+}
+
+#superWrapper[data-webSigner] button.multiPage {
+    border: 1px solid #BFBFBF;
+    background-color: white;
+    color: #00395D;
+    border-radius: 0px;
+    margin: 0px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    -webkit-text-fill-color: initial;
+    font-size: 16px;
+}
+
+#superWrapper[data-webSigner] button.multiPage:hover {
+    border: 1px solid #007EB6;
+    background-color: #f2fbfe;
+}
+
+#superWrapper[data-webSigner] button.multiPage:disabled{
+    border: 1px solid #bfbfbf;
+    background-color: #f7f7f7;
+    color: #bfbfbf;
+}
+
+#superWrapper[data-webSigner] button.multiPage:disabled:hover{
+    border: 1px solid #bfbfbf;
+    background-color: #f7f7f7;
+    color: #bfbfbf;
+}
+
+#superWrapper[data-webSigner] button.multiPage.selected {
+    border: 1px solid #007EB6;
+    background-color: #007EB6;
+    color: white;
+}
+
+#superWrapper[data-webSigner] button.multiPage.ellipsis {
+    border: 1px solid #bfbfbf;
+    background-color: #ffffff;
+    cursor: default;
+    
+}
+
+#superWrapper[data-webSigner] button.multiPage.left {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+#superWrapper[data-webSigner] button.multiPage.right {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+#superWrapper[data-webSigner] button.multiPage.between {
+    width: 3em;
+    padding: 12px 4px 12px 4px;
+
+}
+
+#superWrapper[data-webSigner] select {
+    font-family: "ExpertSans-Regular", Geneva, Arial, Verdana, sans-serif;
+    font-size: 16px;
+    padding: 3px 16px;
+}
+
+#superWrapper[data-webSigner] select option {
+    font-size: 14px;
+    background-color: white;
+}
+
+#superWrapper[data-webSigner] select.multiPage {
+    border: 1px solid #BFBFBF;
+    background-color: white;
+    color: #00395D;
+    border-radius: 0px;
+    margin: 0px;
+    padding: 12px 16px 12px 16px;
+    text-align: center;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;      
+    appearance: none;
+}
+
+#superWrapper[data-webSigner] select.multiPage:hover {
+    border: 1px solid #007EB6;
+    background-color: #f2fbfe;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;      
+    appearance: none;
+}
+
+#superWrapper[data-webSigner] div.pageSelector {
+    display: flex;
+    margin: 0px;
+}
+
+#superWrapper[data-webSigner] div.modal {
+    border-radius: 8px;
+    background-color: white;
+}
+
+#superWrapper[data-webSigner] div.modal button {
+    border-radius: 18px;
+    height: 36px;
+    margin: 8px;
+}
+
+#superWrapper[data-webSigner] div.modal button.cancelButton {
+    border: 1px solid #00395D;
+    background-color: white;
+    color: #00395D;
+    -webkit-text-fill-color: #00395D;
+}
+
+#superWrapper[data-webSigner] div.modal button.cancelButton:hover {
+    border: 1px solid #007EB6;
+    background-color: #f2fbfe;
+}
+
+#superWrapper[data-webSigner] #selectCertificateRefreshButton {
+    border: 1px solid #00395D;
+    background-color: white;
+    color: #00395D;
+    -webkit-text-fill-color: #00395D;
+}
+
+#superWrapper[data-webSigner] #selectCertificateRefreshButton:hover {
+    border: 1px solid #007EB6;
+    background-color: #f2fbfe;
+}
+
+#superWrapper[data-webSigner] button:-moz-focusring {
+    border: unset;
+}

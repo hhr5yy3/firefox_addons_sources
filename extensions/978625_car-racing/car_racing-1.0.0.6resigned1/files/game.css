@@ -1,0 +1,198 @@
+body {
+  font-family: sans-serif;
+  width: 600px;
+  height: 600px;
+  margin: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+canvas.game, #loading_screen {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: transparent;
+}
+button {
+  position: absolute;
+  top: 560px;
+  left: 10px;
+}
+#speed {
+  position: absolute;
+  top: 525px;
+  left: 10px;
+  font-size: 20px;
+}
+#score {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 20px;
+}
+#scorePoints {
+  position: absolute;
+  top: 35px;
+  left: 15px;
+  font-size: 20px;
+}
+#highscore {
+  position: absolute;
+  top: 15px;
+  left: 530px;
+  font-size: 20px;
+}
+#timer {
+  position: absolute;
+  top: 565px;
+  left: 480px;
+  width: 100px;
+  text-align: right;
+  font-size: 20px;
+}
+#end_frame {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#end_frame.visible {
+  -webkit-animation-name: popup;
+  -webkit-animation-duration: 0.25s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-name: popup;
+  -moz-animation-duration: 0.25s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-direction: alternate;
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-name: popup;
+  -o-animation-duration: 0.25s;
+  -o-animation-iteration-count: 1;
+  -o-animation-direction: alternate;
+  -o-animation-timing-function: ease-in-out;
+  -o-animation-fill-mode: forwards;
+  animation-name: popup;
+  animation-duration: 0.25s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  opacity: 1;
+  width: 600px;
+  height: 600px;
+}
+@-webkit-keyframes popup {
+  0%   { opacity: 0; width: 0; height: 0; top: 300px; left: 300px;}
+  100% { opacity: 1; width: 600px; height: 600px; top: 0px; left: 0px;}
+}
+@-moz-keyframes popup {
+  0%   { opacity: 0; width: 0; height: 0;}
+  100% { opacity: 1; width: 600px; height: 600px}
+}
+@-o-keyframes popup {
+  0%   { opacity: 0; width: 0; height: 0;}
+  100% { opacity: 1; width: 600px; height: 600px}
+}
+@keyframes popup {
+  0%   { opacity: 0; width: 0; height: 0;}
+  100% { opacity: 1; width: 600px; height: 600px}
+}
+#speedometer {
+  position: absolute;
+  top: 565px;
+  left: 0px; 
+  width: 100px;
+  height: 7px;
+  border: 1px solid #ccc; 		  
+}
+#gauge {
+  width: 0%;
+  height: 7px;
+  background: red;
+}
+#loading_screen, #title_screen, #end_screen {
+  width: 600px;
+  height: 600px;
+  text-align: center;
+  padding-top: 280px;
+  display: none;
+  z-index: 5;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: transparent;
+  background: rgba(255,255,255,0.5);
+  font-weight: bold;
+  font-size: 150%;
+  -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#title_screen {
+  padding-top: 210px;
+}
+#title_screen span {
+  font-size: 80%;
+}
+#end_screen {
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+}
+#speedometer {
+  position: absolute;
+  top: 540px;
+  left: 0px;
+  width: 80px;
+  height: 40px;
+  border-radius: 80px 80px 0 0;
+  margin: 20px auto;
+}
+#speedometer:after {
+  background-color: white;
+  width: 10px;
+  height: 5px;
+  left: 50%;
+  margin-left: -5px;
+  border-radius: 10px 10px 0 0;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
+#speedometer > .pointer {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 52.5%;
+  bottom: 2px;
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+#speedometer > .pointer:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-style: solid;
+  border-width: 45px 0 0 3px;
+  border-color: white transparent transparent;
+  width: 0;
+  height: 0;
+}
+#speedometer {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyYWRpYWxHcmFkaWVudCBpZD0iZyI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNjM3ZWNmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjg0ZDk1Ii8+PC9yYWRpYWxHcmFkaWVudD48cmVjdCB4PSIwJSIgeT0iMCUiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMyODRkOTUiIC8+PHJlY3QgeD0iLTEuMTAxMyUiIHk9IjAlIiB3aWR0aD0iMTAyLjIwMjYlIiBoZWlnaHQ9IjIwMCUiIGZpbGw9InVybCgjZykiIC8+PC9zdmc+);
+  background-image: -webkit-gradient(radial, 50% 100%, 0, 50% 100%, 116, color-stop(0%, #637ecf), color-stop(100%, #284d95));
+  background-image: -webkit-radial-gradient(center bottom, farthest-side circle, #637ecf 0%, #284d95 100%);
+  background-image: -moz-radial-gradient(center bottom, farthest-side circle, #637ecf 0%, #284d95 100%);
+  background-image: -ms-radial-gradient(center bottom, farthest-side circle, #637ecf 0%, #284d95 100%);
+  background-image: -o-radial-gradient(center bottom, farthest-side circle, #637ecf 0%, #284d95 100%);
+  background-image: radial-gradient(farthest-side circle at center bottom, #637ecf 0%, #284d95 100%);
+}

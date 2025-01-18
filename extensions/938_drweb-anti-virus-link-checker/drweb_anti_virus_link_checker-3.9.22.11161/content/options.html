@@ -1,0 +1,239 @@
+<html>
+
+<head>
+  <title data-local="optionsPageTitle">Dr.Web Link Checker Options</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+  <script type="text/javascript" charset="utf-8" src="js/options.js"></script>
+
+  <link rel="stylesheet" href="css/options.css" type="text/css" media="screen" charset="utf-8">
+</head>
+
+<body>
+  <!-- POPUP WRAPPER: -->
+  <div class="optpage_popup-wrap" style="display: none;" id="popupback">
+    <div class="optpage_popup-column">
+      <div class="optpage_popup-content" id="popupback_column">
+        <div class="closePopup" id="popupback_close"></div>
+        <!-- FLASH: -->
+        <div class="popup" style="display: none;" id="flashPopup">
+          <div>
+            <h2 id="flashExceptionHeader" data-local="flashExceptionHeader" class="optpage_header3"></h2>
+            <div id="flashExceptionDesc" data-local="flashExceptionDesc"></div>
+          </div>
+          <div>
+            <div class="optpage_urlblock-wrap">
+              <input class="optpage_urlblock-input" type="text" id="siteURL">
+              <select class="optpage_urlblock-select" id="flashSelect" name="addingFlashSiteUrlSelector">
+                <option value="allow" id="flashAllow" data-local="allowOption"></option>
+                <option value="deny" id="flashDeny" data-local="denyOption"></option>
+              </select>
+              <div class="optpage_urlblock-btn" id="flashAddButton"></div>
+            </div>
+            <div class="optpage_ribtable-wrap" id="scrollContainer1">
+              <table class="optpage_ribtable">
+                <tbody id="flashExceptionTable">
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="greenButton" id="readyButton" data-local="readyButton"></div>
+        </div>
+        <!-- ADS: -->
+        <div class="popup" style="display: none;" id="adsPopup">
+          <div>
+            <h2 id="adsExceptionHeader" data-local="adsExceptionHeader" class="optpage_header3"></h2>
+            <div id="adsExceptionDesc" data-local="adsExceptionDesc"></div>
+          </div>
+          <div>
+            <div class="optpage_urlblock-wrap">
+              <input class="optpage_urlblock-input" type="text" id="siteURL2">
+              <select class="optpage_urlblock-select" id="adsSelect" name="addingAdsSiteUrlSelector">
+                <option value="allow" id="adsAllow" data-local="allowOption"></option>
+                <option value="deny" id="adsDeny" data-local="denyOption"></option>
+              </select>
+              <div class="optpage_urlblock-btn" id="adsAddButton"></div>
+            </div>
+            <div class="optpage_ribtable-wrap" id="scrollContainer2">
+              <table class="optpage_ribtable">
+                <tbody id="adsExceptionTable">
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="greenButton" id="readyButton2" data-local="readyButton"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- :POPUP WRAPPER -->
+  <div id="head">
+    <div class="regularWidth">
+      <img src="css/images/drweblogo.png" width="192" height="48" alt="Dr.Web Link Checker" />
+      <p id="description" data-local="description"></p>
+    </div>
+
+    <hr class="clear" />
+  </div>
+  <div id="content">
+
+    <div class="regularWidth">
+
+      <h2 id="autoCheckWebsites" data-local="autoCheckWebsites"></h2>
+
+      <div id="autoCheckWebsitesDesc">
+        <p data-local="autoCheckLinksDesc1" style="display: inline;"></p> <b data-local="autoCheckLinksDesc2"></b>
+        <p data-local="autoCheckWebsitesDesc" style="margin-top: 20px;"></p>
+        <p data-local="fbDisclaimer" style="margin-top: 20px;"></p>
+      </div>
+
+      <form action="" method="post" accept-charset="utf-16" id="options-form">
+        <label class="socialitem" id="vk-container">
+          <div id="vkicon" class="vkicon"></div>
+          <div class="checker">
+            <input type="checkbox" name="vkontakte-check" id="vkontakte-check" />
+          </div>
+        </label>
+        <label class="socialitem" id="facebook-container">
+          <div id="facebookicon" class="facebookicon"></div>
+          <div class="checker">
+            <input type="checkbox" name="facebook-check" id="facebook-check" />
+          </div>
+        </label>
+      </form>
+
+      <div style="float: left; margin-bottom: 4em; width: 610px;">
+
+        <div id="trackerssettings">
+          <h2 id="pageContent" data-local="pageContent"></h2>
+          <div id="pageContentDesc" data-local="pageContentDesc">
+          </div>
+          <div class="contentsettings">
+            <b id="flashPlugins" data-local="flashPlugins"></b>
+            <div class='styled-select' style="padding-right: 6px;">
+              <select name="defaultFlashValue" id="defaultFlashValue">
+                <option value='allow' id="defaultAllow" data-local="defaultAllow">
+                </option>
+                <option value='deny' id="defaultDeny" data-local="defaultDeny">
+                </option>
+              </select>
+            </div>
+            <br />
+            <div id="flashexception" style="position:relative; float: left; margin-top: 5px;" class="button">
+              <span id="flashExceptionString" data-local="exception"></span> <span id="flashExcCount"></span>
+            </div>
+            <br /><br />
+            <b id="ads" data-local="ads"></b>
+            <div class='styled-select' style="padding-right: 6px;">
+              <select name="defaultAdsValue" id="defaultAdsValue">
+                <option id="defaultAllow2" data-local="defaultAllow2" value='allow'>
+                </option>
+                <option id="defaultDeny2" data-local="defaultDeny2" value='deny'>
+                </option>
+              </select>
+            </div>
+            <br />
+            <div id="adsexception" style="position:relative; float: left; margin-top: 5px;" class="button">
+              <span id="adsExceptionString" data-local="exception"></span> <span id="adsExcCount"></span>
+            </div>
+          </div>
+          <br><br>
+          <h2 id="internetTracker" data-local="operationMode"></h2>
+
+          <div id="internetTrackerDesc" data-local="internetTrackerDesc">
+          </div>
+          <table style="width:100%; border:1px solid #ff0000; border-collapse:collapse;">
+            <tr>
+              <td id="noprotection-section" class="table_item" valign="top">
+                <div>
+                  <input type="radio" name="trackers-check" value="true" id="noprotection-check" />
+                </div>
+              </td>
+              <td class="table_section">
+                <b id="allowAll" data-local="allowAll"></b>
+                <br>
+                <p class="description" id="allowAllDesc" data-local="allowAllDesc"></p>
+              </td>
+            </tr>
+            <tr>
+              <td id="track-section" class="table_item" valign="top">
+                <div>
+                  <input type="radio" name="trackers-check" value="true" id="track-check" />
+                </div>
+              </td>
+              <td class="table_section">
+                <b id="minimal" data-local="minimal"></b>
+                <br>
+                <p id="minimalDesc" data-local="minimalDesc" class="description"></p>
+              </td>
+            </tr>
+            <tr>
+              <td id="analytics-section" class="table_item" valign="top">
+                <div>
+                  <input type="radio" name="trackers-check" value="true" id="analytics-check" />
+                </div>
+              </td>
+              <td class="table_section">
+                <b id="medium" data-local="medium"></b>
+                <br>
+                <p id="mediumDesc" data-local="mediumDesc" class="description"></p>
+              </td>
+            </tr>
+            <tr>
+              <td id="social-section" class="table_item" valign="top">
+                <div>
+                  <input type="radio" name="trackers-check" value="true" id="social-check" />
+                </div>
+              </td>
+              <td class="table_section">
+                <b id="maximum" data-local="maximum"></b>
+                <br>
+                <p id="maximumDesc" data-local="maximumDesc" class="description"></p>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <h2 id="updateHeader" data-local="updateHeader"></h2>
+        <div id="updateDesc" data-local="updateDesc">
+        </div>
+        <div>
+          <table class="datatable">
+            <tr>
+              <td>
+                <div id="lastUpdate" data-local="lastUpdate" style="font-size: 0.8em; color: #666;"></div>
+              </td>
+              <td>
+                <div style="font-size: 0.8em; padding-left: .5em" id="lastUpdateTime"></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div id="currentVersion" data-local="currentVersion" style="font-size: 0.8em; color: #666;"></div>
+              </td>
+              <td>
+                <div style="font-size: 0.8em; padding-left: .5em" id="currentVersionNumber"></div>
+              </td>
+            </tr>
+          </table>
+          <img src="css/images/uploader.gif" id="updatingImage" style="float: left; margin-top: 1.4em; margin-left: -1.5em; display: none">
+          <div class="updateButton smallbutton" id="updateDataBase" data-local="updateDataBase"></div>
+          <div class="updatingButton" style="display: none" id="updating" data-local="updating"></div>
+        </div>
+      </div>
+      <span id="status" style="display: none;"></span>
+      <hr class="clear" />
+    </div>
+  </div>
+  <div id="footer">
+    <div class="regularWidth" style="padding-bottom: 40px;">
+      <ul id="links">
+        <li><a target="_blank" href="https://company.drweb.com/policy/" id="privacyPolicy" data-local="privacyPolicy"></a></li>
+        <li><a target="_blank" href="https://download.drweb.com/" id="otherSoftware" data-local="otherSoftware"></a></li>
+        <li id="copyrightContainer">&copy; <a href="https://www.drweb.com/" id="copyright" data-local="copyright"></a>,
+          1992 &#x2012; 2022</li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

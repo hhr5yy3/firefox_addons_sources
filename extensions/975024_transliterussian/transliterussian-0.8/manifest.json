@@ -1,0 +1,52 @@
+﻿// * Software:	Add-on "TRANSLITERUSSIAN" for Mozilla Firefox 
+// * Version:	0.8
+// * Date:	2020-07-24
+// * Author:	Vlad Koutsenok (www.koutsenok.de)
+// * File:	manifest.json
+{
+
+  "manifest_version": 2,
+  "name": "TransliteRussian",
+  "version": "0.8",
+  "description": "Пишем по русски на немецкой клавиатуре. Typing Russian on german keyboard. Schreiben Russisch auf der deutschen Tastatur.",
+  "author": "Vlad Koutsenok, it@koutsenok.de",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png"
+  },
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+	"storage"
+  ],
+  "content_scripts": [
+  {
+    "matches": ["<all_urls>"],
+    "js": ["content.js"]
+  }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "options_ui": {
+    "page": "option.html",
+    "browser_style": true
+  },
+  "commands": {
+    "toggle-feature": {
+    "suggested_key": { 
+		"default": "Ctrl+Q",
+		"linux": "Ctrl+F2"
+		}
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+        "id": "{9c8d34a0-615c-496a-afa7-f4353ecf2c5b}",
+		"strict_min_version": "68.0"
+    }
+  }
+  
+}

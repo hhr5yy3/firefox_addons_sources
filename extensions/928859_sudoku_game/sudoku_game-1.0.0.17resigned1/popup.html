@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="./files/popup.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="extension_wrapper theme-white">
+    <header class="header">
+      <button class="btn btn-blue" id="newGame">New game</button>
+      <button class="btn" id="reveal">Reveal numbers</button>
+      <button class="btn" id="hint">Show hint</button>
+      <select class="input header-input">
+        <option value="beginner">Beginner</option>
+        <option value="moderate">Moderate</option>
+        <option value="hard">Hard</option>
+        <option value="expert">Expert</option>
+      </select>
+    </header>
+
+    <div class="content_wrapper">
+
+      <main class="content">
+
+        <div class="sudoku" id="sudoku">
+
+          <div class="sudoku-section" id="sudokuSection0">
+            <div class="sudoku-square" id="square_0_0">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_0_1">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_0_2">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_1_0">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_1_1">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_1_2">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_2_0">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_2_1">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_2_2">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+          </div>
+
+          <div class="sudoku-section" id="sudokuSection1">
+            <div class="sudoku-square" id="square_0_3">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_0_4">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_0_5">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_1_3">
+              <div class="sudoku-solve">3</div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_1_4">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_1_5">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_2_3">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_2_4">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_2_5">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+          </div>
+
+          <div class="sudoku-section" id="sudokuSection2">
+            <div class="sudoku-square" id="square_0_6">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_0_7">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_0_8">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_1_6">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_1_7">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_1_8">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_2_6">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_2_7">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_2_8">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+          </div>
+
+          <div class="sudoku-section" id="sudokuSection3">
+            <div class="sudoku-square" id="square_3_0">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_3_1">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_3_2">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_4_0">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_4_1">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_4_2">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_5_0">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_5_1">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_5_2">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+          </div>
+
+          <div class="sudoku-section" id="sudokuSection4">
+            <div class="sudoku-square" id="square_3_3">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_3_4">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_3_5">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_4_3">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_4_4">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_4_5">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_5_3">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_5_4">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_5_5">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+          </div>
+
+          <div class="sudoku-section" id="sudokuSection5">
+            <div class="sudoku-square" id="square_3_6">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_3_7">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_3_8">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_4_6">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_4_7">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_4_8">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_5_6">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_5_7">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_5_8">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+          </div>
+
+          <div class="sudoku-section" id="sudokuSection6">
+            <div class="sudoku-square" id="square_6_0">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_6_1">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_6_2">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_7_0">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_7_1">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_7_2">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_8_0">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_8_1">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_8_2">
+              <div class="sudoku-solve">6</div>
+              <div class="sudoku-input"></div>
+            </div>
+          </div>
+
+          <div class="sudoku-section" id="sudokuSection7">
+            <div class="sudoku-square" id="square_6_3">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_6_4">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_6_5">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_7_3">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_7_4">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_7_5">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_8_3">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_8_4">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_8_5">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+          </div>
+
+          <div class="sudoku-section" id="sudokuSection8">
+            <div class="sudoku-square" id="square_6_6">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_6_7">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_6_8">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_7_6">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_7_7">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_7_8">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_8_6">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_8_7">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+            <div class="sudoku-square" id="square_8_8">
+              <div class="sudoku-solve"></div>
+              <div class="sudoku-input"></div>
+            </div>
+          </div>
+
+        </div>
+        <!--<div class="overlay">
+          <div class="overlay-text">Вы победили!</div>
+          <div class="overlay-btn_wrap">
+            <button class="overlay-btn">Новая игра</button>
+          </div>
+        </div>-->
+      </main>
+
+      <aside class="aside">
+        <div class="aside-time">
+          <div id="current" class="time-col">
+            <div class="title">Time:</div>
+            <div class="time">12:40</div>
+          </div>
+          <div id="record" class="time-col">
+            <div class="title">Record:</div>
+            <div class="time">10:40</div>
+          </div>
+        </div>
+        <div class="aside-content">
+          <p id="goal">
+          </p>
+            <p id="rule1"></p>
+            <p id="rule2"></p>
+            <p id="rule3"></p>
+            <p id="rule4"></p>
+          <p id="tip"></p>
+        </div>
+        <div class="aside-themes themes">
+          <p>Style game:</p>
+          <div class="themes-item">
+            <button type="button" class="themes-btn themes-btn--active" id="themes-white"></button>
+            <p class="themes-title">White</p>
+          </div>
+          <div class="themes-item">
+            <button type="button" class="themes-btn" id="themes-dark"></button>
+            <p class="themes-title">Dark</p>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+  <script src="./files/popup.js"></script>
+</body>
+
+</html>

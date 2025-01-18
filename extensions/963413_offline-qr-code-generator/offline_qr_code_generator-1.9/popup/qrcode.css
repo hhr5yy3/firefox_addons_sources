@@ -1,0 +1,127 @@
+/* prevent vertical scrollbar */
+html, body {
+  width: 100%;
+  min-height: 250px;
+
+  /* prevent overflow at bottom (applied to body in JS) */
+  overflow: hidden;
+  max-height: 100%;
+  height: 100%;
+}
+/* on (small) mobile displays */
+@media (max-width: 700px) {
+  body {
+    /* for some reason there is a margin in Firefox for Android
+       see https://bugzilla.mozilla.org/show_bug.cgi?id=1457696 */
+    margin: 0px;
+  }
+}
+
+/* when the popup is in the overflow menu */
+@media (width: 425px) {
+  /* do not actually prevent the scrollbar */
+  html, body {
+    height: unset;
+    min-height: 100%;
+    max-height: unset;
+  }
+}
+
+.qrcode, svg {
+  /* never set a fixed height/width as the qr code is then not resizable */
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+/* self-scalable images, do not need JS support */
+.qrcode-scalable-image {
+  width: 100%;
+}
+
+#topMessageContainer > .message-box {
+  width: calc(100% - 8px);
+
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+
+  /* get into padding of QR code */
+  margin-bottom: -8px;
+
+  /* some shadow to highlight it a bit more */
+  box-shadow: var(--shadow-10);
+}
+
+.float-qr > .message-box {
+  text-align: center;
+}
+
+/* Let the element float (at the bottom on top of the qr) */
+.float-qr {
+  position: absolute;
+
+  width: auto;
+}
+.float-qr-bottom {
+  bottom: 30px;
+}
+/* make background transparent when floating */
+.error.float-qr {
+  /* transparent background */
+  background-color: var(--red-60-a90);
+}
+.info.float-qr {
+  /* transparent background */
+  background-color: var(--grey-20-a90);
+}
+
+#qrcode-container {
+  width: 100%;
+  height: 100%;
+  max-height: 80%;
+
+  padding: 20px;
+
+  /* 2:1 compare to #qrcodetext to keep size */
+  flex-grow: 2;
+  /* center QR code itself */
+  justify-content: center;
+}
+#qrcode-resize-container {
+  /* overflow: hidden; */
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+
+#qrcodetext {
+  /* let popup grow with text field */
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+
+  min-height: 2em;
+  max-height: 100%;
+
+  resize: both;
+
+  /* Firefox needs a fixed height, so it can scale the popup large enough when QR code is displayed */
+  height: 6em;
+
+  flex-grow: 1;
+
+  /* text style */
+  word-break: break-word; /* not supported by FF yet, may still look better */
+  word-break: break-all;
+
+  /* override inerhited from browser-style */
+  margin: 0px;
+}
+
+/* shift popup colors if user has specified dark mode */
+@media (prefers-color-scheme: dark) {
+  #qrcodetext {
+    background-color: var(--grey-60);
+    color: var(--white-100);
+  }
+}

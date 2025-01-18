@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <title data-text="settings_title"></title>
+    <link rel="stylesheet" href="../fonts/liberation-sans/liberation-sans.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <h1 data-text="settings_title"></h1>
+    <div class="setting" id="store-settings">
+        <div class="heading">
+            <h2 data-text="settings_store_settings_heading"></h2>
+            <label for="store-settings-switch" class="switch">
+                <input type="checkbox" name="store-settings" id="store-settings-switch">
+                <div class="slider round"></div>
+            </label>
+        </div>
+        <div class="description" data-text="settings_store_settings_description"></div>
+        <a class="action" href="https://metager.org/meta/settings" data-text="settings_store_settings_link"></a>
+    </div>
+    <div class="setting" id="anonymous-tokens">
+        <div class="heading">
+            <h2 data-text="settings_anonymous_tokens_heading"></h2>
+            <label for="anonymous-tokens-switch" class="switch">
+                <input type="checkbox" name="anonymous-tokens-switch" id="anonymous-tokens-switch">
+                <div class="slider round"></div>
+            </label>
+        </div>
+        <div class="description">
+            <div data-text="settings_anonymous_tokens_description"
+                data-replacements="https://metager.org/keys/help/anonymous-token">
+            </div>
+            <div class="status hidden">
+                <div class="key">
+                    Token:
+                    <span id="token-amount"></span>
+                </div>
+                <div class="anonymous-token">
+                    <span data-text="settings_anonymous_tokens_anonymous"></span>
+                    <span id="anonymous-token-amount"></span>
+                </div>
+            </div>
+            <div class="actions">
+                <a id="manage-key" class="action hidden" href="https://metager.org/keys/key/enter" target="_blank"
+                    data-text="settings_anonymous_tokens_manage_key"></a>
+                <a id="setup-key" class="action hidden" href="https://metager.org/keys#how-it-works" target="_blank"
+                    data-text="settings_anonymous_tokens_setup_key"></a>
+            </div>
+        </div>
+    </div>
+    <div class="setting" id="inkognito">
+        <p data-text="settings_inkognito"></p>
+    </div>
+    <script src="strings.js"></script>
+    <script src="index.js" async></script>
+    <script src="tokenstatus.js" async></script>
+</body>
+
+</html>

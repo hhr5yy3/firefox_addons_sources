@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Tab Mix Plus - Options</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css" type="text/css" />
+  <link rel="stylesheet" href="./modal.css" type="text/css" />
+</head>
+
+<body>
+  <h1>Tab Mix Plus -
+    <span class="sub-title">Preferences</span>
+  </h1>
+
+  <div id="prefs-container" class="container">
+    <div class="sidebar">
+      <ul class="categories active">
+        <li class="category" selected="true">
+          <img class="category-icon" src="../icons/options/links.png">
+          <label class="category-name">Links</label>
+        </li>
+      </ul>
+
+      <div class="not-implemented-categories">
+        <div class="not-implemented">
+          <label> </label>
+        </div>
+
+        <ul class="categories">
+          <li class="category" disabled="true">
+            <img class="category-icon" src="../icons/options/events.png">
+            <label class="category-name">Events</label>
+          </li>
+          <li class="category">
+            <img class="category-icon" src="../icons/options/display.png">
+            <label class="category-name">Display</label>
+          </li>
+          <li class="category">
+            <img class="category-icon" src="../icons/options/mouse.png">
+            <label class="category-name">Mouse</label>
+          </li>
+          <li class="category">
+            <img class="category-icon" src="../icons/options/menu.png">
+            <label class="category-name">Menu</label>
+          </li>
+          <li class="category">
+            <img class="category-icon" src="../icons/options/session.png">
+            <label class="category-name">Session</label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-buttons">
+        <button id="contribute-button" class="btn donate">Contribute</button>
+      </div>
+
+    </div>
+
+    <div id="paneLinks" class="prefs">
+      <p class="warning">
+        Firefox prohibit Webextensions from accessing and changing built-in preferences, please use
+        <b>about:config</b> to keep these built-in preferences in sync with your preferences.
+      </p>
+      <div class="prefs-group-1">
+        <section class="pref flex-row">
+          <label flex="1">Open links that open in a new window in:</label>
+          <select id="generalWindowOpen" preference="open_newwindow">
+            <option value="2" observes="obs_singleWindow">New Window</option>
+            <option value="3">New Tab</option>
+            <option value="1">Current Tab</option>
+          </select>
+        </section>
+        <section class="pref warning warning-pref">
+          <button class="copy">
+            <i class="far fa-copy"></i>
+            <label>browser.link.open_newwindow</label>
+            <label synced-item="open_newwindow">3</label>
+          </button>
+        </section>
+        <section class="pref flex-row parent-pref">
+          <input type="checkbox" id="externalLink" linked="externalLinkTarget">
+          <label for="externalLink">Use separate preference for links from other applications</label>
+        </section>
+        <section class="parent-pref">
+          <!-- dummy item -->
+        </section>
+        <section class="indent pref flex-row">
+          <label observes="obs_externalLink">Open links from other applications in:</label>
+          <select id="externalLinkTarget" preference="open_newwindow.override.external" observes="obs_externalLink">
+            <option id="externalLinkTarget.disabled" value="-1">Disabled</option>
+            <option value="2" observes="obs_singleWindow">New Window</option>
+            <option value="3">New Tab</option>
+            <option value="1">Current Tab</option>
+          </select>
+        </section>
+        <section class="pref warning warning-pref">
+          <button class="copy">
+            <i class="far fa-copy"></i>
+            <label>browser.link.open_newwindow.override.external</label>
+            <label synced-item="open_newwindow.override.external">-1</label>
+          </button>
+        </section>
+
+        <section class="pref flex-row">
+          <label>JavaScript & Popup restriction:</label>
+          <select id="divertedWindowOpen" preference="open_newwindow.restriction">
+            <option value="0">Open all popups in tabs</option>
+            <option value="2" observes="obs_singleWindow">Allows resize popups</option>
+            <option value="1" observes="obs_singleWindow">Allows all popups</option>
+          </select>
+        </section>
+        <section class="pref warning warning-pref">
+          <button class="copy">
+            <i class="far fa-copy"></i>
+            <label>browser.link.open_newwindow.restriction</label>
+            <label synced-item="open_newwindow.restriction">0</label>
+          </button>
+        </section>
+
+        <section class="pref flex-row">
+          <input id="opentabfor.middleclick"
+                 preference="browser.tabs.opentabfor.middleclick" type="checkbox">
+          <label for="opentabfor.middleclick">Open tab with middle click</label>
+        </section>
+        <section class="pref warning warning-pref">
+          <button class="copy">
+            <i class="far fa-copy"></i>
+            <label>browser.tabs.opentabfor.middleclick</label>
+            <label synced-item="browser.tabs.opentabfor.middleclick">true</label>
+          </button>
+        </section>
+
+        <section class="pref flex-row">
+          <input id="browser.altClickSave" preference="browser.altClickSave" type="checkbox">
+          <label for="browser.altClickSave">Starts download with alt click</label>
+        </section>
+        <section class="pref warning warning-pref">
+          <button class="copy">
+            <i class="far fa-copy"></i>
+            <label>browser.altClickSave</label>
+            <label synced-item="browser.altClickSave">false</label>
+          </button>
+        </section>
+      </div>
+
+      <div class="prefs-group-2 mt-15">
+        <section class="pref flex-row">
+          <input id="enablefiletype" preference="enablefiletype" type="checkbox">
+          <label for="enablefiletype">Prevent blank tabs when downloading files</label>
+          <button helpTopic="links#file-type-editor" class="content-help"></button>
+          <button id="filetype-edit-button" class="btn" observes="obs_enablefiletype">Edit…</button>
+        </section>
+
+        <section class="pref flex-row">
+          <input id="opentabforLinks" type="checkbox" linked="opentabforLinks.radiogroup">
+          <label for="opentabforLinks">Force to open in new tab:</label>
+        </section>
+
+        <section class="indent pref mt-5" orient="vertical" id="opentabforLinks.radiogroup" preference="opentabforLinks" type="checkbox-radiogroup"
+          notChecked="0" default="1">
+          <input observes="obs_opentabforLinks" type="radio" linked="opentabforLinks.radiogroup"
+                 id="openintab-all-links" name="opentabforLinks" value="1">
+          <label observes="obs_opentabforLinks" for="openintab-all-links">All links</label>
+          <section class="indent pref flex-row mt-5 mb-5" observes="obs_opentabforLinks">
+            <input observes="obs_opentabforLinks" id="middlecurrent" preference="middlecurrent" type="checkbox">
+            <label for="middlecurrent">Middle-click or Control-click opens items in current tab</label>
+          </section>
+          <input observes="obs_opentabforLinks" type="radio" linked="opentabforLinks.radiogroup"
+                 id="openintab-other-sites" name="opentabforLinks" value="2">
+          <label observes="obs_opentabforLinks" for="openintab-other-sites">Links to other sites</label>
+        </section>
+
+        <section class="pref flex-row">
+          <input observes="obs_opentabforLinks" inverseDependency="true" id="linkTarget" preference="linkTarget" type="checkbox">
+          <label observes="obs_opentabforLinks" for="linkTarget">Open links with a target attribute in current tab</label>
+        </section>
+
+        <section class="pref flex-row">
+          <input id="targetIsFrame" preference="targetIsFrame" type="checkbox">
+          <label for="targetIsFrame">Open links with target to existing frame in the current tab</label>
+        </section>
+
+        <section class="pref flex-row mt-15 not-implemented">
+          <input disabled="true" id="singleWindow" preference="singleWindow" type="checkbox" inverseDependency="true">
+          <label disabled="true" for="singleWindow">Enable Single Window Mode</label>
+        </section>
+
+      </div>
+
+      <div class="dialog-buttons btn-group">
+        <button id="restore-default-button">Restore Default</button>
+        <!--
+        <button id="accept-button">Ok</button>
+        <button id="apply-button">Apply</button>
+        <button id="cancel-button">Cancel</button>
+        -->
+        <button id="help-button" helpTopic="_">
+          <img src="../icons/question-16.png">Help
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal -->
+  <!-- learn how to use template for this -->
+  <div id="filetype-modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h4 class="modal-title">File Type Editor</h4>
+      </div>
+      <div class="modal-body">
+        <select id="filetype-list" class="list mb-5" name="filetype" size="10">
+        </select>
+        <div class="flex-row modal-text">
+          <label for="filetype-entry">New file type:</label>
+          <input type="text" id="filetype-entry" name="new-file-type">
+        </div>
+        <div class="btn-group">
+          <button id="filetype-add" disabled="true">ADD</button>
+          <button id="filetype-edit" disabled="true">Modify</button>
+          <button id="filetype-delete">Delete</button>
+        </div>
+        <div class="btn-group">
+          <button id="filetype-restore" class="not-flex">Restore Default</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group">
+          <button id="filetype-save" default>Save</button>
+          <button id="filetype-close">Close</button>
+          <button id="filetype-help" helpTopic="links#file-type-editor">
+            <img src="../icons/question-16.png">Help
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../common/storage.js"></script>
+  <script src="preferences.js"></script>
+  <script src="filetype.js"></script>
+</body>
+
+</html>

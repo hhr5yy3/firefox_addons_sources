@@ -1,0 +1,75 @@
+html, body {
+  font: message-box;
+  width: 250px;
+  margin: 0;
+}
+
+header {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  height: 32px;
+  border-bottom: 1px solid #444444;
+  background-color: #777777;
+  color: #FFFFFF;
+}
+
+#phabricator-disconnected {
+  height: 15px;
+  background-color: #4a5f88;
+  color: #f9ffff;
+  border-bottom: 1px solid #444444;
+  text-align: center;
+}
+
+.icon {
+  height: 23px;
+  width: 23px;
+  margin: 5px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: 23px;
+}
+
+.hidden {
+  display: none;
+}
+
+#status {
+  text-align: center;
+  vertical-align: text-bottom;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#refresh {
+  background-image: url('/icons/refresh.svg');
+  border: none;
+  background-color: transparent;
+}
+
+#options {
+  background-image: url('/icons/gear.svg');
+}
+
+body[total-phabricator-reviews="0"] > #phabricator-reviews,
+body[total-bugzilla-reviews="0"] > #bugzilla-reviews,
+body[total-bugzilla-needinfos="0"] > #bugzilla-needinfos,
+body[total-github-reviews="0"] > #github-reviews,
+body:not([has-new-features]) > #has-new-features {
+  display: none;
+}
+
+body > section,
+body > h1 {
+  margin: 15px;
+}
+
+#has-new-features {
+  display: block;
+  padding: 5px;
+  background-color: #DB8218;
+  border-top: #BD7621;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+}

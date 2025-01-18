@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/flags.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-popper-fix.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="../lib/core-polyfill.js"></script>
+    <script src="../lib/utility.js"></script>
+    <script src="../lib/api-manager.js"></script>
+
+    <script src="js/main.js"></script>
+</head>
+<body>
+
+    <div class="popup">
+
+        <div id="mainLoader" class="item" >
+        <!--    <span class="loader"></span> -->
+        </div>
+
+        <div id="unableToConnect" class="item" style="display: none;">
+            <i class="fa fa-warning"></i>Unable to connect!<br/>
+            Check proxy and API <span class="link js--openSettings">settings</span>
+        </div>
+
+        <div id="mainAppLoaded" style="display: none;">
+
+            <div class="alert alert-info alert-dismissible show" role="alert">
+                For responsive mode press<br/>
+                <strong>Ctrl + Shift + M</strong> on WIN<br/>
+                <strong>Cmd + Opt + M</strong> on OSX
+                <!--
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                -->
+            </div>
+
+            <div class="alert alert-danger alert-dismissible show" role="alert">
+                Please note, all traffic will go through proxy when you start it.
+                <!--
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                -->
+            </div>
+
+            <div >
+                <select class="select-userAgent js--userAgentSelect">
+                    <option value="">Default</option>
+
+                    <option value="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0">Firefox</option>
+                    <option value="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0 test 1">Firefox test 1</option>
+                    <option value="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0 test 2">Firefox test 2</option>
+                    <option value="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0 test 3">Firefox test 3</option>
+                    <option value="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0 test 4">Firefox test 4</option>
+                    <option value="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0 test 5">Firefox test 5</option>
+                    <option value="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0 test 6">Firefox test 6</option>
+
+
+                </select>
+            </div>
+
+            <div id="modemsLoader" class="item">
+                <span class="loader"></span>
+            </div>
+
+            <div id="noActiveModems" class="item" style="display: none;">
+                <strong>There are no active modems</strong><br/>
+                Please make reservation <a class="link" href="https://app.simtest.it" >here</a>.
+            </div>
+
+
+            <div id="activeModem" class="item item-active-modem js--modems-block" style="display: none">
+
+            </div>
+
+            <div id="modemsList" class="modem-list" style="display: none;">
+                <div class="js--modem-items">
+
+                </div>
+
+                <div class="item item-foot">
+                    <span class="icon-reload js--reload-modems">
+                        <i class="fa fa-refresh"></i>
+                        Reload
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="item item-foot js--footer-main">
+            <span class="icon-settings js--openSettings">
+                <i class="fa fa-cog"></i>
+            </span>
+            <select class="select-language js--languageSelect">
+                <option value="">Default</option>
+
+                <option value="ar-EG">Arabic (Egypt)</option>
+                <option value="ar-SA">Arabic (Saudi)</option>
+                <option value="zn-CN">Chinese (Simplified)</option>
+                <option value="zn-HK">Chinese (Traditional)</option>
+                <option value="nl-NL">Dutch</option>
+                <option value="nl-BE">Dutch (Belgian)</option>
+                <option value="en">English</option>
+                <option value="en-GB">English (GB)</option>
+                <option value="en-CA">English (Canadian)</option>
+                <option value="en-US">English (US)</option>
+                <option value="fr-FR">French</option>
+                <option value="fr-CA">French (Canadian)</option>
+                <option value="fr-CH">French (Swiss)</option>
+                <option value="de-DE">German</option>
+                <option value="de-AT">German (Austrian)</option>
+                <option value="de-CH">German (Swiss)</option>
+                <option value="it-IT">Italian</option>
+                <option value="it-CH">Italian (Swiss)</option>
+                <option value="pt-BR">Portuguese (Brazil)</option>
+                <option value="pt-PT">Portuguese</option>
+                <option value="es-ES">Spanish</option>
+
+            </select>
+<!--
+            <span class="select-language">
+                English
+                <i class="fa fa-sort-down"></i>
+            </span>
+-->
+            <span id="proxyStatus" class="toggle"></span>
+        </div>
+
+
+    </div>
+
+
+
+</body>
+</html>

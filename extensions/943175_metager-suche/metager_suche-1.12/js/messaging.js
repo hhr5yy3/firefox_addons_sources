@@ -1,0 +1,1 @@
+(()=>{if(void 0===e)var e=chrome;window.addEventListener("message",(a=>{if(a.source===window&&"webpage"===a?.data?.sender){let s={sender:"tokenmanager",message_id:a.data.message_id,payload:null,error:null};e.runtime.sendMessage(a.data.payload).then((e=>{s.payload=e,window.postMessage(s)})).catch((e=>{s.error=e,window.postMessage(s)}))}}))})();

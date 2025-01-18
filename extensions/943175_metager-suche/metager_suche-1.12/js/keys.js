@@ -1,0 +1,1 @@
+(()=>{"undefined"==typeof browser&&(browser=chrome);let e=document.getElementById("key-remove");e&&e.addEventListener("click",(t=>{try{let n=new URL(e.href);t.preventDefault(),browser.runtime.sendMessage({type:"settings_remove",setting_key:"key"}).then((()=>{document.location.href=n}))}catch(e){}}))})();

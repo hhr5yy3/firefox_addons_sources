@@ -1,0 +1,737 @@
+/* COMMON COLORS 
+light blue  : #007EB6 
+dark blue   : #00395D 
+light gray  : #F2F2F2
+darker gray : #777
+shadows     : #ccc 
+*/
+
+#superWrapper[data-webSigner] select {
+    all:unset;
+}
+
+#superWrapper[data-webSigner] {
+    all: initial;
+    position: relative;
+    /* for the modals to be 'absolute' INTO the ('relative') application window */
+    font-family: "Segoe UI", Geneva, Arial, Verdana, sans-serif;
+    font-weight: 400;
+    display: inline-block;
+    font-size: 14.4px;
+}
+
+#superWrapper[data-webSigner] section,
+#superWrapper[data-webSigner] div { 
+    all: unset;
+    display: block;
+}
+
+#superWrapper[data-webSigner] a {
+    color: #007EB6;
+    -webkit-text-fill-color: #007EB6;
+    cursor: pointer;
+}
+#superWrapper[data-webSigner] a:hover {
+    color: #00395D;
+    -webkit-text-fill-color: #00395D;
+}
+#superWrapper[data-webSigner] button {
+    background: transparent;
+    border-radius: .15em;
+    color: #007EB6;
+    -webkit-text-fill-color: #007EB6;
+    cursor: pointer;
+    font-family: "Segoe UI", Geneva, Arial, Verdana, sans-serif;
+    font-weight: 300;
+    font-size: 1.5em;
+    padding: 0.125em 0.5em 0.125em 0.5em;
+    margin: 0.25em;
+    transition: 0.2s;
+    border: 1px solid transparent;
+}
+#superWrapper[data-webSigner] button:hover {
+    border-color: #ccc;
+    color: #00395D;
+    -webkit-text-fill-color: #00395D;
+    background: #f2f2f2
+}
+#superWrapper[data-webSigner] button.action,
+#superWrapper[data-webSigner] button.multiPage { 
+    background: #007EB6;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    font-size: 1.5em;
+}
+#superWrapper[data-webSigner] button.action:hover,
+#superWrapper[data-webSigner] button.multiPage:hover { border-color: transparent; background: #00395D; }
+#superWrapper[data-webSigner] button[disabled],
+#superWrapper[data-webSigner] button[disabled]:hover {
+    background: #ccc;
+    border-color: transparent;
+    color: #777;
+    -webkit-text-fill-color: #777;
+    cursor: default;
+}
+#superWrapper[data-webSigner] button::-moz-focus-inner { /* no weird dotted inner border in firefox on focus */
+    border: 0;
+}
+#superWrapper[data-webSigner] button:-moz-focusring { /* harmonized focus behaviour for firefox & chrome */
+    border: 1px solid #498fff; 
+}
+#superWrapper[data-webSigner] input[type=text],
+#superWrapper[data-webSigner] input[type=password] {
+    background: url("chrome-extension://__MSG_@@extension_id__/assets/img/padlock.png") no-repeat left center;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    margin: 5px;
+    padding: 5px;
+    text-align: right;
+    width: 130px;
+}
+#superWrapper[data-webSigner] input[type=password]::placeholder { 
+    font-size: 17px;
+    color: #444;
+    -webkit-text-fill-color: #444;
+}
+#superWrapper[data-webSigner] input[type=password].insecure {
+    background: url("chrome-extension://__MSG_@@extension_id__/assets/img/padlock_no.png") no-repeat left center;    
+}
+
+#superWrapper[data-webSigner] span {
+    color: #007EB6;
+    -webkit-text-fill-color: #007EB6;
+}
+#superWrapper[data-webSigner] .hidden {
+    display: none;
+}
+#superWrapper[data-webSigner] .visible {
+    display: block;
+}
+
+/*****************
+*     MODALS     *
+******************/
+
+#superWrapper[data-webSigner] .modal {
+    background: #f0f0f0;
+    border: 1px solid #777;
+    color: #777;
+    -webkit-text-fill-color: #777;
+    display: none;
+    height: auto;
+    padding: 1em;
+    position: absolute;
+    z-index: 9999;
+    text-align: center;
+    overflow: auto;
+    box-shadow: -1px 1px 5px 0px #777;
+    top: auto; right: auto; bottom: auto; left: auto; 
+}
+#superWrapper[data-webSigner].button .modal {
+    position: relative;
+}
+#superWrapper[data-webSigner] .modal p {
+    display: block;
+    margin: 1em;
+}
+#superWrapper[data-webSigner] .modal button {
+    margin: 20px;
+    margin-bottom: 0;
+}
+#superWrapper[data-webSigner] .modal.certifs {
+    min-width: 550px;    
+}
+#superWrapper[data-webSigner] #signatureResult.modal {
+    min-width: 175px;
+}
+#superWrapper[data-webSigner] #enterPIN {
+    min-width: 250px;
+}
+#superWrapper[data-webSigner] .modal [title]:not(button),
+#superWrapper[data-webSigner] button.sign.errorState {
+    cursor: help
+}
+#superWrapper[data-webSigner] #overlay {
+    background: #fff;
+    display: none;
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+}
+#superWrapper[data-webSigner].button #overlay {
+    visibility: hidden;
+}
+#superWrapper[data-webSigner] #about {
+    min-width: 250px;
+}
+#superWrapper[data-webSigner] #about .okButton {
+    margin-top: 5px;
+}
+#superWrapper[data-webSigner] #main {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border: #000 solid 1px;
+    background-color: #fff;
+    overflow: hidden;
+    /* everything inside the main should be unselectable */
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+#superWrapper[data-webSigner] #errorModal {
+    font-size: 120%;
+    min-width: 500px
+}
+#superWrapper[data-webSigner] #errorModalTitle {
+    color: #f44;
+    -webkit-text-fill-color: #f44;
+    font-weight: bold;
+}
+#superWrapper[data-webSigner] #errorModalMessage {
+    white-space: pre-line;
+}
+#superWrapper[data-webSigner] .selectedCertificate {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/*****************
+* LEFT HAND MENU *
+******************/
+
+#superWrapper[data-webSigner] #menu {
+    display: flex;
+    flex-direction: column;
+    background-color: white; /* barclays white */
+    width: 5em;
+    margin-top: -1px;
+}
+#superWrapper[data-webSigner] button.menuItem {
+    border-radius: 0;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+#superWrapper[data-webSigner] button.menuItem img {
+    background-color: #007EB6;
+    border-radius: 5px;
+    padding: 2px;
+}
+#superWrapper[data-webSigner] button.menuItem:hover {
+    border-color: transparent;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    background-color: transparent;
+}
+#superWrapper[data-webSigner] button.menuItem:hover img {
+    background-color: #00395D;
+}
+
+/****************
+* CONTENT BLOCK *
+*****************/
+
+#superWrapper[data-webSigner] #contentWebsigner {
+    display: inline-flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 1em;
+    /* barclays 1.7 */
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+}
+
+/* SECTIONS */
+
+#superWrapper[data-webSigner] section {
+    margin: 4px 0;
+}
+#superWrapper[data-webSigner] #above {
+    text-align: center;
+}
+#superWrapper[data-webSigner] #customTitle {
+    font-size: 2em;
+}
+#superWrapper[data-webSigner] #middle {
+    display: flex;
+    flex-direction: row;
+    /* border-bottom: 1px solid #BFBFBF; /* barclays kept this */
+    padding-right: 32px;
+}
+#superWrapper[data-webSigner] #below {
+    min-height: 75px;
+    flex-shrink: 0;
+    margin-left: 64px;
+    margin-right: 64px;
+    margin-bottom: 16px;
+}
+#superWrapper[data-webSigner].sign #below {
+    text-align: right;
+}
+#superWrapper[data-webSigner].verify #below {
+    text-align: center;
+}
+
+
+/***************
+* DATA DISPLAY *
+****************/
+
+#superWrapper[data-webSigner] #render {
+    display: block;
+    image-rendering: pixelated; /* Chrome only, for Firefox and Safari see the Compatibility Issue section below */
+    /* inline display causes 4px bottom margin, for some reason */
+}
+
+#superWrapper[data-webSigner] #renderDiv {
+    all: inherit;
+    border: 0;
+    overflow: scroll;
+    scrollbar-width: none;
+    margin-bottom: -17px;
+}
+
+#superWrapper[data-webSigner] #renderDiv_scrollbarWrapper {
+    margin-bottom: 17px;
+}
+
+#superWrapper[data-webSigner] #renderDiv::-webkit-scrollbar {
+    display: none;
+}
+
+#superWrapper[data-webSigner] .scrollbarWrapper {
+    border: solid 1px;
+    overflow: hidden;
+}
+#superWrapper[data-webSigner] .scrollbarX,
+#superWrapper[data-webSigner] .scrollbarY {
+    position: absolute;
+    background: #007EB6;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    border-radius: .01em;
+}
+#superWrapper[data-webSigner] .scrollbarX:hover,
+#superWrapper[data-webSigner] .scrollbarY:hover {
+    background: #00395D;
+    transition: .33s;
+}
+#superWrapper[data-webSigner] #renderDivScrollXHandle,
+#superWrapper[data-webSigner] #renderDivScrollYHandle {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/**********************
+* BOTTOM CONTROLS ROW *
+***********************/
+
+#superWrapper[data-webSigner] #bottomCtrl {
+    display: flex;
+    justify-content: center;
+}
+
+#superWrapper[data-webSigner].verify #bottomCtrl {
+    flex-direction: column-reverse; /* little trick to have pagination first */
+    align-items: center;
+}
+
+#superWrapper[data-webSigner] #verifyCtrlDiv {
+    display: inline-flex;
+}
+
+/*********************
+* MULTIPAGE CONTROLS *
+**********************/
+
+#superWrapper[data-webSigner] div.multiPageCtrlContainer {
+    display: flex;
+}
+
+#superWrapper[data-webSigner] #multiPageCtrl {
+    display: none;
+    position: relative;
+    margin-top: 6px;
+}
+#superWrapper[data-webSigner] .multipage > #multiPageCtrl {
+    display: block;
+}
+#superWrapper[data-webSigner].sign #bottomCtrl.multipage {
+    justify-content: space-around;
+}
+#superWrapper[data-webSigner] #multiPageCtrl #multiPageCurrentPage,
+#superWrapper[data-webSigner] #multiPageCtrl span {
+    margin-top: 1px;
+}
+#superWrapper[data-webSigner] #multiPagePageCount {
+    position: relative;
+}
+#superWrapper[data-webSigner] .pageSelector {
+    align-self: center;
+    margin: 0 5px;
+}
+#superWrapper[data-webSigner] #multiPageCurrentPage {
+    position: relative;
+    text-align: right;
+    width: 30px;
+}
+#superWrapper[data-webSigner] .multiPageButton {
+    margin: auto 2.5px;
+    height: 35px;
+    width: 35px
+}
+
+/****************
+* VERIFY RESULT *
+*****************/
+
+#superWrapper[data-webSigner] #verificationResult {
+    background: #fff;
+    border: 0;
+    color: #333;
+    -webkit-text-fill-color: #333;
+    margin: 0 1em;
+    padding: 0;
+}
+#superWrapper[data-webSigner] #verificationResult.error,
+#superWrapper[data-webSigner] #about p.error  {
+    color: #f00;
+    -webkit-text-fill-color: #f00;
+}
+#superWrapper[data-webSigner] img.verifyItemIcon {
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    transition: .2s;
+}
+#superWrapper[data-webSigner] #verificationResult img.verifyItemIcon {
+    border: 7px solid;
+    border-radius: 50%;
+}
+#superWrapper[data-webSigner] #verificationResult.passed img.verifyItemIcon {
+    border-color: #afa
+}
+#superWrapper[data-webSigner] #verificationResult.passed:hover img.verifyItemIcon {
+    border-color: #87de87
+}
+#superWrapper[data-webSigner] #verificationResult.failed img.verifyItemIcon,
+#superWrapper[data-webSigner] #verificationResult.error img.verifyItemIcon {
+    border-color: #fca
+}
+#superWrapper[data-webSigner] #verificationResult.failed:hover img.verifyItemIcon,
+#superWrapper[data-webSigner] #verificationResult.error:hover img.verifyItemIcon {
+    border-color: #f66
+}
+
+/***************************
+* CERTIFICATE LIST (MODAL) *
+****************************/
+#superWrapper[data-webSigner] .certifs label {
+    margin: 0 10px;
+}
+#superWrapper[data-webSigner] .certifs label input {
+    margin: 5px 5px 15px 5px;
+    vertical-align: top;
+    border-bottom: 1px solid #777;
+    width: auto;
+}
+#superWrapper[data-webSigner] .certificateTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+#superWrapper[data-webSigner] .certificateTable th {
+    background-color: #e3e3e3;    
+    padding: 0.1em .25em 0;
+    border-bottom: 1px solid #777;
+    font-size: 1.2em;
+    color: #777;
+    -webkit-text-fill-color: #777;
+}
+#superWrapper[data-webSigner] .certificateTable tbody {
+    border: 1px solid #777
+}
+#superWrapper[data-webSigner] .certificateTable tbody.empty img {
+    display: none; /* in the list of empty readers, icons should be hidden */
+}
+#superWrapper[data-webSigner] .certificateTable tbody.error,
+#superWrapper[data-webSigner] .certificateTable tbody.notInitialized,
+#superWrapper[data-webSigner] .certificateTable tbody.locked {
+    border: 1px solid #f44
+}
+#superWrapper[data-webSigner] .certificateTable tbody.error th,
+#superWrapper[data-webSigner] .certificateTable tbody.notInitialized th,
+#superWrapper[data-webSigner] .certificateTable tbody.locked th {
+    background-color: #f44;    
+    color: #f0f0f0;
+    -webkit-text-fill-color: #f0f0f0;
+}
+#superWrapper[data-webSigner] .certificateTable img {
+    height: 30px;
+    margin: 2px;
+    vertical-align: middle;
+}
+#superWrapper[data-webSigner] .certificateTable img.swys {
+    filter: grayscale(100%);
+}
+#superWrapper[data-webSigner] .certificateTable tbody.error img.swys,
+#superWrapper[data-webSigner] .certificateTable tbody.notInitialized img.swys,
+#superWrapper[data-webSigner] .certificateTable tbody.locked img.swys {
+    fill: #fff;
+}
+#superWrapper[data-webSigner] .certificateTable tr {
+    background: #f2f2f2;
+    font-size: 1.15em;
+    color: #000;
+    -webkit-text-fill-color: #000;
+}
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow:hover {
+    background-color: #fff;
+    transition: 0.15s;
+}
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.expiresSoon {
+    background-color: #E0E0A0;
+}
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.expiresSoon:hover {
+    background-color: #F0F0A0;
+}
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.notYetValid,
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.expired {
+    background-color: #E0C0C0;
+}
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.notYetValid:hover,
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.expired:hover {
+    background-color: #F0D0D0;
+}
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.notYetValid td.from,
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.expired td.to {
+    color: #f44;
+    -webkit-text-fill-color: #f44;
+}
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.selected {
+    background-color: #007EB6;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+}
+#superWrapper[data-webSigner] .certificateTable tr.certificateRow.selected:hover {
+    background-color: #00395D;
+}
+#superWrapper[data-webSigner] .certificateTable tr.infoRow {
+    color: #007EB6;
+    -webkit-text-fill-color: #007EB6;
+    text-align: center;
+}
+#superWrapper[data-webSigner] .certificateTable td {
+    padding: .25em .7em;
+}
+#superWrapper[data-webSigner] .certificateTable td.certificateLabelCell {
+    text-align: left;
+}
+#superWrapper[data-webSigner] .certificateTable td.certificateTimeCell {
+    text-align: center;
+}
+#superWrapper[data-webSigner] #certificateTable_sign tr.certificateRow {
+    cursor: pointer;
+}
+#superWrapper[data-webSigner] #certificateTable_view tr.certificateRow {
+    cursor: default;
+}
+
+
+/******************************
+* VERIFICATION RESULT (MODAL) *
+*******************************/
+
+#superWrapper[data-webSigner] #verifyDiv {
+    border: 1px solid transparent;
+    text-align: left;
+}
+#superWrapper[data-webSigner] .verifyItem {
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    margin: 1px 0;
+    vertical-align: center;
+    display: block;
+}
+#superWrapper[data-webSigner] .verifyItem:hover {
+    background-color: rgba(255,255,255,.5)
+}
+#superWrapper[data-webSigner] .verifyItem td::first-letter {
+    text-transform: capitalize;
+}
+#superWrapper[data-webSigner] .verifyItem td:last-child {
+    padding-left: 10px;
+    white-space: nowrap;
+}
+#superWrapper[data-webSigner] .verifyItem:first-child {
+    border-color: transparent;
+}
+#superWrapper[data-webSigner] .verifyItem td.name {
+    font-size: 1.2em;
+    color: #000;
+    -webkit-text-fill-color: #000;
+}
+
+/******************************
+* CERTIFICATE DETAILS (MODAL) *
+*******************************/
+
+#superWrapper[data-webSigner] #certificateDetailModal {
+    width: 27em;
+}
+#superWrapper[data-webSigner] table.certificateDetail {
+    table-layout: fixed;
+    width: 100%;
+    font-weight: 300;
+}
+#superWrapper[data-webSigner] th.keyColumnHeader {
+    width: 8em;
+}
+#superWrapper[data-webSigner] #certificateChainDiv {
+    display: flex;
+    flex-direction: column;
+}
+#superWrapper[data-webSigner] .certificateChain {
+    border: 1px solid #777;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    background-color: #fff;
+}
+#superWrapper[data-webSigner] .certificateChainItem {
+    font-size: 1.25em;
+    font-weight: 300;
+    background-color: #f2f2f2;
+    margin-bottom: 1px;
+    text-align: center;
+    cursor: pointer;
+}
+#superWrapper[data-webSigner] .certificateChainItem:hover {
+    background-color: #ccc;
+}
+#superWrapper[data-webSigner] .certificateChainItem:last-child {
+    border-radius: 0 0 .5em .5em 
+}
+#superWrapper[data-webSigner] .certificateChainItem:first-child {
+    border-radius: .5em .5em 0 0 
+}
+#superWrapper[data-webSigner] .certificateChainItem.is-selected {
+    background-color: #007EB6;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    font-weight: 400;
+}
+#superWrapper[data-webSigner] .certificateChainItem.is-selected:hover {
+    background-color: #00395D;
+}
+#superWrapper[data-webSigner] .certificateDetailKey {
+    font-size: 1em;
+    background-color: #ccc;
+    color: #000;
+    -webkit-text-fill-color: #000;
+    text-align: right;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+#superWrapper[data-webSigner] .certificateDetailValue {
+    font-size: 1em;
+    font-weight: normal;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#superWrapper[data-webSigner] .certificateDetailHeader {
+    font-size: 1em;
+    font-weight: bold;
+    background-color: #777;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    text-align: center;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+#superWrapper[data-webSigner] a.collapse {
+    position: absolute;
+    right: 2em;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+#superWrapper[data-webSigner] a.collapse:hover {
+    color: #ccc;
+    -webkit-text-fill-color: #ccc;
+}
+
+/****************
+* PRINT FEATURE *
+*****************/
+
+#toBePrinted[data-webSigner] {
+    display: none
+}
+
+#toBePrinted[data-webSigner] pre {
+    white-space: pre-wrap;     /* Since CSS 2.1 */    
+    white-space: -moz-pre-wrap;/* Mozilla, since 1999 */    
+    white-space: -pre-wrap;    /* Opera 4-6 */    
+    white-space: -o-pre-wrap;  /* Opera 7 */    
+    word-wrap: break-word;     /* Internet Explorer 5.5+ */
+    width: 99%; /* Firefox only wraps if this is set */
+}
+
+/***********************
+* COMPATIBILITY ISSUES *
+************************/
+
+#superWrapper[data-webSigner] #render {
+    image-rendering: -moz-crisp-edges; /* Firefox */
+    image-rendering: -webkit-crisp-edges; /* Safari */
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    /* harmonize with Firefox big password discs for webkit-based browsers */
+    input[type=password] {
+        -webkit-text-stroke-width: 1px; /* barclays make those .2em */
+        letter-spacing: 1px; /* barclays make those .2em */ 
+    }
+    input[type=password]::placeholder { 
+        -webkit-text-stroke-width: 0;
+        letter-spacing: 0;
+    }
+}
+
+@-moz-document url-prefix() {
+    /* specifically target Firefox to change prefix accordingly */
+    #superWrapper[data-webSigner] input[type=password] {
+        background-image: url("moz-extension://__MSG_@@extension_id__/assets/img/padlock.png");
+    }
+    #superWrapper[data-webSigner] input[type=password].insecure {
+        background-image: url("moz-extension://__MSG_@@extension_id__/assets/img/padlock_no.png");    
+    }
+}
+
+@media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance: none) {
+        /* specifically target Safari 10.1+ to use relative path for padlock imgs */
+        #superWrapper[data-webSigner] input[type=password] {
+            background-image: url("../img/padlock.png");
+        }
+        #superWrapper[data-webSigner] input[type=password].insecure {
+            background-image: url("../img/padlock_no.png");    
+        }
+    }
+}

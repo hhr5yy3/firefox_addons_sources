@@ -1,0 +1,1 @@
+(()=>{let e=document.getElementById("plugin-btn");e&&e.remove()})();

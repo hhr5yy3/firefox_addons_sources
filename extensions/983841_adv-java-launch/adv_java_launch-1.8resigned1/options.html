@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="options.css">
+    <title>Advanced Java Launch Options</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="box box-1">
+            <div class="w3-bar w3-black">
+                <button class="w3-bar-item w3-button ext-tab-button w3-gray">Proxy Settings</button>
+                <button class="w3-bar-item w3-button ext-tab-button ">Java</button>
+                <button class="w3-bar-item w3-button ext-tab-button ">Native Application</button>
+                <button class="w3-bar-item w3-button ext-tab-button ">Logging</button>
+            </div>
+        </div>
+
+        <div id="proxy-tab" class="tab w3-border w3-round box box-2" >
+            <div class="w3-panel">
+                <table id="proxy-config-id" style="width:100%">
+                    <tr>
+                        <td>
+                            <input id="proxy-direct" class="w3-radio" type="radio" name="proxy-rbg">
+                            <label for="proxy-direct">Direct Connection</label>
+                        </td>
+                        <td>
+                            <input id="proxy-automatic" class="w3-radio" type="radio" value="automatic" name="proxy-rbg">
+                            <label for="proxy-automatic">Automatic</label>
+                        </td>
+                        <td>
+                            <input id="proxy-manual" class="w3-radio" type="radio" name="proxy-rbg">
+                            <label for="proxy-manual">Manual</label>
+                        </td>
+                    </tr>
+                </table>
+
+                <div id="proxy-automatic-panel" class="w3-panel w3-round w3-responsive">
+                    <fieldset>
+
+                    <span><label for="proxy-automatic-select">Use settings from:</label> <select id=proxy-automatic-select>
+                        <option id="proxy-option-broswer" value="BROWSER">BROWSER</option>
+                        <option id="proxy-option-java" value="JAVA">JAVA</option>
+                        <option id="proxy-option-firefox" value="FIREFOX">FIREFOX</option>
+                        <option id="proxy-option-ie" value="IE">IE</option>
+                        <option id="proxy-option-os_default" value="OS_DEFAULT">OS_DEFAULT</option>
+                        <option id="proxy-option-env_var" value="ENV_VAR">ENV_VAR</option>
+                        <option id="proxy-option-win" value="WIN">WIN</option>
+                        <option id="proxy-option-kde" value="KDE">KDE</option>
+                        <option id="proxy-option-gnome" value="GNOME">GNOME</option>
+                    </select></span>
+
+                        <table>
+                            <tr>
+                                <td><label for="proxy-automatic-url">Test URL</label></td>
+                                <td><input type="text" size="30" id="proxy-automatic-url"></td>
+                                <td><button id="proxy-automatic-test" class="w3-button w3-tiny w3-white w3-border w3-border-black">Test</button></td>
+                            </tr>
+                            <tr>
+                                <td><label for="proxy-automatic-proxy">Test Result</label></td>
+                                <td colspan="2"><input type="text" id="proxy-automatic-proxy" size="40" readonly></td>
+                            </tr>
+                        </table>
+
+                    </fieldset>
+
+                    <table id="proxy-cache-table" class="w3-table-all w3-small">
+                        <tr>
+                            <th colspan="3"><label>Cache</label></th>
+                            <th><button id="proxy-clear-cache" class="w3-button w3-tiny w3-white w3-border w3-border-black w3-right">Clear</button></th></tr>
+                        <tr>
+                            <th colspan="2">Address</th>
+                            <th colspan="2">Proxy</th>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div id="proxy-direct-panel" class="w3-panel w3-round w3-border">
+                    <div class="w3-panel w3-pale-green">A direct connect to the server will be used.</div>
+                </div>
+
+                <div id="proxy-manual-panel" class="w3-panel w3-round w3-responsive">
+                    <fieldset>
+                        <table>
+                            <tr><td><label for="http-proxy-address">http:</label></td><td><input id=http-proxy-address size="50" type="text"/></td>
+                                <td><label for="http-proxy-port">port:</label></td><td><input id=http-proxy-port size=6 type="text"/></td></tr>
+                            <tr><td><label for="https-proxy-address">https:</label></td><td><input id=https-proxy-address size="50" type="text"/></td>
+                                <td><label for="https-proxy-port">port:</label></td><td><input id=https-proxy-port size=6 type="text"/></td></tr>
+                            <tr><td><label for="http-non-proxy-hosts">Non Proxy Hosts:</label></td><td colspan="3"><input id="http-non-proxy-hosts" size="30" type="text"/></td></tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="w3-container">
+                    <div class="w3-bar">
+                        <button class="w3-button w3-tiny w3-white w3-border w3-border-black w3-right" id="save">Save</button>
+                        <div class="w3-cell w3-left"><div id="status"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="java-tab" class="tab w3-border w3-round box box-2" style="display:none;">
+            <div class="w3-panel w3-responsive ">
+                <p>Available Java Environments</p>
+                <table id="java-versions-table" class="w3-table-all">
+                    <tr><td>Name</td><td>Home Directory</td></tr>
+                </table>
+            </div>
+        </div >
+
+        <div id="native-tab" class="tab w3-border w3-round box box-2" style="display:none;">
+            <div id="native-app-okay-panel" class="w3-panel w3-green w3-hide">
+                <p id="native-app-version"></p>
+            </div>
+            <div id="native-app-error-panel" class="w3-panel w3-red">
+                <p>
+                    Unable to communicate with native component Advanced Java Launch.<br>
+                    Please ensure this component is installed on your device.
+                </p>
+            </div>
+        </div>
+
+        <div id="logging-tab" class="tab w3-border w3-round box" style="display:none;">
+            <div class="w3-panel">
+                <fieldset>
+                    <table id="logging-id" style="width:100%">
+                        <tr>
+                            <td width="33%">
+                                <input id="logging-off" class="w3-radio" type="radio" value="NONE" name="logging-option">
+                                <label for="logging-off">Off</label>
+                            </td>
+                            <td width="33%">
+                                <input id="logging-browser-console" class="w3-radio" type="radio" value="CONSOLE" name="logging-option">
+                                <label for="logging-browser-console">Browser Console</label>
+                            </td>
+                            <td width="33%">
+                                <input id="logging-extension" class="w3-radio" type="radio" value="EXTENSION" name="logging-option">
+                                <label for="logging-extension">To this tab</label>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            <div class="container" style="overflow:auto; padding:5px; border:1px solid grey;">
+                <pre id="logging-pre">Output from applications will appear here when 'To this tab' option is selected.</pre>
+            </div>
+        </div>
+    </div>
+    <script src="options.js"></script>
+</body>
+</html>

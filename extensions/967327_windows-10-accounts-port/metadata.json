@@ -1,0 +1,104 @@
+{
+    "id": 967327,
+    "authors": [
+        {
+            "id": 13973057,
+            "name": "Gary Guo",
+            "url": "https://addons.mozilla.org/en-US/firefox/user/13973057/",
+            "username": "nbdd0121"
+        }
+    ],
+    "average_daily_users": 3082,
+    "categories": [
+        "privacy-security",
+        "other"
+    ],
+    "contributions_url": "",
+    "created": "2018-04-21T16:54:57Z",
+    "current_version": {
+        "id": 5730816,
+        "compatibility": {
+            "firefox": {
+                "min": "42.0",
+                "max": "*"
+            }
+        },
+        "edit_url": "https://addons.mozilla.org/en-US/developers/addon/windows-10-accounts-port/versions/5730816",
+        "file": {
+            "id": 4275116,
+            "created": "2024-04-25T22:50:36Z",
+            "hash": "sha256:5ec85629d94a29e6d9d16c6580564eea0c3aaaf55fba1af1bdf4bbd7f39d0188",
+            "is_mozilla_signed_extension": false,
+            "size": 53461,
+            "status": "public",
+            "url": "https://addons.mozilla.org/firefox/downloads/file/4275116/windows_10_accounts_port-1.0.2.2resigned1.xpi",
+            "permissions": [
+                "webRequest",
+                "webRequestBlocking",
+                "https://login.microsoftonline.com/*",
+                "nativeMessaging"
+            ],
+            "optional_permissions": [],
+            "host_permissions": []
+        },
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7057,
+            "is_custom": false,
+            "name": {
+                "en-US": "All Rights Reserved"
+            },
+            "slug": "all-rights-reserved",
+            "url": null
+        },
+        "release_notes": null,
+        "reviewed": "2024-04-25T22:50:36Z",
+        "version": "1.0.2.2resigned1"
+    },
+    "default_locale": "en-GB",
+    "description": {
+        "en-GB": "<b>Starting in Firefox 91, Firefox has direct integration with Windows SSO so this extension is no longer needed. Please check out <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/ad3b1b365010dde09a5c582004d7adf1e12e60e231dffaf8c26190776c0dacdc/https%3A//support.mozilla.org/en-US/kb/windows-sso\" rel=\"nofollow\">https://support.mozilla.org/en-US/kb/windows-sso</a> for how to enable it.</b>\n\nSign in to supported websites with accounts on Windows 10. Ported from the Chrome's Windows 10 Accounts extension.\n\nWindows 10 have a native messaging host for Chrome preinstalled. To make it work for the Firefox port, the following steps should be taken:\n\nCreate a file C:\\Program Files\\Windows Security\\BrowserCore\\manifest-firefox.json with contents\n<code>{\n  \"name\": \"com.microsoft.browsercore\",\n  \"description\": \"BrowserCore\",\n  \"path\": \"BrowserCore.exe\",\n  \"type\": \"stdio\",\n  \"allowed_extensions\": [\n    \"{d4a5b766-4831-43f0-9d38-0fec359491e7}\"\n  ]\n}\n</code>\nThen execute\n<code>REG ADD \"HKCU\\Software\\Mozilla\\NativeMessagingHosts\\com.microsoft.browsercore\" /ve /t REG_SZ /d \"C:\\Program Files\\Windows Security\\BrowserCore\\manifest-firefox.json\" /f\n</code>\nto add it as a native messaging host. You can also replace HKCU with HKLM to add for all users."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.mozilla.org/en-US/developers/addon/windows-10-accounts-port/edit",
+    "guid": "{d4a5b766-4831-43f0-9d38-0fec359491e7}",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": null,
+    "icon_url": "https://addons.mozilla.org/user-media/addon_icons/967/967327-64.png?modified=a9459feb",
+    "icons": {
+        "32": "https://addons.mozilla.org/user-media/addon_icons/967/967327-32.png?modified=a9459feb",
+        "64": "https://addons.mozilla.org/user-media/addon_icons/967/967327-64.png?modified=a9459feb",
+        "128": "https://addons.mozilla.org/user-media/addon_icons/967/967327-128.png?modified=a9459feb"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "last_updated": "2024-04-25T22:50:36Z",
+    "name": {
+        "en-GB": "Windows 10 Accounts Port"
+    },
+    "previews": [],
+    "promoted": null,
+    "ratings": {
+        "average": 4.5,
+        "bayesian_average": 4.3249604915912805,
+        "count": 32,
+        "text_count": 18
+    },
+    "ratings_url": "https://addons.mozilla.org/en-US/firefox/addon/windows-10-accounts-port/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.mozilla.org/en-US/reviewers/review/967327",
+    "slug": "windows-10-accounts-port",
+    "status": "public",
+    "summary": {
+        "en-GB": "Sign in to supported websites with accounts on Windows 10. Ported from the Chrome's Windows 10 Accounts extension."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.mozilla.org/en-US/firefox/addon/windows-10-accounts-port/",
+    "versions_url": "https://addons.mozilla.org/en-US/firefox/addon/windows-10-accounts-port/versions/",
+    "weekly_downloads": 17,
+    "_score": null
+}

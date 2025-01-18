@@ -1,0 +1,143 @@
+.section-messages {
+  .section--body {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .input-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    bottom: 0;
+    z-index: 2;
+    padding: 8px 10px;
+    @include box-shadow(0px -2px 11px 0px rgba(0,0,0,0.09));
+    span {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 55px;
+      @include transform(translateY(-50%));
+      color: rgba(44, 44, 44, 0.4);
+      font-size: 10px;
+      z-index: 99;
+    }
+
+    input {
+      padding-right: 40px;
+    }
+  }
+  .messages-wrapper {
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    height: 320px;
+    .recipient {
+      border-right: 1px solid #F0F1F3;
+      height: 100%;
+      width: 150px;
+      input {
+        border: none;
+        background: transparent;
+        padding: 8px 10px;
+        font-size: 12px;
+        width: 100%;
+        &:focus {
+          outline: none!important;
+        }
+      }
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        height: 269px;
+        overflow-x: hidden;
+        li {
+          font-size: 12px;
+          a {
+            display: block;
+            padding: 5px 10px;
+            color: $text-primary;
+            text-decoration: none!important;
+            &:hover {
+              background: #f8f9fa;
+            }
+          }
+          &.active {
+            a {
+              color: $main-color;
+              background: rgba($main-color, 0.12);
+            }
+          }
+        }
+      }
+    }
+    .messages {
+      padding: 10px 10px;
+      height: 320px;
+      width: calc(100% - 150px);
+      overflow-x: hidden;
+      .message-item {
+        margin-bottom: 8px;
+        overflow: hidden;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        .inner {
+          min-width: 100px;
+        }
+        .message-container {
+          padding: 5px 8px;
+          font-size: 12px;
+          margin-bottom: 3px;
+        }
+        .message-info{
+          font-size: 10px;
+          color: $text-secondary;
+          i {
+            display: inline-block;
+            width: 8px;
+            height: 9px;
+            background: url(../img/icon-check-green.svg) no-repeat;
+            background-size: cover;
+            margin-right: 2px;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+          }
+        }
+        &.received {
+          align-items: end;
+          justify-content: end;
+          .inner {
+            -ms-flex-item-align: end;
+            align-self: flex-end;
+          }
+          .message-container {
+            background: $main-color;
+            color: #fff;
+            @include border-radius(4px 4px 0 4px);
+          }
+          .message-info {
+            text-align: right;
+          }
+        }
+        &.sent {
+          align-items: start;
+          justify-content: start;
+          .inner {
+            -ms-flex-item-align: start;
+            align-self: flex-start;
+          }
+          .message-container {
+            background: #F6F6F6;
+            color: $text-primary;
+            @include border-radius(4px 4px 4px 0);
+          }
+        }
+      }
+    }
+  }
+}

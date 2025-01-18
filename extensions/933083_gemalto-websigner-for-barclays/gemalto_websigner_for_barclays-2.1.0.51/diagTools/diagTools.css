@@ -1,0 +1,275 @@
+body, #versions {
+    background: #fff;
+    border: 1px solid #cacaca
+}
+body {
+    font-family: "Segoe UI", Geneva, Arial, Verdana, sans-serif;
+    font-size: 75%;
+    margin: 1px auto;
+    cursor: default;
+    border-width: 1px 1px 0;
+}
+*[disabled] { cursor: default }
+*[title] { cursor: help }
+strong { font-size: 110%; font-weight: bold }
+fieldset {
+    border: 1px solid #cacaca;
+    padding: 5px 15px;
+    margin: 2px;
+}
+button {
+    display: block;
+    padding: 6px 9px;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #777;
+    border-radius: 4px;
+    text-align: left;
+    margin: 5px auto;
+    font-size: 1em;
+    outline-color: #e4e4e4;
+    background: #f0f0f0
+}
+button:hover { background: #e4e4e4 }
+button:active { background: #cacaca }
+button[disabled]:hover { background: #f0f0f0 }
+hr { border: 0; border-bottom: 1px solid #cacaca; margin: 5px auto}
+ul { list-style-type: none; padding: 0; margin: 0; }
+svg { vertical-align: text-bottom; }
+button:disabled svg { fill: #777 }
+.centered { text-align: center; }
+.scratched { text-decoration: line-through }
+.header { border-right: 1px solid #cacaca; padding: 5px 10px }
+.menu ul { border-bottom: 1px solid #cacaca }
+li {
+    line-height: 25px;
+    display: inline;
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-decoration: none;
+    padding: 3px;
+    margin: 0 5px;
+    user-select: none;
+}
+li.menuItem.active {
+    cursor: default;
+    background: #e6e6e6
+}
+li.menuItem, li#reload {
+    cursor: pointer;
+}
+li.disabled {
+    color: #e6e6e6;
+}
+li.disabled svg {
+    fill: #e6e6e6
+}
+li.menuItem:hover, li#reload:hover { background: #e6e6e6 }
+li svg, .logs svg { margin-right: 5px }
+
+.container, #info section, #stateLogIcon svg,
+#logs.logging, #disconnected, #startLogs, #cancelLogs, #logs .tabs span,
+#collectLogs .generating, #collectLogs.generating .idle,
+#info .true, #info.logging .false, #copy .done, #copy.done .ready {
+    display: none
+}
+
+#stateLogIcon.standby svg.standby,
+#stateLogIcon.logging svg.logging,
+#stateLogIcon.done svg.done,
+#logs .tabs span.visible,
+#collectLogs.generating span.generating,
+#disconnected.true,
+#copy.done .done {
+    display: inline;
+}
+
+.logs #info section.logs,
+.history #info section.history,
+.pin #info section.pin,
+.rendering #info section.rendering,
+#info.logging .true {
+    display: inline-block;
+}
+
+#startLogs,
+#logs.logging #cancelLogs,
+#logs.logging .tabs,
+.logs .settings label {
+    display: block;
+}
+
+svg.logging { fill: #e69500 }
+.rotato {
+    animation-name: rotato;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin: 50% 50%;
+}
+@keyframes rotato {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+svg.done, #collectLogs:enabled svg, #collectLogs.done svg { fill: #009900; }
+#collectLogs.done { border-color: #009900; }
+
+#views {  
+    border-top: 1px solid #cacaca;
+    padding: 10px;
+    overflow: auto;
+}
+
+section { margin: 1em 0 }
+
+.logs #logs,
+.history #history,
+.pin #pin,
+.rendering #rendering {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.logs .settings, .rendering .settings { margin-right: 25px; }
+#logs.logging .settings, #logs.logging .settings *,
+#pin fieldset, #pin fieldset *:not(legend) {
+    background: #f0f0f0;
+    cursor: not-allowed;
+    color: #777;
+}
+
+/* SINGLE-VIEW SPECIFIC */
+.logs .actions { width: 165px; }
+.logs button { width: 135px; }
+.logs div.tabs {
+    width: 90%;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+} 
+.logs button.tab { 
+    border-radius: 0;
+    display: inline-block;
+    margin: 5px 5px 0;
+    width: auto;
+}
+.logs #logs.logging button.tab {
+    border-color: #e69500;
+    background-color: #ffedcc;
+}
+.disconnected { margin-top: 10px; }
+#startLogs svg { fill:#cc0000; margin: 0 8px 0 2px; }
+#cancelLogs svg { fill: #cc0000; margin: 0 6px 0 0; }
+.pin .container { flex-direction: column }
+.pin button { display: inline; }
+.rendering .settings { width: 200px; }
+#info .placeholders { height: 35px; margin: 0 }
+#info i { font-weight: bold; font-style: normal; }
+#info i[title] { border-bottom: 1px dashed; }
+#timeRemaining { margin: auto 2.5px; }
+#timeRemaining.soon { color: #e69500 }
+#timeRemaining.verySoon { color: #cc0000 }
+#info #location { visibility: hidden; height: 65px }
+#copy {
+    display: inline-block;
+    text-align: center;
+    width: 45px;
+    margin: 3px 5px;
+    padding: 3px 2px;
+}
+
+#filename { color: #009900 }
+
+/* INPUT */
+input, select { margin: 5px }
+input[type=checkbox] { 
+    width: auto;
+    margin: 5px 10px 5px 0;
+    vertical-align: sub;
+}
+input[type=number] { 
+    width: 100px;
+    margin: 5px 4px;
+    padding-left: 5px                
+}
+input[type=color] {
+    padding: 0; /* firefox */
+    width: 25px;
+}
+input[type=number] { width: 60px;
+    -moz-appearance:textfield; /* hide number arrows (firefox) */
+}
+input[type=text] { width: 100px; }
+input::-webkit-outer-spin-button, /* hide number arrows */
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* some margin are still there even though it's hidden */
+}
+select option:first-child { display: none }
+/* TABLE */
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin: -10px auto 0;
+    border-spacing: 0
+}
+.table button {
+    font-size: .8em;
+    margin-top: -5px;
+    margin: 0;
+}
+.table>tbody>tr>td, .table>tbody>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-bottom: 1px solid #ddd;
+}
+.table>tbody>tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+.table>tbody>tr>td, .table>tbody>tr>th {
+    padding: 8px;
+    line-height: 1.5;
+    vertical-align: top;
+}
+/* LINKS */
+a {
+    text-decoration: none;
+    color: #00c;
+    fill: #00c;
+}
+a:hover { opacity: .8; }
+a:visited {
+    color: #707;
+    fill: #707
+}
+/* VERSIONS */
+#versions {
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+    left: 0;
+    right: 0;
+    font-size: 90%; 
+    color: #777;
+    padding: 0;
+}
+
+/* DISABLING CHECKBOXES as partial logging is not handled yet */
+ #logs .settings, #logs .settings * {
+    background: #f0f0f0;
+    cursor: not-allowed;
+    color: #777;
+}
+#logs fieldset.settings { 
+    margin-top: 25px;
+    margin-bottom: auto;
+}

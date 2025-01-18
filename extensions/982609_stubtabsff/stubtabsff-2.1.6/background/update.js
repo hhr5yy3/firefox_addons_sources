@@ -1,0 +1,4 @@
+// Copyright (c) Zanger LLC. All rights reserved.
+
+browser.runtime.onInstalled.addListener(showUpdates);async function showUpdates(details){if(details.reason=="install"){log.log("Fist Time Install Detected");browser.tabs.create({'url':"https://www.stubtabs.com/welcome-to-stubtabs-firefox/"});browser.windows.create({'url':"consent.html",'height':300,'width':700,'focused':true,'type':"popup"});}
+else if(details.reason=="update"){var promise=browser.storage.sync.get('general.canvas');await promise.then(function(object){if(object['general.canvas']===undefined)return;object['general.canvas'].disable=true;browser.storage.sync.set({"general.canvas":object['general.canvas']});});}}

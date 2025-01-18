@@ -1,0 +1,1293 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url(fonts/Regular/OpenSans-Regular.woff) format("woff");
+  font-weight: 400;
+  font-style: normal
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url(fonts/Bold/OpenSans-Bold.woff) format("woff");
+  font-weight: 700;
+  font-style: normal
+}
+
+html,
+body {
+  width: 800px;
+  max-height: 600px;
+  color: #557;
+  background-color: #ccc;
+  font-size: 0.9em;
+  font-family: 'Open Sans', Helvetica, Verdana, Geneva, Arial, sans-serif;
+  font-weight: normal;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.175);
+}
+
+html * {
+  box-sizing: border-box;
+}
+
+html .dark,
+body.dark {
+  background-color: #222244;
+  color: #eef;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.chrome div {
+  margin: 0px;
+  padding: 0px;
+}
+
+.legend div {
+  padding: 0px;
+  margin: 0px;
+}
+
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  cursor: default;
+  user-select: none;
+}
+
+.dark span,
+.dark p,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5 {
+  color: #eef;
+}
+
+.chrome span {
+  margin: 0px;
+  padding: 0px;
+}
+
+.panel,
+.panel-import {
+  max-height: 500px;
+  min-height: 500px;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.panel-import {
+  overflow: hidden;
+}
+
+.panel-section-header,
+.legend {
+  display: block;
+  font-weight: bold;
+  font-size: 1.35em;
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+  background-color: #ccc;
+  border-bottom: 1px solid #aaa;
+}
+
+.dark .panel-section-header,
+.dark .legend {
+  background-color: #333355;
+}
+
+.chrome .panel-section-header {
+  padding: 10px 10px 0px 10px;
+}
+
+.legend {
+  bottom: 0px;
+  min-height: 2.75em;
+  height: 2.75em;
+  max-height: 2.75em;
+  padding: 0px 22px 0px 16px;
+  margin: 0px;
+  clear: both;
+  border: none;
+  overflow: hidden;
+  border-top: 1px solid #99a;
+  position: absolute;
+  top: calc(100% - 2.75em);
+  width: 100%;
+}
+
+.chrome .legend {
+  padding: 0px;
+  padding-left: 8px;
+}
+
+.legend p.intro {
+  margin-right: 24px;
+  margin-bottom: 12px;
+  display: inline-block;
+  color: #eef;
+}
+
+.legend span {
+  background-color: transparent;
+  padding: 2px 12px 4px 28px;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  margin-right: 2px;
+  font-size: 0.7em;
+  margin-top: 0.95em;
+  margin-bottom: 12px;
+  display: inline-block;
+  border-right: 1px solid #aaa;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.65);
+}
+
+.legend span,
+.legend p.intro {
+  color: #446;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.28);
+}
+
+.dark .legend span,
+.dark .legend p.intro {
+  color: #eef;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.48);
+}
+
+.chrome .legend span {
+  margin-top: 1em;
+  margin-right: 2px;
+}
+
+.legend #leg-unhandled {
+  background-image: url('icons/unhandled.png');
+  background-position: 0px center;
+}
+
+.legend #leg-flagged {
+  background-image: url('icons/ban.png');
+  background-position: 0px center;
+}
+
+.legend #leg-permitted {
+  background-image: url('icons/permit.png');
+  background-position: 0px center;
+}
+
+.legend #leg-auto-flagged {
+  border-right: none;
+  background-image: url('icons/ban-af.png');
+  background-position: 0px center;
+}
+
+.intro,
+span.domainurl,
+.settings-title {
+  display: block;
+  color: #888;
+  font-size: 0.65em;
+  margin-top: 0px;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4);
+}
+
+.dark .intro,
+.dark .settings-title {
+  color: #eef;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.28);
+}
+
+.dark span.domainurl {
+  color: inherit;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.85);
+}
+
+.info {
+  padding-left: 21px;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.dark .domainurl {
+  color: #ddf;
+}
+
+.domainurl {
+  font-size: 0.7em;
+}
+
+#header-title {
+  display: block;
+  max-width: 85%;
+  margin: 0px;
+}
+
+#header-title span.intro {
+  color: #446;
+}
+
+#header-title span {
+  color: #225;
+}
+
+.dark #header-title,
+.dark #header-title span.intro,
+.dark #header-title span {
+  color: inherit;
+}
+
+hr {
+  clear: both;
+  border: none;
+  border-bottom: 1px solid #aaa;
+  margin: 0px;
+}
+
+.dark hr {
+  border-bottom: 1px solid #aaa;
+}
+
+ul {
+  clear: both;
+  list-style: none;
+  margin: 0px;
+  padding: 5px 1px;
+}
+
+#content {
+  margin-bottom: 5em;
+}
+
+#content>ul {
+  margin: 0px 10px;
+  padding: 0px;
+  margin-top: 14px;
+  margin-bottom: 16px;
+}
+
+li.cookieEntry,
+li.cookieEntrySublist {
+  position: relative;
+  border-radius: 4px;
+  background-color: #fff;
+  margin: 0px;
+  margin-bottom: 2px;
+  display: block;
+  border-top: 1px solid #eef;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  transition-property: background-color, border-color;
+  transition-duration: 150ms;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.35);
+}
+
+.dark li.cookieEntry,
+.dark li.cookieEntrySublist {
+  background-color: #1a2f45;
+  color: #eef;
+  border-top: 1px solid #335;
+  border-right: 1px solid #222244;
+  border-bottom: 1px solid #222244;
+}
+
+.dark li.cookieEntry:nth-child(2n+1),
+.dark li.cookieEntrySublist:nth-child(2n+1) {
+  background-color: #333355;
+}
+
+
+
+li.cookieEntry:nth-child(2n+1),
+li.cookieEntrySublist:nth-child(2n+1) {
+  background-color: #eee;
+}
+
+li.cookieEntry.inactive-cookie,
+li.cookieEntrySublist.inactive-cookie {
+  opacity: 0.525;
+}
+
+li.cookieEntry:hover,
+li.cookieEntrySublist:hover {
+  background-color: #557;
+  color: #eef;
+  border-top: 1px solid #668;
+  border-right: 1px solid #668;
+  border-bottom: 1px solid #668;
+}
+
+li.cookieEntry.hidden {
+  display: none;
+}
+
+.dark li.cookieEntry:hover,
+.dark li.cookieEntrySublist:hover {
+  border-top: 1px solid #779;
+}
+
+.dark li.cookieEntry:hover .cookieKey,
+.dark li.cookieEntry:hover .cookieValue,
+.dark li.cookieEntrySublist:hover .cookieKey,
+.dark li.cookieEntrySublist:hover .cookieValue,
+.dark li.dataEntry:hover .sessionDataKey,
+.dark li.dataEntry:hover .sessionDataSubKey,
+li.dataEntry:hover .sessionDataKey,
+li.dataEntry:hover .sessionDataSubKey,
+li.cookieEntry.inactive-cookie:hover,
+li.cookieEntrySublist.inactive-cookie:hover {
+  color: #fff;
+}
+
+li.cookieEntry:hover .cookieValue,
+li.cookieEntrySublist:hover .cookieValue,
+li.cookieEntry:hover .secure-cookie,
+li.cookieEntry:hover .cookie-domain li.cookieEntrySublist:hover .secure-cookie,
+li.cookieEntry:hover .nonpresent-cookie,
+li.cookieEntry:hover .cookie-domain li.cookieEntrySublist:hover .nonpresent-cookie,
+li.cookieEntry:hover .cleareduser-cookie,
+li.cookieEntry:hover .cookie-domain li.cookieEntrySublist:hover .cleareduser-cookie,
+li.cookieEntry:hover .cookie-domain li.cookieEntrySublist:hover .expired-cookie,
+li.cookieEntrySublist:hover .cookie-domain {
+  color: #fff;
+}
+
+li.cookieEntry:hover .secure-cookie,
+li.cookieEntry:hover .nonpresent-cookie,
+li.cookieEntry:hover .expired-cookie,
+li.cookieEntry:hover .cleareduser-cookie {
+  color: #ff8020;
+}
+
+.dark li.cookieEntry:hover .secure-cookie,
+.dark li.cookieEntry:hover .nonpresent-cookie,
+.dark li.cookieEntry:hover .cleareduser-cookie,
+.dark li.cookieEntry:hover .expired-cookie,
+.dark li.cookieEntry:hover .cookie-domain,
+.dark li.cookieEntrySublist:hover .secure-cookie,
+.dark li.cookieEntrySublist:hover .nonpresent-cookie,
+.dark li.cookieEntrySublist:hover .cleareduser-cookie,
+.dark li.cookieEntrySublist:hover .expired-cookie,
+.dark li.cookieEntrySublist:hover .cookie-domain,
+.dark li.cookieEntry .secure-cookie,
+.dark li.cookieEntry .nonpresent-cookie,
+.dark li.cookieEntry .cleareduser-cookie,
+.dark li.cookieEntry .expired-cookie,
+.dark li.cookieEntry .cookie-domain,
+.dark li.cookieEntrySublist .secure-cookie,
+.dark li.cookieEntrySublist .nonpresent-cookie,
+.dark li.cookieEntrySublist .cleareduser-cookie,
+.dark li.cookieEntrySublist .expired-cookie,
+.dark li.cookieEntrySublist .cookie-domain {
+  color: #ff8020;
+}
+
+/*
+li.cookieEntry.unremoved-secure-cookie,
+li.cookieEntrySublist.unremoved-secure-cookie {
+  border: 1px solid #e00;
+}
+*/
+
+.cookieKey,
+.cookieValue,
+.secure-cookie,
+.nonpresent-cookie,
+.cleareduser-cookie {
+  transition-property: color;
+  transition-duration: 170ms;
+}
+
+.cookieKey {
+  font-size: 1em;
+  font-weight: bold;
+  display: block;
+}
+
+.cookieValue {
+  color: #779;
+  font-size: 0.85em;
+}
+
+.secure-cookie,
+.cookie-domain,
+.expired-cookie,
+.nonpresent-cookie,
+.cleareduser-cookie {
+  color: #9a0000;
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+.chrome .secure-cookie,
+.chrome .cookie-domain,
+.chrome .expired-cookie,
+.chrome .nonpresent-cookie,
+.chrome .cleareduser-cookie {
+  margin-left: 6px;
+}
+
+.chrome .subloadbar span {
+  margin-left: 16px;
+}
+
+.subloadbar {
+  border: 1px solid #ccc;
+  background-color: #eee;
+  display: block;
+  margin: 0px;
+  padding: 11px 14px 11px 0px;
+  border-radius: 8px;
+  font-size: 1em;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.12);
+  position: relative;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+.dark .subloadbar,
+.dark .subloadContainer {
+  background-color: #1a2f45;
+  border: 1px solid #445;
+}
+
+.dark .subloadContainer {
+  border: 0;
+}
+
+.subloadbar button {
+  width: 28px;
+  height: 28px;
+}
+
+.subloadbar button.setKeyCookie {
+  right: 48px;
+  top: 6px;
+}
+
+.subloadbar button.dumpster {
+  right: 6px;
+}
+
+.dark button.dumpster {
+  border: 1px solid #ccc;
+}
+
+.domainNameMenu {
+  position: relative;
+  left: 10px;
+  top: -6px;
+  float: left;
+  margin-right: 12px;
+}
+
+.collapseToggle {
+  float: left;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  text-indent: -3px;
+  line-height: 0px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #464;
+  border-radius: 8px;
+}
+
+.collapseToggle.active {
+  text-indent: -0.25em;
+}
+
+.subloaded {
+  color: #9a0000;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.chrome .subloaded {
+  margin-right: 7px;
+}
+
+#cookie-list p,
+#cookie-list-flagged p,
+#cookie-list-permitted p,
+#session-data-list p {
+  position: relative;
+  word-wrap: break-word;
+  width: 85%;
+  left: 6%;
+  top: 0%;
+  display: inline-block;
+}
+
+.chrome .sessionDataKey,
+.sessionDataKey {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.6ch;
+}
+
+.chrome .sessionDataValues,
+.sessionDataValues {
+  margin: 0px;
+  padding: 0px;
+}
+
+.sessionDataContainer {
+  padding: 0px 0.35em;
+}
+
+.sessionDataDivider {
+  display: block;
+  margin-top: 2.2ch;
+}
+
+.sessionDataSubKey {
+  display: inline-block;
+  font-weight: bold;
+  width: 28%;
+  margin-right: 1.5ch;
+  margin-bottom: 0.65ch;
+}
+
+.sessionDataValueNode {
+  display: inline-block;
+  word-wrap: break-word;
+  width: calc(70% - 5ch);
+}
+
+button,
+#settings-action-all-import {
+  text-align: center;
+  background-color: #446;
+  border-radius: 24px 24px;
+  font-weight: bold;
+  border: none;
+  padding: 7px 12px 8px 12px;
+  cursor: pointer;
+  color: #ddd;
+  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.12);
+}
+
+#settings-action-all-import span {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  word-wrap: break-word;
+}
+
+.chrome button,
+#settings-action-all-import {
+  padding: 8px 12px 7px 12px;
+  outline: none;
+}
+
+input,
+textarea {
+  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.17);
+  font-family: inherit;
+}
+
+.chrome input,
+.chrome textarea {
+  outline: none;
+}
+
+button:hover,
+button.active,
+#settings-action-all-import:hover {
+  background-color: #0b0;
+  color: #fff;
+}
+
+button::-moz-focus-inner {
+  border: none;
+}
+
+#tabs {
+  position: relative;
+  top: 18px;
+}
+
+.chrome #tabs {
+  margin-top: 20px;
+  top: 3px;
+}
+
+#tabs button {
+  margin-left: 0px;
+  padding: 7px 20px 8px 34px;
+  border-radius: 12px 12px 0px 0px;
+  transition: background-color, color;
+  transition-duration: 120ms;
+  position: relative;
+  margin-right: 8px;
+  top: -2px;
+}
+
+.chrome #tabs button {
+  padding-top: 10px;
+  padding-bottom: 8px;
+  top: -3px;
+  margin-right: 5px;
+}
+
+button#activeCookies {
+  background-image: url('icons/cookie_38.png');
+  background-size: 21px;
+  background-repeat: no-repeat;
+  background-position: 8px center;
+}
+
+button#flaggedCookies {
+  background-image: url('icons/ban.png');
+  background-size: 21px;
+  background-repeat: no-repeat;
+  background-position: 8px center;
+}
+
+button#permittedCookies {
+  background-image: url('icons/permit.png');
+  background-size: 21px;
+  background-repeat: no-repeat;
+  background-position: 8px center;
+}
+
+button#sessionData {
+  padding: 7px 20px 8px 20px;
+}
+
+.cookieCount {
+  border: 1px solid #ddd;
+  border-radius: 64px;
+  background-color: #45a;
+  color: #fff;
+  font-size: 0.95em;
+  padding: 4px 8px;
+  position: absolute;
+  top: 23px;
+  right: -8px;
+}
+
+.dark .cookieCount {
+  color: #fff;
+}
+
+.chrome .cookieCount {
+  padding: 3px 7px;
+}
+
+.hidden {
+  display: none;
+}
+
+button.checkmark {
+  position: absolute;
+  top: 0.85em;
+  left: 10px;
+}
+
+button.checkmark,
+button.checkmark-confirm {
+  border: 1px solid #aac;
+  transition-duration: 250ms;
+  transition-property: border;
+}
+
+button.checkmark,
+button.checkmark-confirm,
+button.setKeyCookie {
+  cursor: pointer;
+  border-radius: 4px;
+  width: 26px;
+  height: 26px;
+  background-color: #fff;
+  background-image: url('icons/unhandled.png');
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-position: center;
+}
+
+button.checkmark-confirm {
+  background-image: none;
+}
+
+button.setKeyCookie {
+  position: absolute;
+  background-color: #ddd;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  top: 12px;
+  right: 14px;
+  background-position: center center;
+  background-image: url('icons/key_26.png');
+}
+
+button.setKeyCookie.locked {
+  background-color: #fff;
+  background-image: url('icons/key_a26.png');
+}
+
+button.checkmark.flagged {
+  background-position: center center;
+  background-image: url('icons/ban.png');
+}
+
+button.checkmark.auto-flagged {
+  background-position: center center;
+  background-image: url('icons/ban-af.png');
+}
+
+button.checkmark.permit {
+  background-position: center center;
+  background-image: url('icons/permit.png');
+}
+
+li:hover button.checkmark {
+  border: 1px solid #446;
+}
+
+#modes {
+  position: absolute;
+  top: 0.75em;
+  right: 1%;
+  width: auto;
+  display: block;
+}
+
+button#auto-flag,
+button#global-flag,
+button#account-mode,
+button#help {
+  background-color: #ddd;
+  background-image: url('icons/cookie_wflag_28.png');
+  background-position: 8px center;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  padding: 7px 18px 8px 38px;
+  border-color: #ddd;
+  color: #557;
+  display: inline;
+  margin-right: 7px;
+  border: 1px solid #99a;
+  transition: background-color, color;
+  transition-duration: 120ms;
+  background-size: 24px;
+}
+
+button:hover#auto-flag,
+button:hover#global-flag,
+button:hover#account-mode,
+button:hover#help,
+button:hover#donate {
+  background-color: #b20600;
+  color: #eee;
+}
+
+button#donate {
+  background-color: #ddd;
+  border-color: #ddd;
+  color: #557;
+  display: inline;
+  margin-right: 7px;
+  border: 1px solid #99a;
+  transition: background-color, color;
+  transition-duration: 120ms;
+}
+
+.dark button#auto-flag,
+.dark button#global-flag,
+.dark button#account-mode,
+.dark button#help,
+.dark button#donate {
+  background-color: #335;
+  border-color: #335;
+  color: #fff;
+  border: 1px solid #66a;
+}
+
+.dark button:hover#auto-flag,
+.dark button:hover#global-flag,
+.dark button:hover#account-mode,
+.dark button:hover#help,
+.dark button:hover#donate {
+  background-color: #558;
+}
+
+.chrome button#auto-flag,
+.chrome button#global-flag,
+.chrome button#account-mode,
+.chrome button#help,
+.chrome button#donate {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+button#help {
+  background-image: url('icons/help_28.png');
+  background-size: 21px;
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  margin-right: 0px;
+}
+
+body.dark button#help {
+  background-image: url('icons/help_28w.png');
+}
+
+button#account-mode {
+  background-image: none;
+  padding: 7px 18px 8px 18px;
+}
+
+.chrome button#auto-flag,
+.chrome button#global-flag {
+  background-position: 4px 2px;
+  padding: 9px 18px 8px 38px;
+}
+
+.chrome button#account-mode {
+  padding: 9px 18px 8px 18px;
+}
+
+button#global-flag {
+  background-image: url('icons/globe_flag_28.png');
+}
+
+button#auto-flag.active,
+button#global-flag.active,
+button#account-mode.active,
+button#help.active,
+button#donate.active {
+  background-color: #b20600;
+  background-image: url('icons/cookie_flag_28.png');
+  color: #eee;
+  border: 1px solid #779;
+}
+
+button#account-mode.active {
+  background-image: none;
+}
+
+button#global-flag.active {
+  background-image: url('icons/globe_wflag_28.png');
+}
+
+button#donate.active {
+  background-image: none;
+}
+
+button#help.active {
+  background-image: url('icons/help_28.png');
+}
+
+#searchBar {
+  background-color: #eee;
+  background-image: url('icons/search_icon.png');
+  background-position: 4px center;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-size: 26px 26px;
+  color: #557;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 0px;
+  padding: 8px 15px 9px 34px;
+  font-weight: bold;
+  width: 25%;
+  position: absolute;
+  right: 1%;
+  bottom: 6px;
+}
+
+.chrome #searchBar {
+  width: 25%;
+  margin-left: 1px;
+}
+
+#clearAutoFlagged {
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+
+#prefs {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  padding-left: 34px;
+  background-image: url('icons/settings_28.png');
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-position: 8px center;
+  background-size: 21px;
+  border: 1px solid #88a;
+}
+
+.chrome #prefs {
+  top: 8px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+}
+
+#settings-view {
+  position: relative;
+  padding: 5px 10px;
+  margin-bottom: 18px;
+}
+
+#settings-view hr {
+  margin: 15px 0px 12px 0px;
+}
+
+.dark #settings-view p {
+  color: #eef;
+}
+
+.settings-title {
+  position: relative;
+  top: -0.5em;
+  font-size: 1.15em;
+  float: left;
+  max-width: 17%;
+  width: 17%;
+  padding-right: 3%;
+  margin-right: 1%;
+  font-weight: bold;
+}
+
+.chrome div.settings-title {
+  padding-right: 4%
+}
+
+.setting-info p,
+.legend .intro {
+  display: inline-block;
+  margin-left: 5px;
+  background-image: url('icons/help_16.png');
+  padding: 4px;
+  padding-right: 20px;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  color: #446;
+}
+
+body.dark .legend .intro,
+body.dark .setting-info p {
+  background-image: url('icons/help_16w.png');
+}
+
+textarea#log {
+  background-color: #eee;
+  color: #557;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 0px;
+  margin-top: 12px;
+  padding: 6px 12px;
+  font-weight: bold;
+  width: calc(100% - 12px);
+  min-height: 18em;
+  max-height: 18em;
+  resize: none;
+  font-size: 0.85em;
+  margin-bottom: 20px;
+}
+
+#settings-general hr {
+  margin: 20px 0px;
+}
+
+#settings-action-clear,
+#domain-action-clear,
+#settings-action-all-export,
+#settings-action-all-import,
+#cookies-action-all-export,
+#cookies-action-all-export-clipboard,
+#settings-action-all-import {
+  margin-left: 35px;
+  margin-bottom: 35px;
+  min-width: 210px;
+  max-width: 210px;
+  float: right;
+  word-wrap: break-word;
+}
+
+#cookies-action-all-export {
+  margin-bottom: 12px;
+}
+
+#cookies-action-all-export-clipboard {
+  clear: both;
+}
+
+#settings-confirm-clear,
+#domain-confirm-clear,
+#settings-all-export,
+#settings-all-import,
+#cookies-action-export-expired,
+#logging-enable {
+  float: left;
+  min-width: 300px;
+  max-width: 300px;
+}
+
+#settings-notification,
+#settings-doDebug,
+#settings-unfolding,
+#settings-notification,
+#settings-updateNotification,
+#settings-use-dark,
+#settings-remove-user-deleted {
+  margin-bottom: 25px;
+}
+
+#cookies-action-export-expired span,
+#settings-confirm-clear span,
+#logging-enable span,
+#domain-confirm-clear span,
+#settings-notification span,
+#settings-unfolding span,
+#settings-updateNotification span,
+#settings-doDebug span,
+#settings-all-export span,
+#settings-all-import span,
+#settings-use-dark span,
+#settings-remove-user-deleted span {
+  position: relative;
+  top: 0.65em;
+  font-weight: bold;
+}
+
+#help-view,
+#donate-view {
+  padding: 5px 10px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.helpNavigation li {
+  color: #335;
+  background-color: #ddd;
+  margin-bottom: 4px;
+  display: block;
+  border: none;
+  transition-property: background-color, border-color;
+  transition-duration: 150ms;
+  padding-top: 4px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+}
+
+.dark #help-view,
+.dark #donate-view {
+  background-color: #222244;
+  color: #eef;
+}
+
+.dark .helpNavigation li {
+  color: #335;
+  border: 1px solid #ddd;
+}
+
+.helpNavigation li:hover {
+  color: #111;
+}
+
+.helpNavigation a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+#help-view a>span.help-highlight {
+  cursor: pointer;
+}
+
+#help-view span.help-highlight {
+  cursor: default;
+}
+
+#help-view a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+#help-view a.anchor {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.anchor::before {
+  display: block;
+  content: " ";
+  margin-top: -160px;
+  height: 160px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.chrome .anchor::before {
+  display: inline-block;
+}
+
+#help-view hr {
+  margin: 15px 0px 12px 0px;
+}
+
+#help-view h1,
+#help-view h2,
+#help-view h3,
+#help-view h4 {
+  padding: 0px;
+  margin: 0px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.profileTab {
+  margin-right: 1px;
+  border-radius: 12px 12px 0px 0px;
+  border-bottom: 0px;
+}
+
+#domainDetails,
+#logDetails {
+  float: left;
+  max-width: 605px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.chrome #domainDetails,
+.chrome #logDetails {
+  float: none;
+  max-width: 586px;
+  width: 100%;
+}
+
+#profilePane {
+  border: 1px solid #88a;
+  max-height: 150px;
+  overflow-y: scroll;
+  border-radius: 0px 0px 0px 15px;
+  padding: 0px;
+  margin: 0px;
+  margin-bottom: 30px;
+}
+
+#profilePane span {
+  font-weight: bold;
+}
+
+#profilePane .domain {
+  float: left;
+  min-width: 24%;
+  padding-right: 1%;
+}
+
+#profilePane #profileNoData {
+  background-color: #eee;
+  color: #888;
+  padding: 12px;
+  margin: 0px;
+  display: block;
+  font-weight: normal;
+}
+
+#profilePane #profileNoData.hidden {
+  display: none;
+}
+
+#profilePane ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+#profilePane li {
+  padding: 12px;
+  border-radius: 0px;
+  margin: 0px;
+  position: relative;
+}
+
+#profilePane li:hover span {
+  color: #fff;
+}
+
+#profilePane button.dumpster,
+.dumpster {
+  background-image: url('icons/dumpster_22.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  background-color: #1a2f45;
+  height: 28px;
+  width: 28px;
+  border-radius: 28px;
+  position: absolute;
+  right: 6px;
+  top: 6px;
+}
+
+.dumpster:hover {
+  background-color: #1a2f45;
+}
+
+.chrome #settings-confirm-clear span,
+.chrome #domain-confirm-clear span,
+.chrome #cookies-action-export-expired span,
+.chrome #settings-use-dark span,
+.chrome #settings-remove-user-deleted span,
+.chrome #settings-notification span,
+.chrome #settings-unfolding span,
+.chrome #settings-updateNotification span,
+.chrome #settings-doDebug span,
+.chrome #settings-all-import span {
+  top: 0.25em;
+}
+
+button.checkmark-confirm {
+  margin-right: 8px;
+  position: relative;
+  top: 4px;
+}
+
+button.checkmark-confirm.active {
+  background-image: url('icons/permit.png');
+}
+
+.inline-block {
+  display: inline-block;
+  width: 600px;
+}
+
+#help-view {
+  background-color: #eee;
+  font-size: 1.1em;
+  margin: 0px;
+}
+
+.help-highlight {
+  color: #0a0;
+  font-weight: bold;
+}
+
+.panel-section-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 16px;
+}

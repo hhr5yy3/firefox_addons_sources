@@ -1,0 +1,110 @@
+{
+    "id": 999851,
+    "authors": [
+        {
+            "id": 14303554,
+            "name": "Firefox user 14303554",
+            "url": "https://addons.mozilla.org/en-US/firefox/user/14303554/",
+            "username": "anonymous-e3b2ce52a07643481a21f2e35b48dc50"
+        }
+    ],
+    "average_daily_users": 1544,
+    "categories": [
+        "other"
+    ],
+    "contributions_url": "",
+    "created": "2018-09-22T13:41:50Z",
+    "current_version": {
+        "id": 4993310,
+        "compatibility": {
+            "firefox": {
+                "min": "56.0",
+                "max": "*"
+            },
+            "android": {
+                "min": "56.0",
+                "max": "68.*"
+            }
+        },
+        "edit_url": "https://addons.mozilla.org/en-US/developers/addon/formatta-fattura-elettronica/versions/4993310",
+        "file": {
+            "id": 3537680,
+            "created": "2020-03-30T08:36:40Z",
+            "hash": "sha256:c15d2558e35285d3b4bdb27a4c0a12bf0faa82f4d8971e6f1b4f928241869e78",
+            "is_mozilla_signed_extension": false,
+            "size": 104522,
+            "status": "public",
+            "url": "https://addons.mozilla.org/firefox/downloads/file/3537680/formatta_fattura_elettronica-1.14.xpi",
+            "permissions": [
+                "file:///*",
+                "activeTab",
+                "tabs",
+                "storage",
+                "<all_urls>"
+            ],
+            "optional_permissions": [],
+            "host_permissions": []
+        },
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 12,
+            "is_custom": false,
+            "name": {
+                "en-US": "GNU Lesser General Public License v3.0 only"
+            },
+            "slug": "LGPL-3.0-only",
+            "url": "https://spdx.org/licenses/LGPL-3.0-only.html"
+        },
+        "release_notes": {
+            "en-US": "Aggiornati i fogli di stile.\nI fogli di stile sono inoltre stati modificati per permettere la lettura degli allegati"
+        },
+        "reviewed": "2020-03-30T08:40:10Z",
+        "version": "1.14"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Questo add-on permette di visualizzare in modo leggibile le fatture elettroniche.\nUna volta installato, comparir\u00e0 un bottone (con scritto \"FE\") in alto a destra nella toolbar di Firefox. Esso permette di attivare (se verde) o di disattivare (se rosso) l'add-on.\n\nAssoSoftware ha autorizzato l'utilizzo del suo foglio di stile.\nPertanto, a partire dalla versione 1.13, esso \u00e8 diventato quello di default.\n<b>A partire dalla versione 1.14 sono stati inglobati fogli di stile modificati (sia quello Assosoftware che quelli Ministeriali). I fogli di stile ora permettono la visualizzazione anche degli allegati.</b>\nE' possibile modificare il foglio di stile utilizzato dall'add-on accedendo alla pagina delle opzioni degli add-on.\nPer chi non sapesse come fare, \u00e8 sufficiente scrivere nella barra degli indirizzi \"about:addons\" oppure premere Ctrl + Mauisc + A.\n\nQualora si intenda aprire le fatture elettroniche con Firefox facendo doppio click sul nome del file, \u00e8 necessario impostare Firefox quale applicazione di default per i file xml.\n\nSono sicuro che, per chi utilizza sistemi operativi diversi da Windows, qualsiasi mia indicazione sia superflua.\n\nSeguono le istruzioni per gli utilizzatori di Windows.\nSino a Windows 7 la cosa era banale: \n1. tasto destro sul nome del file della fattura elettronica (il file con estensione .xml), \n2. scegliere la voce del menu \"apri con\",\n3. andare su \"Programma predefinito...\"\nSe tra le applicazioni consigliate trovate Firefox:\n1. selezionare Firefox,\n2. spuntare la casella \"Usa sempre il programma selezionato per aprire questo tipo di file,\n3. dare l'ok\nSe tra le applicazioni consigliate non trovate Firefox:\n1. cliccare su pulsante sfoglia,\n2. aprire la cartella \"Mozilla Firefox\" e fare doppio click sul file firefox.exe,\n3. spuntare la casella \"Usa sempre il programma selezionato per aprire questo tipo di file,\n4. dare l'ok\nSe non trovate la cartella \"Mozilla Firefox\" nella directory di default (c:\\Programmi\\), provate a cercarlo in c:\\Programmi (x86).\n\nCon Windows 8 non so se la procedura sopra indicata sia quella corretta.\n\nCon Windows 10 si deve seguire un'altra strada.\nA questo link ci sono le istruzioni per Windows 10:\n<a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/2e902e9bb198ae70763f558882131dc63ccff5fddee1b8a489c24897ff0145de/https%3A//answers.microsoft.com/en-us/windows/forum/windows_10-desktop/windows-10-how-to-open-an-xml-file-by-default/61095242-856f-4079-8482-586b8ab21659%3Fpage=2\" rel=\"nofollow\">https://answers.microsoft.com/en-us/windows/forum/windows_10-desktop/windows-10-how-to-open-an-xml-file-by-default/61095242-856f-4079-8482-586b8ab21659?page=2</a>\n\nIn pratica \u00e8 necessario con regedit andare alla seguente chiave:\n[HKEY_CLASSES_ROOT\\xmlfile\\shell\\Open\\command]\nCambiare la stringa in (Predefinito) con questa: \n\"C:\\Program Files\\Mozilla Firefox\\firefox.exe\" \"%1\"\nRicordatevi di mettere i doppi apici.\nCancellare la chiave \n\"DelegateExecute\"=\"{17FE9752-0B5A-4665-84CD-569794602F5C}\"\n\nChiaramente nel caso in cui il percorso di installazione di Firefox non \u00e8 \nC:\\Program Files\\Mozilla Firefox\\firefox.exe, \ndovr\u00e0 essere opportunamente corretta la stringa che va indicata nella suddetta chiave.\nIn alcuni casi infatti il percorso di installazione \u00e8:\nC:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe.\n\nMi sembra inutile fare presente che anche se leggerete il percorso come:\nC:\\Programmi (x86)\\Mozilla Firefox\\firefox.exe \no\nC:\\Programmi\\Mozilla Firefox\\firefox.exe\nva messo il percorso scritto in inglese.\n\n<b>Se comunque non sapete cosa state facendo con regedit, lasciate perdere.</b>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.mozilla.org/en-US/developers/addon/formatta-fattura-elettronica/edit",
+    "guid": "{4134811d-dd0f-4f7b-975d-48b80c08fe9b}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.mozilla.org/static-server/img/addon-icons/default-64.d144b50f2bb8.png",
+    "icons": {
+        "32": "https://addons.mozilla.org/static-server/img/addon-icons/default-32.2b26add4b394.png",
+        "64": "https://addons.mozilla.org/static-server/img/addon-icons/default-64.d144b50f2bb8.png",
+        "128": "https://addons.mozilla.org/static-server/img/addon-icons/default-128.452018499894.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "last_updated": "2020-03-30T08:40:10Z",
+    "name": {
+        "en-US": "Visualizzatore di fatture elettroniche"
+    },
+    "previews": [],
+    "promoted": null,
+    "ratings": {
+        "average": 4.0769,
+        "bayesian_average": 3.7273591452758192,
+        "count": 13,
+        "text_count": 6
+    },
+    "ratings_url": "https://addons.mozilla.org/en-US/firefox/addon/formatta-fattura-elettronica/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.mozilla.org/en-US/reviewers/review/999851",
+    "slug": "formatta-fattura-elettronica",
+    "status": "public",
+    "summary": {
+        "en-US": "This add-on is intended for Italian users.\nVisualizza la fattura elettronica non associata ad un foglio di stile con il foglio di stile di AssoSoftware.  L'utente, accedendo alla pagina delle opzioni, pu\u00f2 modificare il foglio di stile da usare."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [],
+    "type": "extension",
+    "url": "https://addons.mozilla.org/en-US/firefox/addon/formatta-fattura-elettronica/",
+    "versions_url": "https://addons.mozilla.org/en-US/firefox/addon/formatta-fattura-elettronica/versions/",
+    "weekly_downloads": 32,
+    "_score": null
+}

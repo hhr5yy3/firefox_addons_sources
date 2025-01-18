@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="options.css">
+    <script src="bundles/options.js"></script>
+</head>
+<body>
+    <div style="width: 600px;">
+        <form id="permissionsSettingsForm">
+            <fieldset id="permissionsSettings">
+                <legend id="permissionsSettingsLabel"></legend>
+                <p>
+                    <label id="historyPermissionLabel"></label>
+                    <br><input type="button" id="historyPermissionBtn" disabled="true"><label id="historyPermissionStatusLabel">...</label>
+                </p>
+                <p>
+                    <label id="tabHidePermissionLabel"></label>
+                    <br><input type="button" id="tabHidePermissionBtn" disabled="true"><label id="tabHidePermissionStatusLabel">...</label>
+                </p>
+            </fieldset>
+        </form>
+        <hr width="0">
+        <form id="generalSettingsForm">
+            <fieldset id="generalSettings">
+                <legend id="generalSettingsLabel"></legend>
+                <label id="showNumbersLabel" class="doLeading"><input type="checkbox" id="showNumbersChb" name="generalChbs"></label>
+                <br><label id="roundCornersLabel" class="doLeading"><input type="checkbox" id="roundCornersChb" name="generalChbs"></label>
+                <br><label id="darkThemeLabel" class="doLeading"><input type="checkbox" id="darkThemeChb" name="generalChbs"></label>
+                <br><label id="kbdnavOnLabel" class="doLeading"><input type="checkbox" id="kbdnavOnChb" name="generalChbs"></label>
+            </fieldset>
+        </form>
+        <hr width="0">
+        <form id="folderSettingsForm" method="post">
+            <fieldset id="folderSettings">
+                <legend id="rootFolderSettingsLabel"></legend>
+                <label id="rootFolderSettingsDescLabel" class="description"></label>
+                <hr width="100%" size="1">
+                <p>
+                    <label id="gridSizeLabel"></label>
+                    <input type="number" id="rowsSpin" name="gridSize" value="3" style="width: 30px;" min="1" max="30" required>
+                    <label> x </label>
+                    <input type="number" id="colsSpin" name="gridSize" value="3" style="width: 30px;" min="1" max="30" required>
+                    <input type="hidden" id="rowsOld">
+                    <input type="hidden" id="colsOld">
+                    <label id="elemsWillBeLostLabel" class="warning"></label>
+                </p>
+                <p>
+                    <label id="bgLabel"></label>
+                    <input type="hidden" id="bgimgBase64">
+                    <br><label id="defaultBgLabel" class="doLeading"><input type="radio" id="defaultBgRb" name="bgtype" value="DEFAULT"></label>
+                    <br><label id="colorBgLabel" class="doLeading"><input type="radio" id="colorBgRb" name="bgtype" value="SOLID"></label>
+                    <input type="color" id="bgcolorPicker" name="bgcolor" value="#F9F9FA" disabled>
+                    <br><label id="imgLocalBgLabel" class="doLeading"><input type="radio" id="imgLocalBgRb" name="bgtype" value="IMAGE_LOCAL"></label>
+                    <input type="file" id="bgimgPicker" name="bgimgLocal" accept="image/*" required disabled>
+                    <span id="fakeBgimgPicker">
+                        <input id="fakeBgimgPickerBtn" type="button">
+                        <label id="fakeBgimgPickerLabel" for="fakeBgimgPickerBtn"></label>
+                    </span>
+                    <img id="imgLocalBgSpinner" class="waitSpinner" src="icons/tail-spin.svg">
+                    <br><label id="imgRemoteBgLabel" class="doLeading"><input type="radio" id="imgRemoteBgRb" name="bgtype" value="IMAGE_REMOTE"></label>
+                    <input type="url" id="bgimgUrlTf" name="bgimgRemote" size="80" required pattern=".*\.+(png|jpg|jpeg|PNG|JPG|JPEG)" disabled>
+                </p>
+                <div id="controlButtons">
+                    <input type="submit" id="okBtn">
+                    <input type="button" id="restoreBtn">
+                </div>
+            </fieldset>
+        </form>
+        <hr width="0">
+        <form id="newTabFocusSettingsForm">
+            <fieldset id="newTabFocusSettings">
+                <legend id="newTabFocusSettingsLabel"></legend>
+                <label id="newTabFocusSettingsDescLabel" class="description"></label>
+                <hr width="100%" size="1">
+                <p>
+                    <label id="focusPageLabel" class="doLeading"><input type="radio" id="focusPageRb" name="newPageFocus"></label>
+                    <br><label id="focusAddressBarLabel" class="doLeading"><input type="radio" id="focusAddressBarRb" name="newPageFocus"></label>
+                </p>
+            </fieldset>
+        </form>
+        <hr width="0">
+        <form id="newTabActiveSettingsForm">
+            <fieldset id="newTabActiveSettings">
+                <legend id="newTabActiveSettingsLabel"></legend>
+                <label id="newTabActiveSettingsDescLabel" class="description"></label>
+                <p>
+                    <label id="newTabActiveYesLabel" class="doLeading"><input type="radio" id="newTabActiveYesRb" name="newTabActive"></label>
+                    <br><label id="newTabActiveNoLabel" class="doLeading"><input type="radio" id="newTabActiveNoRb" name="newTabActive"></label>
+                </p>
+            </fieldset>
+        </form>
+        <hr width="0">
+        <form id="structureManagingForm">
+            <fieldset id="structureManagingFrame">
+                <legend id="structureManagingLabel"></legend>
+                <label id="structureManagingDescLabel" class="description"></label>
+                <hr width="100%" size="1">
+                <p>
+                    <input type="button" id="uploadSyncStorageBtn">
+                    <input type="button" id="downloadSyncStorageBtn">
+                </p>
+                <p>
+                    <input type="button" id="getJsonStructureBtn">
+                    <input type="file" id="setJsonStructureBtn" accept=".json">
+                    <input type="button" id="fakeSetJsonStructureBtn">
+                    <img id="jsonStructureSpinner" class="waitSpinner" src="icons/tail-spin.svg">
+                </p>
+                <p>
+                    <input type="button" id="setDefaultStorageBtn">
+                </p>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

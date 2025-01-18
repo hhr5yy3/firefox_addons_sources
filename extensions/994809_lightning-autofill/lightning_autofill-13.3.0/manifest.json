@@ -1,0 +1,77 @@
+{
+  "manifest_version": 2,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{143f479b-4cb2-4d8c-8c31-ae8653bc6054}",
+      "strict_min_version": "126.0"
+    }
+  },
+  "name": "Lightning Autofill",
+  "short_name": "Autofill",
+  "version": "13.3.0",
+  "default_locale": "en",
+  "description": "__MSG_generalDescription__",
+  "homepage_url": "https://www.tohodo.com/autofill/",
+  "icons": {
+    "16": "images/icon16.png",
+    "24": "images/icon24.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "96": "images/icon96.png",
+    "128": "images/icon128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "images/icon16-off.png",
+      "24": "images/icon24-off.png",
+      "32": "images/icon32-off.png"
+    }
+  },
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "js/eventPage.js"
+    ],
+    "type": "module"
+  },
+  "commands": {
+    "_execute_action": {}
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/autofill.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_end"
+    }
+  ],
+  "options_page": "options.html",
+  "sidebar_action": {
+    "default_icon": {
+      "16": "images/icon16-off.png",
+      "24": "images/icon24-off.png",
+      "32": "images/icon32-off.png"
+    },
+    "default_panel": "sidepanel.html",
+    "open_at_install": false
+  },
+  "user_scripts": {},
+  "permissions": [
+    "<all_urls>",
+    "alarms",
+    "contextMenus",
+    "identity",
+    "scripting",
+    "storage",
+    "unlimitedStorage"
+  ],
+  "web_accessible_resources": [
+    "images/close*.png",
+    "images/icon24.png",
+    "sounds/*"
+  ]
+}
